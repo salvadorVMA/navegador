@@ -1,0 +1,21 @@
+# OS crap
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Node / JS
+node_modules/
+
+# Build artifacts
+dist/
+build/
+*.o
+*.exe
+
+# Large binaries you’ll put in Git LFS instead
+*.mp4
+*.zip
+
