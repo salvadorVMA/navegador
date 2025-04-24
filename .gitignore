@@ -19,3 +19,8 @@ build/
 *.mp4
 *.zip
 
+*.sav
+*.dat
+*.csv
+
+*.pkl
