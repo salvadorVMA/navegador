@@ -26,3 +26,4 @@ build/
 *.pkl
 *.pdf
 *.png
++.md
