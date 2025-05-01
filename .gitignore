@@ -27,3 +27,4 @@ build/
 *.pdf
 *.png
 +.md
+*.md
