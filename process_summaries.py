@@ -1,0 +1,90 @@
+import os
+import pickle
+import sys
+
+# Add debug information
+print("Python interpreter path:", sys.executable)
+print("Python version:", sys.version)
+conda_prefix = os.environ.get('CONDA_PREFIX')
+print("Conda environment:", conda_prefix)
+
+try:
+    import numpy as np
+    import pandas as pd
+    print("numpy version:", np.__version__)
+    print("pandas version:", pd.__version__)
+except ImportError as e:
+    print(f"Error importing numpy/pandas: {e}")
+    raise
+
+# Import the path first
+from workspace_module import ruta_enc
+
+# Define the path to save the pickle file.
+pickle_path = os.path.join(ruta_enc, 'db_f1.pkl')
+
+# Initialize the Chroma-like database object as a dictionary.
+db_f1 = {'summaries': [], 'embeddings': [], 'metadata': []}
+
+def save_db(db, path):
+    with open(path, 'wb') as f:
+        pickle.dump(db, f)
+
+def process_items():
+    # Import within the function to ensure modules are loaded correctly
+    from workspace_module import (
+        ensure_modules_loaded
+    )
+    
+    # Get all required modules/variables
+    enc_dict, pregs_dict, calculate_weighted_proportion, dataframe_to_markdown, create_prompt_sum, get_answer, client = ensure_modules_loaded()
+    
+    if pregs_dict is None:
+        raise ValueError("pregs_dict is still None after loading modules!")
+    
+    print(f"Number of questions in pregs_dict: {len(pregs_dict)}")
+    
+    iteration = 0
+    for composite_key, composite_value in pregs_dict.items():
+        # composite_key: "columnID|SURVEY_CODE", composite_value: "SURVEY_KEY|question text"
+        col_id = composite_key.split('|')[0]
+        survey_key = composite_value.split('|')[0]
+        df = enc_dict[survey_key]
+        # ...existing code to validate df and col_name if needed...
+        variable = df[col_id]
+
+        # Calculate weighted proportion table.
+        table_df = calculate_weighted_proportion(variable)
+        # Convert the table to a markdown string.
+        md_str = dataframe_to_markdown(table_df)
+        # Create the prompt.
+        prompt = create_prompt_sum(md_str)
+        # Send the prompt to the LLM for summary.
+        summary = get_answer(prompt=prompt)
+        # Compute the embedding of the summary.
+        emb = client.embeddings.create(
+            model="text-embedding-ada-002",
+            input=summary,
+            encoding_format="float"
+        ).embeddings[0].values
+        
+        # Add the summary, embedding, and metadata including key and colname to the database.
+        db_f1['summaries'].append(summary)
+        db_f1['embeddings'].append(emb)
+        db_f1['metadata'].append({
+            'question_id': col_id,
+            'survey_key': survey_key,
+            'question_text': composite_value.split('|')[1]
+        })
+        
+        iteration += 1
+
+        # Every 100 iterations update the pickle file.
+        if iteration % 100 == 0:
+            save_db(db_f1, pickle_path)
+    
+    # Save once final time after all iterations.
+    save_db(db_f1, pickle_path)
+
+if __name__ == '__main__':
+    process_items()
