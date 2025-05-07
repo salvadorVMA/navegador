@@ -28,3 +28,4 @@ build/
 *.png
 +.md
 *.md
+*.sqlite3
