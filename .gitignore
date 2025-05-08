@@ -29,3 +29,5 @@ build/
 +.md
 *.md
 *.sqlite3
+*.bin
+*.pickle
