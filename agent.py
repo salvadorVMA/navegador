@@ -14,9 +14,10 @@ from run_analysis import execute_analysis
 class AgentState(TypedDict):
     messages: Annotated[List[Any], "The chat history"]
     intent: Annotated[str, "The classified intent of the user"]
-    dataset: Annotated[str, "The dataset being discussed"]
+    dataset: Annotated[str, "The dataset or group of datasets being discussed"] # todas las encuestas o sólo una en particular
     selected_variables: Annotated[List[str], "Selected variables for analysis"]
-    user_approved: Annotated[bool, "Whether user has approved variables"]
+    analysis_type: Annotated[Literal["descriptive", "detailed"], "Type of analysis requested by user"]
+    user_approved: Annotated[bool, "Whether user has approved variables and analysis type"]
     analysis_result: Annotated[Dict, "Results from the analysis"]
 
 def create_agent():
@@ -25,10 +26,31 @@ def create_agent():
     llm = ChatOpenAI(model="gpt-4o")
     
     # Define agent states/nodes
-    
-    # Intent classifier
+    initial_state: AgentState = {
+        "messages": [],
+        "intent": "",
+        "dataset": "",  # This can be a specific dataset or a group of datasets
+        "selected_variables": [],
+        "analysis_type": "descriptive",  # Default analysis type
+        "user_approved": False,
+        "analysis_result": {}
+    }
+
+
+    ## Opciones: describe datasets, query datasets, or general questions
     def detect_intent(state: AgentState) -> AgentState:
-        """Determine user intent: describe dataset, query dataset, or general question"""
+        """
+        Intent classifier: INTENT --> ACTIONS AVAILABLE:
+      1) ANSWER GENERAL QUESTIONS ABOUT THE PROJECT AND DATASETS,
+      2) QUERY VARIABLE DATABASE,
+      3) REFINE VARIABLE SELECTION -IF USER REQUESTS IT-, 
+      4) REFINE DATASET SELECTION -IF USER REQUESTS IT-,
+      5) SELECT ANALYSIS TYPE -DESCRIPTIVE OR DETAILED, IF USER REQUESTS IT-,
+      6) CONFIRM DATASET, VARIABLES AND ANALYSIS TYPE,
+      7) RUN ANALYSIS,
+      8) RETURN RESULTS -CURRENTLY IN PDF ONLY-,
+      9) END CONVERSATION.
+        """
         messages = state["messages"]
         last_message = messages[-1].content if messages else ""
         intent, dataset = classify_intent(last_message, llm)
@@ -36,19 +58,19 @@ def create_agent():
         return {
             **state,
             "intent": intent,
-            "dataset": dataset
+            #"dataset": dataset # TODO: all datasets or just a subset
         }
     
-    # Describe dataset handler
-    def describe_dataset(state: AgentState) -> AgentState:
-        """Handle requests to describe datasets"""
-        dataset = state["dataset"]
-        dataset_info = get_dataset_info(dataset)
+    # # Describe dataset handler
+    # def describe_dataset(state: AgentState) -> AgentState:
+    #     """Handle requests to describe datasets"""
+    #     dataset = state["dataset"]
+    #     dataset_info = get_dataset_info(dataset)
         
-        response = f"Here's information about the {dataset} dataset:\n\n{dataset_info}"
-        state["messages"].append(AIMessage(content=response))
+    #     response = f"Here's information about the {dataset} dataset:\n\n{dataset_info}"
+    #     state["messages"].append(AIMessage(content=response))
         
-        return state
+    #     return state
     
     # Select variables for query
     def handle_query(state: AgentState) -> AgentState:
@@ -56,7 +78,9 @@ def create_agent():
         messages = state["messages"]
         last_user_message = next((msg.content for msg in reversed(messages) 
                               if isinstance(msg, HumanMessage)), "")
-        dataset = state["dataset"]
+        
+        ## TODO: get dataset from message describe which to use (single , selection, or all)
+        #dataset = state["dataset"]
         
         selected_vars = select_variables(last_user_message, dataset, llm)
         
