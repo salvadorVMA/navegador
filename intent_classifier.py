@@ -1,6 +1,6 @@
 """Module for classifying user intent in dataset interactions"""
 from typing import Tuple, Any
-from dataset_knowledge import DATASETS
+from dataset_knowledge import DATASETS, project_describer
 
 
 
