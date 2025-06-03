@@ -161,7 +161,7 @@ def batch_process_expert_grader(user_query, top_ids, tmp_pre_res_dict, model_nam
     structured_results = {}
     
     # Process each batch
-    with tqdm.tqdm(total=len(keys), desc="Processing Expert Summaries") as pbar:
+    with tqdm.tqdm(total=len(keys), desc="Selecting and filtering questions") as pbar:
         for batch_docs, batch_keys in batches:
             for prompt, key in zip(batch_docs, batch_keys):
                 try:
@@ -214,7 +214,7 @@ def _variable_selector(user_query,  dataset, mod_setting, top_vals=30):
             tmp_res_q = db_f1.query(
                 query_embeddings = [query_emb],
                 n_results        = 100,  # devuelvo 100 resultados para cada tipo con distancias menores
-                where            = # TODO: confirmar esta: {"type": type, "dataset": dataset}
+                where            = {"type": type}# TODO: confirmar esta: {"type": type, "dataset": dataset}
             )
             [tmp_res_ids] = tmp_res_q['ids']
             [tmp_res_distances] = tmp_res_q['distances']
