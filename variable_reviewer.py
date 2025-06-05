@@ -109,7 +109,7 @@ def _variable_reviewer(user_query: str, user_feedback: str, tmp_pre_res_dict_in:
 
     content = get_answer(prompt, model=mod_bajo, temperature=0.0)
     content = clean_llm_json_output(content)
-    parsed = pattern_parser_VarRevAction.parse(content)
+    # parsed = pattern_parser_VarRevAction.parse(content)
 
     tst= pattern_parser_VarRevAction.parse(content)
     var_review_action_dict = tst.model_dump()["var_review_action_dict"]
