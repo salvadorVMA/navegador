@@ -8,10 +8,8 @@ from langchain.output_parsers import PydanticOutputParser
 from utility_functions import environment_setup, embedding_fun_openai, get_answer, clean_llm_json_output, batch_documents
 
 from utility_functions import get_answer, clean_llm_json_output
-from pydantic import BaseModel
-from langchain.output_parsers import PydanticOutputParser
-
 from variable_selector import _variable_selector
+from dataset_knowledge import rev_topic_dict,  tmp_topic_st
 
 # Module for reviewing and modifying variable selections based on user feedback
 # LLM settings
@@ -85,7 +83,7 @@ def _variable_reviewer(user_query: str, user_feedback: str, tmp_pre_res_dict_in:
     You will retun a JSON object with the following fields:
     ```json
     {
-    "ACTION": "ADD_QUERY" | "ADD_QUESTION" | "REMOVE_QUERY" | "REMOVE_QUESTION" | "RESTART_QUERY",
+    "ACTION": "ADD_QUERY" | "ADD_QUESTION" | "REMOVE_QUERY" | "REMOVE_QUESTION" | "RESTART_QUERY" | "NO_CHANGE",
     "QUESTION_IDS": "the question IDs that the user mentioned to add or remove, separated by commas, or an empty string if not applicable",
     "USER_QUERY": 'the new information that the user requested to add to the variable query, or an empty string if not applicable',
     } ``` 
@@ -99,6 +97,7 @@ def _variable_reviewer(user_query: str, user_feedback: str, tmp_pre_res_dict_in:
 
     # llamada al LLM para revisar variables
     # TODO: recuperar en agent.py la primera pregunta user_query y el último comentario como user_feedback
+
     prompt= create_prompt_var_reviewer(
         user_query=user_query, 
         user_feedback=user_feedback, 
