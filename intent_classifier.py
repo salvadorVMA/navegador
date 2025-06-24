@@ -1,5 +1,5 @@
 """Module for classifying user intent in dataset interactions"""
-from typing import Tuple, Any
+from typing import Tuple, Any, Dict
 from pydantic import BaseModel
 from langchain.output_parsers import PydanticOutputParser
 from utility_functions import get_answer, clean_llm_json_output
@@ -15,16 +15,24 @@ intent_dict= {
     "end_conversation": "If the user asks to end the conversation, you should return end_conversation."
 }
 
-def classify_intent(user_message: str, intent_dict: dict, llm: Any) -> Tuple[str, str]: # falta parser, etc.
+def _classify_intent(user_message: str, intent_dict: dict, llm: Any) -> Tuple[str, Dict[str, Any]]:
     """
     Classify the user's intent and identify the dataset, variables, and analysis tipe they request
     
     Returns:
-        Tuple containing (intent, dataset_name)
+        Tuple containing (cleaned_response, parsed_dict)
         Intents are included in intent_dict, which maps action names to conditions for performing the action.
     """
 
     intent_str = "\n".join([f"*{act}: {cond}" for act, cond in intent_dict.items()])
+
+    # objetos para el parser y formato de salida
+    class PatternIntentClass(BaseModel):
+        intent: str = ""
+        response: str = ""
+
+    pattern_parser_IntentClass = PydanticOutputParser(pydantic_object=PatternIntentClass)
+    pattern_format_grader_IntentClass = pattern_parser_IntentClass.get_format_instructions()
 
     prompt = f"""
     You are a helpful asisstant that helps users interact with a group of survey datasets. 
@@ -45,35 +53,22 @@ def classify_intent(user_message: str, intent_dict: dict, llm: Any) -> Tuple[str
         "intent": str,
         "response": str
     }}
+    
+    {pattern_format_grader_IntentClass}
     """
     
     response = llm.invoke(prompt)
     
-    # objetos para el parser y formato de salida
-    class PatternIntentClass(BaseModel):
-        var_review_action_dict: dict[str, str] = {
-            "intent": "",
-            "response": ""
-        }
-
-    pattern_parser_IntentClass = PydanticOutputParser(pydantic_object=PatternIntentClass)
-    pattern_format_grader_IntentClass = pattern_parser_IntentClass.get_format_instructions()
-
-
     # prompt =create_prompt_grader(user_query=user_query, tmp_svvinfo_st= tmp_svvinfo_st, format_instructions=pattern_format_grader_instrtuctions)
     content = get_answer(prompt, model=llm, temperature=0.0)
     content = clean_llm_json_output(content)
-    parsed = pattern_parser_IntentClass.parse(content)
-    cleaned = clean_llm_json_output(content)
     try:
-        parsed = pattern_parser_IntentClass.parse(cleaned)
-        return cleaned, parsed.model_dump()
+        parsed = pattern_parser_IntentClass.parse(content)
+        return content, parsed.model_dump()
     except Exception as e:
         print("Parsing failed. Raw output:")
         print(content)
-        print("Cleaned output:")
-        print(cleaned)
         print("Error:", e)
-        return cleaned, {}
+        return content, {}
 
 

@@ -4,8 +4,8 @@ from chromadb.config import DEFAULT_TENANT, DEFAULT_DATABASE, Settings
 from chromadb.utils.embedding_functions import OpenAIEmbeddingFunction
 
 import pandas as pd
-
 import tqdm
+from typing import List, Any
 
 from pydantic import BaseModel
 from langchain.output_parsers import PydanticOutputParser
@@ -183,11 +183,20 @@ def _database_selector(user_query: str, topic_id_st: str, llm: Any) -> List[str]
     
     Args:
         user_query: The user's query about the datasets
+        topic_id_st: String with topic information
         llm: Language model for reasoning
         
     Returns:
         A list of dataset names relevant to the query.
     """
+    
+    # Define Pydantic model for structured output
+    class DatasetSelectionResponse(BaseModel):
+        selected_datasets: List[str]
+        reasoning: str = ""
+        
+    pattern_parser = PydanticOutputParser(pydantic_object=DatasetSelectionResponse)
+    format_instructions = pattern_parser.get_format_instructions()
     
     # Use LLM to select relevant datasets
     prompt = f"""
@@ -204,13 +213,17 @@ def _database_selector(user_query: str, topic_id_st: str, llm: Any) -> List[str]
     Available datasets:
     {tmp_topic_st}
     
+    {format_instructions}
     """
     
     response = llm.invoke(prompt)
-
-    # TODO: agrgar parser, etc.
-
-    return parsed_response
+    
+    try:
+        parsed = pattern_parser.parse(response.content if hasattr(response, 'content') else str(response))
+        return parsed.selected_datasets
+    except Exception as e:
+        print(f"Parsing failed in database_selector: {e}")
+        return ["all"]
 
 
 def retrieve_by_type_and_topics(db_f1, query_emb, topic_ids=None, type_lst=None, n_results=100):

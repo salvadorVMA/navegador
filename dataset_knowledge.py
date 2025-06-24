@@ -43,8 +43,10 @@ tmp_data_describer_st = f"""
 
 # TODO: extraerá un sólo string con la descripción de los datasets y el proyecto, para que el LLM pueda responder preguntas generales sobre el proyecto y los datasets.
 from typing import List, Any
+from pydantic import BaseModel
+from langchain.output_parsers import PydanticOutputParser
 
-def _project_describer(user_query: str, tmp_data_describer_st: str, llm: Any) -> List[str]:
+def _project_describer(user_query: str, tmp_data_describer_st: str, llm: Any) -> str:
     """
     Answer general questions about the project and datasets based on the user's query.
     
@@ -56,6 +58,15 @@ def _project_describer(user_query: str, tmp_data_describer_st: str, llm: Any) ->
     Returns:
         A string with the relevant information about the project and datasets.
     """
+    
+    # Define Pydantic model for structured output
+    class ProjectDescriptionResponse(BaseModel):
+        answer: str
+        redirect_needed: bool = False
+        suggested_action: str = ""
+    
+    pattern_parser = PydanticOutputParser(pydantic_object=ProjectDescriptionResponse)
+    format_instructions = pattern_parser.get_format_instructions()
         
     # Use LLM to select relevant variables
     prompt = f"""
@@ -68,10 +79,15 @@ def _project_describer(user_query: str, tmp_data_describer_st: str, llm: Any) ->
     {tmp_data_describer_st} 
     
     User query: "{user_query}"
+    
+    {format_instructions}
     """
     
     response = llm.invoke(prompt)
     
-    # TODO: agrgar parser, etc. 
-        
-    return parsed_response
+    try:
+        parsed = pattern_parser.parse(response.content if hasattr(response, 'content') else str(response))
+        return parsed.answer
+    except Exception as e:
+        print(f"Parsing failed in project_describer: {e}")
+        return str(response.content if hasattr(response, 'content') else response)
