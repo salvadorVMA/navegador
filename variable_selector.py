@@ -11,6 +11,7 @@ from pydantic import BaseModel
 from langchain.output_parsers import PydanticOutputParser
 
 from utility_functions import environment_setup, embedding_fun_openai, get_answer, clean_llm_json_output, batch_documents
+from dataset_knowledge import rev_topic_dict,  tmp_topic_st
 
 
 # LLM settings
@@ -174,7 +175,102 @@ def batch_process_expert_grader(user_query, top_ids, tmp_pre_res_dict, model_nam
     
     return structured_results
 
-def _variable_selector(user_query,  dataset, mod_setting, top_vals=30):
+
+
+def _database_selector(user_query: str, topic_id_st: str, llm: Any) -> List[str]:
+    """
+    Select relevant datasets based on the user's query.
+    
+    Args:
+        user_query: The user's query about the datasets
+        llm: Language model for reasoning
+        
+    Returns:
+        A list of dataset names relevant to the query.
+    """
+    
+    # Use LLM to select relevant datasets
+    prompt = f"""
+    You will read the user query and select one or more of the datasets listed in the topic list. 
+    If the user asks to use all datasets, you will return a list containing the string 'all'.
+    Otherwise, from the list of available datasets below, you will select which ones most closely matches the user's query and return a list of their topic IDs.
+
+    IMPORTANT: note that the topic list contains a list of elements with the following format: '* ABC|Topic description' where * marks the start of an element if the list, and ABC is the topic ID. 
+    IMPORTANT: if the user request is not specific enough to select a dataset or you do not have enough information to choose a dataset, you should inform them that you cannot answer that question and suggest they ask about the available datasets.
+    In this case, you should return 'all'.
+    
+    User query: "{user_query}"
+    
+    Available datasets:
+    {tmp_topic_st}
+    
+    """
+    
+    response = llm.invoke(prompt)
+
+    # TODO: agrgar parser, etc.
+
+    return parsed_response
+
+
+def retrieve_by_type_and_topics(db_f1, query_emb, topic_ids=None, type_lst=None, n_results=100):
+    """
+    Retrieves documents from db_f1 filtered by type and topic IDs.
+    
+    Args:
+        db_f1: ChromaDB collection
+        query_emb: Query embedding vector
+        topic_ids: List of topic IDs (e.g., ['IDE', 'MED', 'POB']) or None for all topics
+        type_lst: List of types (e.g., ["question", "summary", "implications"]) or None for all types
+        n_results: Number of results to return per type
+        
+    Returns:
+        dict: Dictionary with type as key and {ids: distances} as values
+    """
+    
+    if type_lst is None:
+        type_lst = ["question", "summary", "implications"]
+    
+    if topic_ids is None or topic_ids == ['all']:
+        # Use all available topic IDs from rev_enc_nom_dict
+        topic_ids = list(rev_topic_dict.keys())
+    
+    tmp_dist_dict = {}
+    
+    for doc_type in type_lst:
+        print(f"Querying for type: {doc_type}")
+        
+        # Build the where clause
+        if len(topic_ids) == 1:
+            # Single topic ID - use simple contains
+            where_clause = {
+                "type": doc_type,
+                "qid": {"$contains": f"|{topic_ids[0]}"}
+            }
+        else:
+            # Multiple topic IDs - use $or with multiple $contains
+            topic_conditions = [{"qid": {"$contains": f"|{topic_id}"}} for topic_id in topic_ids]
+            where_clause = {
+                "$and": [
+                    {"type": doc_type},
+                    {"$or": topic_conditions}
+                ]
+            }
+        
+        tmp_res_q = db_f1.query(
+            query_embeddings=[query_emb],
+            n_results=n_results,
+            where=where_clause
+        )
+        
+        [tmp_res_ids] = tmp_res_q['ids']
+        [tmp_res_distances] = tmp_res_q['distances']
+        
+        tmp_dist_dict[doc_type] = dict(zip(tmp_res_ids, tmp_res_distances))
+    
+    return tmp_dist_dict
+
+def _variable_selector(user_query, topic_id_st, mod_setting, top_vals=30):
     """
     Selects the top variables based on their relevance to the user query.
     Returns:
@@ -193,33 +289,45 @@ def _variable_selector(user_query,  dataset, mod_setting, top_vals=30):
     type_lst = [ "question", "summary", "implications"]
     tmp_dist_dict = {}
 
-    # TODO: agregar filtro where para filtrar por dataset si dataset != 'all'
-    # dataset != 'all' es una lista de uno o más 'ABC' para filtrar las llaves ... 
-    if dataset == 'all':
-        for type in type_lst:
-            print(f"Querying for type: {type}")
-            tmp_res_q = db_f1.query(
-                query_embeddings = [query_emb],
-                n_results        = 100,  # devuelvo 100 resultados para cada tipo con distancias menores
-                where            = {"type": type}
-            )
-            [tmp_res_ids] = tmp_res_q['ids']
-            [tmp_res_distances] = tmp_res_q['distances']
+    topic_ids = _database_selector(user_query, topic_id_st, llm=mod_setting)
 
-            tmp_dist_dict[type]= dict(zip(tmp_res_ids, tmp_res_distances))
-    else:
-        # If dataset is not 'all', filter by dataset
-        for type in type_lst:
-            print(f"Querying for type: {type} and dataset: {dataset}")
-            tmp_res_q = db_f1.query(
-                query_embeddings = [query_emb],
-                n_results        = 100,  # devuelvo 100 resultados para cada tipo con distancias menores
-                where            = {"type": type}# TODO: confirmar esta: {"type": type, "dataset": dataset}
-            )
-            [tmp_res_ids] = tmp_res_q['ids']
-            [tmp_res_distances] = tmp_res_q['distances']
+    # Use the enhanced retriever
+    tmp_dist_dict = retrieve_by_type_and_topics(
+        db_f1, 
+        query_emb, 
+        topic_ids=topic_ids,
+        type_lst=["question", "summary", "implications"],
+        n_results=100
+    )
 
-            tmp_dist_dict[type]= dict(zip(tmp_res_ids, tmp_res_distances))
+
+    # # TODO: agregar filtro where para filtrar por dataset si dataset != 'all'
+    # # dataset != 'all' es una lista de uno o más 'ABC' para filtrar las llaves ... 
+    # if dataset == 'all':
+    #     for type in type_lst:
+    #         print(f"Querying for type: {type}")
+    #         tmp_res_q = db_f1.query(
+    #             query_embeddings = [query_emb],
+    #             n_results        = 100,  # devuelvo 100 resultados para cada tipo con distancias menores
+    #             where            = {"type": type}
+    #         )
+    #         [tmp_res_ids] = tmp_res_q['ids']
+    #         [tmp_res_distances] = tmp_res_q['distances']
+
+    #         tmp_dist_dict[type]= dict(zip(tmp_res_ids, tmp_res_distances))
+    # else:
+    #     # If dataset is not 'all', filter by dataset
+    #     for type in type_lst:
+    #         print(f"Querying for type: {type} and dataset: {dataset}")
+    #         tmp_res_q = db_f1.query(
+    #             query_embeddings = [query_emb],
+    #             n_results        = 100,  # devuelvo 100 resultados para cada tipo con distancias menores
+    #             where            = {"type": type}# TODO: confirmar esta: {"type": type, "dataset": dataset}
+    #         )
+    #         [tmp_res_ids] = tmp_res_q['ids']
+    #         [tmp_res_distances] = tmp_res_q['distances']
+
+    #         tmp_dist_dict[type]= dict(zip(tmp_res_ids, tmp_res_distances))
 
     # remove the suffixes from the keys
     tmp_dist_dict = { outer_key: { k.split('__')[0]: v for k, v in inner_dict.items() }
@@ -259,5 +367,5 @@ def _variable_selector(user_query,  dataset, mod_setting, top_vals=30):
 
     tmp_grade_dict= {k: v for k, v in tmp_grade_dict.items() if list(v.keys())[0] >1 }
 
-    return tmp_pre_res_dict, tmp_grade_dict
+    return topic_ids, tmp_pre_res_dict, tmp_grade_dict
 
