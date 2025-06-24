@@ -5,9 +5,9 @@ from langgraph.prebuilt import create_react_agent
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
 
-from dataset_knowledge import project_describer, database_selector
-from intent_classifier import classify_intent
-from variable_selector import _variable_selector
+from dataset_knowledge import rev_topic_dict,  tmp_topic_st, _project_describer
+from intent_classifier import _classify_intent, intent_dict
+from variable_selector import _variable_selector, _database_selector
 from run_analysis import execute_analysis
 
 
@@ -21,7 +21,8 @@ mod_med = 'gpt-4.1-mini-2025-04-14'
 class AgentState(TypedDict):
     messages: Annotated[List[Any], "The chat history"]
     intent: Annotated[str, "The classified intent of the user"]
-    dataset: Annotated[str, "The dataset or group of datasets selected for analysis; defaults to 'ALL'"] 
+    user_query: Annotated[str, "The user's current query or question for the data"]
+    dataset: Annotated[List[str], "The dataset or group of datasets selected for analysis; defaults to 'ALL'"] 
     selected_variables: Annotated[List[str], "Selected variables for analysis"]
     analysis_type: Annotated[Literal["descriptive", "detailed"], "Type of analysis requested by user"]
     user_approved: Annotated[bool, "Whether user has approved variables and analysis type"]
@@ -36,9 +37,10 @@ def create_agent():
     initial_state: AgentState = {
         "messages": [],
         "intent": "",
-        "dataset": "ALL",  # This can be a specific dataset or a group of datasets
+        "user_query": "",  
+        "dataset": ["all"], 
         "selected_variables": [],
-        "analysis_type": "descriptive",  # Default analysis type
+        "analysis_type": "descriptive",
         "user_approved": False,
         "analysis_result": {}
     }
@@ -51,12 +53,20 @@ def create_agent():
         """
         messages = state["messages"]
         last_message = messages[-1].content if messages else ""
-        intent, dataset = classify_intent(last_message, llm)
+        intent = _classify_intent(last_message, intent_dict, llm)
+
+        # agregar último mensaje si el identificador lo detectó como pregunta
+        
+        if intent == "query_variable_database":
+            state["user_query"] = last_message
+
+        if intent == "end_conversation":
+            state["messages"].append(AIMessage(content="Goodbye!"))
+            return END
         
         return {
             **state,
             "intent": intent,
-            #"dataset": dataset # TODO: all datasets or just a subset
         }
     
     # Describe dataset handler
@@ -67,7 +77,7 @@ def create_agent():
         last_user_message = next((msg.content for msg in reversed(messages)
                               if isinstance(msg, HumanMessage)), "")
         # response = project_describer(last_user_message, tmp_data_describer_st="", llm=llm)
-        response = project_describer(last_user_message,  tmp_data_describer_st="", llm=llm)  # Assuming tmp_data_describer_st is handled inside
+        response = _project_describer(last_user_message,  tmp_data_describer_st="", llm=llm)  # Assuming tmp_data_describer_st is handled inside
         state["messages"].append(AIMessage(content=response))
         
         return state
@@ -81,7 +91,7 @@ def create_agent():
         last_user_message = next((msg.content for msg in reversed(messages) 
                               if isinstance(msg, HumanMessage)), "")
         
-        response = database_selector(last_user_message, '', llm)
+        response = _database_selector(last_user_message, '', llm)
 
         if response != []:
             state["dataset"] = response[0]
@@ -97,25 +107,20 @@ def create_agent():
         messages = state["messages"]
         last_user_message = next((msg.content for msg in reversed(messages) 
                               if isinstance(msg, HumanMessage)), "")
-        dataset = state["dataset"]
-
-        tmp_pre_res_dict, tmp_grade_dict = _variable_selector(last_user_message, dataset, mod_alto, top_vals= 30)
-
-        # TODO: report back selected variables from tmp_pre_res_dict and tmp_grade_dict
-        # TODO: tmp language spoken by user to select standared reply with variable list
-        # TODO: add function to review variable selection if that is the user intent:
-        #      - this function should take in the current variable list in state and leave it unchanged if new user suggestion is vague or not specific enough after notifying the user
-        #      - but the new review should trigger a new variable search with the retreiver, BUT the original prompt should be enriched with the new suggestion
-        #      - this will require the original query and subsequent variable selection cues to be stored in state, in tmp_variable_selection_cues_lst which will be populated by the review process
-   
-        selected_vars = # resultado final de la selección de variables
         
-        response = (f"Based on your query about {dataset}, I've selected these variables:\n"
+        topic_ids, _, tmp_grade_dict = _variable_selector(last_user_message, tmp_topic_st, mod_alto, top_vals=30)
+
+        selected_vars = list(tmp_grade_dict.keys())
+
+        response = (f"Based on your query, I've selected these dataset IDs:"
+                   f"{', '.join(topic_ids)}\n\n"
+                   f"And these variables:\n"
                    f"{', '.join(selected_vars)}\n\n"
-                   f"Would you like to approve these variables or modify the selection?")
+                   )
         
         state["messages"].append(AIMessage(content=response))
         state["selected_variables"] = selected_vars
+        state["dataset"] = topic_ids
         
         return state
     

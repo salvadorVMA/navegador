@@ -44,7 +44,7 @@ tmp_data_describer_st = f"""
 # TODO: extraerá un sólo string con la descripción de los datasets y el proyecto, para que el LLM pueda responder preguntas generales sobre el proyecto y los datasets.
 from typing import List, Any
 
-def project_describer(user_query: str, tmp_data_describer_st: str, llm: Any) -> List[str]:
+def _project_describer(user_query: str, tmp_data_describer_st: str, llm: Any) -> List[str]:
     """
     Answer general questions about the project and datasets based on the user's query.
     
@@ -74,41 +74,4 @@ def project_describer(user_query: str, tmp_data_describer_st: str, llm: Any) -> 
     
     # TODO: agrgar parser, etc. 
         
-    return parsed_response
-
-
-# TODO: crear módulo para hacer query inicial o modificar la lista de variables a petición del usuario
-
-def database_selector(user_query: str, topic_id_st: str, llm: Any) -> List[str]:
-    """
-    Select relevant datasets based on the user's query.
-    
-    Args:
-        user_query: The user's query about the datasets
-        llm: Language model for reasoning
-        
-    Returns:
-        A list of dataset names relevant to the query.
-    """
-    
-    # Use LLM to select relevant datasets
-    prompt = f"""
-    You will read the user query and select one or more of the datasets listed in the topic list.
-    IMPORTANT: note that the topic list contains a list of elements with the following format: '* ABC|Topic description' where * marks the start of an element if the list, and ABC is the topic ID. 
-    You will make  your selection based on the topic descriptions, but will return a list with the topic IDs (eg. ['ABC', 'DEF']) only. Make sure to return one topic ID for each topic description you choose.
-
-    IMPORTANT: if the user request is not specific enough to select a dataset or you do not have enough information to choose a dataset, you should inform them that you cannot answer that question and suggest they ask about the available datasets.
-    In this case, you should return an empty list.
-    
-    User query: "{user_query}"
-    
-    Available datasets:
-    {tmp_topic_st}
-    
-    """
-    
-    response = llm.invoke(prompt)
-
-    # TODO: agrgar parser, etc.
-
     return parsed_response
