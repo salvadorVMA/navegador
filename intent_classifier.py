@@ -40,20 +40,32 @@ def _classify_intent(user_message: str, intent_dict: dict, llm: Any) -> str:
 
     prompt = f"""
     You are an intent classifier for a dataset analysis assistant. 
-    You will classify the user's intent based on their message.
+    You must classify the user's intent based on their message into exactly one of the available intents.
 
-    Available intents:
+    Available intents and their descriptions:
     {intent_str}
     
     User message: "{user_message}"
     
-    Classify the intent and provide a confidence score (0.0-1.0).
+    Rules:
+    - Choose ONLY ONE intent from the list above
+    - If the user asks about analyzing variables or querying data, choose "query_variable_database"
+    - If the user asks general questions about the project or datasets, choose "answer_general_questions"
+    - If the user asks what you can do, choose "continue_conversation"
+    - If the user wants to approve/modify variable selections, choose "review_variable_selection"
+    - If the user wants to select analysis type (simple/complex/detailed/descriptive), choose "select_analysis_type"
+    - If the user wants to run/execute analysis, choose "confirm_and_run"
+    - If the user wants to reset, choose "reset_conversation"
+    - If the user wants to end conversation, choose "end_conversation"
+    
+    Respond with the exact intent name only.
     
     {pattern_format_grader_IntentClass}
     """
     
     try:
-        content = get_answer(prompt, model=llm, temperature=0.0)
+        # Use get_answer with a model name string instead of llm object
+        content = get_answer(prompt, model='gpt-4o-mini-2024-07-18', temperature=0.0)
         content = clean_llm_json_output(content)
         parsed = pattern_parser_IntentClass.parse(content)
         return parsed.intent

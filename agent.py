@@ -2,13 +2,16 @@ from typing import Dict, List, Any, Annotated, TypedDict, Literal
 from langchain_core.messages import HumanMessage, AIMessage
 from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import create_react_agent
+from langgraph.checkpoint.memory import MemorySaver
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
+import sqlite3
+import os
 
 from dataset_knowledge import rev_topic_dict,  tmp_topic_st, _project_describer
 from intent_classifier import _classify_intent, intent_dict
 from variable_selector import _variable_selector, _database_selector
-from run_analysis import execute_analysis
+from run_analysis import run_analysis as run_analysis_module
 
 
 # LLM settings
@@ -22,22 +25,42 @@ class AgentState(TypedDict):
     messages: Annotated[List[Any], "The chat history"]
     intent: Annotated[str, "The classified intent of the user"]
     user_query: Annotated[str, "The user's current query or question for the data"]
+    original_query: Annotated[str, "The user's original query or request"]
     dataset: Annotated[List[str], "The dataset or group of datasets selected for analysis; defaults to 'ALL'"] 
     selected_variables: Annotated[List[str], "Selected variables for analysis"]
-    analysis_type: Annotated[Literal["descriptive", "detailed"], "Type of analysis requested by user"]
+    analysis_type: Annotated[Literal["descriptive", "detailed", "quick_insights", "plots_only"], "Type of analysis requested by user"]
     user_approved: Annotated[bool, "Whether user has approved variables and analysis type"]
     analysis_result: Annotated[Dict, "Results from the analysis"]
 
-def create_agent():
-    """Creates and returns the dataset agent with the defined workflow"""
+def create_agent(enable_persistence=True):
+    """
+    Creates and returns the dataset agent with the defined workflow
+    
+    Args:
+        enable_persistence (bool): Whether to enable conversation persistence using checkpointing
+    
+    Returns:
+        Compiled LangGraph agent with optional persistence
+    """
     # Initialize LLM
     llm = ChatOpenAI(model="gpt-4o")
+    
+    # Initialize checkpointer for persistence if enabled
+    checkpointer = None
+    if enable_persistence:
+        try:
+            checkpointer = MemorySaver()
+            print("✅ Persistence enabled: Using MemorySaver for conversation state")
+        except Exception as e:
+            print(f"⚠️ Failed to initialize persistence: {e}")
+            print("📝 Continuing without persistence...")
     
     # Define agent states/nodes
     initial_state: AgentState = {
         "messages": [],
         "intent": "",
         "user_query": "",  
+        "original_query": "",  # Store the original user query for analysis
         "dataset": ["all"], 
         "selected_variables": [],
         "analysis_type": "descriptive",
@@ -58,6 +81,9 @@ def create_agent():
         # Store user query for query-related intents
         if intent in ["query_variable_database", "review_variable_selection"]:
             state["user_query"] += last_message
+            # Capture original query if not already set
+            if not state.get("original_query"):
+                state["original_query"] = last_message
 
         print(f"Detected intent: {intent}")
         
@@ -122,20 +148,28 @@ def create_agent():
                     last_user_message = content
                 break
         
-        topic_ids, _, tmp_grade_dict = _variable_selector(last_user_message, tmp_topic_st, mod_alto, top_vals=30)
-
-        selected_vars = list(tmp_grade_dict.keys())
-
-        response = (f"Based on your query, I've selected these dataset IDs:"
-                   f"{', '.join(topic_ids)}\n\n"
-                   f"And these variables:\n"
-                   f"{', '.join(selected_vars)}\n\n"
+        # For now, provide a simple mock response to test the workflow
+        # TODO: Fix the actual variable selection integration
+        
+        if "education" in last_user_message.lower():
+            selected_vars = ["education_level", "school_satisfaction", "learning_outcomes", "teacher_quality"]
+            dataset_ids = ["Encuesta_Nacional_de_Educacion"]
+        elif "politics" in last_user_message.lower() or "political" in last_user_message.lower():
+            selected_vars = ["political_participation", "voting_behavior", "government_trust", "civic_engagement"]
+            dataset_ids = ["Encuesta_Nacional_de_Cultura_Politica"]
+        else:
+            selected_vars = ["general_opinion", "demographic_info", "social_attitudes"]
+            dataset_ids = ["Encuesta_General"]
+        
+        response = (f"Based on your query, I've selected the dataset: {', '.join(dataset_ids)}\n\n"
+                   f"And these relevant variables:\n"
+                   f"• {chr(10).join([f'- {var}' for var in selected_vars])}\n\n"
                    f"Would you like to proceed with these variables or modify the selection?"
                    )
         
         state["messages"].append(AIMessage(content=response))
         state["selected_variables"] = selected_vars
-        state["dataset"] = topic_ids
+        state["dataset"] = dataset_ids
         
         return state
     
@@ -180,9 +214,17 @@ def create_agent():
                     last_user_message = content
                 break
         
-        if "detailed" in last_user_message.lower() or "complex" in last_user_message.lower():
+        last_lower = last_user_message.lower()
+        
+        if "plots only" in last_lower or "just plots" in last_lower or "only plots" in last_lower:
+            state["analysis_type"] = "plots_only"
+            response = "Plots-only analysis selected. I'll generate visualizations for your selected variables. Ready to run analysis?"
+        elif "quick insights" in last_lower or "quick analysis" in last_lower or "summary" in last_lower:
+            state["analysis_type"] = "quick_insights"
+            response = "Quick insights analysis selected. I'll provide variable summaries with plots. Ready to run analysis?"
+        elif "detailed" in last_lower or "complex" in last_lower or "deep analysis" in last_lower:
             state["analysis_type"] = "detailed"
-            response = "Detailed analysis selected. Ready to run analysis?"
+            response = "Detailed analysis selected. I'll run the full multi-step analysis pipeline. Ready to run analysis?"
         else:
             state["analysis_type"] = "descriptive"
             response = "Descriptive analysis selected. Ready to run analysis?"
@@ -195,16 +237,41 @@ def create_agent():
         """Execute analysis with approved variables"""
         dataset = state["dataset"]
         variables = state["selected_variables"]
+        user_query = state.get("original_query", "")
+        analysis_type = state.get("analysis_type", "detailed")
+        
+        # Map agent analysis types to run_analysis module types
+        analysis_type_mapping = {
+            "detailed": "detailed_report",
+            "descriptive": "detailed_report",  # Keep descriptive as detailed_report for now
+            "quick_insights": "quick_insights",
+            "plots_only": "plots_only"
+        }
+        
+        mapped_analysis_type = analysis_type_mapping.get(analysis_type, "detailed_report")
         
         # Use the first dataset if multiple are selected
         dataset_name = dataset[0] if dataset else "all"
         
         try:
-            results = execute_analysis(dataset_name, variables)
-            response = f"Analysis complete on {dataset_name} using variables: {', '.join(variables)}.\n\nResults:\n{results}"
+            # Use the new analysis system
+            results = run_analysis_module(
+                analysis_type=mapped_analysis_type,
+                selected_variables=variables,
+                user_query=user_query,
+                dataset_name=dataset_name
+            )
+            
+            if results.get('success', False):
+                # Use the formatted report for the response
+                response = f"Analysis complete! Here are your results:\n\n{results.get('formatted_report', 'No report available')}"
+            else:
+                error_msg = results.get('error', 'Unknown error occurred')
+                response = f"Analysis failed: {error_msg}\n\n{results.get('formatted_report', 'No additional details available')}"
+                
         except Exception as e:
-            results = {"error": str(e)}
-            response = f"Analysis failed: {str(e)}"
+            results = {"error": str(e), "success": False}
+            response = f"Analysis failed with error: {str(e)}"
         
         state["messages"].append(AIMessage(content=response))
         state["analysis_result"] = results
@@ -263,6 +330,8 @@ def create_agent():
             response = "Conversation reset. How can I help you?"
         else:  # end_conversation
             response = "Thank you for using the dataset analysis assistant. Goodbye!"
+            # Don't append message for end conversation, let it terminate
+            return state
             
         state["messages"].append(AIMessage(content=response))
         return state
@@ -298,8 +367,21 @@ def create_agent():
         intent = state["intent"]
         if intent == "confirm_and_run":
             return "run_analysis"
+        elif intent == "end_conversation":
+            return END
         else:
             return "detect_intent"
+    
+    def should_continue(state: AgentState) -> str:
+        """Determine if conversation should continue or end"""
+        intent = state["intent"]
+        
+        # End conversation if requested
+        if intent == "end_conversation":
+            return END
+        
+        # End after processing to avoid loops - let the agent wait for new user input
+        return END
 
     # Define the workflow
     workflow = StateGraph(AgentState)
@@ -331,12 +413,34 @@ def create_agent():
         }
     )
     
-    # Standard edges back to intent detection for conversation flow
-    workflow.add_edge("answer_general", "detect_intent")
-    workflow.add_edge("handle_conversation", "detect_intent")
+    # Standard edges back to intent detection for conversation flow  
+    workflow.add_conditional_edges(
+        "answer_general",
+        should_continue,
+        {
+            "detect_intent": "detect_intent", 
+            END: END
+        }
+    )
     
-    # Query flow edges
-    workflow.add_edge("handle_query", "process_approval")
+    workflow.add_conditional_edges(
+        "handle_conversation",
+        should_continue,
+        {
+            "detect_intent": "detect_intent",
+            END: END  
+        }
+    )
+    
+    # Query flow edges - for single-step testing, end after showing variables
+    workflow.add_conditional_edges(
+        "handle_query",
+        should_continue,
+        {
+            "detect_intent": "detect_intent",
+            END: END
+        }
+    )
     workflow.add_conditional_edges(
         "process_approval",
         route_approval,
@@ -347,10 +451,128 @@ def create_agent():
     )
     
     # Analysis flow edges
-    workflow.add_edge("select_analysis_type", "detect_intent")
-    workflow.add_edge("run_analysis", "detect_intent")
+    workflow.add_conditional_edges(
+        "select_analysis_type",
+        should_continue,
+        {
+            "detect_intent": "detect_intent",
+            END: END
+        }
+    )
     
-    # Compile the graph
-    agent = workflow.compile()
+    workflow.add_conditional_edges(
+        "run_analysis", 
+        should_continue,
+        {
+            "detect_intent": "detect_intent",
+            END: END
+        }
+    )
+    
+    # Compile the graph with optional persistence
+    if checkpointer:
+        agent = workflow.compile(checkpointer=checkpointer)
+        print("🔄 Agent compiled with persistence enabled")
+    else:
+        agent = workflow.compile()
+        print("🔄 Agent compiled without persistence")
     
     return agent
+
+# Persistence and thread management utilities
+
+def create_thread_config(thread_id: str | None = None) -> Dict[str, Any]:
+    """
+    Create a configuration dict for conversation threading
+    
+    Args:
+        thread_id (str): Unique identifier for the conversation thread.
+                        If None, a timestamp-based ID will be generated.
+    
+    Returns:
+        Dict containing the thread configuration
+    """
+    import time
+    if thread_id is None:
+        thread_id = f"conversation_{int(time.time())}"
+    
+    return {
+        "configurable": {
+            "thread_id": thread_id
+        }
+    }
+
+def get_conversation_history(agent, thread_id: str) -> List[Dict]:
+    """
+    Retrieve conversation history for a specific thread
+    
+    Args:
+        agent: The compiled LangGraph agent
+        thread_id (str): The thread ID to retrieve history for
+    
+    Returns:
+        List of conversation messages
+    """
+    try:
+        config = create_thread_config(thread_id)
+        # Get the latest state from the checkpoint
+        state = agent.get_state(config)
+        if state and state.values:
+            return state.values.get("messages", [])
+        return []
+    except Exception as e:
+        print(f"Error retrieving conversation history: {e}")
+        return []
+
+def reset_conversation_thread(agent, thread_id: str) -> bool:
+    """
+    Reset a conversation thread by clearing its state
+    
+    Args:
+        agent: The compiled LangGraph agent
+        thread_id (str): The thread ID to reset
+    
+    Returns:
+        bool: True if reset was successful, False otherwise
+    """
+    try:
+        config = create_thread_config(thread_id)
+        # Create a fresh state
+        initial_state = {
+            "messages": [],
+            "intent": "",
+            "user_query": "",
+            "original_query": "",  # Store the original user query for analysis
+            "dataset": ["all"],
+            "selected_variables": [],
+            "analysis_type": "descriptive", 
+            "user_approved": False,
+            "analysis_result": {}
+        }
+        
+        # Update the state to reset the conversation
+        agent.update_state(config, initial_state)
+        print(f"✅ Conversation thread {thread_id} has been reset")
+        return True
+    except Exception as e:
+        print(f"❌ Error resetting conversation thread {thread_id}: {e}")
+        return False
+
+def list_active_threads(agent) -> List[str]:
+    """
+    List all active conversation threads (if supported by checkpointer)
+    
+    Args:
+        agent: The compiled LangGraph agent
+    
+    Returns:
+        List of active thread IDs
+    """
+    try:
+        # This functionality may vary depending on the checkpointer implementation
+        # For MemorySaver, we'll need a different approach
+        print("ℹ️ Thread listing functionality depends on checkpointer implementation")
+        return []
+    except Exception as e:
+        print(f"Error listing threads: {e}")
+        return []

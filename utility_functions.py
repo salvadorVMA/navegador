@@ -12,6 +12,8 @@ from openai import OpenAI
 import tiktoken
 import re
 
+from performance_optimization import cached_llm_call, DatabaseManager, performance_monitor
+
 
 embedding_fun_openai = OpenAIEmbeddingFunction(api_key=os.environ.get('OPENAI_API_KEY'), model_name="text-embedding-ada-002")    
 
@@ -136,4 +138,46 @@ def clean_llm_json_output(content):
     if idx2 > 0:
         content = content[:idx2+1]
     return content
+
+# Import performance optimization components
+from performance_optimization import cached_llm_call, DatabaseManager, performance_monitor
+
+# Apply caching decorator to get_answer function
+@cached_llm_call
+def get_answer_optimized(prompt, system_prompt=None, model='gpt-4o-mini-2024-07-18', temperature=0.9):
+    """Optimized version of get_answer with caching."""
+    # Record the LLM call for monitoring
+    performance_monitor.record_llm_call(cached=False)  # Will be overridden by cache if hit
+    
+    client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+    
+    messages = []
+    if system_prompt:
+        messages.append({"role": "system", "content": system_prompt})
+    messages.append({"role": "user",   "content": prompt})
+    
+    response = client.chat.completions.create(
+        model=model,
+        messages=messages,
+        temperature=temperature
+    )
+    return response.choices[0].message.content
+
+
+def environment_setup_optimized(embedding_fun_openai, DB_PERSIST_DIR="./db_f1", DB_NAME="enc_dbf1"):
+    """Optimized environment setup using singleton pattern."""
+    db_manager = DatabaseManager()
+    return db_manager.get_client()
+
+
+# Batch processing wrapper
+def batch_llm_calls(requests: list, llm_function=None) -> list:
+    """Process multiple LLM requests in parallel."""
+    from performance_optimization import LLMBatchProcessor
+    
+    if llm_function is None:
+        llm_function = get_answer_optimized
+    
+    processor = LLMBatchProcessor(max_workers=3)
+    return processor.process_batch(requests, llm_function)
 
