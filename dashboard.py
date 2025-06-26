@@ -25,8 +25,12 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 try:
     from agent import create_agent, AgentState
-    from dataset_knowledge import get_project_info, list_available_datasets, rev_topic_dict
-    from variable_selector import get_variable_summary, _variable_selector, _database_selector
+    from dataset_knowledge import (
+        rev_topic_dict, tmp_topic_st, tmp_data_describer_st, 
+        enc_nom_dict, rev_enc_nom_dict, pregs_dict, mkdown_tables, 
+        df_tables, _project_describer
+    )
+    from variable_selector import _variable_selector, _database_selector
     from run_analysis import run_analysis
     from intent_classifier import _classify_intent
     from plotting_utils import create_plot, get_variable_description
@@ -41,6 +45,85 @@ except ImportError as e:
 # Initialize Dash app with Bootstrap theme
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.FONT_AWESOME])
 app.title = "Navegador - Survey Analysis Dashboard"
+app.config.suppress_callback_exceptions = True  # Allow callbacks to components not yet in layout
+
+# Helper functions for dataset information
+def get_available_datasets():
+    """Get list of available datasets from the survey collection"""
+    if MODULES_AVAILABLE:
+        try:
+            # Return dataset information from the imported dictionaries
+            datasets = {}
+            for abbrev, full_name in rev_enc_nom_dict.items():
+                # Clean up the name for display
+                clean_name = full_name.replace('_', ' ').title()
+                datasets[clean_name] = {
+                    "abbreviation": abbrev,
+                    "full_name": full_name,
+                    "description": f"Survey on {clean_name.lower()}",
+                    "variables": len([k for k in pregs_dict.keys() if k.endswith(f"|{abbrev}")]) if pregs_dict else 0
+                }
+            return datasets
+        except Exception as e:
+            print(f"Error getting datasets: {e}")
+            return get_mock_datasets()
+    else:
+        return get_mock_datasets()
+
+def get_mock_datasets():
+    """Get mock dataset information when real functions aren't available"""
+    return {
+        "Identidad Y Valores": {
+            "abbreviation": "IDE",
+            "description": "Survey on identity and values in Mexico",
+            "variables": 150,
+            "year": 2015
+        },
+        "Medio Ambiente": {
+            "abbreviation": "MED", 
+            "description": "Survey on environmental attitudes",
+            "variables": 120,
+            "year": 2015
+        },
+        "Cultura Política": {
+            "abbreviation": "POL",
+            "description": "Survey on political culture",
+            "variables": 180,
+            "year": 2014
+        }
+    }
+
+def get_project_description(user_query: str = ""):
+    """Get project description using the _project_describer function"""
+    if MODULES_AVAILABLE:
+        try:
+            # Import LLM for project description
+            from langchain_openai import ChatOpenAI
+            llm = ChatOpenAI(model="gpt-4o-mini")
+            
+            if user_query:
+                return _project_describer(user_query, tmp_data_describer_st, llm)
+            else:
+                # Return basic project info
+                return tmp_data_describer_st
+        except Exception as e:
+            print(f"Error getting project description: {e}")
+            return get_mock_project_description()
+    else:
+        return get_mock_project_description()
+
+def get_mock_project_description():
+    """Mock project description when real function isn't available"""
+    return """
+    Project: "Los mexicanos vistos por sí mismos" (Mexicans as seen by themselves)
+    
+    This is a comprehensive collection of public opinion surveys conducted in Mexico between 2014-2015, 
+    covering topics like identity, environment, politics, culture, and society. 
+    
+    Each survey has 1000 representative respondents with 3% margin of error and 95% confidence level.
+    
+    Coordinated by UNAM's Public Opinion Research Unit.
+    """
 
 # Global variables for session state
 chat_history = []
@@ -310,6 +393,20 @@ app.layout = dbc.Container([
         ], width=5)
     ], className="g-3"),
     
+    # Performance monitoring toggle button
+    dbc.Row([
+        dbc.Col([
+            dbc.Button(
+                [html.I(className="fas fa-chart-line me-2"), "Show Performance Monitor"],
+                id="btn-toggle-performance",
+                color="info",
+                size="sm",
+                outline=True,
+                className="mb-2"
+            )
+        ])
+    ], className="g-3 mt-2"),
+    
     # Performance monitoring row (collapsed by default)
     dbc.Row([
         dbc.Col([
@@ -473,21 +570,19 @@ def get_real_agent_response(user_message: str, session_data: Dict) -> Dict:
         if intent == "ask_for_datasets":
             # Get available datasets
             try:
-                datasets_info = list_available_datasets()
-                dataset_list = list(datasets_info.keys()) if datasets_info else [
-                    "Encuesta Nacional de Cultura Constitucional",
-                    "Encuesta Nacional de Identidad y Valores", 
-                    "Encuesta Nacional de Ciencia y Tecnología"
-                ]
+                datasets_info = get_available_datasets()
+                dataset_list = list(datasets_info.keys()) if datasets_info else []
                 
                 content = "Here are the available datasets:\n\n"
-                for i, dataset in enumerate(dataset_list[:10], 1):  # Limit to top 10
-                    content += f"{i}. {dataset}\n"
-                content += "\nWhich dataset would you like to explore?"
+                for i, (dataset_name, info) in enumerate(datasets_info.items(), 1):
+                    content += f"{i}. **{dataset_name}** ({info.get('abbreviation', 'N/A')})\n"
+                    content += f"   - {info.get('description', 'No description')}\n"
+                    content += f"   - Variables: {info.get('variables', 'Unknown')}\n\n"
+                content += "Which dataset would you like to explore?"
                 
                 return {
                     "content": content,
-                    "session_updates": {"datasets": dataset_list[:10]}
+                    "session_updates": {"datasets": dataset_list}
                 }
             except Exception as e:
                 return get_mock_agent_response(user_message, session_data)
@@ -584,8 +679,18 @@ def get_real_agent_response(user_message: str, session_data: Dict) -> Dict:
                 }
         
         else:
-            # Default response for other intents
-            return get_mock_agent_response(user_message, session_data)
+            # Default response for other intents - try project description for general questions
+            try:
+                if any(word in user_message.lower() for word in ["project", "describe", "about", "what is", "tell me"]):
+                    description = get_project_description(user_message)
+                    return {
+                        "content": description,
+                        "session_updates": {}
+                    }
+                else:
+                    return get_mock_agent_response(user_message, session_data)
+            except Exception:
+                return get_mock_agent_response(user_message, session_data)
             
     except Exception as e:
         return get_mock_agent_response(user_message, session_data)
@@ -594,15 +699,25 @@ def get_mock_agent_response(user_message: str, session_data: Dict) -> Dict:
     """Get mock response when real agent is not available"""
     message_lower = user_message.lower()
     
-    if "dataset" in message_lower and "list" in message_lower:
-        datasets = ["Encuesta Nacional de Cultura Constitucional", 
-                   "Encuesta Nacional de Identidad y Valores",
-                   "Encuesta Nacional de Ciencia y Tecnología"]
+    # Check for project description requests
+    if any(word in message_lower for word in ["project", "describe", "about", "what is"]):
         return {
-            "content": f"Here are the available datasets:\n\n" + 
-                      "\n".join([f"• {ds}" for ds in datasets]) +
-                      "\n\nWould you like to explore variables from any of these datasets?",
-            "session_updates": {"datasets": datasets}
+            "content": get_project_description(user_message),
+            "session_updates": {}
+        }
+    
+    elif "dataset" in message_lower and "list" in message_lower:
+        datasets_info = get_available_datasets()
+        content = "Here are the available datasets:\n\n"
+        for i, (dataset_name, info) in enumerate(datasets_info.items(), 1):
+            content += f"{i}. **{dataset_name}** ({info.get('abbreviation', 'N/A')})\n"
+            content += f"   - {info.get('description', 'No description')}\n"
+            content += f"   - Variables: {info.get('variables', 'Unknown')}\n\n"
+        content += "Would you like to explore variables from any of these datasets?"
+        
+        return {
+            "content": content,
+            "session_updates": {"datasets": list(datasets_info.keys())}
         }
     
     elif "variable" in message_lower or "search" in message_lower:
@@ -634,6 +749,7 @@ def get_mock_agent_response(user_message: str, session_data: Dict) -> Dict:
     else:
         return {
             "content": "I'm here to help you analyze survey data! I can:\n\n" +
+                      "• Tell you about the project and methodology 📖\n" +
                       "• Show you available datasets 📊\n" +
                       "• Help you find relevant variables 🔍\n" +
                       "• Run various types of analysis 📈\n" +
@@ -788,10 +904,11 @@ def download_pdf_report(n_clicks, session_data):
                     import weasyprint
                     pdf_bytes = weasyprint.HTML(string=html_content).write_pdf()
                     
-                    # Return download
-                    return dcc.send_bytes(
-                        pdf_bytes,
-                        filename=f"navegador_report_{datetime.now().strftime('%Y%m%d_%H%M')}.pdf"
+                    # Return download - use dict format instead of send_bytes
+                    return dict(
+                        content=pdf_bytes,
+                        filename=f"navegador_report_{datetime.now().strftime('%Y%m%d_%H%M')}.pdf",
+                        type="application/pdf"
                     )
                 else:
                     # Fall back to HTML download if weasyprint not available
