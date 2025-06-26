@@ -199,7 +199,7 @@ def create_prompt_expt_smry(tst_lgc_dict: dict, tmp_ky: str, db_f1, format_instr
     # Hallucinated variables
     tmp_hlc_var_lst = set(tst_str_lst) - set(tmp_db_var_lst)
     if tmp_hlc_var_lst:
-        print(f'Hallucinated variables by the model: {tmp_hlc_var_lst}')
+        print(f'🤪 HALLUCINATED variables by the model: {tmp_hlc_var_lst}')
 
     # Implications for the identified variables
     if tmp_db_var_lst:
