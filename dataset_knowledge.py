@@ -2,16 +2,23 @@
 
 import pickle
 
+# rutas a datos y recursos
 ruta_enc= '/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/encuestas/'
 ruta_rep= '/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/reportes/'
 ruta_tmp_images= '/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/tmp_images/'
 
+# pickle para cargar el diccionario de encuestas
 with open(f'{ruta_enc}/los_mex_dict.pkl', 'rb') as f:
     los_mex_dict = pickle.load(f)
     print('los_mex_dict cargado --  leer readme_dict para info')
 
-
+# enc_dict es el diccionario de encuestas
+# Contiene información sobre las encuestas, , dataframes y metadata como 'variable_value_labels', 'column_names_to_labels'
 enc_dict = los_mex_dict['enc_dict']
+
+# enc_nom_dict es el diccionario de nombres de encuestas y sus identificadores
+# Contiene los nombres de las encuestas y sus identificadores, que se usan para referenciar las encuestas en el sistema
+# Ejemplo: {'IDENTIDAD_Y_VALORES': 'IDE'...}
 enc_nom_dict = los_mex_dict['enc_nom_dict']
 rev_enc_nom_dict = {v: k for k, v in enc_nom_dict.items()}
 
@@ -19,12 +26,27 @@ rev_enc_nom_dict = {v: k for k, v in enc_nom_dict.items()}
 rev_topic_dict = {k: v.replace('_', ' ').lower() for k, v in rev_enc_nom_dict.items()}
 topic_id_st = '\n'.join(['|'.join(['* ' + a, b]) for a, b in rev_topic_dict.items()])
 
+# pregs_dict contiene códigos de identificación pregunta|encuesta y la pregunta completa
+# ejemplo: p5_1|IDE': 'IDENTIDAD_Y_VALORES|¿Cuál de las siguientes emociones refleja mejor lo que siente sobre México?... }
 pregs_dict = los_mex_dict['pregs_dict']
+
+# pregs_dict contiene códigos de identificación pregunta|encuesta y la pregunta completa
+# ejemplo: {'sd1|IDE': 'IDENTIDAD_Y_VALORES|Sexo:',
+pregs_dict = los_mex_dict['pregs_dict']
+
+# ses_dict contiene información sobre las la información socioeconómica de los encuestados -- aún no usada
+# ejemplo: {'IDE': ['p5_1|IDE', 'p5_2|IDE'], ...}
 ses_dict = los_mex_dict['ses_dict']
+
+# mkdown_tables contiene tablas en formato markdown con las tablas de frecuencias de las encuestas
+# 'p5_1|IDE': '| IDENTIDAD_Y_VALORES|¿Cuál de las siguientes emociones refleja mejor lo que siente sobre México?  1° MENCIÓN | % |\n| --- | --- |\n| Orgullo | 38.33 |\n...
 mkdown_tables = los_mex_dict['mkdown_tables']
+
+# df_tables contiene dataframes con las tablas de frecuencias de las encuestas
 df_tables = los_mex_dict['df_tables']
 
-
+# tmp_topic_lst es una lista de los temas de las encuestas
+# ejemplo: dict_keys(['IDENTIDAD_Y_VALORES', 'MEDIO_AMBIENTE',... 
 tmp_topic_lst = enc_nom_dict.keys()
 
 tmp_topic_st= ', '.join([st.replace('_', ' ').title() for st in tmp_topic_lst])
@@ -41,7 +63,6 @@ tmp_data_describer_st = f"""
     -Sponsor: "Universidad Nacional Autónoma de México" (UNAM)
     -Samples: All samples are have a size of 1000 and are representative of the Mexican population, with a margin of error of 3% and a confidence level of 95%."""
 
-# TODO: extraerá un sólo string con la descripción de los datasets y el proyecto, para que el LLM pueda responder preguntas generales sobre el proyecto y los datasets.
 from typing import List, Any
 from pydantic import BaseModel
 from langchain.output_parsers import PydanticOutputParser
