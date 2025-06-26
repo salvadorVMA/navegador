@@ -47,6 +47,91 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.
 app.title = "Navegador - Survey Analysis Dashboard"
 app.config.suppress_callback_exceptions = True  # Allow callbacks to components not yet in layout
 
+# Language detection and bilingual support
+def detect_language(text: str) -> str:
+    """Detect if user message is in English or Spanish"""
+    # Simple keyword-based detection (can be enhanced with proper language detection)
+    spanish_keywords = [
+        'hola', 'gracias', 'por favor', 'sí', 'no', 'qué', 'cómo', 'cuál', 'dónde', 'cuándo',
+        'encuesta', 'datos', 'análisis', 'variables', 'proyecto', 'mexicanos', 'cultura',
+        'identidad', 'valores', 'medio ambiente', 'política', 'educación', 'economía'
+    ]
+    
+    english_keywords = [
+        'hello', 'thanks', 'please', 'yes', 'no', 'what', 'how', 'which', 'where', 'when',
+        'survey', 'data', 'analysis', 'variables', 'project', 'mexicans', 'culture',
+        'identity', 'values', 'environment', 'politics', 'education', 'economy'
+    ]
+    
+    text_lower = text.lower()
+    
+    # Count matches for each language
+    spanish_matches = sum(1 for word in spanish_keywords if word in text_lower)
+    english_matches = sum(1 for word in english_keywords if word in text_lower)
+    
+    # Default to Spanish if no clear indication (since data is in Spanish)
+    if spanish_matches > english_matches:
+        return 'es'
+    elif english_matches > spanish_matches:
+        return 'en'
+    else:
+        # Default to Spanish for Mexican context
+        return 'es'
+
+# Bilingual message templates
+MESSAGES = {
+    'en': {
+        'welcome': "Hello! I'm Navegador, your survey analysis assistant. I can help you explore datasets, select variables, and run analyses. What would you like to know?",
+        'session_reset': "Session reset! Hello again! How can I help you with survey analysis?",
+        'agent_unavailable': "Sorry, the agent is not available right now. Please try again later.",
+        'error_occurred': "Sorry, I encountered an error: {error}. Please try rephrasing your question.",
+        'datasets_title': "Here are the available datasets:",
+        'which_dataset': "Which dataset would you like to explore?",
+        'variables_found': "I found relevant variables for '{query}':",
+        'proceed_variables': "Would you like to proceed with these variables for analysis?",
+        'no_variables_found': "I couldn't find specific variables for your query. Could you be more specific about what you're looking for?",
+        'select_dataset_first': "Please first select a dataset, then I can help you find variables.",
+        'analysis_complete': "✅ Analysis complete! Here's a summary:",
+        'check_report_panel': "Check the report panel for detailed results.",
+        'analysis_failed': "❌ Analysis failed: {error}",
+        'need_variables_first': "To run an analysis, I first need you to select some variables. Would you like me to help you find variables?",
+        'analysis_types': "Great! I can run several types of analysis:\n\n• **Quick Insights** - Basic descriptive statistics\n• **Detailed Report** - Comprehensive analysis with visualizations\n• **Cross-tabulation** - Relationship analysis between variables\n\nWhich type would you prefer?",
+        'variable_search_help': "I can help you search for variables! Please tell me:\n\n1. Which dataset interests you?\n2. What topic are you researching?\n\nFor example, you could say 'Show me variables about education from the identity survey'",
+        'capabilities': "I'm here to help you analyze survey data! I can:\n\n• Tell you about the project and methodology 📖\n• Show you available datasets 📊\n• Help you find relevant variables 🔍\n• Run various types of analysis 📈\n• Generate reports and visualizations 📑\n\nWhat would you like to explore?",
+        'explore_datasets': "Would you like to explore variables from any of these datasets?"
+    },
+    'es': {
+        'welcome': "¡Hola! Soy Navegador, tu asistente de análisis de encuestas. Puedo ayudarte a explorar conjuntos de datos, seleccionar variables y ejecutar análisis. ¿Qué te gustaría saber?",
+        'session_reset': "¡Sesión reiniciada! ¡Hola de nuevo! ¿Cómo puedo ayudarte con el análisis de encuestas?",
+        'agent_unavailable': "Lo siento, el agente no está disponible en este momento. Por favor, inténtalo de nuevo más tarde.",
+        'error_occurred': "Lo siento, encontré un error: {error}. Por favor, reformula tu pregunta.",
+        'datasets_title': "Aquí están los conjuntos de datos disponibles:",
+        'which_dataset': "¿Qué conjunto de datos te gustaría explorar?",
+        'variables_found': "Encontré variables relevantes para '{query}':",
+        'proceed_variables': "¿Te gustaría proceder con estas variables para el análisis?",
+        'no_variables_found': "No pude encontrar variables específicas para tu consulta. ¿Podrías ser más específico sobre lo que buscas?",
+        'select_dataset_first': "Por favor, primero selecciona un conjunto de datos, luego te puedo ayudar a encontrar variables.",
+        'analysis_complete': "✅ ¡Análisis completo! Aquí tienes un resumen:",
+        'check_report_panel': "Revisa el panel de reportes para resultados detallados.",
+        'analysis_failed': "❌ El análisis falló: {error}",
+        'need_variables_first': "Para ejecutar un análisis, primero necesito que selecciones algunas variables. ¿Te gustaría que te ayude a encontrar variables?",
+        'analysis_types': "¡Excelente! Puedo ejecutar varios tipos de análisis:\n\n• **Insights Rápidos** - Estadísticas descriptivas básicas\n• **Reporte Detallado** - Análisis comprehensivo con visualizaciones\n• **Tabulación cruzada** - Análisis de relaciones entre variables\n\n¿Cuál prefieres?",
+        'variable_search_help': "¡Puedo ayudarte a buscar variables! Por favor dime:\n\n1. ¿Qué conjunto de datos te interesa?\n2. ¿Qué tema estás investigando?\n\nPor ejemplo, podrías decir 'Muéstrame variables sobre educación de la encuesta de identidad'",
+        'capabilities': "¡Estoy aquí para ayudarte a analizar datos de encuestas! Puedo:\n\n• Contarte sobre el proyecto y metodología 📖\n• Mostrarte conjuntos de datos disponibles 📊\n• Ayudarte a encontrar variables relevantes 🔍\n• Ejecutar varios tipos de análisis 📈\n• Generar reportes y visualizaciones 📑\n\n¿Qué te gustaría explorar?",
+        'explore_datasets': "¿Te gustaría explorar variables de alguno de estos conjuntos de datos?"
+    }
+}
+
+def get_message(key: str, lang: str = 'es', **kwargs) -> str:
+    """Get a message in the specified language with optional formatting"""
+    message = MESSAGES.get(lang, MESSAGES['es']).get(key, MESSAGES['es'].get(key, key))
+    if kwargs:
+        try:
+            return message.format(**kwargs)
+        except KeyError:
+            return message
+    return message
+
 # Helper functions for dataset information
 def get_available_datasets():
     """Get list of available datasets from the survey collection"""
@@ -93,7 +178,7 @@ def get_mock_datasets():
         }
     }
 
-def get_project_description(user_query: str = ""):
+def get_project_description(user_query: str = "", language: str = "es"):
     """Get project description using the _project_describer function"""
     if MODULES_AVAILABLE:
         try:
@@ -102,28 +187,45 @@ def get_project_description(user_query: str = ""):
             llm = ChatOpenAI(model="gpt-4o-mini")
             
             if user_query:
-                return _project_describer(user_query, tmp_data_describer_st, llm)
+                # Add language instruction to the query if needed
+                if language == 'en' and not any(eng_word in user_query.lower() for eng_word in ['english', 'in english']):
+                    enhanced_query = f"{user_query}. Please respond in English."
+                else:
+                    enhanced_query = user_query
+                return _project_describer(enhanced_query, tmp_data_describer_st, llm)
             else:
                 # Return basic project info
-                return tmp_data_describer_st
+                return get_mock_project_description(language)
         except Exception as e:
             print(f"Error getting project description: {e}")
-            return get_mock_project_description()
+            return get_mock_project_description(language)
     else:
-        return get_mock_project_description()
+        return get_mock_project_description(language)
 
-def get_mock_project_description():
+def get_mock_project_description(language: str = "es"):
     """Mock project description when real function isn't available"""
-    return """
-    Project: "Los mexicanos vistos por sí mismos" (Mexicans as seen by themselves)
-    
-    This is a comprehensive collection of public opinion surveys conducted in Mexico between 2014-2015, 
-    covering topics like identity, environment, politics, culture, and society. 
-    
-    Each survey has 1000 representative respondents with 3% margin of error and 95% confidence level.
-    
-    Coordinated by UNAM's Public Opinion Research Unit.
-    """
+    if language == 'en':
+        return """
+        Project: "Los mexicanos vistos por sí mismos" (Mexicans as seen by themselves)
+        
+        This is a comprehensive collection of public opinion surveys conducted in Mexico between 2014-2015, 
+        covering topics like identity, environment, politics, culture, and society. 
+        
+        Each survey has 1000 representative respondents with 3% margin of error and 95% confidence level.
+        
+        Coordinated by UNAM's Public Opinion Research Unit.
+        """
+    else:
+        return """
+        Proyecto: "Los mexicanos vistos por sí mismos"
+        
+        Esta es una colección comprensiva de encuestas de opinión pública realizadas en México entre 2014-2015, 
+        cubriendo temas como identidad, medio ambiente, política, cultura y sociedad.
+        
+        Cada encuesta tiene 1000 encuestados representativos con 3% de margen de error y 95% de nivel de confianza.
+        
+        Coordinado por la Unidad de Investigación de Opinión Pública de la UNAM.
+        """
 
 # Global variables for session state
 chat_history = []
@@ -132,7 +234,8 @@ current_session = {
     'variables': [],
     'analysis_type': None,
     'last_report': None,
-    'agent_state': {}
+    'agent_state': {},
+    'language': 'es'  # Default to Spanish since data is in Spanish
 }
 
 # Initialize the agent
@@ -185,8 +288,8 @@ def create_chat_interface():
                 },
                 children=[
                     html.Div([
-                        html.Strong("🤖 Assistant: "),
-                        "Hello! I'm Navegador, your survey analysis assistant. I can help you explore datasets, select variables, and run analyses. What would you like to know?"
+                        html.Strong("🤖 Asistente: "),
+                        get_message('welcome', 'es')
                     ], className="mb-2")
                 ]
             ),
@@ -461,7 +564,7 @@ def handle_chat_interaction(send_clicks, datasets_clicks, variables_clicks,
     if triggered_id == "btn-reset":
         new_chat = [{
             "type": "assistant",
-            "content": "Session reset! Hello again! How can I help you with survey analysis?",
+            "content": get_message('session_reset', 'es'),  # Default to Spanish for reset
             "timestamp": datetime.now().strftime("%H:%M")
         }]
         new_session = {
@@ -469,7 +572,8 @@ def handle_chat_interaction(send_clicks, datasets_clicks, variables_clicks,
             'variables': [],
             'analysis_type': None,
             'last_report': None,
-            'agent_state': {}
+            'agent_state': {},
+            'language': 'es'  # Reset to default Spanish
         }
         return format_chat_history(new_chat), new_chat, "", new_session
     
@@ -482,6 +586,10 @@ def handle_chat_interaction(send_clicks, datasets_clicks, variables_clicks,
         user_message = "I want to run an analysis"
     elif not user_message or user_message.strip() == "":
         return dash.no_update, dash.no_update, dash.no_update, dash.no_update
+    
+    # Detect user language and update session
+    detected_lang = detect_language(user_message)
+    session_data['language'] = detected_lang
     
     # Add user message to chat
     new_chat_data = chat_data.copy() if chat_data else []
@@ -501,14 +609,14 @@ def handle_chat_interaction(send_clicks, datasets_clicks, variables_clicks,
             updated_session = update_session_from_response(session_data, response)
         else:
             response = {
-                "content": "Sorry, the agent is not available right now. Please try again later.",
+                "content": get_message('agent_unavailable', session_data.get('language', 'es')),
                 "session_updates": {}
             }
             updated_session = session_data
             
     except Exception as e:
         response = {
-            "content": f"Sorry, I encountered an error: {str(e)}",
+            "content": get_message('error_occurred', session_data.get('language', 'es'), error=str(e)),
             "session_updates": {}
         }
         updated_session = session_data
@@ -533,13 +641,16 @@ def get_agent_response(user_message: str, session_data: Dict) -> Dict:
             return get_mock_agent_response(user_message, session_data)
     except Exception as e:
         return {
-            "content": f"I encountered an error: {str(e)}. Please try rephrasing your question.",
+            "content": get_message('error_occurred', session_data.get('language', 'es'), error=str(e)),
             "session_updates": {}
         }
 
 def get_real_agent_response(user_message: str, session_data: Dict) -> Dict:
     """Get response from the real Navegador agent"""
     try:
+        # Get user's language preference
+        user_lang = session_data.get('language', 'es')
+        
         # Initialize agent state with current session
         agent_state = {
             "messages": session_data.get("chat_history", []),
@@ -550,7 +661,8 @@ def get_real_agent_response(user_message: str, session_data: Dict) -> Dict:
             "selected_variables": session_data.get("variables", []),
             "analysis_type": session_data.get("analysis_type", "quick_insights"),
             "user_approved": False,
-            "analysis_result": {}
+            "analysis_result": {},
+            "language": user_lang
         }
         
         # Classify intent
@@ -573,12 +685,12 @@ def get_real_agent_response(user_message: str, session_data: Dict) -> Dict:
                 datasets_info = get_available_datasets()
                 dataset_list = list(datasets_info.keys()) if datasets_info else []
                 
-                content = "Here are the available datasets:\n\n"
+                content = get_message('datasets_title', user_lang) + "\n\n"
                 for i, (dataset_name, info) in enumerate(datasets_info.items(), 1):
                     content += f"{i}. **{dataset_name}** ({info.get('abbreviation', 'N/A')})\n"
                     content += f"   - {info.get('description', 'No description')}\n"
                     content += f"   - Variables: {info.get('variables', 'Unknown')}\n\n"
-                content += "Which dataset would you like to explore?"
+                content += get_message('which_dataset', user_lang)
                 
                 return {
                     "content": content,
@@ -599,10 +711,10 @@ def get_real_agent_response(user_message: str, session_data: Dict) -> Dict:
                         variables = [f"VAR_{i}" for i in range(1, 11)]
                     
                     if variables:
-                        content = f"I found relevant variables for '{user_message}':\n\n"
+                        content = f"{get_message('variables_found', user_lang, query=user_message)}\n\n"
                         for var in variables[:15]:  # Limit to 15 variables
                             content += f"• {var}\n"
-                        content += "\nWould you like to proceed with these variables for analysis?"
+                        content += f"\n{get_message('proceed_variables', user_lang)}"
                         
                         return {
                             "content": content,
@@ -610,14 +722,14 @@ def get_real_agent_response(user_message: str, session_data: Dict) -> Dict:
                         }
                     else:
                         return {
-                            "content": "I couldn't find specific variables for your query. Could you be more specific about what you're looking for?",
+                            "content": get_message('no_variables_found', user_lang),
                             "session_updates": {}
                         }
                 except Exception as e:
                     return get_mock_agent_response(user_message, session_data)
             else:
                 return {
-                    "content": "Please first select a dataset, then I can help you find variables.",
+                    "content": get_message('select_dataset_first', user_lang),
                     "session_updates": {}
                 }
         
@@ -653,7 +765,7 @@ def get_real_agent_response(user_message: str, session_data: Dict) -> Dict:
                         }
                     
                     if result.get("success"):
-                        content = f"✅ Analysis complete! Here's a summary:\n\n{result.get('summary', 'Analysis completed successfully.')}\n\nCheck the report panel for detailed results."
+                        content = f"{get_message('analysis_complete', user_lang)}\n\n{result.get('summary', 'Analysis completed successfully.')}\n\n{get_message('check_report_panel', user_lang)}"
                         
                         return {
                             "content": content,
@@ -669,12 +781,12 @@ def get_real_agent_response(user_message: str, session_data: Dict) -> Dict:
                         }
                 except Exception as e:
                     return {
-                        "content": f"❌ Analysis failed with error: {str(e)}",
+                        "content": get_message('analysis_failed', user_lang, error=str(e)),
                         "session_updates": {}
                     }
             else:
                 return {
-                    "content": "To run an analysis, I first need you to select some variables. Would you like me to help you find variables?",
+                    "content": get_message('need_variables_first', user_lang),
                     "session_updates": {}
                 }
         
@@ -682,7 +794,7 @@ def get_real_agent_response(user_message: str, session_data: Dict) -> Dict:
             # Default response for other intents - try project description for general questions
             try:
                 if any(word in user_message.lower() for word in ["project", "describe", "about", "what is", "tell me"]):
-                    description = get_project_description(user_message)
+                    description = get_project_description(user_message, user_lang)
                     return {
                         "content": description,
                         "session_updates": {}
@@ -698,63 +810,50 @@ def get_real_agent_response(user_message: str, session_data: Dict) -> Dict:
 def get_mock_agent_response(user_message: str, session_data: Dict) -> Dict:
     """Get mock response when real agent is not available"""
     message_lower = user_message.lower()
+    user_lang = session_data.get('language', 'es')
     
     # Check for project description requests
-    if any(word in message_lower for word in ["project", "describe", "about", "what is"]):
+    if any(word in message_lower for word in ["project", "describe", "about", "what is", "proyecto", "descripción", "acerca", "qué es"]):
         return {
-            "content": get_project_description(user_message),
+            "content": get_project_description(user_message, user_lang),
             "session_updates": {}
         }
     
-    elif "dataset" in message_lower and "list" in message_lower:
+    elif ("dataset" in message_lower and "list" in message_lower) or ("conjunto" in message_lower and ("datos" in message_lower or "lista" in message_lower)):
         datasets_info = get_available_datasets()
-        content = "Here are the available datasets:\n\n"
+        content = get_message('datasets_title', user_lang) + "\n\n"
         for i, (dataset_name, info) in enumerate(datasets_info.items(), 1):
             content += f"{i}. **{dataset_name}** ({info.get('abbreviation', 'N/A')})\n"
             content += f"   - {info.get('description', 'No description')}\n"
             content += f"   - Variables: {info.get('variables', 'Unknown')}\n\n"
-        content += "Would you like to explore variables from any of these datasets?"
+        content += get_message('explore_datasets', user_lang)
         
         return {
             "content": content,
             "session_updates": {"datasets": list(datasets_info.keys())}
         }
     
-    elif "variable" in message_lower or "search" in message_lower:
+    elif "variable" in message_lower or "search" in message_lower or "buscar" in message_lower:
         return {
-            "content": "I can help you search for variables! Please tell me:\n\n" +
-                      "1. Which dataset interests you?\n" +
-                      "2. What topic are you researching?\n\n" +
-                      "For example, you could say 'Show me variables about education from the identity survey'",
+            "content": get_message('variable_search_help', user_lang),
             "session_updates": {}
         }
     
-    elif "analysis" in message_lower or "run" in message_lower:
+    elif "analysis" in message_lower or "run" in message_lower or "análisis" in message_lower or "ejecutar" in message_lower:
         if not session_data.get('variables'):
             return {
-                "content": "To run an analysis, I first need you to select some variables. " +
-                          "Would you like me to help you find variables for your research?",
+                "content": get_message('need_variables_first', user_lang),
                 "session_updates": {}
             }
         else:
             return {
-                "content": "Great! I can run several types of analysis:\n\n" +
-                          "• **Quick Insights** - Basic descriptive statistics\n" +
-                          "• **Detailed Report** - Comprehensive analysis with visualizations\n" +
-                          "• **Cross-tabulation** - Relationship analysis between variables\n\n" +
-                          "Which type would you prefer?",
+                "content": get_message('analysis_types', user_lang),
                 "session_updates": {}
             }
     
     else:
         return {
-            "content": "I'm here to help you analyze survey data! I can:\n\n" +
-                      "• Tell you about the project and methodology 📖\n" +
-                      "• Show you available datasets 📊\n" +
-                      "• Help you find relevant variables 🔍\n" +
-                      "• Run various types of analysis 📈\n" +
-                      "• Generate reports and visualizations 📑\n\n" +
-                      "What would you like to explore?",
+            "content": get_message('capabilities', user_lang),
             "session_updates": {}
         }
 
