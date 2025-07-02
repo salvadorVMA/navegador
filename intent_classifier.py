@@ -47,16 +47,28 @@ def _classify_intent(user_message: str, intent_dict: dict, llm: Any) -> str:
     
     User message: "{user_message}"
     
+    CRITICAL DISTINCTION:
+    - If the user asks ABOUT the data/variables/topics themselves (e.g., "What do people think about X?", "How do Mexicans feel about Y?"), classify as "query_variable_database"
+    - If the user asks ABOUT what data/topics/datasets are AVAILABLE (e.g., "What topics do you have?", "Show me datasets", "List topics"), classify as "answer_general_questions"
+    
     Rules:
     - Choose ONLY ONE intent from the list above
-    - If the user asks about analyzing variables or querying data, choose "query_variable_database"
-    - If the user asks general questions about the project or datasets, choose "answer_general_questions"
+    - "query_variable_database": For questions ABOUT the survey data/responses (e.g., "What do people think about education?", "How do Mexicans view democracy?")
+    - "answer_general_questions": For questions ABOUT what datasets/topics/variables are available (e.g., "What topics are available?", "Show datasets", "List surveys")
     - If the user asks what you can do, choose "continue_conversation"
     - If the user wants to approve/modify variable selections, choose "review_variable_selection"
     - If the user wants to select analysis type (simple/complex/detailed/descriptive), choose "select_analysis_type"
     - If the user wants to run/execute analysis, choose "confirm_and_run"
     - If the user wants to reset, choose "reset_conversation"
     - If the user wants to end conversation, choose "end_conversation"
+    
+    Examples:
+    - "What topics are available?" → answer_general_questions (asking about metadata)
+    - "What do Mexicans think about education?" → query_variable_database (asking about data)
+    - "Show me the datasets" → answer_general_questions (asking about metadata)
+    - "How do people feel about corruption?" → query_variable_database (asking about data)
+    - "List all surveys" → answer_general_questions (asking about metadata)
+    - "What are opinions on democracy?" → query_variable_database (asking about data)
     
     Respond with the exact intent name only.
     
