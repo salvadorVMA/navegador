@@ -7,15 +7,19 @@ for generating visualizations of survey data.
 
 import os
 import re
+# Set matplotlib backend to non-GUI before importing pyplot to avoid threading issues on macOS
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend to prevent GUI threading issues
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+from matplotlib.figure import Figure
 import numpy as np
 import pandas as pd
 from typing import List, Dict, Tuple, Optional
 from dataset_knowledge import df_tables
 
 
-def create_plot(df: pd.DataFrame, question: str, figsize: Tuple[int, int] = (6, 8)) -> plt.Figure:
+def create_plot(df: pd.DataFrame, question: str, figsize: Tuple[int, int] = (6, 8)) -> Figure:
     """
     Creates a bar plot (horizontal if rows <= 6, vertical otherwise) of the survey data.
     
@@ -45,7 +49,7 @@ def create_plot(df: pd.DataFrame, question: str, figsize: Tuple[int, int] = (6, 
         
         # Create horizontal bar plot
         y_pos = np.arange(len(df_clean))
-        values = df_clean.iloc[:, 0].values  # Use first column for values
+        values = np.array(df_clean.iloc[:, 0].values, dtype=float)  # Convert to numpy array with float dtype
         labels = df_clean.index.tolist()
         
         bars = ax.barh(y_pos, values, color='skyblue', edgecolor='black', linewidth=0.5)
@@ -71,7 +75,7 @@ def create_plot(df: pd.DataFrame, question: str, figsize: Tuple[int, int] = (6, 
         
         # Create vertical bar plot
         x_pos = np.arange(len(df_clean))
-        values = df_clean.iloc[:, 0].values  # Use first column for values
+        values = np.array(df_clean.iloc[:, 0].values, dtype=float)  # Convert to numpy array with float dtype
         labels = df_clean.index.tolist()
         
         bars = ax.bar(x_pos, values, color='lightcoral', edgecolor='black', linewidth=0.5)
@@ -94,7 +98,7 @@ def create_plot(df: pd.DataFrame, question: str, figsize: Tuple[int, int] = (6, 
     return fig
 
 
-def create_multiple_plots(var_ids: List[str], save_plots: bool = True, plot_dir: str = "plot_images") -> Dict[str, plt.Figure]:
+def create_multiple_plots(var_ids: List[str], save_plots: bool = True, plot_dir: str = "plot_images") -> Dict[str, Figure]:
     """
     Creates multiple plots for a list of variable IDs.
     
@@ -152,7 +156,7 @@ def create_multiple_plots(var_ids: List[str], save_plots: bool = True, plot_dir:
     return plots
 
 
-def create_summary_plots_grid(var_ids: List[str], max_cols: int = 2, figsize: Tuple[int, int] = (12, 8)) -> plt.Figure:
+def create_summary_plots_grid(var_ids: List[str], max_cols: int = 2, figsize: Tuple[int, int] = (12, 8)) -> Figure:
     """
     Creates a grid of plots for multiple variables in a single figure.
     

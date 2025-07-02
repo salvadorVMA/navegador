@@ -98,7 +98,8 @@ MESSAGES = {
         'analysis_types': "Great! I can run several types of analysis:\n\n• **Quick Insights** - Basic descriptive statistics\n• **Detailed Report** - Comprehensive analysis with visualizations\n• **Cross-tabulation** - Relationship analysis between variables\n\nWhich type would you prefer?",
         'variable_search_help': "I can help you search for variables! Please tell me:\n\n1. Which dataset interests you?\n2. What topic are you researching?\n\nFor example, you could say 'Show me variables about education from the identity survey'",
         'capabilities': "I'm here to help you analyze survey data! I can:\n\n• Tell you about the project and methodology 📖\n• Show you available datasets 📊\n• Help you find relevant variables 🔍\n• Run various types of analysis 📈\n• Generate reports and visualizations 📑\n\nWhat would you like to explore?",
-        'explore_datasets': "Would you like to explore variables from any of these datasets?"
+        'explore_datasets': "Would you like to explore variables from any of these datasets?",
+        'cross_disciplinary_search': "Cross-disciplinary search across all datasets"
     },
     'es': {
         'welcome': "¡Hola! Soy Navegador, tu asistente de análisis de encuestas. Puedo ayudarte a explorar conjuntos de datos, seleccionar variables y ejecutar análisis. ¿Qué te gustaría saber?",
@@ -118,7 +119,8 @@ MESSAGES = {
         'analysis_types': "¡Excelente! Puedo ejecutar varios tipos de análisis:\n\n• **Insights Rápidos** - Estadísticas descriptivas básicas\n• **Reporte Detallado** - Análisis comprehensivo con visualizaciones\n• **Tabulación cruzada** - Análisis de relaciones entre variables\n\n¿Cuál prefieres?",
         'variable_search_help': "¡Puedo ayudarte a buscar variables! Por favor dime:\n\n1. ¿Qué conjunto de datos te interesa?\n2. ¿Qué tema estás investigando?\n\nPor ejemplo, podrías decir 'Muéstrame variables sobre educación de la encuesta de identidad'",
         'capabilities': "¡Estoy aquí para ayudarte a analizar datos de encuestas! Puedo:\n\n• Contarte sobre el proyecto y metodología 📖\n• Mostrarte conjuntos de datos disponibles 📊\n• Ayudarte a encontrar variables relevantes 🔍\n• Ejecutar varios tipos de análisis 📈\n• Generar reportes y visualizaciones 📑\n\n¿Qué te gustaría explorar?",
-        'explore_datasets': "¿Te gustaría explorar variables de alguno de estos conjuntos de datos?"
+        'explore_datasets': "¿Te gustaría explorar variables de alguno de estos conjuntos de datos?",
+        'cross_disciplinary_search': "Búsqueda interdisciplinaria en todos los conjuntos de datos"
     }
 }
 
@@ -230,7 +232,7 @@ def get_mock_project_description(language: str = "es"):
 # Global variables for session state
 chat_history = []
 current_session = {
-    'datasets': [],
+    'datasets': ["ALL"],  # Default to using all datasets
     'variables': [],
     'analysis_type': None,
     'last_report': None,
@@ -242,13 +244,119 @@ current_session = {
 agent = None
 if MODULES_AVAILABLE:
     try:
-        agent = create_agent()
-        print("✅ Agent initialized successfully")
+        # Create agent without persistence to avoid checkpointer configuration issues
+        agent = create_agent(enable_persistence=False)
+        print("✅ Agent initialized successfully (without persistence)")
     except Exception as e:
         print(f"❌ Failed to initialize agent: {e}")
         agent = None
 else:
     print("⚠️ Modules not available, running in mock mode")
+
+# Enhanced query processing and state management functions
+
+def extract_search_keywords(user_query: str, detected_lang: str = "es") -> str:
+    """
+    Extract key search terms from user query for variable retrieval.
+    
+    Examples:
+    - "quiero saber sobre las opiniones de la salud en México" -> "salud"
+    - "I want to know about attitudes about health" -> "health attitudes"
+    - "tell me about corruption in government" -> "corruption government"
+    """
+    import re
+    
+    query_lower = user_query.lower()
+    
+    # More comprehensive filler patterns with better Spanish support
+    filler_patterns = [
+        # English fillers
+        r'\bi want to know\b', r'\btell me about\b', r'\bshow me\b', r'\bfind\b',
+        r'\bif mexicans?\b', r'\bwhat do mexicans?\b', r'\bhow do mexicans?\b',
+        r'\babout mexicans?\b', r'\bin mexico\b', r'\bmexican people\b',
+        r'\bbased on the survey about\b', r'\bfrom the survey\b', r'\bin the data\b',
+        r'\baccording to\b', r'\bdo\b', r'\bdoes\b', r'\bare\b', r'\bis\b',
+        r'\bopinions?\b', r'\bviews?\b', r'\bthoughts?\b', r'\battitudes?\b',
+        r'\babout the\b', r'\bof the\b', r'\bin the\b', r'\bon the\b',
+        
+        # Spanish fillers - much more comprehensive
+        r'\bquiero saber\b', r'\bquisiera saber\b', r'\bme gustaría saber\b',
+        r'\bdime sobre\b', r'\bmuéstrame\b', r'\bencuentra\b', r'\bbusca\b',
+        r'\bsi los mexicanos?\b', r'\bqué piensan los mexicanos?\b', r'\bcómo ven los mexicanos?\b',
+        r'\bsobre los mexicanos?\b', r'\ben méxico\b', r'\bel pueblo mexicano\b',
+        r'\bbasado en la encuesta sobre\b', r'\bde la encuesta\b', r'\ben los datos\b',
+        r'\bsegún\b', r'\bhacen\b', r'\bhace\b', r'\bson\b', r'\bes\b',
+        r'\bopiniones?\b', r'\blas opiniones?\b', r'\bpensamiento\b', r'\bactitudes?\b',
+        r'\bpareceres?\b', r'\bcriterios?\b', r'\bjuicios?\b',
+        # More Spanish stop words and phrases
+        r'\bsobre las?\b', r'\bde las?\b', r'\ben las?\b', r'\bcon las?\b',
+        r'\bsobre los?\b', r'\bde los?\b', r'\ben los?\b', r'\bcon los?\b',
+        r'\bsobre la\b', r'\bde la\b', r'\ben la\b', r'\bcon la\b',
+        r'\bsobre el\b', r'\bde el\b', r'\bdel\b', r'\ben el\b', r'\bcon el\b',
+        r'\bque\b', r'\bcomo\b', r'\bcómo\b', r'\bpor que\b', r'\bporque\b',
+        r'\bdonde\b', r'\bdónde\b', r'\bcuando\b', r'\bcuándo\b',
+        r'\bcual\b', r'\bcuál\b', r'\bcuales\b', r'\bcuáles\b',
+        r'\bpara\b', r'\bpor\b', r'\bcon\b', r'\bsin\b', r'\bentre\b',
+        r'\bhacia\b', r'\bdesde\b', r'\bhasta\b', r'\bante\b', r'\bbajo\b',
+        r'\bun\b', r'\buna\b', r'\bunos\b', r'\bunas\b', r'\bel\b', r'\bla\b', r'\blos\b', r'\blas\b'
+    ]
+    
+    # Apply filler removal
+    cleaned_query = query_lower
+    for pattern in filler_patterns:
+        cleaned_query = re.sub(pattern, ' ', cleaned_query)
+    
+    # Remove extra whitespace and punctuation
+    cleaned_query = re.sub(r'[^\w\s]', ' ', cleaned_query)
+    cleaned_query = ' '.join(cleaned_query.split())
+    
+    # Filter out remaining very short words (< 3 characters) which are usually not informative
+    words = cleaned_query.split()
+    meaningful_words = [word for word in words if len(word) >= 3]
+    
+    # If we have meaningful words, use them; otherwise fall back to original
+    if meaningful_words:
+        return ' '.join(meaningful_words)
+    elif len(cleaned_query.strip()) >= 3:
+        return cleaned_query.strip()
+    else:
+        return user_query.strip()
+
+def detect_dataset_preference(user_query: str, detected_lang: str = "es") -> list:
+    """
+    Detect if user is referring to a specific dataset/survey.
+    
+    Examples:
+    - "based on the survey about health" -> ["ENCUESTA_NACIONAL_DE_SALUD"] 
+    - "from the education survey" -> ["ENCUESTA_NACIONAL_DE_EDUCACION"]
+    """
+    query_lower = user_query.lower()
+    datasets_info = get_available_datasets()
+    
+    # Dataset keywords mapping
+    dataset_keywords = {
+        "ENCUESTA_NACIONAL_DE_SALUD": ["health", "salud", "healthcare", "medicina"],
+        "ENCUESTA_NACIONAL_DE_EDUCACION": ["education", "educación", "escuela", "school", "teaching"],
+        "ENCUESTA_NACIONAL_DE_ECONOMIA_Y_EMPLEO": ["economy", "economía", "employment", "empleo", "work", "trabajo"],
+        "ENCUESTA_NACIONAL_DE_CORRUPCION_Y_CULTURA_DE_LA_LEGALIDAD": ["corruption", "corrupción", "legal", "legalidad"],
+        "ENCUESTA_NACIONAL_DE_CULTURA_POLITICA": ["politics", "política", "political", "gobierno", "government"],
+        "ENCUESTA_NACIONAL_DE_GENERO": ["gender", "género", "women", "mujeres", "men", "hombres"],
+        "ENCUESTA_NACIONAL_DE_MEDIO_AMBIENTE": ["environment", "medio ambiente", "climate", "clima"],
+        "ENCUESTA_NACIONAL_DE_DERECHOS_HUMANOS_DISCRIMINACION_Y_GRUPOS_VULNERABLES": ["human rights", "derechos humanos", "discrimination", "discriminación"],
+        "ENCUESTA_NACIONAL_DE_JUSTICIA": ["justice", "justicia", "legal system", "sistema legal"],
+        "TERCERA_ENCUESTA_NACIONAL_DE_CULTURA_CONSTITUCIONAL": ["constitution", "constitución", "constitutional", "constitucional"]
+    }
+    
+    detected_datasets = []
+    
+    # Check for explicit dataset mentions
+    for dataset_key, keywords in dataset_keywords.items():
+        if any(keyword in query_lower for keyword in keywords):
+            if dataset_key in datasets_info:
+                detected_datasets.append(dataset_key)
+    
+    # If no specific dataset detected, use ALL
+    return detected_datasets if detected_datasets else ["ALL"]
 
 # Layout Components
 def create_header():
@@ -409,18 +517,9 @@ def create_report_panel():
                     id="btn-download-pdf",
                     color="success",
                     size="sm",
-                    className="me-2",
                     disabled=True
                 ),
-                dbc.Button(
-                    [html.I(className="fas fa-code me-2"), "Download HTML"],
-                    id="btn-download-html",
-                    color="primary",
-                    size="sm",
-                    disabled=True
-                ),
-                dcc.Download(id="download-pdf"),
-                dcc.Download(id="download-html")
+                dcc.Download(id="download-pdf")
             ], className="mt-3")
         ])
     ], className="h-100")
@@ -480,20 +579,20 @@ app.layout = dbc.Container([
     
     # Main content
     dbc.Row([
-        # Left column - Chat interface
+        # Left column - Chat interface (expanded)
         dbc.Col([
             create_chat_interface()
-        ], width=4),
+        ], width=6),
         
-        # Middle column - Session panel
-        dbc.Col([
-            create_session_panel()
-        ], width=3),
+        # Middle column - Session panel (temporarily hidden)
+        # dbc.Col([
+        #     create_session_panel()
+        # ], width=3),
         
-        # Right column - Report panel
+        # Right column - Report panel (expanded)
         dbc.Col([
             create_report_panel()
-        ], width=5)
+        ], width=6)
     ], className="g-3"),
     
     # Performance monitoring toggle button
@@ -568,7 +667,7 @@ def handle_chat_interaction(send_clicks, datasets_clicks, variables_clicks,
             "timestamp": datetime.now().strftime("%H:%M")
         }]
         new_session = {
-            'datasets': [],
+            'datasets': ["ALL"],  # Default to using all datasets
             'variables': [],
             'analysis_type': None,
             'last_report': None,
@@ -602,21 +701,33 @@ def handle_chat_interaction(send_clicks, datasets_clicks, variables_clicks,
     # Get agent response
     try:
         if agent:
-            # Simulate agent conversation (replace with actual agent call)
-            response = get_agent_response(user_message, session_data)
+            # Enhanced query processing - extract search keywords and detect dataset preference
+            search_keywords = extract_search_keywords(user_message, detected_lang)
+            preferred_datasets = detect_dataset_preference(user_message, detected_lang)
+            
+            print(f"🔍 Original query: '{user_message}'")
+            print(f"🎯 Search keywords: '{search_keywords}'")
+            print(f"📊 Preferred datasets: {preferred_datasets}")
+            
+            # Update session with extracted information
+            session_data['search_keywords'] = search_keywords
+            session_data['preferred_datasets'] = preferred_datasets
+            
+            # Process query with enhanced information
+            response = get_agent_response(user_message, session_data, search_keywords, preferred_datasets)
             
             # Update session data based on response
             updated_session = update_session_from_response(session_data, response)
         else:
             response = {
-                "content": get_message('agent_unavailable', session_data.get('language', 'es')),
+                "content": get_message('agent_unavailable', detected_lang),
                 "session_updates": {}
             }
             updated_session = session_data
             
     except Exception as e:
         response = {
-            "content": get_message('error_occurred', session_data.get('language', 'es'), error=str(e)),
+            "content": get_message('error_occurred', detected_lang, error=str(e)),
             "session_updates": {}
         }
         updated_session = session_data
@@ -630,184 +741,431 @@ def handle_chat_interaction(send_clicks, datasets_clicks, variables_clicks,
     
     return format_chat_history(new_chat_data), new_chat_data, "", updated_session
 
-def get_agent_response(user_message: str, session_data: Dict) -> Dict:
+def get_agent_response(user_message: str, session_data: Dict, search_keywords=None, preferred_datasets=None) -> Dict:
     """Get response from the Navegador agent"""
     try:
         if agent and MODULES_AVAILABLE:
-            # Use the real agent
-            return get_real_agent_response(user_message, session_data)
+            # Use the real agent with enhanced query processing
+            return get_real_agent_response(user_message, session_data, search_keywords, preferred_datasets)
         else:
-            # Fall back to mock responses
-            return get_mock_agent_response(user_message, session_data)
+            # Fall back to mock responses with enhanced query processing
+            return get_mock_agent_response(user_message, session_data, search_keywords, preferred_datasets)
     except Exception as e:
         return {
             "content": get_message('error_occurred', session_data.get('language', 'es'), error=str(e)),
             "session_updates": {}
         }
 
-def get_real_agent_response(user_message: str, session_data: Dict) -> Dict:
+def get_real_agent_response(user_message: str, session_data: Dict, search_keywords=None, preferred_datasets=None) -> Dict:
     """Get response from the real Navegador agent"""
     try:
-        # Get user's language preference
-        user_lang = session_data.get('language', 'es')
-        
-        # Initialize agent state with current session
+        # Initialize agent state with current session - use ALL datasets by default
         agent_state = {
             "messages": session_data.get("chat_history", []),
             "intent": "",
             "user_query": user_message,
             "original_query": user_message,
-            "dataset": session_data.get("datasets", ["ALL"]),
+            "dataset": session_data.get("datasets", ["ALL"]),  # Default to ALL datasets
             "selected_variables": session_data.get("variables", []),
             "analysis_type": session_data.get("analysis_type", "quick_insights"),
             "user_approved": False,
             "analysis_result": {},
-            "language": user_lang
+            "language": session_data.get('language', 'es')  # Use session language as fallback
         }
         
-        # Classify intent
+        # Classify intent and detect language using the agent
         try:
             if MODULES_AVAILABLE:
-                from intent_classifier import intent_dict
+                from intent_classifier import intent_dict, _classify_intent
                 from langchain_openai import ChatOpenAI
+                
+                # Use the proper intent classifier
                 llm = ChatOpenAI(model="gpt-4o-mini")
                 intent = _classify_intent(user_message, intent_dict, llm)
+                detected_lang = detect_language(user_message)
+                
+                print(f"🎯 Classified intent: {intent} for message: '{user_message}' (lang: {detected_lang})")
             else:
-                intent = "answer_general_questions"  # Default intent
-        except Exception:
+                intent = "answer_general_questions"
+                detected_lang = detect_language(user_message)
+        except Exception as e:
+            print(f"Intent classification error: {e}")
             intent = "answer_general_questions"
+            detected_lang = detect_language(user_message)
+        
+        # Update agent state with detected language and intent
         agent_state["intent"] = intent
+        agent_state["language"] = detected_lang
         
-        # Process based on intent
-        if intent == "ask_for_datasets":
-            # Get available datasets
+        # Let the agent handle the interaction intelligently based on intent
+        # For now, use intelligent mock response since it handles intents correctly
+        # TODO: Fix real agent to respect our intent classification
+        return get_intelligent_mock_response(user_message, agent_state, detected_lang, search_keywords, preferred_datasets)
+        
+        # Disabled real agent call for now due to intent classification conflicts
+        if False and MODULES_AVAILABLE and agent:
             try:
-                datasets_info = get_available_datasets()
-                dataset_list = list(datasets_info.keys()) if datasets_info else []
+                # Use the real agent to process the request (without persistence to avoid checkpointer issues)
+                response = agent.invoke(agent_state)
                 
-                content = get_message('datasets_title', user_lang) + "\n\n"
-                for i, (dataset_name, info) in enumerate(datasets_info.items(), 1):
-                    content += f"{i}. **{dataset_name}** ({info.get('abbreviation', 'N/A')})\n"
-                    content += f"   - {info.get('description', 'No description')}\n"
-                    content += f"   - Variables: {info.get('variables', 'Unknown')}\n\n"
-                content += get_message('which_dataset', user_lang)
-                
-                return {
-                    "content": content,
-                    "session_updates": {"datasets": dataset_list}
-                }
+                # Extract response content and session updates
+                if isinstance(response, dict):
+                    content = response.get('content', response.get('output', str(response)))
+                    session_updates = {
+                        "language": detected_lang,
+                        "intent": intent
+                    }
+                    
+                    # Add any specific session updates based on the response
+                    if intent == "ask_for_datasets" and "datasets" not in session_updates:
+                        datasets_info = get_available_datasets()
+                        session_updates["datasets"] = list(datasets_info.keys())
+                    
+                    return {
+                        "content": content,
+                        "session_updates": session_updates
+                    }
+                else:
+                    return {
+                        "content": str(response),
+                        "session_updates": {"language": detected_lang, "intent": intent}
+                    }
             except Exception as e:
-                return get_mock_agent_response(user_message, session_data)
+                print(f"Agent invocation error: {e}")
+                # Fall back to intelligent mock response
+                return get_intelligent_mock_response(user_message, agent_state, detected_lang, search_keywords, preferred_datasets)
+        else:
+            # Use intelligent mock response when agent is not available
+            return get_intelligent_mock_response(user_message, agent_state, detected_lang, search_keywords, preferred_datasets)
+            
+    except Exception as e:
+        print(f"Error in get_real_agent_response: {e}")
+        return get_mock_agent_response(user_message, session_data)
+
+def get_intelligent_mock_response(user_message: str, agent_state: Dict, detected_lang: str, search_keywords=None, preferred_datasets=None) -> Dict:
+    """Generate an intelligent mock response based on user message and agent state"""
+    message_lower = user_message.lower()
+    intent = agent_state.get("intent", "answer_general_questions")
+    
+    # Handle different intents intelligently
+    if intent == "answer_general_questions":
+        # User asking about metadata: datasets, topics, project info
+        is_asking_for_datasets = any(word in message_lower for word in [
+            "topic", "temas", "dataset", "datos", "encuesta", "survey", 
+            "list", "lista", "mostrar", "show", "available", "disponible",
+            "que hay", "what are", "cuales son", "which are", "have", "tienes"
+        ])
         
-            # Get variables from selected dataset
-            if session_data.get("datasets"):
-                try:
-                    # Use the first dataset for variable selection
-                    dataset = session_data["datasets"][0]
-                    if MODULES_AVAILABLE:
-                        variables = _variable_selector(user_message, dataset, "gpt-4o-mini")
-                    else:
-                        # Mock variables
-                        variables = [f"VAR_{i}" for i in range(1, 11)]
-                    
-                    if variables:
-                        content = f"{get_message('variables_found', user_lang, query=user_message)}\n\n"
-                        for var in variables[:15]:  # Limit to 15 variables
-                            content += f"• {var}\n"
-                        content += f"\n{get_message('proceed_variables', user_lang)}"
-                        
-                        return {
-                            "content": content,
-                            "session_updates": {"variables": variables[:15]}
-                        }
-                    else:
-                        return {
-                            "content": get_message('no_variables_found', user_lang),
-                            "session_updates": {}
-                        }
-                except Exception as e:
-                    return get_mock_agent_response(user_message, session_data)
-            else:
-                return {
-                    "content": get_message('select_dataset_first', user_lang),
-                    "session_updates": {}
+        if is_asking_for_datasets:
+            # Show available datasets/topics
+            datasets_info = get_available_datasets()
+            content = get_message('datasets_title', detected_lang) + "\n\n"
+            for i, (dataset_name, info) in enumerate(datasets_info.items(), 1):
+                content += f"{i}. **{dataset_name}** ({info.get('abbreviation', 'N/A')})\n"
+                content += f"   - {info.get('description', 'No description')}\n"
+                content += f"   - Variables: {info.get('variables', 'Unknown')}\n\n"
+            content += get_message('explore_datasets', detected_lang)
+            
+            return {
+                "content": content,
+                "session_updates": {
+                    "datasets": list(datasets_info.keys()),
+                    "language": detected_lang,
+                    "intent": intent
                 }
-        
-        elif intent == "run_analysis":
-            # Run analysis with selected variables
-            if session_data.get("variables"):
+            }
+        else:
+            # General project/methodology questions
+            description = get_project_description(user_message, detected_lang)
+            return {
+                "content": description,
+                "session_updates": {"language": detected_lang, "intent": intent}
+            }
+    
+    elif intent == "query_variable_database":
+        # User wants to search for variables/data - use ALL datasets by default
+        try:
+            if MODULES_AVAILABLE:
+                # Import tmp_topic_st for cross-disciplinary analysis
+                from dataset_knowledge import tmp_topic_st
+                from langchain_openai import ChatOpenAI
+                datasets_info = get_available_datasets()
+                
+                # Create LLM instance for variable selection
+                llm = ChatOpenAI(model="gpt-4o-mini")
+                
+                # Use ALL datasets for cross-disciplinary variable search by default
                 try:
-                    # Determine analysis type from message
-                    message_lower = user_message.lower()
-                    if "detailed" in message_lower:
-                        analysis_type = "detailed_report"
-                    elif "quick" in message_lower:
-                        analysis_type = "quick_insights"
-                    elif "plot" in message_lower or "chart" in message_lower:
-                        analysis_type = "plots_only"
-                    else:
-                        analysis_type = "quick_insights"  # Default
+                    # Use improved simultaneous retrieval for better performance and balanced results
+                    # Use extracted search keywords instead of full user message for better relevance
+                    search_query = search_keywords if search_keywords else user_message
+                    topic_ids, variables_dict, grade_dict = _variable_selector(
+                        search_query, tmp_topic_st, llm, use_simultaneous_retrieval=True
+                    )
                     
-                    # Run the analysis
-                    if MODULES_AVAILABLE:
-                        result = run_analysis(
-                            analysis_type=analysis_type,
-                            selected_variables=session_data["variables"],
-                            user_query=user_message
-                        )
-                    else:
-                        # Mock analysis result
-                        result = {
-                            "success": True,
-                            "summary": "Mock analysis completed successfully. In production, this would contain real analysis results.",
-                            "data": {"mock": "data"},
-                            "plots": []
-                        }
-                    
-                    if result.get("success"):
-                        content = f"{get_message('analysis_complete', user_lang)}\n\n{result.get('summary', 'Analysis completed successfully.')}\n\n{get_message('check_report_panel', user_lang)}"
+                    if variables_dict and grade_dict:
+                        # Get the top-graded variables
+                        sorted_vars = sorted(grade_dict.items(), key=lambda x: list(x[1].keys())[0], reverse=True)
+                        top_variables = [var_id for var_id, grade in sorted_vars[:15]]
+                        
+                        content = f"{get_message('variables_found', detected_lang, query=user_message)}\n\n"
+                        content += f"📊 {get_message('cross_disciplinary_search', detected_lang)}\n\n"
+                        
+                        for var_id in top_variables:
+                            if var_id in variables_dict:
+                                var_info = variables_dict.get(f"{var_id}__question", "")
+                                if var_info:
+                                    content += f"• {var_info[:100]}...\n"
+                        
+                        content += f"\n{get_message('proceed_variables', detected_lang)}"
                         
                         return {
                             "content": content,
                             "session_updates": {
-                                "analysis_type": analysis_type,
-                                "last_report": result
+                                "variables": top_variables,
+                                "variables_dict": variables_dict,
+                                "grade_dict": grade_dict,
+                                "topic_ids": topic_ids,
+                                "datasets": list(datasets_info.keys()),  # All datasets used
+                                "language": detected_lang,
+                                "intent": intent
                             }
                         }
                     else:
                         return {
-                            "content": f"❌ Analysis failed: {result.get('error', 'Unknown error')}",
-                            "session_updates": {}
+                            "content": get_message('no_variables_found', detected_lang),
+                            "session_updates": {"language": detected_lang, "intent": intent}
                         }
                 except Exception as e:
+                    print(f"Error in variable selection: {e}")
                     return {
-                        "content": get_message('analysis_failed', user_lang, error=str(e)),
-                        "session_updates": {}
+                        "content": get_message('error_occurred', detected_lang, error=str(e)),
+                        "session_updates": {"language": detected_lang, "intent": intent}
                     }
             else:
+                # Mock variables when modules not available
+                mock_variables = [f"Variable_{i}_about_{user_message.split()[0] if user_message.split() else 'topic'}" for i in range(1, 8)]
+                content = f"{get_message('variables_found', detected_lang, query=user_message)}\n\n"
+                for var in mock_variables:
+                    content += f"• {var}\n"
+                content += f"\n{get_message('proceed_variables', detected_lang)}"
+                
                 return {
-                    "content": get_message('need_variables_first', user_lang),
-                    "session_updates": {}
+                    "content": content,
+                    "session_updates": {
+                        "variables": mock_variables,
+                        "datasets": ["ALL"],
+                        "language": detected_lang,
+                        "intent": intent
+                    }
                 }
-        
-        else:
-            # Default response for other intents - try project description for general questions
-            try:
-                if any(word in user_message.lower() for word in ["project", "describe", "about", "what is", "tell me"]):
-                    description = get_project_description(user_message, user_lang)
+        except Exception as e:
+            return {
+                "content": get_message('no_variables_found', detected_lang),
+                "session_updates": {"language": detected_lang, "intent": intent}
+            }
+        # User wants to search for variables - use ALL datasets by default
+        try:
+            if MODULES_AVAILABLE:
+                # Import tmp_topic_st for cross-disciplinary analysis
+                from dataset_knowledge import tmp_topic_st
+                from langchain_openai import ChatOpenAI
+                datasets_info = get_available_datasets()
+                
+                # Create LLM instance for variable selection
+                llm = ChatOpenAI(model="gpt-4o-mini")
+                
+                # Use ALL datasets for cross-disciplinary variable search by default
+                try:
+                    # Use improved simultaneous retrieval for better performance and balanced results
+                    # Use extracted search keywords instead of full user message for better relevance
+                    search_query = search_keywords if search_keywords else user_message
+                    topic_ids, variables_dict, grade_dict = _variable_selector(
+                        search_query, tmp_topic_st, llm, use_simultaneous_retrieval=True
+                    )
+                    
+                    if variables_dict and grade_dict:
+                        # Get the top-graded variables
+                        sorted_vars = sorted(grade_dict.items(), key=lambda x: list(x[1].keys())[0], reverse=True)
+                        top_variables = [var_id for var_id, grade in sorted_vars[:15]]
+                        
+                        content = f"{get_message('variables_found', detected_lang, query=user_message)}\n\n"
+                        content += f"📊 {get_message('cross_disciplinary_search', detected_lang)}\n\n"
+                        
+                        for var_id in top_variables:
+                            if var_id in variables_dict:
+                                var_info = variables_dict.get(f"{var_id}__question", "")
+                                if var_info:
+                                    content += f"• {var_info[:100]}...\n"
+                        
+                        content += f"\n{get_message('proceed_variables', detected_lang)}"
+                        
+                        return {
+                            "content": content,
+                            "session_updates": {
+                                "variables": top_variables,
+                                "variables_dict": variables_dict,
+                                "grade_dict": grade_dict,
+                                "topic_ids": topic_ids,
+                                "datasets": list(datasets_info.keys()),  # All datasets used
+                                "language": detected_lang,
+                                "intent": intent
+                            }
+                        }
+                    else:
+                        return {
+                            "content": get_message('no_variables_found', detected_lang),
+                            "session_updates": {"language": detected_lang, "intent": intent}
+                        }
+                except Exception as e:
+                    print(f"Error in variable selection: {e}")
                     return {
-                        "content": description,
-                        "session_updates": {}
+                        "content": get_message('error_occurred', detected_lang, error=str(e)),
+                        "session_updates": {"language": detected_lang, "intent": intent}
+                    }
+            else:
+                # Mock variables when modules not available
+                mock_variables = [f"Variable_{i}_about_{user_message.split()[0] if user_message.split() else 'topic'}" for i in range(1, 8)]
+                content = f"{get_message('variables_found', detected_lang, query=user_message)}\n\n"
+                for var in mock_variables:
+                    content += f"• {var}\n"
+                content += f"\n{get_message('proceed_variables', detected_lang)}"
+                
+                return {
+                    "content": content,
+                    "session_updates": {
+                        "variables": mock_variables,
+                        "datasets": ["ALL"],
+                        "language": detected_lang,
+                        "intent": intent
+                    }
+                }
+        except Exception as e:
+            return {
+                "content": get_message('no_variables_found', detected_lang),
+                "session_updates": {"language": detected_lang, "intent": intent}
+            }
+    
+    elif intent == "run_analysis" or any(word in message_lower for word in ["análisis", "analysis", "run", "ejecutar", "analizar", "analyze"]):
+        # User wants to run analysis
+        variables = agent_state.get("selected_variables", [])
+        if variables:
+            # Run analysis with current variables
+            try:
+                if MODULES_AVAILABLE:
+                    result = run_analysis(
+                        analysis_type="quick_insights",
+                        selected_variables=variables,
+                        user_query=user_message
+                    )
+                else:
+                    result = {
+                        "success": True,
+                        "summary": f"Mock analysis completed for {len(variables)} variables. Found interesting patterns and correlations.",
+                        "data": {"mock": "data"},
+                        "plots": []
+                    }
+                
+                if result.get("success"):
+                    content = f"{get_message('analysis_complete', detected_lang)}\n\n{result.get('summary', 'Analysis completed successfully.')}\n\n{get_message('check_report_panel', detected_lang)}"
+                    
+                    return {
+                        "content": content,
+                        "session_updates": {
+                            "analysis_type": "quick_insights",
+                            "last_report": result,
+                            "language": detected_lang,
+                            "intent": intent
+                        }
                     }
                 else:
-                    return get_mock_agent_response(user_message, session_data)
-            except Exception:
-                return get_mock_agent_response(user_message, session_data)
+                    return {
+                        "content": get_message('analysis_failed', detected_lang, error=result.get('error', 'Unknown error')),
+                        "session_updates": {"language": detected_lang, "intent": intent}
+                    }
+            except Exception as e:
+                return {
+                    "content": get_message('analysis_failed', detected_lang, error=str(e)),
+                    "session_updates": {"language": detected_lang, "intent": intent}
+                }
+        else:
+            return {
+                "content": get_message('need_variables_first', detected_lang),
+                "session_updates": {"language": detected_lang, "intent": intent}
+            }
+    
+    elif any(word in message_lower for word in ["project", "proyecto", "describe", "descripción", "about", "acerca", "what is", "qué es"]):
+        # User wants project information
+        description = get_project_description(user_message, detected_lang)
+        return {
+            "content": description,
+            "session_updates": {"language": detected_lang, "intent": intent}
+        }
+    
+    elif intent == "continue_conversation" or any(word in message_lower for word in ["ok", "okay", "sí", "si", "yes", "proceed", "continuar", "proceder", "adelante"]):
+        # User is continuing the conversation - check if they're responding to a variable selection or analysis prompt
+        variables = agent_state.get("selected_variables", [])
+        session_data = agent_state  # Use agent_state as session data source
+        
+        if variables and len(variables) > 0:
+            # User has variables selected and is saying "ok" - proceed with analysis
+            try:
+                if MODULES_AVAILABLE:
+                    result = run_analysis(
+                        analysis_type="quick_insights",
+                        selected_variables=variables,
+                        user_query="User approved variable selection and requested analysis"
+                    )
+                else:
+                    result = {
+                        "success": True,
+                        "summary": f"Mock analysis completed for {len(variables)} variables. Found interesting patterns about health opinions in Mexico.",
+                        "data": {"mock": "data"},
+                        "plots": []
+                    }
+                
+                if result.get("success"):
+                    content = f"{get_message('analysis_complete', detected_lang)}\n\n{result.get('summary', 'Analysis completed successfully.')}\n\n{get_message('check_report_panel', detected_lang)}"
+                    
+                    return {
+                        "content": content,
+                        "session_updates": {
+                            "analysis_type": "quick_insights",
+                            "last_report": result,
+                            "language": detected_lang,
+                            "intent": "run_analysis"  # Update intent to reflect completed analysis
+                        }
+                    }
+                else:
+                    return {
+                        "content": get_message('analysis_failed', detected_lang, error=result.get('error', 'Unknown error')),
+                        "session_updates": {"language": detected_lang, "intent": intent}
+                    }
+            except Exception as e:
+                return {
+                    "content": get_message('analysis_failed', detected_lang, error=str(e)),
+                    "session_updates": {"language": detected_lang, "intent": intent}
+                }
+        else:
+            # No variables selected yet - be helpful
+            if detected_lang == 'es':
+                content = "¡Perfecto! ¿Qué te gustaría hacer?\n\n• Buscar variables específicas\n• Ver datasets disponibles\n• Obtener ayuda sobre el proyecto"
+            else:
+                content = "Perfect! What would you like to do?\n\n• Search for specific variables\n• View available datasets\n• Get help about the project"
             
-    except Exception as e:
-        return get_mock_agent_response(user_message, session_data)
+            return {
+                "content": content,
+                "session_updates": {"language": detected_lang, "intent": intent}
+            }
 
-def get_mock_agent_response(user_message: str, session_data: Dict) -> Dict:
+    else:
+        # General conversation - be helpful and contextual
+        return {
+            "content": get_message('capabilities', detected_lang),
+            "session_updates": {"language": detected_lang, "intent": intent}
+        }
+
+def get_mock_agent_response(user_message: str, session_data: Dict, search_keywords=None, preferred_datasets=None) -> Dict:
     """Get mock response when real agent is not available"""
     message_lower = user_message.lower()
     user_lang = session_data.get('language', 'es')
@@ -941,18 +1299,17 @@ def update_session_display(session_data):
 
 @app.callback(
     [Output("report-content", "children"),
-     Output("btn-download-pdf", "disabled"),
-     Output("btn-download-html", "disabled")],
+     Output("btn-download-pdf", "disabled")],
     [Input("session-store", "data")]
 )
 def update_report_display(session_data):
     """Update the report display panel"""
     
     if session_data.get("last_report"):
-        # Format the report content
+        # Format the report content for HTML display
         report_html = format_report_html(session_data["last_report"])
         
-        return report_html, False, False
+        return report_html, False
     else:
         # No report available
         no_report = html.Div([
@@ -961,28 +1318,157 @@ def update_report_display(session_data):
             html.P("Run an analysis to see results here", className="text-muted")
         ], className="text-center mt-5")
         
-        return no_report, True, True
+        return no_report, True
 
 def format_report_html(report_data: Dict) -> html.Div:
-    """Format report data as HTML for display"""
+    """Format report data as HTML for display in the dashboard"""
     
-    # This is a mock report formatter - replace with actual report formatting
-    return html.Div([
-        html.H4("📊 Analysis Report", className="text-primary mb-3"),
-        html.Hr(),
-        html.H6("Summary"),
-        html.P("This is a sample report. In production, this would contain the actual analysis results."),
-        html.H6("Key Findings"),
-        html.Ul([
-            html.Li("Finding 1: Sample insight"),
-            html.Li("Finding 2: Another insight"),
-            html.Li("Finding 3: More insights")
-        ]),
-        html.H6("Visualizations"),
-        html.P("Charts and plots would appear here."),
-        html.Small(f"Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M')}", 
-                  className="text-muted")
-    ])
+    try:
+        # Get analysis results
+        analysis_results = report_data.get('results', {})
+        formatted_report = report_data.get('formatted_report', '')
+        analysis_type = report_data.get('analysis_type', 'unknown')
+        
+        # Check if analysis was successful
+        if not report_data.get('success', False):
+            return html.Div([
+                html.H4("❌ Analysis Failed", className="text-danger mb-3"),
+                html.Hr(),
+                html.P(f"Error: {report_data.get('error', 'Unknown error')}", className="text-danger"),
+                html.Small(f"Analysis Type: {analysis_type}", className="text-muted")
+            ])
+        
+        # Create HTML components for the report
+        report_components = []
+        
+        # Title
+        report_components.append(
+            html.H4("📊 Analysis Report", className="text-primary mb-3")
+        )
+        report_components.append(html.Hr())
+        
+        # Query information
+        if analysis_results.get('query'):
+            report_components.extend([
+                html.H6("🔍 Analysis Query", className="text-info"),
+                html.P(analysis_results['query'], className="mb-3"),
+            ])
+        
+        # Executive Summary / Quick Answer
+        report_sections = analysis_results.get('report_sections', {})
+        if report_sections.get('query_answer'):
+            report_components.extend([
+                html.H6("📋 Executive Summary", className="text-info"),
+                html.P(report_sections['query_answer'], className="mb-3"),
+            ])
+        
+        # Topic Analysis Overview
+        if report_sections.get('topic_summary'):
+            report_components.extend([
+                html.H6("🎯 Analysis Overview", className="text-info"),
+                html.P(report_sections['topic_summary'], className="mb-3"),
+            ])
+        
+        # Topic Summaries (for detailed reports)
+        topic_summaries = report_sections.get('topic_summaries', {})
+        if topic_summaries:
+            report_components.append(html.H6("📚 Topic Analysis", className="text-info"))
+            for topic, summary in topic_summaries.items():
+                report_components.extend([
+                    html.H6(f"▸ {topic}", className="text-secondary mt-3"),
+                    html.P(summary, className="mb-2")
+                ])
+        
+        # Variable Summaries (for quick insights)
+        variable_summaries = report_sections.get('variable_summaries', {})
+        if variable_summaries:
+            report_components.append(html.H6("📊 Variable Analysis", className="text-info mt-3"))
+            for var_id, summary in variable_summaries.items():
+                # Get variable description for better display
+                try:
+                    if MODULES_AVAILABLE:
+                        from plotting_utils import get_variable_description
+                        var_desc = get_variable_description(var_id)
+                        if isinstance(var_desc, dict):
+                            question = var_desc.get('question', var_id)
+                            var_title = question[:100] + "..." if len(question) > 100 else question
+                        else:
+                            var_title = str(var_desc)[:100] + "..." if len(str(var_desc)) > 100 else str(var_desc)
+                    else:
+                        var_title = var_id
+                except:
+                    var_title = var_id
+                    
+                report_components.extend([
+                    html.H6(f"▸ {var_title}", className="text-secondary mt-3"),
+                    html.P(summary, className="mb-2")
+                ])
+        
+        # Key Findings
+        key_findings = report_sections.get('key_findings', [])
+        if key_findings:
+            report_components.append(html.H6("🔑 Key Findings", className="text-info mt-3"))
+            findings_list = [html.Li(finding) for finding in key_findings if finding.strip()]
+            if findings_list:
+                report_components.append(html.Ul(findings_list, className="mb-3"))
+        
+        # Expert Analysis
+        expert_replies = report_sections.get('expert_replies', [])
+        if expert_replies and any(reply.strip() for reply in expert_replies):
+            report_components.append(html.H6("👨‍🎓 Expert Analysis", className="text-info mt-3"))
+            for i, reply in enumerate(expert_replies, 1):
+                if reply.strip():
+                    report_components.extend([
+                        html.H6(f"Expert Insight {i}", className="text-secondary mt-2"),
+                        html.P(reply, className="mb-2")
+                    ])
+        
+        # Visualizations section
+        plots_data = analysis_results.get('plots', [])
+        plot_references = report_sections.get('plot_references', {})
+        
+        if plots_data or plot_references:
+            report_components.append(html.H6("📈 Visualizations", className="text-info mt-3"))
+            
+            # Add plot references/descriptions
+            if plot_references:
+                for var_id, plot_info in plot_references.items():
+                    if isinstance(plot_info, dict) and plot_info.get('description'):
+                        report_components.extend([
+                            html.P(f"📊 {plot_info['description']}", className="mb-2"),
+                        ])
+            
+            # Note about plots (since we can't directly embed matplotlib plots in Dash)
+            if plots_data:
+                report_components.append(
+                    html.P(f"📊 {len(plots_data)} visualizations were generated for this analysis.", 
+                           className="text-muted mb-2")
+                )
+        
+        # Analysis Metadata
+        report_components.extend([
+            html.Hr(className="mt-4"),
+            html.H6("ℹ️ Analysis Details", className="text-info"),
+            html.Ul([
+                html.Li(f"Analysis Type: {analysis_type.replace('_', ' ').title()}"),
+                html.Li(f"Variables Analyzed: {len(analysis_results.get('selected_variables', []))}"),
+                html.Li(f"Patterns Identified: {len(analysis_results.get('patterns', {}))}"),
+                html.Li(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+            ], className="small text-muted")
+        ])
+        
+        return html.Div(report_components)
+        
+    except Exception as e:
+        print(f"Error formatting report HTML: {e}")
+        # Fallback to simple text display
+        return html.Div([
+            html.H4("📊 Analysis Report", className="text-primary mb-3"),
+            html.Hr(),
+            html.P("Report generated successfully, but there was an issue with formatting.", className="text-muted"),
+            html.P(f"Analysis Type: {report_data.get('analysis_type', 'unknown')}", className="small text-muted"),
+            html.P(f"Status: {'Success' if report_data.get('success') else 'Failed'}", className="small text-muted")
+        ])
 
 @app.callback(
     Output("download-pdf", "data"),
@@ -994,7 +1480,7 @@ def download_pdf_report(n_clicks, session_data):
     """Generate and download PDF report"""
     if n_clicks and session_data.get("last_report"):
         try:
-            # Generate PDF content
+            # Generate PDF content using the formatted report
             html_content = generate_pdf_html(session_data["last_report"])
             
             # Try to convert to PDF using weasyprint if available
@@ -1003,23 +1489,25 @@ def download_pdf_report(n_clicks, session_data):
                     import weasyprint
                     pdf_bytes = weasyprint.HTML(string=html_content).write_pdf()
                     
-                    # Return download - use dict format instead of send_bytes
+                    # Return PDF download
                     return dict(
                         content=pdf_bytes,
                         filename=f"navegador_report_{datetime.now().strftime('%Y%m%d_%H%M')}.pdf",
                         type="application/pdf"
                     )
                 else:
-                    # Fall back to HTML download if weasyprint not available
+                    # Fall back to plain text if weasyprint not available
+                    formatted_report = session_data["last_report"].get("formatted_report", "No report content available")
                     return dict(
-                        content=html_content,
-                        filename=f"navegador_report_{datetime.now().strftime('%Y%m%d_%H%M')}.html"
+                        content=formatted_report,
+                        filename=f"navegador_report_{datetime.now().strftime('%Y%m%d_%H%M')}.txt"
                     )
             except ImportError:
-                # Fall back to HTML download if weasyprint not available
+                # Fall back to plain text if weasyprint not available  
+                formatted_report = session_data["last_report"].get("formatted_report", "No report content available")
                 return dict(
-                    content=html_content,
-                    filename=f"navegador_report_{datetime.now().strftime('%Y%m%d_%H%M')}.html"
+                    content=formatted_report,
+                    filename=f"navegador_report_{datetime.now().strftime('%Y%m%d_%H%M')}.txt"
                 )
         except Exception as e:
             print(f"Error generating PDF: {e}")
@@ -1027,71 +1515,234 @@ def download_pdf_report(n_clicks, session_data):
     
     return dash.no_update
 
-@app.callback(
-    Output("download-html", "data"),
-    [Input("btn-download-html", "n_clicks")],
-    [State("session-store", "data")],
-    prevent_initial_call=True
-)
-def download_html_report(n_clicks, session_data):
-    """Generate and download HTML report"""
-    if n_clicks and session_data.get("last_report"):
-        try:
-            # Generate HTML content
-            html_content = generate_pdf_html(session_data["last_report"])
-            
-            # Return download
-            return dict(
-                content=html_content,
-                filename=f"navegador_report_{datetime.now().strftime('%Y%m%d_%H%M')}.html"
-            )
-        except Exception as e:
-            print(f"Error generating HTML: {e}")
-            return dash.no_update
-    
-    return dash.no_update
-
 def generate_pdf_html(report_data: Dict) -> str:
-    """Generate HTML content for PDF/HTML download"""
+    """Generate HTML content for PDF download"""
     
-    return f"""
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Navegador Analysis Report</title>
-        <style>
-            body {{ font-family: Arial, sans-serif; margin: 40px; }}
-            h1 {{ color: #0066cc; }}
-            h2 {{ color: #0080ff; border-bottom: 1px solid #ccc; }}
-            .header {{ text-align: center; margin-bottom: 30px; }}
-            .footer {{ margin-top: 30px; font-size: 12px; color: #666; }}
-        </style>
-    </head>
-    <body>
-        <div class="header">
-            <h1>🔍 Navegador Analysis Report</h1>
-            <p>Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
-        </div>
+    try:
+        # Get analysis results
+        analysis_results = report_data.get('results', {})
+        formatted_report = report_data.get('formatted_report', '')
+        analysis_type = report_data.get('analysis_type', 'unknown')
         
-        <h2>Analysis Summary</h2>
-        <p>This report contains the results of your survey data analysis.</p>
+        # Create comprehensive HTML for PDF
+        html_content = f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Navegador Analysis Report</title>
+    <style>
+        body {{ 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 40px; 
+            line-height: 1.6;
+            color: #333;
+        }}
+        h1 {{ 
+            color: #0066cc; 
+            border-bottom: 3px solid #0066cc;
+            padding-bottom: 10px;
+        }}
+        h2 {{ 
+            color: #0080ff; 
+            margin-top: 30px;
+            border-left: 4px solid #0080ff;
+            padding-left: 15px;
+        }}
+        h3 {{ 
+            color: #4da6ff; 
+            margin-top: 20px;
+        }}
+        .metadata {{ 
+            background-color: #f8f9fa; 
+            padding: 15px; 
+            border-radius: 5px;
+            margin: 20px 0;
+        }}
+        .summary {{ 
+            background-color: #e3f2fd; 
+            padding: 15px; 
+            border-radius: 5px;
+            border-left: 4px solid #2196f3;
+            margin: 15px 0;
+        }}
+        .finding {{ 
+            margin: 10px 0; 
+            padding-left: 20px;
+        }}
+        .expert {{ 
+            background-color: #fff3e0; 
+            padding: 15px; 
+            border-radius: 5px;
+            border-left: 4px solid #ff9800;
+            margin: 15px 0;
+        }}
+        ul {{ 
+            padding-left: 25px; 
+        }}
+        li {{ 
+            margin: 5px 0; 
+        }}
+        .footer {{
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 12px;
+            color: #666;
+        }}
+    </style>
+</head>
+<body>
+    <h1>📊 Navegador Analysis Report</h1>
+"""
         
-        <h2>Key Findings</h2>
+        # Add analysis metadata
+        html_content += f"""
+    <div class="metadata">
+        <h3>Analysis Information</h3>
         <ul>
-            <li>Sample finding 1</li>
-            <li>Sample finding 2</li>
-            <li>Sample finding 3</li>
+            <li><strong>Analysis Type:</strong> {analysis_type.replace('_', ' ').title()}</li>
+            <li><strong>Generated:</strong> {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</li>
+            <li><strong>Status:</strong> {'Success' if report_data.get('success') else 'Failed'}</li>
+"""
+        
+        if analysis_results.get('selected_variables'):
+            html_content += f"            <li><strong>Variables Analyzed:</strong> {len(analysis_results['selected_variables'])}</li>\n"
+        
+        if analysis_results.get('patterns'):
+            html_content += f"            <li><strong>Patterns Identified:</strong> {len(analysis_results['patterns'])}</li>\n"
+            
+        html_content += """
         </ul>
+    </div>
+"""
         
-        <h2>Methodology</h2>
-        <p>Analysis performed using the Navegador survey analysis system.</p>
+        # Add query information
+        if analysis_results.get('query'):
+            html_content += f"""
+    <h2>🔍 Analysis Query</h2>
+    <div class="summary">
+        <p>{analysis_results['query']}</p>
+    </div>
+"""
         
-        <div class="footer">
-            <p>Generated by Navegador Survey Analysis Dashboard</p>
-        </div>
-    </body>
-    </html>
-    """
+        # Add report sections
+        report_sections = analysis_results.get('report_sections', {})
+        
+        # Executive Summary
+        if report_sections.get('query_answer'):
+            html_content += f"""
+    <h2>📋 Executive Summary</h2>
+    <div class="summary">
+        <p>{report_sections['query_answer']}</p>
+    </div>
+"""
+        
+        # Analysis Overview
+        if report_sections.get('topic_summary'):
+            html_content += f"""
+    <h2>🎯 Analysis Overview</h2>
+    <p>{report_sections['topic_summary']}</p>
+"""
+        
+        # Topic Summaries
+        topic_summaries = report_sections.get('topic_summaries', {})
+        if topic_summaries:
+            html_content += """
+    <h2>📚 Topic Analysis</h2>
+"""
+            for topic, summary in topic_summaries.items():
+                html_content += f"""
+    <h3>▸ {topic}</h3>
+    <p>{summary}</p>
+"""
+        
+        # Variable Summaries (for quick insights)
+        variable_summaries = report_sections.get('variable_summaries', {})
+        if variable_summaries:
+            html_content += """
+    <h2>📊 Variable Analysis</h2>
+"""
+            for var_id, summary in variable_summaries.items():
+                html_content += f"""
+    <h3>▸ {var_id}</h3>
+    <p>{summary}</p>
+"""
+        
+        # Key Findings
+        key_findings = report_sections.get('key_findings', [])
+        if key_findings:
+            html_content += """
+    <h2>🔑 Key Findings</h2>
+    <ul>
+"""
+            for finding in key_findings:
+                if finding.strip():
+                    html_content += f"        <li class='finding'>{finding}</li>\n"
+            html_content += "    </ul>\n"
+        
+        # Expert Analysis
+        expert_replies = report_sections.get('expert_replies', [])
+        if expert_replies and any(reply.strip() for reply in expert_replies):
+            html_content += """
+    <h2>👨‍🎓 Expert Analysis</h2>
+"""
+            for i, reply in enumerate(expert_replies, 1):
+                if reply.strip():
+                    html_content += f"""
+    <div class="expert">
+        <h3>Expert Insight {i}</h3>
+        <p>{reply}</p>
+    </div>
+"""
+        
+        # Visualizations
+        plots_data = analysis_results.get('plots', [])
+        plot_references = report_sections.get('plot_references', {})
+        
+        if plots_data or plot_references:
+            html_content += """
+    <h2>📈 Visualizations</h2>
+"""
+            if plot_references:
+                for var_id, plot_info in plot_references.items():
+                    if isinstance(plot_info, dict) and plot_info.get('description'):
+                        html_content += f"    <p>📊 {plot_info['description']}</p>\n"
+            
+            if plots_data:
+                html_content += f"    <p>📊 {len(plots_data)} visualizations were generated for this analysis.</p>\n"
+        
+        # Footer
+        html_content += """
+    <div class="footer">
+        <p>Generated by Navegador - Survey Analysis Dashboard</p>
+    </div>
+</body>
+</html>
+"""
+        
+        return html_content
+        
+    except Exception as e:
+        print(f"Error generating PDF HTML: {e}")
+        # Fallback to simple HTML
+        return f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Navegador Analysis Report</title>
+</head>
+<body>
+    <h1>Analysis Report</h1>
+    <p>Analysis Type: {report_data.get('analysis_type', 'unknown')}</p>
+    <p>Status: {'Success' if report_data.get('success') else 'Failed'}</p>
+    <p>Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
+    
+    <h2>Report Content</h2>
+    <pre>{report_data.get('formatted_report', 'No content available')}</pre>
+</body>
+</html>
+"""
 
 @app.callback(
     [Output("cache-stats", "children"),
@@ -1196,8 +1847,11 @@ def toggle_performance_panel(n_clicks, is_open):
 
 # Run the app
 if __name__ == "__main__":
-    print("🚀 Starting Navegador Dashboard...")
-    print("📱 Access the dashboard at: http://localhost:8050")
+    print("\n🚀 Starting Navegador Dashboard...")
+    print("📊 Loading survey datasets and variables...")
+    print("🔍 Initializing analysis agent...")
+    print("🌐 Dashboard will be available at: http://localhost:8050")
+    print("💡 Use Ctrl+C to stop the server\n")
     
     app.run(
         debug=True,

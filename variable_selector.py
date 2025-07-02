@@ -27,9 +27,8 @@ client, db_f1 = environment_setup(embedding_fun_openai)
 
 
 class PatternItemGrader(BaseModel):
-    GRADE_DICT: dict[float, str] = {
-        0.0: "",
-    }
+    GRADE: float
+    EXPLANATION: str
 
 pattern_parser_grader = PydanticOutputParser(pydantic_object=PatternItemGrader)
 pattern_format_grader_instrtuctions = pattern_parser_grader.get_format_instructions()
@@ -37,60 +36,49 @@ pattern_format_grader_instrtuctions = pattern_parser_grader.get_format_instructi
 
 def create_prompt_grader(user_query, tmp_svvinfo_st ,format_instructions=""):
     """
-    prompt for gradig items against a query
+    prompt for grading items against a query
     """
     prompt = f"""
-You are an expert in survey research and in qualitative research, and you are fluent in English and Spanish. You will reply in English only.  
-Your task is to read the following SURVEY INFORMATION, and a user QUERY, and then grade the SURVEY INFORMATION against the QUERY and write a one-sentence explanation of your grade.
+You are an expert in survey research and you are fluent in English and Spanish. You will reply in English only.  
+Your task is to read SURVEY INFORMATION and a user QUERY, and grade the relevance of the survey to the query.
 
-THE SURVEY INFORMATION has 3 parts
+THE SURVEY INFORMATION has 3 parts:
 - QUESTION: the question asked in the survey
-- SUMMARY: a summary of the results of the survey
-- IMPLICATIONS: a statement of the importance of the results written by an expert in the field of the survey. 
+- SUMMARY: a summary of the survey results  
+- IMPLICATIONS: expert analysis of the importance and applications of the results
 
-The GRADE will will be a number between 0 and 3, where: 
-- 0: the QUESTION and the SUMMARY are NOT relevant to the QUERY, and the IMPLICATIONS are NOT relevant to the QUERY
-- 1: the QUESTION and the SUMMARY are NOT relevant to the QUERY, but the IMPLICATIONS seem relevant to the QUERY
-- 2: the QUESTION and the SUMMARY are somewhat relevant to the QUERY, but the IMPLICATIONS seem relevant to the QUERY
-- 3: the QUESTION and the SUMMARY are relevant to the QUERY, and the IMPLICATIONS are relevant to the QUERY
+The GRADE is a number between 0 and 3:
+- 0: Survey is completely unrelated to the query
+- 1: Survey has some connection but is mostly unrelated
+- 2: Survey is moderately relevant - covers related topics
+- 3: Survey is highly relevant - directly addresses the query
 
-You will write a one-sentence EXPLANATION of your grade, paying attention to how QUESTION, SUMMARY and IMPLICATIONS are related to the QUERY. Be detailed and specific in your explanation.
-IMPORTANT: return an EXPLANATION regardless of the GRADE, this is, explain all your grades, even if they are 0.
-IMPORTANT: make sure to match your GRADE to your EXPLANATION, this is, that they correspond to the criteria above. 
+Grade based on overall relevance, not requiring all three parts to match perfectly.
+Focus on whether the survey provides useful information for answering the user's question.
 
-Here are some examples of the GRADE and the explanation:
-- EXAMPLE_QUERY : "Would selling strawberry ice cream is a good idea?"
+Examples:
+QUERY: "What do people think about education?"
+SURVEY: "QUESTION: How do you rate education quality? SUMMARY: 60% say it's good. IMPLICATIONS: This shows public satisfaction with education."
+GRADE: 3 (Directly relevant - about education opinions)
 
-- EXAMPLE_SURVEY_INFORMATION_1 : "QUESTION: Do you like strawberry ice cream? SUMMARY: 50% of people like strawberry ice cream. IMPLICATIONS: Selling strawberry ice cream is a good idea."
-- EXAMPLE_GRADE_1 : 3
-- EXAMPLE_EXPLANATION_1 : "The QUESTION is relevant to the QUERY because it asks about strawberry ice cream, the SUMMARY is relevant because it provides information about people's preferences, and the IMPLICATIONS are relevant because they suggest that selling strawberry ice cream is a good idea."
+QUERY: "What do people think about education?" 
+SURVEY: "QUESTION: Do you support education funding? SUMMARY: 70% support more funding. IMPLICATIONS: Shows willingness to invest in education."
+GRADE: 2 (Moderately relevant - related to education but about funding, not opinions)
 
-- EXAMPLE_SURVEY_INFORMATION_2 : "QUESTION: Do you like chocolate ice cream? SUMMARY: 50% of people like chocolate ice cream. IMPLICATIONS: Selling chocolate ice cream is a good idea."  
-- EXAMPLE_GRADE_2 : 2
-- EXAMPLE_EXPLANATION_2 : "The QUESTION is not relevant to the QUERY because it asks about chocolate ice cream, but the SUMMARY is relevant because it provides information about people's preferences, and the IMPLICATIONS are relevant because they suggest that selling chocolate ice cream is a good idea for alternate flavors."
+QUERY: "What do people think about education?"
+SURVEY: "QUESTION: How often do you exercise? SUMMARY: 40% exercise daily. IMPLICATIONS: Regular exercise improves health."  
+GRADE: 0 (Unrelated - about exercise, not education)
 
-- EXAMPLE_SURVEY_INFORMATION_3 : "QUESTION: Have you seen the movie 'Wild Strawberries' by Ingmar Bergman? SUMMARY: 50% of people have seen the movie. IMPLICATIONS: The movie is a classic and is worth watching."
-- EXAMPLE_GRADE_3 : 1
-- EXAMPLE_EXPLANATION_3 : "The QUESTION is not relevant to the QUERY because it asks about a movie, and the SUMMARY is not relevant because it talks about movies, not ice cream, and the IMPLICATIONS are seem relevant because they talk about a movie with 'ice cream' in the title."
-
-- EXAMPLE_SURVEY_INFORMATION_4 : "QUESTION: How many times have you gone to the beach? SUMMARY: 50% of people go to the beach once a year. IMPLICATIONS: The beach is a popular destination."
-- EXAMPLE_GRADE_4 : 0
-- EXAMPLE_EXPLANATION_4 : "The QUESTION is not relevant to the QUERY because it asks about going to the beach, and the SUMMARY is not relevant because it talks about the beach, not ice cream, and the IMPLICATIONS are not relevant because they talk about a beach, not ice cream."
-
-Example output (strict JSON, no markdown, no code block, no extra text).
+Return strict JSON format:
 {{
-  GRADE: EXPLANATION
+  "GRADE": number,
+  "EXPLANATION": "explanation text"
 }}
 
 QUERY: {user_query}
 SURVEY_INFORMATION: {tmp_svvinfo_st}
 
 {format_instructions}
-
-Checklist before submitting:
-- [ ] GRADE has been calculated.
-- [ ] EXPLANATION has been written.
-- [ ] No field is left empty.
 """
     return prompt
 
@@ -98,21 +86,26 @@ def get_structured_summary_grader_p(prompt, model_name: str = mod_alto, temperat
     # This function combines the prompt creation and LLM call,
     # then parses the response using the PydanticOutputParser.
 
-    # prompt =create_prompt_grader(user_query=user_query, tmp_svvinfo_st= tmp_svvinfo_st, format_instructions=pattern_format_grader_instrtuctions)
     content = get_answer(prompt, model=model_name, temperature=temperature)
-    content = clean_llm_json_output(content)
-    parsed = pattern_parser_grader.parse(content)
     cleaned = clean_llm_json_output(content)
+    
     try:
         parsed = pattern_parser_grader.parse(cleaned)
-        return cleaned, parsed.model_dump()
+        result = parsed.model_dump()
+        # Convert to the expected GRADE_DICT format for backward compatibility
+        if 'GRADE' in result and 'EXPLANATION' in result:
+            result['GRADE_DICT'] = {result['GRADE']: result['EXPLANATION']}
+        else:
+            result['GRADE_DICT'] = {0.0: "Parsing failed"}
+        return cleaned, result
     except Exception as e:
         print("Parsing failed. Raw output:")
         print(content)
         print("Cleaned output:")
         print(cleaned)
         print("Error:", e)
-        return cleaned, {}
+        # Return a fallback structure with GRADE_DICT
+        return cleaned, {'GRADE_DICT': {0.0: f"Error: {str(e)}"}}
     
 def create_tmp_svyinfo_dict(tmp_ky, top_ids, tmp_pre_res_dict):
     """         
@@ -127,7 +120,19 @@ def create_tmp_svyinfo_dict(tmp_ky, top_ids, tmp_pre_res_dict):
     """
     # Create a temporary survey information dictionary for a given key
     tmp_id_st = top_ids[tmp_ky]
-    tmp_svyinfo_dict = {k.split('__')[1].upper(): v for k,v in tmp_pre_res_dict.items() if k.startswith(tmp_id_st)}
+    
+    # Safely split keys and handle cases where '__' separator might not be present
+    tmp_svyinfo_dict = {}
+    for k, v in tmp_pre_res_dict.items():
+        if k.startswith(tmp_id_st):
+            split_key = k.split('__')
+            if len(split_key) >= 2:
+                key_type = split_key[1].upper()
+                tmp_svyinfo_dict[key_type] = v
+            else:
+                # Handle keys without type suffix
+                tmp_svyinfo_dict['CONTENT'] = v
+    
     tmp_svvinfo_st = ' '.join([f'{k}: {v}' for k,v in tmp_svyinfo_dict.items()])
     return tmp_svvinfo_st
 
@@ -187,7 +192,7 @@ def _database_selector(user_query: str, topic_id_st: str, llm: Any) -> List[str]
         llm: Language model for reasoning
         
     Returns:
-        A list of dataset names relevant to the query.
+        A list of dataset abbreviations (e.g., ['EDU', 'CUL']) relevant to the query.
     """
     
     # Define Pydantic model for structured output
@@ -202,7 +207,7 @@ def _database_selector(user_query: str, topic_id_st: str, llm: Any) -> List[str]
     prompt = f"""
     You will read the user query and select one or more of the datasets listed in the topic list. 
     If the user asks to use all datasets, you will return a list containing the string 'all'.
-    Otherwise, from the list of available datasets below, you will select which ones most closely matches the user's query and return a list of their topic IDs.
+    Otherwise, from the list of available datasets below, you will select which ones most closely matches the user's query and return a list of their topic names (not abbreviations).
 
     IMPORTANT: note that the topic list contains a list of elements with the following format: '* ABC|Topic description' where * marks the start of an element if the list, and ABC is the topic ID. 
     IMPORTANT: if the user request is not specific enough to select a dataset or you do not have enough information to choose a dataset, you should inform them that you cannot answer that question and suggest they ask about the available datasets.
@@ -220,15 +225,37 @@ def _database_selector(user_query: str, topic_id_st: str, llm: Any) -> List[str]
     
     try:
         parsed = pattern_parser.parse(response.content if hasattr(response, 'content') else str(response))
-        return parsed.selected_datasets
+        selected_topics = parsed.selected_datasets
+        
+        # If 'all' is selected, return all topic IDs
+        if 'all' in selected_topics:
+            return list(rev_topic_dict.keys())
+        
+        # Map the selected display names back to abbreviations
+        mapped_topics = []
+        for topic_name in selected_topics:
+            # Find the abbreviation for this topic name
+            for abbrev, display_name in rev_topic_dict.items():
+                if topic_name.lower() in display_name.lower() or display_name.lower() in topic_name.lower():
+                    mapped_topics.append(abbrev)
+                    break
+        
+        # If no mappings found, return all topics
+        if not mapped_topics:
+            print(f"Warning: Could not map topics {selected_topics} to abbreviations, using all topics")
+            return list(rev_topic_dict.keys())
+        
+        return mapped_topics
+        
     except Exception as e:
         print(f"Parsing failed in database_selector: {e}")
-        return ["all"]
+        return list(rev_topic_dict.keys())  # Return all topics as fallback
 
 
-def retrieve_by_type_and_topics(db_f1, query_emb, topic_ids=None, type_lst=None, n_results=100):
+def retrieve_all_types_simultaneously(db_f1, query_emb, topic_ids=None, type_lst=None, n_results=100):
     """
-    Retrieves documents from db_f1 filtered by type and topic IDs.
+    Retrieves documents from db_f1 filtered by topic IDs, using a single query for all types.
+    This is more efficient than separate queries but may be less balanced across types.
     
     Args:
         db_f1: ChromaDB collection
@@ -245,54 +272,152 @@ def retrieve_by_type_and_topics(db_f1, query_emb, topic_ids=None, type_lst=None,
         type_lst = ["question", "summary", "implications"]
     
     if topic_ids is None or topic_ids == ['all']:
-        # Use all available topic IDs from rev_enc_nom_dict
+        # Use all available topic IDs from rev_topic_dict
         topic_ids = list(rev_topic_dict.keys())
+    
+    print(f"🔍 Querying all types simultaneously in a single ChromaDB query")
+    print(f"📊 Filtering by topics: {topic_ids}")
+    
+    # Single query for all types
+    tmp_res_q = db_f1.query(
+        query_embeddings=[query_emb],
+        n_results=n_results * len(type_lst) * 2,  # Get more results to ensure we have enough per type
+        where={"type": {"$in": type_lst}}
+    )
+    
+    [tmp_res_ids] = tmp_res_q['ids']
+    [tmp_res_distances] = tmp_res_q['distances']
+    
+    print(f"   📋 Total results retrieved: {len(tmp_res_ids)}")
+    
+    # Group results by type and filter by topic_ids
+    tmp_dist_dict = {doc_type: {} for doc_type in type_lst}
+    
+    for i, doc_id in enumerate(tmp_res_ids):
+        # Extract the type and QID from the document ID
+        id_parts = doc_id.split('__')
+        if len(id_parts) == 2:
+            qid_part, doc_type = id_parts
+            
+            # Check if this type is in our list and if the topic matches
+            if doc_type in type_lst:
+                # Check if any of the topic_ids is in the QID part
+                if any(f"|{topic_id}" in qid_part for topic_id in topic_ids):
+                    # Only add if we haven't reached the limit for this type
+                    if len(tmp_dist_dict[doc_type]) < n_results:
+                        tmp_dist_dict[doc_type][doc_id] = tmp_res_distances[i]
+    
+    # Report results per type
+    for doc_type in type_lst:
+        results_count = len(tmp_dist_dict[doc_type])
+        print(f"   📋 {doc_type}: {results_count} results after topic filtering")
+        
+        if tmp_dist_dict[doc_type]:
+            sample_ids = list(tmp_dist_dict[doc_type].keys())[:3]
+            sample_qids = [id.split('__')[0] for id in sample_ids]
+            print(f"      📝 Sample QIDs: {sample_qids}")
+    
+    return tmp_dist_dict
+
+def retrieve_by_type_and_topics(db_f1, query_emb, topic_ids=None, type_lst=None, n_results=100):
+    """
+    Retrieves documents from db_f1 filtered by type and topic IDs.
+    Uses separate queries per type to ensure balanced results across all types.
+    
+    Args:
+        db_f1: ChromaDB collection
+        query_emb: Query embedding vector
+        topic_ids: List of topic IDs (e.g., ['IDE', 'MED', 'POB']) or None for all topics
+        type_lst: List of types (e.g., ["question", "summary", "implications"]) or None for all types
+        n_results: Number of results to return per type
+        
+    Returns:
+        dict: Dictionary with type as key and {ids: distances} as values
+    """
+    
+    if type_lst is None:
+        type_lst = ["question", "summary", "implications"]
+    
+    if topic_ids is None or topic_ids == ['all']:
+        # Use all available topic IDs from rev_topic_dict
+        topic_ids = list(rev_topic_dict.keys())
+    
+    print(f"🔍 Querying each type separately to ensure balanced results")
+    print(f"📊 Filtering by topics: {topic_ids}")
     
     tmp_dist_dict = {}
     
     for doc_type in type_lst:
-        print(f"Querying for type: {doc_type}")
+        print(f"   🔎 Querying type: {doc_type}")
         
-        # Build the where clause
-        if len(topic_ids) == 1:
-            # Single topic ID - use simple contains
-            where_clause = {
-                "type": doc_type,
-                "qid": {"$contains": f"|{topic_ids[0]}"}
-            }
-        else:
-            # Multiple topic IDs - use $or with multiple $contains
-            topic_conditions = [{"qid": {"$contains": f"|{topic_id}"}} for topic_id in topic_ids]
-            where_clause = {
-                "$and": [
-                    {"type": doc_type},
-                    {"$or": topic_conditions}
-                ]
-            }
-        
+        # Query each type separately to ensure balanced results
         tmp_res_q = db_f1.query(
             query_embeddings=[query_emb],
-            n_results=n_results,
-            where=where_clause
+            n_results=n_results * 3,  # Get more results to filter from
+            where={"type": {"$eq": doc_type}}
         )
         
         [tmp_res_ids] = tmp_res_q['ids']
         [tmp_res_distances] = tmp_res_q['distances']
         
-        tmp_dist_dict[doc_type] = dict(zip(tmp_res_ids, tmp_res_distances))
+        # Filter results by topic_ids
+        filtered_results = {}
+        
+        for i, doc_id in enumerate(tmp_res_ids):
+            # Extract the QID portion from the document ID
+            id_parts = doc_id.split('__')
+            if len(id_parts) == 2:
+                qid_part = id_parts[0]
+                # Check if any of the topic_ids is in the QID part
+                if any(f"|{topic_id}" in qid_part for topic_id in topic_ids):
+                    filtered_results[doc_id] = tmp_res_distances[i]
+                    if len(filtered_results) >= n_results:
+                        break
+        
+        tmp_dist_dict[doc_type] = filtered_results
+        print(f"      📋 {len(filtered_results)} results after topic filtering")
+        
+        if filtered_results:
+            sample_ids = list(filtered_results.keys())[:3]
+            sample_qids = [id.split('__')[0] for id in sample_ids]
+            print(f"      📝 Sample QIDs: {sample_qids}")
     
     return tmp_dist_dict
 
-def _variable_selector(user_query, topic_id_st, mod_setting, top_vals=30):
+def _variable_selector(user_query, topic_id_st, mod_setting, top_vals=30, use_simultaneous_retrieval=True):
     """
     Selects the top variables based on their relevance to the user query.
+    
+    Args:
+        user_query: The user's query
+        topic_id_st: Topic string for database selection  
+        mod_setting: Language model for processing (can be string or LangChain ChatOpenAI)
+        top_vals: Number of top variables to return
+        use_simultaneous_retrieval: If True, use single query for all types. If False, use separate queries per type.
+        
     Returns:
         dict: A dictionary of selected variables with their grades.
     """
+    
+    # Handle LangChain ChatOpenAI objects by extracting the model name
+    if hasattr(mod_setting, 'model_name'):
+        model_name = mod_setting.model_name
+    elif hasattr(mod_setting, 'model'):
+        model_name = mod_setting.model
+    else:
+        # Assume it's already a string
+        model_name = mod_setting
+    
     # Turn it into a vector
     print("Embedding the user query...")
-     # embedding_fun_openai is defined above
-    query_emb = embedding_fun_openai([user_query])[0]
+    
+    if use_simultaneous_retrieval:
+        # For simultaneous retrieval, use the original query for balanced results
+        query_emb = embedding_fun_openai([user_query])[0]
+    else:
+        # For separate retrieval, use enriched query to target implications
+        enriched_query = enrich_query_for_implications(user_query)
+        query_emb = embedding_fun_openai([enriched_query])[0]
 
     # tmp_dist_df contiene las distancias para los tres tipos/ facets, normalizadas entre 0 y 1
 
@@ -304,14 +429,25 @@ def _variable_selector(user_query, topic_id_st, mod_setting, top_vals=30):
 
     topic_ids = _database_selector(user_query, topic_id_st, llm=mod_setting)
 
-    # Use the enhanced retriever
-    tmp_dist_dict = retrieve_by_type_and_topics(
-        db_f1, 
-        query_emb, 
-        topic_ids=topic_ids,
-        type_lst=["question", "summary", "implications"],
-        n_results=100
-    )
+    # Use the specified retrieval method
+    if use_simultaneous_retrieval:
+        print("📊 Using simultaneous retrieval for all types (balanced query)")
+        tmp_dist_dict = retrieve_all_types_simultaneously(
+            db_f1, 
+            query_emb, 
+            topic_ids=topic_ids,
+            type_lst=["question", "summary", "implications"],
+            n_results=100
+        )
+    else:
+        print("📊 Using separate retrieval queries per type (enriched query for implications)")
+        tmp_dist_dict = retrieve_by_type_and_topics(
+            db_f1, 
+            query_emb, 
+            topic_ids=topic_ids,
+            type_lst=["question", "summary", "implications"],
+            n_results=100
+        )
 
 
     # # TODO: agregar filtro where para filtrar por dataset si dataset != 'all'
@@ -364,21 +500,63 @@ def _variable_selector(user_query, topic_id_st, mod_setting, top_vals=30):
         for id in top_ids:
             tmp_list.append(id + f'__{type}')
 
-
     # Retrieve documents using the list of ids
+    if not tmp_list:
+        print("Warning: No IDs to retrieve from ChromaDB")
+        return topic_ids, {}, {}
+        
     result_by_ids = db_f1.get(ids=tmp_list)
+    
+    # Handle case where no results are found
+    if not result_by_ids or not result_by_ids.get('ids') or not result_by_ids.get('documents'):
+        print("Warning: No documents retrieved from ChromaDB")
+        return topic_ids, {}, {}
 
-    tmp_pre_res_dict = dict(zip(result_by_ids['ids'], result_by_ids['documents']))
+    # Type assertion since we've verified these are not None
+    ids = result_by_ids['ids']
+    documents = result_by_ids['documents']
+    if ids is None or documents is None:
+        print("Warning: Unexpected None values in ChromaDB result")
+        return topic_ids, {}, {}
+    
+    tmp_pre_res_dict = dict(zip(ids, documents))
 
     ## generación del esquema de pydantic para la respuesta del evaluador de relevancia
 
+    tst_res = batch_process_expert_grader(user_query, top_ids, tmp_pre_res_dict, model_name, batch_size=8192)
+    
+    # Handle case where grading fails
+    if not tst_res:
+        print("Warning: No grading results returned")
+        return topic_ids, tmp_pre_res_dict, {}
+        
+    tmp_grade_dict = {k: v.get('GRADE_DICT', {}) for k, v in tst_res.items() if 'GRADE_DICT' in v}
 
-    tst_res = batch_process_expert_grader(user_query, top_ids, tmp_pre_res_dict, mod_setting, batch_size=8192)
-    tmp_grade_dict=  {k: v['GRADE_DICT'] for k, v in tst_res.items()}
-
-    # Filtrar los elementos que tienen una calificación mayor a 1
-
-    tmp_grade_dict= {k: v for k, v in tmp_grade_dict.items() if list(v.keys())[0] >1 }
+    # Filter elements with grade > 0 (instead of > 1) for less strict filtering
+    tmp_grade_dict = {k: v for k, v in tmp_grade_dict.items() if v and list(v.keys())[0] > 0}
 
     return topic_ids, tmp_pre_res_dict, tmp_grade_dict
+
+def enrich_query_for_implications(user_query: str) -> str:
+    """
+    Enriches the user query with context that targets the implications field for expert relevance.
+    This improves retrieval by focusing on expert insights and policy implications.
+    
+    Args:
+        user_query: The original user query
+        
+    Returns:
+        Enhanced query string with implications-focused context
+    """
+    implications_context = """
+    Find expert insights, policy implications, research significance, 
+    practical applications, and professional recommendations related to:
+    """
+    
+    enriched_query = f"{implications_context} {user_query}"
+    
+    # Add specific implications-focused keywords to improve semantic matching
+    enhanced_query = f"{enriched_query} expert analysis implications significance policy recommendations research insights"
+    
+    return enhanced_query
 
