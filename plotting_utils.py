@@ -247,7 +247,7 @@ def create_summary_plots_grid(var_ids: List[str], max_cols: int = 2, figsize: Tu
     plt.tight_layout()
     return fig
 
-
+# TODO: variable description comes from summaries in dbf_1, not from the data description below
 def get_variable_description(var_id: str) -> str:
     """
     Get description/summary for a variable.
