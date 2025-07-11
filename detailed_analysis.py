@@ -600,6 +600,7 @@ def run_detailed_analysis(selected_variables: list, user_query: str, analysis_pa
             }
         }
 
+# TODO: variable description comes from summaries in dbf_1, not from get_variable_description
 
 def run_quick_insights_analysis(selected_variables: list, user_query: str, analysis_params: Optional[dict] = None) -> dict:
     """
@@ -721,7 +722,7 @@ def run_plots_only_analysis(selected_variables: list, user_query: str, analysis_
             }
         }
 
-
+# TODO: this shoould be a LLM call to generate a summary - not an automated text creation.
 def _generate_quick_insights_summary(variable_descriptions: dict, user_query: str) -> dict:
     """
     Generate a quick summary based on variable descriptions.

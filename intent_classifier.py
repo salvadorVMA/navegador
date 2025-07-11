@@ -49,7 +49,7 @@ def _classify_intent(user_message: str, intent_dict: dict, llm: Any) -> str:
     
     CRITICAL DISTINCTION:
     - If the user asks ABOUT the data/variables/topics themselves (e.g., "What do people think about X?", "How do Mexicans feel about Y?"), classify as "query_variable_database"
-    - If the user asks ABOUT what data/topics/datasets are AVAILABLE (e.g., "What topics do you have?", "Show me datasets", "List topics"), classify as "answer_general_questions"
+    - If the user asks ABOUT what data/topics/datasets are AVAILABLE, i.e. METADATA (e.g., "What topics do you have?", "Show me datasets", "List topics"), classify as "answer_general_questions"
     
     Rules:
     - Choose ONLY ONE intent from the list above
