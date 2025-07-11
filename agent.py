@@ -75,15 +75,26 @@ def create_agent(enable_persistence=True):
         Intent classifier: INTENT --> ACTIONS AVAILABLE
         """
         messages = state["messages"]
-        last_message = messages[-1].content if messages else ""
-        intent = _classify_intent(last_message, intent_dict, llm)
+        
+        # Extract content from the last message safely
+        last_message_content = ""
+        if messages:
+            last_msg = messages[-1]
+            if isinstance(last_msg, dict):
+                last_message_content = last_msg.get("content", "")
+            elif hasattr(last_msg, "content"):
+                last_message_content = last_msg.content
+            else:
+                last_message_content = str(last_msg)
+                
+        intent = _classify_intent(last_message_content, intent_dict, llm)
 
         # Store user query for query-related intents
         if intent in ["query_variable_database", "review_variable_selection"]:
-            state["user_query"] += last_message
+            state["user_query"] += last_message_content
             # Capture original query if not already set
             if not state.get("original_query"):
-                state["original_query"] = last_message
+                state["original_query"] = last_message_content
 
         print(f"Detected intent: {intent}")
         
@@ -99,7 +110,17 @@ def create_agent(enable_persistence=True):
         last_user_message = ""
         
         for msg in reversed(messages):
-            if isinstance(msg, HumanMessage):
+            # Handle different message formats
+            if isinstance(msg, dict):
+                if msg.get("role") == "user":
+                    last_user_message = msg.get("content", "")
+                    break
+            elif hasattr(msg, "type") and msg.type == "human":
+                # Handle LangChain message objects
+                if hasattr(msg, "content"):
+                    last_user_message = msg.content
+                    break
+            elif isinstance(msg, HumanMessage):
                 content = msg.content
                 if isinstance(content, str):
                     last_user_message = content
