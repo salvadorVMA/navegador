@@ -7,6 +7,43 @@ from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
 import sqlite3
 import os
+import time
+from datetime import datetime
+
+# Add LangSmith tracing imports
+from langchain_core.tracers import LangChainTracer
+import langchain_core.callbacks.manager as langchain_manager
+try:
+    # Import langsmith client
+    from langsmith.client import Client as LangSmithClient
+    from langsmith.schemas import Run as LangSmithRun
+except ImportError:
+    print("⚠️ LangSmith packages not found")
+    LangSmithClient = None
+    LangSmithRun = None
+
+# Enable LangSmith tracing if API key is available
+os.environ["LANGSMITH_TRACING"] = "true"
+
+# Initialize tracing
+LANGSMITH_API_KEY = os.getenv("LANGSMITH_API_KEY")
+LANGSMITH_PROJECT = os.getenv("LANGSMITH_PROJECT", "navegador-debug")
+
+# Initialize LangSmith client
+langsmith_client = None
+tracer = None
+
+try:
+    if LANGSMITH_API_KEY and LangSmithClient is not None:
+        langsmith_client = LangSmithClient(api_key=LANGSMITH_API_KEY)
+        tracer = LangChainTracer(project_name=LANGSMITH_PROJECT)
+        # Enable tracing v2
+        os.environ["LANGCHAIN_TRACING_V2"] = "true"
+        print("✅ LangSmith monitoring initialized successfully")
+    else:
+        print("⚠️ LangSmith API key not found or package not installed, monitoring disabled")
+except Exception as e:
+    print(f"⚠️ Error initializing LangSmith: {e}")
 
 from dataset_knowledge import rev_topic_dict,  tmp_topic_st, _project_describer
 from intent_classifier import _classify_intent, intent_dict
@@ -19,6 +56,53 @@ mod_alto = 'gpt-4.1-2025-04-14'
 mod_bajo = 'gpt-4.1-nano-2025-04-14'
 mod_med = 'gpt-4.1-mini-2025-04-14'
 
+# Monitoring utilities
+def log_agent_event(event_type, details, agent_state=None):
+    """
+    Logs agent events to console and LangSmith if available
+    
+    Args:
+        event_type (str): Type of event (e.g., 'variable_search_start', 'query_received')
+        details (dict): Event details
+        agent_state (dict, optional): Current agent state
+    """
+    timestamp = datetime.now().isoformat()
+    log_entry = {
+        "timestamp": timestamp,
+        "event_type": event_type,
+        "details": details
+    }
+    
+    # Add agent state if provided
+    if agent_state:
+        log_entry["agent_state"] = {k: v for k, v in agent_state.items() if k != "messages"}
+    
+    # Print to console with timestamp
+    print(f"📝 [{timestamp}] {event_type}: {details}")
+    
+    # Log to LangSmith if available
+    if langsmith_client:
+        try:
+            # Add feedback to LangSmith project
+            metadata = {
+                "event_type": event_type,
+                "timestamp": timestamp,
+                **{f"detail_{k}": str(v) for k, v in details.items()}
+            }
+            
+            # Check if there's an active run ID in environment
+            run_id = os.getenv("LANGCHAIN_RUN_ID", "")
+            if run_id:
+                # Use the API that's available in the current version
+                langsmith_client.create_feedback(
+                    run_id=run_id,
+                    key=f"agent_event_{event_type}",
+                    value=event_type,
+                    comment=str(details),
+                    metadata=metadata
+                )
+        except Exception as e:
+            print(f"⚠️ Error logging to LangSmith: {e}")
 
 # Define state schema
 class AgentState(TypedDict):
@@ -160,33 +244,136 @@ def create_agent(enable_persistence=True):
     def handle_query(state: AgentState) -> AgentState:
         """Handle dataset query requests by selecting relevant variables"""
         messages = state["messages"]
+        start_time = time.time()
         
         last_user_message = ""
         for msg in reversed(messages):
-            if isinstance(msg, HumanMessage):
+            # Handle different message formats
+            if isinstance(msg, dict):
+                if msg.get("role") == "user":
+                    last_user_message = msg.get("content", "")
+                    break
+            elif hasattr(msg, "type") and msg.type == "human":
+                # Handle LangChain message objects
+                if hasattr(msg, "content"):
+                    last_user_message = msg.content
+                    break
+            elif isinstance(msg, HumanMessage):
                 content = msg.content
                 if isinstance(content, str):
                     last_user_message = content
                 break
         
-        # For now, provide a simple mock response to test the workflow
-        # TODO: Fix the actual variable selection integration
+        # Add error handling if no valid user message was found
+        if not last_user_message:
+            print("⚠️ Warning: Could not extract a valid user message")
+            last_user_message = "Show general variables"
+
+        # Log the start of variable selection
+        log_agent_event(
+            "query_received", 
+            {
+                "query": last_user_message,
+                "event": "starting_variable_selection"
+            }, 
+            state
+        )
+
+        # Get access to required modules for proper variable selection
+        try:
+            from dataset_knowledge import tmp_topic_st
+            from langchain_openai import ChatOpenAI
+            
+            print(f"🔍 Selecting variables for query: '{last_user_message}'")
+            
+            # Create LLM instance for variable selection
+            selection_llm = ChatOpenAI(model="gpt-4o-mini")
+            
+            # Log selection start
+            log_agent_event(
+                "variable_selection_start", 
+                {
+                    "query": last_user_message,
+                    "model": selection_llm.model_name
+                }, 
+                state
+            )
+            
+            # Call the actual variable selection function
+            topic_ids, variables_dict, grade_dict = _variable_selector(
+                last_user_message, tmp_topic_st, selection_llm, use_simultaneous_retrieval=True
+            )
+            
+            if variables_dict and grade_dict:
+                # Get the top-graded variables
+                sorted_vars = sorted(grade_dict.items(), key=lambda x: list(x[1].keys())[0], reverse=True)
+                top_variables = [var_id for var_id, grade in sorted_vars[:10]]  # Top 10 most relevant variables
+                
+                # Collect dataset information
+                if topic_ids:
+                    dataset_ids = list(set([topic_id.split('|')[0] for topic_id in topic_ids]))
+                else:
+                    dataset_ids = ["ALL"]
+                
+                # Format response with variable descriptions
+                variable_descriptions = []
+                for var_id in top_variables:
+                    if var_id in variables_dict:
+                        var_info = variables_dict.get(f"{var_id}__question", "")
+                        if var_info:
+                            # Add just the first part of the variable description
+                            variable_descriptions.append(f"- {var_info[:80]}...")
+                
+                # Store the variable information in the state
+                selected_vars = top_variables
+                state["selected_variables"] = selected_vars
+                state["dataset"] = dataset_ids
+                
+                # Create the response message
+                response = (f"Based on your query, I've selected the dataset: {', '.join(dataset_ids)}\n\n"
+                           f"And these relevant variables:\n"
+                           f"• {chr(10).join(variable_descriptions)}\n\n"
+                           f"Would you like to proceed with these variables or modify the selection?"
+                           )
+            else:
+                # Fallback when no variables found
+                print("⚠️ No variables found for the query, using fallback")
+                dataset_ids = ["ALL"]
+                selected_vars = ["NA"]
+                
+                response = (f"I couldn't find specific variables for your query. Here are some general variables that might help:\n\n"
+                           f"• {chr(10).join([f'- {var}' for var in selected_vars])}\n\n"
+                           f"Would you like to proceed with these or try a more specific query?"
+                           )
+                           
+        except Exception as e:
+            # Fallback to mock response on error
+            print(f"❌ Error in variable selection: {e}")
+            import traceback
+            traceback.print_exc()
+            
+            selected_vars = ["NA"]
+            dataset_ids = ["NA"]
+            
+            response = (f"Based on your query, I've selected the dataset: {', '.join(dataset_ids)}\n\n"
+                       f"And these relevant variables:\n"
+                       f"• {chr(10).join([f'- {var}' for var in selected_vars])}\n\n"
+                       f"Would you like to proceed with these variables or modify the selection?"
+                       )
         
-        if "education" in last_user_message.lower():
-            selected_vars = ["education_level", "school_satisfaction", "learning_outcomes", "teacher_quality"]
-            dataset_ids = ["Encuesta_Nacional_de_Educacion"]
-        elif "politics" in last_user_message.lower() or "political" in last_user_message.lower():
-            selected_vars = ["political_participation", "voting_behavior", "government_trust", "civic_engagement"]
-            dataset_ids = ["Encuesta_Nacional_de_Cultura_Politica"]
-        else:
-            selected_vars = ["general_opinion", "demographic_info", "social_attitudes"]
-            dataset_ids = ["Encuesta_General"]
+        # Calculate the time it took for variable selection
+        elapsed_time = time.time() - start_time
         
-        response = (f"Based on your query, I've selected the dataset: {', '.join(dataset_ids)}\n\n"
-                   f"And these relevant variables:\n"
-                   f"• {chr(10).join([f'- {var}' for var in selected_vars])}\n\n"
-                   f"Would you like to proceed with these variables or modify the selection?"
-                   )
+        # Log the completion of variable selection
+        log_agent_event(
+            "variable_selection_complete", 
+            {
+                "elapsed_time_sec": round(elapsed_time, 2),
+                "selected_variables_count": len(selected_vars),
+                "datasets": dataset_ids
+            }, 
+            state
+        )
         
         state["messages"].append(AIMessage(content=response))
         state["selected_variables"] = selected_vars

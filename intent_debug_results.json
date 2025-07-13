@@ -1,0 +1,54 @@
+[
+  {
+    "query": "What do Mexicans think about health?",
+    "expected_intent": "query_variable_database",
+    "classified_intent": "query_variable_database",
+    "classified_success": true,
+    "hardcoded_success": true,
+    "classified_error": null,
+    "hardcoded_error": null,
+    "classified_elapsed": 35.54203915596008,
+    "hardcoded_elapsed": 31.698654890060425,
+    "classified_vars_count": 10,
+    "hardcoded_vars_count": 10
+  },
+  {
+    "query": "Tell me about education levels in Mexico",
+    "expected_intent": "query_variable_database",
+    "classified_intent": "query_variable_database",
+    "classified_success": true,
+    "hardcoded_success": true,
+    "classified_error": null,
+    "hardcoded_error": null,
+    "classified_elapsed": 39.38380312919617,
+    "hardcoded_elapsed": 39.756808280944824,
+    "classified_vars_count": 10,
+    "hardcoded_vars_count": 10
+  },
+  {
+    "query": "Show me variables about corruption",
+    "expected_intent": "query_variable_database",
+    "classified_intent": "query_variable_database",
+    "classified_success": true,
+    "hardcoded_success": true,
+    "classified_error": null,
+    "hardcoded_error": null,
+    "classified_elapsed": 37.09917497634888,
+    "hardcoded_elapsed": 37.22083306312561,
+    "classified_vars_count": 10,
+    "hardcoded_vars_count": 10
+  },
+  {
+    "query": "What is this project about?",
+    "expected_intent": "answer_general_questions",
+    "classified_intent": "answer_general_questions",
+    "classified_success": true,
+    "hardcoded_success": true,
+    "classified_error": null,
+    "hardcoded_error": null,
+    "classified_elapsed": 0.7021639347076416,
+    "hardcoded_elapsed": 0.9231400489807129,
+    "classified_vars_count": 0,
+    "hardcoded_vars_count": 0
+  }
+]

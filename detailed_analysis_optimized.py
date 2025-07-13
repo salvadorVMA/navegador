@@ -280,6 +280,7 @@ def get_transversal_analysis_optimized(tmp_smry_st: str, user_query: str,
                                      model_name: str = 'gpt-4o-mini-2024-07-18', temperature: float = 0.9) -> dict:
     """Optimized transversal analysis with caching."""
     from detailed_analysis import create_prompt_trnsvl, transversal_parser, transversal_format_instructions
+    from fix_transversal_json import fix_json_format
     
     # Generate the prompt
     prompt = create_prompt_trnsvl(
@@ -300,10 +301,32 @@ def get_transversal_analysis_optimized(tmp_smry_st: str, user_query: str,
         }
     
     try:
-        parsed = transversal_parser.parse(response)
+        # First attempt: try to fix JSON format issues before parsing
+        fixed_response = fix_json_format(response)
+        parsed = transversal_parser.parse(fixed_response)
         return parsed.model_dump()
     except Exception as e:
         print(f"Error parsing transversal analysis: {e}")
+        # Second attempt: If parsing fails, try to salvage the output by extracting what we can
+        try:
+            import re
+            import json
+            
+            # Try to extract the JSON part from the response if LLM added any text
+            json_match = re.search(r'({[\s\S]*})', response)
+            if json_match:
+                json_str = json_match.group(1)
+                # Fix trailing commas
+                json_str = fix_json_format(json_str)
+                # Try to parse as plain JSON
+                data = json.loads(json_str)
+                # Check if we have the required keys
+                if all(k in data for k in ['TOPIC_SUMMARIES', 'TOPIC_SUMMARY', 'QUERY_ANSWER']):
+                    return data
+        except Exception as inner_e:
+            print(f"Failed to salvage JSON: {inner_e}")
+            
+        # If all else fails, return error dictionary
         return {
             'TOPIC_SUMMARIES': {'ERROR': f'Failed to generate topic summaries: {str(e)}'},
             'TOPIC_SUMMARY': f'Error generating summary: {str(e)}',

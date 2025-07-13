@@ -148,9 +148,20 @@ def batch_process_expert_grader(user_query, top_ids, tmp_pre_res_dict, model_nam
     Returns:
         dict: A dictionary of structured results.
     """
+    # Track timings for performance monitoring
+    import time
+    from datetime import datetime
+    
+    start_time = time.time()
 
+    def log_batch_progress(batch_num, batch_size, total, elapsed):
+        """Log progress of batch processing with timestamp"""
+        timestamp = datetime.now().isoformat()
+        percent = min(100, int((batch_num * batch_size / total) * 100))
+        print(f"🔄 [{timestamp}] Batch {batch_num}: {percent}% complete, elapsed: {elapsed:.2f}s")
 
     # Prepare prompts and keys
+    print(f"Preparing prompts for {len(top_ids)} variables...")
     prompts = [
         create_prompt_grader(user_query,  
                              create_tmp_svyinfo_dict(tmp_ky, top_ids, 
@@ -162,21 +173,38 @@ def batch_process_expert_grader(user_query, top_ids, tmp_pre_res_dict, model_nam
     
     # Batch the documents
     batches = batch_documents(prompts, keys, max_tokens=batch_size, encoding_name="cl100k_base")
+    print(f"Created {len(batches)} batches for processing")
     
     # Initialize results dictionary
     structured_results = {}
     
     # Process each batch
+    batch_count = 0
     with tqdm.tqdm(total=len(keys), desc="Selecting and filtering questions") as pbar:
         for batch_docs, batch_keys in batches:
-            for prompt, key in zip(batch_docs, batch_keys):
+            batch_count += 1
+            batch_start = time.time()
+            
+            # Log batch start
+            batch_elapsed = time.time() - start_time
+            log_batch_progress(batch_count, len(batch_keys), len(keys), batch_elapsed)
+            
+            for i, (prompt, key) in enumerate(zip(batch_docs, batch_keys)):
                 try:
                     _, tmp_grade_dict = get_structured_summary_grader_p(prompt, model_name = model_name, temperature= 0.5)
-                    #print(f'tmp_grade_dict: {tmp_grade_dict}')
                     structured_results[key] = tmp_grade_dict
+                    
+                    # Update more frequently for UI responsiveness
+                    if (i + 1) % max(1, len(batch_keys) // 10) == 0:
+                        pbar.update((i + 1) % max(1, len(batch_keys) // 10))
                 except Exception as e:
+                    print(f"⚠️ Error grading variable {key}: {str(e)}")
                     structured_results[key] = {'error': str(e)}
                 pbar.update(1)
+                
+            # Log batch completion
+            batch_time = time.time() - batch_start
+            print(f"✓ Batch {batch_count} completed in {batch_time:.2f}s")
     
     return structured_results
 
@@ -398,6 +426,19 @@ def _variable_selector(user_query, topic_id_st, mod_setting, top_vals=30, use_si
     Returns:
         dict: A dictionary of selected variables with their grades.
     """
+    # Track the start time for performance monitoring
+    import time
+    from datetime import datetime
+    start_time = time.time()
+    
+    # Define a function for detailed progress logging
+    def log_progress(stage, details):
+        """Log progress of variable selection with timestamp"""
+        timestamp = datetime.now().isoformat()
+        elapsed = time.time() - start_time
+        print(f"📊 [{timestamp}] [{elapsed:.2f}s] {stage}: {details}")
+    
+    log_progress("variable_selection_start", f"Query: {user_query}")
     
     # Handle LangChain ChatOpenAI objects by extracting the model name
     if hasattr(mod_setting, 'model_name'):
@@ -407,6 +448,8 @@ def _variable_selector(user_query, topic_id_st, mod_setting, top_vals=30, use_si
     else:
         # Assume it's already a string
         model_name = mod_setting
+    
+    log_progress("model_identified", f"Using model: {model_name}")
     
     # Turn it into a vector
     print("Embedding the user query...")
@@ -429,9 +472,12 @@ def _variable_selector(user_query, topic_id_st, mod_setting, top_vals=30, use_si
 
     topic_ids = _database_selector(user_query, topic_id_st, llm=mod_setting)
 
+    log_progress("database_selection", f"Selected topics: {topic_ids}")
+    
     # Use the specified retrieval method
     if use_simultaneous_retrieval:
         print("📊 Using simultaneous retrieval for all types (balanced query)")
+        log_progress("retrieval_start", "Starting simultaneous retrieval")
         tmp_dist_dict = retrieve_all_types_simultaneously(
             db_f1, 
             query_emb, 
@@ -441,6 +487,7 @@ def _variable_selector(user_query, topic_id_st, mod_setting, top_vals=30, use_si
         )
     else:
         print("📊 Using separate retrieval queries per type (enriched query for implications)")
+        log_progress("retrieval_start", "Starting separate retrieval by type")
         tmp_dist_dict = retrieve_by_type_and_topics(
             db_f1, 
             query_emb, 
@@ -448,6 +495,8 @@ def _variable_selector(user_query, topic_id_st, mod_setting, top_vals=30, use_si
             type_lst=["question", "summary", "implications"],
             n_results=100
         )
+    
+    log_progress("retrieval_complete", f"Retrieved {sum([len(docs) for docs in tmp_dist_dict.values()])} documents")
 
 
     # # TODO: agregar filtro where para filtrar por dataset si dataset != 'all'
@@ -482,17 +531,20 @@ def _variable_selector(user_query, topic_id_st, mod_setting, top_vals=30, use_si
     tmp_dist_dict = { outer_key: { k.split('__')[0]: v for k, v in inner_dict.items() }
         for outer_key, inner_dict in tmp_dist_dict.items() }
 
+    log_progress("processing_start", "Creating DataFrame and normalizing scores")
+    
     # Create a DataFrame where keys in every subdict are the index and keys in tmp_dist_dict are columns
     tmp_dist_df = pd.DataFrame.from_dict(tmp_dist_dict)
 
     # Normalize each column so that max = 1 and min = 0
     tmp_dist_df = (tmp_dist_df - tmp_dist_df.min()) / (tmp_dist_df.max() - tmp_dist_df.min())
 
-
     tmp_dist_df['mean'] = tmp_dist_df.mean(axis=1)
     tmp_dist_df.sort_values(by='mean', ascending=True, inplace=True)
 
     top_ids = tmp_dist_df.head(top_vals).index.tolist()
+    
+    log_progress("ranking_complete", f"Selected top {len(top_ids)} variables")
 
     tmp_list = []
 
@@ -523,10 +575,18 @@ def _variable_selector(user_query, topic_id_st, mod_setting, top_vals=30, use_si
 
     ## generación del esquema de pydantic para la respuesta del evaluador de relevancia
 
+    log_progress("grading_start", f"Starting expert grading with model {model_name}")
+    
+    # Create a progress bar for the grading process
+    total_items = len(top_ids)
+    print(f"Selecting and filtering questions: 0% | 0/{total_items}")
+    
+    # Perform batch processing with expert grader
     tst_res = batch_process_expert_grader(user_query, top_ids, tmp_pre_res_dict, model_name, batch_size=8192)
     
     # Handle case where grading fails
     if not tst_res:
+        log_progress("grading_error", "No grading results returned")
         print("Warning: No grading results returned")
         return topic_ids, tmp_pre_res_dict, {}
         
@@ -534,7 +594,13 @@ def _variable_selector(user_query, topic_id_st, mod_setting, top_vals=30, use_si
 
     # Filter elements with grade > 0 (instead of > 1) for less strict filtering
     tmp_grade_dict = {k: v for k, v in tmp_grade_dict.items() if v and list(v.keys())[0] > 0}
-
+    
+    # Log completion with elapsed time
+    elapsed = time.time() - start_time
+    filtered_count = len(tmp_grade_dict)
+    log_progress("grading_complete", 
+                f"Selected {filtered_count} variables after filtering. Total processing time: {elapsed:.2f}s")
+    
     return topic_ids, tmp_pre_res_dict, tmp_grade_dict
 
 def enrich_query_for_implications(user_query: str) -> str:
