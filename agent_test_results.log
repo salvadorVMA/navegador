@@ -1,0 +1,60 @@
+[2025-07-12 20:31:15] Starting enhanced agent testing
+[2025-07-12 20:31:15] ✅ LangSmith monitoring initialized for project: navegador-test
+[2025-07-12 20:31:18] Agent module imported.
+[2025-07-12 20:31:18] Creating agent instance with persistence enabled...
+[2025-07-12 20:31:18] ✅ Agent instance created successfully
+[2025-07-12 20:31:18] Running test suite with 4 test cases
+[2025-07-12 20:31:18] Test case 1/4: 'Tell me about this dataset'
+[2025-07-12 20:31:18] Testing query with thread_id test_4eb42cf7: 'Tell me about this dataset'
+[2025-07-12 20:31:19] ✅ Response received in 1.02s
+[2025-07-12 20:31:19] Response content: I can help with dataset information, querying datasets, and running analyses. What would you like to know?
+[2025-07-12 20:31:19] Intent check: expected=answer_general_questions, actual=answer_general_questions, matched=True
+[2025-07-12 20:31:20] Test case 2/4: 'What variables can I analyze?'
+[2025-07-12 20:31:20] Testing query with thread_id test_531a3ab9: 'What variables can I analyze?'
+[2025-07-12 20:31:21] ✅ Response received in 0.60s
+[2025-07-12 20:31:21] Response content: I can help with dataset information, querying datasets, and running analyses. What would you like to know?
+[2025-07-12 20:31:21] Intent check: expected=query_variable_database, actual=answer_general_questions, matched=False
+[2025-07-12 20:31:22] Test case 3/4: 'I want to analyze education data'
+[2025-07-12 20:31:22] Testing query with thread_id test_61250b57: 'I want to analyze education data'
+[2025-07-12 20:31:22] ✅ Response received in 0.64s
+[2025-07-12 20:31:22] Response content: Descriptive analysis selected. Ready to run analysis?
+[2025-07-12 20:31:22] Intent check: expected=select_analysis_type, actual=select_analysis_type, matched=True
+[2025-07-12 20:31:23] Test case 4/4: 'Run a descriptive analysis'
+[2025-07-12 20:31:23] Testing query with thread_id test_9c065903: 'Run a descriptive analysis'
+[2025-07-12 20:31:24] ❌ Error invoking agent: 'dataset'
+[2025-07-12 20:31:24] Traceback (most recent call last):
+  File "/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/enhanced_agent_tester.py", line 177, in run_single_query
+    response = self.agent.invoke(input_state, config=config)
+  File "/Users/salvadorVMA/miniforge3/envs/nvg_py13_env/lib/python3.13/site-packages/langgraph/pregel/__init__.py", line 2823, in invoke
+    for chunk in self.stream(
+                 ~~~~~~~~~~~^
+        input,
+        ^^^^^^
+    ...<7 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ):
+    ^
+  File "/Users/salvadorVMA/miniforge3/envs/nvg_py13_env/lib/python3.13/site-packages/langgraph/pregel/__init__.py", line 2461, in stream
+    for _ in runner.tick(
+             ~~~~~~~~~~~^
+        loop.tasks.values(),
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        get_waiter=get_waiter,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/agent.py", line 446, in run_analysis
+    dataset = state["dataset"]
+              ~~~~~^^^^^^^^^^^
+KeyError: 'dataset'
+During task with name 'run_analysis' and id '600a0b35-9c2f-353b-7f40-d4a875f7713e'
+
+[2025-07-12 20:31:24] Test suite completed:
+[2025-07-12 20:31:24] - Success rate: 75.0%
+[2025-07-12 20:31:24] - Intent match rate: 66.7%
+[2025-07-12 20:31:24] - Avg response time: 0.75s
+[2025-07-12 20:31:24] Test suite completed with 4 test cases
+[2025-07-12 20:31:24] View traces at: https://smith.langchain.com/projects/navegador-test/traces
+[2025-07-12 20:31:24] Testing completed

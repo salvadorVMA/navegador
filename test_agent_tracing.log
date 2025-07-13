@@ -1,0 +1,14 @@
+Verbose mode enabled
+Starting agent test with tracing
+✅ LangSmith monitoring initialized for project: default
+Agent module imported successfully. Functions: ['AIMessage', 'AgentState', 'Annotated', 'Any', 'BaseModel']...
+Creating agent instance with persistence enabled...
+Agent instance created successfully
+Created test thread ID: test_1752373511
+Invoking agent with thread_id test_1752373511...
+Response received in 0.93s:
+---
+{'messages': [{'type': 'human', 'content': 'Tell me about this dataset'}, AIMessage(content='I can help with dataset information, querying datasets, and running analyses. What would you like to know?', additional_kwargs={}, response_metadata={})], 'intent': 'answer_general_questions'}
+---
+View trace at: https://smith.langchain.com/projects/default/traces
+Test completed successfully
