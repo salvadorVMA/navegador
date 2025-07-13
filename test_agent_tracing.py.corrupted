@@ -1,0 +1,588 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+Agent Tracing and Monitoring Test
+
+This script tests the agent's workflow, traces execution paths, and provides
+detailed monitoring information about processing times. It uses LangSmith for
+tracing and reporting to help diagnose long-running queries.
+"""
+
+import os
+import sys
+import time
+import json
+from datetime import datetime
+from typing import Dict, Any, List, Optional
+import traceback
+
+# First, check if we can import the required modudef run_test_queries(queries=None, language="es", datasets=None, profiler=None):
+    """Run a series of test queries through the agent"""
+    if profiler is None:
+        profiler = AgentProfiler()
+    
+    if queries is None:
+        queries = DEFAULT_QUERIES
+    
+    # Ensure datasets is a list if provided
+    if datasets and not isinstance(datasets, list):
+        datasets = [datasets]
+    
+    for i, query in enumerate(queries):
+        print(f"\n[{i+1}/{len(queries)}] Testing query: '{query}'")
+        profiler.profile_query(query, language=language, datasets=datasets)
+    
+    # Print summary stats
+    profiler.print_summary()
+    
+    # Check LangSmith traces
+    profiler.check_langsmith_traces()
+    
+    return profiler langsmith
+    from langchain.schema.runnable import RunnableConfig
+    from langchain_core.tracers.context import tracing_enabled
+    from langchain_core.tracers.langchain import LangChainTracer
+    from langchain_core.tracers.langsmith import LangSmithTracer
+    has_langsmith = True
+except ImportError:
+    has_langsmith = False
+    print("⚠️ LangSmith modules not available. Limited functionality will be used.")
+
+# Import our own modules
+try:
+    # Add the current directory to the path to make imports work
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    
+    # Import modules carefully with fallbacks
+    try:
+        import state_normalizer
+    except ImportError:
+        state_normalizer = None
+        print("⚠️ Could not import state_normalizer module")
+    
+    try:
+        import agent
+    except ImportError:
+        agent = None
+        print("⚠️ Could not import agent module")
+    
+    try:
+        from dashboard import create_agent_config
+    except ImportError:
+        create_agent_config = None
+        print("⚠️ Could not import create_agent_config from dashboard")
+        
+    has_agent = agent is not None
+except ImportError as e:
+    has_agent = False
+    agent = None
+    state_normalizer = None
+    create_agent_config = None
+    print(f"⚠️ Could not import modules: {e}")
+    traceback.print_exc()
+
+# Constants for test control
+DEFAULT_QUERIES = [
+    "¿Qué opinan los mexicanos sobre la salud?",
+    "Show me data about identity and values",
+    "Analiza los datos sobre educación",
+    "What do Mexicans think about politics?",
+    "deporte"
+]
+
+# Configure LangSmith environment
+def setup_langsmith():
+    """Set up LangSmith environment variables and return API status"""
+    # Check for either LANGSMITH_API_KEY (newer) or LANGCHAIN_API_KEY (older)
+    langsmith_api_key = os.environ.get("LANGSMITH_API_KEY") or os.environ.get("LANGCHAIN_API_KEY")
+    project_name = os.environ.get("LANGCHAIN_PROJECT", "navegador-testing")
+
+    # Set up LangSmith environment variables if not already set
+    if not langsmith_api_key:
+        print("⚠️ No LangSmith API key found. Please set LANGSMITH_API_KEY environment variable.")
+        print("   You can get a key at https://smith.langchain.com/settings/api-keys")
+        return False
+
+    # Configure LangSmith project for this test run
+    os.environ["LANGCHAIN_PROJECT"] = project_name
+    
+    # Make sure tracing is enabled
+    os.environ["LANGCHAIN_TRACING_V2"] = "true"
+    
+    print(f"✅ LangSmith configured with project: {project_name}")
+    return True
+
+def get_langsmith_client():
+    """Get a LangSmith client if available"""
+    try:
+        from langsmith import Client
+        client = Client()
+        return client
+    except Exception as e:
+        print(f"⚠️ Could not create LangSmith client: {e}")
+        return None
+
+def print_trace_url(run_id):
+    """Print a URL to the run in LangSmith"""
+    try:
+        base_url = os.environ.get("LANGCHAIN_ENDPOINT", "https://api.smith.langchain.com")
+        ui_url = base_url.replace("api.", "")
+        print(f"🔗 View trace in LangSmith: {ui_url}/runs/{run_id}")
+    except Exception as e:
+        print(f"⚠️ Could not create trace URL: {e}")
+
+class AgentProfiler:
+    """Profile and analyze agent execution"""
+    
+    def __init__(self):
+        """Initialize the profiler"""
+        self.agent_instance = None
+        self.langsmith_available = has_langsmith and setup_langsmith()
+        self.client = get_langsmith_client() if self.langsmith_available else None
+        
+        # Initialize collections for analytics
+        self.runs = []
+        self.current_run = {}
+        
+        # Initialize the agent
+        self._initialize_agent()
+    
+    def _initialize_agent(self):
+        """Initialize the agent from the agent module"""
+        if not has_agent or agent is None:
+            print("⚠️ Agent module not available. Cannot initialize agent.")
+            return
+        
+        try:
+            print("🔄 Initializing agent...")
+            start_time = time.time()
+            
+            # Create the agent using the create_agent function which is what the module has
+            if hasattr(agent, "create_agent"):
+                print("🔄 Using agent.create_agent function")
+                try:
+                    # Try with enable_persistence parameter
+                    self.agent_instance = agent.create_agent(enable_persistence=True)
+                except (TypeError, ValueError):
+                    # If that fails, try without parameters
+                    print("⚠️ Parameter 'enable_persistence' not accepted, trying without parameters")
+                    self.agent_instance = agent.create_agent()
+            else:
+                print("❌ Agent module does not have create_agent function")
+                print(f"Available functions in agent: {dir(agent)}")
+                return
+            
+            elapsed = time.time() - start_time
+            print(f"✅ Agent initialized in {elapsed:.2f} seconds")
+            
+            # Test that the agent is working
+            if self.agent_instance:
+                print("✅ Agent successfully initialized")
+            else:
+                print("❌ Agent initialization failed")
+        except Exception as e:
+            print(f"❌ Error initializing agent: {e}")
+            traceback.print_exc()
+            self.agent_instance = None
+    
+    def create_test_config(self, thread_id=None):
+        """Create a test configuration for the agent with tracing enabled"""
+        if thread_id is None:
+            thread_id = f"test_{int(time.time())}"
+        
+        # Use the create_agent_config function from dashboard.py if available
+        if create_agent_config is not None:
+            base_config = create_agent_config(thread_id)
+        else:
+            # Create a basic config if the function is not available
+            print("⚠️ Using default config since create_agent_config is not available")
+            base_config = {
+                "configurable": {
+                    "thread_id": thread_id,
+                    "callbacks": [],
+                }
+            }
+        
+        # Ensure tracing is enabled
+        if self.langsmith_available:
+            # Get the configurable dict
+            if hasattr(base_config, "configurable"):
+                # It's a RunnableConfig
+                configurable = base_config.configurable
+            else:
+                # It's a dict
+                configurable = base_config.get("configurable", {})
+            
+            # Add tracing configuration
+            configurable.update({
+                "metadata": {
+                    "test_run": True,
+                    "timestamp": datetime.now().isoformat()
+                }
+            })
+            
+            # Return as RunnableConfig if langchain is available
+            try:
+                # Try to convert to a RunnableConfig object
+                try:
+                    from langchain.schema.runnable import RunnableConfig
+                    return RunnableConfig(configurable=configurable)
+                except (ImportError, TypeError):
+                    # If that fails, just return a dict
+                    print("⚠️ Could not create RunnableConfig, using dict instead")
+                    return {"configurable": configurable}
+            except Exception as e:
+                print(f"⚠️ Error creating config: {e}")
+                return {"configurable": configurable}
+        
+        return base_config
+    
+    def profile_query(self, query, language="es", datasets=None, variables=None):
+        """Profile a single query through the agent"""
+        if not self.agent_instance:
+            print("❌ Agent not initialized. Cannot profile query.")
+            return None
+        
+        if not query.strip():
+            print("⚠️ Empty query. Skipping.")
+            return None
+        
+        # Prepare the query metadata
+        thread_id = f"test_{int(time.time())}"
+        
+        self.current_run = {
+            "query": query,
+            "thread_id": thread_id,
+            "language": language,
+            "datasets": datasets or ["ALL"],
+            "start_time": time.time(),
+            "stages": [],
+            "variables_selected": [],
+        }
+        
+        # Create the agent state
+        print(f"\n🔄 Testing query: '{query}'")
+        try:
+            # Create state using state_normalizer if available
+            if state_normalizer is not None and hasattr(state_normalizer, "create_agent_state"):
+                try:
+                    agent_state = state_normalizer.create_agent_state(
+                        user_message=query,
+                        intent="query_variable_database",  # Default to variable search
+                        dataset=datasets or ["ALL"],
+                        selected_variables=variables or [],
+                        language=language
+                    )
+                except Exception as e:
+                    print(f"⚠️ Error using state_normalizer: {e}")
+                    # Fallback to manual creation
+                    agent_state = self._create_fallback_state(query, language, datasets, variables)
+            else:
+                print("⚠️ state_normalizer not available, using fallback state creation")
+                # Fallback to manual creation
+                agent_state = self._create_fallback_state(query, language, datasets, variables)
+                agent_state = {
+                    "messages": [{"role": "user", "content": query}],
+                    "intent": "query_variable_database",
+                    "user_query": query,
+                    "original_query": query,
+                    "dataset": datasets or ["ALL"],
+                    "selected_variables": variables or [],
+                    "analysis_type": "descriptive",
+                    "user_approved": False,
+                    "analysis_result": {},
+                    "language": language
+                }
+            
+            # Create the agent config with tracing enabled
+            agent_config = self.create_test_config(thread_id)
+            
+            # Start timing
+            stage_start = time.time()
+            self.current_run["stages"].append({
+                "name": "setup",
+                "start": stage_start,
+                "end": time.time(),
+                "duration": time.time() - stage_start
+            })
+            
+            # Log the start of the query
+            print(f"🕑 Query started at {datetime.now().strftime('%H:%M:%S.%f')}")
+            print(f"🔍 Intent: query_variable_database")
+            print(f"📊 Datasets: {datasets or ['ALL']}")
+            
+            # Record the start of agent invocation
+            stage_start = time.time()
+            
+            # Invoke the agent
+            print(f"🤖 Invoking agent...")
+            try:
+                # Try with config parameter
+                agent_response = self.agent_instance.invoke(agent_state, config=agent_config)
+            except TypeError:
+                # If config parameter not supported, try without it
+                print("⚠️ 'config' parameter not supported in invoke method, trying without it")
+                agent_response = self.agent_instance.invoke(agent_state)
+            
+            # Record the end of agent invocation
+            invoke_duration = time.time() - stage_start
+            self.current_run["stages"].append({
+                "name": "agent_invoke",
+                "start": stage_start,
+                "end": time.time(),
+                "duration": invoke_duration
+            })
+            
+            print(f"✅ Agent response received after {invoke_duration:.2f} seconds")
+            
+            # Extract data from the response
+            if isinstance(agent_response, dict):
+                # Extract content from the response
+                self._process_agent_response(agent_response)
+                
+                # If there are variables selected, store them
+                if "selected_variables" in agent_response:
+                    variables = agent_response.get("selected_variables", [])
+                    self.current_run["variables_selected"] = variables
+                    print(f"📋 Selected {len(variables)} variables:")
+                    for var in variables[:5]:  # Show first 5 only
+                        print(f"  • {var}")
+                    if len(variables) > 5:
+                        print(f"    ... and {len(variables) - 5} more")
+            
+            # Complete the run
+            self.current_run["end_time"] = time.time()
+            self.current_run["duration"] = self.current_run["end_time"] - self.current_run["start_time"]
+            self.current_run["success"] = True
+            
+            # Add to the list of runs
+            self.runs.append(self.current_run)
+            
+            print(f"✅ Query completed in {self.current_run['duration']:.2f} seconds")
+            return agent_response
+            
+        except Exception as e:
+            # Record the error
+            self.current_run["end_time"] = time.time()
+            self.current_run["duration"] = self.current_run["end_time"] - self.current_run["start_time"]
+            self.current_run["success"] = False
+            self.current_run["error"] = str(e)
+            
+            # Add to the list of runs
+            self.runs.append(self.current_run)
+            
+            print(f"❌ Error processing query: {e}")
+            traceback.print_exc()
+            return None
+    
+    def _process_agent_response(self, agent_response):
+        """Process and analyze the agent response"""
+        # Extract path information if available
+        if "path" in agent_response:
+            path = agent_response.get("path", [])
+            self.current_run["path"] = path
+            print(f"🛣️ Path taken: {' -> '.join(path)}")
+        
+        # Extract any additional analytics
+        if "analytics" in agent_response:
+            analytics = agent_response.get("analytics", {})
+            self.current_run["analytics"] = analytics
+            
+            # Print interesting analytics
+            if "variable_selection_time" in analytics:
+                print(f"⏱️ Variable selection time: {analytics['variable_selection_time']:.2f} seconds")
+            if "total_variables_retrieved" in analytics:
+                print(f"📊 Total variables retrieved: {analytics['total_variables_retrieved']}")
+    
+    def print_summary(self):
+        """Print a summary of all profiled runs"""
+        if not self.runs:
+            print("❌ No runs recorded.")
+            return
+        
+        print("\n" + "=" * 80)
+        print(f"📊 AGENT PROFILING SUMMARY ({len(self.runs)} queries)")
+        print("=" * 80)
+        
+        # Calculate overall statistics
+        total_duration = sum(run.get("duration", 0) for run in self.runs)
+        avg_duration = total_duration / len(self.runs)
+        success_count = sum(1 for run in self.runs if run.get("success", False))
+        success_rate = success_count / len(self.runs) * 100
+        
+        print(f"📈 Overall Statistics:")
+        print(f"  • Success Rate: {success_rate:.1f}% ({success_count}/{len(self.runs)})")
+        print(f"  • Average Duration: {avg_duration:.2f} seconds")
+        print(f"  • Total Testing Time: {total_duration:.2f} seconds")
+        
+        # Print details for each run
+        print("\n📋 Individual Run Details:")
+        for i, run in enumerate(self.runs):
+            status = "✅" if run.get("success", False) else "❌"
+            query = run.get("query", "Unknown")
+            duration = run.get("duration", 0)
+            var_count = len(run.get("variables_selected", []))
+            
+            print(f"  {i+1}. {status} '{query[:50]}{'...' if len(query) > 50 else ''}'")
+            print(f"     Duration: {duration:.2f}s, Variables: {var_count}")
+            
+            # If there was an error, print it
+            if not run.get("success", False):
+                print(f"     Error: {run.get('error', 'Unknown error')}")
+            
+            # Print stage information
+            if "stages" in run:
+                longest_stage = max(run["stages"], key=lambda s: s.get("duration", 0)) if run["stages"] else None
+                if longest_stage:
+                    print(f"     Longest stage: {longest_stage.get('name', 'unknown')} ({longest_stage.get('duration', 0):.2f}s)")
+            
+            print()
+        
+        # Print LangSmith URL if available
+        if self.langsmith_available and self.client:
+            project = os.environ.get("LANGCHAIN_PROJECT", "navegador-testing")
+            print(f"🔗 View all traces in LangSmith: https://smith.langchain.com/projects/{project}/runs")
+    
+    def check_langsmith_traces(self):
+        """Fetch and analyze traces from LangSmith"""
+        if not self.langsmith_available or not self.client:
+            print("⚠️ LangSmith not available. Cannot check traces.")
+            return
+        
+        try:
+            # Get the project name
+            project = os.environ.get("LANGCHAIN_PROJECT", "navegador-testing")
+            print(f"🔍 Checking traces for project {project}...")
+            
+            # Get recent runs (last 50)
+            runs = list(self.client.list_runs(
+                project_name=project,
+                execution_order=1,  # Root runs only
+                limit=50
+            ))
+            
+            if not runs:
+                print("❌ No traces found in LangSmith.")
+                return
+            
+            print(f"✅ Found {len(runs)} traces in LangSmith")
+            
+            # Analyze the runs
+            total_tokens = sum(run.usage.total_tokens for run in runs if run.usage and run.usage.total_tokens)
+            avg_tokens = total_tokens / len(runs) if runs else 0
+            
+            print(f"📊 Total token usage: {total_tokens}")
+            print(f"📊 Average tokens per run: {avg_tokens:.1f}")
+            
+            # Find the slowest and fastest runs
+            sorted_runs = sorted(runs, key=lambda r: (r.end_time - r.start_time).total_seconds() if r.end_time and r.start_time else 0)
+            if sorted_runs:
+                fastest = sorted_runs[0]
+                slowest = sorted_runs[-1]
+                
+                # Print fastest run info
+                fast_duration = (fastest.end_time - fastest.start_time).total_seconds() if fastest.end_time and fastest.start_time else 0
+                print(f"\n⚡ Fastest Run: {fast_duration:.2f}s")
+                print(f"   Input: {fastest.inputs.get('messages', [])[0].get('content', '')[:50]}...")
+                print_trace_url(fastest.id)
+                
+                # Print slowest run info
+                slow_duration = (slowest.end_time - slowest.start_time).total_seconds() if slowest.end_time and slowest.start_time else 0
+                print(f"\n🐢 Slowest Run: {slow_duration:.2f}s")
+                print(f"   Input: {slowest.inputs.get('messages', [])[0].get('content', '')[:50]}...")
+                print_trace_url(slowest.id)
+            
+        except Exception as e:
+            print(f"❌ Error checking LangSmith traces: {e}")
+            traceback.print_exc()
+
+    def _create_fallback_state(self, query, language="es", datasets=None, variables=None):
+        """Create a fallback state for the agent when state_normalizer is not available"""
+        # Create a simple state dictionary
+        return {
+            "messages": [
+                {"type": "human", "content": query}
+            ],
+            "metadata": {
+                "language": language,
+                "dataset": datasets or ["ALL"],
+                "selected_variables": variables or [],
+                "intent": "query_variable_database"
+            }
+        }
+
+def run_test_queries(queries=None, language="es", profiler=None):
+    """Run a set of test queries and profile performance"""
+    if profiler is None:
+        profiler = AgentProfiler()
+    
+    if queries is None:
+        queries = DEFAULT_QUERIES
+    
+    for i, query in enumerate(queries):
+        print(f"\n[{i+1}/{len(queries)}] Testing query: '{query}'")
+        profiler.profile_query(query, language=language)
+    
+    # Print summary stats
+    profiler.print_summary()
+    
+    # Check LangSmith traces
+    profiler.check_langsmith_traces()
+    
+    return profiler
+
+def main():
+    """Main function for running the agent tracing test"""
+    import argparse
+    
+    # Create argument parser
+    parser = argparse.ArgumentParser(description="Test the navigator agent with tracing")
+    parser.add_argument("-q", "--query", nargs="+", help="Custom queries to test (can provide multiple)")
+    parser.add_argument("-l", "--language", default="es", help="Language to use for queries (default: es)")
+    parser.add_argument("-d", "--datasets", nargs="+", help="Datasets to query (default: ALL)")
+    parser.add_argument("-n", "--no-langsmith", action="store_true", help="Disable LangSmith tracing")
+    
+    args = parser.parse_args()
+    
+    # Print header
+    print("\n" + "=" * 80)
+    print("🔍 AGENT TRACING AND MONITORING TEST")
+    print("=" * 80)
+    
+    # Setup LangSmith
+    if not args.no_langsmith:
+        langsmith_enabled = setup_langsmith()
+        if langsmith_enabled:
+            print("✅ LangSmith tracing enabled")
+        else:
+            print("⚠️ LangSmith tracing not enabled. Limited functionality available.")
+    else:
+        print("ℹ️ LangSmith tracing disabled by user")
+        langsmith_enabled = False
+    
+    # Create profiler
+    profiler = AgentProfiler()
+    
+    try:
+        # Run queries
+        if args.query:
+            queries = args.query
+            print(f"🔍 Running {len(queries)} custom queries from command line")
+            run_test_queries(queries, profiler=profiler, language=args.language, datasets=args.datasets)
+        else:
+            print(f"🔍 Running {len(DEFAULT_QUERIES)} default test queries")
+            run_test_queries(profiler=profiler)
+    except KeyboardInterrupt:
+        print("\n⚠️ Test interrupted by user")
+    except Exception as e:
+        print(f"\n❌ Error during testing: {e}")
+        traceback.print_exc()
+    finally:
+        # Make sure to clean up resources
+        print("\n🧹 Cleaning up resources...")
+        if profiler.agent_instance is not None:
+            print("   Ensuring agent workflow is properly closed")
+            # No explicit close method needed, Python's GC will handle it
+
+if __name__ == "__main__":
+    main()

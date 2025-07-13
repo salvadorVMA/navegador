@@ -1,0 +1,204 @@
+{
+  "test_1": {
+    "success": true,
+    "elapsed": 26.44886803627014,
+    "intent": "query_variable_database",
+    "selected_variables": [
+      "p23_1|SAL",
+      "p37|SAL",
+      "p1|SAL",
+      "p48_2|SAL",
+      "p24|SAL",
+      "p23_2|SAL",
+      "p41|SAL",
+      "p11|SAL",
+      "p46_2_8|SAL",
+      "p48_3|SAL"
+    ],
+    "state_keys": [
+      "messages",
+      "user_query",
+      "original_query",
+      "dataset",
+      "selected_variables",
+      "analysis_type",
+      "user_approved",
+      "analysis_result",
+      "language"
+    ]
+  },
+  "test_2": {
+    "success": true,
+    "elapsed": 27.673820972442627,
+    "intent": "query_variable_database",
+    "selected_variables": [
+      "p23_1|SAL",
+      "p1|SAL",
+      "p48_2|SAL",
+      "p24|SAL",
+      "p23_2|SAL",
+      "p41|SAL",
+      "p11|SAL",
+      "p46_2_8|SAL",
+      "p48_3|SAL",
+      "p25_1|SAL"
+    ],
+    "state_keys": [
+      "messages",
+      "intent",
+      "user_query",
+      "original_query",
+      "dataset",
+      "selected_variables",
+      "analysis_type",
+      "user_approved",
+      "analysis_result",
+      "language"
+    ]
+  },
+  "test_3": {
+    "success": true,
+    "elapsed": 27.47589612007141,
+    "intent": "query_variable_database",
+    "selected_variables": [
+      "p23_1|SAL",
+      "p37|SAL",
+      "p1|SAL",
+      "p48_2|SAL",
+      "p24|SAL",
+      "p23_2|SAL",
+      "p41|SAL",
+      "p11|SAL",
+      "p46_2_8|SAL",
+      "p48_3|SAL"
+    ],
+    "state_keys": [
+      "messages",
+      "intent",
+      "user_query",
+      "original_query",
+      "dataset",
+      "selected_variables",
+      "analysis_type",
+      "user_approved",
+      "analysis_result",
+      "language"
+    ]
+  },
+  "test_4": {
+    "success": true,
+    "elapsed": 26.23846173286438,
+    "intent": "query_variable_database",
+    "selected_variables": [
+      "p23_1|SAL",
+      "p1|SAL",
+      "p48_2|SAL",
+      "p24|SAL",
+      "p23_2|SAL",
+      "p41|SAL",
+      "p11|SAL",
+      "p46_2_8|SAL",
+      "p48_3|SAL",
+      "p25_1|SAL"
+    ],
+    "state_keys": [
+      "messages",
+      "user_query",
+      "original_query",
+      "dataset",
+      "selected_variables",
+      "analysis_type",
+      "user_approved",
+      "analysis_result",
+      "language",
+      "intent"
+    ]
+  },
+  "config_test_1": {
+    "success": true,
+    "elapsed": 27.180598735809326,
+    "intent": "query_variable_database",
+    "selected_variables": [
+      "p23_1|SAL",
+      "p37|SAL",
+      "p1|SAL",
+      "p48_2|SAL",
+      "p24|SAL",
+      "p13|SAL",
+      "p23_2|SAL",
+      "p41|SAL",
+      "p11|SAL",
+      "p46_2_8|SAL"
+    ],
+    "state_keys": [
+      "messages",
+      "user_query",
+      "original_query",
+      "dataset",
+      "selected_variables",
+      "analysis_type",
+      "user_approved",
+      "analysis_result",
+      "language",
+      "intent"
+    ]
+  },
+  "config_test_2": {
+    "success": true,
+    "elapsed": 26.00920295715332,
+    "intent": "query_variable_database",
+    "selected_variables": [
+      "p23_1|SAL",
+      "p37|SAL",
+      "p1|SAL",
+      "p48_2|SAL",
+      "p24|SAL",
+      "p23_2|SAL",
+      "p41|SAL",
+      "p11|SAL",
+      "p46_2_8|SAL",
+      "p48_3|SAL"
+    ],
+    "state_keys": [
+      "messages",
+      "user_query",
+      "original_query",
+      "dataset",
+      "selected_variables",
+      "analysis_type",
+      "user_approved",
+      "analysis_result",
+      "language",
+      "intent"
+    ]
+  },
+  "config_test_3": {
+    "success": true,
+    "elapsed": 25.925426959991455,
+    "intent": "query_variable_database",
+    "selected_variables": [
+      "p23_1|SAL",
+      "p37|SAL",
+      "p1|SAL",
+      "p48_2|SAL",
+      "p24|SAL",
+      "p13|SAL",
+      "p23_2|SAL",
+      "p41|SAL",
+      "p11|SAL",
+      "p46_2_8|SAL"
+    ],
+    "state_keys": [
+      "messages",
+      "user_query",
+      "original_query",
+      "dataset",
+      "selected_variables",
+      "analysis_type",
+      "user_approved",
+      "analysis_result",
+      "language",
+      "intent"
+    ]
+  }
+}
