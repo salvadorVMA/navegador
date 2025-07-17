@@ -22,8 +22,8 @@ except ImportError:
     LangSmithClient = None
     LangSmithRun = None
 
-# Enable LangSmith tracing if API key is available
-os.environ["LANGSMITH_TRACING"] = "true"
+# # Enable LangSmith tracing if API key is available
+# os.environ["LANGSMITH_TRACING"] = "true"
 
 # Initialize tracing
 LANGSMITH_API_KEY = os.getenv("LANGSMITH_API_KEY")
@@ -264,6 +264,7 @@ def create_agent(enable_persistence=True):
                     last_user_message = content
                 break
         
+        # TODO: no hay 'general variables'- si no hay mensaje para variables, volver al inicio! 
         # Add error handling if no valid user message was found
         if not last_user_message:
             print("⚠️ Warning: Could not extract a valid user message")
@@ -299,6 +300,7 @@ def create_agent(enable_persistence=True):
                 state
             )
             
+            # TODO: devolver proceso de selección a proceso original (una sola búsqueda, no tres)
             # Call the actual variable selection function
             topic_ids, variables_dict, grade_dict = _variable_selector(
                 last_user_message, tmp_topic_st, selection_llm, use_simultaneous_retrieval=True
@@ -307,6 +309,8 @@ def create_agent(enable_persistence=True):
             if variables_dict and grade_dict:
                 # Get the top-graded variables
                 sorted_vars = sorted(grade_dict.items(), key=lambda x: list(x[1].keys())[0], reverse=True)
+                
+                # TODO: no hardcodear el número de variables devueltas a 10!
                 top_variables = [var_id for var_id, grade in sorted_vars[:10]]  # Top 10 most relevant variables
                 
                 # Collect dataset information
@@ -319,7 +323,7 @@ def create_agent(enable_persistence=True):
                 variable_descriptions = []
                 for var_id in top_variables:
                     if var_id in variables_dict:
-                        var_info = variables_dict.get(f"{var_id}__question", "")
+                        var_info = variables_dict.get(f"{var_id}__question", "") # TODO: no debe existir pregunta falsa! 
                         if var_info:
                             # Add just the first part of the variable description
                             variable_descriptions.append(f"- {var_info[:80]}...")
@@ -329,6 +333,8 @@ def create_agent(enable_persistence=True):
                 state["selected_variables"] = selected_vars
                 state["dataset"] = dataset_ids
                 
+                # TODO: no enlistar todos los datos, sino decir 'todas las bases' 
+                # TODO: agregar a diccionario de respuestas bilingües
                 # Create the response message
                 response = (f"Based on your query, I've selected the dataset: {', '.join(dataset_ids)}\n\n"
                            f"And these relevant variables:\n"
@@ -341,6 +347,7 @@ def create_agent(enable_persistence=True):
                 dataset_ids = ["ALL"]
                 selected_vars = ["NA"]
                 
+                # TODO: no hay 'general variables' - si no hay variables, avisar  y volvre al principio
                 response = (f"I couldn't find specific variables for your query. Here are some general variables that might help:\n\n"
                            f"• {chr(10).join([f'- {var}' for var in selected_vars])}\n\n"
                            f"Would you like to proceed with these or try a more specific query?"
@@ -354,7 +361,7 @@ def create_agent(enable_persistence=True):
             
             selected_vars = ["NA"]
             dataset_ids = ["NA"]
-            
+            # TODO: mensaje equivocado: si no hay selección, no procede análisis - volver al principio!
             response = (f"Based on your query, I've selected the dataset: {', '.join(dataset_ids)}\n\n"
                        f"And these relevant variables:\n"
                        f"• {chr(10).join([f'- {var}' for var in selected_vars])}\n\n"
@@ -381,6 +388,7 @@ def create_agent(enable_persistence=True):
         
         return state
     
+    # TODO: aprobación de todo el proceso completo: variables y análisis
     # Handle user approval
     def process_approval(state: AgentState) -> AgentState:
         """Process user approval or modification of variables"""
@@ -396,8 +404,9 @@ def create_agent(enable_persistence=True):
         
         # Check if user approves variable selection
         approved = any(keyword in last_user_message.lower() 
-                      for keyword in ["yes", "approve", "good", "ok", "correct", "proceed", "sí", "aprobar", "bien", "ok", "correcto"])
+                      for keyword in ["yes", "approve", "good", "ok", "correct", "proceed", "sí", "si", "adelante", "aprobar", "bien", "ok", "correcto"])
         
+        # TODO: a diccionario de mensajes bilingües
         if approved:
             response = "Variables approved. What type of analysis would you like? (descriptive or detailed)"
             state["user_approved"] = True
@@ -409,6 +418,8 @@ def create_agent(enable_persistence=True):
             state["messages"].append(AIMessage(content=response))
             return state
     
+    # TODO: sólo tres tipos de análisis: descriptivo, detallado, o sólo gráficos
+    # TODO: agregar lista de palabras para identificar el tipo de análisis
     # Handle analysis type selection
     def select_analysis_type(state: AgentState) -> AgentState:
         """Handle analysis type selection"""
@@ -424,6 +435,8 @@ def create_agent(enable_persistence=True):
         
         last_lower = last_user_message.lower()
         
+        # TODO: agregar opciones en español!
+
         if "plots only" in last_lower or "just plots" in last_lower or "only plots" in last_lower:
             state["analysis_type"] = "plots_only"
             response = "Plots-only analysis selected. I'll generate visualizations for your selected variables. Ready to run analysis?"
@@ -448,6 +461,8 @@ def create_agent(enable_persistence=True):
         user_query = state.get("original_query", "")
         analysis_type = state.get("analysis_type", "detailed")
         
+        #TODO: sólo tres tipos de análisis: descriptivo, detallado, o sólo gráficos
+
         # Map agent analysis types to run_analysis module types
         analysis_type_mapping = {
             "detailed": "detailed_report",
@@ -458,6 +473,8 @@ def create_agent(enable_persistence=True):
         
         mapped_analysis_type = analysis_type_mapping.get(analysis_type, "detailed_report")
         
+        # TODO: NOOOOOOO!! por qué está esto aquí??
+        # TODO: adaptar run_analysis_module para que pase lista de bases, no sólo la primera!
         # Use the first dataset if multiple are selected
         dataset_name = dataset[0] if dataset else "all"
         
@@ -470,6 +487,8 @@ def create_agent(enable_persistence=True):
                 dataset_name=dataset_name
             )
             
+            # TODO: mensajes bilingües
+            # TODO: los resultados aparecen en el panel de resultados, no en el chat
             if results.get('success', False):
                 # Use the formatted report for the response
                 response = f"Analysis complete! Here are your results:\n\n{results.get('formatted_report', 'No report available')}"
@@ -486,6 +505,8 @@ def create_agent(enable_persistence=True):
         
         return state
     
+    # TODO: cambiar esta a answer_dataset_questions
+    # TODO: mensajes bilingües
     # General questions handler
     def answer_general(state: AgentState) -> AgentState:
         """Answer general questions about datasets"""
@@ -516,6 +537,7 @@ def create_agent(enable_persistence=True):
         """Handle conversation management requests"""
         intent = state["intent"]
         
+        # TODO: mensajes biligües!
         if intent == "continue_conversation":
             response = (
                 "I can help you with the following:\n"
@@ -548,7 +570,7 @@ def create_agent(enable_persistence=True):
     def route_intent(state: AgentState) -> str:
         """Route based on detected intent"""
         intent = state["intent"]
-        # TODO: detectar idioma de usuario, fijarlo como state de la conersación y adaptar textos predefinidos para ambos idiomas
+
         # Map intents to node names
         intent_routing = {
             "answer_general_questions": "answer_general",
@@ -563,6 +585,7 @@ def create_agent(enable_persistence=True):
         
         return intent_routing.get(intent, "answer_general")
     
+    # TODO: la aprobación se dará al seleccionar variables y bases
     def route_approval(state: AgentState) -> str:
         """Route based on user approval status"""
         if state.get("user_approved", False):
@@ -570,6 +593,7 @@ def create_agent(enable_persistence=True):
         else:
             return "handle_query"
     
+    # TODO: esto sirve? 
     def route_analysis_ready(state: AgentState) -> str:
         """Route when analysis is ready to run"""
         intent = state["intent"]

@@ -255,7 +255,7 @@ def batch_process_expert_summaries_optimized(tst_lgc_dict: dict, db_f1) -> dict:
         })
     
     # Process in parallel
-    processor = LLMBatchProcessor(max_workers=3)  # Limit to 3 parallel calls
+    processor = LLMBatchProcessor(max_workers=15)  # Limit to 15 parallel calls (3 per core, assuming 5 cores)
     results = processor.process_batch(llm_requests, get_answer_optimized)
     
     # Parse results
