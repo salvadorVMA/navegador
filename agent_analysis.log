@@ -1,0 +1,12 @@
+[2025-07-14 13:53:10] ✅ Successfully imported agent module
+[2025-07-14 13:53:10] 🔄 Creating agent instance...
+[2025-07-14 13:53:10] ✅ Agent instance created successfully in 0.02s
+[2025-07-14 13:53:10] 🔄 Processing query 1/1: '¿Qué opinan los mexicanos sobre la salud?'
+[2025-07-14 13:53:10] ======================================================================
+[2025-07-14 13:53:10] 🔍 Analyzing query: '¿Qué opinan los mexicanos sobre la salud?'
+[2025-07-14 13:53:10] 🔄 Invoking agent with thread_id: analysis_1752522790
+[2025-07-14 13:54:10] ✅ Query processed in 60.12 seconds
+[2025-07-14 13:54:10] 📋 Selected 10 variables
+[2025-07-14 13:54:10] 📋 Sample variables: p22_5|GLO, p53aa_1|CIE, p67a_1|GEN
+[2025-07-14 13:54:10] 📊 Summary: 1/1 queries successful, average time: 60.12s
+[2025-07-14 13:54:10] ✅ Analysis complete
