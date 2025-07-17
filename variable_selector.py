@@ -309,7 +309,7 @@ def retrieve_all_types_simultaneously(db_f1, query_emb, topic_ids=None, type_lst
     # Single query for all types
     tmp_res_q = db_f1.query(
         query_embeddings=[query_emb],
-        n_results=n_results * len(type_lst) * 2,  # Get more results to ensure we have enough per type
+        n_results=n_results * len(type_lst) * 2,  # Get more results to ensure we have enough per type # TODO: is this necessary?
         where={"type": {"$in": type_lst}}
     )
     
@@ -318,6 +318,9 @@ def retrieve_all_types_simultaneously(db_f1, query_emb, topic_ids=None, type_lst
     
     print(f"   📋 Total results retrieved: {len(tmp_res_ids)}")
     
+
+    # TODO: remover el análisis por tipo: todas las respuestas deben ser procesadas al mismo tiempo - no por separado
+    # -- pero esto es lo que hace esta función, pero no es necesario reportarlos por separado, o sí? 
     # Group results by type and filter by topic_ids
     tmp_dist_dict = {doc_type: {} for doc_type in type_lst}
     
