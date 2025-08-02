@@ -1,0 +1,95 @@
+# .dockerignore for navegador
+# Exclude large, unnecessary, and sensitive files/folders from Docker build
+
+# Python cache and virtual environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+*.venv
+venv/
+ENV/
+
+# Jupyter and notebook checkpoints
+.ipynb_checkpoints/
+*.ipynb
+
+# Node.js and frontend build artifacts
+node_modules/
+*.log
+
+# Data, models, and large files
+*.tar
+*.gz
+*.zip
+*.bz2
+*.xz
+*.pkl
+*.sav
+*.h5
+*.ckpt
+*.pt
+*.onnx
+*.joblib
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.json
+*.xlsx
+*.xls
+*.db
+*.sqlite
+*.rdata
+*.mat
+*.npz
+*.npy
+
+# Images and plots
+plot_images/
+tmp_images/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.svg
+*.tiff
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
+*.bak
+*.swp
+*.swo
+*.tmp
+*.out
+*.pdf
+*.docx
+*.pptx
+
+# Exclude test results, logs, and debug artifacts
+agent_analysis.log
+agent_test_results.log
+agent_debug_results.json
+
+# Exclude backup files
+*.bak
+*.backup
+
+# Exclude deployment scripts and legacy files if not needed
+# deploy_to_existing_vm.sh
+
+# Exclude environment files not used in Docker build
+environment_working.yml
+
+# Exclude .git and VCS folders
+.git/
+.gitignore
+
+# Exclude VS Code settings
+.vscode/
+
+# Exclude other folders/files as needed
+# Add more patterns below as discovered
