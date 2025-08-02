@@ -1,0 +1,37 @@
+name: nvg_py13_env
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - numpy
+  - pandas
+  - matplotlib
+  - scipy
+  - scikit-learn
+  - jupyter
+  - jupyterlab
+  - requests
+  - flask
+  - plotly
+  - sqlalchemy
+  - boto3
+  - beautifulsoup4
+  - selenium
+  - pydantic
+  - click
+  - tqdm
+  - cryptography
+  - aiohttp
+  - httpx
+  - python-dotenv
+  - pyyaml
+  - rich
+  - typer
+  - tenacity
+  - validators
+  - watchdog
+  - gitpython
+  - psutil
+  - attrs
