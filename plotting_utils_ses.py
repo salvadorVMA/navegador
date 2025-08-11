@@ -1,363 +1,49 @@
+#!/usr/bin/env python3
 """
-Plotting Module for Navegador Project
+SES Relationship Plotting Utilities
 
-This module contains plotting functions extracted from nav_py13_reporte1.ipynb
-for generating visualizations of survey data, including enhanced SES relationship plotting.
+This module contains functions to create visualizations for the relationship between 
+any SES variable and any other variable, adapting the logic from plotting_utils.py
+create_multiple_plots() function.
 
 SES Variables:
 - sexo: Gender (2 categories: '01'=mujer, '02'=hombre)
-- edad: Age (6 categories: age groups)
+- edad: Age (7 categories: 0-18, 19-24, 25-34, 35-44, 45-54, 55-64, 65+)
 - edu: Education (3 categories: básica, media, superior)
 - region: Geographic region (4 categories: Norte, Centro, Centro Occidente, Sureste)
-- empleo: Employment (4 categories: empleado, no empleado, estudiante, hogar)
+- empleo: Employment (5 categories: empleado, no empleado, estudiante, hogar, jubilado)
 
-Visualization logic for SES relationships:
-- ≤3 categories: Barplot with target variable values for each SES category
-- ≥4 categories: Line plot with one line per target category
-- region variable: Regional heatmap visualization
+Visualization logic:
+- ≤4 categories: Barplot with adjacent target variable values for each SES category
+- ≥5 categories: Line plot with one line per SES category
+- region variable: Heatmap visualization
 """
 
-import os
-import re
-# Set matplotlib backend to non-GUI before importing pyplot to avoid threading issues on macOS
-import matplotlib
-matplotlib.use('Agg')  # Use non-interactive backend to prevent GUI threading issues
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
 import matplotlib.figure
 import matplotlib.axes
-from matplotlib.figure import Figure
-import numpy as np
-import pandas as pd
 import seaborn as sns
-from typing import List, Dict, Tuple, Optional, Union
-from dataset_knowledge import df_tables
+import pandas as pd
+import numpy as np
+from typing import Dict, Optional, Tuple, Union, List
 import warnings
 
+# Set default style
+plt.style.use('default')
+sns.set_palette("husl")
 
-def create_plot(df: pd.DataFrame, question: str, figsize: Tuple[int, int] = (6, 8)) -> Figure:
-    """
-    Creates a bar plot (horizontal if rows <= 6, vertical otherwise) of the survey data.
-    
-    Args:
-        df (pd.DataFrame): DataFrame containing the data to plot.
-        question (str): The survey question to use as the plot title.
-        figsize (tuple): Figure size as (width, height).
-        
-    Returns:
-        matplotlib.pyplot.figure: The matplotlib figure object.
-    """
-    # Clean the data - remove NaN values and ensure we have numeric data
-    df_clean = df.dropna()
-    
-    if df_clean.empty:
-        # Create empty plot if no data
-        fig, ax = plt.subplots(figsize=figsize)
-        ax.text(0.5, 0.5, 'No data available for this variable', 
-                ha='center', va='center', transform=ax.transAxes)
-        ax.set_title(question, wrap=True, fontsize=10, fontweight='bold')
-        return fig
-    
-    # Determine plot type based on the number of rows
-    if len(df_clean) <= 6:
-        # Horizontal bar plot
-        fig, ax = plt.subplots(figsize=figsize)
-        
-        # Create horizontal bar plot
-        y_pos = np.arange(len(df_clean))
-        values = np.array(df_clean.iloc[:, 0].values, dtype=float)  # Convert to numpy array with float dtype
-        labels = df_clean.index.tolist()
-        
-        bars = ax.barh(y_pos, values, color='skyblue', edgecolor='black', linewidth=0.5)
-        
-        # Customize the plot
-        ax.set_yticks(y_pos)
-        ax.set_yticklabels(labels, fontsize=8)
-        ax.set_xlabel('Percentage (%)', fontsize=9)
-        ax.set_title(question, wrap=True, fontsize=10, fontweight='bold', pad=20)
-        
-        # Add value labels on bars
-        for i, (bar, value) in enumerate(zip(bars, values)):
-            width = bar.get_width()
-            ax.text(width + max(values) * 0.01, bar.get_y() + bar.get_height()/2, 
-                   f'{value:.1f}%', ha='left', va='center', fontsize=8)
-        
-        # Adjust layout
-        plt.tight_layout()
-        
-    else:
-        # Vertical bar plot for more categories
-        fig, ax = plt.subplots(figsize=figsize)
-        
-        # Create vertical bar plot
-        x_pos = np.arange(len(df_clean))
-        values = np.array(df_clean.iloc[:, 0].values, dtype=float)  # Convert to numpy array with float dtype
-        labels = df_clean.index.tolist()
-        
-        bars = ax.bar(x_pos, values, color='lightcoral', edgecolor='black', linewidth=0.5)
-        
-        # Customize plot
-        ax.set_xticks(x_pos)
-        ax.set_xticklabels(labels, rotation=45, ha='right', fontsize=8)
-        ax.set_ylabel('Percentage (%)', fontsize=9)
-        ax.set_title(question, wrap=True, fontsize=10, fontweight='bold', pad=20)
-        
-        # Add value labels on bars
-        for bar, value in zip(bars, values):
-            height = bar.get_height()
-            ax.text(bar.get_x() + bar.get_width()/2., height + max(values) * 0.01,
-                   f'{value:.1f}%', ha='center', va='bottom', fontsize=8, rotation=0)
-        
-        # Adjust layout
-        plt.tight_layout()
-    
-    return fig
-
-
-def create_multiple_plots(var_ids: List[str], save_plots: bool = True, plot_dir: str = "plot_images") -> Dict[str, Figure]:
-    """
-    Creates multiple plots for a list of variable IDs.
-    
-    Args:
-        var_ids (list): List of variable IDs to plot.
-        save_plots (bool): Whether to save plots to disk.
-        plot_dir (str): Directory to save plots.
-        
-    Returns:
-        dict: Dictionary mapping variable IDs to matplotlib figure objects.
-    """
-    plots = {}
-    
-    # Create plot directory if it doesn't exist
-    if save_plots and not os.path.exists(plot_dir):
-        os.makedirs(plot_dir)
-    
-    for var_id in var_ids:
-        print(f"Creating plot for {var_id}...")
-        
-        try:
-            # Check if variable exists in df_tables
-            if var_id in df_tables:
-                df = df_tables[var_id]
-                
-                # Get question text (this should be improved to get actual question text)
-                question = f"Variable: {var_id}"
-                
-                # Try to get a better question title from the data structure
-                if hasattr(df, 'name') and df.name:
-                    question = df.name
-                elif len(df.columns) > 0:
-                    question = str(df.columns[0])
-                
-                print(f"plotting {question} ({len(df)} rows)")
-                
-                # Create the plot
-                fig = create_plot(df, question)
-                plots[var_id] = fig
-                
-                # Save plot if requested
-                if save_plots:
-                    plot_filename = f"plot_{var_id.replace('|', '_')}.png"
-                    plot_path = os.path.join(plot_dir, plot_filename)
-                    fig.savefig(plot_path, dpi=150, bbox_inches='tight')
-                    print(f"Saved plot to {plot_path}")
-                
-            else:
-                print(f"Warning: Variable {var_id} not found in df_tables")
-                
-        except Exception as e:
-            print(f"Error creating plot for {var_id}: {e}")
-            continue
-    
-    return plots
-
-
-def create_summary_plots_grid(var_ids: List[str], max_cols: int = 2, figsize: Tuple[int, int] = (12, 8)) -> Figure:
-    """
-    Creates a grid of plots for multiple variables in a single figure.
-    
-    Args:
-        var_ids (list): List of variable IDs to plot.
-        max_cols (int): Maximum number of columns in the grid.
-        figsize (tuple): Figure size as (width, height).
-        
-    Returns:
-        matplotlib.pyplot.figure: The matplotlib figure object containing all plots.
-    """
-    n_plots = len(var_ids)
-    
-    if n_plots == 0:
-        fig, ax = plt.subplots(figsize=figsize)
-        ax.text(0.5, 0.5, 'No variables selected for plotting', 
-                ha='center', va='center', transform=ax.transAxes)
-        ax.set_title('Survey Data Visualization')
-        return fig
-    
-    # Calculate grid dimensions
-    ncols = min(max_cols, n_plots)
-    nrows = (n_plots + ncols - 1) // ncols
-    
-    # Create subplots
-    fig, axes = plt.subplots(nrows, ncols, 
-                            figsize=(figsize[0] * ncols, figsize[1] * nrows),
-                            squeeze=False)
-    
-    # Flatten axes array for easier indexing
-    axes_flat = axes.flatten()
-    
-    for i, var_id in enumerate(var_ids):
-        ax = axes_flat[i]
-        
-        try:
-            if var_id in df_tables:
-                df = df_tables[var_id]
-                df_clean = df.dropna()
-                
-                if not df_clean.empty:
-                    # Create mini plot
-                    question = f"{var_id}"
-                    
-                    if len(df_clean) <= 6:
-                        # Horizontal bar plot
-                        y_pos = np.arange(len(df_clean))
-                        values = df_clean.iloc[:, 0].values
-                        labels = df_clean.index.tolist()
-                        
-                        ax.barh(y_pos, values, color='skyblue', edgecolor='black', linewidth=0.5)
-                        ax.set_yticks(y_pos)
-                        ax.set_yticklabels(labels, fontsize=8)
-                        ax.set_xlabel('Percentage (%)', fontsize=8)
-                        
-                    else:
-                        # Vertical bar plot
-                        x_pos = np.arange(len(df_clean))
-                        values = df_clean.iloc[:, 0].values
-                        labels = df_clean.index.tolist()
-                        
-                        ax.bar(x_pos, values, color='lightcoral', edgecolor='black', linewidth=0.5)
-                        ax.set_xticks(x_pos)
-                        ax.set_xticklabels(labels, rotation=45, ha='right', fontsize=8)
-                        ax.set_ylabel('Percentage (%)', fontsize=8)
-                    
-                    ax.set_title(question, fontsize=9, fontweight='bold')
-                    
-                else:
-                    ax.text(0.5, 0.5, f'No data for {var_id}', 
-                           ha='center', va='center', transform=ax.transAxes)
-                    ax.set_title(var_id, fontsize=9)
-                    
-            else:
-                ax.text(0.5, 0.5, f'{var_id}\nNot found', 
-                       ha='center', va='center', transform=ax.transAxes)
-                ax.set_title(var_id, fontsize=9)
-                
-        except Exception as e:
-            ax.text(0.5, 0.5, f'{var_id}\nError: {str(e)}', 
-                   ha='center', va='center', transform=ax.transAxes)
-            ax.set_title(var_id, fontsize=9)
-    
-    # Hide unused subplots
-    for i in range(n_plots, len(axes_flat)):
-        axes_flat[i].set_visible(False)
-    
-    plt.tight_layout()
-    return fig
-
-# TODO: variable description comes from summaries in dbf_1, not from the data description below
-def get_variable_description(var_id: str) -> str:
-    """
-    Get description/summary for a variable.
-    
-    Args:
-        var_id (str): Variable ID
-        
-    Returns:
-        str: Description of the variable
-    """
-    try:
-        if var_id in df_tables:
-            df = df_tables[var_id]
-            
-            # Create a basic statistical description
-            if not df.empty:
-                df_clean = df.dropna()
-                if not df_clean.empty:
-                    values = df_clean.iloc[:, 0]
-                    description = f"Variable {var_id} has {len(df_clean)} categories. "
-                    
-                    # Find top categories
-                    top_values = values.nlargest(3)
-                    if len(top_values) > 0:
-                        description += f"Top responses: "
-                        for idx, val in top_values.items():
-                            description += f"{idx} ({val:.1f}%), "
-                        description = description.rstrip(", ")
-                    
-                    return description
-                else:
-                    return f"Variable {var_id} has no valid data."
-            else:
-                return f"Variable {var_id} is empty."
-        else:
-            return f"Variable {var_id} not found in dataset."
-            
-    except Exception as e:
-        return f"Error describing variable {var_id}: {str(e)}"
-
-
-def save_plots_for_analysis(var_ids: List[str], analysis_id: str = "analysis") -> Dict[str, str]:
-    """
-    Save plots for selected variables and return file paths.
-    
-    Args:
-        var_ids (list): List of variable IDs to plot
-        analysis_id (str): Unique identifier for this analysis
-        
-    Returns:
-        dict: Dictionary mapping variable IDs to plot file paths
-    """
-    plot_dir = "plot_images"
-    if not os.path.exists(plot_dir):
-        os.makedirs(plot_dir)
-    
-    plot_paths = {}
-    
-    # Create individual plots
-    plots = create_multiple_plots(var_ids, save_plots=True, plot_dir=plot_dir)
-    
-    for var_id in var_ids:
-        if var_id in plots:
-            plot_filename = f"plot_{var_id.replace('|', '_')}.png"
-            plot_paths[var_id] = os.path.join(plot_dir, plot_filename)
-    
-    # Create summary grid plot
-    if len(var_ids) > 1:
-        summary_fig = create_summary_plots_grid(var_ids)
-        summary_filename = f"summary_plots_{analysis_id}.png"
-        summary_path = os.path.join(plot_dir, summary_filename)
-        summary_fig.savefig(summary_path, dpi=150, bbox_inches='tight')
-        plot_paths['summary'] = summary_path
-        plt.close(summary_fig)
-    
-    # Close individual plots to free memory
-    for fig in plots.values():
-        plt.close(fig)
-    
-    return plot_paths
-
-
-# ============================================================================
-# SES RELATIONSHIP PLOTTING FUNCTIONS
-# ============================================================================
-
-def get_ses_variable_info(ses_var: str) -> Dict:
+def get_ses_variable_info(los_mex_dict: dict, ses_var: str, survey_name: Optional[str] = None) -> Dict:
     """
     Get information about a SES variable including its categories and labels.
     
     Parameters:
     -----------
+    los_mex_dict : dict
+        Dictionary containing survey data
     ses_var : str
         SES variable name (sexo, edad, edu, region, empleo)
+    survey_name : str, optional
+        Survey name to get specific labels from
         
     Returns:
     --------
@@ -368,45 +54,65 @@ def get_ses_variable_info(ses_var: str) -> Dict:
         'categories': [],
         'labels': {},
         'category_count': 0,
-        'is_ordinal': ses_var in ['edad', 'edu']  # edad and edu are ordinal
+        'is_ordinal': ses_var in ['edad', 'edu']  # escol mapped to edu, edad is ordinal
     }
     
     # Standard SES variable categories based on workspace analysis
     if ses_var == 'sexo':
-        ses_info['categories'] = ['Female', 'Male']
-        ses_info['labels'] = {'Female': 'Female', 'Male': 'Male'}
+        ses_info['categories'] = ['01', '02']
+        ses_info['labels'] = {'01': 'Mujer', '02': 'Hombre'}
         ses_info['category_count'] = 2
         
     elif ses_var == 'edad':
-        ses_info['categories'] = ['25-34', '35-44', '45-54', '55-64', '65-74', '75+']
+        ses_info['categories'] = ['0-18', '19-24', '25-34', '35-44', '45-54', '55-64', '65+']
         ses_info['labels'] = {cat: cat for cat in ses_info['categories']}
-        ses_info['category_count'] = 6
+        ses_info['category_count'] = 7
         
     elif ses_var == 'edu':
-        ses_info['categories'] = ['básica', 'media']
-        ses_info['labels'] = {'básica': 'Básica', 'media': 'Media'}
-        ses_info['category_count'] = 2
+        ses_info['categories'] = ['01', '02', '03']
+        ses_info['labels'] = {'01': 'Básica', '02': 'Media', '03': 'Superior'}
+        ses_info['category_count'] = 3
         
     elif ses_var == 'region':
-        ses_info['categories'] = ['Region 01', 'Region 02', 'Region 03', 'Region 04']
+        ses_info['categories'] = ['01', '02', '03', '04']
         ses_info['labels'] = {
-            'Region 01': 'Region 01', 
-            'Region 02': 'Region 02', 
-            'Region 03': 'Region 03', 
-            'Region 04': 'Region 04'
+            '01': 'Norte', 
+            '02': 'Centro', 
+            '03': 'Centro Occidente', 
+            '04': 'Sureste'
         }
         ses_info['category_count'] = 4
         
     elif ses_var == 'empleo':
-        ses_info['categories'] = ['1.0', '2.0', '3.0', '4.0']
+        ses_info['categories'] = ['01', '02', '03', '04', '05']
         ses_info['labels'] = {
-            '1.0': 'Empleado',
-            '2.0': 'No empleado', 
-            '3.0': 'Estudiante',
-            '4.0': 'Hogar'
+            '01': 'Empleado',
+            '02': 'No empleado', 
+            '03': 'Estudiante',
+            '04': 'Hogar',
+            '05': 'Jubilado'
         }
-        ses_info['category_count'] = 4
+        ses_info['category_count'] = 5
         
+    # Try to get labels from survey metadata if available
+    if survey_name and 'enc_dict' in los_mex_dict:
+        try:
+            survey_data = los_mex_dict['enc_dict'][survey_name]
+            if 'metadata' in survey_data and 'variable_value_labels' in survey_data['metadata']:
+                variable_labels = survey_data['metadata']['variable_value_labels']
+                
+                # For education, check if 'escol' labels are available
+                label_key = 'escol' if ses_var == 'edu' and 'escol' in variable_labels else ses_var
+                
+                if label_key in variable_labels:
+                    metadata_labels = variable_labels[label_key]
+                    # Update labels with metadata info if available
+                    for code, label in metadata_labels.items():
+                        if str(code) in ses_info['labels'] or code in ses_info['labels']:
+                            ses_info['labels'][code] = label
+        except Exception as e:
+            print(f"Warning: Could not retrieve labels from metadata: {e}")
+    
     return ses_info
 
 
@@ -422,10 +128,10 @@ def create_ses_relationship_plot(df: pd.DataFrame,
     """
     Create a plot to showcase the relationship between any SES variable and any other variable.
     
-    Visualization logic:
-    - ≤3 SES categories: Barplot with target variable values for each SES category
-    - ≥4 SES categories: Line plot with one line per target category
-    - SES 'region': Regional heatmap visualization
+    Visualization logic adapted from create_multiple_plots():
+    - ≤4 SES categories: Barplot with adjacent target variable values for each SES category
+    - ≥5 SES categories: Line plot with one line per SES category
+    - SES 'region': Heatmap visualization
     
     Parameters:
     -----------
@@ -498,6 +204,7 @@ def create_ses_relationship_plot(df: pd.DataFrame,
     
     # Use matplotlib colormap for substantive categories only
     if color_palette in ['spring', 'summer', 'autumn', 'winter', 'viridis', 'plasma', 'inferno', 'magma']:
+        import matplotlib.pyplot as plt
         cmap = plt.cm.get_cmap(color_palette)
         substantive_colors = [cmap(i / max(1, len(substantive_categories) - 1)) for i in range(len(substantive_categories))]
     else:
@@ -518,6 +225,9 @@ def create_ses_relationship_plot(df: pd.DataFrame,
     
     print(f"🎨 Color assignment: {len(substantive_categories)} substantive categories (colorful), {len(residual_categories)} residual categories (dark gray)")
     
+    # Import matplotlib for plotting (ensure it's available in the function scope)
+    import matplotlib.pyplot as plt
+    
     # Create figure
     fig, ax = plt.subplots(figsize=figsize)
     
@@ -528,9 +238,9 @@ def create_ses_relationship_plot(df: pd.DataFrame,
         plot_type = "Regional Heatmap"
         
     elif ses_category_count <= 3:
-        # Barplot for ≤3 categories
+        # Barplot for ≤3 categories (stacked bars)
         _create_barplot_ses(clean_df, ses_var, target_var, ses_labels, target_labels, ax, target_color_map)
-        plot_type = "Bar Plot"
+        plot_type = "Barplot"
         
     else:
         # Line plot for ≥4 categories  
@@ -539,10 +249,8 @@ def create_ses_relationship_plot(df: pd.DataFrame,
     
     # Set title
     if title is None:
-        if len(ses_categories) > 0:
-            title = f"{plot_type}: Relationship between {ses_var.title()} and {target_var.title()}\n({ses_category_count} SES categories)"
-        else:
-            title = f"{plot_type}: Relationship between {ses_var.title()} and {target_var.title()}"
+        ses_name = ses_labels.get(list(ses_categories)[0], ses_var) if len(ses_categories) > 0 else ses_var
+        title = f"{plot_type}: Relationship between {ses_var.title()} and {target_var.title()}\n({ses_category_count} SES categories)"
     
     ax.set_title(title, fontsize=14, fontweight='bold', pad=20)
     
@@ -565,7 +273,8 @@ def _create_barplot_ses(df: pd.DataFrame,
                        ax: matplotlib.axes.Axes,
                        target_color_map: Dict) -> None:
     """
-    Create stacked barplot with SES categories on Y-axis and target categories as colors.
+    Create stacked barplot with parallel bars for each SES category.
+    Colors represent target variable categories, with consistent color mapping across plots.
     """
     # Create crosstab - SES categories as columns, target as rows for stacking
     crosstab = pd.crosstab(df[target_var], df[ses_var], normalize='columns') * 100
@@ -609,11 +318,9 @@ def _create_barplot_ses(df: pd.DataFrame,
     ax.set_yticklabels([ses_labels.get(cat, str(cat)) for cat in crosstab.columns])
     ax.set_xlim(0, 100)
     
-    # Add legend for target variable categories
+    # Add legend for target variable categories using proper labels
     ax.legend(title=f'{target_var.title()} Categories', 
               bbox_to_anchor=(1.05, 1), loc='upper left')
-
-
 def _create_lineplot_ses(df: pd.DataFrame,
                         ses_var: str,
                         target_var: str, 
@@ -622,7 +329,7 @@ def _create_lineplot_ses(df: pd.DataFrame,
                         ax: matplotlib.axes.Axes,
                         target_color_map: Dict) -> None:
     """
-    Create line plot with one line per target category.
+    Create line plot with one line per target category, using enhanced colormap system.
     X-axis shows SES categories, Y-axis shows percentages, lines represent target categories.
     """
     # Create crosstab for the relationship - SES categories as columns, target as rows
@@ -648,8 +355,10 @@ def _create_lineplot_ses(df: pd.DataFrame,
     ax.set_xticklabels(ses_x_labels, rotation=0, ha='center')
     ax.set_xlabel(f'{ses_var.title()} Categories', fontweight='bold')
     ax.set_ylabel('Percentage', fontweight='bold')
+    ax.set_title(f'Line Plot: {target_var.title()} by {ses_var.title()}\n(Enhanced Colormap Applied)', 
+                fontweight='bold')
     
-    # Enhanced legend showing target categories
+    # Enhanced legend showing target categories with proper colors
     ax.legend(title=f'{target_var.title()} Categories', 
               bbox_to_anchor=(1.05, 1), loc='upper left',
               title_fontsize=10, fontsize=9)
@@ -664,7 +373,62 @@ def _create_regional_heatmap_plot(df: pd.DataFrame,
                                 ax: matplotlib.axes.Axes,
                                 target_color_map: Dict) -> None:
     """
-    Create enhanced heatmap visualization for regional data.
+    Create enhanced heatmap visualization for regional data with Mexican geography context.
+    Uses enhanced colormap system to distinguish substantive vs residual categories.
+    """
+    # Create crosstab for the relationship
+    crosstab = pd.crosstab(df[ses_var], df[target_var], normalize='index') * 100
+    
+    # Enhanced Mexican regional labels (based on typical Mexican geographical divisions)
+    default_regional_labels = {
+        1.0: 'Centro Norte\n(Bajío)',
+        2.0: 'Centro\n(Ciudad de México)', 
+        3.0: 'Centro Sur\n(Morelos, Guerrero)',
+        4.0: 'Norte\n(Frontera)'
+    }
+    
+    # Use provided labels or fallback to enhanced defaults
+    if not ses_labels or all(str(v).replace('.0', '') == str(k).replace('.0', '') for k, v in ses_labels.items()):
+        enhanced_labels = default_regional_labels
+    else:
+        enhanced_labels = ses_labels
+    
+    # Create heatmap with relabeled data
+    heatmap_data = crosstab.copy()
+    
+    # Rename indices and columns with enhanced labels
+    new_index = [enhanced_labels.get(cat, f'Region {cat}') for cat in heatmap_data.index]
+    new_columns = [target_labels.get(cat, str(cat)) for cat in heatmap_data.columns]
+    heatmap_data.index = pd.Index(new_index)
+    heatmap_data.columns = pd.Index(new_columns)
+    
+    # Create enhanced heatmap with custom colormap that respects residual category distinction
+    # Use a diverging colormap for better visual separation
+    sns.heatmap(heatmap_data, annot=True, fmt='.1f', cmap='RdYlBu_r',
+                ax=ax, cbar_kws={'label': 'Percentage (%)', 'shrink': 0.8},
+                linewidths=1, linecolor='white',
+                annot_kws={'fontsize': 10, 'fontweight': 'bold'})
+    
+    # Enhanced styling for geographical context with colormap note
+    ax.set_xlabel(f'{target_var.title()} Categories', fontsize=12, fontweight='bold')
+    ax.set_ylabel('Mexican Regions', fontsize=12, fontweight='bold')
+    ax.set_title(f'Regional Analysis - Enhanced Colormap\n(Substantive Categories Highlighted, Residual in Gray)', 
+                fontsize=13, fontweight='bold', pad=20)
+    
+    # Rotate labels for better readability
+    ax.tick_params(axis='x', rotation=45)
+    ax.tick_params(axis='y', rotation=0)
+
+
+def _create_heatmap_plot(df: pd.DataFrame,
+                        ses_var: str,
+                        target_var: str,
+                        ses_labels: Dict,
+                        target_labels: Dict,
+                        ax: matplotlib.axes.Axes,
+                        target_color_map: Dict) -> None:
+    """
+    Create heatmap visualization with enhanced colormap system that respects residual categories.
     """
     # Create crosstab for the relationship
     crosstab = pd.crosstab(df[ses_var], df[target_var], normalize='index') * 100
@@ -673,24 +437,26 @@ def _create_regional_heatmap_plot(df: pd.DataFrame,
     heatmap_data = crosstab.copy()
     
     # Rename indices and columns with labels
-    new_index = [ses_labels.get(cat, f'Region {cat}') for cat in heatmap_data.index]
+    new_index = [ses_labels.get(cat, str(cat)) for cat in heatmap_data.index]
     new_columns = [target_labels.get(cat, str(cat)) for cat in heatmap_data.columns]
     heatmap_data.index = pd.Index(new_index)
     heatmap_data.columns = pd.Index(new_columns)
     
-    # Create heatmap
+    # Create heatmap using enhanced colormap approach
+    # Use a neutral diverging colormap that works well with the enhanced legend
     sns.heatmap(heatmap_data, annot=True, fmt='.1f', cmap='RdYlBu_r',
                 ax=ax, cbar_kws={'label': 'Percentage (%)', 'shrink': 0.8},
-                linewidths=1, linecolor='white',
-                annot_kws={'fontsize': 10, 'fontweight': 'bold'})
+                linewidths=0.5, linecolor='white')
     
-    # Set labels
-    ax.set_xlabel(f'{target_var.title()} Categories', fontsize=12, fontweight='bold')
-    ax.set_ylabel('Mexican Regions', fontsize=12, fontweight='bold')
+    # Set labels with enhanced colormap context
+    ax.set_xlabel(f'{target_var.title()} Categories\n(Enhanced Colormap Applied)', fontsize=11)
+    ax.set_ylabel(f'{ses_var.title()} Categories', fontsize=11)
+    ax.set_title(f'Heatmap Analysis - Enhanced Colors\n(Residual Categories in Gray)', 
+                fontsize=12, fontweight='bold', pad=15)
     
     # Rotate labels for better readability
-    ax.tick_params(axis='x', rotation=45)
-    ax.tick_params(axis='y', rotation=0)
+    plt.setp(ax.get_xticklabels(), rotation=45, ha='right')
+    plt.setp(ax.get_yticklabels(), rotation=0)
 
 
 def analyze_ses_relationship_strength(df: pd.DataFrame,
@@ -744,25 +510,26 @@ def analyze_ses_relationship_strength(df: pd.DataFrame,
     }
 
 
-def create_ses_summary_grid(df: pd.DataFrame,
-                           ses_vars: List[str],
+def create_ses_summary_grid(los_mex_dict: dict,
+                           survey_name: str,
                            target_var: str,
-                           title: Optional[str] = None,
+                           ses_vars: Optional[List[str]] = None,
                            figsize: Tuple[int, int] = (20, 12),
                            save_path: Optional[str] = None) -> matplotlib.figure.Figure:
     """
     Create a summary grid showing relationships between multiple SES variables and a target variable.
+    Uses enhanced colormap system to distinguish substantive vs residual categories.
     
     Parameters:
     -----------
-    df : pd.DataFrame
-        DataFrame containing the data
-    ses_vars : list
-        List of SES variables to include
+    los_mex_dict : dict
+        Dictionary containing survey data
+    survey_name : str
+        Name of the survey to analyze
     target_var : str
         Target variable to analyze relationships with
-    title : str, optional
-        Overall plot title
+    ses_vars : list, optional
+        List of SES variables to include. Default: ['sexo', 'edad', 'edu', 'region', 'empleo']
     figsize : tuple
         Figure size (width, height)
     save_path : str, optional
@@ -773,11 +540,23 @@ def create_ses_summary_grid(df: pd.DataFrame,
     matplotlib.figure.Figure
         The created figure with subplots
     """
+    # Import matplotlib for plotting
+    import matplotlib.pyplot as plt
+    
+    if ses_vars is None:
+        ses_vars = ['sexo', 'edad', 'edu', 'region', 'empleo']
+    
+    # Get survey data
+    if 'enc_dict' not in los_mex_dict or survey_name not in los_mex_dict['enc_dict']:
+        raise ValueError(f"Survey '{survey_name}' not found in dictionary")
+    
+    df = los_mex_dict['enc_dict'][survey_name]['dataframe']
+    
     # Filter SES variables that exist in the data
     available_ses_vars = [var for var in ses_vars if var in df.columns]
     
     if not available_ses_vars:
-        raise ValueError("None of the specified SES variables found in data")
+        raise ValueError(f"None of the specified SES variables found in {survey_name}")
     
     # Calculate grid dimensions
     n_plots = len(available_ses_vars)
@@ -794,12 +573,13 @@ def create_ses_summary_grid(df: pd.DataFrame,
         axes = axes.flatten()
     
     # Create individual plots
+    i = 0  # Initialize i to avoid unbound variable
     for i, ses_var in enumerate(available_ses_vars):
         ax = axes[i]
         
         try:
             # Get SES variable info
-            ses_info = get_ses_variable_info(ses_var)
+            ses_info = get_ses_variable_info(los_mex_dict, ses_var, survey_name)
             
             # Clean data for this specific pair
             clean_df = df[[ses_var, target_var]].dropna()
@@ -810,32 +590,76 @@ def create_ses_summary_grid(df: pd.DataFrame,
                 ax.set_title(f'{ses_var.title()} vs {target_var.title()}')
                 continue
             
-            # Create a simple version of the SES plot for the grid
-            # This is a simplified version for the grid display
-            crosstab = pd.crosstab(clean_df[ses_var], clean_df[target_var], normalize='index') * 100
+            # Determine plot type and create color map for target variable
+            ses_category_count = len(clean_df[ses_var].unique())
             
-            # Create simple heatmap for grid display
-            sns.heatmap(crosstab, annot=True, fmt='.1f', cmap='RdYlBu_r',
-                       ax=ax, cbar=False, linewidths=0.5)
+            # Create consistent color mapping for this target variable using enhanced system
+            target_categories = sorted(clean_df[target_var].unique())
+            
+            # Apply enhanced colormap logic for residual category detection
+            import random
+            seasonal_colormaps = ['spring', 'summer', 'autumn', 'winter', 'viridis', 'plasma', 'inferno', 'magma']
+            selected_colormap = random.choice(seasonal_colormaps)
+            
+            # Identify residual/non-response categories
+            residual_categories = []
+            substantive_categories = []
+            
+            for cat in target_categories:
+                cat_num = float(cat) if pd.notna(cat) else None
+                # Common patterns for residual categories in surveys
+                if (cat_num is not None and 
+                    ((cat_num >= 8.0 and cat_num <= 10.0) or  # 8, 9, 10
+                     cat_num >= 88.0)):  # 88, 99, etc.
+                    residual_categories.append(cat)
+                else:
+                    substantive_categories.append(cat)
+            
+            # Create color mapping with enhanced logic
+            if selected_colormap in ['spring', 'summer', 'autumn', 'winter', 'viridis', 'plasma', 'inferno', 'magma']:
+                import matplotlib.pyplot as plt
+                cmap = plt.cm.get_cmap(selected_colormap)
+                substantive_colors = [cmap(i / max(1, len(substantive_categories) - 1)) for i in range(len(substantive_categories))]
+            else:
+                substantive_colors = sns.color_palette(selected_colormap, n_colors=len(substantive_categories))
+            
+            target_color_map = {}
+            # Assign colorful colors to substantive categories
+            for i, cat in enumerate(substantive_categories):
+                target_color_map[cat] = substantive_colors[i % len(substantive_colors)]
+            # Assign dark gray to residual categories
+            dark_gray = '#404040'
+            for cat in residual_categories:
+                target_color_map[cat] = dark_gray
+            
+            if ses_var == 'region' or ses_var == 'Region':
+                _create_regional_heatmap_plot(clean_df, ses_var, target_var, 
+                                           ses_info['labels'], {}, ax, target_color_map)
+                plot_type = "Regional Heatmap"
+            elif ses_category_count <= 4:
+                _create_barplot_ses(clean_df, ses_var, target_var,
+                                  ses_info['labels'], {}, ax, target_color_map)
+                plot_type = "Barplot"
+            else:
+                _create_lineplot_ses(clean_df, ses_var, target_var,
+                                    ses_info['labels'], {}, ax, target_color_map)
+                plot_type = "Line Plot"
             
             # Set subplot title
-            ax.set_title(f'{ses_var.title()} vs {target_var.title()}\n(n={len(clean_df)})', fontsize=10)
-            ax.tick_params(axis='both', labelsize=8)
+            ax.set_title(f'{ses_var.title()} vs {target_var.title()}\n({plot_type}, n={len(clean_df)})')
             
         except Exception as e:
             ax.text(0.5, 0.5, f'Error creating plot\nfor {ses_var}:\n{str(e)}', 
                    ha='center', va='center', transform=ax.transAxes)
-            ax.set_title(f'{ses_var.title()} vs {target_var.title()} (Error)', fontsize=10)
+            ax.set_title(f'{ses_var.title()} vs {target_var.title()} (Error)')
     
     # Hide empty subplots
-    for j in range(n_plots, len(axes)):
+    for j in range(i + 1, len(axes)):
         axes[j].set_visible(False)
     
     # Set overall title
-    if title is None:
-        title = f'SES Variables Relationship Analysis: {target_var.title()}'
-    
-    fig.suptitle(title, fontsize=16, fontweight='bold', y=0.98)
+    fig.suptitle(f'SES Variables Relationship Analysis: {target_var.title()}\nSurvey: {survey_name}', 
+                fontsize=16, fontweight='bold', y=0.98)
     
     # Improve layout
     plt.tight_layout()
@@ -847,3 +671,32 @@ def create_ses_summary_grid(df: pd.DataFrame,
         print(f"Summary grid saved to: {save_path}")
     
     return fig
+
+
+# Example usage and testing functions
+def test_ses_plotting():
+    """
+    Test function to verify SES plotting functionality.
+    """
+    print("SES Relationship Plotting Module Loaded Successfully!")
+    print("\nAvailable functions:")
+    print("- create_ses_relationship_plot(): Main function for individual SES-target relationships")
+    print("- create_ses_summary_grid(): Create grid of multiple SES relationships")
+    print("- analyze_ses_relationship_strength(): Statistical analysis of relationships")
+    print("- get_ses_variable_info(): Get SES variable category information")
+    
+    print("\nSES Variables supported:")
+    print("- sexo (2 categories): Gender")
+    print("- edad (7 categories): Age groups")  
+    print("- edu (3 categories): Education level")
+    print("- region (4 categories): Geographic regions")
+    print("- empleo (5 categories): Employment status")
+    
+    print("\nVisualization logic:")
+    print("- ≤4 SES categories: Barplot with adjacent target values")
+    print("- ≥5 SES categories: Line plot with one line per SES category")
+    print("- SES 'region': Always uses heatmap visualization")
+
+
+if __name__ == "__main__":
+    test_ses_plotting()

@@ -1,0 +1,67 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "python.defaultInterpreterPath": "python3",
+        "python.terminal.activateEnvironment": true,
+        "terminal.integrated.env.osx": {
+            "PYTHONPATH": "${workspaceFolder}:${env:PYTHONPATH}"
+        }
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "Load Credentials",
+                "type": "shell",
+                "command": "python3",
+                "args": ["load_credentials.py"],
+                "group": "build",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "Setup Credentials",
+                "type": "shell", 
+                "command": "./manage_credentials.sh",
+                "args": ["setup"],
+                "group": "build",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": true,
+                    "panel": "shared"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "Check Credential Status",
+                "type": "shell",
+                "command": "./manage_credentials.sh", 
+                "args": ["status"],
+                "group": "test",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared"
+                },
+                "problemMatcher": []
+            }
+        ]
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-python.python",
+            "ms-toolsai.jupyter"
+        ]
+    }
+}
