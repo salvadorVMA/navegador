@@ -1,17 +1,27 @@
-"""
-Utilities for secure data loading and saving.
+"""Secure alternatives to pickle for data serialization.
 
-This module provides safe alternatives to pickle for data serialization.
+This module provides secure data serialization tools, including support for
+pandas DataFrames, Series, and Python sets. All data is serialized to JSON
+format which is both more secure and human-readable than pickle.
+
+Features:
+- Secure serialization and deserialization
+- Support for pandas DataFrames and Series
+- Support for Python sets
+- Human-readable JSON format
+- Type preservation
 """
 
 from typing import Any, Dict, List, Set, Union
+from pathlib import Path
 import json
 import pandas as pd
 
 JsonSerializable = Union[Dict[str, Any], List[Any], str, int, float, bool, None]
 DataObject = Union[pd.DataFrame, pd.Series, Set[Any], Dict[str, Any], List[Any], JsonSerializable]
+PathLike = Union[str, Path]
 
-def load_json_with_types(filepath: str) -> DataObject:
+def load_json_with_types(filepath: PathLike) -> DataObject:
     """
     Load JSON data with type restoration.
 
@@ -20,11 +30,13 @@ def load_json_with_types(filepath: str) -> DataObject:
 
     Args:
         filepath: Path to the JSON file to load
+        expected_type: Optional type annotation for better type checking
 
     Returns:
         The deserialized data with proper Python types restored
     """
-    with open(filepath, 'r', encoding='utf-8') as f:
+    path = Path(filepath)
+    with path.open('r', encoding='utf-8') as f:
         data = json.load(f)
 
     def restore_types(obj: Any) -> DataObject:

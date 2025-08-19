@@ -1,16 +1,18 @@
 """Module for managing dataset information and metadata"""
 
-import pickle
+from typing import Dict, Any
+from pathlib import Path
+from secure_data_utils import load_json_with_types
 
-# rutas a datos y recursos
-ruta_enc= '/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/encuestas/'
-ruta_rep= '/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/reportes/'
-ruta_tmp_images= '/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/tmp_images/'
+# Define paths using Path for better cross-platform compatibility
+RUTA_BASE = Path('/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador')
+ruta_enc = RUTA_BASE / 'encuestas'
+ruta_rep = RUTA_BASE / 'reportes'
+ruta_tmp_images = RUTA_BASE / 'tmp_images'
 
-# pickle para cargar el diccionario de encuestas
-with open(f'{ruta_enc}/los_mex_dict.pkl', 'rb') as f:
-    los_mex_dict = pickle.load(f)
-    print('los_mex_dict cargado --  leer readme_dict para info')
+# Load survey dictionary using secure JSON serialization
+los_mex_dict = load_json_with_types(str(ruta_enc / 'los_mex_dict.json'))  # type: Dict[str, Any]
+print('los_mex_dict loaded - see readme_dict for info')
 
 # enc_dict es el diccionario de encuestas
 # Contiene información sobre las encuestas, , dataframes y metadata como 'variable_value_labels', 'column_names_to_labels'
@@ -46,14 +48,14 @@ mkdown_tables = los_mex_dict['mkdown_tables']
 df_tables = los_mex_dict['df_tables']
 
 # tmp_topic_lst es una lista de los temas de las encuestas
-# ejemplo: dict_keys(['IDENTIDAD_Y_VALORES', 'MEDIO_AMBIENTE',... 
+# ejemplo: dict_keys(['IDENTIDAD_Y_VALORES', 'MEDIO_AMBIENTE',...
 tmp_topic_lst = enc_nom_dict.keys()
 
 tmp_topic_st= ', '.join([st.replace('_', ' ').title() for st in tmp_topic_lst])
 
 # prompt para descripción
 tmp_data_describer_st = f"""
-    General information about the project: 
+    General information about the project:
     -Name: "Los mexicanos vistos por sí mismos"
     -Description: This project is a group of {len(tmp_topic_st)} public opinion surveys conducted in Mexico between 2014 and 2015,
     -Topics: {tmp_topic_st}.
@@ -63,49 +65,48 @@ tmp_data_describer_st = f"""
     -Sponsor: "Universidad Nacional Autónoma de México" (UNAM)
     -Samples: All samples are have a size of 1000 and are representative of the Mexican population, with a margin of error of 3% and a confidence level of 95%."""
 
-from typing import List, Any
 from pydantic import BaseModel
 from langchain.output_parsers import PydanticOutputParser
 
 def _project_describer(user_query: str, tmp_data_describer_st: str, llm: Any) -> str:
     """
     Answer general questions about the project and datasets based on the user's query.
-    
+
     Args:
         user_query: The user's query about the dataset
         tmp_data_describer_st: Predefined string with project and dataset information
         llm: Language model for reasoning
-        
+
     Returns:
         A string with the relevant information about the project and datasets.
     """
-    
+
     # Define Pydantic model for structured output
     class ProjectDescriptionResponse(BaseModel):
         answer: str
         redirect_needed: bool = False
         suggested_action: str = ""
-    
+
     pattern_parser = PydanticOutputParser(pydantic_object=ProjectDescriptionResponse)
     format_instructions = pattern_parser.get_format_instructions()
-        
+
     # Use LLM to select relevant variables
     prompt = f"""
-    You are a helpful assistant who will answer general questions about a survey project. 
-    Read the general description of the survey project and reply with the relevant information to the user's query. 
+    You are a helpful assistant who will answer general questions about a survey project.
+    Read the general description of the survey project and reply with the relevant information to the user's query.
     IMPORTANT: If the user asks about specific variables or items from the datasets, you should redirect them to the QUERY VARIABLE_DATABASE action.
     IMPORTANT: If you do not have enough information to answer the user's query, you should inform them that you cannot answer that question and suggest they ask about the available datasets or specific variables.
-    
+
     General description of the project and datasets:
-    {tmp_data_describer_st} 
-    
+    {tmp_data_describer_st}
+
     User query: "{user_query}"
-    
+
     {format_instructions}
     """
-    
+
     response = llm.invoke(prompt)
-    
+
     try:
         parsed = pattern_parser.parse(response.content if hasattr(response, 'content') else str(response))
         return parsed.answer
