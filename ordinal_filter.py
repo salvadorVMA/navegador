@@ -8,15 +8,17 @@ This script identifies survey questions that use ordinal scales and creates
 a filtered dictionary containing only those questions.
 """
 
-import pickle
 import re
 from typing import Dict, List, Set
 import os
+from secure_data_utils import load_json_with_types, save_json_with_types
 
-def load_dictionary(file_path: str) -> dict:
-    """Load the los_mex_dict from a pickle file."""
-    with open(file_path, 'rb') as file:
-        return pickle.load(file)
+def load_dictionary(file_path: str) -> Dict[str, str]:
+    """Load the los_mex_dict from a JSON file."""
+    data = load_json_with_types(file_path)
+    if isinstance(data, dict):
+        return {str(k): str(v) for k, v in data.items()}
+    raise ValueError(f"Expected dictionary data but got {type(data)}")
 
 def identify_ordinal_patterns() -> List[str]:
     """
@@ -149,9 +151,8 @@ def filter_ordinal_questions(pregs_dict: Dict[str, str]) -> Dict[str, str]:
     return ord_dict
 
 def save_ordinal_dict(ord_dict: Dict[str, str], output_path: str):
-    """Save the ordinal dictionary to a pickle file."""
-    with open(output_path, 'wb') as f:
-        pickle.dump(ord_dict, f)
+    """Save the ordinal dictionary to a JSON file."""
+    save_json_with_types(output_path, ord_dict)
     print(f"Ordinal dictionary saved to: {output_path}")
 
 def main():

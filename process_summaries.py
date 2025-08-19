@@ -1,6 +1,6 @@
 import os
-import pickle
 import sys
+from secure_data_utils import save_json_with_types
 
 # Add debug information
 print("Python interpreter path:", sys.executable)
@@ -20,15 +20,14 @@ except ImportError as e:
 # Import the path first
 from workspace_module import ruta_enc
 
-# Define the path to save the pickle file.
-pickle_path = os.path.join(ruta_enc, 'db_f1.pkl')
+# Define the path to save the database file.
+db_path = os.path.join(ruta_enc, 'db_f1.json')
 
 # Initialize the Chroma-like database object as a dictionary.
 db_f1 = {'summaries': [], 'embeddings': [], 'metadata': []}
 
 def save_db(db, path):
-    with open(path, 'wb') as f:
-        pickle.dump(db, f)
+    save_json_with_types(path, db)
 
 def process_items():
     # Import within the function to ensure modules are loaded correctly
@@ -81,10 +80,10 @@ def process_items():
 
         # Every 100 iterations update the pickle file.
         if iteration % 100 == 0:
-            save_db(db_f1, pickle_path)
+            save_db(db_f1, db_path)
     
     # Save once final time after all iterations.
-    save_db(db_f1, pickle_path)
+    save_db(db_f1, db_path)
 
 if __name__ == '__main__':
     process_items()
