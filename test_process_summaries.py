@@ -1,9 +1,9 @@
 import os
 import subprocess
-import pickle
 import time
 import sys  # Import sys to get the current interpreter
 from workspace_module import ruta_enc  # ruta_enc is set in workspace_module
+from secure_data_utils import load_json_with_types  # Use secure JSON instead of pickle
 
 # Define paths for the required files
 preprocess_path = os.path.join(ruta_enc, 'preprocess_navegador.py')
@@ -22,10 +22,14 @@ subprocess.run([sys.executable, process_summaries_path], check=True, env=os.envi
 
 # Validate that the pickle file has been created and has the correct structure
 pickle_path = os.path.join(ruta_enc, 'db_f1.pkl')
-assert os.path.exists(pickle_path), 'Pickle file not created.'
+# Check for JSON file instead of pickle
+json_path = pickle_path.replace('.pkl', '.json')
+assert os.path.exists(json_path), 'JSON file not created.'
 
-with open(pickle_path, 'rb') as f:
-    db = pickle.load(f)
+# Load data using secure JSON
+db = load_json_with_types(json_path)
+assert isinstance(db, dict), 'Loaded data is not a dictionary'
 
+# Verify expected structure
 assert ('summaries' in db and 'embeddings' in db and 'metadata' in db), 'db_f1 structure is incorrect.'
 print('Test passed.')
