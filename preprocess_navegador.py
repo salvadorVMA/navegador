@@ -1,8 +1,9 @@
 import os
-import pickle
 import re
 import sys
 import subprocess
+from openai import OpenAI
+from secure_data_utils import load_json_with_types
 
 # Add environment debug info before importing numpy/pandas
 print("Python interpreter path:", sys.executable)
@@ -26,7 +27,16 @@ except ValueError as e:
             # Use the conda from the active environment
             conda_executable = os.path.join(conda_prefix, 'bin', 'conda') if conda_prefix else 'conda'
             # Run conda install with -y to automatically answer yes to prompts
-            subprocess.run([conda_executable, "install", "-y", "numpy"], check=True)
+            import shutil
+            # SECURITY: Multiple measures to prevent command injection:
+            # 1. Use shutil.which to validate and resolve the conda executable path
+            # 2. Use a fixed list of arguments (no user input)
+            # 3. shell=False to prevent shell injection
+            # 4. check=True to fail on errors
+            conda_path = shutil.which(str(conda_executable))
+            if not conda_path:
+                raise RuntimeError(f"Could not find conda executable at {conda_executable}")
+            subprocess.run([conda_path, "install", "-y", "numpy"], shell=False, check=True)
             # After reinstallation, try importing again
             import numpy as np
             import pandas as pd
@@ -76,7 +86,6 @@ def create_prompt_sum(md_str):
     return f"Summarize the following table:\n{md_str}"
 
 def get_answer(prompt, system_prompt=None, model='gpt-4o-mini-2024-07-18'):
-    from openai import OpenAI
     client_local = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
     messages = []
     if system_prompt:
@@ -86,11 +95,10 @@ def get_answer(prompt, system_prompt=None, model='gpt-4o-mini-2024-07-18'):
     return response.choices[0].message.content
 
 ########## Preprocessing Objects ##########
-# Load survey data from pickle to create enc_dict
-ruta_enc_pickle = '/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/encuestas'
-with open(os.path.join(ruta_enc_pickle, 'encs.pkl'), 'rb') as f:
-    enc_dict = pickle.load(f)
-    print('Pickle file loaded successfully')
+# Load survey data from JSON to create enc_dict
+data_path = '/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/encuestas'
+enc_dict: dict = load_json_with_types(os.path.join(data_path, 'encs.json'))  # type: ignore
+print('JSON file loaded successfully')
 enc_dict = {replace_latin_characters(k.upper()): v for k, v in enc_dict.items()}
 
 # Define enc_nom_dict mapping survey codes to survey names
@@ -143,7 +151,6 @@ pregs_dict = {k: v for k, v in pregs_agg_dict.items() if k.startswith('p')}
 pregs_dict = {k: v for k, v in pregs_dict.items() if not ('a' in k or 'a_1' in k or '2°' in v or '3°' in v or '2 menc' in v or '3 menc' in v)}
 
 ########## Initialize LLM Client ##########
-from openai import OpenAI
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
 ########## Expose for Imports ##########
