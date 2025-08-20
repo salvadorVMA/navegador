@@ -214,7 +214,7 @@ class SESAnalyzer:
     """Core SES analysis functionality."""
     
     def __init__(self, config: Optional[AnalysisConfig] = None):
-        """Initialize with optional configuration."""
+        """Initialize the analyzer with configuration."""
         self.config = config or AnalysisConfig()
         self.validator = SESDataValidator()
         
@@ -223,7 +223,7 @@ class SESAnalyzer:
                                   target_var: str,
                                   ses_var: str,
                                   ses_labels: Optional[Dict[str, str]] = None,
-                                  var_labels: Dict = None) -> Dict[str, Any]:
+                                  var_labels: Optional[Dict[str, str]] = None) -> Dict[str, Any]:
         """Analyze relationship between target variable and SES variable."""
         # Validate inputs
         valid, msg = self.validator.verify_metadata(
@@ -243,9 +243,12 @@ class SESAnalyzer:
         }
         
         try:
-            # Create cross-tabulation
+            # Detect variable types
+            var_types = self.validator.detect_variable_types(df[[target_var, ses_var]])
+            results["variable_types"] = var_types
+            
+                        # Create cross-tabulation
             if self.config.weight_variable in df.columns:
-                # Handle NA values by dropping them
                 valid_data = df.dropna(subset=[target_var, ses_var, self.config.weight_variable])
                 crosstab = pd.crosstab(
                     valid_data[target_var], 
@@ -254,29 +257,49 @@ class SESAnalyzer:
                     aggfunc='sum'
                 )
             else:
-                # Handle NA values by dropping them
                 valid_data = df.dropna(subset=[target_var, ses_var])
                 crosstab = pd.crosstab(
                     valid_data[target_var], 
                     valid_data[ses_var]
                 )
             
-            # Replace any remaining NaN with 0 and convert to integers
+            # Replace NaN with 0 and convert to integers
             crosstab = crosstab.fillna(0).round().astype(int)
             results["tables"]["crosstab"] = crosstab
             
-            # Calculate statistics
-            chi2, p_value, dof, expected = stats.chi2_contingency(crosstab)
-            cramers_v = association(crosstab, method="cramer")
+            # Calculate appropriate statistics based on variable types
+            both_ordinal = (var_types[target_var] in ['ordinal', 'interval'] and 
+                          var_types[ses_var] in ['ordinal', 'interval'])
             
+            # Always calculate chi-square for categorical relationships
+            chi2, p_value, dof, expected = stats.chi2_contingency(crosstab)
             results["statistics"].update({
                 "chi_square": chi2,
                 "p_value": p_value,
                 "degrees_of_freedom": dof,
-                "cramers_v": cramers_v
+                "cramers_v": association(crosstab, method="cramer")
             })
             
-            # Perform leader analysis
+            # Add correlation analysis for ordinal variables
+            if both_ordinal:
+                # Spearman correlation for ordinal data
+                spearman_corr, spearman_p = stats.spearmanr(
+                    valid_data[target_var], 
+                    valid_data[ses_var]
+                )
+                # Kendall's Tau for ordinal data
+                kendall_corr, kendall_p = stats.kendalltau(
+                    valid_data[target_var], 
+                    valid_data[ses_var]
+                )
+                results["statistics"].update({
+                    "spearman_correlation": spearman_corr,
+                    "spearman_p_value": spearman_p,
+                    "kendall_tau": kendall_corr,
+                    "kendall_p_value": kendall_p
+                })
+            
+            # Perform leader analysis with significance testing
             prop_table, leaders = self._leader_analysis(
                 crosstab, ses_labels, var_labels
             )
@@ -295,52 +318,67 @@ class SESAnalyzer:
                                      ses_var: str,
                                      ses_labels: Optional[Dict[str, str]] = None,
                                      var_labels: Optional[Dict[str, str]] = None) -> Dict[str, Any]:
-        """Analyze relationships between multiple target variables and SES variable."""
-        results = {
-            "ses_var": ses_var,
-            "analyses": {},
-            "summary": {}
-        }
-        
+        """Analyze relationships between multiple target variables and a SES variable."""
+        results = {}
         for target_var in target_vars:
-            results["analyses"][target_var] = self.analyze_single_relationship(
+            results[target_var] = self.analyze_single_relationship(
                 df, target_var, ses_var, ses_labels, var_labels
             )
-            
-        # Create summary of significant relationships
-        significant_relations = {
-            var: res["statistics"]["p_value"] < 0.05 
-            for var, res in results["analyses"].items()
-            if "statistics" in res
-        }
-        results["summary"]["significant_relationships"] = significant_relations
-        
         return results
     
     def _leader_analysis(self,
                         crosstab: pd.DataFrame,
                         ses_labels: Optional[Dict[str, str]] = None,
                         var_labels: Optional[Dict[str, str]] = None) -> Tuple[pd.DataFrame, Dict[str, Any]]:
-        """Perform leader analysis to identify dominant categories."""
+        """Perform leader analysis with significance testing."""
         proportions = crosstab.div(crosstab.sum(axis=0), axis=1)
         leaders: Dict[str, Any] = {}
         
         for col in proportions.columns:
-            top_cats = proportions[col].nlargest(2)
+            # Get all proportions for this column
+            col_props = proportions[col].sort_values(ascending=False)
+            top_cats = col_props.nlargest(2)
             ses_label = ses_labels.get(str(col), str(col)) if ses_labels else str(col)
+            
+            # Calculate standard error and confidence interval for difference
+            n = crosstab[col].sum()  # Sample size for this column
+            p1, p2 = top_cats.iloc[0], top_cats.iloc[1]
+            
+            # Standard error of difference between proportions
+            se_diff = np.sqrt((p1 * (1-p1) + p2 * (1-p2)) / n)
+            
+            # Calculate z-score and p-value
+            diff = p1 - p2
+            z_score = diff / se_diff
+            p_value = 2 * (1 - stats.norm.cdf(abs(z_score)))  # Two-tailed test
+            
+            # Calculate confidence interval
+            ci_margin = stats.norm.ppf(1 - (1 - self.config.confidence_level) / 2) * se_diff
+            ci_lower = diff - ci_margin
+            ci_upper = diff + ci_margin
             
             leaders[ses_label] = {
                 "first": {
                     "category": var_labels.get(str(top_cats.index[0]), str(top_cats.index[0]))
                     if var_labels else str(top_cats.index[0]),
-                    "proportion": float(top_cats.iloc[0])
+                    "proportion": float(p1)
                 },
                 "second": {
                     "category": var_labels.get(str(top_cats.index[1]), str(top_cats.index[1]))
                     if var_labels else str(top_cats.index[1]),
-                    "proportion": float(top_cats.iloc[1])
+                    "proportion": float(p2)
                 },
-                "difference": float(top_cats.iloc[0] - top_cats.iloc[1])
+                "difference": float(diff),
+                "significance_test": {
+                    "z_score": float(z_score),
+                    "p_value": float(p_value),
+                    "confidence_interval": {
+                        "lower": float(ci_lower),
+                        "upper": float(ci_upper)
+                    },
+                    "standard_error": float(se_diff),
+                    "sample_size": int(n)
+                }
             }
             
         return proportions, leaders
