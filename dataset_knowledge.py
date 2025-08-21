@@ -53,6 +53,138 @@ tmp_topic_lst = enc_nom_dict.keys()
 
 tmp_topic_st= ', '.join([st.replace('_', ' ').title() for st in tmp_topic_lst])
 
+# tables of state and region codes and names
+# Dictionary mapping region names to their constituent states
+region_to_states = {
+    'Centro': [
+        'Ciudad de México',
+        'Guerrero',
+        'Hidalgo',
+        'Estado de México',
+        'Morelos',
+        'Puebla',
+        'Tlaxcala',
+        'Oaxaca'
+    ],
+    'Centro Occidente': [
+        'Aguascalientes',
+        'Colima',
+        'Guanajuato',
+        'Jalisco',
+        'Michoacán de Ocampo',
+        'Nayarit',
+        'Querétaro',
+        'San Luis Potosí',
+        'Zacatecas'
+    ],
+    'Norte': [
+        'Baja California',
+        'Baja California Sur',
+        'Chihuahua',
+        'Coahuila',
+        'Durango',
+        'Nuevo León',
+        'Sinaloa',
+        'Sonora',
+        'Tamaulipas'
+    ],
+    'Sureste': [
+        'Campeche',
+        'Chiapas',
+        'Quintana Roo',
+        'Tabasco',
+        'Veracruz de Ignacio de la Llave',
+        'Yucatán'
+    ]
+}
+
+# Dictionary mapping state codes to state names
+state_codes = {
+    '01': 'Aguascalientes',
+    '02': 'Baja California',
+    '03': 'Baja California Sur',
+    '04': 'Campeche',
+    '05': 'Coahuila de Zaragoza',
+    '06': 'Colima',
+    '07': 'Chiapas',
+    '08': 'Chihuahua',
+    '09': 'Ciudad de México',
+    '10': 'Durango',
+    '11': 'Guanajuato',
+    '12': 'Guerrero',
+    '13': 'Hidalgo',
+    '14': 'Jalisco',
+    '15': 'México',
+    '16': 'Michoacán de Ocampo',
+    '17': 'Morelos',
+    '18': 'Nayarit',
+    '19': 'Nuevo León',
+    '20': 'Oaxaca',
+    '21': 'Puebla',
+    '22': 'Querétaro',
+    '23': 'Quintana Roo',
+    '24': 'San Luis Potosí',
+    '25': 'Sinaloa',
+    '26': 'Sonora',
+    '27': 'Tabasco',
+    '28': 'Tamaulipas',
+    '29': 'Tlaxcala',
+    '30': 'Veracruz de Ignacio de la Llave',
+    '31': 'Yucatán',
+    '32': 'Zacatecas'
+}
+
+# Dictionary mapping region codes to region names
+region_codes = {
+    '01': 'Norte',
+    '02': 'Centro',
+    '03': 'Centro Occidente',
+    '04': 'Sureste'
+}
+
+# Dictionary mapping state codes to region codes
+state_to_region = {
+    # Norte (01)
+    '02': '01',  # Baja California
+    '03': '01',  # Baja California Sur
+    '08': '01',  # Chihuahua
+    '05': '01',  # Coahuila de Zaragoza
+    '10': '01',  # Durango
+    '19': '01',  # Nuevo León
+    '25': '01',  # Sinaloa
+    '26': '01',  # Sonora
+    '28': '01',  # Tamaulipas
+    
+    # Centro (02)
+    '09': '02',  # Ciudad de México
+    '12': '02',  # Guerrero
+    '13': '02',  # Hidalgo
+    '15': '02',  # México
+    '17': '02',  # Morelos
+    '21': '02',  # Puebla
+    '29': '02',  # Tlaxcala
+    '20': '02',  # Oaxaca
+    
+    # Centro Occidente (03)
+    '01': '03',  # Aguascalientes
+    '06': '03',  # Colima
+    '11': '03',  # Guanajuato
+    '14': '03',  # Jalisco
+    '16': '03',  # Michoacán de Ocampo
+    '18': '03',  # Nayarit
+    '22': '03',  # Querétaro
+    '24': '03',  # San Luis Potosí
+    '32': '03',  # Zacatecas
+    
+    # Sureste (04)
+    '04': '04',  # Campeche
+    '07': '04',  # Chiapas
+    '23': '04',  # Quintana Roo
+    '27': '04',  # Tabasco
+    '30': '04',  # Veracruz de Ignacio de la Llave
+    '31': '04'   # Yucatán
+}
+
 # prompt para descripción
 tmp_data_describer_st = f"""
     General information about the project:
