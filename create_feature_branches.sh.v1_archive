@@ -1,0 +1,84 @@
+#!/bin/bash
+
+# Exit on error
+set -e
+
+echo "🔄 Creating feature branches from unpushed commits..."
+
+# Function to create branch and cherry-pick commits
+create_feature_branch() {
+    local branch_name=$1
+    local commit_pattern=$2
+    local description=$3
+    
+    echo "
+🔨 Creating branch: $branch_name
+📝 Description: $description
+"
+    
+    # Skip if branch exists
+    if git show-ref --verify --quiet "refs/heads/$branch_name"; then
+        echo "Branch $branch_name already exists, skipping..."
+        return 0
+    fi
+    
+    # Create new branch from origin/main
+    git checkout origin/main -b "$branch_name"
+    
+    # Get commits matching pattern
+    commits=$(git log --oneline origin/main..main | grep -i "$commit_pattern" | cut -d' ' -f1 | tail -r)
+    
+    # Cherry-pick each commit
+    for commit in $commits; do
+        echo "Cherry-picking $commit"
+        if ! git -c core.editor=true cherry-pick "$commit"; then
+            if [ -f ordinal_filter.py ]; then
+                git add ordinal_filter.py
+                git commit --allow-empty -C "$commit"
+            else
+                echo "⚠️ Conflict detected in commit $commit"
+                echo "Please resolve conflicts and run 'git cherry-pick --continue'"
+                echo "Or run 'git cherry-pick --abort' to skip this commit"
+                exit 1
+            fi
+        fi
+    done
+    
+    echo "✅ Branch $branch_name created successfully"
+}
+
+# Store current branch
+current_branch=$(git symbolic-ref --short HEAD)
+
+# 1. Security & Code Quality
+create_feature_branch "feature/security-quality" "security\|json\|pickle\|codacy" \
+    "Security improvements, JSON conversion, and code quality updates"
+
+# 2. Data Management
+create_feature_branch "feature/data-management" "dataset.*knowledge\|credential" \
+    "Dataset knowledge updates and credential management"
+
+# 3. Infrastructure & Deployment
+create_feature_branch "feature/infrastructure" "docker\|environment\|deploy\|vm" \
+    "Docker setup, environment configs, and deployment scripts"
+
+# 4. SES Analysis
+create_feature_branch "feature/ses-analysis" "ses\|analysis\|plot" \
+    "SES analysis module, testing, and plotting capabilities"
+
+# 5. Dashboard Improvements
+create_feature_branch "feature/dashboard" "dashboard\|langgraph\|monitoring" \
+    "Dashboard improvements and monitoring integration"
+
+# Return to original branch
+git checkout "$current_branch"
+
+echo "
+✅ Feature branches created successfully!
+
+Next steps:
+1. Review each branch: git checkout <branch-name>
+2. Run tests on each branch
+3. Push branches: git push -u origin <branch-name>
+4. Create pull requests in order of priority
+"
