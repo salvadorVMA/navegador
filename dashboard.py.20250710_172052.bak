@@ -111,7 +111,7 @@ def process_agent_response(agent_response, session_data, chat_data, user_message
         new_chat_data = chat_data + [assistant_message]
         formatted_chat = format_chat_history(new_chat_data)
         
-        print(f"✅✅✅ Agent response processed at {time.time()}: {content[:50]}...")
+        print(f"✅ Agent response processed: {content[:50]}...")
         
         # Return all updated UI components
         return formatted_chat, new_chat_data, "", session_data_copy, True
@@ -1398,7 +1398,6 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
                 # Fall through to next handler
             
         # First try to use the agent if available
-        print("🚀🚀🚀 Attempting to use the agent now!")
         if agent:
             try:
                 # Check if agent is accessible
@@ -1465,7 +1464,6 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
                     future = executor.submit(agent.invoke, agent_state, config=agent_config)
                     try:
                         print(f"⏳ Waiting for agent response... (timeout: {AGENT_TIMEOUT}s)")
-                        print("⏳⏳⏳ Waiting for agent response...")
                         agent_response = future.result(timeout=AGENT_TIMEOUT)  # Shorter timeout for better UX
                         elapsed = time.time() - start_time
                         print(f"✅ Agent response received after {elapsed:.2f}s: {type(agent_response)}")
@@ -1482,7 +1480,6 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
                                         print(f"🔍 Last message content: {content}")
                         
                         # Process the agent response with our consistent handler
-                        print("🎯🎯🎯 Got agent response, calling process_agent_response")
                         return process_agent_response(agent_response, session_data, chat_data, user_message)
                         
                     except concurrent.futures.TimeoutError:
@@ -2616,7 +2613,7 @@ def process_agent_response(agent_response, session_data, chat_data, user_message
         new_chat_data = chat_data + [assistant_message]
         formatted_chat = format_chat_history(new_chat_data)
         
-        print(f"✅✅✅ Agent response processed at {time.time()}: {content[:50]}...")
+        print(f"✅ Agent response processed: {content[:50]}...")
         
         # Return all updated UI components
         return formatted_chat, new_chat_data, "", session_data_copy, True

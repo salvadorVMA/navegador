@@ -1,6 +1,19 @@
 {
  "cells": [
   {
+<<<<<<< HEAD
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "2ac9b808",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from secure_data_utils import load_json_with_types, save_json_with_types"
+   ]
+  },
+  {
+=======
+>>>>>>> aed01672d99427e98b67eba6d4efb5a3198306df
    "cell_type": "markdown",
    "id": "a083479a",
    "metadata": {},
@@ -85,7 +98,11 @@
   },
   {
    "cell_type": "code",
+<<<<<<< HEAD
+   "execution_count": null,
+=======
    "execution_count": 3,
+>>>>>>> aed01672d99427e98b67eba6d4efb5a3198306df
    "id": "4e228ae8",
    "metadata": {},
    "outputs": [
@@ -104,7 +121,11 @@
     "ruta_enc= '/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/encuestas'\n",
     "\n",
     "with open(f'{ruta_enc}/los_mex_dict.pkl', 'rb') as f:\n",
+<<<<<<< HEAD
+    "    los_mex_dict = load_json_with_types(os.path.join(ruta_enc, 'los_mex_dict.json'))\n",
+=======
     "    los_mex_dict = pickle.load(f)\n",
+>>>>>>> aed01672d99427e98b67eba6d4efb5a3198306df
     "    print('los_mex_dict cargado --  leer readme_dict para info')\n",
     "\n",
     "\n",
@@ -459,7 +480,11 @@
     "            \n",
     "            # Save checkpoint after each batch\n",
     "            with open('structured_summary_checkpoint.pkl', 'wb') as f:\n",
+<<<<<<< HEAD
+    "                save_json_with_types(structured_results, os.path.join(os.path.dirname(path), 'structured_results.json'))\n",
+=======
     "                pickle.dump(structured_results, f)\n",
+>>>>>>> aed01672d99427e98b67eba6d4efb5a3198306df
     "            print(f\"Checkpoint saved after processing batch with keys: {batch_keys}\")\n",
     "    \n",
     "    return structured_results\n",
@@ -471,7 +496,11 @@
   },
   {
    "cell_type": "code",
+<<<<<<< HEAD
+   "execution_count": null,
+=======
    "execution_count": 51,
+>>>>>>> aed01672d99427e98b67eba6d4efb5a3198306df
    "id": "a3dde52d",
    "metadata": {},
    "outputs": [
@@ -496,7 +525,11 @@
    "source": [
     "los_mex_dict['llm_results'] = structured_results\n",
     "with open(f'{ruta_enc}/los_mex_dict.pkl', 'wb') as f:\n",
+<<<<<<< HEAD
+    "    save_json_with_types(los_mex_dict, os.path.join(ruta_enc, 'los_mex_dict.json'))\n",
+=======
     "    pickle.dump(los_mex_dict, f)\n",
+>>>>>>> aed01672d99427e98b67eba6d4efb5a3198306df
     "    print('los_mex_dict actualizado --  leer readme_dict para info')\n",
     "\n",
     "los_mex_dict.keys()"

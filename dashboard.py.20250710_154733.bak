@@ -111,7 +111,7 @@ def process_agent_response(agent_response, session_data, chat_data, user_message
         new_chat_data = chat_data + [assistant_message]
         formatted_chat = format_chat_history(new_chat_data)
         
-        print(f"✅✅✅ Agent response processed at {time.time()}: {content[:50]}...")
+        print(f"✅ Agent response processed: {content[:50]}...")
         
         # Return all updated UI components
         return formatted_chat, new_chat_data, "", session_data_copy, True
@@ -149,7 +149,7 @@ def process_agent_response(agent_response, session_data, chat_data, user_message
             print(f"❌❌ Critical error in error handling: {nested_err}")
             return dash.no_update, dash.no_update, dash.no_update, dash.no_update, True
 
-
+# Define SessionData structure for better typing
 class SessionData(TypedDict, total=False):
     """Type definition for the session data store"""
     datasets: List[str]
@@ -1289,6 +1289,10 @@ def handle_chat_interaction(send_clicks, datasets_clicks, variables_clicks,
 )
 def handle_auto_next_step(n_intervals, chat_data, session_data):
     """Handle automatic next step after pre-action message"""
+    import time
+    import uuid
+    import dash
+    
     # Safety mechanism: max number of intervals before auto-disabling
     MAX_INTERVALS = 5
     
@@ -1305,11 +1309,7 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
         return dash.no_update, dash.no_update, dash.no_update, dash.no_update, True
     
     # Get access to global agent
-    try:
-        from __main__ import agent, MODULES_AVAILABLE
-    except ImportError:
-        agent = None
-        MODULES_AVAILABLE = False
+    global agent
     
     # Detailed logging to understand function flow
     pending_action = session_data.get('pending_main_action', {})
@@ -1354,51 +1354,39 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
         
         start_time = time.time()
         print(f"🔄 Executing pending main action for: '{user_message}'")
-        from datetime import datetime
         print(f"🕒 Current time: {datetime.now().strftime('%H:%M:%S')}")
         
         # Define a fast-path option for health check and debugging
         # If user message contains a special keyword, return immediately with mock data
         if "fastpath" in user_message.lower() or "debug" in user_message.lower() or "bypass" in user_message.lower():
             print("🔄 Using fast path for debugging")
-            try:
-                from __main__ import get_mock_agent_response, format_chat_history
-                response = get_mock_agent_response(user_message, session_data, search_keywords, preferred_datasets)
-                new_chat_data = chat_data.copy() if chat_data else []
-                new_chat_data.append({
-                    "type": "assistant",
-                    "content": "Debug mode activated. Using fast path response.",
-                    "timestamp": datetime.now().strftime("%H:%M")
-                })
-                session_data['pending_main_action']['processed'] = True
-                session_data['pending_main_action']['processed_at'] = time.time()
-                return format_chat_history(new_chat_data), new_chat_data, "", session_data, True
-            except Exception as fast_path_err:
-                print(f"❌ Fast path error: {fast_path_err}")
-                # Continue with normal flow if fast path fails
+            response = get_mock_agent_response(user_message, session_data, search_keywords, preferred_datasets)
+            new_chat_data = chat_data.copy() if chat_data else []
+            new_chat_data.append({
+                "type": "assistant",
+                "content": "Debug mode activated. Using fast path response.",
+                "timestamp": datetime.now().strftime("%H:%M")
+            })
+            session_data['pending_main_action']['processed'] = True
+            session_data['pending_main_action']['processed_at'] = time.time()
+            return format_chat_history(new_chat_data), new_chat_data, "", session_data, True
         
         # Check if modules and agent are available
         if not MODULES_AVAILABLE:
             print("⚠️ Required modules are not available, using mock response")
             # Use mock response
-            try:
-                from __main__ import get_mock_agent_response, format_chat_history
-                mock_response = get_mock_agent_response(user_message, session_data, search_keywords, preferred_datasets)
-                new_chat_data = chat_data.copy() if chat_data else []
-                new_chat_data.append({
-                    "type": "assistant",
-                    "content": mock_response["content"],
-                    "timestamp": datetime.now().strftime("%H:%M")
-                })
-                session_data['pending_main_action']['processed'] = True
-                session_data['pending_main_action']['processed_at'] = time.time()
-                return format_chat_history(new_chat_data), new_chat_data, "", session_data, True
-            except Exception as mock_err:
-                print(f"❌ Mock response error: {mock_err}")
-                # Fall through to next handler
+            mock_response = get_mock_agent_response(user_message, session_data, search_keywords, preferred_datasets)
+            new_chat_data = chat_data.copy() if chat_data else []
+            new_chat_data.append({
+                "type": "assistant",
+                "content": mock_response["content"],
+                "timestamp": datetime.now().strftime("%H:%M")
+            })
+            session_data['pending_main_action']['processed'] = True
+            session_data['pending_main_action']['processed_at'] = time.time()
+            return format_chat_history(new_chat_data), new_chat_data, "", session_data, True
             
         # First try to use the agent if available
-        print("🚀🚀🚀 Attempting to use the agent now!")
         if agent:
             try:
                 # Check if agent is accessible
@@ -1407,20 +1395,7 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
                     raise Exception("Agent not initialized")
                     
                 print(f"🔄 Setting up agent state at {time.time() - start_time:.2f}s")
-
-                # Import necessary functions
-                try:
-                    from __main__ import create_agent_config, process_agent_response
-                except ImportError:
-                    print("⚠️ Could not import agent config functions, using local implementations")
-                    # Define local implementations if needed
-                    def create_agent_config(thread_id=None):
-                        if thread_id is None:
-                            thread_id = f"chat_{int(time.time())}"
-                        return {"configurable": {"thread_id": thread_id}}
-
-                # Set up agent state with proper intent field already set
-                # This is critical - the intent must be set correctly to route through the graph
+                # Set up agent state - CRITICAL FIX: Make sure intent is set properly
                 agent_state = {
                     "messages": [{"role": "user", "content": user_message}],
                     "intent": session_data.get("intent", "query_variable_database"),  # Default to query intent
@@ -1465,8 +1440,7 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
                     future = executor.submit(agent.invoke, agent_state, config=agent_config)
                     try:
                         print(f"⏳ Waiting for agent response... (timeout: {AGENT_TIMEOUT}s)")
-                        print("⏳⏳⏳ Waiting for agent response...")
-                        agent_response = future.result(timeout=AGENT_TIMEOUT)  # Shorter timeout for better UX
+                        agent_response = future.result(timeout=AGENT_TIMEOUT)  # Use a longer timeout
                         elapsed = time.time() - start_time
                         print(f"✅ Agent response received after {elapsed:.2f}s: {type(agent_response)}")
                         
@@ -1482,7 +1456,6 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
                                         print(f"🔍 Last message content: {content}")
                         
                         # Process the agent response with our consistent handler
-                        print("🎯🎯🎯 Got agent response, calling process_agent_response")
                         return process_agent_response(agent_response, session_data, chat_data, user_message)
                         
                     except concurrent.futures.TimeoutError:
@@ -1492,10 +1465,8 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
                             print("🩺 Using special health response mock for better user experience")
                             mock_response = health_mock
                         else:
-                            from __main__ import get_mock_agent_response
                             mock_response = get_mock_agent_response(user_message, session_data, search_keywords, preferred_datasets)
                         
-                        from __main__ import format_chat_history
                         # Add the response to the chat
                         new_chat_data = chat_data.copy() if chat_data else []
                         new_chat_data.append({
@@ -1515,7 +1486,7 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
                         # Return the updated UI state
                         print(f"✅ Returning fallback response after timeout ({time.time() - start_time:.2f}s)")
                         return format_chat_history(new_chat_data), new_chat_data, "", session_data, True
-                    
+                        
                     except Exception as e:
                         # Handle other exceptions in agent invocation
                         print(f"⚠️ Error in agent invocation: {e}")
@@ -1523,7 +1494,6 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
                         traceback.print_exc()
                         
                         # Use mock response as fallback
-                        from __main__ import get_mock_agent_response, format_chat_history
                         mock_response = get_mock_agent_response(user_message, session_data, search_keywords, preferred_datasets)
                         new_chat_data = chat_data.copy() if chat_data else []
                         new_chat_data.append({
@@ -1539,58 +1509,69 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
                         # Return the updated UI state
                         print(f"✅ Returning fallback response after error ({time.time() - start_time:.2f}s)")
                         return format_chat_history(new_chat_data), new_chat_data, "", session_data, True
+                
             except Exception as agent_err:
                 print(f"⚠️ Agent error: {agent_err} - falling back to mock response")
                 import traceback
                 traceback.print_exc()
-                
+        
         # Fall back to mock response if agent unavailable or error occurred
-        try:
-            from __main__ import get_mock_agent_response, format_chat_history
-            response = get_mock_agent_response(user_message, session_data, search_keywords, preferred_datasets)
-            print(f"✅ Got mock response: {response.get('content', '')[:50]}...")
-            
-            # Add the response to the chat
-            new_chat_data = chat_data.copy() if chat_data else []
-            new_chat_data.append({
-                "type": "assistant",
-                "content": response["content"],
-                "timestamp": datetime.now().strftime("%H:%M")
-            })
-            
-            # Update session with any data from the response
-            session_data_copy = session_data.copy()
-            for key, value in response.get("session_updates", {}).items():
-                session_data_copy[key] = value
-            
-            # Mark the pending action as processed
-            if 'pending_main_action' in session_data_copy:
-                print(f"🏁 Marking pending action as processed (mock response path)")
-                session_data_copy['pending_main_action']['processed'] = True
-                session_data_copy['pending_main_action']['processed_at'] = time.time()
-            
-            # Return the updated UI state
-            print("✅ Auto-next-step completed with mock response")
-            return format_chat_history(new_chat_data), new_chat_data, "", session_data_copy, True
-        except Exception as mock_fallback_err:
-            print(f"❌ Could not create mock fallback response: {mock_fallback_err}")
-            # Emergency minimal response
-            new_chat_data = chat_data.copy() if chat_data else []
-            new_chat_data.append({
-                "type": "assistant",
-                "content": "I'm having trouble accessing my knowledge. Please try again later.",
-                "timestamp": datetime.now().strftime("%H:%M")
-            })
-            if 'pending_main_action' in session_data:
-                session_data['pending_main_action']['processed'] = True
-                session_data['pending_main_action']['processed_at'] = time.time()
-            return new_chat_data, new_chat_data, "", session_data, True
-
+        response = get_mock_agent_response(user_message, session_data, search_keywords, preferred_datasets)
+        print(f"✅ Got mock response: {response.get('content', '')[:50]}...")
+        
+        # Add the response to the chat
+        new_chat_data = chat_data.copy() if chat_data else []
+        new_chat_data.append({
+            "type": "assistant",
+            "content": response["content"],
+            "timestamp": datetime.now().strftime("%H:%M")
+        })
+        
+        # Update session with any data from the response
+        session_data_copy = session_data.copy()
+        for key, value in response.get("session_updates", {}).items():
+            session_data_copy[key] = value
+        
+        # Mark the pending action as processed
+        if 'pending_main_action' in session_data_copy:
+            print(f"🏁 Marking pending action as processed (mock response path)")
+            session_data_copy['pending_main_action']['processed'] = True
+            session_data_copy['pending_main_action']['processed_at'] = time.time()
+        
+        # Return the updated UI state
+        print("✅ Auto-next-step completed with mock response")
+        return format_chat_history(new_chat_data), new_chat_data, "", session_data_copy, True
+        
     except Exception as e:
         print(f"❌ Error in handle_auto_next_step: {e}")
         import traceback
         traceback.print_exc()
-        return dash.no_update, dash.no_update, dash.no_update, dash.no_update, True
+        
+        try:
+            # Add error message to chat
+            error_msg = get_message('error_occurred', session_data.get('language', 'es'), error=str(e))
+            new_chat_data = chat_data.copy() if chat_data else []
+            new_chat_data.append({
+                "type": "assistant",
+                "content": error_msg,
+                "timestamp": datetime.now().strftime("%H:%M")
+            })
+            
+            # Mark pending action as processed to prevent getting stuck
+            session_data_copy = session_data.copy() if session_data else {}
+            if 'pending_main_action' in session_data_copy:
+                print(f"🏁 Marking pending action as processed (error handling path)")
+                session_data_copy['pending_main_action']['processed'] = True
+                session_data_copy['pending_main_action']['processed_at'] = time.time()
+                
+            # Always disable the interval (disabled=True) to stop the cycling
+            return format_chat_history(new_chat_data), new_chat_data, "", session_data_copy, True
+            
+        except Exception as nested_error:
+            # Failsafe to ensure interval is disabled even if error handling itself fails
+            print(f"❌❌ Critical error in error handling: {nested_error}")
+            # Return minimal updates, but ensure interval is disabled
+            return dash.no_update, dash.no_update, dash.no_update, dash.no_update, True
 
 def get_agent_response(user_message: str, session_data: Dict, search_keywords=None, preferred_datasets=None) -> Dict:
     """Get response from the Navegador agent"""
@@ -2616,7 +2597,7 @@ def process_agent_response(agent_response, session_data, chat_data, user_message
         new_chat_data = chat_data + [assistant_message]
         formatted_chat = format_chat_history(new_chat_data)
         
-        print(f"✅✅✅ Agent response processed at {time.time()}: {content[:50]}...")
+        print(f"✅ Agent response processed: {content[:50]}...")
         
         # Return all updated UI components
         return formatted_chat, new_chat_data, "", session_data_copy, True

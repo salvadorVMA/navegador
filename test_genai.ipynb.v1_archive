@@ -1,6 +1,19 @@
 {
  "cells": [
   {
+<<<<<<< HEAD
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "2457dcc5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from secure_data_utils import load_json_with_types, save_json_with_types"
+   ]
+  },
+  {
+=======
+>>>>>>> aed01672d99427e98b67eba6d4efb5a3198306df
    "cell_type": "markdown",
    "id": "c40287b1",
    "metadata": {},
@@ -896,7 +909,11 @@
   },
   {
    "cell_type": "code",
+<<<<<<< HEAD
+   "execution_count": null,
+=======
    "execution_count": 79,
+>>>>>>> aed01672d99427e98b67eba6d4efb5a3198306df
    "id": "e143d9a3",
    "metadata": {},
    "outputs": [
@@ -916,7 +933,11 @@
     "ruta_enc= '/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/encuestas'\n",
     "\n",
     "with open(f'{ruta_enc}/encs.pkl', 'rb') as f:\n",
+<<<<<<< HEAD
+    "    enc_dict = load_json_with_types(os.path.join(ruta_enc, 'encs.json'))\n",
+=======
     "    enc_dict = pickle.load(f)\n",
+>>>>>>> aed01672d99427e98b67eba6d4efb5a3198306df
     "    print('Pickle file loaded successfully')\n",
     "\n",
     "enc_dict = {replace_latin_characters(k.upper()) : v for k, v in enc_dict.items()}"

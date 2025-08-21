@@ -16,11 +16,6 @@ print("Starting Navegador Dashboard initialization...")
 print("Python version:", sys.version)
 print("Current working directory:", os.getcwd())
 
-# Enable LangSmith tracing if available
-os.environ["LANGSMITH_TRACING"] = "true"
-LANGSMITH_API_KEY = os.getenv('LANGSMITH_API_KEY')
-LANGSMITH_PROJECT = os.getenv('LANGSMITH_PROJECT', 'navegador-dashboard-monitoring')
-
 try:
     # Essential imports for the dashboard
     import dash
@@ -36,24 +31,6 @@ try:
     import threading
     import concurrent.futures
     import time
-    
-    # Import LangSmith monitoring if available
-    try:
-        # LangSmith tracing is now handled differently
-        from langsmith.client import Client as LangSmithClient
-        
-        # Initialize LangSmith client
-        langsmith_client = None
-        if LANGSMITH_API_KEY:
-            langsmith_client = LangSmithClient(api_key=LANGSMITH_API_KEY)
-            # Enable tracing v2
-            os.environ["LANGCHAIN_TRACING_V2"] = "true"
-            print("✅ LangSmith monitoring initialized in dashboard")
-        else:
-            print("⚠️ LangSmith API key not found, monitoring disabled in dashboard")
-    except ImportError:
-        print("⚠️ LangSmith packages not available, monitoring disabled")
-        langsmith_client = None
     
     print("Successfully imported all required packages")
 except ImportError as e:
@@ -79,57 +56,6 @@ except ImportError:
     normalize_state = lambda state: state  # Fallback function
     normalize_config = lambda config: config  # Fallback function
     create_agent_state = None  # Will use manual state creation
-    
-# Function to format chat messages for display
-def format_chat_history(chat_data):
-    """
-    Formats chat history data into Dash components for display
-    
-    Args:
-        chat_data: List of chat message dictionaries with type, content, and timestamp
-        
-    Returns:
-        List of Dash HTML components representing the chat messages
-    """
-    if not chat_data:
-        return []
-        
-    chat_components = []
-    
-    for message in chat_data:
-        message_type = message.get("type", "assistant")
-        content = message.get("content", "")
-        timestamp = message.get("timestamp", "")
-        is_progress = message.get("is_progress", False)
-        
-        if message_type == "user":
-            # User message styling
-            message_component = html.Div(
-                [
-                    html.Div(content, className="message-content"),
-                    html.Div(timestamp, className="message-timestamp")
-                ],
-                className="message user-message"
-            )
-        else:
-            # Assistant message styling with optional progress indicator
-            timestamp_content = [timestamp]
-            if is_progress:
-                # Simple loading indicator without using dbc.Spinner
-                loading_indicator = html.Span("⏳", className="loading-indicator")
-                timestamp_content.append(loading_indicator)
-                
-            message_component = html.Div(
-                [
-                    html.Div(dcc.Markdown(content), className="message-content"),
-                    html.Div(timestamp_content, className="message-timestamp")
-                ],
-                className="message assistant-message"
-            )
-            
-        chat_components.append(message_component)
-    
-    return chat_components
 
 # Flag to check if required modules are available
 MODULES_AVAILABLE = True
@@ -341,7 +267,7 @@ def update_session_from_agent_response(session_data: Dict[str, Any], agent_respo
             response_dict = agent_response
         elif hasattr(agent_response, '__dict__'):
             # Handle object types by converting to dict
-            response_dict = {k: v for k in agent_response.__dict__.items() 
+            response_dict = {k: v for k, v in agent_response.__dict__.items() 
                            if not k.startswith('_') and not callable(v)}
         
         # Update agent_state - normalize it first for consistency
@@ -428,7 +354,6 @@ MESSAGES = {
         'welcome': "Hello! I'm Navegador, your survey analysis assistant. I can help you explore datasets, select variables, and run analyses. What would you like to know?",
         'session_reset': "Session reset! Hello again! How can I help you with survey analysis?",
         'agent_unavailable': "Sorry, the agent is not available right now. Please try again later.",
-        'agent_timeout': "The request is taking longer than expected. I've timed out after {timeout} seconds. Please try a simpler query or try again later.",
         'error_occurred': "Sorry, I encountered an error: {error}. Please try rephrasing your question.",
         'datasets_title': "Here are the available datasets:",
         'which_dataset': "Which dataset would you like to explore?",
@@ -451,7 +376,6 @@ MESSAGES = {
         'welcome': "¡Hola! Soy Navegador, tu asistente de análisis de encuestas. Puedo ayudarte a explorar conjuntos de datos, seleccionar variables y ejecutar análisis. ¿Qué te gustaría saber?",
         'session_reset': "¡Sesión reiniciada! ¡Hola de nuevo! ¿Cómo puedo ayudarte con el análisis de encuestas?",
         'agent_unavailable': "Lo siento, el agente no está disponible en este momento. Por favor, inténtalo de nuevo más tarde.",
-        'agent_timeout': "La solicitud está tomando más tiempo de lo esperado. Se agotó el tiempo de espera después de {timeout} segundos. Intenta una consulta más simple o inténtalo más tarde.",
         'error_occurred': "Lo siento, encontré un error: {error}. Por favor, reformula tu pregunta.",
         'datasets_title': "Aquí están los conjuntos de datos disponibles:",
         'which_dataset': "¿Qué conjunto de datos te gustaría explorar?",
@@ -739,7 +663,7 @@ def test_agent_async():
         with concurrent.futures.ThreadPoolExecutor() as executor:
             future = executor.submit(agent.invoke, general_state, config=test_config)
             try:
-                test_result = future.result(timeout=60)  # 60 second timeout (increased from 20)  # 20 second timeout (increased from 10)
+                test_result = future.result(timeout=10)  # 10 second timeout
                 print(f"✅ Agent greeting test successful: {type(test_result)}")
                 if isinstance(test_result, dict) and 'messages' in test_result:
                     msgs = test_result.get('messages', [])
@@ -772,7 +696,7 @@ def test_agent_async():
             start_time = time.time()
             future = executor.submit(agent.invoke, query_state, config=test_config)
             try:
-                query_result = future.result(timeout=120)  # 120 second timeout (increased from 30)  # 30 second timeout (increased from 8) - reduce from 15
+                query_result = future.result(timeout=8)  # 8 second timeout - reduce from 15
                 elapsed = time.time() - start_time
                 print(f"✅ Agent query test successful after {elapsed:.2f}s: {type(query_result)}")
                 print(f"   Agent state keys: {list(query_result.keys()) if isinstance(query_result, dict) else 'Not a dict'}")
@@ -1148,7 +1072,7 @@ app.layout = dbc.Container([
     dcc.Store(id="chat-store", data=chat_history),
     # Add a hidden interval for automating next step after pre-action message
     # Higher interval (2000ms instead of 1000ms) and ensure it's disabled by default
-    dcc.Interval(id="auto-next-step-interval", interval=15000, n_intervals=0, disabled=True, max_intervals=10),  # 15 seconds interval (increased from 2)
+    dcc.Interval(id="auto-next-step-interval", interval=2000, n_intervals=0, disabled=True, max_intervals=5),
     dcc.Interval(id="cleanup-interval", interval=1*1000, n_intervals=0, disabled=False),  # 1 second interval for cleanup
     
     # Header
@@ -1288,14 +1212,6 @@ def handle_chat_interaction(send_clicks, datasets_clicks, variables_clicks,
             print(f"🔍 Original query: '{user_message}'")
             print(f"🎯 Search keywords: '{search_keywords}'")
             print(f"📊 Preferred datasets: {preferred_datasets}")
-            
-            # Log the query event with detailed information
-            log_dashboard_event('query_received', {
-                'query': user_message,
-                'search_keywords': search_keywords,
-                'preferred_datasets': str(preferred_datasets),
-                'language': detected_lang
-            })
 
             # Update session with extracted information
             session_data['search_keywords'] = search_keywords
@@ -1428,7 +1344,7 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
     """Handle automatic next step after pre-action message"""
     
     # Safety mechanism: max number of intervals before auto-disabling
-    MAX_INTERVALS = 10  # Increased from 5 to handle longer operations
+    MAX_INTERVALS = 5
     
     # Ensure we have session_data to work with
     if session_data is None:
@@ -1463,7 +1379,7 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
     # Check for missing action or expired timeout
     current_time = time.time()
     action_timestamp = pending_action.get('timestamp', 0)
-    timeout_seconds = 180  # Expire pending actions after 180 seconds (increased from 60)  # Expire pending actions after 60 seconds (increased from 30) (increased from 10 to allow more processing time)
+    timeout_seconds = 30  # Expire pending actions after 30 seconds (increased from 10 to allow more processing time)
     
     if (n_intervals is None or 
         not pending_action or 
@@ -1476,13 +1392,12 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
             session_data['pending_main_action']['processed_at'] = time.time()
             
             # Add a timeout message to the chat history
-            timeout_message = "The variable search is taking longer than expected. Please wait while we continue processing your query... This may take up to 3 minutes for complex searches."
+            timeout_message = "The query is taking longer than expected to process. Please try a more specific query or try again later."
             new_chat_data = chat_data.copy() if chat_data else []
             new_chat_data.append({
                 "type": "assistant",
                 "content": timeout_message,
-                "timestamp": datetime.now().strftime("%H:%M"),
-                "is_progress": True  # Mark as progress message
+                "timestamp": datetime.now().strftime("%H:%M")
             })
             return format_chat_history(new_chat_data), new_chat_data, "", session_data, True
         else:
@@ -1496,22 +1411,11 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
         search_keywords = pending_action.get('search_keywords', '')
         preferred_datasets = pending_action.get('preferred_datasets', [])
         intent = pending_action.get('intent', '')
-        request_id = pending_action.get('request_id', str(uuid.uuid4()))
         
         print(f"🔄 Executing pending main action for: '{user_message}'")
         print(f"   Intent: {intent}")
         print(f"   Search keywords: {search_keywords}")
         print(f"   Preferred datasets: {preferred_datasets}")
-        
-        # Log the step with detailed information
-        log_dashboard_event('processing_query', {
-            'query': user_message,
-            'intent': intent,
-            'search_keywords': search_keywords,
-            'preferred_datasets': str(preferred_datasets),
-            'request_id': request_id,
-            'interval': n_intervals
-        })
         
         # First try to use the agent if available
         if agent and MODULES_AVAILABLE:
@@ -1550,7 +1454,8 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
                             "selected_variables": session_data.get("variables", []),
                             "analysis_type": session_data.get("analysis_type", "descriptive"),
                             "user_approved": False,
-                            "analysis_result": {}
+                            "analysis_result": {},
+                            "language": detected_lang
                         }
                 else:
                     # Create state manually
@@ -1620,187 +1525,106 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
                     else:
                         content = agent_response.get('content', agent_response.get('output', str(agent_response)))
                     
-                    # Create a dict for session updates with properly typed fields
-                    session_updates: Dict[str, Any] = {
-                        "language": detected_lang,
-                        "intent": intent
-                    }
-                    
-                    try:
-                        # Add any specific session updates based on the agent response
-                        if intent == "ask_for_datasets":
-                            datasets_info = get_available_datasets()
-                            if isinstance(datasets_info, dict):
-                                dataset_list = list(datasets_info.keys())
-                                session_updates["datasets"] = dataset_list
-                                print(f"✅ Set session datasets to: {dataset_list}")
-                        
-                        # If there are variables selected in the agent response, store them
-                        if isinstance(agent_response, dict) and "selected_variables" in agent_response:
-                            variables = agent_response.get("selected_variables")
-                            if variables:
-                                session_updates["variables"] = variables
-                                print(f"✅ Set session variables to: {variables}")
-                                
-                                # Modify content to include the variables list
-                                variables_formatted = "\n".join([f"• {var}" for var in variables])
-                                
-                                # Check if content already mentions variables but doesn't list them
-                                if "relevant variables" in content and "•" not in content.split("relevant variables")[1].split("\n")[0]:
-                                    # Replace the placeholder with actual variables
-                                    content_parts = content.split("relevant variables:")
-                                    if len(content_parts) > 1:
-                                        content = content_parts[0] + "relevant variables:\n\n" + variables_formatted + "\n\n" + "\n".join(content_parts[1].split("\n")[1:])
-                                else:
-                                    # Append the variables section if not already mentioned
-                                    content += f"\n\n**Selected Variables:**\n\n{variables_formatted}"
-                        
-                        # If there is analysis_type in the agent response, store it
-                        if isinstance(agent_response, dict) and "analysis_type" in agent_response:
-                            analysis = agent_response.get("analysis_type")
-                            if analysis:
-                                session_updates["analysis_type"] = analysis
-                                print(f"✅ Set session analysis_type to: {analysis}")
-                    except Exception as update_err:
-                        print(f"⚠️ Error setting session updates: {update_err}")
-                    
-                    # Process the content into the chat data structure
-                    new_chat_data = chat_data.copy() if chat_data else []
-                    new_chat_data.append({
-                        "type": "assistant",
-                        "content": content,
-                        "timestamp": datetime.now().strftime("%H:%M")
-                    })
-                    
-                    # Update session data with our updates
-                    session_data_copy = session_data.copy()
-                    for key, value in session_updates.items():
-                        session_data_copy[key] = value
-                    
-                    # Mark the action as processed
-                    if 'pending_main_action' in session_data_copy:
-                        session_data_copy['pending_main_action']['processed'] = True
-                        session_data_copy['pending_main_action']['processed_at'] = time.time()
-                    
-                    # Return properly formatted tuple as expected by the callback
-                    return format_chat_history(new_chat_data), new_chat_data, "", session_data_copy, True
-                else:
-                    # Handle non-dict response
-                    content = str(agent_response)
+                    # Extract session updates
                     session_updates = {
                         "language": detected_lang,
-                        "intent": intent
+                        "intent": intent or agent_response.get("intent", "query_variable_database")
                     }
                     
-                    # Process the content into the chat data structure
-                    new_chat_data = chat_data.copy() if chat_data else []
-                    new_chat_data.append({
-                        "type": "assistant",
+                    # Extract selected variables if present
+                    print(f"🔍 Checking for variables in agent response keys: {list(agent_response.keys())}")
+                    if "selected_variables" in agent_response and agent_response.get("selected_variables"):
+                        variables = agent_response.get("selected_variables")
+                        print(f"📊 Raw variables from agent: {variables[:10] if variables else 'None'}")
+                        if variables:
+                            session_updates["variables"] = variables
+                            print(f"✅ Found {len(variables)} variables in agent response")
+                            print(f"📊 First few variables: {variables[:5]}")
+                            
+                            # Modify content to include the variables list
+                            if not variables:
+                                print("⚠️ Variables list is empty, using fallback message")
+                                variables_formatted = "No specific variables found for this query."
+                            else:
+                                variables_formatted = "\n".join([f"• {var}" for var in variables])
+                                print(f"🔍 Variables to format: {variables}")
+                                print(f"📋 Formatted variables:\n{variables_formatted}")
+                            
+                            # Debug current content
+                            print(f"📝 Current content excerpt: {content[:100]}...")
+                            
+                            # Check if content already mentions variables but doesn't list them
+                            if "relevant variables" in content and "•" not in content.split("relevant variables")[1].split("\n")[0]:
+                                # Replace the placeholder with actual variables
+                                content_parts = content.split("relevant variables:")
+                                print(f"🔄 Found 'relevant variables' in content, replacing placeholder")
+                                if len(content_parts) > 1:
+                                    content = content_parts[0] + "relevant variables:\n\n" + variables_formatted + "\n\n" + "\n".join(content_parts[1].split("\n")[1:])
+                                    print(f"✅ Replaced placeholder with variables list")
+                                    
+                                    # Add next steps instructions after content
+                                    detected_lang = session_data.get('language', 'es')
+                                    next_steps_msg = get_message('variables_next_steps', detected_lang)
+                                    content += f"\n\n{next_steps_msg}"
+                                    print(f"✅ Added next steps guidance after variables placeholder")
+                            else:
+                                # Append the variables section if not already mentioned
+                                print(f"➕ Appending variables section to content")
+                                content += f"\n\n**Selected Variables:**\n\n{variables_formatted}"
+                                print(f"✅ Variables section added to content")
+                            
+                            # Add next steps instructions after variables
+                            detected_lang = session_data.get('language', 'es')
+                            next_steps_msg = get_message('variables_next_steps', detected_lang)
+                            content += f"\n\n{next_steps_msg}"
+                            print(f"✅ Added next steps guidance after variables")
+                    
+                    # Build response object
+                    response = {
                         "content": content,
-                        "timestamp": datetime.now().strftime("%H:%M")
-                    })
+                        "session_updates": session_updates
+                    }
                     
-                    # Update session data with our updates
-                    session_data_copy = session_data.copy()
-                    for key, value in session_updates.items():
-                        session_data_copy[key] = value
-                    
-                    # Mark the action as processed
-                    if 'pending_main_action' in session_data_copy:
-                        session_data_copy['pending_main_action']['processed'] = True
-                        session_data_copy['pending_main_action']['processed_at'] = time.time()
-                    
-                    # Return properly formatted tuple as expected by the callback
-                    return format_chat_history(new_chat_data), new_chat_data, "", session_data_copy, True
+                else:
+                    # Handle non-dict response
+                    response = {
+                        "content": str(agent_response),
+                        "session_updates": {
+                            "language": detected_lang,
+                            "intent": intent or "query_variable_database"
+                        }
+                    }
                 
-                print(f"✅ Processed agent response")
+                print(f"✅ Processed agent response: {response['content'][:100]}...")
                 
             except Exception as agent_err:
                 print(f"⚠️ Agent error in auto-next-step: {agent_err}")
                 traceback.print_exc()
-                
-                # Create a fallback error response
-                error_msg = f"Sorry, I encountered an error processing your request: {str(agent_err)[:100]}... Please try again."
-                
-                # Add error message to chat
-                new_chat_data = chat_data.copy() if chat_data else []
-                new_chat_data.append({
-                    "type": "assistant",
-                    "content": error_msg,
-                    "timestamp": datetime.now().strftime("%H:%M")
-                })
-                
-                # Update session data and mark as processed
-                session_data_copy = session_data.copy()
-                session_data_copy["last_error"] = str(agent_err)
-                
-                if 'pending_main_action' in session_data_copy:
-                    session_data_copy['pending_main_action']['processed'] = True
-                    session_data_copy['pending_main_action']['processed_at'] = time.time()
-                    session_data_copy['pending_main_action']['error'] = str(agent_err)
-                
-                # Return formatted error response
-                return format_chat_history(new_chat_data), new_chat_data, "", session_data_copy, True
+                # Fall back to mock response
+                response = get_mock_agent_response(user_message, session_data, search_keywords, preferred_datasets)
         else:
-            # Create a response for when agent is unavailable
-            unavailable_msg = "The AI agent is currently initializing or unavailable. Please try again in a moment."
-            
-            # Add message to chat
-            new_chat_data = chat_data.copy() if chat_data else []
-            new_chat_data.append({
-                "type": "assistant", 
-                "content": unavailable_msg,
-                "timestamp": datetime.now().strftime("%H:%M")
-            })
-            
-            # Update session data and mark as processed
-            session_data_copy = session_data.copy()
-            if 'pending_main_action' in session_data_copy:
-                session_data_copy['pending_main_action']['processed'] = True
-                session_data_copy['pending_main_action']['processed_at'] = time.time()
-                session_data_copy['pending_main_action']['error'] = "Agent unavailable"
-            
-            print(f"⚠️ Agent unavailable, returning fallback message")
-            return format_chat_history(new_chat_data), new_chat_data, "", session_data_copy, True
+            # Fall back to mock response if agent unavailable
+            response = get_mock_agent_response(user_message, session_data, search_keywords, preferred_datasets)
+            print(f"✅ Got mock response: {response.get('content', '')[:50]}...")
         
-        # At this point we should have already handled the response and returned,
-        # but we'll add this as a fallback just in case
-        print("⚠️ WARNING: Reached fallback code path in handle_auto_next_step")
+        # Add the response to the chat
         new_chat_data = chat_data.copy() if chat_data else []
         new_chat_data.append({
             "type": "assistant",
-            "content": "I processed your request but encountered an issue with the response formatting. Please try again.",
+            "content": response["content"],
             "timestamp": datetime.now().strftime("%H:%M")
         })
         
-        # Update session as a fallback
+        # Update session with any data from the response
         session_data_copy = session_data.copy()
-        if 'pending_main_action' in session_data_copy:
-            session_data_copy['pending_main_action']['processed'] = True
-            session_data_copy['pending_main_action']['processed_at'] = time.time()
+        for key, value in response.get("session_updates", {}).items():
+            session_data_copy[key] = value
         
         # Mark the pending action as processed
         if 'pending_main_action' in session_data_copy:
             print(f"🏁 Marking pending action as processed")
             session_data_copy['pending_main_action']['processed'] = True
-            process_time = time.time()
-            session_data_copy['pending_main_action']['processed_at'] = process_time
-            
-            # Calculate and store completion time
-            action_timestamp = session_data_copy['pending_main_action'].get('timestamp', process_time)
-            completion_time = process_time - action_timestamp
-            session_data_copy['pending_main_action']['completion_time'] = completion_time
-            
-            # Log successful query completion with details
-            log_dashboard_event('query_completed', {
-                'query': session_data_copy['pending_main_action'].get('user_message', 'unknown'),
-                'intent': session_data_copy['pending_main_action'].get('intent', 'unknown'),
-                'completion_time_sec': round(completion_time, 2),
-                'request_id': session_data_copy['pending_main_action'].get('request_id', 'unknown'),
-                'selected_variables_count': len(session_data_copy.get('variables', [])),
-                'datasets': str(session_data_copy.get('datasets', [])),
-                'success': True
-            })
+            session_data_copy['pending_main_action']['processed_at'] = time.time()
         
         # Return the updated UI state
         print("✅ Auto-next-step completed successfully")
@@ -1823,24 +1647,9 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
             # Mark pending action as processed to prevent getting stuck
             session_data_copy = session_data.copy() if session_data else {}
             if 'pending_main_action' in session_data_copy:
-                    print(f"🏁 Marking pending action as processed (error handling path)")
-                    session_data_copy['pending_main_action']['processed'] = True
-                    process_time = time.time()
-                    session_data_copy['pending_main_action']['processed_at'] = process_time
-                    
-                    # Calculate time spent on failed request
-                    action_timestamp = session_data_copy['pending_main_action'].get('timestamp', process_time)
-                    error_time = process_time - action_timestamp
-                    session_data_copy['pending_main_action']['error_time'] = error_time
-                    
-                    # Log the error event for monitoring
-                    log_dashboard_event('query_error', {
-                        'query': session_data_copy['pending_main_action'].get('user_message', 'unknown'),
-                        'error': str(e),
-                        'processing_time_sec': round(error_time, 2),
-                        'request_id': session_data_copy['pending_main_action'].get('request_id', 'unknown'),
-                        'success': False
-                    })
+                print(f"🏁 Marking pending action as processed (error handling path)")
+                session_data_copy['pending_main_action']['processed'] = True
+                session_data_copy['pending_main_action']['processed_at'] = time.time()
                 
             # Always disable the interval (disabled=True) to stop the cycling
             return format_chat_history(new_chat_data), new_chat_data, "", session_data_copy, True
@@ -1850,47 +1659,840 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
             print(f"❌❌ Critical error in error handling: {nested_error}")
             # Return minimal updates, but ensure interval is disabled
             return dash.no_update, dash.no_update, dash.no_update, dash.no_update, True
-# Add agent event logging for monitoring
-def log_dashboard_event(event_type, details, run_id=None):
-    """
-    Logs dashboard events to console and LangSmith if available
-    
-    Args:
-        event_type (str): Type of event (e.g., 'query_received', 'agent_response')
-        details (dict): Event details
-        run_id (str, optional): LangSmith run ID to associate with this event
-    """
-    timestamp = datetime.now().isoformat()
-    log_entry = {
-        "timestamp": timestamp,
-        "event_type": event_type,
-        "details": details
-    }
-    
-    # Print to console with timestamp
-    print(f"📝 [{timestamp}] DASHBOARD {event_type}: {details}")
-    
-    # Log to LangSmith if available
-    if langsmith_client:
+def get_agent_response(user_message: str, session_data: Dict, search_keywords=None, preferred_datasets=None) -> Dict:
+    """Get response from the Navegador agent"""
+    try:
+        if agent and MODULES_AVAILABLE:
+            # Use the real agent with enhanced query processing
+            return get_real_agent_response(user_message, session_data, search_keywords, preferred_datasets)
+        else:
+            # Fall back to mock responses with enhanced query processing
+            return get_mock_agent_response(user_message, session_data, search_keywords, preferred_datasets)
+    except Exception as e:
+        return {
+            "content": get_message('error_occurred', session_data.get('language', 'es'), error=str(e)),
+            "session_updates": {}
+        }
+
+def get_real_agent_response(user_message: str, session_data: Dict, search_keywords=None, preferred_datasets=None) -> Dict:
+    """Get response from the real Navegador agent"""
+    try:
+        # Initialize agent state with current session - use ALL datasets by default
+        agent_state = {
+            "messages": session_data.get("chat_history", []),
+            "intent": "",
+            "user_query": user_message,
+            "original_query": user_message,
+            "dataset": session_data.get("datasets", ["ALL"]),  # Default to ALL datasets
+            "selected_variables": session_data.get("variables", []),
+            "analysis_type": session_data.get("analysis_type", "quick_insights"),
+            "user_approved": False,
+            "analysis_result": {},
+            "language": session_data.get('language', 'es')  # Use session language as fallback
+        }
+        
+        # Classify intent and detect language using the agent
         try:
-            # Add feedback to LangSmith project
-            metadata = {
-                "event_type": event_type,
-                "timestamp": timestamp,
-                **{f"detail_{k}": str(v) for k, v in details.items()}
-            }
-            
-            if run_id:
-                # Use the API that's available in the current version
-                langsmith_client.create_feedback(
-                    run_id=run_id,
-                    key=f"dashboard_event_{event_type}",
-                    value=event_type,
-                    comment=str(details),
-                    metadata=metadata
-                )
+            if MODULES_AVAILABLE:
+                from intent_classifier import intent_dict, _classify_intent
+                from langchain_openai import ChatOpenAI
+                
+                # Use the proper intent classifier
+                llm = ChatOpenAI(model="gpt-4o-mini", max_retries=3)  # Add retries for reliability
+                intent = _classify_intent(user_message, intent_dict, llm)
+                detected_lang = detect_language(user_message)
+                
+                print(f"🎯 Classified intent: {intent} for message: '{user_message}' (lang: {detected_lang})")
+            else:
+                intent = "answer_general_questions"
+                detected_lang = detect_language(user_message)
         except Exception as e:
-            print(f"⚠️ Error logging to LangSmith: {e}")
+            print(f"Intent classification error: {e}")
+            intent = "answer_general_questions"
+            detected_lang = detect_language(user_message)
+        
+        # Recreate the agent state with proper structure using create_agent_state if available
+        if create_agent_state:
+            agent_state = create_agent_state(
+                user_message=user_message,
+                intent=intent,
+                dataset=session_data.get("datasets", ["ALL"]),
+                selected_variables=session_data.get("variables", []),
+                language=detected_lang
+            )
+        else:
+            # Update agent state with detected language and intent directly
+            agent_state["intent"] = intent
+            agent_state["language"] = detected_lang
+            
+        # Ensure state is normalized for consistency
+        agent_state = normalize_state(agent_state)
+        
+        # TODO: AGREGAR INTENCIÓN A UNA FUNCIÓN QUE ACTUALICE EL CHAT CON 'pensando...' o 'escogiendo variables...', y 'procesando resultados...'
+
+        # Let the agent handle the interaction intelligently based on intent
+        # Actually try to use the real agent first and fall back to mock response if it fails
+        if MODULES_AVAILABLE and agent:
+            try:
+                # Normalize state for consistency
+                agent_state = normalize_state(agent_state)
+                
+                # Create a thread ID for this invocation
+                thread_id = f"chat_{int(time.time())}"
+                
+                # Create a proper config with our agent_config helper
+                agent_config = create_agent_config(thread_id)
+                
+                print(f"🤖 Invoking agent with intent: {intent}")
+                # Use the real agent to process the request with persistence
+                response = agent.invoke(agent_state, config=agent_config)
+                print(f"✅ Agent response received: {type(response)}")
+                
+                # Extract response content and session updates
+                if isinstance(response, dict):
+                    # Check if there are AI messages in the response
+                    ai_messages = []
+                    
+                    # Handle different message formats (dict, AIMessage, or other objects)
+                    for msg in response.get("messages", []):
+                        is_assistant = False
+                        
+                        # Check if it's a dictionary
+                        if isinstance(msg, dict) and msg.get("role") == "assistant":
+                            is_assistant = True
+                        # Check if it's a LangChain message object
+                        elif hasattr(msg, "type") and getattr(msg, "type", "") == "ai":
+                            is_assistant = True
+                        # Handle AIMessage from langchain
+                        elif type(msg).__name__ == "AIMessage":
+                            is_assistant = True
+                        
+                        if is_assistant:
+                            ai_messages.append(msg)
+                    if ai_messages:
+                        content = ai_messages[-1].get("content", "") if isinstance(ai_messages[-1], dict) else getattr(ai_messages[-1], "content", str(ai_messages[-1]))
+                    else:
+                        content = response.get('content', response.get('output', str(response)))
+                    
+                    # Create a dict for session updates with properly typed fields
+                    session_updates: Dict[str, Any] = {
+                        "language": detected_lang,
+                        "intent": intent
+                    }
+                    
+                    try:
+                        # Add any specific session updates based on the response
+                        if intent == "ask_for_datasets":
+                            datasets_info = get_available_datasets()
+                            if isinstance(datasets_info, dict):
+                                dataset_list = list(datasets_info.keys())
+                                session_updates["datasets"] = dataset_list
+                                print(f"✅ Set session datasets to: {dataset_list}")
+                        
+                        # If there are variables selected, store them
+                        if "selected_variables" in response and response.get("selected_variables"):
+                            variables = response.get("selected_variables")
+                            if variables:
+                                session_updates["variables"] = variables
+                                print(f"✅ Set session variables to: {variables}")
+                                
+                                # Modify content to include the variables list
+                                variables_formatted = "\n".join([f"• {var}" for var in variables])
+                                
+                                # Check if content already mentions variables but doesn't list them
+                                if "relevant variables" in content and "•" not in content.split("relevant variables")[1].split("\n")[0]:
+                                    # Replace the placeholder with actual variables
+                                    content_parts = content.split("relevant variables:")
+                                    if len(content_parts) > 1:
+                                        content = content_parts[0] + "relevant variables:\n\n" + variables_formatted + "\n\n" + "\n".join(content_parts[1].split("\n")[1:])
+                                else:
+                                    # Append the variables section if not already mentioned
+                                    content += f"\n\n**Selected Variables:**\n\n{variables_formatted}"
+                        
+                        # If there is analysis_type, store it
+                        if "analysis_type" in response and response.get("analysis_type"):
+                            analysis = response.get("analysis_type")
+                            if analysis:
+                                session_updates["analysis_type"] = analysis
+                                print(f"✅ Set session analysis_type to: {analysis}")
+                    except Exception as update_err:
+                        print(f"⚠️ Error setting session updates: {update_err}")
+                    
+                    return {
+                        "content": content,
+                        "session_updates": session_updates
+                    }
+                else:
+                    return {
+                        "content": str(response),
+                        "session_updates": {"language": detected_lang, "intent": intent}
+                    }
+            except Exception as e:
+                print(f"Agent invocation error: {e}")
+                # Fall back to intelligent mock response
+                return get_intelligent_mock_response(user_message, agent_state, detected_lang, search_keywords, preferred_datasets)
+        else:
+            # Use intelligent mock response when agent is not available
+            return get_intelligent_mock_response(user_message, agent_state, detected_lang, search_keywords, preferred_datasets)
+            
+    except Exception as e:
+        print(f"Error in get_real_agent_response: {e}")
+        return get_mock_agent_response(user_message, session_data)
+
+def get_intelligent_mock_response(user_message: str, agent_state: Dict, detected_lang: str, search_keywords=None, preferred_datasets=None) -> Dict:
+    """Generate an intelligent mock response based on user message and agent state"""
+    message_lower = user_message.lower()
+    intent = agent_state.get("intent", "answer_general_questions")
+    
+    # Handle different intents intelligently
+    if intent == "answer_general_questions":
+        # User asking about metadata: datasets, topics, project info
+        is_asking_for_datasets = any(word in message_lower for word in [
+            "topic", "temas", "dataset", "datos", "encuesta", "survey", 
+            "list", "lista", "mostrar", "show", "available", "disponible",
+            "que hay", "what are", "cuales son", "which are", "have", "tienes"
+        ])
+        
+        if is_asking_for_datasets:
+            # Show available datasets/topics
+            datasets_info = get_available_datasets()
+            content = get_message('datasets_title', detected_lang) + "\n\n"
+            for i, (dataset_name, info) in enumerate(datasets_info.items(), 1):
+                content += f"{i}. **{dataset_name}** ({info.get('abbreviation', 'N/A')})\n"
+                content += f"   - {info.get('description', 'No description')}\n"
+                content += f"   - Variables: {info.get('variables', 'Unknown')}\n\n"
+            content += get_message('explore_datasets', detected_lang)
+            
+            return {
+                "content": content,
+                "session_updates": {
+                    "datasets": list(datasets_info.keys()),
+                    "language": detected_lang,
+                    "intent": intent
+                }
+            }
+        else:
+            # General project/methodology questions
+            description = get_project_description(user_message, detected_lang)
+            return {
+                "content": description,
+                "session_updates": {"language": detected_lang, "intent": intent}
+            }
+    
+    elif intent == "query_variable_database":
+        # User wants to search for variables/data - use ALL datasets by default
+        try:
+            if MODULES_AVAILABLE:
+                # Import tmp_topic_st for cross-disciplinary analysis
+                from dataset_knowledge import tmp_topic_st
+                from langchain_openai import ChatOpenAI
+                datasets_info = get_available_datasets()
+                
+                # Create LLM instance for variable selection
+                llm = ChatOpenAI(model="gpt-4o-mini")
+                
+                               
+                # Use ALL datasets for cross-disciplinary variable search by default
+                try:
+                    # Use improved simultaneous retrieval for better performance and balanced results
+                    # Use extracted search keywords instead of full user message for better relevance
+                    search_query = search_keywords if search_keywords else user_message
+                    topic_ids, variables_dict, grade_dict = _variable_selector(
+                        search_query, tmp_topic_st, llm, use_simultaneous_retrieval=True
+                    )
+                    
+                    if variables_dict and grade_dict:
+                        # Get the top-graded variables
+                        sorted_vars = sorted(grade_dict.items(), key=lambda x: list(x[1].keys())[0], reverse=True)
+                        top_variables = [var_id for var_id, grade in sorted_vars[:15]] # TODO: este top 15 debería ser configurable por el usuario
+                        
+                        content = f"{get_message('variables_found', detected_lang, query=user_message)}\n\n"
+                        content += f"📊 {get_message('cross_disciplinary_search', detected_lang)}\n\n"
+                        
+                        for var_id in top_variables:
+                            if var_id in variables_dict:
+                                var_info = variables_dict.get(f"{var_id}__question", "")
+                                if var_info:
+                                    content += f"• {var_info[:100]}...\n"
+                        
+                        content += f"\n{get_message('proceed_variables', detected_lang)}"
+                        
+                        return {
+                            "content": content,
+                            "session_updates": {
+                                "variables": top_variables,
+                                "variables_dict": variables_dict,
+                                "grade_dict": grade_dict,
+                                "topic_ids": topic_ids,
+                                "datasets": list(datasets_info.keys()),  # All datasets used
+                                "language": detected_lang,
+                                "intent": intent
+                            }
+                        }
+                    else:
+                        return {
+                            "content": get_message('no_variables_found', detected_lang),
+                            "session_updates": {"language": detected_lang, "intent": intent}
+                        }
+                except Exception as e:
+                    print(f"Error in variable selection: {e}")
+                    return {
+                        "content": get_message('error_occurred', detected_lang, error=str(e)),
+                        "session_updates": {"language": detected_lang, "intent": intent}
+                    }
+            else:
+                # Mock variables when modules not available
+                mock_variables = [f"Variable_{i}_about_{user_message.split()[0] if user_message.split() else 'topic'}" for i in range(1, 8)]
+                content = f"{get_message('variables_found', detected_lang, query=user_message)}\n\n"
+                for var in mock_variables:
+                    content += f"• {var}\n"
+                content += f"\n{get_message('proceed_variables', detected_lang)}"
+                
+                return {
+                    "content": content,
+                    "session_updates": {
+                        "variables": mock_variables,
+                        "datasets": ["ALL"],
+                        "language": detected_lang,
+                        "intent": intent
+                    }
+                }
+        except Exception as e:
+            return {
+                "content": get_message('no_variables_found', detected_lang),
+                "session_updates": {"language": detected_lang, "intent": intent}
+            }
+        # User wants to search for variables - use ALL datasets by default
+        try:
+            if MODULES_AVAILABLE:
+                # Import tmp_topic_st for cross-disciplinary analysis
+                from dataset_knowledge import tmp_topic_st
+                from langchain_openai import ChatOpenAI
+                datasets_info = get_available_datasets()
+                
+                # Create LLM instance for variable selection
+                llm = ChatOpenAI(model="gpt-4o-mini")
+                
+                # Use ALL datasets for cross-disciplinary variable search by default
+                try:
+                    # Use improved simultaneous retrieval for better performance and balanced results
+                    # Use extracted search keywords instead of full user message for better relevance
+                    search_query = search_keywords if search_keywords else user_message
+                    topic_ids, variables_dict, grade_dict = _variable_selector(
+                        search_query, tmp_topic_st, llm, use_simultaneous_retrieval=True
+                    )
+                    
+                    if variables_dict and grade_dict:
+                        # Get the top-graded variables
+                        sorted_vars = sorted(grade_dict.items(), key=lambda x: list(x[1].keys())[0], reverse=True)
+                        top_variables = [var_id for var_id, grade in sorted_vars[:15]]
+                        
+                        content = f"{get_message('variables_found', detected_lang, query=user_message)}\n\n"
+                        content += f"📊 {get_message('cross_disciplinary_search', detected_lang)}\n\n"
+                        
+                        for var_id in top_variables:
+                            if var_id in variables_dict:
+                                var_info = variables_dict.get(f"{var_id}__question", "")
+                                if var_info:
+                                    content += f"• {var_info[:100]}...\n"
+                        
+                        content += f"\n{get_message('proceed_variables', detected_lang)}"
+                        
+                        return {
+                            "content": content,
+                            "session_updates": {
+                                "variables": top_variables,
+                                "variables_dict": variables_dict,
+                                "grade_dict": grade_dict,
+                                "topic_ids": topic_ids,
+                                "datasets": list(datasets_info.keys()),  # All datasets used
+                                "language": detected_lang,
+                                "intent": intent
+                            }
+                        }
+                    else:
+                        return {
+                            "content": get_message('no_variables_found', detected_lang),
+                            "session_updates": {"language": detected_lang, "intent": intent}
+                        }
+                except Exception as e:
+                    print(f"Error in variable selection: {e}")
+                    return {
+                        "content": get_message('error_occurred', detected_lang, error=str(e)),
+                        "session_updates": {"language": detected_lang, "intent": intent}
+                    }
+            else:
+                # Mock variables when modules not available
+                mock_variables = [f"Variable_{i}_about_{user_message.split()[0] if user_message.split() else 'topic'}" for i in range(1, 8)]
+                content = f"{get_message('variables_found', detected_lang, query=user_message)}\n\n"
+                for var in mock_variables:
+                    content += f"• {var}\n"
+                content += f"\n{get_message('proceed_variables', detected_lang)}"
+                
+                return {
+                    "content": content,
+                    "session_updates": {
+                        "variables": mock_variables,
+                        "datasets": ["ALL"],
+                        "language": detected_lang,
+                        "intent": intent
+                    }
+                }
+        except Exception as e:
+            return {
+                "content": get_message('no_variables_found', detected_lang),
+                "session_updates": {"language": detected_lang, "intent": intent}
+            }
+    
+    elif intent == "run_analysis" or any(word in message_lower for word in ["análisis", "analysis", "run", "ejecutar", "analizar", "analyze"]):
+        # User wants to run analysis
+        variables = agent_state.get("selected_variables", [])
+        if variables:
+            # TODO: agregar mensaje 'analizando variables seleccionadas...' de MESSAGES y actualizar respuesta del chat
+            # Run analysis with current variables
+            try:
+                if MODULES_AVAILABLE:
+                    result = run_analysis(
+                        analysis_type="quick_insights",
+                        selected_variables=variables,
+                        user_query=user_message
+                    )
+                else:
+                    result = {
+                        "success": True,
+                        "summary": f"Mock analysis completed for {len(variables)} variables. Found interesting patterns and correlations.",
+                        "data": {"mock": "data"},
+                        "plots": []
+                    }
+                
+                if result.get("success"):
+                    content = f"{get_message('analysis_complete', detected_lang)}\n\n{result.get('summary', 'Analysis completed successfully.')}\n\n{get_message('check_report_panel', detected_lang)}"
+                    
+                    return {
+                        "content": content,
+                        "session_updates": {
+                            "analysis_type": "quick_insights",
+                            "last_report": result,
+                            "language": detected_lang,
+                            "intent": intent
+                        }
+                    }
+                else:
+                    return {
+                        "content": get_message('analysis_failed', detected_lang, error=result.get('error', 'Unknown error')),
+                        "session_updates": {"language": detected_lang, "intent": intent}
+                    }
+            except Exception as e:
+                return {
+                    "content": get_message('analysis_failed', detected_lang, error=str(e)),
+                    "session_updates": {"language": detected_lang, "intent": intent}
+                }
+        else:
+            return {
+                "content": get_message('need_variables_first', detected_lang),
+                "session_updates": {"language": detected_lang, "intent": intent}
+            }
+    
+    elif any(word in message_lower for word in ["project", "proyecto", "describe", "descripción", "about", "acerca", "what is", "qué es"]):
+        # User wants project information
+        description = get_project_description(user_message, detected_lang)
+        return {
+            "content": description,
+            "session_updates": {"language": detected_lang, "intent": intent}
+        }
+    
+    elif intent == "continue_conversation" or any(word in message_lower for word in ["ok", "okay", "sí", "si", "yes", "proceed", "continuar", "proceder", "adelante"]):
+        # User is continuing the conversation - check if they're responding to a variable selection or analysis prompt
+        variables = agent_state.get("selected_variables", [])
+        session_data = agent_state  # Use agent_state as session data source
+        
+        if variables and len(variables) > 0:
+            # User has variables selected and is saying "ok" - proceed with analysis
+            try:
+                if MODULES_AVAILABLE:
+                    result = run_analysis(
+                        analysis_type="quick_insights",
+                        selected_variables=variables,
+                        user_query="User approved variable selection and requested analysis"
+                    )
+                else:
+                    result = {
+                        "success": True,
+                        "summary": f"Mock analysis completed for {len(variables)} variables. Found interesting patterns about health opinions in Mexico.",
+                        "data": {"mock": "data"},
+                        "plots": []
+                    }
+                
+                if result.get("success"):
+                    content = f"{get_message('analysis_complete', detected_lang)}\n\n{result.get('summary', 'Analysis completed successfully.')}\n\n{get_message('check_report_panel', detected_lang)}"
+                    
+                    return {
+                        "content": content,
+                        "session_updates": {
+                            "analysis_type": "quick_insights",
+                            "last_report": result,
+                            "language": detected_lang,
+                            "intent": "run_analysis"  # Update intent to reflect completed analysis
+                        }
+                    }
+                else:
+                    return {
+                        "content": get_message('analysis_failed', detected_lang, error=result.get('error', 'Unknown error')),
+                        "session_updates": {"language": detected_lang, "intent": intent}
+                    }
+            except Exception as e:
+                return {
+                    "content": get_message('analysis_failed', detected_lang, error=str(e)),
+                    "session_updates": {"language": detected_lang, "intent": intent}
+                }
+        else:
+            # No variables selected yet - be helpful
+            if detected_lang == 'es':
+                content = "¡Perfecto! ¿Qué te gustaría hacer?\n\n• Buscar variables específicas\n• Ver datasets disponibles\n• Obtener ayuda sobre el proyecto"
+            else:
+                content = "Perfect! What would you like to do?\n\n• Search for specific variables\n• View available datasets\n• Get help about the project"
+            
+            return {
+                "content": content,
+                "session_updates": {"language": detected_lang, "intent": intent}
+            }
+
+    else:
+        # General conversation - be helpful and contextual
+        return {
+            "content": get_message('capabilities', detected_lang),
+            "session_updates": {"language": detected_lang, "intent": intent}
+        }
+
+def get_mock_agent_response(user_message: str, session_data: Dict, search_keywords=None, preferred_datasets=None) -> Dict:
+    """Get mock response when real agent is not available"""
+    message_lower = user_message.lower()
+    user_lang = session_data.get('language', 'es')
+    
+    # Check for project description requests
+    if any(word in message_lower for word in ["project", "describe", "about", "what is", "proyecto", "descripción", "acerca", "qué es"]):
+        return {
+            "content": get_project_description(user_message, user_lang),
+            "session_updates": {}
+        }
+    
+    elif ("dataset" in message_lower and "list" in message_lower) or ("conjunto" in message_lower and ("datos" in message_lower or "lista" in message_lower)):
+        datasets_info = get_available_datasets()
+        content = get_message('datasets_title', user_lang) + "\n\n"
+        for i, (dataset_name, info) in enumerate(datasets_info.items(), 1):
+            content += f"{i}. **{dataset_name}** ({info.get('abbreviation', 'N/A')})\n"
+            content += f"   - {info.get('description', 'No description')}\n"
+            content += f"   - Variables: {info.get('variables', 'Unknown')}\n\n"
+        content += get_message('explore_datasets', user_lang)
+        
+        return {
+            "content": content,
+            "session_updates": {"datasets": list(datasets_info.keys())}
+        }
+    
+    elif "variable" in message_lower or "search" in message_lower or "buscar" in message_lower:
+        return {
+            "content": get_message('variable_search_help', user_lang),
+            "session_updates": {}
+        }
+    
+    elif "analysis" in message_lower or "run" in message_lower or "análisis" in message_lower or "ejecutar" in message_lower:
+        if not session_data.get('variables'):
+            return {
+                "content": get_message('need_variables_first', user_lang),
+                "session_updates": {}
+            }
+        else:
+            return {
+                "content": get_message('analysis_types', user_lang),
+                "session_updates": {}
+            }
+    
+    else:
+        return {
+            "content": get_message('capabilities', user_lang),
+            "session_updates": {}
+        }
+
+def update_session_from_response(session_data: Dict, response: Dict) -> Dict:
+    """Update session data based on agent response"""
+    updated_session = session_data.copy()
+    
+    if "session_updates" in response:
+        for key, value in response["session_updates"].items():
+            updated_session[key] = value
+    
+    return updated_session
+
+def format_chat_history(chat_data: List[Dict]) -> List:
+    """Format chat history for display"""
+    formatted_messages = []
+    
+    for message in chat_data:
+        if message["type"] == "user":
+            formatted_messages.append(
+                html.Div([
+                    html.Div([
+                        html.Strong("👤 You: "),
+                        html.Span(message["content"]),
+                        html.Small(f" ({message['timestamp']})", className="text-muted ms-2")
+                    ], className="mb-2 p-2 bg-light rounded")
+                ])
+            )
+        else:
+            formatted_messages.append(
+                html.Div([
+                    html.Div([
+                        html.Strong("🤖 Assistant: "),
+                        dcc.Markdown(message["content"], className="d-inline"),
+                        html.Small(f" ({message['timestamp']})", className="text-muted ms-2")
+                    ], className="mb-2 p-2 bg-primary text-white rounded")
+                ])
+            )
+    
+    return formatted_messages
+
+@app.callback(
+    [Output("session-datasets", "children"),
+     Output("session-variables", "children"),
+     Output("session-analysis-type", "children")],
+    [Input("session-store", "data")]
+)
+def update_session_display(session_data):
+    """Update the session information panel"""
+    
+    # Format datasets
+    if session_data.get("datasets"):
+        datasets_display = [
+            html.Div([
+                html.I(className="fas fa-database me-2"),
+                dataset
+            ], className="mb-1") for dataset in session_data["datasets"]
+        ]
+    else:
+        datasets_display = [html.Small("No datasets selected", className="text-muted")]
+    
+    # Format variables
+    if session_data.get("variables"):
+        variables_display = [
+            html.Div([
+                html.I(className="fas fa-chart-bar me-2"),
+                var
+            ], className="mb-1") for var in session_data["variables"]
+        ]
+    else:
+        variables_display = [html.Small("No variables selected", className="text-muted")]
+    
+    # Format analysis type
+    if session_data.get("analysis_type"):
+        analysis_display = [
+            html.Div([
+                html.I(className="fas fa-cog me-2"),
+                session_data["analysis_type"]
+            ])
+        ]
+    else:
+        analysis_display = [html.Small("No analysis type selected", className="text-muted")]
+    
+    return datasets_display, variables_display, analysis_display
+
+@app.callback(
+    [Output("report-content", "children"),
+     Output("btn-download-pdf", "disabled")],
+    [Input("session-store", "data")]
+)
+def update_report_display(session_data):
+    """Update the report display panel"""
+    
+    if session_data.get("last_report"):
+        # Format the report content for HTML display
+        report_html = format_report_html(session_data["last_report"])
+        
+        return report_html, False
+    else:
+        # No report available
+        no_report = html.Div([
+            html.I(className="fas fa-file-alt fa-3x text-muted mb-3"),
+            html.H6("No report generated yet", className="text-muted"),
+            html.P("Run an analysis to see results here", className="text-muted")
+        ], className="text-center mt-5")
+        
+        return no_report, True
+
+# Add the cleanup callback to remove processed actions after a grace period
+@app.callback(
+    Output("session-store", "data", allow_duplicate=True),
+    [Input("cleanup-interval", "n_intervals")],
+    [State("session-store", "data")],
+    prevent_initial_call=True
+)
+def cleanup_processed_actions(n_intervals, session_data):
+    """Cleanup processed pending actions after a grace period"""
+    if not session_data:
+        return dash.no_update
+    
+    # Make a copy of session data
+    session_data_copy = session_data.copy()
+    
+    # Check for processed pending actions
+    pending_action = session_data_copy.get('pending_main_action', {})
+    if pending_action and pending_action.get('processed', False):
+        current_time = time.time()
+        processed_at = pending_action.get('processed_at', 0)
+        grace_period = 2  # 2 seconds grace period
+        
+        if current_time - processed_at > grace_period:
+            print(f"🧹 Cleaning up processed pending action after grace period")
+            session_data_copy.pop('pending_main_action', None)
+            return session_data_copy
+    
+    return dash.no_update
+
+
+def format_report_html(report_data: Dict) -> html.Div:
+    """Format report data as HTML for display in the dashboard"""
+    
+    try:
+        # Get analysis results
+        analysis_results = report_data.get('results', {})
+        formatted_report = report_data.get('formatted_report', '')
+        analysis_type = report_data.get('analysis_type', 'unknown')
+        
+        # Check if analysis was successful
+        if not report_data.get('success', False):
+            return html.Div([
+                html.H4("❌ Analysis Failed", className="text-danger mb-3"),
+                html.Hr(),
+                html.P(f"Error: {report_data.get('error', 'Unknown error')}", className="text-danger"),
+                html.Small(f"Analysis Type: {analysis_type}", className="text-muted")
+            ])
+        
+        # Create HTML components for the report
+        report_components = []
+        
+        # Title
+        report_components.append(
+            html.H4("📊 Analysis Report", className="text-primary mb-3")
+        )
+        report_components.append(html.Hr())
+        
+        # Query information
+        if analysis_results.get('query'):
+            report_components.extend([
+                html.H6("🔍 Analysis Query", className="text-info"),
+                html.P(analysis_results['query'], className="mb-3"),
+            ])
+        
+        # Executive Summary / Quick Answer
+        report_sections = analysis_results.get('report_sections', {})
+        if report_sections.get('query_answer'):
+            report_components.extend([
+                html.H6("📋 Executive Summary", className="text-info"),
+                html.P(report_sections['query_answer'], class_name="mb-3"),
+            ])
+        
+        # Topic Analysis Overview
+        if report_sections.get('topic_summary'):
+            report_components.extend([
+                html.H6("🎯 Analysis Overview", className="text-info"),
+                html.P(report_sections['topic_summary'], class_name="mb-3"),
+            ])
+        
+        # Topic Summaries (for detailed reports)
+        topic_summaries = report_sections.get('topic_summaries', {})
+        if topic_summaries:
+            report_components.append(html.H6("📚 Topic Analysis", className="text-info"))
+            for topic, summary in topic_summaries.items():
+                report_components.extend([
+                    html.H6(f"▸ {topic}", className="text-secondary mt-3"),
+                    html.P(summary, className="mb-2")
+                ])
+        
+        # Variable Summaries (for quick insights)
+        variable_summaries = report_sections.get('variable_summaries', {})
+        if variable_summaries:
+            report_components.append(html.H6("📊 Variable Analysis", className="text-info mt-3"))
+            for var_id, summary in variable_summaries.items():
+                # Get variable description for better display
+                # Default title in case of errors
+                var_title = var_id
+                
+                try:
+                    if MODULES_AVAILABLE:
+                        from plotting_utils import get_variable_description
+                        var_desc = get_variable_description(var_id)
+                        if isinstance(var_desc, dict):
+                            question = var_desc.get('question', var_id)
+                            var_title = question[:100] + "..." if len(question) > 100 else question
+                        else:
+                            var_title = str(var_desc)[:100] + "..." if len(str(var_desc)) > 100 else str(var_desc)
+                except Exception as e:
+                    print(f"Error getting variable description: {e}")
+                    # Keep the default var_title already set
+                    
+                report_components.extend([
+                    html.H6(f"▸ {var_title}", className="text-secondary mt-3"),
+                    html.P(summary, className="mb-2")
+                ])
+        
+        # Key Findings
+        key_findings = report_sections.get('key_findings', [])
+        if key_findings:
+            report_components.append(html.H6("🔑 Key Findings", className="text-info mt-3"))
+            findings_list = [html.Li(finding) for finding in key_findings if finding.strip()]
+            if findings_list:
+                report_components.append(html.Ul(findings_list, className="mb-3"))
+        
+        # Expert Analysis
+        expert_replies = report_sections.get('expert_replies', [])
+        if expert_replies and any(reply.strip() for reply in expert_replies):
+            report_components.append(html.H6("👨‍🎓 Expert Analysis", className="text-info mt-3"))
+            for i, reply in enumerate(expert_replies, 1):
+                if reply.strip():
+                    report_components.extend([
+                        html.H6(f"Expert Insight {i}", className="text-secondary mt-2"),
+                        html.P(reply, className="mb-2")
+                    ])
+        
+        # Visualizations section
+        plots_data = analysis_results.get('plots', [])
+        plot_references = report_sections.get('plot_references', {})
+        
+        if plots_data or plot_references:
+            report_components.append(html.H6("📈 Visualizations", className="text-info mt-3"))
+            
+            # Add plot references/descriptions
+            if plot_references:
+                for var_id, plot_info in plot_references.items():
+                    if isinstance(plot_info, dict) and plot_info.get('description'):
+                        report_components.extend([
+                            html.P(f"📊 {plot_info['description']}", className="mb-2"),
+                        ])
+            
+            # Note about plots (since we can't directly embed matplotlib plots in Dash)
+            if plots_data:
+                report_components.append(
+                    html.P(f"*Note: Visualizations are not displayed in this report. Please download the report as PDF to view all visualizations.*", className="text-muted mt-3")
+                )
+        
+        # Add formatted report if available
+        if formatted_report:
+            report_components.append(html.Hr(className="my-4"))
+            report_components.append(
+                html.Div([
+                    dcc.Markdown(formatted_report, unsafe_allow_html=True)
+                ])
+            )
+        
+        return html.Div(report_components)
+    except Exception as e:
+        print(f"Error formatting report HTML: {e}")
+        return html.Div([
+            html.H4("Error generating report", className="text-danger"),
+            html.P("There was an error generating the report. Please try again later.", className="text-muted")
+        ])
+
+
 # Standard library imports
 import os
 import sys

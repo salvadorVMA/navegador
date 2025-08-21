@@ -1,6 +1,19 @@
 {
  "cells": [
   {
+<<<<<<< HEAD
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "390a2313",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from secure_data_utils import load_json_with_types, save_json_with_types"
+   ]
+  },
+  {
+=======
+>>>>>>> aed01672d99427e98b67eba6d4efb5a3198306df
    "cell_type": "markdown",
    "id": "7af2d17f",
    "metadata": {},
@@ -1924,7 +1937,11 @@
     "\n",
     "\n",
     "with open(f'{ruta_enc}/los_mex_dict.pkl', 'wb') as f:\n",
+<<<<<<< HEAD
+    "    save_json_with_types(los_mex_dict, os.path.join(ruta_enc, 'los_mex_dict.json'))\n",
+=======
     "    pickle.dump(los_mex_dict, f)\n",
+>>>>>>> aed01672d99427e98b67eba6d4efb5a3198306df
     "    print('Pickle file saved successfully')"
    ]
   },
@@ -1954,7 +1971,11 @@
   },
   {
    "cell_type": "code",
+<<<<<<< HEAD
+   "execution_count": null,
+=======
    "execution_count": 10,
+>>>>>>> aed01672d99427e98b67eba6d4efb5a3198306df
    "id": "4707b60f",
    "metadata": {},
    "outputs": [],
@@ -1964,7 +1985,11 @@
     "import os  # newly added to handle file paths\n",
     "\n",
     "with open('encs.pkl', 'wb') as f:\n",
+<<<<<<< HEAD
+    "    save_json_with_types(enc_dict, os.path.join(ruta_enc, 'encs.json'))"
+=======
     "    pickle.dump(enc_dict, open(os.path.join(ruta_enc, 'encs.pkl'), 'wb'))"
+>>>>>>> aed01672d99427e98b67eba6d4efb5a3198306df
    ]
   },
   {
@@ -4743,7 +4768,11 @@
  ],
  "metadata": {
   "kernelspec": {
+<<<<<<< HEAD
+   "display_name": "nvg_py13_env",
+=======
    "display_name": "nvg_p10_env",
+>>>>>>> aed01672d99427e98b67eba6d4efb5a3198306df
    "language": "python",
    "name": "python3"
   },
@@ -4757,7 +4786,11 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
+<<<<<<< HEAD
+   "version": "3.13.2"
+=======
    "version": "3.10.17"
+>>>>>>> aed01672d99427e98b67eba6d4efb5a3198306df
   }
  },
  "nbformat": 4,

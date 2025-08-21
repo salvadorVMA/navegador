@@ -31,11 +31,6 @@ try:
     import threading
     import concurrent.futures
     import time
-
-    def create_agent_config(thread_id=None):
-        if thread_id is None:
-            thread_id = f"chat_{int(time.time())}"
-        return {"configurable": {"thread_id": thread_id}}
     
     print("Successfully imported all required packages")
 except ImportError as e:
@@ -155,10 +150,54 @@ def process_agent_response(agent_response, session_data, chat_data, user_message
             return dash.no_update, dash.no_update, dash.no_update, dash.no_update, True
 
 
-# Using the SessionData class defined above
-# Removing duplicate definition
-# Using create_agent_config function defined earlier
-# Removing duplicate function definition
+class SessionData(TypedDict, total=False):
+    """Type definition for the session data store"""
+    datasets: List[str]
+    variables: List[str]
+    analysis_type: Optional[str]
+    last_report: Optional[Any]
+    agent_state: Dict[str, Any]
+    language: str
+    search_keywords: Optional[str]
+    preferred_datasets: Optional[List[str]]
+    intent: Optional[str]
+    pending_main_action: Optional[Dict[str, Any]]
+
+# Helper functions for agent interaction
+def create_agent_config(thread_id: Optional[str] = None) -> Any:
+    """
+    Create a configuration dict for agent invocation with proper checkpointer config
+    
+    Args:
+        thread_id (Optional[str]): Optional thread ID. If None, a timestamp-based ID will be generated.
+        
+    Returns:
+        RunnableConfig or Dict containing the required configurable keys for the LangGraph checkpointer
+    """
+    if thread_id is None:
+        thread_id = f"chat_{int(time.time())}"
+    
+    # Create a proper config dict that will be compatible with RunnableConfig
+    config_dict = {
+        "configurable": {
+            "thread_id": thread_id,
+            "checkpoint_id": str(uuid.uuid4()),
+            "checkpoint_ns": "chat_session"
+        }
+    }
+    
+    # Return as the appropriate type based on whether langchain is available
+    if MODULES_AVAILABLE:
+        try:
+            # Convert to RunnableConfig when available
+            from langchain.schema.runnable import RunnableConfig
+            return RunnableConfig(configurable=config_dict["configurable"])
+        except Exception:
+            # Fallback to dict if conversion fails
+            return config_dict
+    else:
+        # Return as plain dict otherwise
+        return config_dict
 
 def extract_agent_content(agent_response: Any) -> str:
     """
@@ -347,7 +386,15 @@ MESSAGES = {
     }
 }
 
-from utils import get_message
+def get_message(key: str, lang: str = 'es', **kwargs) -> str:
+    """Get a message in the specified language with optional formatting"""
+    message = MESSAGES.get(lang, MESSAGES['es']).get(key, MESSAGES['es'].get(key, key))
+    if kwargs:
+        try:
+            return message.format(**kwargs)
+        except KeyError:
+            return message
+    return message
 
 # Helper functions for dataset information
 def get_available_datasets():
@@ -1307,7 +1354,7 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
         
         start_time = time.time()
         print(f"🔄 Executing pending main action for: '{user_message}'")
-        print(f"🕒 Current time: {datetime.now().strftime('%H:%M:%S')}")
+        print(f"🕒 Current time: {datetime.datetime.now().strftime('%H:%M:%S')}")
         
         # Define a fast-path option for health check and debugging
         # If user message contains a special keyword, return immediately with mock data
@@ -1320,7 +1367,7 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
                 new_chat_data.append({
                     "type": "assistant",
                     "content": "Debug mode activated. Using fast path response.",
-                    "timestamp": datetime.now().strftime("%H:%M")
+                    "timestamp": datetime.datetime.now().strftime("%H:%M")
                 })
                 session_data['pending_main_action']['processed'] = True
                 session_data['pending_main_action']['processed_at'] = time.time()
@@ -1340,7 +1387,7 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
                 new_chat_data.append({
                     "type": "assistant",
                     "content": mock_response["content"],
-                    "timestamp": datetime.now().strftime("%H:%M")
+                    "timestamp": datetime.datetime.now().strftime("%H:%M")
                 })
                 session_data['pending_main_action']['processed'] = True
                 session_data['pending_main_action']['processed_at'] = time.time()
@@ -1459,7 +1506,7 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
                             new_chat_data.append({
                                 "type": "assistant",
                                 "content": content,
-                                "timestamp": datetime.now().strftime("%H:%M")
+                                "timestamp": datetime.datetime.now().strftime("%H:%M")
                             })
                             
                             # Mark as processed
@@ -1655,132 +1702,152 @@ def handle_auto_next_step(n_intervals, chat_data, session_data):
             except:
                 # Absolute fallback
                 return dash.no_update, dash.no_update, dash.no_update, dash.no_update, True
+def create_agent_config(thread_id=None):
+                        if thread_id is None:
+                            thread_id = f"chat_{int(time.time())}"
+                        return {"configurable": {"thread_id": thread_id}}
 
-            # Use the create_agent_config function
-            thread_id = f"chat_{int(time.time())}"
-            agent_config = create_agent_config(thread_id)
-
-            # Set up agent state with proper intent field already set
-            # This is critical - the intent must be set correctly to route through the graph
-            agent_state = {
-                "messages": [{"role": "user", "content": user_message}],
-                "intent": session_data.get("intent", "query_variable_database"),  # Default to query intent
-                "user_query": user_message,
-                "original_query": user_message,
-                "dataset": preferred_datasets or session_data.get("datasets", ["ALL"]),
-                "selected_variables": session_data.get("variables", []),
-                "analysis_type": session_data.get("analysis_type", "descriptive"),
-                "user_approved": False,
-                "analysis_result": {},
-                "language": session_data.get('language', 'es')
-            }
-            
-            print(f"🤖 Invoking agent with proper config... at {time.time() - start_time:.2f}s")
-            print(f"🔍 Agent state: intent={agent_state.get('intent')}, query='{agent_state.get('user_query')}'")
-            print(f"🔍 Agent message: {agent_state.get('messages', [])[-1] if agent_state.get('messages') else 'No messages'}")
-            
-            # Set a shorter timeout for better user experience (10 seconds max wait)
-            AGENT_TIMEOUT = 10.0
-            
-            # Create a special mock response for health queries since that's what we're testing
-            is_health_query = "salud" in user_message.lower() or "health" in user_message.lower()
-            
-            # Define health mock response upfront
-            health_mock = {
-                "content": "Based on your query about health, I've selected the following variables: health_satisfaction, healthcare_access, health_concerns, and health_insurance. These variables will help us understand what Mexicans think about health services and concerns.",
-                "session_updates": {
-                    "intent": "query_variable_database",
-                    "variables": ["health_satisfaction", "healthcare_access", "health_concerns", "health_insurance"],
-                    "datasets": ["Encuesta_Nacional_Salud"]
+                # Set up agent state with proper intent field already set
+                # This is critical - the intent must be set correctly to route through the graph
+                agent_state = {
+                    "messages": [{"role": "user", "content": user_message}],
+                    "intent": session_data.get("intent", "query_variable_database"),  # Default to query intent
+                    "user_query": user_message,
+                    "original_query": user_message,
+                    "dataset": preferred_datasets or session_data.get("datasets", ["ALL"]),
+                    "selected_variables": session_data.get("variables", []),
+                    "analysis_type": session_data.get("analysis_type", "descriptive"),
+                    "user_approved": False,
+                    "analysis_result": {},
+                    "language": session_data.get('language', 'es')
                 }
-            }
-            
-            # Run agent with timeout to avoid blocking UI
-            print(f"🔄 Starting agent invocation with {AGENT_TIMEOUT}s timeout at {time.time() - start_time:.2f}s")
-            with concurrent.futures.ThreadPoolExecutor() as executor:
-                future = executor.submit(agent.invoke, agent_state, config=agent_config)
-                try:
-                    print(f"⏳ Waiting for agent response... (timeout: {AGENT_TIMEOUT}s)")
-                    agent_response = future.result(timeout=AGENT_TIMEOUT)  # Shorter timeout for better UX
-                    elapsed = time.time() - start_time
-                    print(f"✅ Agent response received after {elapsed:.2f}s: {type(agent_response)}")
-                    
-                    # Additional debugging for agent response
-                    if isinstance(agent_response, dict):
-                        print(f"🔍 Agent response keys: {list(agent_response.keys())}")
-                        if 'messages' in agent_response:
-                            messages = agent_response['messages']
-                            if messages and len(messages) > 0:
-                                last_msg = messages[-1]
-                                if isinstance(last_msg, dict):
-                                    content = last_msg.get('content', '')[:100] + '...'
-                                    print(f"🔍 Last message content: {content}")
-                    
-                    # Process the agent response with our consistent handler
-                    return process_agent_response(agent_response, session_data, chat_data, user_message)
-                except (concurrent.futures.TimeoutError, Exception) as e:
-                    print(f"⚠️ Agent error: {type(e).__name__} - {str(e)}")
-                    import traceback
-                    traceback.print_exc()
-                    
-                    # Fall back to special mock response for health queries or general mock otherwise
-                    if is_health_query:
-                        print("🩺 Using special health response mock for better user experience")
-                        mock_response = health_mock
-                    else:
-                        from __main__ import get_mock_agent_response
-                        mock_response = get_mock_agent_response(user_message, session_data, search_keywords, preferred_datasets)
-                    
-                    from __main__ import format_chat_history
-                    # Add the response to the chat
-                    new_chat_data = chat_data.copy() if chat_data else []
-                    new_chat_data.append({
-                        "type": "assistant", 
-                        "content": mock_response["content"],
-                        "timestamp": datetime.now().strftime("%H:%M")
-                    })
-                    
-                    # Update session with any data from the response
-                    for key, value in mock_response.get("session_updates", {}).items():
-                        session_data[key] = value
-                    
-                    # Mark the pending action as processed
-                    session_data['pending_main_action']['processed'] = True 
-                    session_data['pending_main_action']['processed_at'] = time.time()
-                    
-                    # Return the updated UI state
-                    print(f"✅ Returning fallback response after error ({time.time() - start_time:.2f}s)")
-                    return format_chat_history(new_chat_data), new_chat_data, "", session_data, True
-                    
-        # Code should not reach here due to comprehensive error handling above
-        print("⚠️ Unexpected error - falling back to mock response")
-        from __main__ import get_mock_agent_response, format_chat_history
-        
-        # Get mock response with fallback defaults if needed
-        try:
-            mock_response = get_mock_agent_response(
-                user_message if 'user_message' in locals() else "",
-                session_data,
-                search_keywords if 'search_keywords' in locals() else [],
-                preferred_datasets if 'preferred_datasets' in locals() else []
-            )
-            print(f"✅ Got mock response: {mock_response.get('content', '')[:50]}...")            # Add the response to the chat only if we have valid data
-            if response and isinstance(response, dict) and "content" in response:
-                new_chat_data = chat_data.copy() if chat_data else []
-                new_chat_data.append({
-                    "type": "assistant",
-                    "content": response["content"],
-                    "timestamp": datetime.now().strftime("%H:%M")
-                })
                 
-                # Update session with any data from the response
-                session_data_copy = session_data.copy()
-                for key, value in response.get("session_updates", {}).items():
-                    session_data_copy[key] = value
-            else:
-                print("⚠️ Invalid response format - using empty response")
-                new_chat_data = chat_data.copy() if chat_data else []
-                session_data_copy = session_data.copy()
+                # Create proper config with required configurable keys
+                thread_id = f"chat_{int(time.time())}"
+                agent_config = create_agent_config(thread_id)
+                
+                print(f"🤖 Invoking agent with proper config... at {time.time() - start_time:.2f}s")
+                print(f"🔍 Agent state: intent={agent_state.get('intent')}, query='{agent_state.get('user_query')}'")
+                print(f"🔍 Agent message: {agent_state.get('messages', [])[-1] if agent_state.get('messages') else 'No messages'}")
+                
+                # Set a shorter timeout for better user experience (10 seconds max wait)
+                AGENT_TIMEOUT = 10.0
+                
+                # Create a special mock response for health queries since that's what we're testing
+                is_health_query = "salud" in user_message.lower() or "health" in user_message.lower()
+                
+                # Define health mock response upfront
+                health_mock = {
+                    "content": "Based on your query about health, I've selected the following variables: health_satisfaction, healthcare_access, health_concerns, and health_insurance. These variables will help us understand what Mexicans think about health services and concerns.",
+                    "session_updates": {
+                        "intent": "query_variable_database",
+                        "variables": ["health_satisfaction", "healthcare_access", "health_concerns", "health_insurance"],
+                        "datasets": ["Encuesta_Nacional_Salud"]
+                    }
+                }
+                
+                # Run agent with timeout to avoid blocking UI
+                print(f"🔄 Starting agent invocation with {AGENT_TIMEOUT}s timeout at {time.time() - start_time:.2f}s")
+                import concurrent.futures
+                with concurrent.futures.ThreadPoolExecutor() as executor:
+                    future = executor.submit(agent.invoke, agent_state, config=agent_config)
+                    try:
+                        print(f"⏳ Waiting for agent response... (timeout: {AGENT_TIMEOUT}s)")
+                        agent_response = future.result(timeout=AGENT_TIMEOUT)  # Shorter timeout for better UX
+                        elapsed = time.time() - start_time
+                        print(f"✅ Agent response received after {elapsed:.2f}s: {type(agent_response)}")
+                        
+                        # Additional debugging for agent response
+                        if isinstance(agent_response, dict):
+                            print(f"🔍 Agent response keys: {list(agent_response.keys())}")
+                            if 'messages' in agent_response:
+                                messages = agent_response['messages']
+                                if messages and len(messages) > 0:
+                                    last_msg = messages[-1]
+                                    if isinstance(last_msg, dict):
+                                        content = last_msg.get('content', '')[:100] + '...'
+                                        print(f"🔍 Last message content: {content}")
+                        
+                        # Process the agent response with our consistent handler
+                        return process_agent_response(agent_response, session_data, chat_data, user_message)
+                        
+                    except concurrent.futures.TimeoutError:
+                        print(f"⚠️ Agent invocation timed out after {AGENT_TIMEOUT} seconds")
+                        # Fall back to special mock response for health queries or general mock otherwise
+                        if is_health_query:
+                            print("🩺 Using special health response mock for better user experience")
+                            mock_response = health_mock
+                        else:
+                            from __main__ import get_mock_agent_response
+                            mock_response = get_mock_agent_response(user_message, session_data, search_keywords, preferred_datasets)
+                        
+                        from __main__ import format_chat_history
+                        # Add the response to the chat
+                        new_chat_data = chat_data.copy() if chat_data else []
+                        new_chat_data.append({
+                            "type": "assistant",
+                            "content": mock_response["content"],
+                            "timestamp": datetime.now().strftime("%H:%M")
+                        })
+                        
+                        # Update session with any data from the response
+                        for key, value in mock_response.get("session_updates", {}).items():
+                            session_data[key] = value
+                        
+                        # Mark the pending action as processed
+                        session_data['pending_main_action']['processed'] = True
+                        session_data['pending_main_action']['processed_at'] = time.time()
+                        
+                        # Return the updated UI state
+                        print(f"✅ Returning fallback response after timeout ({time.time() - start_time:.2f}s)")
+                        return format_chat_history(new_chat_data), new_chat_data, "", session_data, True
+                    
+                    except Exception as e:
+                        # Handle other exceptions in agent invocation
+                        print(f"⚠️ Error in agent invocation: {e}")
+                        import traceback
+                        traceback.print_exc()
+                        
+                        # Use mock response as fallback
+                        from __main__ import get_mock_agent_response, format_chat_history
+                        mock_response = get_mock_agent_response(user_message, session_data, search_keywords, preferred_datasets)
+                        new_chat_data = chat_data.copy() if chat_data else []
+                        new_chat_data.append({
+                            "type": "assistant",
+                            "content": mock_response["content"],
+                            "timestamp": datetime.now().strftime("%H:%M")
+                        })
+                        
+                        # Mark action as processed
+                        session_data['pending_main_action']['processed'] = True
+                        session_data['pending_main_action']['processed_at'] = time.time()
+                        
+                        # Return the updated UI state
+                        print(f"✅ Returning fallback response after error ({time.time() - start_time:.2f}s)")
+                        return format_chat_history(new_chat_data), new_chat_data, "", session_data, True
+            except Exception as agent_err:
+                print(f"⚠️ Agent error: {agent_err} - falling back to mock response")
+                import traceback
+                traceback.print_exc()
+                
+        # Fall back to mock response if agent unavailable or error occurred
+        try:
+            from __main__ import get_mock_agent_response, format_chat_history
+            response = get_mock_agent_response(user_message, session_data, search_keywords, preferred_datasets)
+            print(f"✅ Got mock response: {response.get('content', '')[:50]}...")
+            
+            # Add the response to the chat
+            new_chat_data = chat_data.copy() if chat_data else []
+            new_chat_data.append({
+                "type": "assistant",
+                "content": response["content"],
+                "timestamp": datetime.now().strftime("%H:%M")
+            })
+            
+            # Update session with any data from the response
+            session_data_copy = session_data.copy()
+            for key, value in response.get("session_updates", {}).items():
+                session_data_copy[key] = value
             
             # Mark the pending action as processed
             if 'pending_main_action' in session_data_copy:
@@ -2515,10 +2582,7 @@ def format_report_html(report_data: Dict) -> html.Div:
         if variable_summaries:
             report_components.append(html.H6("📊 Variable Analysis", className="text-info mt-3"))
             for var_id, summary in variable_summaries.items():
-                # Initialize var_title with a default value
-                var_title = var_id
-                
-                # Get variable description for better display if modules are available
+                # Get variable description for better display
                 try:
                     if MODULES_AVAILABLE:
                         from plotting_utils import get_variable_description
@@ -2528,9 +2592,9 @@ def format_report_html(report_data: Dict) -> html.Div:
                             var_title = question[:100] + "..." if len(question) > 100 else question
                         else:
                             var_title = str(var_desc)[:100] + "..." if len(str(var_desc)) > 100 else str(var_desc)
-                except Exception as e:
-                    print(f"⚠️ Error getting variable description: {e}")
-                
+                except:
+                    var_title = var_id
+                    
                 report_components.extend([
                     html.H6(f"▸ {var_title}", className="text-secondary mt-3"),
                     html.P(summary, className="mb-2")
@@ -2623,8 +2687,38 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.
 app.title = "Navegador - Survey Analysis Dashboard"
 app.config.suppress_callback_exceptions = True  # Allow callbacks to components not yet in layout
 
-# Using detect_language function already defined at top of file
-# Removing duplicate function definition
+# Language detection and bilingual support
+def detect_language(text: str) -> str:
+    """Detect if user message is in English or Spanish"""
+    # Simple keyword-based detection (can be enhanced with proper language detection)
+    spanish_keywords = [
+        'hola', 'gracias', 'por favor', 'sí', 'no', 'qué', 'cómo', 'cuál', 'dónde', 'cuándo',
+        'encuesta', 'datos', 'análisis', 'variables', 'proyecto', 'mexicanos', 'cultura',
+        'identidad', 'valores', 'medio ambiente', 'política', 'educación', 'economía'
+    ]
+    
+    english_keywords = [
+        'hello', 'thanks', 'please', 'yes', 'no', 'what', 'how', 'which', 'where', 'when',
+        'survey', 'data', 'analysis', 'variables', 'project', 'mexicans', 'culture',
+        'identity', 'values', 'environment', 'politics', 'education', 'economy'
+    ]
+    
+# TODO: add keywords for all datasets
+
+    text_lower = text.lower()
+    
+    # Count matches for each language
+    spanish_matches = sum(1 for word in spanish_keywords if word in text_lower)
+    english_matches = sum(1 for word in english_keywords if word in text_lower)
+    
+    # Default to Spanish if no clear indication (since data is in Spanish)
+    if spanish_matches > english_matches:
+        return 'es'
+    elif english_matches > spanish_matches:
+        return 'en'
+    else:
+        # Default to Spanish for Mexican context
+        return 'es'
 
 # TODO: agregar mensajes de 'pensando...' o 'escogiendo variables...', y 'procesando resultados...'
 # Bilingual message templates
@@ -2846,10 +2940,67 @@ def process_agent_response(agent_response, session_data, chat_data, user_message
             print(f"❌❌ Critical error in error handling: {nested_err}")
             return dash.no_update, dash.no_update, dash.no_update, dash.no_update, True
 
-# All helper functions are defined at top of file
-# Removing duplicate function definitions
+# Define SessionData structure for better typing
+class SessionData(TypedDict, total=False):
+    """Type definition for the session data store"""
+    datasets: List[str]
+    variables: List[str]
+    analysis_type: Optional[str]
+    last_report: Optional[Any]
+    agent_state: Dict[str, Any]
+    language: str
+    search_keywords: Optional[str]
+    preferred_datasets: Optional[List[str]]
+    intent: Optional[str]
+    pending_main_action: Optional[Dict[str, Any]]
 
-# Using extract_agent_content function defined above
+# Helper functions for agent interaction
+def create_agent_config(thread_id: Optional[str] = None) -> Any:
+    """
+    Create a configuration dict for agent invocation with proper checkpointer config
+    
+    Args:
+        thread_id (Optional[str]): Optional thread ID. If None, a timestamp-based ID will be generated.
+        
+    Returns:
+        RunnableConfig or Dict containing the required configurable keys for the LangGraph checkpointer
+    """
+    if thread_id is None:
+        thread_id = f"chat_{int(time.time())}"
+    
+    # Create a proper config dict that will be compatible with RunnableConfig
+    config_dict = {
+        "configurable": {
+            "thread_id": thread_id,
+            "checkpoint_id": str(uuid.uuid4()),
+            "checkpoint_ns": "chat_session"
+        }
+    }
+    
+    # Return as the appropriate type based on whether langchain is available
+    if MODULES_AVAILABLE:
+        try:
+            # Convert to RunnableConfig when available
+            from langchain.schema.runnable import RunnableConfig
+            return RunnableConfig(configurable=config_dict["configurable"])
+        except Exception:
+            # Fallback to dict if conversion fails
+            return config_dict
+    else:
+        # Return as plain dict otherwise
+        return config_dict
+
+def extract_agent_content(agent_response: Any) -> str:
+    """
+    Extract the content from an agent response
+    
+    Args:
+        agent_response: The response from the agent.invoke() call
+        
+    Returns:
+        String content of the agent message
+    """
+    try:
         if isinstance(agent_response, dict):
             # Try to extract content from messages
             messages = agent_response.get('messages', [])
