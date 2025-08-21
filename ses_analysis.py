@@ -6,6 +6,7 @@ relationships in survey data, including data validation, statistical analysis, a
 
 from typing import Dict, List, Tuple, Any, Optional, Union, cast
 import logging
+import re
 import pandas as pd
 import numpy as np
 from scipy import stats
@@ -45,6 +46,7 @@ class AnalysisConfig:
         self.confidence_level = confidence_level
         self.colormap = colormap
 
+    # TODO: review SES preprocessing and labels
     @staticmethod
     def categorize_age(age_value):
         """
@@ -142,15 +144,15 @@ class AnalysisConfig:
             else:
                 logger.info(f"⏭️  {survey_name}: No new SES variables needed")
         
-        # Log summary
-        logger.info(f"✅ region created in {mapping_stats['region_created']}/{mapping_stats['total_surveys']} surveys")
-        logger.info(f"✅ edad created in {mapping_stats['edad_created']}/{mapping_stats['total_surveys']} surveys")
-        logger.info(f"✅ empleo created in {mapping_stats['empleo_created']}/{mapping_stats['total_surveys']} surveys")
+        # # Log summary
+        # logger.info(f"✅ region created in {mapping_stats['region_created']}/{mapping_stats['total_surveys']} surveys")
+        # logger.info(f"✅ edad created in {mapping_stats['edad_created']}/{mapping_stats['total_surveys']} surveys")
+        # logger.info(f"✅ empleo created in {mapping_stats['empleo_created']}/{mapping_stats['total_surveys']} surveys")
         
-        total_new_variables = sum([mapping_stats['region_created'], 
-                                mapping_stats['edad_created'], 
-                                mapping_stats['empleo_created']])
-        logger.info(f"🎉 Total new SES variables created: {total_new_variables}")
+        # total_new_variables = sum([mapping_stats['region_created'], 
+        #                         mapping_stats['edad_created'], 
+        #                         mapping_stats['empleo_created']])
+        # logger.info(f"🎉 Total new SES variables created: {total_new_variables}")
         
         return los_mex_dict
         
@@ -182,34 +184,114 @@ class SESDataValidator:
         return True, "All metadata verified"
 
     @staticmethod
+    def _identify_ordinal_patterns() -> List[str]:
+        """
+        Define patterns that indicate ordinal scales in Spanish survey questions.
+        Imported from ordinal_filter.py
+        """
+        return [
+            # Agreement scales (acuerdo/desacuerdo)
+            r'(muy\s+de\s+acuerdo|de\s+acuerdo|en\s+desacuerdo|muy\s+en\s+desacuerdo)',
+            r'(totalmente\s+de\s+acuerdo|parcialmente\s+de\s+acuerdo|parcialmente\s+en\s+desacuerdo|totalmente\s+en\s+desacuerdo)',
+            r'(acuerdo.*desacuerdo|desacuerdo.*acuerdo)',
+            
+            # Intensity scales (mucho/nada, mucho/poco)
+            r'(mucho|bastante|poco|nada)',
+            r'(mucho|algo|poco|nada)',
+            r'(muchísimo|mucho|regular|poco|nada)',
+            
+            # Frequency scales
+            r'(siempre|frecuentemente|algunas\s+veces|rara\s+vez|nunca)',
+            r'(muy\s+frecuentemente|frecuentemente|ocasionalmente|rara\s+vez|nunca)',
+            r'(todos\s+los\s+días|varias\s+veces|algunas\s+veces|rara\s+vez|nunca)',
+            
+            # Quality scales (muy bueno/muy malo)
+            r'(muy\s+bueno|bueno|regular|malo|muy\s+malo)',
+            r'(excelente|muy\s+bueno|bueno|regular|malo|muy\s+malo)',
+            r'(excelente|bueno|regular|malo|pésimo)',
+            
+            # Satisfaction scales
+            r'(muy\s+satisfecho|satisfecho|poco\s+satisfecho|insatisfecho|muy\s+insatisfecho)',
+            r'(completamente\s+satisfecho|satisfecho|ni\s+satisfecho\s+ni\s+insatisfecho|insatisfecho)',
+            
+            # Importance scales
+            r'(muy\s+importante|importante|poco\s+importante|nada\s+importante)',
+            r'(sumamente\s+importante|muy\s+importante|importante|poco\s+importante|nada\s+importante)',
+            
+            # Probability/likelihood scales
+            r'(muy\s+probable|probable|poco\s+probable|nada\s+probable)',
+            r'(definitivamente\s+sí|probablemente\s+sí|probablemente\s+no|definitivamente\s+no)',
+            
+            # Difficulty scales
+            r'(muy\s+fácil|fácil|difícil|muy\s+difícil)',
+            r'(muy\s+difícil|difícil|fácil|muy\s+fácil)',
+            
+            # Trust scales
+            r'(confío\s+mucho|confío|confío\s+poco|no\s+confío)',
+            r'(muchísima\s+confianza|mucha\s+confianza|poca\s+confianza|ninguna\s+confianza)',
+            
+            # General ordinal indicators
+            r'(1\.\s*[Mm]uy|2\.\s*[Bb]astante|3\.\s*[Pp]oco|4\.\s*[Nn]ada)',
+            r'(1\)\s*[Mm]uy|2\)\s*[Bb]astante|3\)\s*[Pp]oco|4\)\s*[Nn]ada)',
+            r'([Ee]scala\s+de|[Oo]rdene\s+de|[Cc]alifique\s+de)',
+            
+            # Numbered scales with words
+            r'(1.*mucho.*2.*poco|1.*poco.*2.*mucho)',
+            r'(1.*acuerdo.*2.*desacuerdo|1.*desacuerdo.*2.*acuerdo)',
+            
+            # Common 5-point scales
+            r'(totalmente|completamente|parcialmente|ligeramente|nada)',
+            r'(siempre|casi\s+siempre|a\s+veces|casi\s+nunca|nunca)',
+            
+            # Mexican specific terms
+            r'(un\s+chorro|bastante|poquito|nada)',
+            r'(machín|mucho|regular|poco|nada)',
+        ]
+
+    @staticmethod
+    def _check_ordinal_scale(text: str, patterns: List[str]) -> bool:
+        """Check if text contains ordinal scale indicators."""
+        if not isinstance(text, str):
+            return False
+        return any(re.search(pattern, text, re.IGNORECASE) for pattern in patterns)
+
+    @staticmethod
     def detect_variable_types(df: pd.DataFrame,
-                            cats_residuales: Optional[List[str]] = None) -> Dict[str, str]:
-        """Detect and categorize variables as nominal, ordinal, or interval."""
+                            var_labels: Optional[Dict[str, str]] = None) -> Dict[str, str]:
+        """
+        Detect and categorize variables as ordinal or nominal based on question text patterns.
+        Uses ordinal scale patterns from ordinal_filter.py.
+        
+        Args:
+            df: DataFrame with variables to classify
+            var_labels: Dictionary mapping variable names to their full question text
+        
+        Returns:
+            Dictionary mapping variable names to their detected types ('ordinal' or 'nominal')
+        """
         var_types = {}
-        cats_residuales = cats_residuales or ['NS', 'NC', 'No sabe', 'No contesta']
+        ordinal_patterns = SESDataValidator._identify_ordinal_patterns()
         
         for col in df.columns:
-            unique_vals = df[col].dropna().unique()
+            # Default to nominal unless we find ordinal patterns
+            var_types[col] = 'nominal'
             
-            # Check if values are numeric
-            if pd.api.types.is_numeric_dtype(df[col]):
-                # Check if mostly integers
-                if np.all(np.mod(df[col].dropna(), 1) == 0):
-                    # Check for ordinal pattern
-                    clean_vals = [x for x in unique_vals 
-                                if str(x) not in cats_residuales]
-                    if len(clean_vals) > 0 and all(isinstance(x, (int, float)) 
-                                                 for x in clean_vals):
-                        var_types[col] = 'ordinal'
-                    else:
-                        var_types[col] = 'nominal'
-                else:
-                    var_types[col] = 'interval'
-            else:
-                var_types[col] = 'nominal'
+            # First check the variable label/question text
+            if var_labels and col in var_labels:
+                question_text = var_labels[col]
+                if SESDataValidator._check_ordinal_scale(question_text, ordinal_patterns):
+                    var_types[col] = 'ordinal'
+                    continue
+            
+            # If no label or no ordinal pattern found in label,
+            # check the actual values in the data
+            unique_vals = [str(x) for x in df[col].dropna().unique() if pd.notna(x)]
+            if any(SESDataValidator._check_ordinal_scale(val, ordinal_patterns) 
+                  for val in unique_vals):
+                var_types[col] = 'ordinal'
                 
         return var_types
-
+                
 class SESAnalyzer:
     """Core SES analysis functionality."""
     
@@ -247,7 +329,7 @@ class SESAnalyzer:
             var_types = self.validator.detect_variable_types(df[[target_var, ses_var]])
             results["variable_types"] = var_types
             
-                        # Create cross-tabulation
+            # Create cross-tabulation
             if self.config.weight_variable in df.columns:
                 valid_data = df.dropna(subset=[target_var, ses_var, self.config.weight_variable])
                 crosstab = pd.crosstab(
@@ -265,6 +347,11 @@ class SESAnalyzer:
             
             # Replace NaN with 0 and convert to integers
             crosstab = crosstab.fillna(0).round().astype(int)
+            # Replace index with var_labels values if provided
+            if var_labels:
+                # Map index values using var_labels dict, fallback to original if not found
+                # TODO: add ses variable labels for columns
+                crosstab.index = [var_labels.get(str(idx), str(idx)) for idx in crosstab.index]
             results["tables"]["crosstab"] = crosstab
             
             # Calculate appropriate statistics based on variable types

@@ -6,9 +6,9 @@ import unittest
 import pandas as pd
 import numpy as np
 import random
-import pickle
 from pathlib import Path
 import matplotlib.pyplot as plt
+from secure_data_utils import load_json_with_types
 from ses_analysis import (
     AnalysisConfig,
     SESDataValidator,
@@ -23,8 +23,7 @@ class TestSESAnalysis(unittest.TestCase):
     def setUp(self):
         """Set up test data using real los_mex data."""
         # Load los_mex dictionary
-        with open('/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/encuestas/los_mex_dict.pkl', 'rb') as f:
-            self.los_mex_dict = pickle.load(f)
+        self.los_mex_dict = load_json_with_types('/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/encuestas/los_mex_dict.json')
             
         # Get all available questions from pregs_list
         all_questions = [qid for qid in self.los_mex_dict['pregs_dict'].keys() if qid.startswith('p')]

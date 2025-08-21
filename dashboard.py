@@ -1960,7 +1960,7 @@ if __name__ == "__main__":
     # Use verbose mode to see more information about the server
     # and set threaded=True to avoid blocking
     try:
-        app.run(debug=False, port=8050, host="0.0.0.0", use_reloader=False, threaded=True)
+        app.run(debug=False, port=8050, host="127.0.0.1", use_reloader=False, threaded=True)
     except KeyboardInterrupt:
         print("\n🛑 Dashboard server stopped by user")
     except Exception as e:

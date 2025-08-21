@@ -12,13 +12,6 @@ from pathlib import Path
 import random
 from typing import Any, Dict, List, Tuple
 
-# Map from survey_name to pregs_dict survey ID
-from ses_analysis import AnalysisConfig, create_analysis_pipeline
-from secure_data_utils import load_json_with_types
-from pathlib import Path
-import random
-from typing import Any, Dict, List, Tuple
-
 # def print_analysis_results(results: Dict[str, Any], indent: int = 0) -> None:
 #     """Pretty print analysis results with proper formatting."""
 #     indent_str = " " * indent
@@ -101,22 +94,31 @@ def format_analysis_results(results):
     output = []
     
     if not results:
-        return "  No significant results found"
+        return "No significant results found"
 
-    if 'chi_square' in results:
+    if 'crosstab' in results['tables']:
+        output.append("\n  Crosstabulation results:")
+        output.append("  " + str(results['tables']['crosstab']))
+
+    # if 'contingency_table' in results:
+    #     output.append("\n  Contingency table:")
+    #     output.append("  " + str(results['contingency_table']))
+
+    if 'chi_square' in results['statistics']:
         output.append("\n  Chi-square test results:")
-        output.append(f"  - Chi-square statistic: {results['chi_square']:.3f}")
-        output.append(f"  - p-value: {results['p_value']:.3f}")
-        output.append(f"  - Cramer's V: {results['cramers_v']:.3f}")
-        
-    if 'correlation' in results:
+        output.append(f"  - Chi-square statistic: {results['statistics']['chi_square']:.3f}")
+        output.append(f"  - p-value: {results['statistics']['p_value']:.3f}")
+        output.append(f"  - Cramer's V: {results['statistics']['cramers_v']:.3f}")
+
+    if 'spearman_correlation' in results['statistics']:
         output.append("\n  Correlation analysis results:")
-        output.append(f"  - Correlation coefficient: {results['correlation']:.3f}")
-        output.append(f"  - p-value: {results['p_value']:.3f}")
-        
-    if 'contingency_table' in results:
-        output.append("\n  Contingency table:")
-        output.append("  " + str(results['contingency_table']))
+        output.append(f"  - Correlation coefficient: {results['statistics']['spearman_correlation']:.3f}")
+        output.append(f"  - p-value: {results['statistics']['spearman_p_value']:.3f}")
+
+    if 'kendall_tau' in results['statistics']:
+        output.append("\n  Correlation analysis results:")
+        output.append(f"  - Correlation coefficient: {results['statistics']['kendall_tau']:.3f}")
+        output.append(f"  - p-value: {results['statistics']['kendall_p_value']:.3f}")
         
     if 'significant_differences' in results:
         output.append("\n  Significant differences:")
@@ -153,6 +155,11 @@ def main():
     # Print available surveys for debugging
     print("\nDEBUG: Available surveys in enc_dict:", survey_names)
     
+    # Preprocess survey data using AnalysisConfig
+    preprocess_survey_data = AnalysisConfig.preprocess_survey_data
+
+    los_mex_dict = preprocess_survey_data(los_mex_dict)
+
     # Get pregs_dict from los_mex_dict
     pregs_dict = los_mex_dict.get('pregs_dict', {})
     
@@ -195,7 +202,10 @@ def main():
         print(f"Looking for variables with survey ID: {rev_enc_nom_dict.get(survey_name, survey_name)}")
         
         # Get variable labels if available
-        var_labels = survey_data.get('column_names_to_labels', {})
+        var_labels_dicts = survey_data['metadata'].get('variable_value_labels', {})
+        if not var_id in var_labels_dicts.keys():
+            var_labels = {}
+        var_labels = var_labels_dicts.get(var_id, {})
         if not isinstance(var_labels, dict):
             var_labels = {}
     
@@ -218,7 +228,7 @@ def main():
             'region': 'Geographic region (01=Norte, 02=Centro, 03=Centro Occidente, 04=Sureste)',
             'empleo': 'Employment (01=Empleado, 02=No empleado, 03=Estudiante, 04=Hogar, 05=Jubilado)'
         }
-            
+
         # Filter to only those that exist in the DataFrame
         ses_vars = [var for var in standard_ses_vars if var in df.columns]
         
@@ -244,8 +254,10 @@ def main():
                             df,
                             var_id,
                             ses_var,
+                            #ses_labels=ses_labels,  # TODO: get appropriate ses labels
                             var_labels=var_labels
                         )
+                        print(f'results')
                         print_analysis_results(results)
                         
                     ## PAUSAR visualizaciones para pruebas

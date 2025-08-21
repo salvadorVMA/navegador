@@ -33,7 +33,7 @@ class LLMCache:
     def _generate_key(self, prompt: str, model: str, temperature: float) -> str:
         """Generate a hash key for the cache."""
         content = f"{prompt}|{model}|{temperature}"
-        return hashlib.md5(content.encode()).hexdigest()
+        return hashlib.sha256(content.encode()).hexdigest()
     
     def _is_expired(self, entry: Dict[str, Any]) -> bool:
         """Check if cache entry is expired."""
@@ -202,13 +202,13 @@ def cached_llm_call(func):
         # Check cache first
         cached_response = _llm_cache.get(prompt, model, temperature)
         if cached_response is not None:
-            print(f"Cache hit for prompt hash: {hashlib.md5(prompt.encode()).hexdigest()[:8]}")
+            print(f"Cache hit for prompt hash: {hashlib.sha256(prompt.encode()).hexdigest()[:8]}")
             # Record cache hit in performance monitor
             performance_monitor.record_llm_call(cached=True)
             return cached_response
         
         # Call original function
-        print(f"Cache miss, calling LLM for prompt hash: {hashlib.md5(prompt.encode()).hexdigest()[:8]}")
+        print(f"Cache miss, calling LLM for prompt hash: {hashlib.sha256(prompt.encode()).hexdigest()[:8]}")
         response = func(prompt, model=model, temperature=temperature, **kwargs)
         
         # Record cache miss in performance monitor

@@ -178,7 +178,7 @@ def _variable_reviewer(user_query: str, user_feedback: str, tmp_pre_res_dict_in:
 
     elif var_review_action_dict["ACTION"] == "REMOVE_QUERY":
         return_dict['action_message'] = f"user requested dropping topic, which is not currently possible. Query reset was recommended."
-        print(f'{var_review_action_dict['USER_QUERY']}')
+        print(f"{var_review_action_dict['USER_QUERY']}")
 
     elif var_review_action_dict["ACTION"] == "NO_CHANGE":
         return_dict['action_message'] = f"user did not request any changes to the variable selection."

@@ -1,0 +1,42 @@
+{
+  "total_dataframes": 0,
+  "missing_variables": {
+    "sexo": [],
+    "edad": [],
+    "edu": [],
+    "region": [],
+    "empleo": []
+  },
+  "potential_matches": {
+    "sexo": {},
+    "edad": {},
+    "edu": {},
+    "region": {},
+    "empleo": {}
+  },
+  "summary": {},
+  "statistics": {
+    "total_dataframes": 0,
+    "present_counts": {
+      "sexo": 0,
+      "edad": 0,
+      "edu": 0,
+      "region": 0,
+      "empleo": 0
+    },
+    "missing_counts": {
+      "sexo": 0,
+      "edad": 0,
+      "edu": 0,
+      "region": 0,
+      "empleo": 0
+    },
+    "percent_present": {
+      "sexo": 0,
+      "edad": 0,
+      "edu": 0,
+      "region": 0,
+      "empleo": 0
+    }
+  }
+}

@@ -350,64 +350,64 @@ def save_plots_for_analysis(var_ids: List[str], analysis_id: str = "analysis") -
 # SES RELATIONSHIP PLOTTING FUNCTIONS
 # ============================================================================
 
-def get_ses_variable_info(ses_var: str) -> Dict:
-    """
-    Get information about a SES variable including its categories and labels.
+# def get_ses_variable_info(ses_var: str) -> Dict:
+#     """
+#     Get information about a SES variable including its categories and labels.
     
-    Parameters:
-    -----------
-    ses_var : str
-        SES variable name (sexo, edad, edu, region, empleo)
+#     Parameters:
+#     -----------
+#     ses_var : str
+#         SES variable name (sexo, edad, edu, region, empleo)
         
-    Returns:
-    --------
-    Dict with variable info including categories, labels, and category count
-    """
-    ses_info = {
-        'variable': ses_var,
-        'categories': [],
-        'labels': {},
-        'category_count': 0,
-        'is_ordinal': ses_var in ['edad', 'edu']  # edad and edu are ordinal
-    }
+#     Returns:
+#     --------
+#     Dict with variable info including categories, labels, and category count
+#     """
+#     ses_info = {
+#         'variable': ses_var,
+#         'categories': [],
+#         'labels': {},
+#         'category_count': 0,
+#         'is_ordinal': ses_var in ['edad', 'edu']  # edad and edu are ordinal
+#     }
     
-    # Standard SES variable categories based on workspace analysis
-    if ses_var == 'sexo':
-        ses_info['categories'] = ['Female', 'Male']
-        ses_info['labels'] = {'Female': 'Female', 'Male': 'Male'}
-        ses_info['category_count'] = 2
+#     # Standard SES variable categories based on workspace analysis
+#     if ses_var == 'sexo':
+#         ses_info['categories'] = ['Female', 'Male']
+#         ses_info['labels'] = {'Female': 'Female', 'Male': 'Male'}
+#         ses_info['category_count'] = 2
         
-    elif ses_var == 'edad':
-        ses_info['categories'] = ['25-34', '35-44', '45-54', '55-64', '65-74', '75+']
-        ses_info['labels'] = {cat: cat for cat in ses_info['categories']}
-        ses_info['category_count'] = 6
+#     elif ses_var == 'edad':
+#         ses_info['categories'] = ['25-34', '35-44', '45-54', '55-64', '65-74', '75+']
+#         ses_info['labels'] = {cat: cat for cat in ses_info['categories']}
+#         ses_info['category_count'] = 6
         
-    elif ses_var == 'edu':
-        ses_info['categories'] = ['básica', 'media']
-        ses_info['labels'] = {'básica': 'Básica', 'media': 'Media'}
-        ses_info['category_count'] = 2
+#     elif ses_var == 'edu':
+#         ses_info['categories'] = ['básica', 'media']
+#         ses_info['labels'] = {'básica': 'Básica', 'media': 'Media'}
+#         ses_info['category_count'] = 2
         
-    elif ses_var == 'region':
-        ses_info['categories'] = ['Region 01', 'Region 02', 'Region 03', 'Region 04']
-        ses_info['labels'] = {
-            'Region 01': 'Region 01', 
-            'Region 02': 'Region 02', 
-            'Region 03': 'Region 03', 
-            'Region 04': 'Region 04'
-        }
-        ses_info['category_count'] = 4
+#     elif ses_var == 'region':
+#         ses_info['categories'] = ['Region 01', 'Region 02', 'Region 03', 'Region 04']
+#         ses_info['labels'] = {
+#             'Region 01': 'Region 01', 
+#             'Region 02': 'Region 02', 
+#             'Region 03': 'Region 03', 
+#             'Region 04': 'Region 04'
+#         }
+#         ses_info['category_count'] = 4
         
-    elif ses_var == 'empleo':
-        ses_info['categories'] = ['1.0', '2.0', '3.0', '4.0']
-        ses_info['labels'] = {
-            '1.0': 'Empleado',
-            '2.0': 'No empleado', 
-            '3.0': 'Estudiante',
-            '4.0': 'Hogar'
-        }
-        ses_info['category_count'] = 4
+#     elif ses_var == 'empleo':
+#         ses_info['categories'] = ['1.0', '2.0', '3.0', '4.0']
+#         ses_info['labels'] = {
+#             '1.0': 'Empleado',
+#             '2.0': 'No empleado', 
+#             '3.0': 'Estudiante',
+#             '4.0': 'Hogar'
+#         }
+#         ses_info['category_count'] = 4
         
-    return ses_info
+#     return ses_info
 
 
 def create_ses_relationship_plot(df: pd.DataFrame, 
