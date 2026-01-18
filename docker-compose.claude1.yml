@@ -1,0 +1,107 @@
+version: '3.8'
+
+services:
+  claude1:
+    container_name: claude1
+    build:
+      context: .
+      dockerfile: Dockerfile.claude1
+    image: navegador-claude1:latest
+
+    # Resource limits for safety
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
+        reservations:
+          cpus: '1.0'
+          memory: 2G
+
+    # Environment variables
+    environment:
+      - NAVEGADOR_TESTING_MODE=true
+      - NAVEGADOR_USE_CACHE=true
+      - NAVEGADOR_LOG_LEVEL=DEBUG
+      - NAVEGADOR_MAX_WORKERS=2
+      - NAVEGADOR_CACHE_SIZE=1000
+      - PYTHONUNBUFFERED=1
+
+    # Mount volumes
+    volumes:
+      # Persistent data (read-write)
+      - claude1-cache:/sandbox-data/cache
+      - claude1-logs:/sandbox-data/logs
+      - claude1-chromadb:/sandbox-data/chromadb
+      - claude1-results:/sandbox-data/test-results
+      - claude1-prompts:/sandbox-data/prompt_data
+
+      # Code (read-only for safety - remove :ro to edit)
+      - ./:/sandbox/navegador:ro
+
+      # Environment file (if exists)
+      - ./.env.sandbox:/sandbox/navegador/.env:ro
+
+    # Port mappings
+    ports:
+      - "8050:8050"  # Dash dashboard
+      - "8888:8888"  # Jupyter (optional)
+
+    # Networking
+    networks:
+      - claude1-network
+
+    # Restart policy
+    restart: unless-stopped
+
+    # Health check
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+    # Interactive terminal
+    stdin_open: true
+    tty: true
+
+    # Labels for management
+    labels:
+      com.navegador.environment: "sandbox"
+      com.navegador.branch: "Claude1"
+      com.navegador.purpose: "testing"
+
+# Named volumes for persistent data
+volumes:
+  claude1-cache:
+    driver: local
+    labels:
+      com.navegador.volume: "cache"
+
+  claude1-logs:
+    driver: local
+    labels:
+      com.navegador.volume: "logs"
+
+  claude1-chromadb:
+    driver: local
+    labels:
+      com.navegador.volume: "chromadb"
+
+  claude1-results:
+    driver: local
+    labels:
+      com.navegador.volume: "test-results"
+
+  claude1-prompts:
+    driver: local
+    labels:
+      com.navegador.volume: "prompt-data"
+
+# Network configuration
+networks:
+  claude1-network:
+    driver: bridge
+    labels:
+      com.navegador.network: "sandbox"

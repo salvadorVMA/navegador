@@ -1,0 +1,388 @@
+# Dockerfile.claude1 - Safe Sandbox for Testing Claude1 Optimizations
+# Based on existing Dockerfile but optimized for isolated testing
+
+FROM condaforge/mambaforge:latest
+
+# Metadata
+LABEL maintainer="Claude1 Sandbox"
+LABEL description="Isolated testing environment for navegador optimizations"
+LABEL version="1.0"
+
+# Set non-interactive mode
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    wget \
+    git \
+    python3 \
+    python3-pip \
+    ca-certificates \
+    sudo \
+    locales \
+    vim \
+    less \
+    procps \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set locale
+RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && locale-gen
+ENV LANG=en_US.UTF-8 \
+    LANGUAGE=en_US:en \
+    LC_ALL=en_US.UTF-8
+
+# Set default shell
+SHELL ["/bin/bash", "-c"]
+
+# Create sandbox directory structure
+RUN mkdir -p /sandbox/navegador \
+    /sandbox-data/cache \
+    /sandbox-data/logs \
+    /sandbox-data/chromadb \
+    /sandbox-data/test-results \
+    /sandbox-data/prompt_data
+
+# Set working directory
+WORKDIR /sandbox/navegador
+
+# Copy conda environment file
+COPY environment_min.yml .
+
+# Create conda environment
+RUN mamba env create -f environment_min.yml -n nvg_py13_env && \
+    mamba clean -afy
+
+# Make conda activate available
+RUN echo "source /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+    echo "conda activate nvg_py13_env" >> ~/.bashrc
+
+# Set up non-root user for security
+ARG USERNAME=sandboxuser
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+RUN groupadd --gid $USER_GID $USERNAME && \
+    useradd --uid $USER_UID --gid $USER_GID -m $USERNAME && \
+    echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/$USERNAME && \
+    chmod 0440 /etc/sudoers.d/$USERNAME
+
+# Give ownership to sandbox user
+RUN chown -R $USERNAME:$USERNAME /sandbox /sandbox-data
+
+# Switch to non-root user
+USER $USERNAME
+
+# Copy application code (from Claude1 branch)
+COPY --chown=$USERNAME:$USERNAME . .
+
+# Create test environment file template
+RUN cat > .env.sandbox <<'EOF'
+# Sandbox Test Environment Variables
+# DO NOT USE PRODUCTION KEYS HERE
+
+# API Keys (use test/low-quota keys only)
+OPENAI_API_KEY=sk-test-your-test-key-here
+ANTHROPIC_API_KEY=sk-ant-test-your-test-key-here
+
+# Paths (container-specific)
+NAVEGADOR_PROJECT_ROOT=/sandbox/navegador
+NAVEGADOR_CACHE_DIR=/sandbox-data/cache
+NAVEGADOR_LOG_DIR=/sandbox-data/logs
+NAVEGADOR_CHROMADB_DIR=/sandbox-data/chromadb
+
+# Testing flags
+NAVEGADOR_TESTING_MODE=true
+NAVEGADOR_USE_CACHE=true
+NAVEGADOR_LOG_LEVEL=DEBUG
+
+# Resource limits
+NAVEGADOR_MAX_WORKERS=2
+NAVEGADOR_CACHE_SIZE=1000
+NAVEGADOR_CACHE_TTL=3600
+EOF
+
+# Create test runner script
+RUN cat > /sandbox/navegador/run_tests.sh <<'EOF'
+#!/bin/bash
+set -e
+
+echo "=========================================="
+echo "Claude1 Sandbox Test Suite"
+echo "=========================================="
+
+# Activate conda environment
+source /opt/conda/etc/profile.d/conda.sh
+conda activate nvg_py13_env
+
+# Export sandbox environment
+export $(cat .env.sandbox | grep -v '^#' | xargs)
+
+echo ""
+echo "Phase 1: Smoke Tests"
+echo "----------------------------------------"
+python -c "import config; print('✓ config.py imported')"
+python -c "import quick_fixes; print('✓ quick_fixes.py imported')"
+python -c "import meta_prompting; print('✓ meta_prompting.py imported')"
+python -c "import prompt_integration; print('✓ prompt_integration.py imported')"
+python -c "import performance_optimization; print('✓ performance_optimization.py imported')"
+
+echo ""
+echo "Phase 2: Module Tests"
+echo "----------------------------------------"
+python quick_fixes.py
+python meta_prompting.py
+
+echo ""
+echo "Phase 3: Integration Tests"
+echo "----------------------------------------"
+python test_sandbox.py
+
+echo ""
+echo "=========================================="
+echo "✅ All tests completed"
+echo "=========================================="
+EOF
+
+RUN chmod +x /sandbox/navegador/run_tests.sh
+
+# Create comprehensive test script
+RUN cat > /sandbox/navegador/test_sandbox.py <<'EOF'
+"""
+Comprehensive test suite for Claude1 sandbox
+Tests all optimization components in isolation
+"""
+
+import sys
+import time
+from concurrent.futures import ThreadPoolExecutor
+
+def test_config():
+    """Test configuration system"""
+    print("\n1. Testing config.py...")
+    try:
+        from config import config
+        print(f"   ✓ Project root: {config.project_root}")
+        print(f"   ✓ Cache dir: {config.cache_dir}")
+        print(f"   ✓ Config loaded successfully")
+        return True
+    except Exception as e:
+        print(f"   ✗ Config test failed: {e}")
+        return False
+
+def test_quick_fixes():
+    """Test quick fixes module"""
+    print("\n2. Testing quick_fixes.py...")
+    try:
+        from quick_fixes import (
+            get_request_manager,
+            get_thread_pool,
+            get_error_handler,
+            deep_copy_session_data
+        )
+
+        # Test request manager
+        rm = get_request_manager()
+        req_id = rm.create_request("Test query", {"test": "data"})
+        assert rm.is_active(req_id), "Request should be active"
+        rm.complete_request(req_id)
+        assert not rm.is_active(req_id), "Request should be completed"
+        print("   ✓ RequestManager working")
+
+        # Test thread pool
+        pool = get_thread_pool()
+        future = pool.submit(lambda: "test")
+        assert future.result() == "test", "Thread pool should execute tasks"
+        print("   ✓ ManagedThreadPool working")
+
+        # Test error handler
+        eh = get_error_handler()
+        try:
+            raise ValueError("Test error")
+        except Exception as e:
+            msg = eh.handle_error(e, "testing")
+            assert msg['is_error'] == True, "Error should be logged"
+        print("   ✓ ErrorHandler working")
+
+        # Test deep copy
+        data = {"nested": {"dict": [1, 2, 3]}}
+        copied = deep_copy_session_data(data)
+        assert copied == data and copied is not data, "Should deep copy"
+        print("   ✓ Deep copy working")
+
+        return True
+    except Exception as e:
+        print(f"   ✗ Quick fixes test failed: {e}")
+        return False
+
+def test_meta_prompting():
+    """Test meta-prompting system"""
+    print("\n3. Testing meta_prompting.py...")
+    try:
+        from meta_prompting import (
+            get_prompt_manager,
+            get_optimized_prompt
+        )
+
+        # Test prompt manager
+        manager = get_prompt_manager()
+        print("   ✓ PromptManager initialized")
+
+        # Test prompt generation
+        prompt = get_optimized_prompt(
+            'cross_analysis',
+            {
+                'user_query': 'Test query',
+                'results': 'Test results',
+                'n_topics': 3,
+                'format_instructions': ''
+            }
+        )
+        assert len(prompt) > 0, "Should generate prompt"
+        print(f"   ✓ Generated prompt ({len(prompt)} chars)")
+
+        return True
+    except Exception as e:
+        print(f"   ✗ Meta-prompting test failed: {e}")
+        return False
+
+def test_prompt_integration():
+    """Test prompt integration"""
+    print("\n4. Testing prompt_integration.py...")
+    try:
+        from prompt_integration import (
+            PromptQualityAssessor,
+            create_optimized_crosssum_prompt
+        )
+
+        # Test quality assessor
+        assessor = PromptQualityAssessor()
+        score = assessor.assess_cross_analysis_quality(
+            response="Test response with data citations p1_1|ABC",
+            parsed_data={'PATTERN_1': {
+                'TITLE_SUMMARY': 'Test',
+                'VARIABLE_STRING': 'p1_1|ABC',
+                'DESCRIPTION': 'Test desc'
+            }},
+            expected_patterns=1
+        )
+        assert 0 <= score <= 100, "Score should be 0-100"
+        print(f"   ✓ Quality assessment working (score: {score})")
+
+        # Test prompt creation
+        prompt = create_optimized_crosssum_prompt(
+            user_query="Test",
+            tmp_res_st="Results",
+            n_topics=3
+        )
+        assert len(prompt) > 0, "Should create prompt"
+        print(f"   ✓ Prompt creation working")
+
+        return True
+    except Exception as e:
+        print(f"   ✗ Prompt integration test failed: {e}")
+        return False
+
+def test_race_condition_prevention():
+    """Test that race conditions are prevented"""
+    print("\n5. Testing race condition prevention...")
+    try:
+        from quick_fixes import get_request_manager
+
+        rm = get_request_manager()
+        req_id = rm.create_request("Concurrent test", {})
+
+        # Try to mark as processing from multiple threads
+        results = []
+        def try_process():
+            result = rm.mark_processing(req_id)
+            results.append(result)
+            time.sleep(0.01)
+
+        with ThreadPoolExecutor(max_workers=5) as executor:
+            futures = [executor.submit(try_process) for _ in range(5)]
+            for f in futures:
+                f.result()
+
+        # Only one should succeed
+        success_count = sum(1 for r in results if r)
+        assert success_count == 1, f"Only one thread should succeed, got {success_count}"
+        print(f"   ✓ Race condition prevented ({success_count}/5 succeeded)")
+
+        rm.complete_request(req_id)
+        return True
+    except Exception as e:
+        print(f"   ✗ Race condition test failed: {e}")
+        return False
+
+def main():
+    """Run all tests"""
+    print("=" * 60)
+    print("CLAUDE1 SANDBOX TEST SUITE")
+    print("=" * 60)
+
+    tests = [
+        test_config,
+        test_quick_fixes,
+        test_meta_prompting,
+        test_prompt_integration,
+        test_race_condition_prevention
+    ]
+
+    results = []
+    for test in tests:
+        try:
+            results.append(test())
+        except Exception as e:
+            print(f"\n✗ Test failed with exception: {e}")
+            results.append(False)
+
+    print("\n" + "=" * 60)
+    print(f"RESULTS: {sum(results)}/{len(results)} tests passed")
+    print("=" * 60)
+
+    if all(results):
+        print("✅ ALL TESTS PASSED - Sandbox is working correctly")
+        return 0
+    else:
+        print("⚠️ SOME TESTS FAILED - Review output above")
+        return 1
+
+if __name__ == "__main__":
+    sys.exit(main())
+EOF
+
+# Environment variables
+ENV PYTHONPATH=/sandbox/navegador \
+    PATH="/opt/conda/envs/nvg_py13_env/bin:$PATH" \
+    NAVEGADOR_TESTING_MODE=true \
+    NAVEGADOR_CACHE_DIR=/sandbox-data/cache \
+    NAVEGADOR_LOG_DIR=/sandbox-data/logs
+
+# Expose ports for services
+EXPOSE 8050 8888
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD python -c "import sys; sys.exit(0)" || exit 1
+
+# Default command
+CMD ["/bin/bash", "-c", "source /opt/conda/etc/profile.d/conda.sh && conda activate nvg_py13_env && exec bash"]
+
+# Volume mount points
+VOLUME ["/sandbox-data"]
+
+# Documentation
+RUN echo "Claude1 Sandbox Container" > /sandbox/README.txt && \
+    echo "=========================" >> /sandbox/README.txt && \
+    echo "" >> /sandbox/README.txt && \
+    echo "Quick Start:" >> /sandbox/README.txt && \
+    echo "  ./run_tests.sh          # Run all tests" >> /sandbox/README.txt && \
+    echo "  python test_sandbox.py  # Run integration tests" >> /sandbox/README.txt && \
+    echo "" >> /sandbox/README.txt && \
+    echo "Data Directories:" >> /sandbox/README.txt && \
+    echo "  /sandbox-data/cache     # LLM cache" >> /sandbox/README.txt && \
+    echo "  /sandbox-data/logs      # Error logs" >> /sandbox/README.txt && \
+    echo "  /sandbox-data/chromadb  # Vector DB" >> /sandbox/README.txt && \
+    echo "" >> /sandbox/README.txt
