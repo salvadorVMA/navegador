@@ -6,6 +6,16 @@ Thumbs.db
 __pycache__/
 *.py[cod]
 
+# Cache directory
+.cache/
+
+# Environment and secrets - CRITICAL: Never commit these!
+.env
+.env.local
+.env.*.local
+*.key
+secrets/
+
 # Node / JS
 node_modules/
 
@@ -38,3 +48,7 @@ build/
 /blob-report/
 /playwright/.cache/
 navegador-dashboard.tar
+
+# LLM cache files
+llm_cache.json
+*_cache.json

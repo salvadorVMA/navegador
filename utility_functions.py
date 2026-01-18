@@ -105,15 +105,18 @@ def batch_documents(docs, ids, max_tokens=8192, encoding_name="cl100k_base"):
     return batches
 
 # llamdas a LLM y limpieza de salida a json
+# NOW WITH CACHING ENABLED via @cached_llm_call decorator (imported from performance_optimization)
+@cached_llm_call
 def get_answer(prompt, system_prompt=None, model='gpt-4o-mini-2024-07-18', temperature=0.9):
     # This function sends the prompt to the LLM and retrieves the response.
+    # Caching is automatically applied - identical prompts will return cached results
     client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
-    
+
     messages = []
     if system_prompt:
         messages.append({"role": "system", "content": system_prompt})
     messages.append({"role": "user",   "content": prompt})
-    
+
     response = client.chat.completions.create(
         model=model,
         messages=messages,

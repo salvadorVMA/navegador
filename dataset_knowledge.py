@@ -1,16 +1,65 @@
 """Module for managing dataset information and metadata"""
 
 import pickle
+import sys
+from pathlib import Path
 
-# rutas a datos y recursos
-ruta_enc= '/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/encuestas/'
-ruta_rep= '/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/reportes/'
-ruta_tmp_images= '/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/tmp_images/'
+# Import configuration module for path management
+try:
+    from config import get_config, ruta_enc, ruta_rep, ruta_tmp_images
+    config = get_config()
+except ImportError as e:
+    print(f"ERROR: Failed to import config module: {e}", file=sys.stderr)
+    print("Please ensure config.py is in the project root directory.", file=sys.stderr)
+    sys.exit(1)
 
-# pickle para cargar el diccionario de encuestas
-with open(f'{ruta_enc}/los_mex_dict.pkl', 'rb') as f:
-    los_mex_dict = pickle.load(f)
-    print('los_mex_dict cargado --  leer readme_dict para info')
+
+def load_los_mex_dict():
+    """
+    Load the los_mex_dict pickle file with proper error handling.
+
+    Returns:
+        dict: The loaded dictionary containing all survey data
+
+    Raises:
+        FileNotFoundError: If the pickle file doesn't exist
+        pickle.UnpicklingError: If the file is corrupted
+        Exception: For other loading errors
+    """
+    pickle_path = config.los_mex_dict_path
+
+    if not pickle_path.exists():
+        error_msg = (
+            f"ERROR: los_mex_dict.pkl not found at {pickle_path}\n"
+            f"Please ensure the file exists or set NAVEGADOR_LOS_MEX_DICT_PATH environment variable.\n"
+            f"Current encuestas directory: {config.encuestas_path}"
+        )
+        print(error_msg, file=sys.stderr)
+        raise FileNotFoundError(error_msg)
+
+    try:
+        with open(pickle_path, 'rb') as f:
+            data = pickle.load(f)
+            print(f'los_mex_dict loaded successfully from {pickle_path}')
+            print('See readme_dict for information about the data structure')
+            return data
+    except pickle.UnpicklingError as e:
+        error_msg = f"ERROR: Failed to unpickle {pickle_path}. File may be corrupted: {e}"
+        print(error_msg, file=sys.stderr)
+        raise
+    except Exception as e:
+        error_msg = f"ERROR: Unexpected error loading {pickle_path}: {e}"
+        print(error_msg, file=sys.stderr)
+        raise
+
+
+# Load the dictionary at module import with proper error handling
+try:
+    los_mex_dict = load_los_mex_dict()
+except Exception as e:
+    print(f"FATAL: Cannot continue without los_mex_dict. Error: {e}", file=sys.stderr)
+    print("Application will exit.", file=sys.stderr)
+    sys.exit(1)
 
 # enc_dict es el diccionario de encuestas
 # Contiene información sobre las encuestas, , dataframes y metadata como 'variable_value_labels', 'column_names_to_labels'

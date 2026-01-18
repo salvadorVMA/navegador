@@ -127,7 +127,10 @@ class PerformanceMonitor:
             'cache_hits': 0,
             'cache_misses': 0,
             'total_time': 0,
-            'analysis_times': []
+            'analysis_times': [],
+            'total_tokens': 0,
+            'prompt_tokens': 0,
+            'completion_tokens': 0
         }
     
     def record_llm_call(self, cached: bool = False):
@@ -179,7 +182,10 @@ class PerformanceMonitor:
             'cache_hits': 0,
             'cache_misses': 0,
             'total_time': 0,
-            'analysis_times': []
+            'analysis_times': [],
+            'total_tokens': 0,
+            'prompt_tokens': 0,
+            'completion_tokens': 0
         }
 
 
@@ -189,8 +195,8 @@ performance_monitor = PerformanceMonitor()
 
 # Global cache instance
 _llm_cache = LLMCache(
-    max_size=1000, 
-    ttl_seconds=3600,  # 1 hour TTL
+    max_size=2000,  # Increased from 1000 to store more responses
+    ttl_seconds=86400,  # 24 hour TTL (increased from 1 hour for better cache hit rate)
     persist_file=os.path.join(os.path.dirname(__file__), "llm_cache.json")
 )
 
@@ -198,26 +204,29 @@ _llm_cache = LLMCache(
 def cached_llm_call(func):
     """Decorator to add caching to LLM calls."""
     @wraps(func)
-    def wrapper(prompt: str, model: str = 'gpt-4o-mini-2024-07-18', temperature: float = 0.9, **kwargs):
-        # Check cache first
-        cached_response = _llm_cache.get(prompt, model, temperature)
+    def wrapper(prompt: str, system_prompt=None, model: str = 'gpt-4o-mini-2024-07-18', temperature: float = 0.9, **kwargs):
+        # Include system_prompt in cache key generation for more accurate caching
+        cache_key_str = f"{prompt}|{system_prompt}|{model}|{temperature}"
+
+        # Check cache first using combined key
+        cached_response = _llm_cache.get(cache_key_str, model, temperature)
         if cached_response is not None:
-            print(f"Cache hit for prompt hash: {hashlib.md5(prompt.encode()).hexdigest()[:8]}")
+            print(f"✓ Cache hit for prompt hash: {hashlib.md5(prompt.encode()).hexdigest()[:8]}")
             # Record cache hit in performance monitor
             performance_monitor.record_llm_call(cached=True)
             return cached_response
-        
+
         # Call original function
-        print(f"Cache miss, calling LLM for prompt hash: {hashlib.md5(prompt.encode()).hexdigest()[:8]}")
-        response = func(prompt, model=model, temperature=temperature, **kwargs)
-        
+        print(f"✗ Cache miss, calling LLM for prompt hash: {hashlib.md5(prompt.encode()).hexdigest()[:8]}")
+        response = func(prompt, system_prompt=system_prompt, model=model, temperature=temperature, **kwargs)
+
         # Record cache miss in performance monitor
         performance_monitor.record_llm_call(cached=False)
-        
+
         # Cache the response
         if response:
-            _llm_cache.set(prompt, model, temperature, response)
-        
+            _llm_cache.set(cache_key_str, model, temperature, response)
+
         return response
     return wrapper
 
@@ -339,6 +348,123 @@ def reset_performance_metrics() -> None:
     """Reset performance monitoring metrics."""
     performance_monitor.reset()
     print("Performance metrics reset")
+
+
+# ChromaDB Query Caching
+class ChromaDBCache:
+    """Cache for ChromaDB query results."""
+
+    def __init__(self, max_size: int = 500, ttl_seconds: int = 86400):
+        self.cache: Dict[str, Dict[str, Any]] = {}
+        self.max_size = max_size
+        self.ttl_seconds = ttl_seconds
+        self.lock = threading.Lock()
+        self.stats = {'hits': 0, 'misses': 0}
+
+    def _generate_key(self, query_embeddings: List, n_results: int, where: Optional[Dict] = None) -> str:
+        """Generate cache key for ChromaDB query."""
+        # Convert embeddings to string (first few digits only for key)
+        emb_str = str(query_embeddings[0][:5]) if query_embeddings else ""
+        where_str = json.dumps(where, sort_keys=True) if where else ""
+        key_content = f"{emb_str}|{n_results}|{where_str}"
+        return hashlib.md5(key_content.encode()).hexdigest()
+
+    def _is_expired(self, entry: Dict[str, Any]) -> bool:
+        """Check if cache entry is expired."""
+        return time.time() - entry['timestamp'] > self.ttl_seconds
+
+    def get(self, query_embeddings: List, n_results: int, where: Optional[Dict] = None) -> Optional[Any]:
+        """Get cached query result."""
+        key = self._generate_key(query_embeddings, n_results, where)
+
+        with self.lock:
+            if key in self.cache:
+                entry = self.cache[key]
+                if not self._is_expired(entry):
+                    self.stats['hits'] += 1
+                    return entry['result']
+                else:
+                    del self.cache[key]
+
+            self.stats['misses'] += 1
+        return None
+
+    def set(self, query_embeddings: List, n_results: int, where: Optional[Dict], result: Any) -> None:
+        """Cache query result."""
+        key = self._generate_key(query_embeddings, n_results, where)
+
+        with self.lock:
+            # Simple LRU eviction
+            if len(self.cache) >= self.max_size:
+                oldest_key = min(self.cache.keys(), key=lambda k: self.cache[k]['timestamp'])
+                del self.cache[oldest_key]
+
+            self.cache[key] = {
+                'result': result,
+                'timestamp': time.time()
+            }
+
+    def get_stats(self) -> Dict[str, Any]:
+        """Get cache statistics."""
+        with self.lock:
+            total = self.stats['hits'] + self.stats['misses']
+            hit_rate = (self.stats['hits'] / total * 100) if total > 0 else 0
+            return {
+                'total_entries': len(self.cache),
+                'hits': self.stats['hits'],
+                'misses': self.stats['misses'],
+                'hit_rate': round(hit_rate, 2),
+                'ttl_seconds': self.ttl_seconds
+            }
+
+    def clear(self) -> None:
+        """Clear cache."""
+        with self.lock:
+            self.cache.clear()
+            self.stats = {'hits': 0, 'misses': 0}
+
+
+# Global ChromaDB cache
+_chromadb_cache = ChromaDBCache(max_size=500, ttl_seconds=86400)
+
+
+def cached_chromadb_query(db_collection, query_embeddings: List, n_results: int, where: Optional[Dict] = None):
+    """
+    Cached wrapper for ChromaDB queries.
+
+    Usage:
+        from performance_optimization import cached_chromadb_query
+        result = cached_chromadb_query(db_f1, [query_emb], n_results=10, where={"type": "question"})
+    """
+    # Check cache
+    cached_result = _chromadb_cache.get(query_embeddings, n_results, where)
+    if cached_result is not None:
+        print(f"✓ ChromaDB cache hit")
+        return cached_result
+
+    # Query database
+    print(f"✗ ChromaDB cache miss, querying database")
+    result = db_collection.query(
+        query_embeddings=query_embeddings,
+        n_results=n_results,
+        where=where
+    )
+
+    # Cache result
+    _chromadb_cache.set(query_embeddings, n_results, where, result)
+
+    return result
+
+
+def get_chromadb_cache_stats() -> Dict[str, Any]:
+    """Get ChromaDB cache statistics."""
+    return _chromadb_cache.get_stats()
+
+
+def clear_chromadb_cache() -> None:
+    """Clear ChromaDB cache."""
+    _chromadb_cache.clear()
+    print("ChromaDB cache cleared")
 
 
 # Optimized prompt templates to reduce token usage
