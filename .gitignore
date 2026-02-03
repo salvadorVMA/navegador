@@ -36,8 +36,7 @@ build/
 *.pkl
 *.pdf
 *.png
-+.md
-*.md
+# Markdown files are allowed for documentation
 *.sqlite3
 *.bin
 *.pickle
