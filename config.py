@@ -39,10 +39,10 @@ class Config:
         # Database paths
         self.db_path = self._get_path('NAVEGADOR_DB_PATH', 'db_f1')
 
-        # Data files
+        # Data files (using JSON for portability and security)
         self.los_mex_dict_path = self._get_file_path(
             'NAVEGADOR_LOS_MEX_DICT_PATH',
-            self.encuestas_path / 'los_mex_dict.pkl'
+            self.encuestas_path / 'los_mex_dict.json'
         )
 
     def _get_path(self, env_var: str, default_subpath: str) -> Path:

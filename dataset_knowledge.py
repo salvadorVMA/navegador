@@ -1,6 +1,5 @@
 """Module for managing dataset information and metadata"""
 
-import pickle
 import sys
 from pathlib import Path
 
@@ -13,24 +12,28 @@ except ImportError as e:
     print("Please ensure config.py is in the project root directory.", file=sys.stderr)
     sys.exit(1)
 
+# Import JSON loader with type restoration (handles DataFrames, Series, sets)
+from secure_data_utils import load_json_with_types
+
 
 def load_los_mex_dict():
     """
-    Load the los_mex_dict pickle file with proper error handling.
+    Load the los_mex_dict JSON file with proper error handling.
 
     Returns:
-        dict: The loaded dictionary containing all survey data
+        dict: The loaded dictionary containing all survey data with
+              pandas DataFrames and other types properly restored.
 
     Raises:
-        FileNotFoundError: If the pickle file doesn't exist
-        pickle.UnpicklingError: If the file is corrupted
+        FileNotFoundError: If the JSON file doesn't exist
+        json.JSONDecodeError: If the file is corrupted
         Exception: For other loading errors
     """
-    pickle_path = config.los_mex_dict_path
+    json_path = config.los_mex_dict_path
 
-    if not pickle_path.exists():
+    if not json_path.exists():
         error_msg = (
-            f"ERROR: los_mex_dict.pkl not found at {pickle_path}\n"
+            f"ERROR: los_mex_dict.json not found at {json_path}\n"
             f"Please ensure the file exists or set NAVEGADOR_LOS_MEX_DICT_PATH environment variable.\n"
             f"Current encuestas directory: {config.encuestas_path}"
         )
@@ -38,17 +41,12 @@ def load_los_mex_dict():
         raise FileNotFoundError(error_msg)
 
     try:
-        with open(pickle_path, 'rb') as f:
-            data = pickle.load(f)
-            print(f'los_mex_dict loaded successfully from {pickle_path}')
-            print('See readme_dict for information about the data structure')
-            return data
-    except pickle.UnpicklingError as e:
-        error_msg = f"ERROR: Failed to unpickle {pickle_path}. File may be corrupted: {e}"
-        print(error_msg, file=sys.stderr)
-        raise
+        data = load_json_with_types(json_path)
+        print(f'los_mex_dict loaded successfully from {json_path}')
+        print('See readme_dict for information about the data structure')
+        return data
     except Exception as e:
-        error_msg = f"ERROR: Unexpected error loading {pickle_path}: {e}"
+        error_msg = f"ERROR: Unexpected error loading {json_path}: {e}"
         print(error_msg, file=sys.stderr)
         raise
 
