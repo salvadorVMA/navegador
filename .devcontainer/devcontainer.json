@@ -5,7 +5,7 @@
     "ghcr.io/devcontainers/features/node:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
-  "postCreateCommand": "pip install -r requirements.txt && npm install -g @anthropic-ai/claude-code && .devcontainer/fetch-data.sh",
+  "postCreateCommand": "pip install -r requirements.txt && npm install -g @anthropic-ai/claude-code && .devcontainer/fetch-data.sh && mkdir -p ~/.claude && echo $CLAUDE_CREDENTIALS_BASE64 | base64 -d > ~/.claude/.credentials.json && chmod 600 ~/.claude/.credentials.json && .devcontainer/setup-env.sh",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -17,7 +17,10 @@
   "forwardPorts": [],
   "secrets": {
     "ANTHROPIC_API_KEY": {
-      "description": "API key for Claude Code"
+      "description": "API key for testing your agent (NOT for Claude Code)"
+    },
+    "CLAUDE_CREDENTIALS_BASE64": {
+      "description": "Base64-encoded Claude Code authentication credentials"
     }
   }
 }
