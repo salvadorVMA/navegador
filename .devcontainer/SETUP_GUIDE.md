@@ -42,13 +42,22 @@ The `ANTHROPIC_API_KEY` is kept separate from Claude Code to avoid conflicts.
 ### Option 1: Use the helper module (recommended)
 
 ```python
-from .devcontainer.load_test_key import get_anthropic_key
+from load_test_key import get_anthropic_key
 
 api_key = get_anthropic_key()
 
 # Use with Anthropic SDK
 from anthropic import Anthropic
 client = Anthropic(api_key=api_key)
+```
+
+Or use the config module:
+
+```python
+from config import get_config
+
+config = get_config()
+api_key = config.get_anthropic_key()
 ```
 
 ### Option 2: Load manually from file
@@ -110,7 +119,12 @@ If missing, the secret might not be set correctly. Check:
 
 Test the helper:
 ```bash
-python .devcontainer/load_test_key.py
+python load_test_key.py
 ```
 
 Should output: `✓ API key loaded successfully`
+
+Or test with the example:
+```bash
+python example_anthropic_usage.py
+```

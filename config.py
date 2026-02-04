@@ -8,6 +8,12 @@ from pathlib import Path
 from typing import Optional
 import sys
 
+# Import API key loader
+try:
+    from load_test_key import get_anthropic_key
+except ImportError:
+    get_anthropic_key = None
+
 
 class Config:
     """Configuration class for managing application settings and paths."""
@@ -91,6 +97,26 @@ class Config:
         if not self.encuestas_path.exists():
             print(f"WARNING: Encuestas directory not found at {self.encuestas_path}", file=sys.stderr)
             print(f"Set NAVEGADOR_ENCUESTAS_PATH environment variable to specify location", file=sys.stderr)
+
+    def get_anthropic_key(self) -> Optional[str]:
+        """
+        Get the Anthropic API key for testing with Anthropic models.
+
+        This method uses the load_test_key module to safely load the API key
+        without interfering with Claude Code authentication.
+
+        Returns:
+            API key string if found, None otherwise
+        """
+        if get_anthropic_key is None:
+            print("WARNING: load_test_key module not found", file=sys.stderr)
+            return None
+
+        try:
+            return get_anthropic_key()
+        except ValueError as e:
+            print(f"WARNING: Could not load Anthropic API key: {e}", file=sys.stderr)
+            return None
 
     def get_path_str(self, path_attr: str) -> str:
         """

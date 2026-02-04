@@ -14,6 +14,7 @@ __pycache__/
 .env.local
 .env.*.local
 *.key
+.anthropic_test_key
 secrets/
 
 # Node / JS
