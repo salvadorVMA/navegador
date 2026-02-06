@@ -21,7 +21,7 @@ jobs:
       - name: Run Bandit
         run: bandit -r . -x ./tests,./archive,./notebooks,./.devcontainer,./node_modules,./scripts/debug --severity-level medium -f json -o bandit-report.json || true
       - name: Upload Bandit Report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: bandit-report
           path: bandit-report.json
@@ -49,7 +49,7 @@ jobs:
       - name: Run Safety Check
         run: safety check -r config/requirements.txt --output json > safety-report.json || true
       - name: Upload Safety Report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: safety-report
           path: safety-report.json
