@@ -7,7 +7,7 @@ by avoiding redundant LLM calls and database queries.
 
 import hashlib
 import json
-import pickle
+import json as json_mod
 import time
 from pathlib import Path
 from typing import Any, Optional, Dict, Tuple
@@ -157,8 +157,8 @@ class CacheManager:
             return None
 
         try:
-            with open(cache_file, 'rb') as f:
-                value = pickle.load(f)
+            with open(cache_file, 'r') as f:
+                value = json_mod.load(f)
                 self.stats[cache_type]['hits'] += 1
                 self._save_stats()
                 return value
@@ -184,8 +184,8 @@ class CacheManager:
         cache_file = self._get_cache_path(cache_type, key)
 
         try:
-            with open(cache_file, 'wb') as f:
-                pickle.dump(value, f)
+            with open(cache_file, 'w') as f:
+                json_mod.dump(value, f)
                 self.stats[cache_type]['saves'] += 1
                 self._save_stats()
                 return True

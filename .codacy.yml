@@ -1,0 +1,20 @@
+---
+engines:
+  bandit:
+    enabled: true
+  pylint:
+    enabled: true
+  eslint:
+    enabled: false
+
+exclude_paths:
+  - "tests/**"
+  - "archive/**"
+  - "notebooks/**"
+  - "scripts/debug/**"
+  - "node_modules/**"
+  - "*.ipynb"
+
+languages:
+  python:
+    version: "3.11"

@@ -638,7 +638,7 @@ class PromptManager:
         test = self.ab_tests[template_type]
 
         # Hash request ID to determine version
-        hash_val = int(hashlib.md5(request_id.encode()).hexdigest(), 16)
+        hash_val = int(hashlib.sha256(request_id.encode()).hexdigest(), 16)
         ratio = (hash_val % 100) / 100.0
 
         if ratio < test['split_ratio']:

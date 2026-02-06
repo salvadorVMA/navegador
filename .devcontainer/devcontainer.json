@@ -5,12 +5,14 @@
     "ghcr.io/devcontainers/features/node:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
-  "postCreateCommand": "pip install -r requirements.txt && npm install -g @anthropic-ai/claude-code && .devcontainer/fetch-data.sh && mkdir -p ~/.claude && echo $CLAUDE_CREDENTIALS_BASE64 | base64 -d > ~/.claude/.credentials.json && chmod 600 ~/.claude/.credentials.json && .devcontainer/setup-env.sh",
+  "postCreateCommand": "pip install -r requirements.txt && pip install bandit safety semgrep && curl -sSfL https://github.com/gitleaks/gitleaks/releases/download/v8.22.1/gitleaks_8.22.1_linux_x64.tar.gz | sudo tar -xzf - -C /usr/local/bin gitleaks && npm install -g @anthropic-ai/claude-code && .devcontainer/fetch-data.sh && mkdir -p ~/.claude && echo $CLAUDE_CREDENTIALS_BASE64 | base64 -d > ~/.claude/.credentials.json && chmod 600 ~/.claude/.credentials.json && .devcontainer/setup-env.sh",
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-python.python",
-        "ms-toolsai.jupyter"
+        "ms-toolsai.jupyter",
+        "ms-python.pylint",
+        "SonarSource.sonarlint-vscode"
       ]
     }
   },
