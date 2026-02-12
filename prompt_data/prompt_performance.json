@@ -1,0 +1,38 @@
+{
+  "cross_analysis_v1": {
+    "template_name": "cross_analysis",
+    "version": "v1",
+    "execution_count": 2,
+    "total_tokens": 5979,
+    "avg_tokens": 2989.5,
+    "total_latency": 20.552166223526,
+    "avg_latency": 10.276083111763,
+    "success_rate": 1.0,
+    "quality_score": 92.5,
+    "last_used": "2026-02-11T02:57:30.292855"
+  },
+  "cross_analysis_v2": {
+    "template_name": "cross_analysis",
+    "version": "v2",
+    "execution_count": 5,
+    "total_tokens": 14218,
+    "avg_tokens": 2843.6,
+    "total_latency": 45.919241189956665,
+    "avg_latency": 9.183848237991333,
+    "success_rate": 1.0,
+    "quality_score": 100.0,
+    "last_used": "2026-02-11T02:58:09.551248"
+  },
+  "cross_analysis_v3": {
+    "template_name": "cross_analysis",
+    "version": "v3",
+    "execution_count": 4,
+    "total_tokens": 11781,
+    "avg_tokens": 2945.25,
+    "total_latency": 39.92685532569885,
+    "avg_latency": 9.981713831424713,
+    "success_rate": 1.0,
+    "quality_score": 100.0,
+    "last_used": "2026-02-11T02:57:46.454926"
+  }
+}

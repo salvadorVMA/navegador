@@ -16,6 +16,8 @@ from detailed_analysis import (
 # Import optimized analysis functions
 from detailed_analysis_optimized import run_detailed_analysis_optimized, benchmark_analysis_performance
 from performance_optimization import get_cache_stats, clear_cache, reset_performance_metrics
+# Import analytical essay pipeline
+from analytical_essay import generate_analytical_essay
 
 
 def run_analysis(analysis_type: str, selected_variables: list, user_query: str, **kwargs) -> dict:
@@ -50,6 +52,8 @@ def run_analysis(analysis_type: str, selected_variables: list, user_query: str, 
         return _run_benchmark_analysis(selected_variables, user_query, **kwargs)
     elif analysis_type == "performance_stats":
         return _get_performance_stats(**kwargs)
+    elif analysis_type == "analytical_essay":
+        return _run_analytical_essay(selected_variables, user_query, **kwargs)
     else:
         return {
             'success': False,
@@ -374,6 +378,45 @@ def _get_performance_stats(**kwargs) -> dict:
             'analysis_type': 'performance_stats',
             'results': {},
             'formatted_report': f'Error getting performance statistics: {str(e)}'
+        }
+
+
+def _run_analytical_essay(selected_variables: list, user_query: str, **kwargs) -> dict:
+    """
+    Run analytical essay analysis: quantitative engine + dialectical LLM essay.
+
+    Args:
+        selected_variables (list): List of variable IDs selected for analysis
+        user_query (str): The user's query
+        **kwargs: Additional parameters (model_name, temperature)
+
+    Returns:
+        dict: Analysis results with formatted essay
+    """
+    try:
+        analysis_results = generate_analytical_essay(
+            selected_variables=selected_variables,
+            user_query=user_query,
+            model_name=kwargs.get('model_name', 'gpt-4.1-mini-2025-04-14'),
+            temperature=kwargs.get('temperature', 0.4)
+        )
+
+        return {
+            'success': analysis_results.get('success', False),
+            'analysis_type': 'analytical_essay',
+            'results': analysis_results,
+            'formatted_report': analysis_results.get('formatted_report', ''),
+            'error': analysis_results.get('error') if not analysis_results.get('success') else None
+        }
+
+    except Exception as e:
+        print(f"Error in analytical essay analysis: {e}")
+        return {
+            'success': False,
+            'error': str(e),
+            'analysis_type': 'analytical_essay',
+            'results': {},
+            'formatted_report': f'Error generating analytical essay: {str(e)}'
         }
 
 

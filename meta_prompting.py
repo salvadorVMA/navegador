@@ -370,7 +370,8 @@ Provide the optimized prompt and explain your changes."""
         response = self.llm_function(meta_prompt)
 
         # Parse response (assuming it contains the optimized prompt)
-        # This is simplified - you'd want more robust parsing
+        # TODO: explain parsing logic
+        # TODO: plan and implement robust parsing
         return response, "LLM optimization applied"
 
 

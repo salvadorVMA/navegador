@@ -112,7 +112,7 @@ class AgentState(TypedDict):
     original_query: Annotated[str, "The user's original query or request"]
     dataset: Annotated[List[str], "The dataset or group of datasets selected for analysis; defaults to 'ALL'"] 
     selected_variables: Annotated[List[str], "Selected variables for analysis"]
-    analysis_type: Annotated[Literal["descriptive", "detailed", "quick_insights", "plots_only"], "Type of analysis requested by user"]
+    analysis_type: Annotated[Literal["descriptive", "detailed", "quick_insights", "plots_only", "analytical_essay"], "Type of analysis requested by user"]
     user_approved: Annotated[bool, "Whether user has approved variables and analysis type"]
     analysis_result: Annotated[Dict, "Results from the analysis"]
 
@@ -437,7 +437,10 @@ def create_agent(enable_persistence=True):
         
         # TODO: agregar opciones en español!
 
-        if "plots only" in last_lower or "just plots" in last_lower or "only plots" in last_lower:
+        if "analytical essay" in last_lower or "essay" in last_lower or "ensayo" in last_lower or "analytic" in last_lower:
+            state["analysis_type"] = "analytical_essay"
+            response = "Analytical essay selected. I'll compute precise statistics and produce a nuanced dialectical essay. Ready to run analysis?"
+        elif "plots only" in last_lower or "just plots" in last_lower or "only plots" in last_lower:
             state["analysis_type"] = "plots_only"
             response = "Plots-only analysis selected. I'll generate visualizations for your selected variables. Ready to run analysis?"
         elif "quick insights" in last_lower or "quick analysis" in last_lower or "summary" in last_lower:
@@ -468,7 +471,8 @@ def create_agent(enable_persistence=True):
             "detailed": "detailed_report",
             "descriptive": "detailed_report",  # Keep descriptive as detailed_report for now
             "quick_insights": "quick_insights",
-            "plots_only": "plots_only"
+            "plots_only": "plots_only",
+            "analytical_essay": "analytical_essay",
         }
         
         mapped_analysis_type = analysis_type_mapping.get(analysis_type, "detailed_report")
