@@ -54,3 +54,12 @@ navegador-dashboard.tar
 # LLM cache files
 llm_cache.json
 *_cache.json
+
+# Data files (fetched from navegador_data repo, not tracked here)
+data/encuestas/*.json
+encuestas/*.json
+encuestas_data.tar.gz
+*.tar.gz
+
+# Encuestas symlink (points to data/encuestas)
+/encuestas
