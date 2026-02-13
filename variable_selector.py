@@ -8,7 +8,7 @@ import tqdm
 from typing import List, Any
 
 from pydantic import BaseModel
-from langchain.output_parsers import PydanticOutputParser
+from langchain_core.output_parsers import PydanticOutputParser
 
 from utility_functions import environment_setup, embedding_fun_openai, get_answer, clean_llm_json_output, batch_documents
 from dataset_knowledge import rev_topic_dict,  tmp_topic_st

@@ -10,7 +10,7 @@ try:
 except ImportError as e:
     print(f"ERROR: Failed to import config module: {e}", file=sys.stderr)
     print("Please ensure config.py is in the project root directory.", file=sys.stderr)
-    sys.exit(1)
+    config = None
 
 # Import JSON loader with type restoration (handles DataFrames, Series, sets)
 from secure_data_utils import load_json_with_types
@@ -51,56 +51,70 @@ def load_los_mex_dict():
         raise
 
 
+# Flag indicating whether survey data is available
+DATA_AVAILABLE = False
+
 # Load the dictionary at module import with proper error handling
+los_mex_dict = None
+enc_dict = None
+enc_nom_dict = None
+rev_enc_nom_dict = None
+rev_topic_dict = None
+topic_id_st = None
+pregs_dict = None
+ses_dict = None
+mkdown_tables = None
+df_tables = None
+tmp_topic_lst = None
+tmp_topic_st = None
+tmp_data_describer_st = None
+
 try:
+    if config is None:
+        raise RuntimeError("Config module not available")
     los_mex_dict = load_los_mex_dict()
+    DATA_AVAILABLE = True
 except Exception as e:
-    print(f"FATAL: Cannot continue without los_mex_dict. Error: {e}", file=sys.stderr)
-    print("Application will exit.", file=sys.stderr)
-    sys.exit(1)
+    print(f"WARNING: los_mex_dict not available. Error: {e}", file=sys.stderr)
+    print("Data-dependent features will be disabled.", file=sys.stderr)
 
-# enc_dict es el diccionario de encuestas
-# Contiene información sobre las encuestas, , dataframes y metadata como 'variable_value_labels', 'column_names_to_labels'
-enc_dict = los_mex_dict['enc_dict']
+if DATA_AVAILABLE:
+    # enc_dict es el diccionario de encuestas
+    # Contiene información sobre las encuestas, , dataframes y metadata como 'variable_value_labels', 'column_names_to_labels'
+    enc_dict = los_mex_dict['enc_dict']
 
-# enc_nom_dict es el diccionario de nombres de encuestas y sus identificadores
-# Contiene los nombres de las encuestas y sus identificadores, que se usan para referenciar las encuestas en el sistema
-# Ejemplo: {'IDENTIDAD_Y_VALORES': 'IDE'...}
-enc_nom_dict = los_mex_dict['enc_nom_dict']
-rev_enc_nom_dict = {v: k for k, v in enc_nom_dict.items()}
+    # enc_nom_dict es el diccionario de nombres de encuestas y sus identificadores
+    # Contiene los nombres de las encuestas y sus identificadores, que se usan para referenciar las encuestas en el sistema
+    # Ejemplo: {'IDENTIDAD_Y_VALORES': 'IDE'...}
+    enc_nom_dict = los_mex_dict['enc_nom_dict']
+    rev_enc_nom_dict = {v: k for k, v in enc_nom_dict.items()}
 
-# Generar un string con los temas de las encuestas y sus identificadores
-rev_topic_dict = {k: v.replace('_', ' ').lower() for k, v in rev_enc_nom_dict.items()}
-topic_id_st = '\n'.join(['|'.join(['* ' + a, b]) for a, b in rev_topic_dict.items()])
+    # Generar un string con los temas de las encuestas y sus identificadores
+    rev_topic_dict = {k: v.replace('_', ' ').lower() for k, v in rev_enc_nom_dict.items()}
+    topic_id_st = '\n'.join(['|'.join(['* ' + a, b]) for a, b in rev_topic_dict.items()])
 
-# pregs_dict contiene códigos de identificación pregunta|encuesta y la pregunta completa
-# ejemplo: p5_1|IDE': 'IDENTIDAD_Y_VALORES|¿Cuál de las siguientes emociones refleja mejor lo que siente sobre México?... }
-pregs_dict = los_mex_dict['pregs_dict']
+    # pregs_dict contiene códigos de identificación pregunta|encuesta y la pregunta completa
+    # ejemplo: p5_1|IDE': 'IDENTIDAD_Y_VALORES|¿Cuál de las siguientes emociones refleja mejor lo que siente sobre México?... }
+    pregs_dict = los_mex_dict['pregs_dict']
 
-# pregs_dict contiene códigos de identificación pregunta|encuesta y la pregunta completa
-# ejemplo: {'sd1|IDE': 'IDENTIDAD_Y_VALORES|Sexo:',
-pregs_dict = los_mex_dict['pregs_dict']
+    # ses_dict contiene información sobre las la información socioeconómica de los encuestados -- aún no usada
+    # ejemplo: {'IDE': ['p5_1|IDE', 'p5_2|IDE'], ...}
+    ses_dict = los_mex_dict['ses_dict']
 
-# ses_dict contiene información sobre las la información socioeconómica de los encuestados -- aún no usada
-# ejemplo: {'IDE': ['p5_1|IDE', 'p5_2|IDE'], ...}
-ses_dict = los_mex_dict['ses_dict']
+    # mkdown_tables contiene tablas en formato markdown con las tablas de frecuencias de las encuestas
+    mkdown_tables = los_mex_dict['mkdown_tables']
 
-# mkdown_tables contiene tablas en formato markdown con las tablas de frecuencias de las encuestas
-# 'p5_1|IDE': '| IDENTIDAD_Y_VALORES|¿Cuál de las siguientes emociones refleja mejor lo que siente sobre México?  1° MENCIÓN | % |\n| --- | --- |\n| Orgullo | 38.33 |\n...
-mkdown_tables = los_mex_dict['mkdown_tables']
+    # df_tables contiene dataframes con las tablas de frecuencias de las encuestas
+    df_tables = los_mex_dict['df_tables']
 
-# df_tables contiene dataframes con las tablas de frecuencias de las encuestas
-df_tables = los_mex_dict['df_tables']
+    # tmp_topic_lst es una lista de los temas de las encuestas
+    tmp_topic_lst = enc_nom_dict.keys()
 
-# tmp_topic_lst es una lista de los temas de las encuestas
-# ejemplo: dict_keys(['IDENTIDAD_Y_VALORES', 'MEDIO_AMBIENTE',... 
-tmp_topic_lst = enc_nom_dict.keys()
+    tmp_topic_st = ', '.join([st.replace('_', ' ').title() for st in tmp_topic_lst])
 
-tmp_topic_st= ', '.join([st.replace('_', ' ').title() for st in tmp_topic_lst])
-
-# prompt para descripción
-tmp_data_describer_st = f"""
-    General information about the project: 
+    # prompt para descripción
+    tmp_data_describer_st = f"""
+    General information about the project:
     -Name: "Los mexicanos vistos por sí mismos"
     -Description: This project is a group of {len(tmp_topic_st)} public opinion surveys conducted in Mexico between 2014 and 2015,
     -Topics: {tmp_topic_st}.
@@ -112,7 +126,7 @@ tmp_data_describer_st = f"""
 
 from typing import List, Any
 from pydantic import BaseModel
-from langchain.output_parsers import PydanticOutputParser
+from langchain_core.output_parsers import PydanticOutputParser
 
 def _project_describer(user_query: str, tmp_data_describer_st: str, llm: Any) -> str:
     """

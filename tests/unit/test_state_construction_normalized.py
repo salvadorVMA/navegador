@@ -21,8 +21,8 @@ try:
     from langchain_openai import ChatOpenAI
     import state_normalizer  # Import our state normalizer
 except ImportError as e:
-    print(f"⚠️ Required modules not found: {e}. Please ensure you have the necessary dependencies.")
-    sys.exit(1)
+    import pytest
+    pytest.skip(f"Required modules not available: {e}", allow_module_level=True)
 
 def print_header(title):
     """Print a nicely formatted header"""

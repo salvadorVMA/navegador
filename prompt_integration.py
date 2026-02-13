@@ -190,7 +190,7 @@ def get_structured_summary_with_tracking(
         Tuple of (raw_response, parsed_dict, metadata)
     """
     from utility_functions import get_answer, clean_llm_json_output
-    from langchain.output_parsers import PydanticOutputParser
+    from langchain_core.output_parsers import PydanticOutputParser
     from detailed_analysis import FlatPatternSummary, pattern_parser_simdif, pattern_simdif_format_instructions
 
     if get_answer_func is None:

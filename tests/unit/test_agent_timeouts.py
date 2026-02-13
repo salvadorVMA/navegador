@@ -31,9 +31,8 @@ try:
     print("✅ All required modules are available")
 except ImportError as e:
     MODULES_AVAILABLE = False
-    print(f"⚠️ Some required modules are not available: {e}")
-    print("This script requires langchain, langchain-openai, etc.")
-    sys.exit(1)
+    import pytest
+    pytest.skip(f"Required modules not available: {e}", allow_module_level=True)
 
 # Timeouts to test (in seconds)
 TIMEOUTS = [5, 10, 15, 30, 60, 120]

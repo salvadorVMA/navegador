@@ -1,7 +1,7 @@
 """Module for classifying user intent in dataset interactions"""
 from typing import Tuple, Any, Dict
 from pydantic import BaseModel
-from langchain.output_parsers import PydanticOutputParser
+from langchain_core.output_parsers import PydanticOutputParser
 from utility_functions import get_answer, clean_llm_json_output
 
 intent_dict= {

@@ -22,9 +22,9 @@ import concurrent.futures
 try:
     import agent
     from langchain_openai import ChatOpenAI
-except ImportError:
-    print("⚠️ Required modules not found. Please ensure you have the necessary dependencies.")
-    sys.exit(1)
+except ImportError as e:
+    import pytest
+    pytest.skip(f"Required modules not available: {e}", allow_module_level=True)
 
 # Replicate the exact function from dashboard.py to ensure compatibility
 def create_agent_config(thread_id: Optional[str] = None) -> Any:

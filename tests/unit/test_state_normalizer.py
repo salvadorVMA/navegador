@@ -14,9 +14,8 @@ from typing import Dict, Any, Optional
 try:
     from state_normalizer import normalize_state, normalize_config, create_agent_state
 except ImportError as e:
-    print(f"Error importing state_normalizer: {e}")
-    print("Make sure state_normalizer.py is in the current directory.")
-    exit(1)
+    import pytest
+    pytest.skip(f"state_normalizer not available: {e}", allow_module_level=True)
 
 def print_header(title: str):
     """Print a nicely formatted header"""

@@ -3,7 +3,7 @@
 ### Module for selecting relevant variables from datasets based on user queries
 
 from pydantic import BaseModel
-from langchain.output_parsers import PydanticOutputParser
+from langchain_core.output_parsers import PydanticOutputParser
 
 from utility_functions import environment_setup, embedding_fun_openai, get_answer, clean_llm_json_output, batch_documents
 
