@@ -241,16 +241,62 @@ def compute_variable_statistics(
 
 
 # =============================================================================
+# FUZZY MATCHING FOR ROBUSTNESS
+# =============================================================================
+
+def find_closest_variable(var_id: str, all_variables: List[str]) -> Optional[str]:
+    """
+    Find the closest matching variable using fuzzy string matching.
+
+    Useful when a variable ID has a typo, especially in the survey code part.
+
+    Args:
+        var_id: Variable identifier (e.g., "p1|CUP" - wrong code)
+        all_variables: List of all available variable IDs
+
+    Returns:
+        Best match variable ID, or None if no close match found
+
+    Example:
+        >>> find_closest_variable("p1|CUP", ["p1|CUL", "p2|CUL", ...])
+        "p1|CUL"  # Found match with 1 character difference in survey code
+    """
+    from difflib import get_close_matches
+
+    if '|' in var_id:
+        # Extract question part and survey code
+        var_part, _ = var_id.split('|')
+
+        # Strategy 1: Find variables with same question number but different survey code
+        # This catches typos like "p1|CUP" → "p1|CUL"
+        candidates = [v for v in all_variables if v.startswith(f"{var_part}|")]
+
+        if candidates:
+            # Find closest match among candidates
+            matches = get_close_matches(var_id, candidates, n=1, cutoff=0.6)
+            if matches:
+                return matches[0]
+
+    # Strategy 2: Fallback to general fuzzy match across all variables
+    # This catches more complex errors
+    matches = get_close_matches(var_id, all_variables, n=1, cutoff=0.8)
+    return matches[0] if matches else None
+
+
+# =============================================================================
 # AGGREGATED REPORT
 # =============================================================================
 
 def build_quantitative_report(
     selected_variables: List[str],
     df_tables_override: Optional[Dict] = None,
-    pregs_dict_override: Optional[Dict] = None
+    pregs_dict_override: Optional[Dict] = None,
+    auto_correct: bool = True  # NEW: Enable fuzzy matching by default
 ) -> QuantitativeReport:
     """
     Build a complete quantitative report for all selected variables.
+
+    ENHANCED: Now includes auto-correction for typos in variable IDs.
 
     Computes per-variable statistics, aggregates shape summary,
     calculates divergence index, and generates an overall narrative.
@@ -259,15 +305,41 @@ def build_quantitative_report(
         selected_variables: List of variable IDs
         df_tables_override: Optional override for testing
         pregs_dict_override: Optional override for testing
+        auto_correct: If True, attempts to correct typos in variable IDs (default: True)
 
     Returns:
         QuantitativeReport instance
     """
+    tables = df_tables_override if df_tables_override is not None else _get_df_tables()
+    all_var_ids = list(tables.keys())
+
     variables = []
+    corrections = []  # Track auto-corrections made
+
     for var_id in selected_variables:
-        stats = compute_variable_statistics(var_id, df_tables_override, pregs_dict_override)
-        if stats is not None:
-            variables.append(stats)
+        # Try exact match first
+        if var_id in tables:
+            stats = compute_variable_statistics(var_id, df_tables_override, pregs_dict_override)
+            if stats is not None:
+                variables.append(stats)
+
+        elif auto_correct:
+            # Try fuzzy matching
+            suggested = find_closest_variable(var_id, all_var_ids)
+
+            if suggested:
+                print(f"⚠️  Variable '{var_id}' not found")
+                print(f"   → Auto-corrected to: '{suggested}'")
+                corrections.append((var_id, suggested))
+
+                stats = compute_variable_statistics(suggested, df_tables_override, pregs_dict_override)
+                if stats is not None:
+                    variables.append(stats)
+            else:
+                print(f"❌ Variable '{var_id}' not found and no close match available")
+        else:
+            # Strict mode - just print warning
+            print(f"Warning: Variable {var_id} not found in df_tables")
 
     if not variables:
         return QuantitativeReport(

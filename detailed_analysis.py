@@ -17,7 +17,7 @@ import json
 import tqdm
 from typing import Dict, List, Tuple, Any, Optional
 from pydantic import BaseModel
-from langchain.output_parsers import PydanticOutputParser
+from langchain_core.output_parsers import PydanticOutputParser
 from openai import OpenAI
 
 # Import utility functions
@@ -541,40 +541,138 @@ def _deep_analyzer(tmp_pre_res_dict: dict, tmp_grade_dict: dict, user_query: str
 
 def run_detailed_analysis(selected_variables: list, user_query: str, analysis_params: Optional[dict] = None) -> dict:
     """
-    Main entry point for detailed analysis. This function provides the interface 
+    Main entry point for detailed analysis. This function provides the interface
     between the agent workflow and the detailed analysis pipeline.
-    
+
+    FIXED: Now validates variables and uses real data instead of mock data.
+
     Args:
         selected_variables (list): List of variable IDs selected for analysis
         user_query (str): The user's query
         analysis_params (dict): Additional parameters for analysis (optional)
-        
+
     Returns:
         dict: Comprehensive analysis results including patterns, expert summaries, and final report
     """
     print(f"Starting detailed analysis for query: {user_query}")
     print(f"Selected variables: {selected_variables}")
-    
+
     try:
+        # FIX 1: Validate variables BEFORE processing
+        from dataset_knowledge import df_tables, pregs_dict
+        from difflib import get_close_matches
+
+        valid_variables = []
+        invalid_variables = []
+        suggestions = {}
+
+        print("\n=== Variable Validation ===")
+        all_var_ids = list(df_tables.keys())
+
+        for var_id in selected_variables:
+            if var_id in df_tables and var_id in pregs_dict:
+                valid_variables.append(var_id)
+                print(f"✅ {var_id} - Valid")
+            else:
+                invalid_variables.append(var_id)
+                print(f"❌ {var_id} - Not found")
+
+                # Try to find similar variables
+                matches = get_close_matches(var_id, all_var_ids, n=1, cutoff=0.7)
+                if matches:
+                    suggestions[var_id] = matches[0]
+                    print(f"   💡 Did you mean: {matches[0]}?")
+
+        # Report validation results
+        if invalid_variables:
+            print(f"\n⚠️  WARNING: {len(invalid_variables)}/{len(selected_variables)} variables not found:")
+            for var_id in invalid_variables:
+                if var_id in suggestions:
+                    print(f"   {var_id} → suggested: {suggestions[var_id]}")
+                else:
+                    print(f"   {var_id} → no suggestion available")
+
+        # Fail if NO valid variables
+        if not valid_variables:
+            error_msg = f"None of the {len(selected_variables)} requested variables exist in the database."
+            if suggestions:
+                error_msg += f" Suggestions: {suggestions}"
+
+            print(f"\n❌ FAILED: {error_msg}")
+            return {
+                'query': user_query,
+                'selected_variables': selected_variables,
+                'valid_variables': [],
+                'invalid_variables': invalid_variables,
+                'suggestions': suggestions,
+                'analysis_type': 'detailed_report',
+                'success': False,
+                'error': error_msg,
+                'report_sections': {
+                    'query_answer': f'Error: {error_msg}',
+                    'topic_summary': 'Analysis could not be performed due to invalid variables',
+                    'topic_summaries': {},
+                    'expert_replies': []
+                }
+            }
+
+        # Warn if SOME invalid
+        if invalid_variables:
+            print(f"\n⚠️  Proceeding with {len(valid_variables)}/{len(selected_variables)} valid variables")
+            print(f"   Analyzing: {valid_variables}")
+            print(f"   Skipping: {invalid_variables}")
+        else:
+            print(f"\n✅ All {len(valid_variables)} variables validated successfully")
+
+        # Use only valid variables
+        selected_variables = valid_variables
+
         # Import required modules for database access
         from utility_functions import environment_setup, embedding_fun_openai
-        
+
         # Load database and setup environment
-        print("Loading database and setting up environment...")
+        print("\nLoading database and setting up environment...")
         client, db_f1 = environment_setup(embedding_fun_openai)
-        
-        # For now, we'll create a mock preprocessed results dict based on selected variables
-        # In the future, this should be properly integrated with the variable selection pipeline
+
+        # FIX 2: Use REAL data instead of mock data
+        print("\n=== Loading Real Variable Data ===")
         tmp_pre_res_dict = {}
-        
-        # Mock preprocessed results structure based on selected variables
+
         for var_id in selected_variables:
-            tmp_pre_res_dict[f"{var_id}__question"] = f"{var_id}|Example question for {var_id}"
-            tmp_pre_res_dict[f"{var_id}__summary"] = f"{var_id}|Mock summary data for variable {var_id}"
-        
+            # Get real question text
+            question_text = pregs_dict.get(var_id, f"{var_id}|Unknown question")
+            tmp_pre_res_dict[f"{var_id}__question"] = question_text
+            print(f"Loaded question for {var_id}")
+
+            # Try to get summary from ChromaDB
+            try:
+                summary_result = db_f1.get(ids=[f"{var_id}__summary"])
+                if summary_result and summary_result.get('documents'):
+                    tmp_pre_res_dict[f"{var_id}__summary"] = summary_result['documents'][0]
+                    print(f"Loaded summary from ChromaDB for {var_id}")
+                else:
+                    # Generate basic summary from df_tables
+                    df = df_tables[var_id]
+                    df_clean = df.dropna()
+                    if not df_clean.empty:
+                        # Get top 3 responses
+                        top_responses = df_clean.iloc[:, 0].head(3)
+                        summary_parts = []
+                        for idx, val in top_responses.items():
+                            summary_parts.append(f"{idx}: {val:.1f}%")
+                        summary = f"{var_id}|Top responses: " + ", ".join(summary_parts)
+                        tmp_pre_res_dict[f"{var_id}__summary"] = summary
+                        print(f"Generated summary from data for {var_id}")
+                    else:
+                        tmp_pre_res_dict[f"{var_id}__summary"] = f"{var_id}|No data available"
+                        print(f"⚠️  No data available for {var_id}")
+            except Exception as e:
+                print(f"⚠️  Error loading summary for {var_id}: {e}")
+                # Fallback: create basic summary from df_tables
+                tmp_pre_res_dict[f"{var_id}__summary"] = f"{var_id}|Summary unavailable"
+
         # Create grade dictionary from selected variables
-        # This simulates the grading process from the notebook
-        tmp_grade_dict = {var_id: 1.0 for var_id in selected_variables}  # Simple grading for now
+        tmp_grade_dict = {var_id: 1.0 for var_id in selected_variables}
         
         # Run the core analysis pipeline
         print("Running deep analysis pipeline...")
@@ -585,10 +683,14 @@ def run_detailed_analysis(selected_variables: list, user_query: str, analysis_pa
             db_f1=db_f1
         )
         
-        # Package results for agent workflow
+        # FIX 3: Package results with transparency about what was analyzed
         analysis_results = {
             'query': user_query,
-            'selected_variables': selected_variables,
+            'selected_variables': selected_variables,  # Only valid variables now
+            'requested_variables': selected_variables if not invalid_variables else selected_variables + invalid_variables,
+            'valid_variables': valid_variables,
+            'invalid_variables': invalid_variables,
+            'suggestions': suggestions,
             'analysis_type': 'detailed_report',
             'success': True,
             'patterns': structured_expert_results,
@@ -604,8 +706,11 @@ def run_detailed_analysis(selected_variables: list, user_query: str, analysis_pa
                 'expert_replies': [v.get('EXPERT_REPLY', '') for v in structured_expert_results.values()]
             }
         }
-        
-        print("Detailed analysis completed successfully")
+
+        print("\n=== Analysis Complete ===")
+        print(f"✅ Successfully analyzed {len(valid_variables)} variables")
+        if invalid_variables:
+            print(f"⚠️  Skipped {len(invalid_variables)} invalid variables")
         return analysis_results
         
     except Exception as e:
@@ -850,14 +955,39 @@ The analysis could not be completed. Please try again or contact support.
             if reply.strip():
                 report += f"\n### Expert Insight {i}\n{reply}\n"
     
+    # Add data integrity report
+    valid_vars = analysis_results.get('valid_variables', analysis_results.get('selected_variables', []))
+    invalid_vars = analysis_results.get('invalid_variables', [])
+    suggestions = analysis_results.get('suggestions', {})
+
+    report += "\n## Data Integrity Report\n\n"
+
+    if invalid_vars:
+        report += f"⚠️ **Variables Requested:** {len(valid_vars) + len(invalid_vars)}\n\n"
+        report += f"✅ **Variables Analyzed:** {len(valid_vars)}\n"
+        report += f"- {', '.join(valid_vars)}\n\n"
+        report += f"❌ **Variables Skipped:** {len(invalid_vars)}\n"
+        for var_id in invalid_vars:
+            if var_id in suggestions:
+                report += f"- {var_id} (suggested: {suggestions[var_id]})\n"
+            else:
+                report += f"- {var_id}\n"
+        report += "\n"
+    else:
+        report += f"✅ **All {len(valid_vars)} requested variables were validated and analyzed:**\n"
+        report += f"- {', '.join(valid_vars)}\n\n"
+
+    report += "**Data Sources:** Real survey data from df_tables and pregs_dict\n\n"
+    report += "**Validation:** All variables verified to exist before analysis\n\n"
+
     # Add metadata
     report += f"""
 ## Analysis Metadata
 - **Analysis Type:** {analysis_results.get('analysis_type', 'Unknown')}
-- **Variables Analyzed:** {len(analysis_results.get('selected_variables', []))}
+- **Variables Analyzed:** {len(valid_vars)}
 - **Patterns Identified:** {len(analysis_results.get('patterns', {}))}
 """
-    
+
     return report
 
 
