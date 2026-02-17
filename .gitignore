@@ -63,3 +63,10 @@ encuestas_data.tar.gz
 
 # Encuestas symlink (points to data/encuestas)
 /encuestas
+
+# Test logs
+test_agent.log
+test_agent_tracing.log
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
