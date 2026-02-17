@@ -385,12 +385,19 @@ def create_prompt_trnsvl(tmp_smry_st: str, user_query: str, n_cmn_tpc: int = 3, 
     """
     return prompt
 
-def get_transversal_analysis(tmp_smry_st: str, user_query: str, 
+def _fix_json_format(json_str: str) -> str:
+    """Fix common JSON formatting errors like trailing commas."""
+    json_str = re.sub(r',(\s*})', r'\1', json_str)
+    json_str = re.sub(r',(\s*\])', r'\1', json_str)
+    return json_str
+
+
+def get_transversal_analysis(tmp_smry_st: str, user_query: str,
                            model_name: str = 'gpt-4o-mini-2024-07-18', temperature: float = 0.9) -> dict:
     """
     Generates transversal analysis combining expert summaries into final report.
     """
-    from fix_transversal_json import fix_json_format
+    fix_json_format = _fix_json_format
     
     # Generate the prompt
     prompt = create_prompt_trnsvl(

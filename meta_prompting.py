@@ -364,14 +364,15 @@ Provide the optimized prompt and explain your changes."""
         meta_prompt = self.META_OPTIMIZATION_PROMPT.format(
             current_prompt=current_prompt,
             required_fields=", ".join(required_fields),
-            optimization_goals="\n".join(f"- {goal}" for goal in optimization_goals)
+            optimization_goals="\rn".join(f"- {goal}" for goal in optimization_goals)
         )
 
         response = self.llm_function(meta_prompt)
 
-        # Parse response (assuming it contains the optimized prompt)
+        # Parse response (assuming it contains the optimized promp
         # TODO: explain parsing logic
         # TODO: plan and implement robust parsing
+        # This is simplified - you'd want more robust parsing
         return response, "LLM optimization applied"
 
 
@@ -637,8 +638,9 @@ class PromptManager:
             return self._select_best_version(template_type)
 
         test = self.ab_tests[template_type]
-
+q
         # Hash request ID to determine version
+        # TODO: explain has logic
         hash_val = int(hashlib.sha256(request_id.encode()).hexdigest(), 16)
         ratio = (hash_val % 100) / 100.0
 
@@ -688,6 +690,7 @@ def get_optimized_prompt(
     manager = get_prompt_manager()
 
     # Handle A/B testing if request_id provided
+
     if request_id and version is None:
         version = manager.get_ab_test_version(template_type, request_id)
 

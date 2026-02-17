@@ -1,6 +1,6 @@
 # Final Architecture Comparison Summary
 
-**Generated:** 2026-02-13 00:57:13
+**Generated:** 2026-02-17 21:26:42
 
 **Test Questions:** 10 cross-topic questions
 
@@ -14,32 +14,32 @@
 
 | Question | Topics | OLD | NEW | OLD Time (s) | NEW Time (s) |
 |----------|--------|-----|-----|--------------|--------------|
-| q1_religion_politics | Religion/Political Culture | ✅ | ✅ | 11.5 | 9.7 |
-| q2_environment_economy | Environment/Economy | ✅ | ✅ | 10.5 | 16.9 |
-| q3_education_poverty | Education/Poverty | ✅ | ✅ | 9.0 | 12.2 |
-| q4_gender_family | Gender/Family | ✅ | ✅ | 8.4 | 12.0 |
-| q5_migration_culture | Migration/Identity | ✅ | ✅ | 8.8 | 15.8 |
-| q6_health_poverty | Health/Poverty | ✅ | ✅ | 10.0 | 14.2 |
-| q7_democracy_corruption | Political Culture/Corruption | ✅ | ✅ | 8.9 | 11.2 |
-| q8_indigenous_discrimination | Indigenous/Human Rights | ✅ | ✅ | 12.5 | 10.3 |
-| q9_technology_education | Technology/Education | ✅ | ✅ | 9.3 | 9.7 |
-| q10_security_justice | Security/Justice | ✅ | ✅ | 8.9 | 10.4 |
+| q1_religion_politics | Religion/Political Culture | ✅ | ✅ | 2.3 | 0.7 |
+| q2_environment_economy | Environment/Economy | ✅ | ✅ | 0.4 | 0.0 |
+| q3_education_poverty | Education/Poverty | ✅ | ✅ | 0.3 | 0.0 |
+| q4_gender_family | Gender/Family | ✅ | ✅ | 0.4 | 0.0 |
+| q5_migration_culture | Migration/Identity | ✅ | ✅ | 0.3 | 0.0 |
+| q6_health_poverty | Health/Poverty | ✅ | ✅ | 0.2 | 0.0 |
+| q7_democracy_corruption | Political Culture/Corruption | ✅ | ✅ | 0.2 | 0.0 |
+| q8_indigenous_discrimination | Indigenous/Human Rights | ✅ | ✅ | 0.5 | 0.0 |
+| q9_technology_education | Technology/Education | ✅ | ✅ | 1.2 | 0.0 |
+| q10_security_justice | Security/Justice | ✅ | ✅ | 0.3 | 0.0 |
 
 ---
 
 ## Overall Statistics
 
-**OLD Average Latency:** 9806 ms (9.8s)
+**OLD Average Latency:** 620 ms (0.6s)
 
-**NEW Average Latency:** 12242 ms (12.2s)
+**NEW Average Latency:** 79 ms (0.1s)
 
 **OLD Success Rate:** 100% (10/10)
 
 **NEW Success Rate:** 100% (10/10)
 
-**NEW Average Divergence Index:** 0.000
+**NEW Average Divergence Index:** 0.625
 
-**NEW Average Essay Completeness:** 0.0/5 sections
+**NEW Average Essay Completeness:** 5.0/5 sections
 
 ---
 

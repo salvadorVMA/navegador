@@ -244,15 +244,21 @@ def compute_variable_statistics(
 # FUZZY MATCHING FOR ROBUSTNESS
 # =============================================================================
 
-def find_closest_variable(var_id: str, all_variables: List[str]) -> Optional[str]:
+def find_closest_variable(
+    var_id: str,
+    all_variables: List[str],
+    same_survey_code: bool = True
+) -> Optional[str]:
     """
     Find the closest matching variable using fuzzy string matching.
 
-    Useful when a variable ID has a typo, especially in the survey code part.
+    CONSTRAINED: By default, only matches within the same survey code
+    to prevent cross-topic substitutions (e.g., p1|MED → p1|FED).
 
     Args:
         var_id: Variable identifier (e.g., "p1|CUP" - wrong code)
         all_variables: List of all available variable IDs
+        same_survey_code: If True, only match within the same survey code (default: True)
 
     Returns:
         Best match variable ID, or None if no close match found
@@ -263,24 +269,197 @@ def find_closest_variable(var_id: str, all_variables: List[str]) -> Optional[str
     """
     from difflib import get_close_matches
 
-    if '|' in var_id:
-        # Extract question part and survey code
-        var_part, _ = var_id.split('|')
+    if '|' not in var_id:
+        matches = get_close_matches(var_id, all_variables, n=1, cutoff=0.8)
+        return matches[0] if matches else None
 
-        # Strategy 1: Find variables with same question number but different survey code
-        # This catches typos like "p1|CUP" → "p1|CUL"
-        candidates = [v for v in all_variables if v.startswith(f"{var_part}|")]
+    var_part, survey_code = var_id.split('|', 1)
+
+    if same_survey_code:
+        # CONSTRAINED: Only match within the same survey code
+        # e.g., p1|MED can match p2|MED or p41|MED, but NOT p1|FED
+        candidates = [v for v in all_variables if v.endswith(f"|{survey_code}")]
 
         if candidates:
-            # Find closest match among candidates
+            # Among same-code variables, find the closest question number
+            matches = get_close_matches(var_id, candidates, n=1, cutoff=0.5)
+            if matches:
+                return matches[0]
+
+        # If no same-code match, try close survey codes (e.g., CUP → CUL)
+        # but ONLY for the same question number
+        candidates = [v for v in all_variables if v.startswith(f"{var_part}|")]
+        if candidates:
+            matches = get_close_matches(var_id, candidates, n=1, cutoff=0.7)
+            if matches:
+                return matches[0]
+
+        return None
+    else:
+        # UNCONSTRAINED (legacy behavior): match across any survey code
+        candidates = [v for v in all_variables if v.startswith(f"{var_part}|")]
+        if candidates:
             matches = get_close_matches(var_id, candidates, n=1, cutoff=0.6)
             if matches:
                 return matches[0]
 
-    # Strategy 2: Fallback to general fuzzy match across all variables
-    # This catches more complex errors
-    matches = get_close_matches(var_id, all_variables, n=1, cutoff=0.8)
-    return matches[0] if matches else None
+        matches = get_close_matches(var_id, all_variables, n=1, cutoff=0.8)
+        return matches[0] if matches else None
+
+
+# =============================================================================
+# RELEVANCE GATE (ChromaDB + Expert Grading)
+# =============================================================================
+
+# Lazy-loaded ChromaDB connection
+_db_f1 = None
+
+
+def _get_db_f1():
+    """Lazy-load ChromaDB collection for relevance checks."""
+    global _db_f1
+    if _db_f1 is None:
+        from utility_functions import environment_setup, embedding_fun_openai
+        _, _db_f1 = environment_setup(embedding_fun_openai)
+    return _db_f1
+
+
+def _build_survey_info_string(var_id: str, db_f1=None) -> str:
+    """
+    Build a survey information string for a variable using ChromaDB data.
+
+    Retrieves QUESTION, SUMMARY, and IMPLICATIONS from ChromaDB
+    (the same data used by the OLD architecture's expert grading system).
+
+    Args:
+        var_id: Variable identifier (e.g., "p5_1|IDE")
+        db_f1: ChromaDB collection (lazy-loaded if None)
+
+    Returns:
+        Formatted string with QUESTION, SUMMARY, and IMPLICATIONS
+    """
+    if db_f1 is None:
+        db_f1 = _get_db_f1()
+
+    pregs = _get_pregs_dict()
+
+    parts = {}
+
+    # Question text from pregs_dict
+    question_text = pregs.get(var_id, "")
+    if question_text:
+        parts["QUESTION"] = question_text
+
+    # Summary and implications from ChromaDB
+    for doc_type in ["summary", "implications"]:
+        try:
+            result = db_f1.get(ids=[f"{var_id}__{doc_type}"])
+            if result and result.get('documents') and result['documents'][0]:
+                parts[doc_type.upper()] = result['documents'][0]
+        except Exception:
+            pass
+
+    if not parts:
+        return f"Variable {var_id}: No information available"
+
+    return ' '.join(f'{k}: {v}' for k, v in parts.items())
+
+
+def evaluate_variable_relevance(
+    var_id: str,
+    user_query: str,
+    db_f1=None,
+    model_name: str = 'gpt-4.1-mini-2025-04-14',
+) -> Tuple[float, str]:
+    """
+    Evaluate whether a variable is relevant to the user query.
+
+    Uses the same expert grading approach as the OLD architecture's
+    variable_selector: retrieves QUESTION + SUMMARY + IMPLICATIONS
+    from ChromaDB and asks an LLM to grade relevance 0-3.
+
+    Args:
+        var_id: Variable identifier
+        user_query: The user's original query
+        db_f1: ChromaDB collection (lazy-loaded if None)
+        model_name: LLM model for grading (mini for balance of speed and quality)
+
+    Returns:
+        Tuple of (grade, explanation) where grade is 0-3
+    """
+    from variable_selector import (
+        create_prompt_grader,
+        get_structured_summary_grader_p,
+        pattern_format_grader_instrtuctions,
+    )
+
+    survey_info = _build_survey_info_string(var_id, db_f1)
+
+    prompt = create_prompt_grader(
+        user_query,
+        survey_info,
+        format_instructions=pattern_format_grader_instrtuctions,
+    )
+
+    _, result = get_structured_summary_grader_p(
+        prompt,
+        model_name=model_name,
+        temperature=0.3,
+    )
+
+    grade_dict = result.get('GRADE_DICT', {})
+    if grade_dict:
+        grade = list(grade_dict.keys())[0]
+        explanation = list(grade_dict.values())[0]
+        return float(grade), str(explanation)
+
+    return 0.0, "Grading failed"
+
+
+def filter_variables_by_relevance(
+    variable_ids: List[str],
+    user_query: str,
+    model_name: str = 'gpt-4.1-mini-2025-04-14',
+    min_grade: float = 1.0,
+) -> Tuple[List[str], Dict[str, Tuple[float, str]]]:
+    """
+    Filter a list of variables by their relevance to the user query.
+
+    Uses ChromaDB + expert grading from the OLD architecture to evaluate
+    each variable. Removes variables that score below min_grade.
+
+    Args:
+        variable_ids: List of variable IDs to evaluate
+        user_query: The user's original query
+        model_name: LLM model for grading
+        min_grade: Minimum grade to keep (default: 1.0, meaning
+                   "some connection" or better)
+
+    Returns:
+        Tuple of (filtered_ids, grades_dict) where grades_dict maps
+        var_id → (grade, explanation) for all evaluated variables
+    """
+    db_f1 = _get_db_f1()
+    grades = {}
+    filtered = []
+
+    print(f"\n=== Relevance Gate: evaluating {len(variable_ids)} variables ===")
+
+    for var_id in variable_ids:
+        grade, explanation = evaluate_variable_relevance(
+            var_id, user_query, db_f1, model_name
+        )
+        grades[var_id] = (grade, explanation)
+
+        if grade >= min_grade:
+            filtered.append(var_id)
+            print(f"  ✅ {var_id}: grade={grade:.0f} — {explanation[:80]}")
+        else:
+            print(f"  ❌ {var_id}: grade={grade:.0f} (filtered out) — {explanation[:80]}")
+
+    print(f"=== Relevance Gate: {len(filtered)}/{len(variable_ids)} variables passed ===\n")
+
+    return filtered, grades
 
 
 # =============================================================================
@@ -289,23 +468,26 @@ def find_closest_variable(var_id: str, all_variables: List[str]) -> Optional[str
 
 def build_quantitative_report(
     selected_variables: List[str],
+    user_query: Optional[str] = None,
     df_tables_override: Optional[Dict] = None,
     pregs_dict_override: Optional[Dict] = None,
-    auto_correct: bool = True  # NEW: Enable fuzzy matching by default
+    auto_correct: bool = True,
+    relevance_filter: bool = True,
 ) -> QuantitativeReport:
     """
     Build a complete quantitative report for all selected variables.
 
-    ENHANCED: Now includes auto-correction for typos in variable IDs.
-
-    Computes per-variable statistics, aggregates shape summary,
-    calculates divergence index, and generates an overall narrative.
+    ENHANCED:
+    - Auto-correction constrained to same survey code (prevents cross-topic subs)
+    - Relevance gate using ChromaDB + expert grading (when user_query provided)
 
     Args:
         selected_variables: List of variable IDs
+        user_query: The user's query (enables relevance filtering when provided)
         df_tables_override: Optional override for testing
         pregs_dict_override: Optional override for testing
-        auto_correct: If True, attempts to correct typos in variable IDs (default: True)
+        auto_correct: If True, attempts to correct typos in variable IDs
+        relevance_filter: If True and user_query provided, filters by relevance
 
     Returns:
         QuantitativeReport instance
@@ -313,33 +495,37 @@ def build_quantitative_report(
     tables = df_tables_override if df_tables_override is not None else _get_df_tables()
     all_var_ids = list(tables.keys())
 
-    variables = []
-    corrections = []  # Track auto-corrections made
+    # Phase 1: Resolve variable IDs (exact match or constrained auto-correction)
+    resolved_ids = []
+    corrections = []
 
     for var_id in selected_variables:
-        # Try exact match first
         if var_id in tables:
-            stats = compute_variable_statistics(var_id, df_tables_override, pregs_dict_override)
-            if stats is not None:
-                variables.append(stats)
-
+            resolved_ids.append(var_id)
         elif auto_correct:
-            # Try fuzzy matching
-            suggested = find_closest_variable(var_id, all_var_ids)
-
+            suggested = find_closest_variable(var_id, all_var_ids, same_survey_code=True)
             if suggested:
                 print(f"⚠️  Variable '{var_id}' not found")
-                print(f"   → Auto-corrected to: '{suggested}'")
+                print(f"   → Auto-corrected to: '{suggested}' (same survey code)")
                 corrections.append((var_id, suggested))
-
-                stats = compute_variable_statistics(suggested, df_tables_override, pregs_dict_override)
-                if stats is not None:
-                    variables.append(stats)
+                resolved_ids.append(suggested)
             else:
-                print(f"❌ Variable '{var_id}' not found and no close match available")
+                print(f"❌ Variable '{var_id}' not found and no same-code match available")
         else:
-            # Strict mode - just print warning
             print(f"Warning: Variable {var_id} not found in df_tables")
+
+    # Phase 2: Relevance gate (if query provided)
+    if user_query and relevance_filter and resolved_ids:
+        resolved_ids, relevance_grades = filter_variables_by_relevance(
+            resolved_ids, user_query
+        )
+
+    # Phase 3: Compute statistics for surviving variables
+    variables = []
+    for var_id in resolved_ids:
+        stats = compute_variable_statistics(var_id, df_tables_override, pregs_dict_override)
+        if stats is not None:
+            variables.append(stats)
 
     if not variables:
         return QuantitativeReport(

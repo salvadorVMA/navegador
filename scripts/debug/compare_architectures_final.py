@@ -235,18 +235,27 @@ def extract_metrics(old_result: Dict, new_result: Dict) -> Dict[str, Any]:
         }
     }
 
-    # OLD metrics
-    old_data = old_result.get("result", {})
-    metrics["old"]["has_output"] = bool(old_data.get("formatted_report"))
-    if old_data.get("formatted_report"):
-        metrics["old"]["output_length"] = len(old_data["formatted_report"])
+    # OLD metrics — run_analysis also wraps under {"results": ..., "formatted_report": ...}
+    old_wrapper = old_result.get("result", {})
+    old_data = old_wrapper.get("results", old_wrapper)
+    metrics["old"]["has_output"] = bool(old_wrapper.get("formatted_report"))
+    if old_wrapper.get("formatted_report"):
+        metrics["old"]["output_length"] = len(old_wrapper["formatted_report"])
 
-    # Track validation results
-    metrics["old"]["valid_variables"] = old_data.get("valid_variables", [])
-    metrics["old"]["invalid_variables"] = old_data.get("invalid_variables", [])
+    # Track validation results (may be in inner results or wrapper)
+    metrics["old"]["valid_variables"] = old_data.get("valid_variables", old_wrapper.get("valid_variables", []))
+    metrics["old"]["invalid_variables"] = old_data.get("invalid_variables", old_wrapper.get("invalid_variables", []))
 
-    # NEW metrics
-    new_data = new_result.get("result", {})
+    # NEW metrics — run_analysis wraps generate_analytical_essay results inside
+    # {"results": analysis_results, "formatted_report": ...}, so essay/reasoning/
+    # quantitative_report live under result["results"], not directly under result.
+    new_wrapper = new_result.get("result", {})
+    new_data = new_wrapper.get("results", new_wrapper)  # fallback to flat if no nesting
+
+    metrics["new"]["has_output"] = bool(new_wrapper.get("formatted_report"))
+    if new_wrapper.get("formatted_report"):
+        metrics["new"]["output_length"] = len(new_wrapper["formatted_report"])
+
     if "essay" in new_data:
         essay = new_data["essay"]
         metrics["new"]["essay_sections"] = len([
@@ -254,10 +263,6 @@ def extract_metrics(old_result: Dict, new_result: Dict) -> Dict[str, Any]:
                        "counterargument", "implications"]
             if k in essay and essay[k]
         ])
-        metrics["new"]["has_output"] = bool(new_data.get("formatted_report"))
-
-        if new_data.get("formatted_report"):
-            metrics["new"]["output_length"] = len(new_data["formatted_report"])
 
         if "prevailing_view" in essay and "counterargument" in essay:
             metrics["new"]["prevailing_view_length"] = len(essay["prevailing_view"])
@@ -269,6 +274,13 @@ def extract_metrics(old_result: Dict, new_result: Dict) -> Dict[str, Any]:
         metrics["new"]["variables_analyzed"] = quant.get("variable_count", 0)
         metrics["new"]["divergence_index"] = quant.get("divergence_index", 0)
         metrics["new"]["shape_summary"] = quant.get("shape_summary", {})
+
+    # Reasoning metrics (new pipeline)
+    if "reasoning" in new_data:
+        reasoning = new_data["reasoning"]
+        metrics["new"]["reasoning_variables_mapped"] = len(reasoning.get("variable_relevance", {}))
+        metrics["new"]["reasoning_tensions"] = len(reasoning.get("key_tensions", []))
+        metrics["new"]["has_reasoning"] = bool(reasoning.get("argument_structure", ""))
 
     return metrics
 
@@ -321,6 +333,9 @@ def create_comparison_markdown(
 - **Divergence Index:** {metrics['new'].get('divergence_index', 'N/A')}
 - **Shape Summary:** {str(metrics['new'].get('shape_summary', 'N/A'))}
 - **Essay Sections:** {metrics['new'].get('essay_sections', 'N/A')}/5 complete
+- **Has Reasoning:** {metrics['new'].get('has_reasoning', False)}
+- **Variables Mapped in Reasoning:** {metrics['new'].get('reasoning_variables_mapped', 'N/A')}
+- **Key Tensions Identified:** {metrics['new'].get('reasoning_tensions', 'N/A')}
 - **Has Output:** {metrics['new'].get('has_output', False)}
 - **Output Length:** {metrics['new'].get('output_length', 0)} characters
 - **Dialectical Ratio:** {metrics['new'].get('dialectical_ratio', 'N/A') if isinstance(metrics['new'].get('dialectical_ratio'), str) else f"{metrics['new'].get('dialectical_ratio', 0):.2f}"}
