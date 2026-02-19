@@ -182,9 +182,8 @@ def create_prompt_expt_smry(tst_lgc_dict: dict, tmp_ky: str, db_f1, format_instr
     """
     ky = tmp_ky
 
-    # Variables identified by the model
-    tst_str_lst = tst_lgc_dict[ky]['VARIABLE_STRING'].split(',')
-    tst_str_lst = [st + '__question' for st in tst_str_lst]
+    # Variables identified by the model — strip whitespace to avoid ChromaDB ID mismatches
+    tst_str_lst = [st.strip() + '__question' for st in tst_lgc_dict[ky]['VARIABLE_STRING'].split(',')]
     print(f'Variables identified by the model: {tst_str_lst}')
 
     # Variables in the database
@@ -283,7 +282,7 @@ def get_structured_expert_summary(tst_lgc_dict: dict, tmp_ky: str, db_f1,
         print(f"Error parsing expert summary: {e}")
         return {'EXPERT_REPLY': f'Error generating expert summary: {str(e)}'}
 
-def batch_process_expert_summaries(tst_lgc_dict: dict, db_f1, batch_size: int = 8192) -> dict:
+def batch_process_expert_summaries(tst_lgc_dict: dict, db_f1, batch_size: int = 8192, model_name: str = 'gpt-4o-mini-2024-07-18') -> dict:
     """
     Processes expert summaries in batches, saving checkpoints after each batch.
 
@@ -291,6 +290,7 @@ def batch_process_expert_summaries(tst_lgc_dict: dict, db_f1, batch_size: int = 
         tst_lgc_dict (dict): Dictionary containing logical group data.
         db_f1: The database/vector store for retrieving implications.
         batch_size (int): Maximum token limit for each batch.
+        model_name (str): LLM model to use for expert summaries.
 
     Returns:
         dict: A dictionary of structured results.
@@ -301,7 +301,7 @@ def batch_process_expert_summaries(tst_lgc_dict: dict, db_f1, batch_size: int = 
         for key in tst_lgc_dict.keys()
     ]
     keys = list(tst_lgc_dict.keys())
-    
+
     # Batch the documents
     try:
         batches = batch_documents(prompts, keys, max_tokens=batch_size, encoding_name="cl100k_base")
@@ -309,27 +309,26 @@ def batch_process_expert_summaries(tst_lgc_dict: dict, db_f1, batch_size: int = 
         print(f"Error batching documents: {e}")
         # Fallback: process each item individually
         batches = [([prompt], [key]) for prompt, key in zip(prompts, keys)]
-    
+
     # Initialize results dictionary
     structured_results = {}
-    
+
     # Process each batch
     with tqdm.tqdm(total=len(keys), desc="Processing Expert Summaries") as pbar:
         for batch_docs, batch_keys in batches:
             for prompt, key in zip(batch_docs, batch_keys):
                 try:
-                    # Call get_structured_expert_summary for each key
                     structured_results[key] = get_structured_expert_summary(
                         tst_lgc_dict=tst_lgc_dict,
                         tmp_ky=key,
                         db_f1=db_f1,
-                        model_name="gpt-4o-mini-2024-07-18",
+                        model_name=model_name,
                         temperature=0.9
                     )
                 except Exception as e:
                     structured_results[key] = {'EXPERT_REPLY': f'Error: {str(e)}'}
                 pbar.update(1)
-    
+
     return structured_results
 
 def create_prompt_trnsvl(tmp_smry_st: str, user_query: str, n_cmn_tpc: int = 3, format_instructions: str = "") -> str:
@@ -450,7 +449,7 @@ def get_transversal_analysis(tmp_smry_st: str, user_query: str,
             'QUERY_ANSWER': f'Error generating answer: {str(e)}'
         }
 
-def _deep_analyzer(tmp_pre_res_dict: dict, tmp_grade_dict: dict, user_query: str, db_f1) -> Tuple[dict, dict, dict]:
+def _deep_analyzer(tmp_pre_res_dict: dict, tmp_grade_dict: dict, user_query: str, db_f1, model_name: str = 'gpt-4o-mini-2024-07-18') -> Tuple[dict, dict, dict]:
     """
     Internal function to produce the transversal analysis and expert summaries.
     This is the core analysis pipeline extracted from the notebook.
@@ -499,10 +498,10 @@ def _deep_analyzer(tmp_pre_res_dict: dict, tmp_grade_dict: dict, user_query: str
     print("Generating structured summary...")
     try:
         raw_content, tst_lgc_dict = get_structured_summary(
-            user_query=user_query, 
-            tmp_res_st=tmp_res_st, 
+            user_query=user_query,
+            tmp_res_st=tmp_res_st,
             tmp_grade_dict=tmp_grade_dict,
-            model_name='gpt-4o-mini-2024-07-18', 
+            model_name=model_name,
             temperature=0.0
         )
         print(f"Generated {len(tst_lgc_dict)} pattern groups")
@@ -514,7 +513,7 @@ def _deep_analyzer(tmp_pre_res_dict: dict, tmp_grade_dict: dict, user_query: str
     print("Processing expert summaries...")
     if tst_lgc_dict:
         try:
-            structured_expert_results = batch_process_expert_summaries(tst_lgc_dict, db_f1)
+            structured_expert_results = batch_process_expert_summaries(tst_lgc_dict, db_f1, model_name=model_name)
             print(f"Generated {len(structured_expert_results)} expert summaries")
         except Exception as e:
             print(f"Error in expert summaries: {e}")
@@ -546,7 +545,7 @@ def _deep_analyzer(tmp_pre_res_dict: dict, tmp_grade_dict: dict, user_query: str
     return tmp_preproc_dic, final_smry_dict, structured_expert_results
 
 
-def run_detailed_analysis(selected_variables: list, user_query: str, analysis_params: Optional[dict] = None) -> dict:
+def run_detailed_analysis(selected_variables: list, user_query: str, analysis_params: Optional[dict] = None, model_name: str = 'gpt-4o-mini-2024-07-18') -> dict:
     """
     Main entry point for detailed analysis. This function provides the interface
     between the agent workflow and the detailed analysis pipeline.
@@ -572,6 +571,7 @@ def run_detailed_analysis(selected_variables: list, user_query: str, analysis_pa
         valid_variables = []
         invalid_variables = []
         suggestions = {}
+        substitutions = {}
 
         print("\n=== Variable Validation ===")
         all_var_ids = list(df_tables.keys())
@@ -581,37 +581,40 @@ def run_detailed_analysis(selected_variables: list, user_query: str, analysis_pa
                 valid_variables.append(var_id)
                 print(f"✅ {var_id} - Valid")
             else:
-                invalid_variables.append(var_id)
                 print(f"❌ {var_id} - Not found")
 
-                # Try to find similar variables
+                # Try to find similar variables and auto-substitute
                 matches = get_close_matches(var_id, all_var_ids, n=1, cutoff=0.7)
-                if matches:
-                    suggestions[var_id] = matches[0]
-                    print(f"   💡 Did you mean: {matches[0]}?")
+                if matches and matches[0] in df_tables and matches[0] in pregs_dict:
+                    substituted = matches[0]
+                    suggestions[var_id] = substituted
+                    substitutions[var_id] = substituted
+                    valid_variables.append(substituted)
+                    print(f"   🔄 Auto-substituted: {var_id} → {substituted}")
+                else:
+                    invalid_variables.append(var_id)
+                    print(f"   ⚠️  No close match found")
 
         # Report validation results
+        if substitutions:
+            print(f"\n🔄 Auto-substituted {len(substitutions)} variable(s):")
+            for orig, sub in substitutions.items():
+                print(f"   {orig} → {sub}")
         if invalid_variables:
-            print(f"\n⚠️  WARNING: {len(invalid_variables)}/{len(selected_variables)} variables not found:")
+            print(f"\n⚠️  WARNING: {len(invalid_variables)}/{len(selected_variables)} variables not found and no close match:")
             for var_id in invalid_variables:
-                if var_id in suggestions:
-                    print(f"   {var_id} → suggested: {suggestions[var_id]}")
-                else:
-                    print(f"   {var_id} → no suggestion available")
+                print(f"   {var_id} → no suggestion available")
 
         # Fail if NO valid variables
         if not valid_variables:
             error_msg = f"None of the {len(selected_variables)} requested variables exist in the database."
-            if suggestions:
-                error_msg += f" Suggestions: {suggestions}"
-
             print(f"\n❌ FAILED: {error_msg}")
             return {
                 'query': user_query,
                 'selected_variables': selected_variables,
                 'valid_variables': [],
                 'invalid_variables': invalid_variables,
-                'suggestions': suggestions,
+                'substitutions': substitutions,
                 'analysis_type': 'detailed_report',
                 'success': False,
                 'error': error_msg,
@@ -623,11 +626,10 @@ def run_detailed_analysis(selected_variables: list, user_query: str, analysis_pa
                 }
             }
 
-        # Warn if SOME invalid
-        if invalid_variables:
-            print(f"\n⚠️  Proceeding with {len(valid_variables)}/{len(selected_variables)} valid variables")
+        # Summary
+        if substitutions or invalid_variables:
+            print(f"\n⚠️  Proceeding with {len(valid_variables)} variables ({len(substitutions)} substituted, {len(invalid_variables)} dropped)")
             print(f"   Analyzing: {valid_variables}")
-            print(f"   Skipping: {invalid_variables}")
         else:
             print(f"\n✅ All {len(valid_variables)} variables validated successfully")
 
@@ -687,17 +689,17 @@ def run_detailed_analysis(selected_variables: list, user_query: str, analysis_pa
             tmp_pre_res_dict=tmp_pre_res_dict,
             tmp_grade_dict=tmp_grade_dict,
             user_query=user_query,
-            db_f1=db_f1
+            db_f1=db_f1,
+            model_name=model_name,
         )
         
         # FIX 3: Package results with transparency about what was analyzed
         analysis_results = {
             'query': user_query,
             'selected_variables': selected_variables,  # Only valid variables now
-            'requested_variables': selected_variables if not invalid_variables else selected_variables + invalid_variables,
             'valid_variables': valid_variables,
             'invalid_variables': invalid_variables,
-            'suggestions': suggestions,
+            'substitutions': substitutions,
             'analysis_type': 'detailed_report',
             'success': True,
             'patterns': structured_expert_results,
@@ -716,8 +718,10 @@ def run_detailed_analysis(selected_variables: list, user_query: str, analysis_pa
 
         print("\n=== Analysis Complete ===")
         print(f"✅ Successfully analyzed {len(valid_variables)} variables")
+        if substitutions:
+            print(f"🔄 Auto-substituted: {substitutions}")
         if invalid_variables:
-            print(f"⚠️  Skipped {len(invalid_variables)} invalid variables")
+            print(f"⚠️  Dropped {len(invalid_variables)} variables with no close match")
         return analysis_results
         
     except Exception as e:
@@ -965,21 +969,25 @@ The analysis could not be completed. Please try again or contact support.
     # Add data integrity report
     valid_vars = analysis_results.get('valid_variables', analysis_results.get('selected_variables', []))
     invalid_vars = analysis_results.get('invalid_variables', [])
-    suggestions = analysis_results.get('suggestions', {})
+    substitutions = analysis_results.get('substitutions', {})
 
     report += "\n## Data Integrity Report\n\n"
 
-    if invalid_vars:
-        report += f"⚠️ **Variables Requested:** {len(valid_vars) + len(invalid_vars)}\n\n"
+    if substitutions or invalid_vars:
+        total_requested = len(valid_vars) + len(invalid_vars)
+        report += f"⚠️ **Variables Requested:** {total_requested}\n\n"
         report += f"✅ **Variables Analyzed:** {len(valid_vars)}\n"
         report += f"- {', '.join(valid_vars)}\n\n"
-        report += f"❌ **Variables Skipped:** {len(invalid_vars)}\n"
-        for var_id in invalid_vars:
-            if var_id in suggestions:
-                report += f"- {var_id} (suggested: {suggestions[var_id]})\n"
-            else:
+        if substitutions:
+            report += f"🔄 **Variables Auto-substituted:** {len(substitutions)}\n"
+            for orig, sub in substitutions.items():
+                report += f"- {orig} → {sub}\n"
+            report += "\n"
+        if invalid_vars:
+            report += f"❌ **Variables Dropped (no close match):** {len(invalid_vars)}\n"
+            for var_id in invalid_vars:
                 report += f"- {var_id}\n"
-        report += "\n"
+            report += "\n"
     else:
         report += f"✅ **All {len(valid_vars)} requested variables were validated and analyzed:**\n"
         report += f"- {', '.join(valid_vars)}\n\n"

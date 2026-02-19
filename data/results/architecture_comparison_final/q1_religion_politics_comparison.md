@@ -1,6 +1,6 @@
 # Cross-Topic Comparison: q1_religion_politics
 
-**Generated:** 2026-02-17 21:26:38
+**Generated:** 2026-02-19 21:06:25
 
 ## Test Question
 
@@ -19,17 +19,17 @@
 ### OLD Architecture (FIXED detailed_report)
 
 - **Success:** ✅ Yes
-- **Latency:** 2273 ms (2.3s)
+- **Latency:** 32955 ms (33.0s)
 - **Has Output:** True
-- **Output Length:** 4449 characters
-- **Valid Variables:** 3
-- **Invalid Variables:** 1
+- **Output Length:** 5574 characters
+- **Valid Variables:** 4
+- **Invalid Variables:** 0
 - **Error:** None
 
 ### NEW Architecture (ENHANCED analytical_essay)
 
 - **Success:** ✅ Yes
-- **Latency:** 705 ms (0.7s)
+- **Latency:** 589 ms (0.6s)
 - **Variables Analyzed:** 3
 - **Divergence Index:** 0.6666666666666666
 - **Shape Summary:** {'consensus': 1, 'lean': 1, 'polarized': 0, 'dispersed': 1}
@@ -38,14 +38,14 @@
 - **Variables Mapped in Reasoning:** 3
 - **Key Tensions Identified:** 4
 - **Has Output:** True
-- **Output Length:** 6614 characters
-- **Dialectical Ratio:** 1.77
+- **Output Length:** 6715 characters
+- **Dialectical Ratio:** 1.52
 - **Error:** None
 
 ### Comparison
 
-- **Latency Difference:** 1568 ms (69.0% faster ⚡)
-- **Output Length Difference:** 2165 characters
+- **Latency Difference:** 32365 ms (98.2% faster ⚡)
+- **Output Length Difference:** 1141 characters
 
 ---
 
@@ -60,39 +60,39 @@
 **Query:** ¿Cómo se relacionan la religión y la política en México?
 
 ## Executive Summary
-La religión y la política en México están interrelacionadas, donde una fuerte afiliación religiosa coexiste con una notable inquietud sobre la situación política. Esto plantea cuestiones sobre el impacto de las creencias religiosas en la percepción y compromiso cívico de la población.
+La religión en México desempeña un papel fundamental en la opinión pública y en la política, dado que una gran parte de la población mantiene una afiliación religiosa fuerte. Esto se traduce en cómo se perciben y evalúan los asuntos políticos, creando una relación de interdependencia entre ambas esferas.
 
 ## Analysis Overview  
-Los resultados de la encuesta muestran que el 72.7% de los encuestados en México se identifican como religiosos (p2|REL), reflejando una fuerte afiliación que puede influir en la opinión pública, mientras que un 40.7% considera la situación política como preocupante (p3|CUL). Esta aparente desconexión entre la fuerte fe religiosa y el pesimismo político sugiere que la religión juega un papel complejo en la vida cívica y la cohesión social.
+Los datos de la encuesta destacan una fuerte afiliación religiosa en la población mexicana, con un 72.67% de los encuestados siendo miembros de alguna iglesia, lo que refleja un compromiso significativo hacia la religión. Además, la preocupación por la situación política es alta, con un 40.67% considerando la situación como preocupante, mientras que solo un 10.83% siente que la economía ha mejorado, lo que muestra un desajuste entre la percepción política y económica que los analistas consideran crucial para entender el descontento público.
 
 ## Topic Analysis
 
-### AFILIACIÓN RELIGIOSA
-Los resultados de la encuesta indican que una mayoría significativa de los encuestados, específicamente el 72.7%, se identifican como miembros de una iglesia o denominación religiosa (p2|REL), lo que subraya una fuerte afiliación religiosa en la población de México. Este hallazgo es crucial, ya que refleja dinámicas sociales más amplias que podrían influir en la opinión pública sobre diversos temas, incluidas las cuestiones morales y éticas, el compromiso comunitario y la conformidad con las normas sociales.
+### RELIGIÓN
+Los resultados de la encuesta revelan una notable afiliación religiosa entre los encuestados, con un 72.67% indicando ser miembros de una iglesia o denominación religiosa (p2|REL). Este hallazgo es crucial para comprender el panorama actual del compromiso religioso y las tendencias hacia la secularización, sugiriendo que una parte significativa de la población mantiene vínculos con la religión organizada. Además, el apoyo a la educación religiosa en las escuelas públicas es destacado, con un 22.42% de los encuestados totalmente de acuerdo y un 15.17% parcialmente de acuerdo con la enseñanza de cursos religiosos (p51|REL). Estas estadísticas subrayan la opinión pública sobre la intersección de la religión y la educación, lo que es vital para informar debates sobre la secularización en la enseñanza y puede ayudar a los legisladores y educadores a alinear los planes de estudio con los valores de la comunidad.
 
-### PREOCUPACIÓN POLÍTICA
-Los resultados de la encuesta destacan una preocupación significativa entre los encuestados, con un 40.7% caracterizando la situación política en México como 'preocupante' (p3|CUL). Esta estadística subraya un notable desconexión entre los altos niveles de afiliación religiosa y el pesimismo político predominante, sugiriendo que, a pesar de las fuertes creencias religiosas que podrían fomentar la esperanza, existe una amplia ansiedad sobre el clima político actual.
+### POLÍTICA
+Los resultados de la encuesta reflejan una significativa preocupación pública respecto a la situación política, con un 40.67% de los encuestados describiéndola como 'Preocupante' (p3|CUL). Este sentimiento es particularmente relevante, ya que refleja el descontento que los expertos en 'cultura política' subrayan como crucial para entender la opinión pública y su influencia en los comportamientos políticos. Adicionalmente, solo un 10.83% de los participantes siente que la situación económica ha mejorado en comparación con el año pasado (p1|CUL), lo que ilustra un desconexión entre las percepciones políticas y económicas. Esta disparidad es vital para legisladores y analistas políticos, subrayando una insatisfacción prevalente con la estabilidad y efectividad política, alineándose con la preocupación de los expertos de que estos hallazgos pueden informar estrategias para abordar el descontento público y potencialmente influir en las dinámicas electorales.
 
-### IMPLICACIONES SOCIALES
-La alta representación de la membresía religiosa y la creciente preocupación política plantean importantes preguntas sobre el papel de la fe en la configuración de la opinión pública. La interrelación entre la religión y la política podría tener implicaciones significativas para la cohesión social y el compromiso en asuntos cívicos, lo que sugiere la necesidad de investigar más a fondo cómo estas afiliaciones informan las perspectivas sobre problemas sociales contemporáneos.
+### INTERSECCIÓN RELIGIÓN-POLÍTICA
+La relación entre religión y política en México se evidencia en la fuerte conexión entre las creencias religiosas y la opinión pública sobre asuntos políticos. La mayoría de los ciudadanos mantiene una afiliación religiosa, lo cual puede influir en su percepción y evaluación de la situación política, reforzando la importancia de la religión en el debate público y en las decisiones políticas.
 
 ## Expert Analysis
 
 ### Expert Insight 1
-The survey results indicate that a significant majority of respondents, specifically 72.7%, self-identify as members of a church or religious denomination (p2|REL), underscoring a strong religious affiliation among the population in Mexico. This finding is crucial as it reflects broader social dynamics and could influence public opinion on various issues, including moral and ethical debates, community engagement, and compliance with social norms. The high percentage of religious affiliation suggests that religious beliefs may play a significant role in shaping individuals' attitudes and behaviors, which could be essential for understanding the contexts behind their responses in future surveys. Moreover, this robust representation of religious membership may warrant further investigation into how these affiliations inform perspectives on contemporary social issues.
+The survey results reveal a significant historical religious affiliation among the respondents, with 72.67% indicating they are members of a church or religious denomination (p2|REL). This finding is crucial for understanding the current landscape of religious engagement and secularization trends, as it suggests that a sizable portion of the population maintains ties to organized religion. Additionally, the support for religious education in public schools is noteworthy, with 22.42% of respondents fully agreeing and 15.17% partially agreeing to the teaching of religious courses (p51|REL). These statistics underscore ongoing public sentiment regarding the intersection of religion and education, which is vital for informing debates on secularism in schooling and can assist policymakers and educators in aligning curricula with community values.
 
 ### Expert Insight 2
-The survey results highlight a significant concern among the respondents, with 40.7% characterizing the political situation in Mexico as 'preocupante' (concerning) (p3|CUL). This statistic underscores a notable disconnect between the high levels of religious affiliation and the prevailing political pessimism, suggesting that despite strong religious beliefs potentially fostering hope and community resilience, there is a widespread anxiety about the current political climate. This finding raises important questions about the role of faith in shaping public opinion and the potential implications for social cohesion and engagement in civic matters.
+The survey results reveal significant public concern regarding the political situation, with 40.67% of respondents describing it as 'Preocupante' (worrisome, p3|CUL). This sentiment is particularly noteworthy as it reflects the discontent that experts in 'cultura politica' emphasize is crucial for understanding public opinion and its influence on political behaviors. Additionally, only 10.83% of participants feel that the economic situation has improved compared to last year (p1|CUL), which illustrates a disconnect between political and economic perceptions. This disparity is vital for policymakers and political analysts, as it underscores a prevailing dissatisfaction with political stability and effectiveness, aligning with the experts' concern that these insights can inform strategies to address public discontent and potentially inform electoral dynamics.
 
 ## Data Integrity Report
 
 ⚠️ **Variables Requested:** 4
 
-✅ **Variables Analyzed:** 3
-- p2|REL, p1|CUL, p3|CUL
+✅ **Variables Analyzed:** 4
+- p51|REL, p2|REL, p1|CUL, p3|CUL
 
-❌ **Variables Skipped:** 1
-- p1|REL (suggested: p51|REL)
+🔄 **Variables Auto-substituted:** 1
+- p1|REL → p51|REL
 
 **Data Sources:** Real survey data from df_tables and pregs_dict
 
@@ -101,7 +101,7 @@ The survey results highlight a significant concern among the respondents, with 4
 
 ## Analysis Metadata
 - **Analysis Type:** detailed_report
-- **Variables Analyzed:** 3
+- **Variables Analyzed:** 4
 - **Patterns Identified:** 2
 
 ```
@@ -116,19 +116,19 @@ The survey results highlight a significant concern among the respondents, with 4
 **Query:** ¿Cómo se relacionan la religión y la política en México?
 
 ## Summary
-A significant majority of Mexicans (72.7%) have been members of a religious denomination, indicating widespread religiosity. However, public opinion on the role of religion in political institutions, such as teaching religious courses in public schools, is highly fragmented, reflecting deep societal divisions on secularism and religion's place in politics.
+A significant majority of Mexicans (72.7%) have been members of a religious denomination, highlighting the deep-rooted presence of religion in society. However, public opinion on the role of religion in public institutions, such as teaching religious courses in public schools, is highly fragmented, revealing a polarized and contested relationship between religion and politics.
 
 ## Introduction
-This analysis examines three variables related to religion and politics in Mexico, drawn from surveys on religious affiliation, attitudes toward religious education in public schools, and perceptions of the political situation. Among these, one variable shows strong consensus, one reveals dispersed opinions, and one leans toward a particular view without strong consensus, resulting in a 67% divergence index. This distribution highlights a dialectical tension between widespread religious identity and contested views on religion's role in public and political life.
+This analysis draws on three variables from surveys examining religion and political culture in Mexico. The variables include religious affiliation history (p2|REL), opinions on religious education in public schools (p51|REL), and perceptions of the political situation (p3|CUL). Among these, one variable shows strong consensus, one shows a leaning tendency, and one exhibits a dispersed distribution, indicating substantial fragmentation and divergence in public opinion about the intersection of religion and politics. This sets up a dialectical tension between widespread religiosity and contested secular political values.
 
 ## Prevailing View
-The dominant pattern across the data is the high prevalence of religious affiliation, with 72.7% of respondents reporting past membership in a religious denomination (p2|REL). This consensus suggests that religion is a significant aspect of personal identity for most Mexicans. Additionally, the perception of the political situation leans toward concern, with 40.7% describing it as "Preocupante" (p3|CUL), indicating a general unease that frames the context in which religion and politics interact. These majority and plurality responses reflect a society that is broadly religious and politically apprehensive, setting the stage for debates on religion's public role.
+The dominant pattern is the high religious affiliation among the Mexican population, with 72.7% reporting having been members of a religious denomination (p2|REL). This strong consensus underscores the pervasive influence of religion as a social and cultural factor. Additionally, the political climate is perceived predominantly as concerning, with 40.7% describing the situation as "Preocupante" (p3|CUL), suggesting a general awareness of political challenges that form the backdrop for debates about religion's role in public life. These majority views establish religion as a significant identity marker and frame the political context as one of unease, which may influence how religion and politics interact in Mexico.
 
 ## Counterargument
-Despite the strong consensus on religious affiliation, opinions on religion's role in political institutions are deeply fragmented, as shown by the dispersed distribution on whether religious courses should be taught in public schools (p51|REL). No single category exceeds 40%, with 31.8% "En desacuerdo" and 22.4% "De acuerdo," alongside 20.1% neutral and 15.2% partially agreeing. This dispersion indicates a polarized society lacking clear consensus on secularism and the integration of religion in public education. The narrow margin of 9.4 percentage points between disagreement and agreement underscores the contentious nature of this issue. Furthermore, the political situation is not unanimously viewed as concerning; 21.0% describe it as "Peligrosa," while smaller yet notable minorities see it as "Tranquila" (10.8%) or "Prometedora" (8.6%), revealing diverse political perceptions that complicate any straightforward linkage between religion and political attitudes. These divisions matter because they reveal that while religion is personally significant, its public and political role is hotly debated, reflecting broader societal tensions over secularism and governance.
+Despite the strong consensus on religious affiliation, opinions on whether religious courses should be taught in public schools are highly dispersed (p51|REL). No single response exceeds 40%, with 31.8% disagreeing, 22.4% agreeing, and 20.1% neutral, alongside 15.2% partially agreeing. This fragmentation reveals a polarized society divided on the role of religion in public education and, by extension, in political institutions. The narrow margin of 9.4 percentage points between disagreement and agreement further emphasizes the lack of consensus. This division reflects deeper societal tensions between secularism and religious influence, challenging simplistic interpretations of religion's political role. Furthermore, the political situation is not only seen as concerning but also as dangerous by a significant minority (21.0%), indicating that the environment in which religion-politics debates unfold is contentious and unstable. These divergent views highlight that religion and politics in Mexico are intertwined in a complex, contested relationship rather than a unified or harmonious one.
 
 ## Implications
-First, policymakers emphasizing the prevailing view might prioritize respecting the widespread religious identity by cautiously integrating religious perspectives in public discourse, while maintaining secular principles to avoid alienating the fragmented public opinion. This could translate into policies that acknowledge religious diversity without endorsing specific religious instruction in public schools. Second, those focusing on the counterargument would recognize the polarized and dispersed opinions as a call for robust public dialogue and inclusive policymaking that addresses the contested nature of religion in politics. They might advocate for reinforcing secularism in education to uphold neutrality, given the lack of consensus and the risk of social division. These contrasting approaches illustrate how polarization complicates relying on majority preferences alone, necessitating nuanced strategies that balance respect for religiosity with the protection of secular public institutions.
+One implication is that policymakers who prioritize the prevailing view of widespread religiosity might advocate for greater accommodation of religious perspectives within public institutions, including schools, to reflect the religious identity of the majority. This approach could emphasize religion's role as a cultural cornerstone and seek to integrate it more visibly into political life. Alternatively, emphasizing the counterargument's evidence of polarization and fragmented opinions suggests caution against imposing religious curricula in public schools, advocating instead for strict secularism to respect the divided public sentiment and uphold laicity. This perspective would stress protecting pluralism and preventing further social conflict. The polarization also implies that simple majority rule may not be a reliable guide for policy in this domain, necessitating nuanced, inclusive dialogue and policies that acknowledge the contested nature of religion's place in Mexican politics.
 
 ---
 
@@ -166,12 +166,11 @@ First, policymakers emphasizing the prevailing view might prioritize respecting 
 - Minority opinions: Peligrosa (21.0%)
 
 ### Reasoning Outline
-**Argument Structure:** The data suggest that while a large majority of Mexicans have religious affiliations, opinions on the role of religion in political institutions like public education are fragmented, indicating a complex and contested relationship between religion and politics. The perception of the political situation as concerning or dangerous provides a backdrop that may influence or be influenced by religious attitudes, suggesting that religion and politics intersect in a context of political unease and debate over secularism.
+**Argument Structure:** The data show that a large majority of Mexicans have been religiously affiliated, establishing religion as a significant social factor. However, opinions on religion's role in public institutions like schools are fragmented, reflecting tensions around secularism and political laicity. Meanwhile, the political context is perceived as concerning or dangerous by many, suggesting that debates about religion and politics occur within a politically unstable or contested environment. Together, these points illustrate a complex and divided relationship between religion and politics in Mexico, shaped by widespread religiosity but contested secular values amid political unease.
 
 **Key Tensions:**
-- High religious affiliation contrasts with fragmented opinions on religious education in public schools, showing tension between personal religiosity and support for secular public institutions.
-- Dispersed opinions on religion in schools indicate lack of consensus on secularism and laicity, re
+- High religiosity (72.7% have been religious members) contrasts with fragmented opinions on r
 ```
 
-*(Truncated from 6614 characters)*
+*(Truncated from 6715 characters)*
 

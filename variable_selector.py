@@ -249,10 +249,16 @@ def _database_selector(user_query: str, topic_id_st: str, llm: Any) -> List[str]
     {format_instructions}
     """
     
-    response = llm.invoke(prompt)
-    
+    if isinstance(llm, str):
+        # llm is a model name string — use get_answer
+        raw_response = get_answer(prompt, model=llm, temperature=0.0)
+        response_text = raw_response
+    else:
+        response = llm.invoke(prompt)
+        response_text = response.content if hasattr(response, 'content') else str(response)
+
     try:
-        parsed = pattern_parser.parse(response.content if hasattr(response, 'content') else str(response))
+        parsed = pattern_parser.parse(response_text)
         selected_topics = parsed.selected_datasets
         
         # If 'all' is selected, return all topic IDs

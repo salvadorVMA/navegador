@@ -81,9 +81,15 @@ def select_variables_for_query(query: str) -> Dict[str, Any]:
         )
 
         # Get top-graded variables (grade >= 2.0)
+        # grade_dict values are {grade_float: explanation} dicts
+        def extract_grade(grade_val):
+            if isinstance(grade_val, dict) and grade_val:
+                return list(grade_val.keys())[0]
+            return float(grade_val) if grade_val is not None else 0.0
+
         selected_variables = [
             var_id for var_id, grade in grade_dict.items()
-            if grade >= 2.0
+            if extract_grade(grade) >= 2.0
         ][:10]  # Limit to top 10 for consistent comparison
 
         print(f"✅ Selected {len(selected_variables)} variables from topics: {topic_ids}")

@@ -1,6 +1,6 @@
 # Cross-Topic Comparison: q10_security_justice
 
-**Generated:** 2026-02-17 21:26:42
+**Generated:** 2026-02-19 21:10:29
 
 ## Test Question
 
@@ -19,33 +19,33 @@
 ### OLD Architecture (FIXED detailed_report)
 
 - **Success:** ✅ Yes
-- **Latency:** 295 ms (0.3s)
+- **Latency:** 25350 ms (25.3s)
 - **Has Output:** True
-- **Output Length:** 4142 characters
-- **Valid Variables:** 2
-- **Invalid Variables:** 2
+- **Output Length:** 4850 characters
+- **Valid Variables:** 4
+- **Invalid Variables:** 0
 - **Error:** None
 
 ### NEW Architecture (ENHANCED analytical_essay)
 
 - **Success:** ✅ Yes
-- **Latency:** 15 ms (0.0s)
-- **Variables Analyzed:** 3
+- **Latency:** 15367 ms (15.4s)
+- **Variables Analyzed:** 4
 - **Divergence Index:** 1.0
-- **Shape Summary:** {'consensus': 0, 'lean': 0, 'polarized': 0, 'dispersed': 3}
+- **Shape Summary:** {'consensus': 0, 'lean': 0, 'polarized': 1, 'dispersed': 3}
 - **Essay Sections:** 5/5 complete
 - **Has Reasoning:** True
-- **Variables Mapped in Reasoning:** 3
+- **Variables Mapped in Reasoning:** 4
 - **Key Tensions Identified:** 4
 - **Has Output:** True
-- **Output Length:** 6868 characters
-- **Dialectical Ratio:** 1.62
+- **Output Length:** 7709 characters
+- **Dialectical Ratio:** 1.70
 - **Error:** None
 
 ### Comparison
 
-- **Latency Difference:** 280 ms (95.0% faster ⚡)
-- **Output Length Difference:** 2726 characters
+- **Latency Difference:** 9983 ms (39.4% faster ⚡)
+- **Output Length Difference:** 2859 characters
 
 ---
 
@@ -60,40 +60,40 @@
 **Query:** ¿Qué relación ven los mexicanos entre seguridad pública y justicia?
 
 ## Executive Summary
-Los mexicanos ven una relación compleja entre seguridad pública y justicia, donde la falta de confianza en los procesos políticos afecta la percepción de la seguridad. Esta desconfianza hacia la gobernanza puede contribuir a una sensación de inseguridad en la sociedad.
+Los mexicanos ven una interrelación entre la seguridad pública y la justicia, destacando que la percepción de una situación económica negativa puede incrementar las tensiones sociales y, por ende, afectar la seguridad. También resaltan que la opinión pública debe influir en las políticas de seguridad para abordar de manera efectiva estos problemas.
 
 ## Analysis Overview  
-Los resultados de la encuesta muestran que el 37.3% de los encuestados perciben la situación económica como 'igual de mal', mientras que el 37.2% consideran la situación política 'preocupante'. Además, solo el 8.9% ve la economía como 'mejor' y solo el 5.5% considera la política 'prometedora', lo que señala un escepticismo general hacia la gobernanza y la necesidad de los responsables de políticas de abordar esta desconexión.
+Los resultados de la encuesta muestran que una parte significativa de la población se opone a la pena de muerte, mientras que muchos apoyan las acciones del gobierno contra el narcotráfico. Además, una mayoría percibe la situación económica como problemática, lo que podría afectar la estabilidad social y la justicia.
 
 ## Topic Analysis
 
-### PERCEPCIÓN ECONÓMICA
-Los resultados de la encuesta indican que una gran parte de la población, específicamente el 37.3%, percibe la situación económica como 'igual de mal' (p1|JUS). Esta percepción de descontento económico es crucial para que los expertos diagnostiquen los desafíos económicos más amplios que enfrenta la sociedad, mostrando la presión sobre las políticas económicas actuales.
+### CAPITAL PUNISHMENT
+Los resultados de la encuesta revelan que el 27.92% de los encuestados se opone firmemente a la pena de muerte (p71|SEG), lo que refleja una preocupación significativa por las implicaciones de esta política en la seguridad de la comunidad y el sistema de justicia. Este hallazgo resalta la necesidad de que los responsables de políticas comprendan el sentimiento público para impulsar decisiones que afecten la seguridad pública.
 
-### PERCEPCIÓN POLÍTICA
-Una preocupación significativa se refleja en el 37.2% de los encuestados que caracterizan la situación política como 'preocupante' (p2|JUS). Este dato sugiere una creciente apatía hacia la gobernanza y la estabilidad política, lo que podría tener un impacto negativo en la confianza y el compromiso del público con los procesos políticos.
+### DRUG TRAFFICKING POLICIES
+Un 46.16% de los encuestados apoya las acciones del gobierno contra el narcotráfico (p72|SEG), lo que sugiere una actitud favorable hacia las estrategias actuales. Esto presenta una oportunidad para que los actores clave, incluidos los responsables de políticas y las fuerzas del orden, aprovechen este apoyo en futuras iniciativas y fomenten un diálogo comunitario sobre medidas efectivas para la seguridad pública.
 
-### DISPARIDAD ENTRE ECONOMÍA Y POLÍTICA
-Se observa una clara disparidad en las percepciones entre el clima económico y el político, con solo un 8.9% que ve la economía como 'mejor' (p1|JUS) y un 5.5% que considera la política 'prometedora' (p2|JUS). Esta desconexión indica un escepticismo general hacia los procesos políticos, sugiriendo que los responsables de políticas deben abordar la falta de confianza entre la economía y la política.
+### ECONOMIC CONDITIONS
+Una mayoría significativa, el 75.25%, de los encuestados percibe que la situación económica es igual o peor que el año anterior (p1|JUS), lo que genera preocupación sobre su impacto en las tasas de criminalidad y la estabilidad social. Aunque solo el 37.25% considera la situación política 'preocupante' (p2|JUS), esta diferencia sugiere que los actores relevantes deben enfocar sus estrategias en los desafíos económicos para promover la justicia y la equidad.
 
 ## Expert Analysis
 
 ### Expert Insight 1
-The survey results indicate a significant concern among the population regarding the current socio-economic and political climate, aligning with expert expectations for understanding public sentiment. Specifically, 37.3% of respondents perceive the economic situation as 'igual de mal' (the same as bad) (p1|JUS), which emphasizes a prevailing discontent that experts might find critical for diagnosing the broader economic challenges. Additionally, 37.2% characterize the political situation as 'preocupante' (worrisome) (p2|JUS), reflecting a growing apprehension toward governance and political stability that experts may wish to explore further to inform policy recommendations. These findings underline the urgency for addressing both economic and political issues, resonating with expert insights on the importance of public opinion in fostering effective solutions.
+The survey results reveal critical insights pertaining to public opinion on both capital punishment and government strategies against drug trafficking. Specifically, 27.92% of respondents strongly oppose the death penalty (p71|SEG), reflecting a significant concern for the implications of such a policy on community safety and the justice system, which aligns with the experts' emphasis on the need for understanding public sentiment to influence policy decisions and resource allocation in public security. Additionally, the finding that 46.16% support the government's actions against drug trafficking (p72|SEG) underscores a favorable attitude towards current strategies, indicating potential for stakeholders, including policymakers and law enforcement, to leverage this support for future initiatives and to further engage the community in discussions on effective measures for public safety. These results illustrate the experts' concerns regarding the importance of public sentiment in shaping educational campaigns and dialogue around these critical issues.
 
 ### Expert Insight 2
-The survey results reveal a significant disparity in public sentiment regarding the economic and political situations, highlighting the concerns of respondents. Specifically, while 8.9% perceive the economic climate as 'mejor' (better, p1|JUS), only 5.5% regard the political landscape as 'prometedora' (promising, p2|JUS). This contrast suggests a prevailing skepticism toward political processes and leadership, which may affect overall public trust and engagement in governance. The data underlines the need for policymakers to address the disconnection between economic perceptions and political confidence, indicating areas where further investigation and action may be necessary.
+The survey results indicate that a significant majority of 75.25% of respondents perceive the economic situation as equal to or worse than the previous year (p1|JUS), which underscores the expert's concern regarding public sentiment toward economic conditions and its implications for justice-related issues such as crime rates and social stability. This economic unease can lead to increased societal tensions that may require urgent legal and social interventions, illustrating the necessity for policymakers and community leaders to address these pressing concerns effectively. Moreover, while only 37.25% of respondents find the political situation 'preoccupying' (p2|JUS), this disparity suggests a relative lack of urgency regarding political stability compared to economic hardship. The data highlights the need for stakeholders to align their strategies with public sentiment, focusing primarily on economic challenges to promote justice and equity, as failing to do so may exacerbate the disparities affecting vulnerable populations.
 
 ## Data Integrity Report
 
 ⚠️ **Variables Requested:** 4
 
-✅ **Variables Analyzed:** 2
-- p1|JUS, p2|JUS
+✅ **Variables Analyzed:** 4
+- p71|SEG, p72|SEG, p1|JUS, p2|JUS
 
-❌ **Variables Skipped:** 2
-- p1|SEG (suggested: p71|SEG)
-- p2|SEG (suggested: p72|SEG)
+🔄 **Variables Auto-substituted:** 2
+- p1|SEG → p71|SEG
+- p2|SEG → p72|SEG
 
 **Data Sources:** Real survey data from df_tables and pregs_dict
 
@@ -102,7 +102,7 @@ The survey results reveal a significant disparity in public sentiment regarding 
 
 ## Analysis Metadata
 - **Analysis Type:** detailed_report
-- **Variables Analyzed:** 2
+- **Variables Analyzed:** 4
 - **Patterns Identified:** 2
 
 ```
@@ -117,19 +117,19 @@ The survey results reveal a significant disparity in public sentiment regarding 
 **Query:** ¿Qué relación ven los mexicanos entre seguridad pública y justicia?
 
 ## Summary
-The most important finding is that Mexican public opinion on the relationship between public security and justice is deeply fragmented, with no clear consensus on punitive measures, government actions, or political-justice perceptions. However, this fragmentation itself highlights significant divisions that complicate any unified understanding of how justice is perceived as a tool for security.
+Mexican public opinion reveals a fragmented and polarized relationship between public security and justice, with no clear consensus on punitive measures like the death penalty or trust in government actions against drug trafficking. However, significant minorities and close margins between opposing views highlight deep divisions that complicate a unified understanding of justice as a tool for security.
 
 ## Introduction
-This analysis considers three variables related to Mexican perceptions of public security and justice: agreement with the death penalty (p71|SEG), approval of federal government actions against drug trafficking (p72|SEG), and descriptors of the political situation reflecting justice perceptions (p2|JUS). All three variables exhibit dispersed distributions, indicating a lack of consensus and a high degree of fragmentation in public opinion. This dispersion sets up a dialectical tension between those who see justice as an effective instrument for security and those who are skeptical or critical of its role and implementation.
+This analysis examines four variables from recent surveys addressing Mexican perceptions of public security and justice, focusing on attitudes toward the death penalty (p71|SEG), government anti-narcotics efforts (p72|SEG), economic conditions (p1|JUS), and political situation (p2|JUS). All variables exhibit non-consensus distributions, with one polarized and three dispersed shapes, indicating substantial fragmentation and divergence in public opinion. This sets up a dialectical tension between prevailing majority views and significant dissenting perspectives on how justice relates to security in Mexico.
 
 ## Prevailing View
-Despite the fragmentation, certain response categories command the largest shares within their respective variables. For the death penalty (p71|SEG), the modal response is "En desacuerdo" (disagreement) at 27.9%, suggesting a plurality opposes this punitive justice measure. Regarding government actions against narcotrafficking (p72|SEG), 34.3% of respondents are "De acuerdo" (in agreement), indicating a plurality supports federal efforts to combat drug-related crime. Finally, when describing the political situation (p2|JUS), 37.2% chose "Preocupante" (worrying), reflecting a dominant concern about the political-justice environment. These pluralities suggest that a significant portion of Mexicans view justice with caution or concern but still see government security actions as somewhat justified or necessary.
+The most supported positions reflect cautious or conditional agreement with punitive and governmental security measures. For instance, 27.9% of respondents disagree with the death penalty (p71|SEG), making it the modal response, though closely followed by partial agreement at 26.6% and full agreement at 23.6%. Regarding federal government actions against drug trafficking (p72|SEG), the plurality of 34.3% agrees with these efforts, with an additional 11.8% very much agreeing, indicating a moderate majority support for government security initiatives. In describing the political situation (p2|JUS), the largest group (37.2%) characterizes it as "preocupante" (worrisome), suggesting a general concern about political conditions affecting justice and security. These responses collectively suggest that many Mexicans see justice-related measures as necessary or somewhat effective components of public security, albeit with reservations.
 
 ## Counterargument
-The data reveal profound divisions and dispersed opinions that challenge any simplistic prevailing narrative. For the death penalty (p71|SEG), the modal category at 27.9% barely surpasses the second-place "De acuerdo, en parte" (partially agree) at 26.6%, a margin of only 1.3 percentage points, with substantial minorities also agreeing outright (23.6%) or partially disagreeing (18.8%). This fragmentation shows no dominant consensus on punitive justice as a security tool. Similarly, approval of federal anti-narcotics actions (p72|SEG) is fragmented: while 34.3% agree, a large minority (28.6%) remain neutral, and 18.5% disagree, indicating significant skepticism or ambivalence about government effectiveness. The political situation descriptor (p2|JUS) also shows dispersion; although 37.2% say "Preocupante," a notable 19.8% say "Peligrosa" (dangerous), emphasizing a perception of threat that may imply justice system failure. Minority opinions exceeding 15% in all variables underscore the polarized and dispersed nature of views. These divisions matter because they reveal that Mexicans do not share a unified understanding of how justice functions in relation to security; instead, there is a contested and uneasy relationship marked by distrust, conditional support, and concern over political-justice instability.
+Despite these pluralities, the data reveal profound divisions and fragmentation that challenge any simplistic interpretation. The death penalty question (p71|SEG) is highly dispersed, with no category exceeding 40%, and substantial minorities supporting partial or full agreement (26.6% and 23.6%, respectively) and partial disagreement (18.8%). This dispersion underscores a lack of consensus on punitive justice as a security strategy. Similarly, opinions on government anti-narcotics actions (p72|SEG) are fragmented, with 28.6% neither agreeing nor disagreeing and 18.5% disagreeing, indicating significant skepticism or ambivalence toward justice institutions' effectiveness in ensuring security. The economic situation variable (p1|JUS) is polarized, with 37.9% perceiving it as worse and 37.3% as equally bad compared to the previous year, reflecting societal stress that likely influences views on justice and security. Furthermore, the political situation (p2|JUS) shows dispersed opinions beyond the modal "preocupante," with 19.8% describing it as "peligrosa" (dangerous), a substantial minority signaling heightened concern about political instability's impact on justice and security. The narrow margins between top responses in multiple variables (e.g., 1.3 percentage points in p71|SEG and 0.6 in p1|JUS) emphasize the precariousness of any majority position and the depth of public disagreement. These divisions matter because they reveal that Mexicans do not share a unified vision of how justice mechanisms relate to public security, complicating policy consensus and social cohesion.
 
 ## Implications
-One implication is that policymakers emphasizing the prevailing view might interpret the data as support for cautious reform: since pluralities oppose the death penalty and moderately support government security actions, policies could focus on strengthening justice institutions without resorting to extreme punitive measures. Another implication, drawn from the counterargument, is that the high fragmentation and polarization necessitate more inclusive, dialogic approaches to justice and security reforms, recognizing diverse public concerns and skepticism. This could mean prioritizing transparency, accountability, and community engagement to rebuild trust. The polarization also warns against relying on simple majority opinions for policy legitimacy, as significant minorities hold opposing views that could undermine social cohesion and policy effectiveness.
+First, policymakers emphasizing the prevailing view might prioritize strengthening and communicating government security measures, including law enforcement efforts against drug trafficking, and cautiously consider punitive justice reforms like the death penalty, believing these have moderate public backing. This approach assumes that enhancing existing justice-security frameworks can build broader support and improve public safety. Second, those focusing on the counterargument would recognize the deep polarization and fragmentation as signals to pursue more inclusive, dialogic approaches that address public skepticism and fears about justice and political instability. They might advocate for reforms that increase transparency, accountability, and community involvement in justice and security policies to bridge divides. The polarization also suggests that relying solely on majority opinion risks overlooking significant minorities whose concerns could destabilize social trust, indicating that nuanced, multifaceted strategies are necessary to navigate Mexico's complex justice-security landscape.
 
 ---
 
@@ -137,11 +137,11 @@ One implication is that policymakers emphasizing the prevailing view might inter
 
 | Metric | Value |
 |--------|-------|
-| Variables Analyzed | 3 |
+| Variables Analyzed | 4 |
 | Divergence Index | 100.0% |
 | Consensus Variables | 0 |
 | Lean Variables | 0 |
-| Polarized Variables | 0 |
+| Polarized Variables | 1 |
 | Dispersed Variables | 3 |
 
 ### Variable Details
@@ -160,16 +160,9 @@ One implication is that policymakers emphasizing the prevailing view might inter
 - HHI: 2501
 - Minority opinions: Ni de acuerdo ni en desacuerdo (esp.) (28.6%), En desacuerdo (18.5%)
 
-**p2|JUS** (dispersed)
-- Question: JUSTICIA|De las siguientes palabras, ¿con cuál está usted más de acuerdo para describir la situación política del país?
-- Mode: Preocupante (37.2%)
-- Runner-up: Peligrosa (19.8%), margin: 17.5pp
-- HHI: 2126
-- Minority opinions: Peligrosa (19.8%)
-
-### Reasoning Outline
-**Argument Structure:** The data show fragmented opinions on punitive justice measures (death penalty), government security actions, and the political-justice climate, indicating no clear consensus on how justice and public security relate. The argument is that Mexicans perceive a complex, divided relationship where justice is seen both as a necessary but contested tool for security, and where political conditions reflect concerns about justice's effectiveness in ensuring security. This fragmentat
+**p1|JUS** (polarized)
+- Question: JUSTICIA|Comparada con la situación que tenía el país hace un año, ¿cómo diría usted que es la situación económica actual del país: mejor o peo
 ```
 
-*(Truncated from 6868 characters)*
+*(Truncated from 7709 characters)*
 

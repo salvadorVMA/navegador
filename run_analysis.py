@@ -81,7 +81,8 @@ def _run_detailed_report(selected_variables: list, user_query: str, **kwargs) ->
         analysis_results = run_detailed_analysis(
             selected_variables=selected_variables,
             user_query=user_query,
-            analysis_params=kwargs.get('analysis_params')
+            analysis_params=kwargs.get('analysis_params'),
+            model_name=kwargs.get('model_name', 'gpt-4o-mini-2024-07-18'),
         )
         
         # Format the report
