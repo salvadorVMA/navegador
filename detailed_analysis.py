@@ -74,10 +74,20 @@ transversal_format_instructions = transversal_parser.get_format_instructions()
 
 # Core analysis functions
 
-def create_prompt_crosssum(user_query: str, tmp_res_st: str, n_topics: int = 5, format_instructions: str = "") -> str:
+def create_prompt_crosssum(
+    user_query: str,
+    tmp_res_st: str,
+    n_topics: int = 5,
+    format_instructions: str = "",
+    kg_context: str = "",
+) -> str:
     """
     Optimized prompt for extracting non-empty, detailed patterns from survey results.
+
+    If kg_context is provided (from survey_kg.enrich_retrieved_questions), it is injected
+    before the survey data to constrain the LLM's cross-domain reasoning.
     """
+    kg_section = f"\n{kg_context}\n" if kg_context else ""
     prompt = f"""
 You are a research assistant analyzing survey results to answer the QUERY below.
 
@@ -127,7 +137,7 @@ Example output (strict JSON, no markdown, no code block, no extra text):
   "DIFFERENT_PATTERN_5": {{"TITLE_SUMMARY": "...", "VARIABLE_STRING": "...", "DESCRIPTION": "..."}}
 }}
 
-QUERY: {user_query}
+{kg_section}QUERY: {user_query}
 RESULTS: {tmp_res_st}
 
 {format_instructions}
@@ -139,20 +149,27 @@ Checklist before submitting:
 """
     return prompt
 
-def get_structured_summary(user_query: str, tmp_res_st: str, tmp_grade_dict: dict, 
-                          model_name: str = 'gpt-4o-mini-2024-07-18', temperature: float = 0.9) -> Tuple[str, dict]:
+def get_structured_summary(
+    user_query: str,
+    tmp_res_st: str,
+    tmp_grade_dict: dict,
+    model_name: str = 'gpt-4o-mini-2024-07-18',
+    temperature: float = 0.9,
+    kg_context: str = "",
+) -> Tuple[str, dict]:
     """
     This function combines the prompt creation and LLM call,
     then parses the response using the PydanticOutputParser.
     """
-    # Calculate number of patterns: three results minimum for each pattern to minimize hallucinations
-    n_topics = min(len(tmp_grade_dict) // 4, 5)
+    # Scale patterns based on available variables, minimum 4 to avoid thin analyses
+    n_topics = max(4, len(tmp_grade_dict) // 2)
 
     prompt = create_prompt_crosssum(
-        user_query=user_query, 
-        tmp_res_st=tmp_res_st, 
-        n_topics=n_topics, 
-        format_instructions=pattern_simdif_format_instructions
+        user_query=user_query,
+        tmp_res_st=tmp_res_st,
+        n_topics=n_topics,
+        format_instructions=pattern_simdif_format_instructions,
+        kg_context=kg_context,
     )
     
     content = get_answer(prompt, model=model_name, temperature=temperature)
@@ -283,7 +300,7 @@ def get_structured_expert_summary(tst_lgc_dict: dict, tmp_ky: str, db_f1,
         print(f"Error parsing expert summary: {e}")
         return {'EXPERT_REPLY': f'Error generating expert summary: {str(e)}'}
 
-def batch_process_expert_summaries(tst_lgc_dict: dict, db_f1, batch_size: int = 8192) -> dict:
+def batch_process_expert_summaries(tst_lgc_dict: dict, db_f1, batch_size: int = 8192, model_name: str = 'gpt-4o-mini-2024-07-18') -> dict:
     """
     Processes expert summaries in batches, saving checkpoints after each batch.
 
@@ -291,6 +308,7 @@ def batch_process_expert_summaries(tst_lgc_dict: dict, db_f1, batch_size: int = 
         tst_lgc_dict (dict): Dictionary containing logical group data.
         db_f1: The database/vector store for retrieving implications.
         batch_size (int): Maximum token limit for each batch.
+        model_name (str): LLM model to use for expert summary generation.
 
     Returns:
         dict: A dictionary of structured results.
@@ -301,35 +319,33 @@ def batch_process_expert_summaries(tst_lgc_dict: dict, db_f1, batch_size: int = 
         for key in tst_lgc_dict.keys()
     ]
     keys = list(tst_lgc_dict.keys())
-    
+
     # Batch the documents
     try:
         batches = batch_documents(prompts, keys, max_tokens=batch_size, encoding_name="cl100k_base")
     except Exception as e:
         print(f"Error batching documents: {e}")
-        # Fallback: process each item individually
         batches = [([prompt], [key]) for prompt, key in zip(prompts, keys)]
-    
+
     # Initialize results dictionary
     structured_results = {}
-    
+
     # Process each batch
     with tqdm.tqdm(total=len(keys), desc="Processing Expert Summaries") as pbar:
         for batch_docs, batch_keys in batches:
             for prompt, key in zip(batch_docs, batch_keys):
                 try:
-                    # Call get_structured_expert_summary for each key
                     structured_results[key] = get_structured_expert_summary(
                         tst_lgc_dict=tst_lgc_dict,
                         tmp_ky=key,
                         db_f1=db_f1,
-                        model_name="gpt-4o-mini-2024-07-18",
+                        model_name=model_name,
                         temperature=0.9
                     )
                 except Exception as e:
                     structured_results[key] = {'EXPERT_REPLY': f'Error: {str(e)}'}
                 pbar.update(1)
-    
+
     return structured_results
 
 def create_prompt_trnsvl(tmp_smry_st: str, user_query: str, n_cmn_tpc: int = 3, format_instructions: str = "") -> str:
@@ -450,7 +466,7 @@ def get_transversal_analysis(tmp_smry_st: str, user_query: str,
             'QUERY_ANSWER': f'Error generating answer: {str(e)}'
         }
 
-def _deep_analyzer(tmp_pre_res_dict: dict, tmp_grade_dict: dict, user_query: str, db_f1) -> Tuple[dict, dict, dict]:
+def _deep_analyzer(tmp_pre_res_dict: dict, tmp_grade_dict: dict, user_query: str, db_f1, model_name: str = 'gpt-4o-mini-2024-07-18') -> Tuple[dict, dict, dict]:
     """
     Internal function to produce the transversal analysis and expert summaries.
     This is the core analysis pipeline extracted from the notebook.
@@ -499,11 +515,12 @@ def _deep_analyzer(tmp_pre_res_dict: dict, tmp_grade_dict: dict, user_query: str
     print("Generating structured summary...")
     try:
         raw_content, tst_lgc_dict = get_structured_summary(
-            user_query=user_query, 
-            tmp_res_st=tmp_res_st, 
+            user_query=user_query,
+            tmp_res_st=tmp_res_st,
             tmp_grade_dict=tmp_grade_dict,
-            model_name='gpt-4o-mini-2024-07-18', 
-            temperature=0.0
+            model_name=model_name,
+            temperature=0.0,
+            kg_context=kg_context,
         )
         print(f"Generated {len(tst_lgc_dict)} pattern groups")
     except Exception as e:
@@ -514,7 +531,7 @@ def _deep_analyzer(tmp_pre_res_dict: dict, tmp_grade_dict: dict, user_query: str
     print("Processing expert summaries...")
     if tst_lgc_dict:
         try:
-            structured_expert_results = batch_process_expert_summaries(tst_lgc_dict, db_f1)
+            structured_expert_results = batch_process_expert_summaries(tst_lgc_dict, db_f1, model_name=model_name)
             print(f"Generated {len(structured_expert_results)} expert summaries")
         except Exception as e:
             print(f"Error in expert summaries: {e}")
@@ -527,7 +544,7 @@ def _deep_analyzer(tmp_pre_res_dict: dict, tmp_grade_dict: dict, user_query: str
     if structured_expert_results:
         try:
             tmp_smry_st = ' * '.join([v['EXPERT_REPLY'] for v in structured_expert_results.values() if 'EXPERT_REPLY' in v])
-            final_smry_dict = get_transversal_analysis(tmp_smry_st, user_query)
+            final_smry_dict = get_transversal_analysis(tmp_smry_st, user_query, model_name=model_name)
             print("Completed transversal analysis")
         except Exception as e:
             print(f"Error in transversal analysis: {e}")
@@ -546,17 +563,22 @@ def _deep_analyzer(tmp_pre_res_dict: dict, tmp_grade_dict: dict, user_query: str
     return tmp_preproc_dic, final_smry_dict, structured_expert_results
 
 
-def run_detailed_analysis(selected_variables: list, user_query: str, analysis_params: Optional[dict] = None) -> dict:
+def run_detailed_analysis(
+    selected_variables: list,
+    user_query: str,
+    analysis_params: Optional[dict] = None,
+    model_name: str = 'gpt-4o-mini-2024-07-18',
+    kg_context: str = "",
+) -> dict:
     """
     Main entry point for detailed analysis. This function provides the interface
     between the agent workflow and the detailed analysis pipeline.
-
-    FIXED: Now validates variables and uses real data instead of mock data.
 
     Args:
         selected_variables (list): List of variable IDs selected for analysis
         user_query (str): The user's query
         analysis_params (dict): Additional parameters for analysis (optional)
+        model_name (str): LLM model to use for all analysis steps
 
     Returns:
         dict: Comprehensive analysis results including patterns, expert summaries, and final report
@@ -687,7 +709,8 @@ def run_detailed_analysis(selected_variables: list, user_query: str, analysis_pa
             tmp_pre_res_dict=tmp_pre_res_dict,
             tmp_grade_dict=tmp_grade_dict,
             user_query=user_query,
-            db_f1=db_f1
+            db_f1=db_f1,
+            model_name=model_name,
         )
         
         # FIX 3: Package results with transparency about what was analyzed

@@ -110,11 +110,12 @@ class AgentState(TypedDict):
     intent: Annotated[str, "The classified intent of the user"]
     user_query: Annotated[str, "The user's current query or question for the data"]
     original_query: Annotated[str, "The user's original query or request"]
-    dataset: Annotated[List[str], "The dataset or group of datasets selected for analysis; defaults to 'ALL'"] 
+    dataset: Annotated[List[str], "The dataset or group of datasets selected for analysis; defaults to 'ALL'"]
     selected_variables: Annotated[List[str], "Selected variables for analysis"]
     analysis_type: Annotated[Literal["descriptive", "detailed", "quick_insights", "plots_only", "analytical_essay"], "Type of analysis requested by user"]
     user_approved: Annotated[bool, "Whether user has approved variables and analysis type"]
     analysis_result: Annotated[Dict, "Results from the analysis"]
+    kg_context: Annotated[str, "KG domain-boundary context injected into analysis prompts"]
 
 def create_agent(enable_persistence=True):
     """
@@ -302,9 +303,10 @@ def create_agent(enable_persistence=True):
             
             # TODO: devolver proceso de selección a proceso original (una sola búsqueda, no tres)
             # Call the actual variable selection function
-            topic_ids, variables_dict, grade_dict = _variable_selector(
+            topic_ids, variables_dict, grade_dict, kg_context = _variable_selector(
                 last_user_message, tmp_topic_st, selection_llm, use_simultaneous_retrieval=True
             )
+            state["kg_context"] = kg_context
             
             if variables_dict and grade_dict:
                 # Get the top-graded variables
@@ -488,7 +490,8 @@ def create_agent(enable_persistence=True):
                 analysis_type=mapped_analysis_type,
                 selected_variables=variables,
                 user_query=user_query,
-                dataset_name=dataset_name
+                dataset_name=dataset_name,
+                kg_context=state.get("kg_context", ""),
             )
             
             # TODO: mensajes bilingües

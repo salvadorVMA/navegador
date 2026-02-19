@@ -309,14 +309,12 @@ def generate_analytical_essay(
     print(f"[analytical_essay] Variables: {selected_variables}")
 
     try:
-        # Phase 1: Quantitative engine with relevance gate
-        # (auto-correction constrained to same survey code,
-        #  relevance filter using ChromaDB + expert grading)
-        print("[analytical_essay] Building quantitative report (with relevance gate)...")
+        # Phase 1: Quantitative engine
+        # (auto-correction constrained to same survey code)
+        print("[analytical_essay] Building quantitative report...")
         quant_report = build_quantitative_report(
             selected_variables,
             user_query=user_query,
-            relevance_filter=True,
         )
 
         if quant_report.variable_count == 0:

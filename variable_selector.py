@@ -13,6 +13,12 @@ from langchain_core.output_parsers import PydanticOutputParser
 from utility_functions import environment_setup, embedding_fun_openai, get_answer, clean_llm_json_output, batch_documents
 from dataset_knowledge import rev_topic_dict,  tmp_topic_st
 
+try:
+    from survey_kg import kg as _survey_kg, _KG_AVAILABLE as _KG_AVAILABLE
+except Exception:
+    _survey_kg = None
+    _KG_AVAILABLE = False
+
 
 # LLM settings
 mod_alto = 'gpt-4.1-2025-04-14' 
@@ -546,8 +552,18 @@ def _variable_selector(user_query, topic_id_st, mod_setting, top_vals=30, use_si
     tmp_dist_df.sort_values(by='mean', ascending=True, inplace=True)
 
     top_ids = tmp_dist_df.head(top_vals).index.tolist()
-    
+
     log_progress("ranking_complete", f"Selected top {len(top_ids)} variables")
+
+    # KG enrichment — annotate retrieved questions with domain/construct context
+    kg_context_str = ""
+    if _KG_AVAILABLE and _survey_kg is not None:
+        log_progress("kg_enrichment_start", f"Enriching {len(top_ids)} questions with KG context")
+        kg_context_str = _survey_kg.get_kg_context_for_prompt(top_ids)
+        if kg_context_str:
+            log_progress("kg_enrichment_complete", "KG context generated")
+        else:
+            log_progress("kg_enrichment_skip", "KG returned empty context (ontology may not be bootstrapped)")
 
     tmp_list = []
 
@@ -558,21 +574,21 @@ def _variable_selector(user_query, topic_id_st, mod_setting, top_vals=30, use_si
     # Retrieve documents using the list of ids
     if not tmp_list:
         print("Warning: No IDs to retrieve from ChromaDB")
-        return topic_ids, {}, {}
-        
+        return topic_ids, {}, {}, kg_context_str
+
     result_by_ids = db_f1.get(ids=tmp_list)
-    
+
     # Handle case where no results are found
     if not result_by_ids or not result_by_ids.get('ids') or not result_by_ids.get('documents'):
         print("Warning: No documents retrieved from ChromaDB")
-        return topic_ids, {}, {}
+        return topic_ids, {}, {}, kg_context_str
 
     # Type assertion since we've verified these are not None
     ids = result_by_ids['ids']
     documents = result_by_ids['documents']
     if ids is None or documents is None:
         print("Warning: Unexpected None values in ChromaDB result")
-        return topic_ids, {}, {}
+        return topic_ids, {}, {}, kg_context_str
     
     tmp_pre_res_dict = dict(zip(ids, documents))
 
@@ -591,7 +607,7 @@ def _variable_selector(user_query, topic_id_st, mod_setting, top_vals=30, use_si
     if not tst_res:
         log_progress("grading_error", "No grading results returned")
         print("Warning: No grading results returned")
-        return topic_ids, tmp_pre_res_dict, {}
+        return topic_ids, tmp_pre_res_dict, {}, kg_context_str
         
     tmp_grade_dict = {k: v.get('GRADE_DICT', {}) for k, v in tst_res.items() if 'GRADE_DICT' in v}
 
@@ -604,7 +620,7 @@ def _variable_selector(user_query, topic_id_st, mod_setting, top_vals=30, use_si
     log_progress("grading_complete", 
                 f"Selected {filtered_count} variables after filtering. Total processing time: {elapsed:.2f}s")
     
-    return topic_ids, tmp_pre_res_dict, tmp_grade_dict
+    return topic_ids, tmp_pre_res_dict, tmp_grade_dict, kg_context_str
 
 def enrich_query_for_implications(user_query: str) -> str:
     """

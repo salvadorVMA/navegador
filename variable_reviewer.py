@@ -126,7 +126,7 @@ def _variable_reviewer(user_query: str, user_feedback: str, tmp_pre_res_dict_in:
         # TODO: generalizar a todos los datasets o a un dataset específico
         dataset= 'all'  # 'all' for all variables, or a specific variable name
 
-        tmp_pre_res_dict_out, tmp_grade_dict_out = _variable_selector(tmp_query, dataset , mod_alto, top_vals=30)
+        _, tmp_pre_res_dict_out, tmp_grade_dict_out, _ = _variable_selector(tmp_query, dataset, mod_alto, top_vals=30)
         return_dict[tmp_act]['tmp_pre_res_dict_out'] = tmp_pre_res_dict_out
         return_dict[tmp_act]['tmp_grade_dict_out'] = tmp_grade_dict_out
         return_dict['action_message'] = f"Added query: {tmp_query}. New variables selected based on the query."

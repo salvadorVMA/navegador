@@ -13,6 +13,9 @@ from typing import Dict, List, Any
 sys.path.insert(0, '/workspaces/navegador')
 
 from run_analysis import run_analysis
+from variable_selector import _variable_selector
+from dataset_knowledge import tmp_topic_st
+from langchain_openai import ChatOpenAI
 
 # 10 comprehensive test questions spanning multiple topics
 TEST_QUESTIONS = [
@@ -21,283 +24,193 @@ TEST_QUESTIONS = [
         "query": "¿Cómo se relacionan la religión y la política en México?",
         "query_en": "How do religion and politics relate in Mexico?",
         "topics": ["Religion", "Political Culture"],
-        "variables": [
-            "p1|REL",    # Importancia religión
-            "p2|REL",    # Práctica religiosa
-            "p1|CUL",    # Situación económica país
-            "p3|CUL",    # Situación política actual
-        ]
     },
     {
         "id": "q2_environment_economy",
         "query": "¿Cómo equilibran los mexicanos las preocupaciones ambientales con el desarrollo económico?",
         "query_en": "How do Mexicans balance environmental concerns with economic development?",
         "topics": ["Environment", "Economy"],
-        "variables": [
-            "p1|MED",    # Preocupación ambiental
-            "p2|MED",    # Cambio climático
-            "p1|ECO",    # Situación económica personal
-            "p2|ECO",    # Expectativas económicas
-        ]
     },
     {
         "id": "q3_education_poverty",
         "query": "¿Qué relación ven los mexicanos entre educación y pobreza?",
         "query_en": "What relationship do Mexicans see between education and poverty?",
         "topics": ["Education", "Poverty"],
-        "variables": [
-            "p1|EDU",    # Calidad educativa
-            "p2|EDU",    # Acceso educación
-            "p1|POB",    # Percepción pobreza
-            "p2|POB",    # Causas pobreza
-        ]
     },
     {
         "id": "q4_gender_family",
         "query": "¿Cómo están cambiando los roles de género en la familia mexicana?",
         "query_en": "How are gender roles changing in the Mexican family?",
         "topics": ["Gender", "Family"],
-        "variables": [
-            "p1|GEN",    # Roles de género
-            "p2|GEN",    # Igualdad género
-            "p1|FAM",    # Estructura familiar
-            "p2|FAM",    # Roles familiares
-        ]
     },
     {
         "id": "q5_migration_culture",
         "query": "¿Cómo afecta la migración a la identidad cultural mexicana?",
         "query_en": "How does migration affect Mexican cultural identity?",
         "topics": ["Migration", "Identity"],
-        "variables": [
-            "p1|MIG",    # Opinión sobre migración
-            "p2|MIG",    # Causas migración
-            "p5_1|IDE",  # Emociones sobre México
-            "p7|IDE",    # Orgullo ser mexicano
-        ]
     },
     {
         "id": "q6_health_poverty",
         "query": "¿Cómo se relaciona el acceso a la salud con la pobreza en México?",
         "query_en": "How does health access relate to poverty in Mexico?",
         "topics": ["Health", "Poverty"],
-        "variables": [
-            "p1|SAL",    # Acceso servicios salud
-            "p2|SAL",    # Calidad servicios salud
-            "p1|POB",    # Situación laboral
-            "p3|POB",    # Desigualdad
-        ]
     },
     {
         "id": "q7_democracy_corruption",
         "query": "¿Qué piensan los mexicanos sobre la relación entre democracia y corrupción?",
         "query_en": "What do Mexicans think about the relationship between democracy and corruption?",
         "topics": ["Political Culture", "Corruption"],
-        "variables": [
-            "p1|CUL",    # Situación política
-            "p3|CUL",    # Descripción situación política
-            "p2|COR",    # Percepción corrupción
-            "p3|COR",    # Experiencia corrupción
-        ]
     },
     {
         "id": "q8_indigenous_discrimination",
         "query": "¿Cómo perciben los mexicanos la discriminación hacia pueblos indígenas?",
         "query_en": "How do Mexicans perceive discrimination against indigenous peoples?",
         "topics": ["Indigenous", "Human Rights"],
-        "variables": [
-            "p1|IND",    # Derechos indígenas
-            "p2|IND",    # Discriminación indígena
-            "p1|DER",    # Derechos humanos
-            "p2|DER",    # Discriminación general
-        ]
     },
     {
         "id": "q9_technology_education",
         "query": "¿Cómo impacta la tecnología en la educación según los mexicanos?",
         "query_en": "How does technology impact education according to Mexicans?",
         "topics": ["Technology", "Education"],
-        "variables": [
-            "p1|SOC",    # Acceso tecnología
-            "p2|SOC",    # Uso internet
-            "p1|EDU",    # Calidad educativa
-            "p3|EDU",    # Tecnología en educación
-        ]
     },
     {
         "id": "q10_security_justice",
         "query": "¿Qué relación ven los mexicanos entre seguridad pública y justicia?",
         "query_en": "What relationship do Mexicans see between public security and justice?",
         "topics": ["Security", "Justice"],
-        "variables": [
-            "p1|SEG",    # Percepción inseguridad
-            "p2|SEG",    # Confianza policía
-            "p1|JUS",    # Acceso justicia
-            "p2|JUS",    # Confianza sistema judicial
-        ]
-    }
+    },
 ]
 
 
-def run_old_architecture(selected_variables: List[str], query: str) -> Dict[str, Any]:
-    """Run through FIXED OLD architecture."""
-    print(f"\n🏛️  OLD (FIXED): detailed_report")
+MODEL_MINI = 'gpt-4.1-mini-2025-04-14'
+MODEL_FULL = 'gpt-4.1-2025-04-14'
+
+TEST_MODELS = {
+    "mini": MODEL_MINI,
+    "full": MODEL_FULL,
+}
+
+
+def run_architecture(
+    architecture: str,
+    selected_variables: List[str],
+    query: str,
+    model_name: str,
+) -> Dict[str, Any]:
+    """Run a single architecture + model combination."""
+    label = f"{'OLD' if architecture == 'detailed_report' else 'NEW'} ({architecture}) + {model_name}"
+    print(f"\n{'🏛️' if architecture == 'detailed_report' else '🚀'}  {label}")
 
     start_time = time.time()
 
     try:
         result = run_analysis(
-            analysis_type="detailed_report",
-            selected_variables=selected_variables,
-            user_query=query
-        )
-
-        end_time = time.time()
-        latency_ms = (end_time - start_time) * 1000
-
-        print(f"   {'✅ Success' if result.get('success') else '❌ Failed'} - {latency_ms:.0f}ms")
-
-        return {
-            "success": result.get('success', False),
-            "result": result,
-            "latency_ms": latency_ms,
-            "error": result.get('error')
-        }
-
-    except Exception as e:
-        end_time = time.time()
-        latency_ms = (end_time - start_time) * 1000
-
-        print(f"   ❌ Exception - {latency_ms:.0f}ms: {e}")
-
-        return {
-            "success": False,
-            "result": {},
-            "latency_ms": latency_ms,
-            "error": str(e)
-        }
-
-
-def run_new_architecture(selected_variables: List[str], query: str) -> Dict[str, Any]:
-    """Run through ENHANCED NEW architecture."""
-    print(f"\n🚀 NEW (ENHANCED): analytical_essay")
-
-    start_time = time.time()
-
-    try:
-        result = run_analysis(
-            analysis_type="analytical_essay",
+            analysis_type=architecture,
             selected_variables=selected_variables,
             user_query=query,
-            model_name='gpt-4.1-mini-2025-04-14',
-            temperature=0.4
+            model_name=model_name,
+            temperature=0.4,
         )
 
-        end_time = time.time()
-        latency_ms = (end_time - start_time) * 1000
-
+        latency_ms = (time.time() - start_time) * 1000
         print(f"   {'✅ Success' if result.get('success') else '❌ Failed'} - {latency_ms:.0f}ms")
 
         return {
             "success": result.get('success', False),
             "result": result,
             "latency_ms": latency_ms,
-            "error": result.get('error')
+            "error": result.get('error'),
+            "architecture": architecture,
+            "model": model_name,
         }
 
     except Exception as e:
-        end_time = time.time()
-        latency_ms = (end_time - start_time) * 1000
-
+        latency_ms = (time.time() - start_time) * 1000
         print(f"   ❌ Exception - {latency_ms:.0f}ms: {e}")
 
         return {
             "success": False,
             "result": {},
             "latency_ms": latency_ms,
-            "error": str(e)
+            "error": str(e),
+            "architecture": architecture,
+            "model": model_name,
         }
 
 
-def extract_metrics(old_result: Dict, new_result: Dict) -> Dict[str, Any]:
-    """Extract comparable metrics."""
-
-    metrics = {
-        "old": {
-            "success": old_result.get("success", False),
-            "latency_ms": old_result.get("latency_ms", 0),
-            "error": old_result.get("error"),
-        },
-        "new": {
-            "success": new_result.get("success", False),
-            "latency_ms": new_result.get("latency_ms", 0),
-            "error": new_result.get("error"),
-        }
+def extract_cell_metrics(result: Dict) -> Dict[str, Any]:
+    """Extract metrics from a single architecture+model result."""
+    m: Dict[str, Any] = {
+        "success": result.get("success", False),
+        "latency_ms": result.get("latency_ms", 0),
+        "error": result.get("error"),
+        "architecture": result.get("architecture"),
+        "model": result.get("model"),
     }
+    wrapper = result.get("result", {})
+    data = wrapper.get("results", wrapper)
 
-    # OLD metrics — run_analysis also wraps under {"results": ..., "formatted_report": ...}
-    old_wrapper = old_result.get("result", {})
-    old_data = old_wrapper.get("results", old_wrapper)
-    metrics["old"]["has_output"] = bool(old_wrapper.get("formatted_report"))
-    if old_wrapper.get("formatted_report"):
-        metrics["old"]["output_length"] = len(old_wrapper["formatted_report"])
+    m["has_output"] = bool(wrapper.get("formatted_report"))
+    m["output_length"] = len(wrapper.get("formatted_report", ""))
 
-    # Track validation results (may be in inner results or wrapper)
-    metrics["old"]["valid_variables"] = old_data.get("valid_variables", old_wrapper.get("valid_variables", []))
-    metrics["old"]["invalid_variables"] = old_data.get("invalid_variables", old_wrapper.get("invalid_variables", []))
+    # OLD-specific
+    m["valid_variables"] = data.get("valid_variables", [])
+    m["invalid_variables"] = data.get("invalid_variables", [])
 
-    # NEW metrics — run_analysis wraps generate_analytical_essay results inside
-    # {"results": analysis_results, "formatted_report": ...}, so essay/reasoning/
-    # quantitative_report live under result["results"], not directly under result.
-    new_wrapper = new_result.get("result", {})
-    new_data = new_wrapper.get("results", new_wrapper)  # fallback to flat if no nesting
+    # NEW-specific
+    if "essay" in data:
+        essay = data["essay"]
+        sections = ["summary", "introduction", "prevailing_view", "counterargument", "implications"]
+        m["essay_sections"] = len([k for k in sections if k in essay and essay[k]])
+        pv = len(essay.get("prevailing_view", ""))
+        ca = len(essay.get("counterargument", ""))
+        m["prevailing_view_length"] = pv
+        m["counterargument_length"] = ca
+        m["dialectical_ratio"] = ca / max(pv, 1)
+    if "quantitative_report" in data:
+        quant = data["quantitative_report"]
+        m["variables_analyzed"] = quant.get("variable_count", 0)
+        m["divergence_index"] = quant.get("divergence_index", 0)
+        m["shape_summary"] = quant.get("shape_summary", {})
+    if "reasoning" in data and data["reasoning"]:
+        m["has_reasoning"] = True
+        m["reasoning_variables_mapped"] = len(data["reasoning"].get("variable_analyses", []))
+        m["reasoning_tensions"] = len(data["reasoning"].get("key_tensions", []))
+    else:
+        m["has_reasoning"] = False
 
-    metrics["new"]["has_output"] = bool(new_wrapper.get("formatted_report"))
-    if new_wrapper.get("formatted_report"):
-        metrics["new"]["output_length"] = len(new_wrapper["formatted_report"])
+    return m
 
-    if "essay" in new_data:
-        essay = new_data["essay"]
-        metrics["new"]["essay_sections"] = len([
-            k for k in ["summary", "introduction", "prevailing_view",
-                       "counterargument", "implications"]
-            if k in essay and essay[k]
-        ])
 
-        if "prevailing_view" in essay and "counterargument" in essay:
-            metrics["new"]["prevailing_view_length"] = len(essay["prevailing_view"])
-            metrics["new"]["counterargument_length"] = len(essay["counterargument"])
-            metrics["new"]["dialectical_ratio"] = len(essay["counterargument"]) / max(len(essay["prevailing_view"]), 1)
 
-    if "quantitative_report" in new_data:
-        quant = new_data["quantitative_report"]
-        metrics["new"]["variables_analyzed"] = quant.get("variable_count", 0)
-        metrics["new"]["divergence_index"] = quant.get("divergence_index", 0)
-        metrics["new"]["shape_summary"] = quant.get("shape_summary", {})
 
-    # Reasoning metrics (new pipeline)
-    if "reasoning" in new_data:
-        reasoning = new_data["reasoning"]
-        metrics["new"]["reasoning_variables_mapped"] = len(reasoning.get("variable_relevance", {}))
-        metrics["new"]["reasoning_tensions"] = len(reasoning.get("key_tensions", []))
-        metrics["new"]["has_reasoning"] = bool(reasoning.get("argument_structure", ""))
+CELL_KEYS = [
+    ("detailed_report", "mini"),
+    ("detailed_report", "full"),
+    ("analytical_essay", "mini"),
+    ("analytical_essay", "full"),
+]
 
-    return metrics
+CELL_LABELS = {
+    ("detailed_report", "mini"): "OLD + mini",
+    ("detailed_report", "full"): "OLD + full",
+    ("analytical_essay", "mini"): "NEW + mini",
+    ("analytical_essay", "full"): "NEW + full",
+}
 
 
 def create_comparison_markdown(
     test_question: Dict,
-    old_result: Dict,
-    new_result: Dict,
-    metrics: Dict,
-    output_dir: Path
+    cell_results: Dict,
+    cell_metrics: Dict,
+    output_dir: Path,
 ) -> Path:
-    """Create comparison markdown for one question."""
+    """Create 2x2 comparison markdown for one question."""
 
     question_id = test_question["id"]
     output_file = output_dir / f"{question_id}_comparison.md"
 
-    content = f"""# Cross-Topic Comparison: {question_id}
+    content = f"""# 2x2 Comparison: {question_id}
 
 **Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 
@@ -309,180 +222,126 @@ def create_comparison_markdown(
 
 **Topics Covered:** {', '.join(test_question['topics'])}
 
-**Variables Used:** {', '.join(test_question['variables'])}
+**Variables Selected (semantic search):** {', '.join(test_question.get('variables', []))}
 
 ---
 
 ## Performance Metrics
 
-### OLD Architecture (FIXED detailed_report)
-
-- **Success:** {'✅ Yes' if metrics['old']['success'] else '❌ No'}
-- **Latency:** {metrics['old']['latency_ms']:.0f} ms ({metrics['old']['latency_ms']/1000:.1f}s)
-- **Has Output:** {metrics['old'].get('has_output', False)}
-- **Output Length:** {metrics['old'].get('output_length', 0)} characters
-- **Valid Variables:** {len(metrics['old'].get('valid_variables', []))}
-- **Invalid Variables:** {len(metrics['old'].get('invalid_variables', []))}
-- **Error:** {metrics['old'].get('error') or 'None'}
-
-### NEW Architecture (ENHANCED analytical_essay)
-
-- **Success:** {'✅ Yes' if metrics['new']['success'] else '❌ No'}
-- **Latency:** {metrics['new']['latency_ms']:.0f} ms ({metrics['new']['latency_ms']/1000:.1f}s)
-- **Variables Analyzed:** {metrics['new'].get('variables_analyzed', 'N/A')}
-- **Divergence Index:** {metrics['new'].get('divergence_index', 'N/A')}
-- **Shape Summary:** {str(metrics['new'].get('shape_summary', 'N/A'))}
-- **Essay Sections:** {metrics['new'].get('essay_sections', 'N/A')}/5 complete
-- **Has Reasoning:** {metrics['new'].get('has_reasoning', False)}
-- **Variables Mapped in Reasoning:** {metrics['new'].get('reasoning_variables_mapped', 'N/A')}
-- **Key Tensions Identified:** {metrics['new'].get('reasoning_tensions', 'N/A')}
-- **Has Output:** {metrics['new'].get('has_output', False)}
-- **Output Length:** {metrics['new'].get('output_length', 0)} characters
-- **Dialectical Ratio:** {metrics['new'].get('dialectical_ratio', 'N/A') if isinstance(metrics['new'].get('dialectical_ratio'), str) else f"{metrics['new'].get('dialectical_ratio', 0):.2f}"}
-- **Error:** {metrics['new'].get('error') or 'None'}
-
-### Comparison
-
+| Metric | OLD + mini | OLD + full | NEW + mini | NEW + full |
+|--------|-----------|-----------|-----------|-----------|
 """
 
-    if metrics['old']['latency_ms'] > 0 and metrics['new']['latency_ms'] > 0:
-        diff_ms = metrics['new']['latency_ms'] - metrics['old']['latency_ms']
-        pct_diff = (metrics['new']['latency_ms'] / metrics['old']['latency_ms'] - 1) * 100
-        faster_slower = 'faster ⚡' if diff_ms < 0 else 'slower 🐌'
-        content += f"- **Latency Difference:** {abs(diff_ms):.0f} ms ({abs(pct_diff):.1f}% {faster_slower})\n"
+    metric_rows = [
+        ("Success", lambda m: "✅" if m["success"] else "❌"),
+        ("Latency (s)", lambda m: f"{m['latency_ms']/1000:.1f}"),
+        ("Output length", lambda m: str(m.get("output_length", "—"))),
+        ("Variables analyzed", lambda m: str(m.get("variables_analyzed", m.get("valid_variables", "—") and len(m.get("valid_variables", []))))),
+        ("Essay sections", lambda m: f"{m['essay_sections']}/5" if "essay_sections" in m else "—"),
+        ("Dialectical ratio", lambda m: f"{m['dialectical_ratio']:.2f}" if "dialectical_ratio" in m else "—"),
+        ("Divergence index", lambda m: f"{m['divergence_index']:.2f}" if "divergence_index" in m else "—"),
+        ("Has reasoning", lambda m: "✅" if m.get("has_reasoning") else "—"),
+        ("Error", lambda m: m.get("error") or "None"),
+    ]
 
-    if metrics['old'].get('output_length') and metrics['new'].get('output_length'):
-        content += f"- **Output Length Difference:** {metrics['new']['output_length'] - metrics['old']['output_length']} characters\n"
+    for row_label, extractor in metric_rows:
+        row = f"| {row_label} |"
+        for key in CELL_KEYS:
+            try:
+                row += f" {extractor(cell_metrics[key])} |"
+            except Exception:
+                row += " — |"
+        content += row + "\n"
 
-    content += "\n---\n\n## Analysis Outputs\n\n### OLD Architecture Output\n\n"
+    content += "\n---\n\n## Analysis Outputs\n\n"
 
-    old_formatted = old_result.get("result", {}).get("formatted_report", "No output generated")
-    if old_formatted and old_formatted != "No output generated":
-        content += f"```\n{old_formatted[:6000]}\n```\n\n"
-        if len(old_formatted) > 6000:
-            content += f"*(Truncated from {len(old_formatted)} characters)*\n\n"
-    else:
-        content += f"**No output generated**\n\nError: {old_result.get('error', 'Unknown')}\n\n"
-
-    content += "---\n\n### NEW Architecture Output\n\n"
-
-    new_formatted = new_result.get("result", {}).get("formatted_report", "No output generated")
-    if new_formatted and new_formatted != "No output generated":
-        content += f"```\n{new_formatted[:6000]}\n```\n\n"
-        if len(new_formatted) > 6000:
-            content += f"*(Truncated from {len(new_formatted)} characters)*\n\n"
-    else:
-        content += f"**No output generated**\n\nError: {new_result.get('error', 'Unknown')}\n\n"
+    for key in CELL_KEYS:
+        label = CELL_LABELS[key]
+        content += f"### {label}\n\n"
+        formatted = cell_results[key].get("result", {}).get("formatted_report", "")
+        if formatted:
+            content += f"```\n{formatted[:5000]}\n```\n"
+            if len(formatted) > 5000:
+                content += f"*(Truncated from {len(formatted)} chars)*\n"
+        else:
+            content += f"**No output.** Error: {cell_results[key].get('error', 'Unknown')}\n"
+        content += "\n"
 
     output_file.write_text(content, encoding='utf-8')
     return output_file
 
 
 def create_summary_markdown(all_results: List[Dict], output_dir: Path) -> Path:
-    """Create summary comparing all questions."""
+    """Create 2x2 summary across all questions."""
 
     output_file = output_dir / "00_FINAL_SUMMARY.md"
 
-    content = f"""# Final Architecture Comparison Summary
+    content = f"""# 2x2 Architecture × Model Comparison
 
 **Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 
-**Test Questions:** {len(all_results)} cross-topic questions
+**Test Questions:** {len(all_results)} (semantic search selected variables)
 
-**Architectures Tested:**
-- OLD (FIXED): detailed_report with validation + real data
-- NEW (ENHANCED): analytical_essay with auto-correction
+**Models:** mini = {MODEL_MINI} | full = {MODEL_FULL}
 
 ---
 
-## Quick Results
+## Success Rate
 
-| Question | Topics | OLD | NEW | OLD Time (s) | NEW Time (s) |
-|----------|--------|-----|-----|--------------|--------------|
+| Question | OLD+mini | OLD+full | NEW+mini | NEW+full |
+|----------|----------|----------|----------|----------|
 """
 
-    for result in all_results:
-        q_id = result["question"]["id"]
-        topics = "/".join(result["question"]["topics"][:2])  # First 2 topics
-        old_success = "✅" if result["metrics"]["old"]["success"] else "❌"
-        new_success = "✅" if result["metrics"]["new"]["success"] else "❌"
-        old_time = result["metrics"]["old"]["latency_ms"] / 1000
-        new_time = result["metrics"]["new"]["latency_ms"] / 1000
+    for r in all_results:
+        q_id = r["question"]["id"]
+        row = f"| {q_id} |"
+        for key in CELL_KEYS:
+            row += " ✅ |" if r["cell_metrics"][key]["success"] else " ❌ |"
+        content += row + "\n"
 
-        content += f"| {q_id} | {topics} | {old_success} | {new_success} | {old_time:.1f} | {new_time:.1f} |\n"
+    content += "\n---\n\n## Latency (seconds)\n\n"
+    content += "| Question | OLD+mini | OLD+full | NEW+mini | NEW+full |\n"
+    content += "|----------|----------|----------|----------|----------|\n"
+    for r in all_results:
+        q_id = r["question"]["id"]
+        row = f"| {q_id} |"
+        for key in CELL_KEYS:
+            ms = r["cell_metrics"][key]["latency_ms"]
+            row += f" {ms/1000:.1f} |"
+        content += row + "\n"
 
-    content += "\n---\n\n## Overall Statistics\n\n"
+    content += "\n---\n\n## Variables Selected per Question\n\n"
+    for r in all_results:
+        q_id = r["question"]["id"]
+        vars_selected = r["question"].get("variables", [])
+        content += f"- **{q_id}** ({len(vars_selected)}): {', '.join(vars_selected)}\n"
 
-    old_success_results = [r for r in all_results if r["metrics"]["old"]["success"]]
-    new_success_results = [r for r in all_results if r["metrics"]["new"]["success"]]
-
-    old_latencies = [r["metrics"]["old"]["latency_ms"] for r in old_success_results]
-    new_latencies = [r["metrics"]["new"]["latency_ms"] for r in new_success_results]
-
-    if old_latencies:
-        content += f"**OLD Average Latency:** {sum(old_latencies) / len(old_latencies):.0f} ms ({sum(old_latencies) / len(old_latencies) / 1000:.1f}s)\n\n"
-    if new_latencies:
-        content += f"**NEW Average Latency:** {sum(new_latencies) / len(new_latencies):.0f} ms ({sum(new_latencies) / len(new_latencies) / 1000:.1f}s)\n\n"
-
-    old_success_rate = len(old_success_results) / len(all_results) * 100 if all_results else 0
-    new_success_rate = len(new_success_results) / len(all_results) * 100 if all_results else 0
-
-    content += f"**OLD Success Rate:** {old_success_rate:.0f}% ({len(old_success_results)}/{len(all_results)})\n\n"
-    content += f"**NEW Success Rate:** {new_success_rate:.0f}% ({len(new_success_results)}/{len(all_results)})\n\n"
-
-    if new_success_results:
-        avg_divergence = sum(r["metrics"]["new"].get("divergence_index", 0) for r in new_success_results) / len(new_success_results)
-        avg_sections = sum(r["metrics"]["new"].get("essay_sections", 0) for r in new_success_results) / len(new_success_results)
-
-        content += f"**NEW Average Divergence Index:** {avg_divergence:.3f}\n\n"
-        content += f"**NEW Average Essay Completeness:** {avg_sections:.1f}/5 sections\n\n"
-
-    content += "---\n\n## Individual Reports\n\n"
-
-    for result in all_results:
-        q_id = result["question"]["id"]
-        query_en = result["question"]["query_en"]
-        old_status = "✅" if result["metrics"]["old"]["success"] else "❌"
-        new_status = "✅" if result["metrics"]["new"]["success"] else "❌"
-        content += f"- [{q_id}](./{q_id}_comparison.md) - {query_en}\n"
-        content += f"  - OLD: {old_status} | NEW: {new_status}\n"
-
-    content += "\n---\n\n## Key Findings\n\n"
-    content += """
-### Both Architectures Now:
-- ✅ Validate variables before processing
-- ✅ Use real data (no mock/placeholder data)
-- ✅ Provide transparent error messages
-- ✅ Maintain data integrity
-- ❌ No silent substitution of variables
-
-### Differences:
-- **OLD:** Strict validation → suggests corrections → user must fix
-- **NEW:** Smart validation → auto-corrects typos → proceeds with warnings
-
-### Cross-Topic Analysis:
-These tests used questions spanning multiple survey topics, which is more representative
-of real-world usage where users ask complex questions that require data from multiple sources.
-
-"""
+    content += "\n---\n\n## Individual Reports\n\n"
+    for r in all_results:
+        q_id = r["question"]["id"]
+        content += f"- [{q_id}](./{q_id}_comparison.md) — {r['question']['query_en']}\n"
 
     output_file.write_text(content, encoding='utf-8')
     return output_file
 
 
 def main():
-    """Main execution."""
+    """Main execution — 2x2: architecture × model."""
 
     print("=" * 80)
-    print("FINAL ARCHITECTURE COMPARISON - 10 CROSS-TOPIC QUESTIONS")
-    print("Testing: FIXED OLD + ENHANCED NEW")
+    print("2x2 ARCHITECTURE × MODEL COMPARISON — 10 QUESTIONS")
+    print(f"  Architectures: detailed_report (OLD) | analytical_essay (NEW)")
+    print(f"  Models:        mini ({MODEL_MINI})")
+    print(f"                 full ({MODEL_FULL})")
     print("=" * 80)
 
-    output_dir = Path("/workspaces/navegador/data/results/architecture_comparison_final")
+    output_dir = Path("/workspaces/navegador/data/results/architecture_comparison_2x2")
     output_dir.mkdir(parents=True, exist_ok=True)
     print(f"\n📁 Output: {output_dir}\n")
 
     all_results = []
+
+    selection_llm = ChatOpenAI(model="gpt-4o-mini")
 
     for i, test_question in enumerate(TEST_QUESTIONS, 1):
         print(f"\n{'=' * 80}")
@@ -491,21 +350,35 @@ def main():
         print(f"Query: {test_question['query']}")
         print(f"{'=' * 80}")
 
-        old_result = run_old_architecture(test_question["variables"], test_question["query"])
-        new_result = run_new_architecture(test_question["variables"], test_question["query"])
+        # Semantic search — shared across all 4 cells
+        print(f"\n🔍 Semantic search...")
+        topic_ids, variables_dict, grade_dict = _variable_selector(
+            test_question["query"], tmp_topic_st, selection_llm, use_simultaneous_retrieval=True
+        )
+        sorted_vars = sorted(grade_dict.items(), key=lambda x: list(x[1].keys())[0], reverse=True)
+        selected_variables = [var_id for var_id, _ in sorted_vars[:10]]
+        print(f"✅ {len(selected_variables)} variables selected: {selected_variables}")
+        test_question["variables"] = selected_variables
 
-        metrics = extract_metrics(old_result, new_result)
+        # Run all 4 cells
+        cell_results = {}
+        for (architecture, model_key) in CELL_KEYS:
+            model_name = TEST_MODELS[model_key]
+            cell_results[(architecture, model_key)] = run_architecture(
+                architecture, selected_variables, test_question["query"], model_name
+            )
+
+        cell_metrics = {key: extract_cell_metrics(cell_results[key]) for key in CELL_KEYS}
 
         comparison_file = create_comparison_markdown(
-            test_question, old_result, new_result, metrics, output_dir
+            test_question, cell_results, cell_metrics, output_dir
         )
 
         all_results.append({
             "question": test_question,
-            "old_result": old_result,
-            "new_result": new_result,
-            "metrics": metrics,
-            "comparison_file": str(comparison_file)
+            "cell_results": cell_results,
+            "cell_metrics": cell_metrics,
+            "comparison_file": str(comparison_file),
         })
 
         print(f"\n✅ Completed {test_question['id']}")
@@ -514,9 +387,9 @@ def main():
         summary_file = create_summary_markdown(all_results, output_dir)
 
         print(f"\n{'=' * 80}")
-        print("COMPARISON COMPLETE")
+        print("2x2 COMPARISON COMPLETE")
         print(f"{'=' * 80}")
-        print(f"\n📊 {len(all_results)} questions tested")
+        print(f"\n📊 {len(all_results)} questions × 4 cells = {len(all_results) * 4} runs")
         print(f"📄 Summary: {summary_file}")
         print(f"📁 All files: {output_dir}")
 

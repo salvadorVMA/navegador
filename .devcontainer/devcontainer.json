@@ -32,6 +32,9 @@
     "ANTHROPIC_API_KEY": {
       "description": "API key for testing your agent (NOT for Claude Code)"
     },
+    "OPENAI_API_KEY": {
+      "description": "OpenAI API key for embeddings and analysis (required for ChromaDB population)"
+    },
     "CLAUDE_CREDENTIALS_BASE64": {
       "description": "Base64-encoded Claude Code authentication credentials"
     }

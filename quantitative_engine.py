@@ -472,22 +472,18 @@ def build_quantitative_report(
     df_tables_override: Optional[Dict] = None,
     pregs_dict_override: Optional[Dict] = None,
     auto_correct: bool = True,
-    relevance_filter: bool = True,
 ) -> QuantitativeReport:
     """
     Build a complete quantitative report for all selected variables.
 
-    ENHANCED:
     - Auto-correction constrained to same survey code (prevents cross-topic subs)
-    - Relevance gate using ChromaDB + expert grading (when user_query provided)
 
     Args:
         selected_variables: List of variable IDs
-        user_query: The user's query (enables relevance filtering when provided)
+        user_query: Reserved for future use / logging
         df_tables_override: Optional override for testing
         pregs_dict_override: Optional override for testing
         auto_correct: If True, attempts to correct typos in variable IDs
-        relevance_filter: If True and user_query provided, filters by relevance
 
     Returns:
         QuantitativeReport instance
@@ -514,13 +510,7 @@ def build_quantitative_report(
         else:
             print(f"Warning: Variable {var_id} not found in df_tables")
 
-    # Phase 2: Relevance gate (if query provided)
-    if user_query and relevance_filter and resolved_ids:
-        resolved_ids, relevance_grades = filter_variables_by_relevance(
-            resolved_ids, user_query
-        )
-
-    # Phase 3: Compute statistics for surviving variables
+    # Phase 2: Compute statistics for resolved variables
     variables = []
     for var_id in resolved_ids:
         stats = compute_variable_statistics(var_id, df_tables_override, pregs_dict_override)
