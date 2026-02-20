@@ -419,6 +419,122 @@ def _error_result(user_query: str, selected_variables: list, error_msg: str) -> 
 
 
 # =============================================================================
+# REPORT FORMATTING — HELPERS
+# =============================================================================
+
+def _format_variable_details(quant_report: Optional[QuantitativeReport]) -> str:
+    """Render the per-variable statistics block for the appendix."""
+    if not quant_report or not quant_report.variables:
+        return ""
+    lines = ["\n### Variable Details\n"]
+    for v in quant_report.variables:
+        lines.append(f"\n**{v.var_id}** ({v.shape})")
+        lines.append(f"- Question: {v.question_text[:150]}")
+        lines.append(f"- Mode: {v.modal_response} ({v.modal_percentage:.1f}%)")
+        lines.append(
+            f"- Runner-up: {v.runner_up_response} ({v.runner_up_percentage:.1f}%), "
+            f"margin: {v.margin:.1f}pp"
+        )
+        lines.append(f"- HHI: {v.hhi:.0f}")
+        if v.minority_opinions:
+            minorities = ", ".join(
+                f"{label} ({pct:.1f}%)" for label, pct in v.minority_opinions.items()
+            )
+            lines.append(f"- Minority opinions: {minorities}")
+    return "\n".join(lines) + "\n"
+
+
+def _cramers_v_strength(v: float) -> str:
+    """Label a Cramér's V value as weak / moderate / strong."""
+    if v < 0.1:
+        return 'weak'
+    if v < 0.3:
+        return 'moderate'
+    return 'strong'
+
+
+def _format_bivariate_variable_block(variables) -> str:
+    """Render the per-variable demographic breakdown detail lines."""
+    lines = ["\n**Variable-Level Demographic Detail:**"]
+    for v in variables:
+        if not v.bivariate_stats:
+            continue
+        lines.append(f"\n*{v.var_id}*")
+        for ses_var, biv in sorted(
+            v.bivariate_stats.items(),
+            key=lambda x: x[1].get('cramers_v') or 0,
+            reverse=True,
+        ):
+            cv = biv.get('cramers_v') or 0
+            p = biv.get('p_value') or 1.0
+            top_groups = [
+                f"{g}: {info['first']['category']} ({info['first']['proportion']*100:.0f}%)"
+                for g, info in list(biv.get('leaders', {}).items())[:3]
+                if 'first' in info
+            ]
+            suffix = (" — " + "; ".join(top_groups)) if top_groups else ""
+            lines.append(f"- {ses_var}: V={cv:.3f} (p={p:.3f}){suffix}")
+    return "\n".join(lines)
+
+
+def _format_demographic_fault_lines(
+    fault_lines: dict,
+    quant_report: Optional[QuantitativeReport],
+) -> str:
+    """Render the demographic fault lines table and per-variable breakdowns."""
+    lines = [
+        "\n### Demographic Fault Lines\n",
+        "| Dimension | Mean Cramér's V | Max Cramér's V | Variables |",
+        "|-----------|----------------|----------------|----------|",
+    ]
+    for ses_var, info in fault_lines.items():
+        strength = _cramers_v_strength(info['mean_cramers_v'])
+        lines.append(
+            f"| {ses_var} | {info['mean_cramers_v']:.3f} ({strength}) "
+            f"| {info['max_cramers_v']:.3f} | {info['n_significant']} |"
+        )
+
+    if quant_report and any(v.bivariate_stats for v in quant_report.variables):
+        lines.append(_format_bivariate_variable_block(quant_report.variables))
+
+    return "\n".join(lines) + "\n"
+
+
+def _format_cross_dataset_bivariate(cross_dataset_bivariate: dict) -> str:
+    """Render simulation-based cross-dataset bivariate estimates as a markdown table."""
+    lines = [
+        "\n### Cross-Dataset Bivariate Estimates (Simulation-Based)\n",
+        "| Variable Pair | Cramér's V | p-value | Strength | n simulated |",
+        "|---------------|------------|---------|----------|-------------|",
+    ]
+    for est in cross_dataset_bivariate.values():
+        cv = est.get('cramers_v', 0)
+        pv = est.get('p_value', 1)
+        strength = _cramers_v_strength(cv)
+        lines.append(
+            f"| {est.get('var_a')} × {est.get('var_b')} "
+            f"| {cv:.3f} | {pv:.3f} | {strength} | {est.get('n_simulated')} |"
+        )
+    lines.append("\n*Estimates derived from SES-bridge regression simulation.*\n")
+    return "\n".join(lines)
+
+
+def _format_reasoning_section(reasoning_dict: Optional[dict]) -> str:
+    """Render the reasoning outline block."""
+    if not reasoning_dict or not reasoning_dict.get('argument_structure'):
+        return ""
+    lines = [
+        "\n### Reasoning Outline\n",
+        f"**Argument Structure:** {reasoning_dict['argument_structure']}",
+    ]
+    tensions = reasoning_dict.get('key_tensions', [])
+    if tensions:
+        lines.append("\n**Key Tensions:**")
+        lines.extend(f"- {t}" for t in tensions)
+    return "\n".join(lines) + "\n"
+
+
+# =============================================================================
 # REPORT FORMATTING
 # =============================================================================
 
@@ -465,29 +581,14 @@ def format_analytical_essay_report(
 | Dispersed Variables | {metadata.get('shape_counts', {}).get('dispersed', 0)} |
 """
 
-    # Per-variable detail
-    if quant_report and quant_report.variables:
-        report += "\n### Variable Details\n"
-        for v in quant_report.variables:
-            report += f"\n**{v.var_id}** ({v.shape})\n"
-            report += f"- Question: {v.question_text[:150]}\n"
-            report += f"- Mode: {v.modal_response} ({v.modal_percentage:.1f}%)\n"
-            report += f"- Runner-up: {v.runner_up_response} ({v.runner_up_percentage:.1f}%), margin: {v.margin:.1f}pp\n"
-            report += f"- HHI: {v.hhi:.0f}\n"
-            if v.minority_opinions:
-                minorities = ", ".join(
-                    f"{label} ({pct:.1f}%)" for label, pct in v.minority_opinions.items()
-                )
-                report += f"- Minority opinions: {minorities}\n"
-
-    # Reasoning outline (if available)
-    if reasoning_dict and reasoning_dict.get('argument_structure'):
-        report += "\n### Reasoning Outline\n"
-        report += f"**Argument Structure:** {reasoning_dict['argument_structure']}\n"
-        if reasoning_dict.get('key_tensions'):
-            report += "\n**Key Tensions:**\n"
-            for t in reasoning_dict['key_tensions']:
-                report += f"- {t}\n"
+    report += _format_variable_details(quant_report)
+    fault_lines = quant_report.demographic_fault_lines if quant_report else None
+    if fault_lines:
+        report += _format_demographic_fault_lines(fault_lines, quant_report)
+    cross_biv = quant_report.cross_dataset_bivariate if quant_report else None
+    if cross_biv:
+        report += _format_cross_dataset_bivariate(cross_biv)
+    report += _format_reasoning_section(reasoning_dict)
 
     polarized = metadata.get('polarized_variables', [])
     dispersed = metadata.get('dispersed_variables', [])

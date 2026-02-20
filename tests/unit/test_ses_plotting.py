@@ -8,7 +8,6 @@ and verifying that the visualization logic works correctly.
 
 import sys
 import os
-sys.path.append('/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador')
 
 from plotting_utils_ses import (
     create_ses_relationship_plot, 
