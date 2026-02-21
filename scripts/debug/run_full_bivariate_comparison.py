@@ -30,70 +30,80 @@ TEST_QUESTIONS = [
         "query": "¿Cómo se relacionan la religión y la política en México?",
         "query_en": "How do religion and politics relate in Mexico?",
         "topics": ["Religion", "Political Culture"],
-        "variables": ["p1|REL", "p2|REL", "p1|CUL", "p3|CUL"],
+        "variables": ["p2|REL", "p3|REL", "p4|REL", "p5|REL",
+                      "p1|CUL", "p2|CUL", "p3|CUL", "p4|CUL", "p5|CUL"],
     },
     {
         "id": "q2_environment_economy",
         "query": "¿Cómo equilibran los mexicanos las preocupaciones ambientales con el desarrollo económico?",
         "query_en": "How do Mexicans balance environmental concerns with economic development?",
         "topics": ["Environment", "Economy"],
-        "variables": ["p1|MED", "p2|MED", "p1|ECO", "p2|ECO"],
+        "variables": ["p2|MED", "p4|MED", "p5|MED", "p6|MED",
+                      "p1|ECO", "p2|ECO", "p3|ECO", "p4|ECO", "p5|ECO"],
     },
     {
         "id": "q3_education_poverty",
         "query": "¿Qué relación ven los mexicanos entre educación y pobreza?",
         "query_en": "What relationship do Mexicans see between education and poverty?",
         "topics": ["Education", "Poverty"],
-        "variables": ["p1|EDU", "p2|EDU", "p1|POB", "p2|POB"],
+        "variables": ["p2|EDU", "p3|EDU", "p4|EDU", "p5|EDU", "p6|EDU",
+                      "p1|POB", "p2|POB", "p3|POB", "p4|POB"],
     },
     {
         "id": "q4_gender_family",
         "query": "¿Cómo están cambiando los roles de género en la familia mexicana?",
         "query_en": "How are gender roles changing in the Mexican family?",
         "topics": ["Gender", "Family"],
-        "variables": ["p1|GEN", "p2|GEN", "p1|FAM", "p2|FAM"],
+        "variables": ["p1|GEN", "p2|GEN", "p5|GEN", "p6|GEN",
+                      "p1|FAM", "p2|FAM", "p3|FAM", "p4|FAM", "p5|FAM"],
     },
     {
         "id": "q5_migration_culture",
         "query": "¿Cómo afecta la migración a la identidad cultural mexicana?",
         "query_en": "How does migration affect Mexican cultural identity?",
         "topics": ["Migration", "Identity"],
-        "variables": ["p1|MIG", "p2|MIG", "p5_1|IDE", "p7|IDE"],
+        "variables": ["p1|MIG", "p2|MIG", "p9|MIG", "p13|MIG",
+                      "p4|IDE", "p6|IDE", "p7|IDE", "p8|IDE", "p9|IDE"],
     },
     {
         "id": "q6_health_poverty",
         "query": "¿Cómo se relaciona el acceso a la salud con la pobreza en México?",
         "query_en": "How does health access relate to poverty in Mexico?",
         "topics": ["Health", "Poverty"],
-        "variables": ["p1|SAL", "p2|SAL", "p1|POB", "p3|POB"],
+        "variables": ["p1|SAL", "p2|SAL", "p3|SAL", "p4|SAL", "p5|SAL",
+                      "p1|POB", "p2|POB", "p3|POB", "p4|POB"],
     },
     {
         "id": "q7_democracy_corruption",
         "query": "¿Qué piensan los mexicanos sobre la relación entre democracia y corrupción?",
         "query_en": "What do Mexicans think about the relationship between democracy and corruption?",
         "topics": ["Political Culture", "Corruption"],
-        "variables": ["p1|CUL", "p3|CUL", "p2|COR", "p3|COR"],
+        "variables": ["p1|CUL", "p2|CUL", "p3|CUL", "p4|CUL", "p5|CUL",
+                      "p2|COR", "p3|COR", "p5|COR", "p8|COR"],
     },
     {
         "id": "q8_indigenous_discrimination",
         "query": "¿Cómo perciben los mexicanos la discriminación hacia pueblos indígenas?",
         "query_en": "How do Mexicans perceive discrimination against indigenous peoples?",
         "topics": ["Indigenous", "Human Rights"],
-        "variables": ["p1|IND", "p2|IND", "p1|DER", "p2|DER"],
+        "variables": ["p1|IND", "p2|IND", "p3|IND", "p4|IND", "p5|IND",
+                      "p2|DER", "p3|DER", "p4|DER", "p5|DER"],
     },
     {
         "id": "q9_technology_education",
         "query": "¿Cómo impacta la tecnología en la educación según los mexicanos?",
         "query_en": "How does technology impact education according to Mexicans?",
         "topics": ["Technology", "Education"],
-        "variables": ["p1|SOC", "p2|SOC", "p1|EDU", "p3|EDU"],
+        "variables": ["p2|SOC", "p4|SOC", "p6|SOC", "p7|SOC",
+                      "p2|EDU", "p3|EDU", "p4|EDU", "p5|EDU", "p6|EDU"],
     },
     {
         "id": "q10_security_justice",
         "query": "¿Qué relación ven los mexicanos entre seguridad pública y justicia?",
         "query_en": "What relationship do Mexicans see between public security and justice?",
         "topics": ["Security", "Justice"],
-        "variables": ["p1|SEG", "p2|SEG", "p1|JUS", "p2|JUS"],
+        "variables": ["p3|SEG", "p4|SEG", "p5|SEG", "p6|SEG", "p7|SEG",
+                      "p1|JUS", "p2|JUS", "p4|JUS", "p7|JUS"],
     },
 ]
 
@@ -180,18 +190,43 @@ def _render_fault_lines_table(fl: Dict) -> str:
 def _render_cross_dataset_table(cb: Optional[Dict]) -> str:
     if not cb:
         return "*No cross-dataset pairs estimated (variables may share a survey).*\n"
-    rows = "\n".join(
-        f"| {est['var_a']} × {est['var_b']} "
-        f"| {est['cramers_v']:.3f} ({_cramers_strength(est['cramers_v'])}) "
-        f"| {est['p_value']:.3f} | {est['n_simulated']} |"
-        for est in cb.values()
-    )
-    return (
-        "| Variable Pair | Cramér's V | p-value | n sim |\n"
-        "|---------------|------------|---------|-------|\n"
-        + rows + "\n"
-        + "\n*Estimates via SES-bridge simulation (OrderedModel / MNLogit).*\n"
-    )
+    has_patterns = any(est.get('top_contrasts') for est in cb.values())
+    lines = []
+    for est in cb.values():
+        tc = est.get('top_contrasts')
+        pattern = "—"
+        if has_patterns and tc:
+            top_cat = next(iter(tc))
+            info = tc[top_cat]
+            pattern = (
+                f"\"{top_cat}\": {info['min_pct']*100:.0f}% "
+                f"(\"{info['min_when']}\") → {info['max_pct']*100:.0f}% "
+                f"(\"{info['max_when']}\")"
+            )
+        if has_patterns:
+            lines.append(
+                f"| {est['var_a']} × {est['var_b']} "
+                f"| {est['cramers_v']:.3f} ({_cramers_strength(est['cramers_v'])}) "
+                f"| {est['p_value']:.3f} | {pattern} | {est['n_simulated']} |"
+            )
+        else:
+            lines.append(
+                f"| {est['var_a']} × {est['var_b']} "
+                f"| {est['cramers_v']:.3f} ({_cramers_strength(est['cramers_v'])}) "
+                f"| {est['p_value']:.3f} | {est['n_simulated']} |"
+            )
+    rows = "\n".join(lines)
+    if has_patterns:
+        header = (
+            "| Variable Pair | Cramér's V | p-value | Key Pattern | n sim |\n"
+            "|---------------|------------|---------|-------------|-------|\n"
+        )
+    else:
+        header = (
+            "| Variable Pair | Cramér's V | p-value | n sim |\n"
+            "|---------------|------------|---------|-------|\n"
+        )
+    return header + rows + "\n\n*Estimates via SES-bridge simulation (OrderedModel / MNLogit).*\n"
 
 
 def save_question_markdown(

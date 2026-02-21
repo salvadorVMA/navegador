@@ -104,19 +104,8 @@ def test_analytical_essay_end_to_end():
         essay = result['essay']
         print(f"Essay sections: {list(essay.keys())}")
 
-        # Validate dialectical structure
-        prevailing = essay.get('prevailing_view', '')
-        counter = essay.get('counterargument', '')
-        print(f"Prevailing view length: {len(prevailing)} chars")
-        print(f"Counterargument length: {len(counter)} chars")
-
-        if len(counter) >= len(prevailing):
-            print("PASS: Counterargument >= Prevailing view")
-        else:
-            print(f"WARN: Counterargument shorter by {len(prevailing) - len(counter)} chars")
-
-        # Check all sections present
-        for section in ['summary', 'introduction', 'prevailing_view', 'counterargument', 'implications']:
+        # Check all sections present (data-driven structure)
+        for section in ['summary', 'data_landscape', 'evidence', 'complications', 'implications']:
             assert section in essay, f"Missing section: {section}"
             assert len(essay[section]) > 0, f"Empty section: {section}"
             print(f"  {section}: {len(essay[section])} chars")

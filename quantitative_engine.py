@@ -662,10 +662,59 @@ def format_quantitative_report_for_llm(report: QuantitativeReport) -> str:
     shape_parts = [f"{shape}={count}" for shape, count in report.shape_summary.items()
                    if count > 0]
     lines.append(f"Shape summary: {', '.join(shape_parts)}")
+    lines.append("")
 
-    # Demographic fault lines summary (if available)
+    # Cross-dataset bivariate estimates FIRST (primary evidence about topic relationships)
+    if report.cross_dataset_bivariate:
+        lines.append("=== CROSS-DATASET BIVARIATE ASSOCIATIONS ===")
+        lines.append("(Simulation-based via SES bridge — primary evidence about topic relationships)")
+        for pair_key, est in report.cross_dataset_bivariate.items():
+            cv = est.get('cramers_v', 0)
+            pv = est.get('p_value', 1)
+            strength = (
+                'weak' if cv < 0.1
+                else 'moderate' if cv < 0.3
+                else 'strong'
+            )
+            sig = "SIGNIFICANT" if pv < 0.05 else "NOT SIGNIFICANT"
+            lines.append(
+                f"  - {est.get('var_a')} × {est.get('var_b')}: "
+                f"V={cv:.3f} ({strength}), p={pv:.3f} ({sig}), n={est.get('n_simulated')}"
+            )
+
+            # Cross-tab conditional distribution profiles
+            col_profiles = est.get('column_profiles')
+            top_contrasts = est.get('top_contrasts')
+            if col_profiles:
+                var_a = est.get('var_a', '?')
+                var_b = est.get('var_b', '?')
+                lines.append(
+                    f"    How {var_b} responses shift across {var_a} categories:"
+                )
+                for cond_cat, profile in col_profiles.items():
+                    sorted_items = sorted(
+                        profile.items(), key=lambda x: x[1], reverse=True
+                    )
+                    parts = [f"{cat}={pct*100:.1f}%" for cat, pct in sorted_items[:4]]
+                    if len(sorted_items) > 4:
+                        parts.append("...")
+                    lines.append(
+                        f"      When {var_a}=\"{cond_cat}\": {', '.join(parts)}"
+                    )
+                if top_contrasts:
+                    top_cat = next(iter(top_contrasts))
+                    tc = top_contrasts[top_cat]
+                    lines.append(
+                        f"    Key contrast: \"{top_cat}\" ranges from "
+                        f"{tc['min_pct']*100:.1f}% (when \"{tc['min_when']}\") to "
+                        f"{tc['max_pct']*100:.1f}% (when \"{tc['max_when']}\")"
+                    )
+        lines.append("")
+
+    # Demographic fault lines summary
     if report.demographic_fault_lines:
-        lines.append("Demographic fault lines (ranked by Cramér's V):")
+        lines.append("=== DEMOGRAPHIC FAULT LINES ===")
+        lines.append("(Ranked by mean Cramér's V across variables)")
         for ses_var, info in report.demographic_fault_lines.items():
             strength = (
                 'weak' if info['mean_cramers_v'] < 0.1
@@ -723,23 +772,6 @@ def format_quantitative_report_for_llm(report: QuantitativeReport) -> str:
         else:
             lines.append("Demographic breakdown: no significant differences (p≥0.05)")
 
-        lines.append("")
-
-    # Cross-dataset bivariate estimates (simulation-based)
-    if report.cross_dataset_bivariate:
-        lines.append("Cross-dataset bivariate estimates (simulation-based via SES bridge):")
-        for pair_key, est in report.cross_dataset_bivariate.items():
-            cv = est.get('cramers_v', 0)
-            pv = est.get('p_value', 1)
-            strength = (
-                'weak' if cv < 0.1
-                else 'moderate' if cv < 0.3
-                else 'strong'
-            )
-            lines.append(
-                f"  - {est.get('var_a')} × {est.get('var_b')}: "
-                f"V={cv:.2f} ({strength}), p={pv:.3f}, n={est.get('n_simulated')}"
-            )
         lines.append("")
 
     # Overall
@@ -966,13 +998,19 @@ def _estimate_cross_dataset_pairs(
 
 
 def _format_bivariate_leaders(leaders: Dict[str, Any]) -> str:
-    """Format top response per demographic group as a compact string for LLM."""
+    """Format top 2 responses per demographic group as a compact string for LLM."""
     if not leaders:
         return ""
     parts = []
-    for group, info in list(leaders.items())[:3]:
+    for group, info in list(leaders.items())[:4]:
         first = info.get('first', {})
-        cat = first.get('category', '?')
-        prop = first.get('proportion', 0) * 100
-        parts.append(f"{group}→{cat}({prop:.0f}%)")
-    return " [" + "; ".join(parts) + "]" if parts else ""
+        second = info.get('second', {})
+        cat1 = first.get('category', '?')
+        prop1 = first.get('proportion', 0) * 100
+        cat2 = second.get('category', '')
+        prop2 = second.get('proportion', 0) * 100
+        if cat2:
+            parts.append(f"{group}: {cat1}={prop1:.0f}%, {cat2}={prop2:.0f}%")
+        else:
+            parts.append(f"{group}: {cat1}={prop1:.0f}%")
+    return "\n      " + "; ".join(parts) if parts else ""

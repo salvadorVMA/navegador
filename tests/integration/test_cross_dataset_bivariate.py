@@ -109,6 +109,18 @@ def test_phase5_fires_for_cross_survey_variables():
         assert est['chi_square'] >= 0.0, f"chi_square negative: {est['chi_square']}"
         assert est['n_simulated'] == 2000
 
+        # Phase 5 cross-tab profiles (column_profiles + top_contrasts)
+        assert 'column_profiles' in est, f"{pair_key}: missing column_profiles"
+        assert 'top_contrasts' in est, f"{pair_key}: missing top_contrasts"
+        cp = est['column_profiles']
+        assert isinstance(cp, dict) and len(cp) > 0, (
+            f"{pair_key}: column_profiles should be non-empty dict"
+        )
+        tc = est['top_contrasts']
+        assert isinstance(tc, dict) and len(tc) <= 3, (
+            f"{pair_key}: top_contrasts should have ≤3 entries"
+        )
+
 
 # ---------------------------------------------------------------------------
 # Test 2: Phase 5 is silent when all variables share a survey (data-only)

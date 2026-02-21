@@ -1,12 +1,12 @@
 # q2_environment_economy
 
-**Generated:** 2026-02-20 02:30:29
+**Generated:** 2026-02-21 21:10:34
 
 ## Query
 **ES:** ¿Cómo equilibran los mexicanos las preocupaciones ambientales con el desarrollo económico?
 **EN:** How do Mexicans balance environmental concerns with economic development?
 **Topics:** Environment, Economy
-**Variables:** p1|MED, p2|MED, p1|ECO, p2|ECO
+**Variables:** p2|MED, p4|MED, p5|MED, p6|MED, p1|ECO, p2|ECO, p3|ECO, p4|ECO, p5|ECO
 
 ---
 
@@ -15,11 +15,11 @@
 | Metric | OLD (detailed_report) | NEW (analytical_essay) |
 |--------|----------------------|------------------------|
 | Success | ✅ | ✅ |
-| Latency | 481 ms | 20069 ms |
-| Variables Analyzed | — | 4 |
-| Divergence Index | — | 75% |
-| SES Bivariate Vars | — | 4/4 |
-| Cross-Dataset Pairs | — | 4 |
+| Latency | 239 ms | 28715 ms |
+| Variables Analyzed | — | 9 |
+| Divergence Index | — | 89% |
+| SES Bivariate Vars | — | 9/9 |
+| Cross-Dataset Pairs | — | 6 |
 
 ---
 
@@ -27,20 +27,23 @@
 
 | Dimension | Mean Cramér's V | Max Cramér's V | Variables |
 |-----------|----------------|----------------|----------|
-| region | 0.134 (moderate) | 0.169 | 4 |
-| edad | 0.089 (weak) | 0.092 | 2 |
+| region | 0.141 (moderate) | 0.171 | 9 |
+| sexo | 0.100 (moderate) | 0.100 | 1 |
+| edad | 0.097 (weak) | 0.119 | 3 |
 
 
 ---
 
 ## NEW: Phase 5 — Cross-Dataset Bivariate Estimates
 
-| Variable Pair | Cramér's V | p-value | n sim |
-|---------------|------------|---------|-------|
-| p41|MED × p1|ECO | 0.052 (weak) | 0.068 | 2000 |
-| p41|MED × p2|ECO | 0.050 (weak) | 0.085 | 2000 |
-| p2|MED × p1|ECO | 0.051 (weak) | 0.072 | 2000 |
-| p2|MED × p2|ECO | 0.032 (weak) | 0.742 | 2000 |
+| Variable Pair | Cramér's V | p-value | Key Pattern | n sim |
+|---------------|------------|---------|-------------|-------|
+| p2|MED × p1|ECO | 0.043 (weak) | 0.279 | "1.0": 44% ("3.0") → 52% ("1.0") | 2000 |
+| p2|MED × p2|ECO | 0.032 (weak) | 0.724 | "2.0": 25% ("4.0") → 34% ("1.0") | 2000 |
+| p2|MED × p3|ECO | 0.050 (weak) | 0.227 | "2.0": 26% ("2.0") → 62% ("9.0") | 2000 |
+| p2|MED × p4|ECO | 0.035 (weak) | 0.599 | "4.0": 14% ("8.0") → 18% ("1.0") | 2000 |
+| p2|MED × p5|ECO | 0.042 (weak) | 0.790 | "1.0": 34% ("3.0") → 49% ("2.0") | 2000 |
+| p4|MED × p1|ECO | 0.059 (weak) | 0.140 | "4.0": 28% ("1.0") → 40% ("2.0") | 2000 |
 
 *Estimates via SES-bridge simulation (OrderedModel / MNLogit).*
 
@@ -56,31 +59,28 @@
 **Query:** ¿Cómo equilibran los mexicanos las preocupaciones ambientales con el desarrollo económico?
 
 ## Executive Summary
-Los mexicanos equilibran sus preocupaciones ambientales con el desarrollo económico al reconocer la importancia de políticas que integren ambas dimensiones. Existe una fuerte demanda de atención a los problemas ambientales, pero también una urgente necesidad de abordar los desafíos económicos y garantizar la estabilidad social.
+Los mexicanos equilibran sus preocupaciones ambientales con el desarrollo económico priorizando la estabilidad social y económica mientras mantienen conciencia sobre problemas ambientales específicos como la contaminación del aire. Esta visión muestra que las políticas deben integrar ambos aspectos para conectar mejor con las prioridades y preocupaciones ciudadanas.
 
 ## Analysis Overview  
-Los resultados de la encuesta reflejan una fuerte preocupación por las cuestiones ambientales, con el 75.58% de los encuestados apoyando su inclusión en la toma de decisiones, mientras que el 72.92% expresa insatisfacción con la situación económica nacional y el 66.83% con sus propias condiciones económicas. Además, la estabilidad social es considerada una prioridad máxima por el 38.58% de la población, lo que resalta la compleja interacción entre las prioridades ambientales, la insatisfacción económica y la necesidad de mantener el orden social.
+La encuesta revela que casi la mitad de los mexicanos perciben negativamente la situación ambiental, con un 47.59% a nivel nacional (p4|MED) y un 34.42% a nivel local (p5|MED), aunque la prioridad pública se orienta principalmente hacia mantener el orden (38.58%) y fomentar la participación política (30.58%) (p2|MED). La insatisfacción económica es muy alta, con un 72.92% descontentos con la economía nacional (p1|ECO) y un 66.83% con su economía personal (p2|ECO), acompañada de un futuro poco optimista para las nuevas generaciones (28.58% creen que mejorará, mientras que el 29.25% y 32.42% esperan condiciones peores o similares) (p8|ECO). La contaminación del aire es la preocupación ambiental más sentida (26.58%) (p6|MED), mientras que el cambio climático recibe menor atención (6.25%) (p6|MED). Estos resultados muestran que, aunque preocupa el medio ambiente, la población prioriza la estabilidad social y económica, lo que evidencia la necesidad de que las políticas ambientales se vinculen con el desarrollo económico y las demandas sociales para lograr mayor impacto y apoyo.
 
 ## Topic Analysis
 
-### PREOCUPACIONES AMBIENTALES
-Los resultados de la encuesta indican un fuerte consenso público sobre la importancia de las cuestiones ambientales, con un 75.58% de los encuestados afirmando que las autoridades deben considerar plenamente los problemas ambientales en la toma de decisiones (p41|MED). Esta sólida base de apoyo proporciona un claro mandato para que los responsables políticos y las organizaciones ambientales promuevan políticas más fuertes y promuevan la participación comunitaria en la sostenibilidad y la concienciación ambiental.
+### PERCEPCIÓN AMBIENTAL
+La percepción pública sobre las condiciones ambientales es mayormente negativa tanto a nivel nacional como local, con un 47.59% calificando la situación ambiental como 'Mala' o 'Muy mala' (35.17% y 12.42% respectivamente) a nivel nacional (p4|MED), y un 34.42% con percepción negativa local (26.00% 'Mala' y 8.42% 'Muy mala') (p5|MED). Esta percepción refleja una preocupación importante que debería orientar la formulación de políticas, iniciativas ambientales y campañas de concientización, destacando la urgencia de intervenciones coordinadas y la participación comunitaria para enfrentar el deterioro ambiental. La preocupación mayor dentro de los temas ambientales es la contaminación del aire (26.58%) frente a una consideración menor del cambio climático (6.25%) (p6|MED), lo cual sugiere que la educación y comunicación deben conectar las problemáticas ambientales con prioridades sociales y económicas más inmediatas como el orden y la participación política (38.58% y 30.58% respectivamente) (p2|MED).
 
-### DESAFÍOS ECONÓMICOS
-Simultáneamente, los datos revelan un amplio descontento con las condiciones económicas, ya que el 72.92% de los encuestados expresa insatisfacción con la situación económica nacional (p1|ECO), y el 66.83% está insatisfecho con sus circunstancias económicas personales (p2|ECO). Estas cifras subrayan los desafíos económicos significativos percibidos por el público y reflejan un entorno crítico para la política económica y la intervención.
+### INSATISFACCIÓN ECONÓMICA
+Existe un alto nivel de insatisfacción con la situación económica a nivel nacional y personal, con un 72.92% de los encuestados insatisfechos con la economía nacional (37.25% 'Poco' y 35.67% 'Nada' satisfechos) (p1|ECO), y un 66.83% con su situación económica personal (35.08% 'Poco' y 31.75% 'Nada' satisfechos) (p2|ECO). Esta insatisfacción generalizada impacta la percepción sobre el futuro económico, donde sólo el 28.58% cree que sus hijos tendrán mejores condiciones, mientras que el 29.25% espera condiciones peores y el 32.42% similares (p8|ECO). Estos datos muestran un escenario de incertidumbre y pesimismo que puede influir en la emigración y en la necesidad de políticas urgentes para mejorar empleo y estabilidad económica.
 
-### ESTABILIDAD SOCIAL
-A pesar del fuerte apoyo a las iniciativas ambientales, la prioridad más alta expresada por la población es la necesidad de mantener el orden en el país, con un 38.58% de los encuestados señalando esto (p2|MED). Esto sugiere que la estabilidad social es percibida como una necesidad fundamental, lo que podría influir en la forma en que se enmarcan e implementan las iniciativas ambientales para que resuenen de manera efectiva en el contexto nacional actual.
+### PRIORIDADES SOCIALES Y POLÍTICAS
+Aunque los temas ambientales son reconocidos, la prioridad pública se centra en mantener el orden (38.58%) y aumentar la participación política (30.58%) (p2|MED), lo que indica que la sociedad mexicana valora más la estabilidad social y la participación ciudadana que las problemáticas ambientales. La preocupación ambiental más relevante es la contaminación del aire (26.58%) frente a una baja importancia atribuida al cambio climático (6.25%) (p6|MED). Esta distribución de prioridades sugiere que los defensores y formuladores de políticas deben enmarcar sus mensajes y estrategias ambientales vinculándolos con las preocupaciones sociales y políticas para lograr mayor aceptación y compromiso ciudadano.
 
 ## Expert Analysis
 
 ### Expert Insight 1
-The survey results illustrate a strong public consensus on the importance of environmental issues, with 75.58% of respondents asserting that authorities should fully consider environmental problems in decision-making and an additional 21.08% supporting partial consideration, underscoring the priority given to environmental concerns within the population (p41|MED). This robust support for environmental priorities provides a clear mandate for policymakers and environmental organizations to advocate for stronger environmental policies and engage communities to sustain and deepen this awareness. Concurrently, the data reveal widespread dissatisfaction with economic conditions, as 72.92% of respondents express dissatisfaction with the national economic situation (p1|ECO), and 66.83% are dissatisfied with their personal economic circumstances (p2|ECO). These figures highlight significant economic challenges perceived by the public, reflecting a critical environment for economic policy and intervention. For experts in economy and employment, these dissatisfaction levels emphasize the urgency for targeted policies aimed at economic stabilization, job market improvements, and tailored support for the workforce. The juxtaposition of high environmental prioritization alongside economic dissatisfaction suggests that stakeholders must consider integrated strategies that address both environmental sustainability and economic well-being to meet public expectations effectively.
-
-### Expert Insight 2
-The survey results indicate a strong public endorsement of incorporating environmental considerations into decision-making, with 75.58% of respondents supporting this approach (p41|MED), which aligns with the need for environmental advocates and policymakers to leverage public sentiment in advancing environmental policies and raising awareness. However, despite this support, the top priority expressed by the population is maintaining order in the country, at 38.58% (p2|MED), overshadowing concerns related directly to economic satisfaction or proactive environmental measures. This suggests that social stability is perceived as a foundational need by the public, which may influence the framing and timing of environmental initiatives to ensure they resonate effectively within the current national context. From an economic and employment perspective, the high 
+The survey results reveal a significant level of negative public perception regarding environmental conditions, both nationally and locally, which directly addresses the concerns raised about informing policy-making, environmental initiatives, and awareness campaigns. Nationally, 47.59% of respondents rate the environmental situation as 'Mala' or 'Muy mala' (35.17% and 12.42% respectively) (p4|MED), indicating nearly half of the population holds a pessimistic view that can influence national policy prioritization. Locally, 34.42% perceive the environment negatively (26.00% 'Mala' and 8.42% 'Muy mala') (p5|MED), showing a somewhat lower but still substantial concern at community levels. These detailed figures provide critical insight for env
 ```
-*(Truncated from 6029 chars)*
+*(Truncated from 9475 chars)*
 
 ---
 
@@ -92,18 +92,39 @@ The survey results indicate a strong public endorsement of incorporating environ
 **Query:** ¿Cómo equilibran los mexicanos las preocupaciones ambientales con el desarrollo económico?
 
 ## Summary
-A strong majority of Mexicans (75.6%) agree that environmental concerns should be considered by authorities before decisions are made, underscoring widespread support for integrating environmental issues into governance. However, this consensus contrasts sharply with polarized opinions on national priorities and economic satisfaction, revealing deep divisions that complicate balancing environmental protection with economic development.
+Los mexicanos muestran una opinión fragmentada y polarizada sobre cómo equilibrar las preocupaciones ambientales con el desarrollo económico, sin una relación significativa entre las prioridades ambientales y la satisfacción económica. Se estimaron seis asociaciones bivariadas entre variables ambientales y económicas, todas con efectos débiles y sin significancia estadística, lo que indica que no hay evidencia clara de que las preocupaciones ambientales influyan en las percepciones económicas o viceversa.
 
-## Introduction
-This analysis draws on four key variables from surveys on environmental attitudes and economic perceptions in Mexico. Among these, one variable exhibits strong consensus regarding the importance of environmental considerations (p41|MED), while the other three variables reveal polarized public opinion concerning national priorities (p2|MED) and satisfaction with both national (p1|ECO) and personal economic situations (p2|ECO). The divergence index shows that 75% of variables lack consensus, highlighting significant fragmentation in how Mexicans balance environmental concerns with economic development. This dialectical tension frames the complexity of public opinion on these intertwined issues.
+## Data Landscape
+Se analizaron nueve variables provenientes de encuestas sobre medio ambiente y economía y empleo, con cinco variables mostrando distribuciones polarizadas y tres dispersas, mientras que solo una variable presenta consenso fuerte. El índice de divergencia indica que el 89% de las variables reflejan falta de acuerdo claro en la opinión pública, evidenciando una fragmentación considerable en las percepciones sobre medio ambiente y desarrollo económico en México.
 
-## Prevailing View
-The clearest dominant pattern emerges from the variable p41|MED, where a substantial majority of 75.6% of respondents affirm that authorities should consider environmental problems before making decisions, with an additional 21.1% agreeing at least in part. This strong consensus indicates that most Mexicans prioritize environmental considerations as integral to governance and policy-making. The minority opposing this view is minimal, with only 2.5% disagreeing. This consensus transcends weak demographic differences by age and region, suggesting a broadly shared value placed on environmental issues. Such a majority stance reflects a public expectation that environmental protection should not be sidelined in favor of other concerns, implying a foundational support for sustainable development principles.
+## Evidence
+Las asociaciones cruzadas entre prioridades ambientales (p2|MED) y diversas medidas de satisfacción económica (p1|ECO, p2|ECO, p3|ECO, p4|ECO, p5|ECO) muestran patrones muy uniformes, con variaciones menores en las respuestas que oscilan entre 25% y 51% según la categoría, sin diferencias significativas (todos V <0.06 y p>0.1). Por ejemplo, la proporción que está poco satisfecha con la economía nacional varía entre 43.6% y 51.7% según la prioridad ambiental elegida, indicando ausencia de relación. En cuanto a la percepción del estado ambiental en México (p4|MED) y la satisfacción económica nacional (p1|ECO), tampoco se observa asociación significativa, con respuestas similares en todos los grupos (V=0.059, p=0.140). En términos demográficos, las diferencias más relevantes se observan por región, donde algunas regiones muestran hasta 11 puntos porcentuales más en priorizar "Mantener el orden en el país" frente a "Darle más voz al pueblo" (38.6% vs 30.6% en p2|MED) y variaciones moderadas en percepciones ambientales y económicas. Por género y edad, las diferencias son menores pero presentes, por ejemplo, hombres son 5 puntos más propensos a responsabilizar al gobierno de la situación económica (67.6% modal). En cuanto a las distribuciones univariadas, la opinión sobre la mayor prioridad para México está polarizada entre "Mantener el orden" (38.6%) y "Dar más voz al pueblo" (30.6%), mientras que la satisfacción económica está dividida entre "Poco" (37.2%) y "Nada" (35.7%). La percepción ambiental nacional también está dividida entre "Mala" (35.2%) y "Regular" (33.5%), reflejando preocupaciones ambientales significativas pero sin un claro vínculo con la economía.
 
-## Counterargument
-Despite the consensus on environmental consideration, the data reveal pronounced polarization on related issues that complicate the balancing act between environmental and economic priorities. The variable p2|MED exposes a divided view on national priorities: 38.6% prioritize maintaining order in the country, closely followed by 30.6% who emphasize giving the people more voice and vote in government decisions. Additionally, 19.2% prioritize fighting price increases, indicating significant economic concerns. The narrow margin of 8 percentage points between the top two priorities signals a fragmented public agenda where governance and participation debates intersect with economic anxieties. Economic satisfaction variables (p1|ECO and p2|ECO) further highlight polarization: 37.2% are only a little satisfied with the national economy, closely matched by 35.7% who are not satisfied at all; similarly, 35.1% report little satisfaction with their personal economic situation, followed by 31.8% who are not satisfied. These small margins (1.6 and 3.3 percentage points respectively) and the presence of sizable minorities (over 23% somewhat satisfied) underscore a divided economic outlook. This fragmentation suggests that economic dissatisfaction may pressure some segments of the population to prioritize immediate economic stability or growth over environmental concerns. Moreover, the weak correlations between environmental attitudes and economic satisfaction imply that these views are not tightly linked, adding complexity to how Mexicans reconcile these issues. Regional differences, though moderate, also contribute to this heterogeneity, indicating that local contexts shape the prioritization of environmental versus economic goals. Collectively, these divisions reveal that while environmental protection is valued, competing demands for order, participation, and economic relief create a contested public landscape that challenges simple policy prescriptions.
+## Complications
+Las diferencias regionales moderan las opiniones con efectos moderados (V hasta 0.17), indicando que la ubicación geográfica influye en cómo se priorizan temas ambientales y económicos. La opinión está polarizada en variables clave, con minorías significativas que priorizan dar más voz al pueblo (30.6%) o que consideran la situación ambiental buena (15.7%), lo que desafía una visión homogénea. Las limitaciones incluyen la ausencia de asociaciones estadísticamente significativas entre variables ambientales y económicas, lo que impide inferir relaciones causales o de influencia directa. El uso de estimaciones basadas en simulación (SES bridge) y tamaños muestrales limita la precisión, y la fragmentación de opiniones complica la formulación de conclusiones claras sobre el equilibrio entre desarrollo económico y medio ambiente.
 
 ## Implications
-First, policymakers emphasizing the prevailing consensus on environmental consideration might pursue stronger integration of environmental criteria into economic development plans, confident in broad public support for sustainable governance. This could manifest in stricter environmental regulations or investment in green technologies, reflecting the public mandate to prioritize ecological concerns. Second, acknowledging the polarized economic satisfaction and competing national priorities, another policy approach would focus on addressing economic grievances and governance legitimacy to build a more unified foundation for environmental policies. This might involve enhancing public participation mechanisms or stabilizing economic conditions to reduce resistance to environmental regulations perceived as burdensome. The polarization also cautions a
+Primero, la ausencia de una relación significativa entre prioridades ambientales y satisfacción económica sugiere que las políticas públicas deben abordar ambos temas de manera independiente, reconociendo que la población no percibe un conflicto directo entre desarrollo económico y protección ambiental. Segundo, la polarización y fragmentación de opiniones indican la necesidad de fortalecer el diálogo regional y sectorial para construir consensos sobre cómo integrar desarrollo sostenible, adaptando estrategias a las particularidades regionales. Además, la alta responsabilidad atribuida al gobierno para la situación económica implica que las políticas ambientales y económicas deben ser coordinadas desde el Estado para mejorar la confianza ciudadana y fomentar un desarrollo que no sacrifique el medio ambiente ni el bienestar económico.
+
+---
+
+## Quantitative Appendix
+
+| Metric | Value |
+|--------|-------|
+| Variables Analyzed | 9 |
+| Divergence Index | 88.9% |
+| Consensus Variables | 1 |
+| Lean Variables | 0 |
+| Polarized Variables | 5 |
+| Dispersed Variables | 3 |
+
+### Variable Details
+
+
+**p2|MED** (polarized)
+- Question: MEDIO_AMBIENTE|De la siguiente lista, para usted ¿cuál es la mayor prioridad para México?
+- Mode: Mantener el orden en el país (38.6%)
+- Runner-up: Darle al puebl
 ```
-*(Truncated from 9698 chars)*
+*(Truncated from 10755 chars)*

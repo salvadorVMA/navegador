@@ -399,6 +399,32 @@ class CrossDatasetBivariateEstimator:
             chi2, p_value, dof, _ = stats.chi2_contingency(crosstab)
             cv = float(association(crosstab, method='cramer'))
 
+            # --- Column-normalized conditional distributions ---
+            # P(var_a_category | var_b_category) for each var_b category
+            col_normed = crosstab.div(crosstab.sum(axis=0), axis=1)
+
+            column_profiles = {}
+            for col_cat in col_normed.columns:
+                column_profiles[str(col_cat)] = {
+                    str(row_cat): round(float(col_normed.loc[row_cat, col_cat]), 3)
+                    for row_cat in col_normed.index
+                }
+
+            # Key contrasts: which var_a categories vary most across var_b
+            top_contrasts = {}
+            for row_cat in col_normed.index:
+                vals = col_normed.loc[row_cat]
+                top_contrasts[str(row_cat)] = {
+                    'min_pct': round(float(vals.min()), 3),
+                    'max_pct': round(float(vals.max()), 3),
+                    'range': round(float(vals.max() - vals.min()), 3),
+                    'min_when': str(vals.idxmin()),
+                    'max_when': str(vals.idxmax()),
+                }
+            top_contrasts = dict(sorted(
+                top_contrasts.items(), key=lambda x: x[1]['range'], reverse=True
+            )[:3])
+
             return {
                 'var_a': var_id_a,
                 'var_b': var_id_b,
@@ -409,6 +435,8 @@ class CrossDatasetBivariateEstimator:
                 'cramers_v': cv,
                 'degrees_of_freedom': int(dof),
                 'note': 'Cross-dataset estimate via SES bridge simulation',
+                'column_profiles': column_profiles,
+                'top_contrasts': top_contrasts,
             }
 
         except Exception as e:

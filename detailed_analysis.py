@@ -415,10 +415,11 @@ def get_transversal_analysis(tmp_smry_st: str, user_query: str,
             'TOPIC_SUMMARY': 'Error generating summary: No response from model',
             'QUERY_ANSWER': 'Error generating answer: No response from model'
         }
-    
+
     try:
-        # First attempt: try to fix JSON format issues before parsing
-        fixed_response = fix_json_format(response)
+        # First attempt: clean markdown fences / Python-style quotes, then fix JSON format
+        cleaned = clean_llm_json_output(response)
+        fixed_response = fix_json_format(cleaned)
         parsed = transversal_parser.parse(fixed_response)
         return parsed.model_dump()  # Returns the parsed response as a dictionary.
     except Exception as e:
@@ -427,21 +428,21 @@ def get_transversal_analysis(tmp_smry_st: str, user_query: str,
         try:
             import re
             import json
-            
+
             # Try to extract the JSON part from the response if LLM added any text
             json_match = re.search(r'({[\s\S]*})', response)
             if json_match:
                 json_str = json_match.group(1)
-                # Fix trailing commas
                 json_str = fix_json_format(json_str)
-                # Try to parse as plain JSON
                 data = json.loads(json_str)
-                # Check if we have the required keys
+                # Inject QUERY_ANSWER from TOPIC_SUMMARY if missing
+                if 'QUERY_ANSWER' not in data and 'TOPIC_SUMMARY' in data:
+                    data['QUERY_ANSWER'] = data['TOPIC_SUMMARY'][:300]
                 if all(k in data for k in ['TOPIC_SUMMARIES', 'TOPIC_SUMMARY', 'QUERY_ANSWER']):
                     return data
         except Exception as inner_e:
             print(f"Failed to salvage JSON: {inner_e}")
-            
+
         # If all else fails, return error dictionary
         return {
             'TOPIC_SUMMARIES': {'ERROR': f'Failed to generate topic summaries: {str(e)}'},
@@ -526,7 +527,7 @@ def _deep_analyzer(tmp_pre_res_dict: dict, tmp_grade_dict: dict, user_query: str
     if structured_expert_results:
         try:
             tmp_smry_st = ' * '.join([v['EXPERT_REPLY'] for v in structured_expert_results.values() if 'EXPERT_REPLY' in v])
-            final_smry_dict = get_transversal_analysis(tmp_smry_st, user_query)
+            final_smry_dict = get_transversal_analysis(tmp_smry_st, user_query, model_name=model_name)
             print("Completed transversal analysis")
         except Exception as e:
             print(f"Error in transversal analysis: {e}")

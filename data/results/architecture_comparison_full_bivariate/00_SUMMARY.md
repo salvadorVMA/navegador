@@ -1,6 +1,6 @@
 # Full Bivariate Comparison — Summary
 
-**Generated:** 2026-02-20 02:33:21
+**Generated:** 2026-02-21 21:15:10
 **Model:** gpt-4.1-mini-2025-04-14
 
 ---
@@ -9,16 +9,16 @@
 
 | Question | OLD ✓/time | NEW ✓/time | Divergence | SES Biv Vars | Cross Pairs | Top Fault Line |
 |----------|-----------|-----------|------------|--------------|-------------|----------------|
-| [q1_religion_politics](./q1_religion_politics.md) | ✅ 2.1s | ✅ 19.4s | 67% | 3/3 | 2 | empleo (V=0.32) |
-| [q2_environment_economy](./q2_environment_economy.md) | ✅ 0.5s | ✅ 20.1s | 75% | 4/4 | 4 | region (V=0.13) |
-| [q3_education_poverty](./q3_education_poverty.md) | ✅ 0.5s | ✅ 24.5s | 50% | 4/4 | 4 | edad (V=0.37) |
-| [q4_gender_family](./q4_gender_family.md) | ✅ 0.3s | ✅ 19.2s | 75% | 3/4 | 4 | edad (V=0.26) |
-| [q5_migration_culture](./q5_migration_culture.md) | ✅ 0.3s | ✅ 20.8s | 100% | 4/4 | 4 | region (V=0.15) |
-| [q6_health_poverty](./q6_health_poverty.md) | ✅ 0.6s | ✅ 26.4s | 75% | 4/4 | 4 | sexo (V=0.32) |
-| [q7_democracy_corruption](./q7_democracy_corruption.md) | ✅ 0.3s | ✅ 21.8s | 33% | 3/3 | 2 | empleo (V=0.28) |
-| [q8_indigenous_discrimination](./q8_indigenous_discrimination.md) | ✅ 0.3s | ✅ 18.6s | 100% | 4/4 | 4 | empleo (V=0.31) |
-| [q9_technology_education](./q9_technology_education.md) | ✅ 0.4s | ✅ 19.1s | 67% | 3/3 | 2 | edad (V=0.27) |
-| [q10_security_justice](./q10_security_justice.md) | ✅ 0.4s | ✅ 19.0s | 100% | 4/4 | 4 | region (V=0.12) |
+| [q1_religion_politics](./q1_religion_politics.md) | ✅ 2.4s | ✅ 31.4s | 88% | 8/8 | 6 | empleo (V=0.32) |
+| [q2_environment_economy](./q2_environment_economy.md) | ✅ 0.2s | ✅ 28.7s | 89% | 9/9 | 6 | region (V=0.14) |
+| [q3_education_poverty](./q3_education_poverty.md) | ✅ 0.3s | ✅ 33.8s | 33% | 9/9 | 6 | empleo (V=0.56) |
+| [q4_gender_family](./q4_gender_family.md) | ✅ 1.0s | ✅ 31.9s | 67% | 7/9 | 6 | empleo (V=0.45) |
+| [q5_migration_culture](./q5_migration_culture.md) | ✅ 0.4s | ✅ 33.5s | 67% | 7/9 | 6 | region (V=0.15) |
+| [q6_health_poverty](./q6_health_poverty.md) | ✅ 0.3s | ✅ 34.0s | 44% | 9/9 | 6 | empleo (V=0.56) |
+| [q7_democracy_corruption](./q7_democracy_corruption.md) | ✅ 0.4s | ✅ 45.7s | 75% | 8/8 | 6 | empleo (V=0.29) |
+| [q8_indigenous_discrimination](./q8_indigenous_discrimination.md) | ✅ 0.3s | ✅ 28.5s | 100% | 9/9 | 6 | region (V=0.32) |
+| [q9_technology_education](./q9_technology_education.md) | ✅ 0.4s | ✅ 34.4s | 44% | 9/9 | 6 | edad (V=0.28) |
+| [q10_security_justice](./q10_security_justice.md) | ✅ 0.4s | ✅ 30.7s | 100% | 9/9 | 6 | region (V=0.14) |
 
 ---
 
@@ -27,9 +27,9 @@
 | Metric | OLD (detailed_report) | NEW (analytical_essay) |
 |--------|----------------------|------------------------|
 | Success Rate | 10/10 | 10/10 |
-| Avg Latency | 578 ms (0.6s) | 20888 ms (20.9s) |
-| Avg SES Bivariate Vars | — | 3.6 |
-| Avg Cross-Dataset Pairs | — | 3.4 |
+| Avg Latency | 619 ms (0.6s) | 33255 ms (33.3s) |
+| Avg SES Bivariate Vars | — | 8.4 |
+| Avg Cross-Dataset Pairs | — | 6.0 |
 
 ---
 

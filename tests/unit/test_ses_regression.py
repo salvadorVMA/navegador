@@ -274,5 +274,40 @@ class TestCrossDatasetBivariateEstimator(unittest.TestCase):
             self.assertIn(col, pop.columns)
 
 
+    def test_estimate_returns_column_profiles(self):
+        """estimate() must return column_profiles and top_contrasts dicts."""
+        result = self.estimator.estimate(
+            var_id_a='p1|AAA',
+            var_id_b='p1|BBB',
+            df_a=self.df_a,
+            df_b=self.df_b,
+            col_a='p_nominal',
+            col_b='p_nominal',
+        )
+        self.assertIn('column_profiles', result)
+        self.assertIn('top_contrasts', result)
+
+        # column_profiles: nested dict, proportions sum to ~1.0 per column
+        cp = result['column_profiles']
+        self.assertIsInstance(cp, dict)
+        self.assertGreater(len(cp), 0)
+        for col_cat, profile in cp.items():
+            self.assertIsInstance(profile, dict)
+            total = sum(profile.values())
+            self.assertAlmostEqual(total, 1.0, places=2,
+                                   msg=f"column '{col_cat}' proportions sum to {total}")
+
+        # top_contrasts: at most 3 entries with required keys
+        tc = result['top_contrasts']
+        self.assertIsInstance(tc, dict)
+        self.assertLessEqual(len(tc), 3)
+        for cat, info in tc.items():
+            for key in ('min_pct', 'max_pct', 'range', 'min_when', 'max_when'):
+                self.assertIn(key, info, f"top_contrasts['{cat}'] missing key '{key}'")
+            self.assertGreaterEqual(info['range'], 0.0)
+            self.assertLessEqual(info['max_pct'], 1.0)
+            self.assertGreaterEqual(info['min_pct'], 0.0)
+
+
 if __name__ == '__main__':
     unittest.main()
