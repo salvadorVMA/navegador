@@ -28,7 +28,6 @@ import re
 from datetime import datetime
 
 # Import existing utilities
-from dataset_knowledge import rev_topic_dict, topic_dict
 from utility_functions import environment_setup
 
 
