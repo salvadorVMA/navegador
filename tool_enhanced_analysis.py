@@ -16,8 +16,7 @@ Integration points:
 
 from typing import Dict, List, Any, Optional, Tuple
 from langchain_openai import ChatOpenAI
-from langchain.agents import create_openai_tools_agent, AgentExecutor
-from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langgraph.prebuilt import create_react_agent
 import json
 import time
 
@@ -144,27 +143,19 @@ def run_tool_enhanced_pattern_identification(
 
     # Tool-enhanced analysis
     try:
-        # Create tool-enhanced prompt
-        prompt_template = ChatPromptTemplate.from_messages([
-            ("system", "You are a research assistant with access to survey analysis tools."),
-            ("human", "{input}"),
-            MessagesPlaceholder(variable_name="agent_scratchpad"),
-        ])
-
         # Initialize LLM with tools
         llm = ChatOpenAI(model=model_name, temperature=0.7)
 
-        # Create agent
-        agent = create_openai_tools_agent(llm, AVAILABLE_TOOLS, prompt_template)
-        agent_executor = AgentExecutor(agent=agent, tools=AVAILABLE_TOOLS, verbose=True)
+        # Create agent using langgraph prebuilt react agent
+        agent = create_react_agent(llm, AVAILABLE_TOOLS)
 
         # Create enhanced prompt
         tool_prompt = create_tool_enhanced_pattern_prompt(user_query, tmp_res_st, n_topics)
 
         # Execute with tools
-        result = agent_executor.invoke({"input": tool_prompt})
+        result = agent.invoke({"messages": [("human", tool_prompt)]})
 
-        content = result.get('output', '')
+        content = result['messages'][-1].content
 
         # Clean and parse
         content = clean_llm_json_output(content)

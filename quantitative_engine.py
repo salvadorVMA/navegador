@@ -25,6 +25,13 @@ from pydantic import BaseModel, Field
 _df_tables = None
 _pregs_dict = None
 
+# Bivariate lazy state (loaded on first bivariate call)
+_los_mex_preprocessed = None
+_enc_nom_dict_rev = None
+
+# SES demographic dimensions used for bivariate breakdowns
+SES_DEMOGRAPHIC_VARS = ['sexo', 'edad', 'region', 'empleo']
+
 
 def _get_df_tables():
     global _df_tables
@@ -40,6 +47,29 @@ def _get_pregs_dict():
         from dataset_knowledge import pregs_dict
         _pregs_dict = pregs_dict
     return _pregs_dict
+
+
+def _get_los_mex_preprocessed() -> dict:
+    """Lazy-load and SES-preprocess los_mex_dict for bivariate analysis."""
+    global _los_mex_preprocessed
+    if _los_mex_preprocessed is None:
+        try:
+            from dataset_knowledge import los_mex_dict
+            from ses_analysis import AnalysisConfig
+            _los_mex_preprocessed = AnalysisConfig.preprocess_survey_data(los_mex_dict)
+        except Exception as e:
+            print(f"[bivariate] Could not load/preprocess los_mex_dict: {e}")
+            _los_mex_preprocessed = {}
+    return _los_mex_preprocessed
+
+
+def _get_enc_nom_dict_rev() -> dict:
+    """Get reverse mapping survey_code -> survey_name (lazy-loaded)."""
+    global _enc_nom_dict_rev
+    if _enc_nom_dict_rev is None:
+        lmd = _get_los_mex_preprocessed()
+        _enc_nom_dict_rev = {v: k for k, v in lmd.get('enc_nom_dict', {}).items()}
+    return _enc_nom_dict_rev
 
 
 # =============================================================================
@@ -75,6 +105,8 @@ class QuantitativeReport(BaseModel):
     overall_narrative: str                  # one-sentence characterization
     # Phase 2 hook
     demographic_fault_lines: Optional[Dict[str, Any]] = None
+    # Phase 5 hook — cross-dataset simulation-based bivariate
+    cross_dataset_bivariate: Optional[Dict[str, Any]] = None
 
 
 # =============================================================================
@@ -195,7 +227,33 @@ def compute_variable_statistics(
 
     # Extract frequencies as dict
     values = df_clean.iloc[:, 0]
-    frequencies = {str(idx): float(val) for idx, val in values.items()}
+    raw_frequencies = {str(idx): float(val) for idx, val in values.items()}
+
+    # Filter out NaN indices (not-applicable / skip-pattern rows) and sentinel numeric
+    # codes (>= 97: no-answer / don't-know / refuse; < 0: invalid / filter codes).
+    # These are never substantive responses and must not reach the LLM.
+    # After filtering, renormalize so percentages reflect only substantive responses.
+    frequencies: Dict[str, float] = {}
+    for label, pct in raw_frequencies.items():
+        if label == 'nan':
+            continue  # NaN index = conditional question not asked of this respondent
+        try:
+            f = float(label)
+            if f < 0 or f >= 97:
+                continue  # sentinel code (99=no answer, -1=invalid, etc.)
+        except (ValueError, TypeError):
+            pass  # non-numeric label = valid substantive response text
+        frequencies[label] = pct
+
+    if not frequencies:
+        print(f"Warning: Variable {var_id} has no substantive categories after sentinel filtering")
+        return None
+
+    # Renormalize to 100% if sentinel/NaN values were filtered out
+    total_pct = sum(frequencies.values())
+    if total_pct > 0 and abs(total_pct - 100.0) > 0.5:
+        scale = 100.0 / total_pct
+        frequencies = {k: v * scale for k, v in frequencies.items()}
 
     # Sort by value descending
     sorted_freqs = sorted(frequencies.items(), key=lambda x: x[1], reverse=True)
@@ -536,6 +594,18 @@ def build_quantitative_report(
             overall_narrative="No valid variables found for analysis.",
         )
 
+    # Phase 4: Bivariate analysis — demographic breakdowns (non-fatal)
+    _enrich_with_bivariate_stats(variables)
+    demographic_fault_lines = _compute_demographic_fault_lines(variables)
+
+    # Phase 5: Cross-dataset bivariate simulation (non-fatal, only for cross-survey pairs)
+    lmd = _get_los_mex_preprocessed()
+    enc_dict_p5 = lmd.get('enc_dict', {})
+    enc_nom_dict_rev_p5 = _get_enc_nom_dict_rev()
+    cross_dataset_bivariate = _estimate_cross_dataset_pairs(
+        variables, enc_dict_p5, enc_nom_dict_rev_p5
+    )
+
     # Shape summary
     shape_counts = {"consensus": 0, "lean": 0, "polarized": 0, "dispersed": 0}
     for v in variables:
@@ -555,6 +625,8 @@ def build_quantitative_report(
         shape_summary=shape_counts,
         divergence_index=divergence_index,
         overall_narrative=narrative,
+        demographic_fault_lines=demographic_fault_lines,
+        cross_dataset_bivariate=cross_dataset_bivariate,
     )
 
 
@@ -618,6 +690,72 @@ def format_quantitative_report_for_llm(report: QuantitativeReport) -> str:
     lines.append(f"Shape summary: {', '.join(shape_parts)}")
     lines.append("")
 
+    # Cross-dataset bivariate estimates FIRST (primary evidence about topic relationships)
+    if report.cross_dataset_bivariate:
+        lines.append("=== CROSS-DATASET BIVARIATE ASSOCIATIONS ===")
+        lines.append("(Simulation-based via SES bridge — primary evidence about topic relationships)")
+        for pair_key, est in report.cross_dataset_bivariate.items():
+            cv = est.get('cramers_v', 0)
+            pv = est.get('p_value', 1)
+            strength = (
+                'weak' if cv < 0.1
+                else 'moderate' if cv < 0.3
+                else 'strong'
+            )
+            sig = "SIGNIFICANT" if pv < 0.05 else "NOT SIGNIFICANT"
+            lines.append(
+                f"  - {est.get('var_a')} × {est.get('var_b')}: "
+                f"V={cv:.3f} ({strength}), p={pv:.3f} ({sig}), n={est.get('n_simulated')}"
+            )
+
+            # Cross-tab conditional distribution profiles
+            col_profiles = est.get('column_profiles')
+            top_contrasts = est.get('top_contrasts')
+            if col_profiles:
+                var_a = est.get('var_a', '?')
+                var_b = est.get('var_b', '?')
+                # column_profiles: {var_b_cat → {var_a_cat → pct}}
+                # i.e. for each var_b conditioning category, the var_a distribution
+                lines.append(
+                    f"    How {var_a} distributes given {var_b} categories:"
+                )
+                for cond_cat, profile in col_profiles.items():
+                    sorted_items = sorted(
+                        profile.items(), key=lambda x: x[1], reverse=True
+                    )
+                    parts = [f"{cat}={pct*100:.1f}%" for cat, pct in sorted_items[:4]]
+                    if len(sorted_items) > 4:
+                        parts.append("...")
+                    lines.append(
+                        f"      When {var_b}=\"{cond_cat}\": {', '.join(parts)}"
+                    )
+                if top_contrasts:
+                    top_cat = next(iter(top_contrasts))
+                    tc = top_contrasts[top_cat]
+                    lines.append(
+                        f"    Key contrast ({var_a}): \"{top_cat}\" ranges from "
+                        f"{tc['min_pct']*100:.1f}% (when {var_b}=\"{tc['min_when']}\") "
+                        f"to {tc['max_pct']*100:.1f}% (when {var_b}=\"{tc['max_when']}\")"
+                    )
+        lines.append("")
+
+    # Demographic fault lines summary
+    if report.demographic_fault_lines:
+        lines.append("=== DEMOGRAPHIC FAULT LINES ===")
+        lines.append("(Ranked by mean Cramér's V across variables)")
+        for ses_var, info in report.demographic_fault_lines.items():
+            strength = (
+                'weak' if info['mean_cramers_v'] < 0.1
+                else 'moderate' if info['mean_cramers_v'] < 0.3
+                else 'strong'
+            )
+            lines.append(
+                f"  - {ses_var}: mean V={info['mean_cramers_v']:.2f} ({strength}), "
+                f"max V={info['max_cramers_v']:.2f}, "
+                f"across {info['n_significant']} variable(s)"
+            )
+    lines.append("")
+
     # Per-variable sections
     for i, v in enumerate(report.variables, 1):
         lines.append(f"--- Variable {i}: {v.var_id} ---")
@@ -641,6 +779,27 @@ def format_quantitative_report_for_llm(report: QuantitativeReport) -> str:
         else:
             lines.append("Minority opinions (>15%): None")
 
+        # Bivariate demographic breakdown
+        if v.bivariate_stats:
+            lines.append("Demographic breakdown (p<0.05, sorted by Cramér's V):")
+            for ses_var, biv in sorted(
+                v.bivariate_stats.items(),
+                key=lambda x: x[1].get('cramers_v') or 0,
+                reverse=True,
+            ):
+                cv = biv.get('cramers_v') or 0
+                cv_label = (
+                    'weak' if cv < 0.1
+                    else 'moderate' if cv < 0.3
+                    else 'strong'
+                )
+                leaders_str = _format_bivariate_leaders(biv.get('leaders', {}))
+                lines.append(
+                    f"  - By {ses_var}: Cramér's V={cv:.2f} ({cv_label}){leaders_str}"
+                )
+        else:
+            lines.append("Demographic breakdown: no significant differences (p≥0.05)")
+
         lines.append("")
 
     # Overall
@@ -651,21 +810,368 @@ def format_quantitative_report_for_llm(report: QuantitativeReport) -> str:
 
 
 # =============================================================================
-# PHASE 2 HOOK (NOT IMPLEMENTED)
+# PHASE 2: BIVARIATE / DEMOGRAPHIC ANALYSIS
 # =============================================================================
 
 def compute_bivariate_statistics(
     var_id: str,
     demographic_var: str,
-    enc_dict: dict
+    enc_dict: Optional[dict] = None,
+    enc_nom_dict_rev: Optional[dict] = None,
 ) -> Optional[Dict[str, Any]]:
     """
-    Phase 2: Compute cross-tabulation statistics between a survey variable
-    and a demographic variable using SESAnalyzer.
+    Compute cross-tabulation statistics between a survey variable and a
+    demographic SES variable using SESAnalyzer.
 
-    Not implemented in Phase 1. Will use:
-    - ses_analysis.SESAnalyzer.analyze_single_relationship()
-    - Weighted cross-tabs with Pondi2
-    - Chi-square, Cramér's V, leader analysis
+    Uses:
+    - SESAnalyzer.analyze_single_relationship() with Pondi2 weights
+    - Chi-square test, Cramér's V effect size, leader analysis
+
+    Args:
+        var_id: Variable ID (e.g., "p5_1|IDE")
+        demographic_var: SES variable name (e.g., "sexo", "region")
+        enc_dict: Optional enc_dict override (lazy-loaded if None)
+        enc_nom_dict_rev: Optional reverse name mapping (lazy-loaded if None)
+
+    Returns:
+        Dict with chi_square, p_value, cramers_v, leaders; or None on failure
     """
-    raise NotImplementedError("Phase 2: bivariate analysis not yet implemented")
+    import pandas as pd
+    from ses_analysis import SESAnalyzer, AnalysisConfig
+
+    if enc_dict is None:
+        lmd = _get_los_mex_preprocessed()
+        enc_dict = lmd.get('enc_dict', {})
+    if enc_nom_dict_rev is None:
+        enc_nom_dict_rev = _get_enc_nom_dict_rev()
+
+    if '|' not in var_id:
+        return None
+
+    var_part, survey_code = var_id.split('|', 1)
+    survey_name = enc_nom_dict_rev.get(survey_code)
+    if not survey_name:
+        return None
+
+    survey_data = enc_dict.get(survey_name, {})
+    df = survey_data.get('dataframe')
+    if not isinstance(df, pd.DataFrame):
+        return None
+
+    if var_part not in df.columns or demographic_var not in df.columns:
+        return None
+
+    config = AnalysisConfig(weight_variable='Pondi2')
+    analyzer = SESAnalyzer(config)
+    result = analyzer.analyze_single_relationship(
+        df=df,
+        target_var=var_part,
+        ses_var=demographic_var,
+    )
+
+    if 'error' in result:
+        return None
+
+    stats = result.get('statistics', {})
+    return {
+        'chi_square': stats.get('chi_square'),
+        'p_value': stats.get('p_value'),
+        'cramers_v': stats.get('cramers_v'),
+        'degrees_of_freedom': stats.get('degrees_of_freedom'),
+        'spearman_correlation': stats.get('spearman_correlation'),
+        'leaders': result.get('analysis', {}).get('leaders', {}),
+        'demographic_var': demographic_var,
+    }
+
+
+def _enrich_with_bivariate_stats(variables: List) -> None:
+    """
+    Enrich VariableStatistics objects with bivariate SES breakdowns (in-place).
+    Only stores results with p < 0.05. Non-fatal on any failure.
+    """
+    try:
+        lmd = _get_los_mex_preprocessed()
+        enc_dict = lmd.get('enc_dict', {})
+        enc_nom_dict_rev = _get_enc_nom_dict_rev()
+
+        if not enc_dict:
+            return
+
+        print(f"[bivariate] Computing demographic breakdowns for {len(variables)} variable(s)...")
+        for var_stats in variables:
+            biv_results: Dict[str, Any] = {}
+            for ses_var in SES_DEMOGRAPHIC_VARS:
+                result = compute_bivariate_statistics(
+                    var_stats.var_id, ses_var, enc_dict, enc_nom_dict_rev
+                )
+                if (result
+                        and result.get('p_value') is not None
+                        and result['p_value'] < 0.05):
+                    biv_results[ses_var] = result
+
+            if biv_results:
+                # Apply label resolution so the LLM sees human-readable labels
+                # (e.g. "Sí"/"No", "Hombre"/"Mujer") not raw codes ("1.0"/"2.0").
+                var_col = var_stats.var_id.split('|')[0]
+                survey_name_v = enc_nom_dict_rev.get(var_stats.survey_code)
+                if survey_name_v:
+                    survey_data_v = enc_dict.get(survey_name_v, {})
+                    # (A) Resolve leader RESPONSE category labels (inner 'category' field)
+                    var_labels = _get_var_labels(var_col, survey_data_v)
+                    if var_labels:
+                        for biv in biv_results.values():
+                            for info in biv.get('leaders', {}).values():
+                                for rank in ('first', 'second'):
+                                    entry = info.get(rank)
+                                    if entry and 'category' in entry:
+                                        entry['category'] = _resolve_label(
+                                            str(entry['category']), var_labels
+                                        )
+                    # (B) Resolve demographic GROUP labels (outer keys of leaders dict)
+                    for ses_var, biv in biv_results.items():
+                        ses_labels = _get_var_labels(ses_var, survey_data_v)
+                        if ses_labels:
+                            old_leaders = biv.get('leaders', {})
+                            biv['leaders'] = {
+                                _resolve_label(str(group), ses_labels): info
+                                for group, info in old_leaders.items()
+                            }
+                var_stats.bivariate_stats = biv_results
+
+        n_with = sum(1 for v in variables if v.bivariate_stats)
+        print(f"[bivariate] Done: {n_with}/{len(variables)} variables have significant breakdowns")
+    except Exception as e:
+        print(f"[bivariate] Enrichment failed (non-fatal): {e}")
+
+
+def _compute_demographic_fault_lines(variables: List) -> Optional[Dict[str, Any]]:
+    """
+    Summarize which SES dimensions show the strongest patterns across all variables.
+    Returns a dict sorted by mean Cramér's V (strongest divide first).
+    """
+    ses_agg: Dict[str, List[float]] = {}
+    for var in variables:
+        if not var.bivariate_stats:
+            continue
+        for ses_var, biv in var.bivariate_stats.items():
+            cv = float(biv.get('cramers_v') or 0.0)
+            ses_agg.setdefault(ses_var, []).append(cv)
+
+    if not ses_agg:
+        return None
+
+    fault_lines = {
+        ses_var: {
+            'mean_cramers_v': round(sum(vals) / len(vals), 3),
+            'max_cramers_v': round(max(vals), 3),
+            'n_significant': len(vals),
+        }
+        for ses_var, vals in ses_agg.items()
+    }
+
+    return dict(sorted(
+        fault_lines.items(),
+        key=lambda x: x[1]['mean_cramers_v'],
+        reverse=True,
+    ))
+
+
+def _get_var_labels(col: str, survey_data: dict) -> Dict[str, str]:
+    """
+    Return a str→str label lookup for a survey variable's response codes.
+
+    Handles both integer-keyed ('1', '2') and float-keyed ('1.0', '2.0')
+    JSON metadata so that DataFrame-style codes (e.g. '1.0') always resolve.
+    """
+    meta = survey_data.get('metadata', {})
+    vvl = meta.get('variable_value_labels', {})
+    raw = vvl.get(col, {})
+    if not isinstance(raw, dict):
+        return {}
+    result: Dict[str, str] = {}
+    for k, v in raw.items():
+        label = str(v)
+        k_str = str(k)
+        result[k_str] = label
+        # Also register float form so "1" matches "1.0" and vice-versa
+        try:
+            f = float(k_str)
+            if f == int(f):
+                result[f"{int(f)}.0"] = label   # "1" → "1.0"
+                result[str(int(f))] = label      # "1.0" → "1"
+        except (ValueError, OverflowError):
+            pass
+    return result
+
+
+def _resolve_label(code: str, label_map: Dict[str, str]) -> str:
+    """
+    Resolve a raw numeric code to a human-readable label using a label map.
+    Falls back to the original code if no match is found.
+    Handles both "1" and "1.0" forms of the same integer key.
+    """
+    if code in label_map:
+        return label_map[code]
+    try:
+        f = float(code)
+        if f == int(f):
+            for alt in (str(int(f)), f"{int(f)}.0"):
+                if alt in label_map:
+                    return label_map[alt]
+    except (ValueError, OverflowError):
+        pass
+    return code
+
+
+def _apply_labels_to_estimate(
+    est: Dict[str, Any],
+    labels_a: Dict[str, str],
+    labels_b: Dict[str, str],
+) -> Dict[str, Any]:
+    """
+    Replace raw numeric codes with human-readable labels in column_profiles and
+    top_contrasts.
+
+    column_profiles structure: {var_b_cat: {var_a_cat: pct}}
+      - outer keys = var_b conditioning categories
+      - inner keys = var_a response categories
+
+    top_contrasts structure: {var_a_cat: {min_when: var_b_cat, max_when: var_b_cat, ...}}
+      - outer keys = var_a categories
+      - min_when / max_when = var_b categories
+    """
+    def _resolve(code: str, label_map: Dict[str, str]) -> str:
+        if code in label_map:
+            return label_map[code]
+        # Try normalised forms ("1.0" → "1" and vice-versa)
+        try:
+            f = float(code)
+            for alt in (str(int(f)), f"{int(f)}.0"):
+                if alt in label_map:
+                    return label_map[alt]
+        except (ValueError, OverflowError):
+            pass
+        return code  # fall back to raw code
+
+    if est.get('column_profiles') and (labels_a or labels_b):
+        new_profiles: Dict[str, Dict[str, float]] = {}
+        for cond_cat, profile in est['column_profiles'].items():
+            labeled_cond = _resolve(cond_cat, labels_b)
+            new_profiles[labeled_cond] = {
+                _resolve(resp_cat, labels_a): pct
+                for resp_cat, pct in profile.items()
+            }
+        est['column_profiles'] = new_profiles
+
+    if est.get('top_contrasts') and (labels_a or labels_b):
+        new_tc: Dict[str, Any] = {}
+        for row_cat, tc in est['top_contrasts'].items():
+            labeled_row = _resolve(row_cat, labels_a)
+            new_tc[labeled_row] = {
+                **tc,
+                'min_when': _resolve(tc['min_when'], labels_b),
+                'max_when': _resolve(tc['max_when'], labels_b),
+            }
+        est['top_contrasts'] = new_tc
+
+    return est
+
+
+def _estimate_cross_dataset_pairs(
+    variables: List,
+    enc_dict: dict,
+    enc_nom_dict_rev: dict,
+    max_pairs: int = 6,
+) -> Optional[Dict[str, Any]]:
+    """
+    For all pairs of variables from different surveys, estimate bivariate
+    association via SES bridge simulation (Phase 5).
+
+    Returns dict keyed by '{var_a_id}::{var_b_id}', or None if no cross-survey
+    pairs exist or estimation fails entirely.
+    """
+    import pandas as pd
+    from ses_regression import CrossDatasetBivariateEstimator
+
+    if not enc_dict or len(variables) < 2:
+        return None
+
+    # Identify cross-survey pairs
+    cross_pairs = []
+    for i, va in enumerate(variables):
+        for vb in variables[i + 1:]:
+            if va.survey_code != vb.survey_code:
+                cross_pairs.append((va, vb))
+            if len(cross_pairs) >= max_pairs:
+                break
+        if len(cross_pairs) >= max_pairs:
+            break
+
+    if not cross_pairs:
+        return None
+
+    print(f"[cross-bivariate] Estimating {len(cross_pairs)} cross-survey pair(s)...")
+    estimator = CrossDatasetBivariateEstimator(n_sim=2000)
+    results: Dict[str, Any] = {}
+
+    for va, vb in cross_pairs:
+        pair_key = f"{va.var_id}::{vb.var_id}"
+        try:
+            # Resolve DataFrames
+            survey_name_a = enc_nom_dict_rev.get(va.survey_code)
+            survey_name_b = enc_nom_dict_rev.get(vb.survey_code)
+            if not survey_name_a or not survey_name_b:
+                continue
+
+            df_a = enc_dict.get(survey_name_a, {}).get('dataframe')
+            df_b = enc_dict.get(survey_name_b, {}).get('dataframe')
+            if not isinstance(df_a, pd.DataFrame) or not isinstance(df_b, pd.DataFrame):
+                continue
+
+            col_a = va.var_id.split('|')[0]
+            col_b = vb.var_id.split('|')[0]
+            if col_a not in df_a.columns or col_b not in df_b.columns:
+                continue
+
+            est = estimator.estimate(
+                var_id_a=va.var_id,
+                var_id_b=vb.var_id,
+                df_a=df_a,
+                df_b=df_b,
+                col_a=col_a,
+                col_b=col_b,
+            )
+            if est is not None:
+                # Replace raw numeric codes with human-readable labels in
+                # column_profiles and top_contrasts before the LLM sees them.
+                labels_a = _get_var_labels(col_a, enc_dict.get(survey_name_a, {}))
+                labels_b = _get_var_labels(col_b, enc_dict.get(survey_name_b, {}))
+                est = _apply_labels_to_estimate(est, labels_a, labels_b)
+                results[pair_key] = est
+        except Exception as e:
+            print(f"[cross-bivariate] Skipping {pair_key}: {e}")
+
+    if not results:
+        return None
+
+    print(f"[cross-bivariate] Done: {len(results)} pair(s) estimated")
+    return results
+
+
+def _format_bivariate_leaders(leaders: Dict[str, Any]) -> str:
+    """Format top 2 responses per demographic group as a compact string for LLM."""
+    if not leaders:
+        return ""
+    parts = []
+    for group, info in list(leaders.items())[:4]:
+        first = info.get('first', {})
+        second = info.get('second', {})
+        cat1 = first.get('category', '?')
+        prop1 = first.get('proportion', 0) * 100
+        cat2 = second.get('category', '')
+        prop2 = second.get('proportion', 0) * 100
+        if cat2:
+            parts.append(f"{group}: {cat1}={prop1:.0f}%, {cat2}={prop2:.0f}%")
+        else:
+            parts.append(f"{group}: {cat1}={prop1:.0f}%")
+    return "\n      " + "; ".join(parts) if parts else ""
