@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Read(//workspaces/navegador/.claude/worktrees/knowledge-graph/**)"
     ]
   }
 }

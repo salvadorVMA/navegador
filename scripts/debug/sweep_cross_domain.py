@@ -85,6 +85,15 @@ def _shannon_entropy(series: pd.Series) -> float:
     return float(-np.sum(counts * np.log2(counts)))
 
 
+
+# Maximum number of unique response categories for a variable to be considered
+# ordinal/categorical and therefore suitable for OrderedModel / MNLogit.
+# Variables with more unique values are open-ended text fields (e.g. "what word
+# comes to mind?") or continuous numeric fields (e.g. income in pesos, housing
+# area in m²) — neither can be meaningfully modelled by the SES bridge regression.
+MAX_ORDINAL_CATEGORIES = 15
+
+
 def select_representative_vars(
     domain: str,
     pregs_dict: dict,
@@ -93,8 +102,17 @@ def select_representative_vars(
     n_vars: int = 3,
 ) -> List[str]:
     """
-    Select the top-N highest-entropy variables for a domain.
-    Falls back to evenly spaced variables if entropy fails.
+    Select the top-N highest-entropy *categorical/ordinal* variables for a domain.
+
+    Only variables with at most MAX_ORDINAL_CATEGORIES unique non-NaN values are
+    eligible.  Open-ended text fields and continuous numeric fields (income, area,
+    counts) are excluded because:
+      - Shannon entropy is maximised by text/continuous fields, which would
+        otherwise always be selected.
+      - OrderedModel / MNLogit requires categorical / ordinal targets with a
+        small, finite number of levels.
+
+    Falls back to evenly spaced variables if too few categorical vars are found.
     """
     # Collect all var IDs for this domain
     domain_vars = [qid for qid in pregs_dict if qid.endswith(f"|{domain}")]
@@ -109,21 +127,33 @@ def select_representative_vars(
     if not isinstance(df, pd.DataFrame):
         return domain_vars[:n_vars]
 
-    # Compute entropy per variable
+    # Compute entropy per variable, skipping continuous / open-text ones
     scored: List[Tuple[str, float]] = []
     for qid in domain_vars:
         col = qid.split("|")[0]
         if col in df.columns:
+            series = df[col].dropna()
+            # Exclude open-ended text / continuous numeric variables
+            if series.nunique() > MAX_ORDINAL_CATEGORIES:
+                continue
             try:
-                h = _shannon_entropy(df[col])
+                h = _shannon_entropy(series)
                 scored.append((qid, h))
             except Exception:
                 pass
 
     if len(scored) < n_vars:
-        # Fallback: evenly spaced
-        step = max(1, len(domain_vars) // n_vars)
-        return [domain_vars[i * step] for i in range(min(n_vars, len(domain_vars)))]
+        # Fallback: evenly spaced from the categorical-eligible list
+        eligible = [
+            qid for qid in domain_vars
+            if qid.split("|")[0] in df.columns
+            and df[qid.split("|")[0]].dropna().nunique() <= MAX_ORDINAL_CATEGORIES
+        ]
+        if not eligible:
+            # Last resort: use domain_vars without filtering
+            eligible = domain_vars
+        step = max(1, len(eligible) // n_vars)
+        return [eligible[i * step] for i in range(min(n_vars, len(eligible)))]
 
     # Top-N by entropy
     scored.sort(key=lambda x: -x[1])
