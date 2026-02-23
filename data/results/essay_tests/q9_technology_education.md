@@ -4,7 +4,7 @@
 **Query (EN):** How does technology impact education according to Mexicans?
 **Variables:** p2|SOC, p4|SOC, p6|SOC, p7|SOC, p2|EDU, p3|EDU, p4|EDU, p5|EDU, p6|EDU
 **Status:** ✅ success
-**Time:** 42170ms | **Cross-dataset pairs:** 5
+**Time:** 40116ms | **Cross-dataset pairs:** 5
 
 ---
 
@@ -13,77 +13,113 @@
 **Query:** ¿Cómo impacta la tecnología en la educación según los mexicanos?
 
 ## Summary
-The most important finding is that Mexicans who are currently studying perceive significantly greater access to new technologies, with 60.5% of students saying they have "mucho" access compared to 49.3% of non-students, indicating that technology plays a notable role in education. This relationship is supported by four moderate and one weak but significant bivariate associations, providing a moderate confidence level in the evidence. The data also show variation by education level and motivation for studying, reinforcing the connection between technology access and educational engagement.
+Mexicanos que actualmente estudian perciben un mayor acceso a las nuevas tecnologías, con un 60.5% afirmando tener "mucho" acceso, comparado con 50.6% entre quienes no estudian, lo que indica que la tecnología impacta positivamente en la educación según la percepción pública. Se analizaron cinco asociaciones bivariadas significativas entre variables de tecnología y educación, con efectos moderados y evidencia estadísticamente sólida (p=0.000), aunque con variaciones y algunas relaciones menos claras, lo que sugiere una confianza moderada en estos hallazgos.
 
 ## Data Landscape
-Nine variables from social information and education surveys were analyzed, revealing a complex landscape of opinions about technology and education in Mexico. Among these, three variables show strong consensus, two are polarized, and two exhibit dispersed opinions, resulting in a 67% divergence index that signals substantial variation and lack of uniform agreement in public views on technology's impact in education. The mixture of consensus and polarization reflects nuanced perceptions across different social and educational groups.
+Se analizaron 9 variables provenientes de encuestas sobre sociedad de la información y educación, con un índice de divergencia del 67%, indicando alta variabilidad en las opiniones públicas. De estas variables, 3 muestran consenso, 2 están polarizadas y 2 dispersas, reflejando que aunque hay algunas opiniones dominantes, existe una fragmentación considerable en percepciones sobre tecnología y educación en México.
 
 ## Evidence
-A) Cross-tab patterns show that those currently studying report higher perceived access to technology: 60.5% of students say "mucho" access versus 49.3% of non-students (V=0.173, p=0.000).
-| Currently studying | Mucho access % |
+La percepción de acceso a nuevas tecnologías (p2|SOC) varía según el estatus educativo actual (p2|EDU): el 60.5% de quienes estudian dicen tener "mucho" acceso, frente al 50.6% de quienes no estudian (V=0.150, p=0.000).
+| p2|EDU category | Mucho % |
 |---|---|
 | Sí | 60.5% |
-| No | 49.3% |
+| No | 50.6% |
 
-Those with financial support for studies perceive slightly better access, with "poco" access at 10.8% for supported students versus 15.5% for unsupported (V=0.097, p=0.001).
-| Financial support | Poco access % |
+Respecto al apoyo económico para estudios (p3|EDU), la relación con acceso percibido a tecnología es débil y algo inversa: 52.0% con apoyo dicen "mucho" acceso, comparado con 55.4% sin apoyo (V=0.100, p=0.000).
+| p3|EDU category | Mucho % |
 |---|---|
-| Sí | 10.8% |
-| No | 15.5% |
+| Sí | 52.0% |
+| No | 55.4% |
 
-Perceptions vary by education level: "mucho" access ranges from 42.7% among those in training courses to 64.7% among secondary students (V=0.131, p=0.000).
-| Education level | Mucho access % |
+El nivel educativo actual (p5|EDU) influye notablemente en la percepción de acceso tecnológico, con "mucho" acceso desde 86.7% en Secundaria hasta 40.3% en Cursos de capacitación para el trabajo (V=0.123, p=0.000).
+| p5|EDU category | Mucho % |
 |---|---|
-| Primaria | 55.2% |
-| Secundaria | 64.7% |
-| Nivel Medio Superior | 56.7% |
-| Licenciatura | 60.2% |
-| Posgrado | 50.7% |
-| Cursos de capacitación | 42.7% |
-| Otro | 53.8% |
+| Primaria | 66.7% |
+| Secundaria | 86.7% |
+| Nivel Medio Superior | 62.7% |
+| Licenciatura | 58.7% |
+| Posgrado | 48.5% |
+| Cursos de capacitación para el trabajo | 40.3% |
+| Otro | 33.3% |
 
-Motivation for studying also correlates with perceived access: those who study because they like it report 75.9% "mucho" access, while those motivated by prestige report only 36.3% (V=0.123, p=0.000).
-| Motivation | Mucho access % |
+Las razones para estudiar (p6|EDU) también muestran variación: quienes estudian "porque les gusta estudiar" reportan 71.0% "mucho" acceso, mientras que quienes lo hacen "por prestigio" solo 34.6% (V=0.113, p=0.000).
+| p6|EDU category | Mucho % |
 |---|---|
-| Me gusta estudiar | 75.9% |
-| Deseo superarme | 59.3% |
-| Deseo aprender | 60.8% |
-| Mejor trabajo/sueldo | 53.1% |
-| Necesito estudiar para lo que quiero hacer | 46.2% |
-| Me puede dar prestigio | 36.3% |
+| Porque deseo superarme | 56.0% |
+| Porque deseo aprender | 61.3% |
+| Porque me gusta estudiar | 71.0% |
+| Porque para hacer lo que quiero necesito estudiar | 41.7% |
+| Porque quiero mejor trabajo o sueldo | 60.1% |
+| Porque me puede dar prestigio | 34.6% |
 
-Personal access to technology is higher among students (51.1% "mucho") than non-students (42.3%) (V=0.126, p=0.000).
-| Currently studying | Mucho personal access % |
+Finalmente, el acceso personal a tecnología (p4|SOC) es mayor entre estudiantes (49.9% "mucho") que entre no estudiantes (42.9%) (V=0.113, p=0.000).
+| p2|EDU category | Mucho % |
 |---|---|
-| Sí | 51.1% |
-| No | 42.3% |
+| Sí | 49.9% |
+| No | 42.9% |
 
-B) Demographic moderation reveals that younger Mexicans (19-24 years) are more likely to report "mucho" access (60%) compared to youth under 18 (40%) who also show a high "poco" access rate (38%). Regionally, the highest perceived "mucho" access is in region 03 (56%), while region 04 reports the lowest (38%). Men report "mucho" access at 50%, women at 45%. Women are also slightly less likely to be currently studying (13%) compared to men (21%).
+Demográficamente, jóvenes de 19-24 años son más propensos a percibir "mucho" acceso (60%) que menores de 18 años (40%). Regionalmente, la percepción de "mucho" acceso varía de 38% a 56%. Hombres reportan 50% "mucho" acceso frente a 45% en mujeres.
 
-C) Supporting univariate distributions:
+**p2|SOC** — Percepción del acceso de mexicanos a nuevas tecnologías:
 | Response | % |
 |---|---|
-| Mucho access (p2|SOC) | 47.1% |
-| Algo access | 28.1% |
-| Poco access | 17.5% |
-| Nada access | 4.7% |
+| Mucho | 47.1% |
+| Algo | 28.1% |
+| Poco | 17.5% |
+| Nada | 4.7% |
+| No sabe/No contesta | 2.7% |
 
+**p4|SOC** — Acceso personal a nuevas tecnologías:
 | Response | % |
 |---|---|
-| Currently studying (p2|EDU) No | 83.2% |
+| Algo | 36.0% |
+| Poco | 24.8% |
+| Mucho | 20.8% |
+| Nada | 16.9% |
+| No sabe/No contesta | 1.4% |
+
+**p2|EDU** — Actualmente estudia:
+| Response | % |
+|---|---|
+| No | 83.2% |
 | Sí | 16.9% |
 
+**p5|EDU** — Nivel educativo actual:
 | Response | % |
 |---|---|
-| Motivation: Porque deseo superarme (p6|EDU) | 65.4% |
+| Nivel Medio Superior | 47.5% |
+| Licenciatura | 34.6% |
+| Secundaria | 8.4% |
+| Posgrado | 5.5% |
+| Cursos de capacitación para el trabajo | 2.5% |
+| Otro | 1.0% |
+| Primaria | 0.5% |
+
+**p6|EDU** — Razón para estudiar:
+| Response | % |
+|---|---|
+| Porque deseo superarme | 65.4% |
 | Porque deseo aprender | 11.4% |
-| Mejor trabajo o sueldo | 10.4% |
+| Porque quiero mejor trabajo o sueldo | 10.4% |
+| Porque me gusta estudiar | 6.4% |
+| Porque para hacer lo que quiero necesito estudiar | 4.5% |
+| Porque tengo una escuela cerca | 1.0% |
+| Porque mis papás me lo exigen | 0.5% |
+| Porque me puede dar prestigio | 0.5% |
 
 ## Complications
-Age is the strongest demographic moderator with a mean Cramér's V of 0.28, indicating that younger Mexicans perceive better access to technology and are more likely to be studying, which complicates generalizations across all age groups. Regional differences are moderate (V=0.14), with some regions perceiving significantly higher access than others, suggesting geographic disparities. Minority views are notable: 17.5% perceive "poco" access and 4.7% "nada" access to technology, indicating a substantial portion of the population feels excluded from technological benefits in education. The weak association between financial support and perceived access (V=0.097) suggests that economic aid alone may not strongly influence technology access perceptions. Simulation-based bivariate estimates have inherent uncertainty and moderate effect sizes, limiting the strength of causal inferences. Variables indirectly related to education, such as information consumption about national events, show weaker or no significant relationships with technology access, highlighting the specificity of the education-technology link.
+La edad es la dimensión sociodemográfica que más modera las percepciones, con un Cramér's V promedio de 0.28 y diferencias marcadas: los jóvenes de 19-24 años son 20 puntos porcentuales más propensos a decir que hay "mucho" acceso a tecnología que los menores de 18 años. La región también influye moderadamente (V=0.14), con variaciones de hasta 18 puntos en percepciones de acceso. El sexo muestra diferencias menores pero significativas, con hombres 5 puntos más propensos a reportar "mucho" acceso que mujeres.
+
+Existen minorías significativas (>15%) que perciben "algo" o "poco" acceso a tecnología, lo que indica que no hay consenso absoluto. Además, la relación entre apoyo económico para estudios y percepción de acceso a tecnología es débil y contraria a la expectativa, lo que complica interpretaciones directas.
+
+Las asociaciones bivariadas son estadísticamente significativas pero con efectos moderados, lo que implica que aunque la tecnología impacta la educación, otros factores también influyen. La metodología basada en simulaciones SES-bridge puede afectar la precisión y generalización de los resultados. Finalmente, variables como la frecuencia de consumo de noticias y nivel de información sobre el país, aunque relacionadas con tecnología, no muestran vínculos claros con la educación en este análisis.
 
 ## Implications
-First, policy should prioritize expanding equitable access to technology among students, especially targeting younger age groups and regions with lower perceived access, to enhance educational outcomes and reduce digital divides. Second, since motivation to study correlates with perceived technology access, educational programs could integrate technology use to foster engagement and intrinsic motivation, potentially improving retention and success rates. Third, given the weak link between financial support and technology access perception, policies should not only provide economic aid but also ensure that such support translates into tangible technology access and digital literacy. Finally, recognizing the significant minority perceiving low or no access, interventions must address barriers beyond availability, such as infrastructure, training, and cultural factors, to create inclusive technology-enabled education environments.
+Primero, la evidencia sugiere que mejorar el acceso a tecnologías digitales puede beneficiar especialmente a estudiantes, por lo que políticas públicas deberían enfocarse en ampliar infraestructura tecnológica en escuelas y comunidades jóvenes para potenciar la educación.
+
+Segundo, dado que la percepción de acceso varía según nivel educativo y motivaciones para estudiar, programas educativos podrían incorporar formación tecnológica adaptada a distintos niveles y perfiles, reconociendo que no todos los estudiantes tienen igual acceso ni las mismas razones para estudiar.
+
+Además, la moderación por edad y región indica que las intervenciones deben ser focalizadas geográficamente y demográficamente para reducir brechas digitales. Finalmente, la relación débil entre apoyo económico y acceso tecnológico sugiere que el financiamiento educativo no garantiza acceso tecnológico, por lo que se deben diseñar mecanismos específicos para facilitar la adquisición y uso de tecnologías en contextos educativos, más allá del apoyo económico general.
 
 ---
 
@@ -253,7 +289,7 @@ First, policy should prioritize expanding equitable access to technology among s
 *p2|SOC*
 - region: V=0.137 (p=0.000) — 01: Mucho (42%); 02: Mucho (50%); 03: Mucho (56%)
 - edad: V=0.134 (p=0.000) — 0-18: Mucho (40%); 19-24: Mucho (60%); 25-34: Mucho (49%)
-- sexo: V=0.100 (p=0.033) — 1.0: Mucho (50%); 2.0: Mucho (45%)
+- sexo: V=0.100 (p=0.033) —  Hombre: Mucho (50%);  Mujer: Mucho (45%)
 
 *p4|SOC*
 - edad: V=0.189 (p=0.000) — 0-18: Algo (35%); 19-24: Algo (47%); 25-34: Algo (42%)
@@ -268,32 +304,32 @@ First, policy should prioritize expanding equitable access to technology among s
 
 *p2|EDU*
 - edad: V=0.676 (p=0.000) — 0-18:  Sí (84%); 19-24:  Sí (51%); 25-34:  No (94%)
-- sexo: V=0.101 (p=0.001) — 1.0:  No (79%); 2.0:  No (87%)
+- sexo: V=0.101 (p=0.001) —  Hombre:  No (79%);  Mujer:  No (87%)
 
 *p3|EDU*
 - edad: V=0.396 (p=0.000) — 0-18:  No (64%); 19-24: -1.0 (49%); 25-34: -1.0 (94%)
-- sexo: V=0.104 (p=0.005) — 1.0: -1.0 (79%); 2.0: -1.0 (87%)
+- sexo: V=0.104 (p=0.005) —  Hombre: -1.0 (79%);  Mujer: -1.0 (87%)
 
 *p4|EDU*
 - edad: V=0.137 (p=0.000) — 0-18: -1.0 (80%); 19-24: -1.0 (92%); 25-34: -1.0 (100%)
 
 *p5|EDU*
 - edad: V=0.332 (p=0.000) — 0-18: Nivel Medio Superior (71%); 19-24: -1.0 (49%); 25-34: -1.0 (94%)
-- sexo: V=0.141 (p=0.001) — 1.0: -1.0 (79%); 2.0: -1.0 (87%)
+- sexo: V=0.141 (p=0.001) —  Hombre: -1.0 (79%);  Mujer: -1.0 (87%)
 
 *p6|EDU*
 - edad: V=0.289 (p=0.000) — 0-18: Porque deseo superarme (57%); 19-24: -1.0 (49%); 25-34: -1.0 (94%)
-- sexo: V=0.119 (p=0.031) — 1.0: -1.0 (79%); 2.0: -1.0 (87%)
+- sexo: V=0.119 (p=0.031) —  Hombre: -1.0 (79%);  Mujer: -1.0 (87%)
 
 ### Cross-Dataset Bivariate Estimates (Simulation-Based)
 
 | Variable Pair | Cramér's V | p-value | Key Pattern | n sim |
 |---------------|------------|---------|-------------|-------|
-| p2|SOC × p2|EDU | 0.173 (moderate) | 0.000 | "Mucho": 49% (" No") → 60% (" Sí") | 2000 |
-| p2|SOC × p3|EDU | 0.097 (weak) | 0.001 | "Poco": 11% (" Sí") → 16% (" No") | 2000 |
-| p2|SOC × p5|EDU | 0.131 (moderate) | 0.000 | "Algo": 12% ("Secundaria") → 38% ("Otro") | 2000 |
-| p2|SOC × p6|EDU | 0.123 (moderate) | 0.000 | "Mucho": 36% ("Porque me puede dar prestigio") → 76% ("Porque me gusta estudiar") | 2000 |
-| p4|SOC × p2|EDU | 0.126 (moderate) | 0.000 | "Mucho": 42% (" No") → 51% (" Sí") | 2000 |
+| p2|SOC × p2|EDU | 0.150 (moderate) | 0.000 | "Mucho": 51% (" No") → 60% (" Sí") | 2000 |
+| p2|SOC × p3|EDU | 0.100 (moderate) | 0.000 | "Mucho": 52% (" Sí") → 55% (" No") | 2000 |
+| p2|SOC × p5|EDU | 0.123 (moderate) | 0.000 | "Mucho": 33% ("Otro") → 87% ("Secundaria") | 2000 |
+| p2|SOC × p6|EDU | 0.113 (moderate) | 0.000 | "Mucho": 35% ("Porque me puede dar prestigio") → 71% ("Porque me gusta estudiar") | 2000 |
+| p4|SOC × p2|EDU | 0.113 (moderate) | 0.000 | "Mucho": 43% (" No") → 50% (" Sí") | 2000 |
 
 *Estimates derived from SES-bridge regression simulation.*
 
@@ -302,54 +338,54 @@ First, policy should prioritize expanding equitable access to technology among s
 
 | p2|EDU (conditioning) | Top p2|SOC responses |
 |---|---|
-|  Sí | Mucho: 60%, Algo: 24%, Poco: 14% |
-|  No | Mucho: 49%, Algo: 25%, Poco: 16% |
+|  Sí | Mucho: 60%, Algo: 22%, Poco: 15% |
+|  No | Mucho: 51%, Algo: 26%, Poco: 15% |
 
 **p2|SOC × p3|EDU** — How p2|SOC distributes given p3|EDU:
 
 | p3|EDU (conditioning) | Top p2|SOC responses |
 |---|---|
-|  Sí | Mucho: 53%, Algo: 27%, Poco: 11% |
-|  No | Mucho: 55%, Algo: 24%, Poco: 16% |
+|  Sí | Mucho: 52%, Algo: 25%, Poco: 13% |
+|  No | Mucho: 55%, Algo: 22%, Poco: 16% |
 
 **p2|SOC × p5|EDU** — How p2|SOC distributes given p5|EDU:
 
 | p5|EDU (conditioning) | Top p2|SOC responses |
 |---|---|
-| Primaria | Mucho: 55%, Algo: 31%, Poco: 14% |
-| Secundaria | Mucho: 65%, Poco: 24%, Algo: 12% |
-| Nivel Medio Superior | Mucho: 57%, Algo: 24%, Poco: 19% |
-| Licenciatura | Mucho: 60%, Algo: 21%, Poco: 15% |
-| Posgrado | Mucho: 51%, Algo: 28%, Poco: 15% |
-| Cursos de capacitación para el trabajo | Mucho: 43%, Algo: 30%, Poco: 13% |
-| Otro | Mucho: 54%, Algo: 38%, Poco: 8% |
+| Primaria | Mucho: 67%, Algo: 27%, Poco: 7% |
+| Secundaria | Mucho: 87%, Algo: 7%, Poco: 7% |
+| Nivel Medio Superior | Mucho: 63%, Algo: 20%, Poco: 15% |
+| Licenciatura | Mucho: 59%, Algo: 24%, Poco: 14% |
+| Posgrado | Mucho: 48%, Algo: 29%, Poco: 18% |
+| Cursos de capacitación para el trabajo | Mucho: 40%, Algo: 26%, Poco: 20% |
+| Otro | Algo: 47%, Mucho: 33%, Poco: 20% |
 
 **p2|SOC × p6|EDU** — How p2|SOC distributes given p6|EDU:
 
 | p6|EDU (conditioning) | Top p2|SOC responses |
 |---|---|
-| Porque deseo superarme | Mucho: 59%, Algo: 24%, Poco: 12% |
-| Porque deseo aprender | Mucho: 61%, Algo: 25%, Poco: 12% |
-| Porque me gusta estudiar | Mucho: 76%, Algo: 11%, Poco: 9% |
-| Porque para hacer lo que yo quiero hacer,  necesito estudiar | Mucho: 46%, Algo: 31%, Poco: 23% |
-| Porque quiero tener un mejor trabajo o un mejor sueldo | Mucho: 53%, Poco: 21%, Algo: 17% |
-| Porque me puede dar prestigio | Mucho: 36%, Algo: 27%, Poco: 18% |
+| Porque deseo superarme | Mucho: 56%, Algo: 24%, Poco: 14% |
+| Porque deseo aprender | Mucho: 61%, Algo: 23%, Poco: 16% |
+| Porque me gusta estudiar | Mucho: 71%, Algo: 19%, Poco: 10% |
+| Porque para hacer lo que yo quiero hacer,  necesito estudiar | Mucho: 42%, Poco: 33%, Algo: 25% |
+| Porque quiero tener un mejor trabajo o un mejor sueldo | Mucho: 60%, Algo: 18%, Poco: 16% |
+| Porque me puede dar prestigio | Mucho: 35%, Algo: 28%, Poco: 20% |
 
 **p4|SOC × p2|EDU** — How p4|SOC distributes given p2|EDU:
 
 | p2|EDU (conditioning) | Top p4|SOC responses |
 |---|---|
-|  Sí | Mucho: 51%, Algo: 34%, Poco: 11% |
-|  No | Mucho: 42%, Algo: 33%, Poco: 16% |
+|  Sí | Mucho: 50%, Algo: 36%, Poco: 10% |
+|  No | Mucho: 43%, Algo: 35%, Poco: 15% |
 ### Reasoning Outline
 
-**Evidence Hierarchy:** The strongest evidence comes from the cross-dataset bivariate associations with significant p-values, which directly link perceptions of technology access to educational status and characteristics. Demographic fault lines provide secondary support by showing variation in perceptions by age, region, and sex. Univariate distributions offer contextual understanding but do not establish relationships relevant to the query.
+**Evidence Hierarchy:** The strongest evidence comes from cross-dataset bivariate associations with significant p-values, which directly link perceptions of technology access to educational status and characteristics. Demographic fault lines provide secondary context on how opinions vary by age, region, and sex. Univariate distributions offer supporting background but do not establish relationships relevant to the query.
 
 **Key Limitations:**
-- All bivariate associations are simulation-based estimates which may have inherent uncertainty.
-- Effect sizes (Cramér's V) are mostly moderate to weak, indicating relationships are present but not strong.
-- Only a limited number of cross-survey variable pairs are available, restricting comprehensive analysis.
-- Some variables are only indirectly related to the query, limiting the scope of conclusions about technology's impact on education.
+- All bivariate estimates are simulation-based, which may affect precision of association measures.
+- Effect sizes (Cramér's V) are moderate at best, indicating relationships are present but not strong.
+- Only a limited number of variables directly address technology's impact on education; some variables are only tangentially related.
+- Sample size is adequate (n=2000) but the divergence index of 67% indicates substantial opinion variation, complicating interpretation.
 
 ### Analysis Metadata
 - **Analysis Type:** Analytical Essay (Quantitative + Qualitative)

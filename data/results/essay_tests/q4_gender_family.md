@@ -4,7 +4,7 @@
 **Query (EN):** How are gender roles changing in the Mexican family?
 **Variables:** p1|GEN, p2|GEN, p5|GEN, p6|GEN, p1|FAM, p2|FAM, p3|FAM, p4|FAM, p5|FAM
 **Status:** ✅ success
-**Time:** 37986ms | **Cross-dataset pairs:** 6
+**Time:** 32286ms | **Cross-dataset pairs:** 6
 
 ---
 
@@ -13,39 +13,61 @@
 **Query:** ¿Cómo están cambiando los roles de género en la familia mexicana?
 
 ## Summary
-The data indicate no significant or meaningful changes in gender roles within Mexican families based on the available variables. Specifically, perceptions of gender roles show weak and statistically insignificant associations with family-related variables such as childhood dwelling type or family headship. Seven bivariate pairs were analyzed, all showing weak effects (V<0.1) and p-values above 0.05, leading to low confidence in detecting any substantive relationship between gender roles and family dynamics in this dataset.
+The most important finding is that there is no significant evidence of changing gender roles in Mexican families based on the available data. The variable identifying the family head during childhood shows a strong consensus that the father was the head (72.5%), indicating persistence of traditional gender roles. Across all tested bivariate relationships involving gender perceptions and family variables, associations are weak and statistically insignificant, limiting confidence in detecting shifts in gender roles. Overall, 9 variable pairs were analyzed with no significant associations, indicating low evidence quality for changes in gender roles.
 
 ## Data Landscape
-Nine variables related to gender and family were analyzed from combined gender and family surveys. Among these, five variables exhibit consensus in responses, two show polarized opinions, and two display dispersed opinions, resulting in a 44% divergence index that reflects moderate variation in public opinion. Most gender variables focus on economic perceptions or vague advantage/disadvantage questions with high non-response, while family variables primarily describe childhood living conditions and family headship, limiting direct insight into evolving gender roles.
+The analysis covers 9 variables from gender and family surveys, with a divergence index of 44%, meaning moderate variation in opinions. Of these, 5 variables show consensus distributions, 2 are polarized, and 2 are dispersed. Variables related to gender roles in families, such as family headship and childhood living arrangements, mostly exhibit consensus or dispersed patterns, reflecting stable or fragmented opinions rather than clear shifts. The moderate divergence index suggests some disagreement but no strong polarization on gender role topics in families.
 
 ## Evidence
-Cross-tabulations consistently reveal uniform distributions of gender role perceptions regardless of family context variables. For example, the proportion perceiving the economic situation as "Igual de buena" ranges narrowly from 0.0% to 24.9% across childhood dwelling types, with no significant differences (V=0.065, p=0.389):
-| Childhood dwelling | "Igual de buena" % |
-|---|---|
-| Una casa sola en una ciudad | 20.6% |
-| Una casa sola en un pueblo | 18.6% |
-| Un departamento EN UNA VECINDAD | 24.9% |
-| Un departamento en un edificio | 17.4% |
-| Un departamento en una UNIDAD HABITACIONAL | 21.6% |
-| Un cuarto rentado en una casa o edificio | 17.3% |
-| Un departamento en un pueblo | 20.0% |
-| Un rancho | 20.0% |
-| Otro | 0.0% |
-Similarly, family membership during childhood and family headship show no significant association with gender role perceptions (V=0.036 and V=0.047 respectively, both p>0.7). The dominant family structure during childhood was living with a father as head (72.5%), but this did not correlate with differing gender role views.
-Demographically, employment status and region moderately influence economic outlook variables but do not relate directly to gender roles in families. Univariate distributions confirm polarized perceptions of economic conditions but consensus on family structure variables, e.g., 95.9% lived in a family during childhood and 72.5% had the father as head of household.
+A) Cross-tab patterns show uniformly weak relationships between gender economic perceptions and family variables. For example, perceptions of current economic situation (p1|GEN) are similarly distributed regardless of childhood dwelling type (p1|FAM), with "Igual de mala" responses ranging narrowly from 29.9% to 52.2% across categories (V=0.071, p=0.148). Expectations about future economic situation (p2|GEN) also show little variation by childhood dwelling (V=0.060, p=0.625), with "Va a empeorar" ranging from 17.3% to 50.0%. The family head variable (p5|FAM) reveals a strong consensus that the father was head (72.5%), with minority roles for mothers (10.6%) or both parents (7.8%). This suggests traditional gender roles in family leadership remain dominant. B) Demographically, employment status and region moderate some responses on economic perceptions but do not directly relate to gender roles in families. Age and region moderately influence childhood dwelling responses but not family headship. C) Supporting univariate distributions: 
+
+**p5|FAM** — Family head during childhood:
 | Response | % |
 |---|---|
-| Su padre (family head) | 72.5% |
+| Su padre | 72.5% |
 | Su madre | 10.6% |
 | Ambos padres | 7.8% |
 | Su abuelo o abuela | 7.3% |
 | Otra persona | 1.2% |
+| No sabe/ No contesta | 0.6% |
+
+**p1|GEN** — Perception of current economic situation:
+| Response | % |
+|---|---|
+| Igual de mala | 39.2% |
+| Peor | 38.4% |
+| Igual de buena | 13.0% |
+| Mejor | 8.2% |
+| No sabe/ No contesta | 1.2% |
+
+**p2|GEN** — Expectations about future economic situation:
+| Response | % |
+|---|---|
+| Va a seguir igual de mal | 35.9% |
+| Va a empeorar | 30.2% |
+| Va a mejorar | 17.4% |
+| Va a seguir igual de bien | 10.2% |
+| No sabe/ No contesta | 6.2% |
+
+**p1|FAM** — Childhood dwelling type:
+| Response | % |
+|---|---|
+| Una casa sola en una ciudad. | 34.8% |
+| Una casa sola en un pueblo. | 27.5% |
+| Un departamento EN UNA VECINDAD. | 8.4% |
+| Un cuarto rentado en una casa o edificio. | 7.6% |
+| Un rancho. | 7.2% |
+| Un departamento en un edificio. | 6.2% |
+| Un departamento en una UNIDAD HABITACIONAL | 5.1% |
+| Un departamento en un pueblo. | 1.5% |
+| Otro | 1.0% |
+| No sabe/ No contesta | 0.7% |
 
 ## Complications
-The strongest demographic moderators are employment (mean V=0.45) and region (mean V=0.35), but these relate mainly to economic perceptions rather than gender roles in families. Minority opinions exceeding 15% appear in economic outlook variables but not in family or gender role variables, where consensus or polarized views dominate. The dataset suffers from limitations including lack of direct measures of gender role change, 100% non-response on family size, and weak or absent bivariate associations across all tested pairs (all V<0.1, p>0.3). These factors severely constrain confidence in detecting meaningful shifts in gender roles within Mexican families from this data. The SES-bridge simulation approach and sample size (n=2000) are adequate but cannot compensate for the limited variable scope and weak relationships.
+The strongest demographic moderators are employment (mean V=0.45) and region (mean V=0.35), but these moderate economic perceptions rather than gender roles in families. Minority views such as 10.6% reporting mother as family head and 7.8% both parents show some diversity but do not indicate widespread change. Several variables related to family size and childhood living conditions have unusable or non-informative data, limiting analysis depth. The absence of significant bivariate associations (all V<0.1 and p>0.05) between gender and family variables demonstrates weak or no detectable relationships. The SES-bridge simulation method and sample size are adequate but constrained by the limited number of variables directly measuring gender roles, restricting inference about evolving family dynamics.
 
 ## Implications
-First, given the absence of significant associations between gender role perceptions and family variables, policymakers should consider that traditional gender roles in Mexican families may be stable or changing very slowly, suggesting a need for targeted qualitative research to uncover nuanced dynamics not captured here. Second, the strong consensus on traditional family headship (predominantly fathers) indicates that interventions promoting gender equity in family power structures may need to address entrenched cultural norms explicitly, rather than relying on economic or structural changes alone. Additionally, the polarized economic outlooks suggest that broader socio-economic conditions could indirectly influence family dynamics and gender roles, warranting integrated social and economic policy approaches.
+First, the persistence of traditional family headship roles suggests policy efforts to promote gender equality in family leadership and decision-making remain necessary, as change is not evident in this data. Second, given the weak associations and data limitations, future research should incorporate more direct and nuanced measures of gender roles within families to better capture evolving dynamics. Additionally, social programs could focus on regions or employment groups where economic perceptions vary, as economic context may indirectly impact gender role attitudes over time. Without stronger evidence of change, policies should balance reinforcing gender equity with recognizing cultural continuity in Mexican families.
 
 ---
 
@@ -228,12 +250,12 @@ First, given the absence of significant associations between gender role percept
 
 | Variable Pair | Cramér's V | p-value | Key Pattern | n sim |
 |---------------|------------|---------|-------------|-------|
-| p1|GEN × p1|FAM | 0.065 (weak) | 0.389 | " Igual de buena": 0% (" Otro") → 25% (" Un departamento EN UNA VECINDAD.") | 2000 |
-| p1|GEN × p2|FAM | 0.036 (weak) | 0.728 | " Peor": 32% ("No") → 44% ("NC") | 2000 |
-| p1|GEN × p3|FAM | 0.050 (weak) | 0.464 | " Peor": 27% (" En una institución de salud") → 38% (" En la calle") | 2000 |
-| p1|GEN × p4|FAM | 0.077 (weak) | 0.677 | " Peor": 17% ("12.0") → 75% ("15.0") | 2000 |
-| p1|GEN × p5|FAM | 0.047 (weak) | 0.814 | " Peor": 27% (" Su abuelo o abuela") → 100% (" NS") | 2000 |
-| p2|GEN × p1|FAM | 0.067 (weak) | 0.311 | " Va a seguir igual de mal": 48% (" Otro") → 70% (" Un departamento en un pueblo.") | 2000 |
+| p1|GEN × p1|FAM | 0.071 (weak) | 0.148 | " Igual de mala": 30% (" Un cuarto rentado en una casa o edificio.") → 52% (" Otro") | 2000 |
+| p1|GEN × p2|FAM | 0.036 (weak) | 0.727 | " Igual de mala": 30% ("NC") → 43% ("No") | 2000 |
+| p1|GEN × p3|FAM | 0.056 (weak) | 0.205 | " Igual de mala": 32% (" En una casa de cuna") → 43% (" NC") | 2000 |
+| p1|GEN × p4|FAM | 0.080 (weak) | 0.642 | " Peor": 21% ("11.0") → 100% ("14.0") | 2000 |
+| p1|GEN × p5|FAM | 0.041 (weak) | 0.958 | " Igual de buena": 0% (" NS") → 24% (" Su abuelo o abuela") | 2000 |
+| p2|GEN × p1|FAM | 0.060 (weak) | 0.625 | " Va a empeorar": 17% (" Una casa sola en una ciudad.") → 50% (" Un departamento en un pueblo.") | 2000 |
 
 *Estimates derived from SES-bridge regression simulation.*
 
@@ -242,80 +264,80 @@ First, given the absence of significant associations between gender role percept
 
 | p1|FAM (conditioning) | Top p1|GEN responses |
 |---|---|
-|  Una casa sola en una ciudad. |  Igual de mala: 41%,  Peor: 30%,  Igual de buena: 21% |
-|  Una casa sola en un pueblo. |  Igual de mala: 39%,  Peor: 34%,  Igual de buena: 19% |
-|  Un departamento EN UNA VECINDAD. |  Igual de mala: 38%,  Peor: 30%,  Igual de buena: 25% |
-|  Un departamento en un edificio. |  Peor: 39%,  Igual de mala: 32%,  Igual de buena: 17% |
-|  Un departamento en una UNIDAD HABITACIONAL |  Igual de mala: 38%,  Peor: 33%,  Igual de buena: 22% |
-|  Un cuarto rentado en una casa o edificio. |  Peor: 40%,  Igual de mala: 35%,  Igual de buena: 17% |
-|  Un departamento en un pueblo. |  Igual de mala: 40%,  Peor: 35%,  Igual de buena: 20% |
-|  Un rancho. |  Igual de mala: 39%,  Peor: 30%,  Igual de buena: 20% |
+|  Una casa sola en una ciudad. |  Igual de mala: 40%,  Peor: 30%,  Igual de buena: 21% |
+|  Una casa sola en un pueblo. |  Igual de mala: 34%,  Peor: 33%,  Igual de buena: 23% |
+|  Un departamento EN UNA VECINDAD. |  Igual de mala: 39%,  Peor: 39%,  Igual de buena: 15% |
+|  Un departamento en un edificio. |  Igual de mala: 37%,  Peor: 35%,  Igual de buena: 17% |
+|  Un departamento en una UNIDAD HABITACIONAL |  Igual de mala: 49%,  Peor: 26%,  Igual de buena: 19% |
+|  Un cuarto rentado en una casa o edificio. |  Peor: 40%,  Igual de mala: 30%,  Igual de buena: 17% |
+|  Un departamento en un pueblo. |  Igual de mala: 40%,  Peor: 30%,  Igual de buena: 20% |
+|  Un rancho. |  Igual de mala: 33%,  Peor: 30%,  Igual de buena: 27% |
 
 **p1|GEN × p2|FAM** — How p1|GEN distributes given p2|FAM:
 
 | p2|FAM (conditioning) | Top p1|GEN responses |
 |---|---|
-| Sí |  Igual de mala: 37%,  Peor: 35%,  Igual de buena: 20% |
-| No |  Igual de mala: 33%,  Peor: 32%,  Igual de buena: 25% |
-| NC |  Peor: 44%,  Igual de mala: 33%,  Igual de buena: 22% |
+| Sí |  Igual de mala: 38%,  Peor: 33%,  Igual de buena: 20% |
+| No |  Igual de mala: 43%,  Peor: 34%,  Igual de buena: 13% |
+| NC |  Peor: 40%,  Igual de mala: 30%,  Mejor: 20% |
 
 **p1|GEN × p3|FAM** — How p1|GEN distributes given p3|FAM:
 
 | p3|FAM (conditioning) | Top p1|GEN responses |
 |---|---|
-|  En un orfanatorio |  Igual de mala: 38%,  Peor: 34%,  Igual de buena: 19% |
-|  En una casa de cuna |  Igual de mala: 40%,  Peor: 31%,  Igual de buena: 18% |
-|  En una institución de salud |  Igual de mala: 42%,  Peor: 27%,  Igual de buena: 22% |
-|  En la calle |  Peor: 38%,  Igual de mala: 34%,  Igual de buena: 20% |
-|  NS |  Igual de mala: 38%,  Peor: 31%,  Igual de buena: 23% |
-|  NC |  Igual de mala: 40%,  Peor: 35%,  Igual de buena: 18% |
+|  En un orfanatorio |  Peor: 35%,  Igual de mala: 35%,  Igual de buena: 21% |
+|  En una casa de cuna |  Peor: 38%,  Igual de mala: 32%,  Igual de buena: 23% |
+|  En una institución de salud |  Igual de mala: 38%,  Peor: 34%,  Igual de buena: 22% |
+|  En la calle |  Igual de mala: 36%,  Peor: 29%,  Igual de buena: 25% |
+|  NS |  Igual de mala: 38%,  Peor: 35%,  Igual de buena: 20% |
+|  NC |  Igual de mala: 43%,  Peor: 31%,  Igual de buena: 20% |
 
 **p1|GEN × p4|FAM** — How p1|GEN distributes given p4|FAM:
 
 | p4|FAM (conditioning) | Top p1|GEN responses |
 |---|---|
-| 1.0 |  Peor: 47%,  Igual de buena: 27%,  Igual de mala: 20% |
-| 2.0 |  Igual de mala: 47%,  Peor: 33%,  Igual de buena: 18% |
-| 3.0 |  Igual de mala: 37%,  Peor: 35%,  Igual de buena: 19% |
-| 4.0 |  Igual de mala: 36%,  Peor: 33%,  Igual de buena: 21% |
-| 5.0 |  Igual de mala: 42%,  Peor: 31%,  Igual de buena: 19% |
-| 6.0 |  Igual de mala: 35%,  Peor: 30%,  Igual de buena: 25% |
-| 7.0 |  Igual de mala: 42%,  Peor: 27%,  Igual de buena: 22% |
-| 8.0 |  Peor: 38%,  Igual de mala: 33%,  Igual de buena: 22% |
+| 1.0 |  Igual de mala: 47%,  Peor: 26%,  Igual de buena: 21% |
+| 2.0 |  Igual de mala: 38%,  Igual de buena: 28%,  Peor: 22% |
+| 3.0 |  Igual de mala: 40%,  Peor: 32%,  Igual de buena: 18% |
+| 4.0 |  Peor: 35%,  Igual de mala: 34%,  Igual de buena: 22% |
+| 5.0 |  Igual de mala: 34%,  Peor: 33%,  Igual de buena: 23% |
+| 6.0 |  Igual de mala: 39%,  Peor: 32%,  Igual de buena: 20% |
+| 7.0 |  Peor: 39%,  Igual de mala: 39%,  Igual de buena: 15% |
+| 8.0 |  Igual de mala: 39%,  Peor: 39%,  Igual de buena: 17% |
 
 **p1|GEN × p5|FAM** — How p1|GEN distributes given p5|FAM:
 
 | p5|FAM (conditioning) | Top p1|GEN responses |
 |---|---|
-|  Su padre |  Igual de mala: 40%,  Peor: 32%,  Igual de buena: 19% |
-|  Su madre |  Igual de mala: 38%,  Peor: 35%,  Igual de buena: 19% |
-|  Su abuelo o abuela |  Igual de mala: 41%,  Peor: 27%,  Igual de buena: 24% |
-|  Ambos padres |  Igual de mala: 46%,  Peor: 29%,  Igual de buena: 19% |
-|  Otra persona |  Igual de buena: 36%,  Peor: 32%,  Igual de mala: 27% |
-|  NS |  Peor: 100%,  Mejor: 0%,  Igual de buena: 0% |
-|  NC |  Peor: 57%,  Igual de mala: 43%,  Mejor: 0% |
+|  Su padre |  Igual de mala: 38%,  Peor: 32%,  Igual de buena: 22% |
+|  Su madre |  Igual de mala: 39%,  Peor: 32%,  Igual de buena: 20% |
+|  Su abuelo o abuela |  Peor: 37%,  Igual de mala: 31%,  Igual de buena: 24% |
+|  Ambos padres |  Igual de mala: 39%,  Peor: 31%,  Igual de buena: 22% |
+|  Otra persona |  Igual de mala: 46%,  Peor: 31%,  Igual de buena: 23% |
+|  NS |  Igual de mala: 50%,  Peor: 50%,  Mejor: 0% |
+|  NC |  Igual de mala: 54%,  Peor: 46%,  Mejor: 0% |
 
 **p2|GEN × p1|FAM** — How p2|GEN distributes given p1|FAM:
 
 | p1|FAM (conditioning) | Top p2|GEN responses |
 |---|---|
-|  Una casa sola en una ciudad. |  Va a seguir igual de mal: 58%,  Va a empeorar: 19%,  Va a mejorar: 11% |
-|  Una casa sola en un pueblo. |  Va a seguir igual de mal: 57%,  Va a empeorar: 20%,  Va a mejorar: 10% |
-|  Un departamento EN UNA VECINDAD. |  Va a seguir igual de mal: 62%,  Va a empeorar: 20%,  Va a mejorar: 8% |
-|  Un departamento en un edificio. |  Va a seguir igual de mal: 54%,  Va a empeorar: 27%,  Va a mejorar: 13% |
-|  Un departamento en una UNIDAD HABITACIONAL |  Va a seguir igual de mal: 66%,  Va a empeorar: 16%,  NS: 7% |
-|  Un cuarto rentado en una casa o edificio. |  Va a seguir igual de mal: 60%,  Va a empeorar: 19%,  NS: 10% |
-|  Un departamento en un pueblo. |  Va a seguir igual de mal: 70%,  Va a mejorar: 9%,  Va a seguir igual de bien: 9% |
-|  Un rancho. |  Va a seguir igual de mal: 56%,  Va a empeorar: 18%,  NS: 11% |
+|  Una casa sola en una ciudad. |  Va a seguir igual de mal: 59%,  Va a empeorar: 17%,  Va a mejorar: 11% |
+|  Una casa sola en un pueblo. |  Va a seguir igual de mal: 57%,  Va a empeorar: 19%,  Va a mejorar: 11% |
+|  Un departamento EN UNA VECINDAD. |  Va a seguir igual de mal: 60%,  Va a empeorar: 18%,  Va a mejorar: 11% |
+|  Un departamento en un edificio. |  Va a seguir igual de mal: 64%,  Va a empeorar: 19%,  Va a mejorar: 7% |
+|  Un departamento en una UNIDAD HABITACIONAL |  Va a seguir igual de mal: 56%,  Va a empeorar: 23%,  NS: 10% |
+|  Un cuarto rentado en una casa o edificio. |  Va a seguir igual de mal: 62%,  Va a empeorar: 20%,  Va a mejorar: 9% |
+|  Un departamento en un pueblo. |  Va a empeorar: 50%,  Va a seguir igual de mal: 38%,  Va a mejorar: 6% |
+|  Un rancho. |  Va a seguir igual de mal: 58%,  Va a empeorar: 22%,  NS: 8% |
 ### Reasoning Outline
 
-**Evidence Hierarchy:** The strongest evidence would be cross-dataset bivariate associations with significant p-values, but none of the tested pairs show significant relationships. Therefore, demographic fault lines (employment, region, age) provide secondary evidence about variation in opinions, though not directly about gender roles in families. Univariate distributions offer only contextual background and do not demonstrate relationships relevant to the query.
+**Evidence Hierarchy:** The strongest evidence would be cross-dataset bivariate associations with significant p-values, but none of the tested pairs show statistically significant relationships. Therefore, demographic fault lines (employment, region, age) provide secondary evidence about variation in opinions that might relate indirectly to gender roles. Univariate distributions offer only contextual background but do not demonstrate relationships relevant to changing gender roles in Mexican families.
 
 **Key Limitations:**
-- All cross-dataset bivariate associations show weak effect sizes and no statistical significance, limiting inference about relationships between gender and family variables.
-- Several key family variables (e.g., family size) have unusable data due to 100% 'No sabe/No contesta' responses.
-- Variables directly addressing gender roles or changes therein are limited; many gender variables focus on economic perceptions or vague advantage/disadvantage questions with high non-response.
-- Sample size is adequate (n=2000), but the number of relevant variables and cross-survey pairs is small, restricting analytical depth.
+- All cross-dataset bivariate associations are weak and not statistically significant, limiting inference about relationships relevant to the query.
+- Several key family variables (e.g., p4|FAM) have unusable data or consensus on non-informative categories, reducing analytical depth.
+- The variables on gender (p1|GEN, p2|GEN) focus on economic perceptions rather than direct measures of gender roles or family dynamics.
+- Sample size is adequate (n=2000), but the number of variables directly addressing gender roles in families is limited, constraining the scope of analysis.
 
 ### Analysis Metadata
 - **Analysis Type:** Analytical Essay (Quantitative + Qualitative)

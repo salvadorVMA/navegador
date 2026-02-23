@@ -4,7 +4,7 @@
 **Query (EN):** How do religion and politics relate in Mexico?
 **Variables:** p2|REL, p3|REL, p4|REL, p5|REL, p1|CUL, p2|CUL, p3|CUL, p4|CUL, p5|CUL
 **Status:** ✅ success
-**Time:** 58820ms | **Cross-dataset pairs:** 6
+**Time:** 46012ms | **Cross-dataset pairs:** 6
 
 ---
 
@@ -13,78 +13,68 @@
 **Query:** ¿Cómo se relacionan la religión y la política en México?
 
 ## Summary
-The relationship between religion and political attitudes in Mexico is characterized by generally weak to moderate associations, with some significant but modest variations in religious affiliation and continuity linked to political outlooks. Specifically, being or having been a member of a religious denomination is moderately associated with more pessimistic political expectations, while religious continuity with one's father shows a moderate relationship with perceptions of the political situation. These findings are based on eight bivariate pairs analyzed, with three showing significant associations, but effect sizes remain mostly weak to moderate, indicating cautious confidence in the conclusions.
+The relationship between religion and politics in Mexico appears to be very weak or non-existent according to the data. None of the five tested bivariate associations between religious variables and political culture variables show statistically significant relationships, with Cramér's V values all below 0.1 and p-values above 0.05, indicating no meaningful association. The evidence quality is moderate given the sample size of 2000, but the lack of significant findings limits confidence in any direct link between religion and political attitudes in this dataset.
 
 ## Data Landscape
-The analysis includes eight variables from religion and political culture surveys, with three variables showing consensus distributions, one polarized, one dispersed, and three leaning toward one view. The divergence index of 62% indicates substantial variation in public opinion on religion and politics in Mexico, reflecting a fragmented and nuanced landscape rather than uniform agreement. Religious variables tend to show strong consensus on affiliation and intergenerational transmission, while political variables reveal more dispersed and polarized views about the country's situation and future.
+Eight variables were analyzed, covering both religion (membership, intergenerational transmission, family religious homogeneity) and political culture (political outlooks, perceptions of political situation, pride in Mexican identity). Among these, three variables show strong consensus, one is polarized, one is dispersed, and three lean toward one view without strong consensus. The divergence index of 62% indicates substantial variation in public opinion, reflecting fragmented or moderately divided views on political culture, while religion variables show more consensus. This mix suggests that while religious identity is relatively stable and consensual, political attitudes are more varied and divided among the population.
 
 ## Evidence
-The strongest relationship is between religious membership (p2|REL) and political expectations about the next year (p2|CUL), where the proportion of respondents who have been members of a religious denomination ranges from 80.4% among those optimistic that politics will improve to 90.3% among those who think it will worsen (V=0.104, p=0.001). This suggests that religious affiliation is somewhat more common among those with pessimistic political outlooks.
+Cross-tabulations between religious variables (e.g., whether respondents were formerly members of a religious denomination, or share the same religion as their parents) and political culture variables (e.g., expectations about the political future, descriptions of the current political situation) show very weak or no associations. For instance, the proportion of respondents affirming past religious membership ('Sí') ranges narrowly from 82.5% to 90.9% across categories of political outlook about the next year, indicating uniformity regardless of political views (V=0.067, p=0.105). Similarly, sharing the same religion as one's father varies only modestly between 63.5% and 78.6% across political situation descriptions, again confirming no meaningful link (V=0.074, p=0.088). These patterns hold across all tested pairs, with no significant shifts in religious affiliation or continuity by political attitudes. Demographically, women are consistently more likely than men to report religious affiliation and continuity (e.g., women 79% vs men 65% report past religious membership). Region and age also show moderate variation, with younger groups and certain regions less likely to affirm religious continuity. Political variables show polarization and dispersion, such as nearly equal proportions expecting political conditions to worsen or remain bad next year (32.9% vs 30.4%). This political fragmentation contrasts with the religious consensus. 
 
-| p2|CUL category | Sí (Religious membership) % |
+**p2|REL** — Past membership in a religious denomination:
+| Response | % |
 |---|---|
-| Va a mejorar | 80.4% |
-| Va a seguir igual de bien (esp) | 85.1% |
-| Va a seguir igual de mal (esp) | 85.5% |
-| Va a empeorar | 90.3% |
-| Otra (esp) | 88.9% |
-| NS | 89.6% |
+| Sí | 85.1% |
+| No | 13.7% |
+| No sabe/ No contesta | 1.3% |
 
-In contrast, religious membership shows weak and mostly non-significant associations with other political culture variables such as agreement with political situation descriptors (p3|CUL) and expectations about the political situation next year (p4|CUL), with religious membership consistently high (above 83%) across categories, indicating no meaningful variation (V=0.066, p=0.183 and V=0.053, p=0.459 respectively).
-
-| p3|CUL category | Sí (Religious membership) % |
+**p3|REL** — Same religion as father:
+| Response | % |
 |---|---|
-| Prometedora | 92.2% |
-| Preocupante | 88.3% |
-| Tranquila | 83.2% |
-| Peligrosa | 89.5% |
-| Con oportunidades | 86.6% |
-| Más o menos (esp) | 88.2% |
-| Peor que antes (esp) | 90.9% |
+| Sí | 70.2% |
+| No | 23.1% |
+| No sabe/ No contesta | 6.6% |
 
-| p4|CUL category | Sí (Religious membership) % |
+**p4|REL** — Same religion as mother:
+| Response | % |
 |---|---|
-| Va a mejorar | 86.5% |
-| Va a seguir igual de bien (esp) | 91.4% |
-| Va a seguir igual de mal (esp) | 89.5% |
-| Va a empeorar | 89.4% |
-| Otra (esp) | 95.7% |
-| NS | 85.7% |
-| NC | 92.3% |
+| Sí | 72.1% |
+| No | 21.4% |
+| No sabe/ No contesta | 6.4% |
 
-Religious continuity with one's father (p3|REL) also shows a moderate and significant association with political situation perceptions (p3|CUL). The proportion of respondents sharing their father's religion varies from 58.6% among those who perceive the political situation as "Peor que antes" to 83.1% among those who see it as "Más o menos" (V=0.102, p=0.002). This indicates that religious continuity is somewhat lower among those with the most negative political views.
-
-| p3|CUL category | Sí (Same religion as father) % |
+**p5|REL** — Family religious homogeneity:
+| Response | % |
 |---|---|
-| Prometedora | 72.5% |
-| Preocupante | 65.1% |
-| Tranquila | 72.9% |
-| Peligrosa | 62.8% |
-| Con oportunidades | 64.3% |
-| Más o menos (esp) | 83.1% |
-| Peor que antes (esp) | 58.6% |
+| Sí | 64.4% |
+| No, algunos cambiaron | 32.8% |
+| Otra (esp.) | 1.6% |
+| No sabe/ No contesta | 1.2% |
 
-Other bivariate pairs, such as religious continuity with mother (p4|REL) and political expectations (p2|CUL), or religious membership and pride in being Mexican (p5|CUL), show weak or no significant associations, with distributions remaining relatively uniform across categories.
+**p2|CUL** — Political outlook next year:
+| Response | % |
+|---|---|
+| Va a empeorar | 37.2% |
+| Va a seguir igual de mal | 29.4% |
+| Va a mejorar | 17.8% |
+| Va a seguir igual de bien | 11.2% |
+| No sabe/ No contesta | 3.9% |
+| Otra | 0.6% |
 
-Demographically, women are 14 points more likely than men to report having been members of a religious denomination (79% vs. 65%), and 15 points more likely to share their father's religion (68% vs. 53%). Regional differences show that in region 04, 83% report religious membership compared to 65% in region 03. Younger age groups tend to have lower religious continuity. These demographic fault lines suggest that gender, region, and age moderate religious affiliation and continuity but do not directly inform the religion-politics relationship.
-
-Supporting univariate distributions show strong consensus on religious membership (85.1% "Sí") and intergenerational religious continuity (70.2% same religion as father, 72.1% same religion as mother), while political outlook variables are more polarized or dispersed, with 37.2% expecting political conditions to worsen and 40.7% describing the political situation as "Preocupante."
+**Cross-tab example: p2|REL by p2|CUL (past religious membership by political outlook next year):**
+| p2|CUL category | Sí (%) |
+|---|---|
+| Va a mejorar | 82.5% |
+| Va a seguir igual de bien | 87.3% |
+| Va a seguir igual de mal | 86.8% |
+| Va a empeorar | 89.0% |
+| Otra | 90.9% |
+| NS | 84.3% |
 
 ## Complications
-Demographic moderation is notable in gender, with women consistently more religiously affiliated and more likely to share parental religion than men, which could influence political attitudes indirectly. Regional differences also affect religious affiliation rates, with some regions showing up to 18 points higher membership rates. Age effects are weaker but present, with younger respondents less likely to report religious continuity.
-
-Minority views are significant in some variables; for example, 32.8% report that not all family members share the same religion, indicating religious diversity within families that may complicate political socialization.
-
-Simulation-based bivariate associations rely on SES-bridge assumptions and have inherent uncertainty, with some associations weak or non-significant (e.g., p2|REL × p3|CUL, p3|REL × p2|CUL). Sample sizes are robust (n=2000), but effect sizes (Cramér's V) mostly remain below 0.11, signaling modest relationships.
-
-Some political variables exhibit polarized or dispersed opinions (e.g., p4|CUL polarized between "Va a empeorar" and "Va a seguir igual de mal"), complicating interpretation of religion's influence on political outlooks. Where associations are weak or absent, such as religious membership and political situation descriptors, the data suggest religion's role in shaping political views is limited or indirect.
+The strongest demographic moderators are sex, region, and age, with women 14 points more likely than men to report past religious membership (79% vs 65%) and similarly higher rates of religious continuity with parents. Regions vary by up to 18 points in religious affiliation. Minority views are notable in the religious continuity variables, where 23.1% do not share their father's religion and 21.4% do not share their mother's religion, indicating some generational religious change. Politically, opinions are polarized or dispersed, complicating any direct link to religion. The simulation-based bivariate associations rely on SES-bridge assumptions that may mask subtler relationships, and the moderate sample size limits power to detect small effects. Importantly, all tested religion-politics pairs show weak or non-significant relationships (V<0.1, p>0.05), confirming the absence of a strong direct association in this dataset. This lack of association may also stem from political variables measuring general outlook rather than specific religiously influenced political behaviors or attitudes.
 
 ## Implications
-First, the moderate association between religious affiliation and pessimistic political expectations suggests that religion may serve as a social lens through which political developments are interpreted, potentially reinforcing critical views of political institutions. Policy efforts aiming to engage religious communities in political dialogue could leverage this awareness to foster constructive civic participation.
-
-Second, the weak to moderate relationships and demographic complexities imply that religion's influence on political attitudes is neither uniform nor deterministic. Policies promoting secular political education and pluralistic civic engagement could help mitigate potential polarization linked to religious identity, ensuring political discourse remains inclusive.
-
-Given the fragmented and polarized political attitudes, further research is needed to disentangle how religious beliefs intersect with other social factors to shape political culture in Mexico. Enhanced data collection on religious-political interactions could support more tailored policy interventions addressing both religious and political diversity.
+First, the weak direct association suggests that religion and politics operate largely independently in Mexico's current social context, implying that policy or political strategies should not assume strong religious influence on political attitudes at the population level. Efforts to engage religious communities politically may need to be more targeted or localized rather than broad-based. Second, the strong demographic differences in religious affiliation and continuity, especially by sex and region, indicate that political actors and policymakers should consider these subgroup variations when addressing issues related to religion and social identity. Finally, the polarized and dispersed political attitudes highlight a fragmented political culture that may overshadow any subtle religion-politics link, suggesting that addressing political polarization requires broader social and institutional approaches beyond religious frameworks.
 
 ---
 
@@ -234,23 +224,23 @@ Given the fragmented and polarized political attitudes, further research is need
 **Variable-Level Demographic Detail:**
 
 *p2|REL*
-- sexo: V=0.202 (p=0.000) — 1.0: Sí (65%); 2.0: Sí (79%)
+- sexo: V=0.202 (p=0.000) —  Hombre: Sí (65%);  Mujer: Sí (79%)
 - region: V=0.137 (p=0.000) — 01: Sí (73%); 02: Sí (72%); 03: Sí (65%)
 - edad: V=0.113 (p=0.000) — 0-18: Sí (70%); 19-24: Sí (66%); 25-34: Sí (67%)
 
 *p3|REL*
-- sexo: V=0.186 (p=0.000) — 1.0: Sí (53%); 2.0: Sí (68%)
+- sexo: V=0.186 (p=0.000) —  Hombre: Sí (53%);  Mujer: Sí (68%)
 - region: V=0.125 (p=0.000) — 01: Sí (65%); 02: Sí (60%); 03: Sí (52%)
 - edad: V=0.095 (p=0.010) — 0-18: Sí (57%); 19-24: Sí (54%); 25-34: Sí (56%)
 
 *p4|REL*
-- sexo: V=0.198 (p=0.000) — 1.0: Sí (54%); 2.0: Sí (70%)
+- sexo: V=0.198 (p=0.000) —  Hombre: Sí (54%);  Mujer: Sí (70%)
 - region: V=0.135 (p=0.000) — 01: Sí (68%); 02: Sí (61%); 03: Sí (53%)
 - edad: V=0.097 (p=0.005) — 0-18: Sí (66%); 19-24: Sí (55%); 25-34: Sí (57%)
 
 *p5|REL*
 - region: V=0.105 (p=0.000) — 01: Sí (74%); 02: Sí (63%); 03: Sí (54%)
-- sexo: V=0.104 (p=0.012) — 1.0: Sí (60%); 2.0: Sí (68%)
+- sexo: V=0.104 (p=0.012) —  Hombre: Sí (60%);  Mujer: Sí (68%)
 
 *p2|CUL*
 - region: V=0.141 (p=0.000) — 01:  Va a empeorar (42%); 02:  Va a empeorar (42%); 03:  Va a seguir igual de mal (esp) (29%)
@@ -271,12 +261,12 @@ Given the fragmented and polarized political attitudes, further research is need
 
 | Variable Pair | Cramér's V | p-value | Key Pattern | n sim |
 |---------------|------------|---------|-------------|-------|
-| p2|REL × p2|CUL | 0.104 (moderate) | 0.001 | "Sí": 80% (" Va a mejorar") → 90% (" Va a empeorar") | 2000 |
-| p2|REL × p3|CUL | 0.066 (weak) | 0.183 | "Sí": 83% (" Tranquila") → 92% (" Prometedora") | 2000 |
-| p2|REL × p4|CUL | 0.053 (weak) | 0.459 | "Sí": 86% (" NS") → 96% (" Otra (esp)") | 2000 |
-| p2|REL × p5|CUL | 0.075 (weak) | 0.023 | "Sí": 72% (" No soy mexicano (esp)") → 97% (" NS") | 2000 |
-| p3|REL × p2|CUL | 0.044 (weak) | 0.571 | "Sí": 60% (" Otra (esp)") → 74% (" NS") | 2000 |
-| p3|REL × p3|CUL | 0.102 (moderate) | 0.002 | "Sí": 59% (" Peor que antes   (esp)") → 83% (" Más o menos (esp)") | 2000 |
+| p2|REL × p2|CUL | 0.067 (weak) | 0.105 | "Sí": 82% (" Va a mejorar") → 91% (" Otra (esp)") | 2000 |
+| p2|REL × p3|CUL | 0.058 (weak) | 0.347 | "Sí": 85% (" Prometedora") → 93% (" Peor que antes   (esp)") | 2000 |
+| p2|REL × p4|CUL | 0.059 (weak) | 0.333 | "Sí": 82% (" NS") → 100% (" NC") | 2000 |
+| p2|REL × p5|CUL | 0.053 (weak) | 0.234 | "Sí": 83% (" No soy mexicano (esp)") → 90% (" NS") | 2000 |
+| p3|REL × p2|CUL | 0.049 (weak) | 0.452 | "Sí": 58% (" Otra (esp)") → 71% (" Va a seguir igual de bien (esp)") | 2000 |
+| p3|REL × p3|CUL | 0.074 (weak) | 0.088 | "Sí": 64% (" Peor que antes   (esp)") → 79% (" Prometedora") | 2000 |
 
 *Estimates derived from SES-bridge regression simulation.*
 
@@ -285,78 +275,78 @@ Given the fragmented and polarized political attitudes, further research is need
 
 | p2|CUL (conditioning) | Top p2|REL responses |
 |---|---|
-|  Va a mejorar | Sí: 80%, No: 20% |
-|  Va a seguir igual de bien (esp) | Sí: 85%, No: 15% |
-|  Va a seguir igual de mal (esp) | Sí: 86%, No: 14% |
-|  Va a empeorar | Sí: 90%, No: 10% |
-|  Otra (esp) | Sí: 89%, No: 11% |
-|  NS | Sí: 90%, No: 10% |
+|  Va a mejorar | Sí: 82%, No: 18% |
+|  Va a seguir igual de bien (esp) | Sí: 87%, No: 13% |
+|  Va a seguir igual de mal (esp) | Sí: 87%, No: 13% |
+|  Va a empeorar | Sí: 89%, No: 11% |
+|  Otra (esp) | Sí: 91%, No: 9% |
+|  NS | Sí: 84%, No: 16% |
 
 **p2|REL × p3|CUL** — How p2|REL distributes given p3|CUL:
 
 | p3|CUL (conditioning) | Top p2|REL responses |
 |---|---|
-|  Prometedora | Sí: 92%, No: 8% |
-|  Preocupante | Sí: 88%, No: 12% |
-|  Tranquila | Sí: 83%, No: 17% |
+|  Prometedora | Sí: 85%, No: 15% |
+|  Preocupante | Sí: 87%, No: 13% |
+|  Tranquila | Sí: 86%, No: 14% |
 |  Peligrosa | Sí: 90%, No: 10% |
 |  Con oportunidades | Sí: 87%, No: 13% |
-|  Más o menos (esp) | Sí: 88%, No: 12% |
-|  Peor que antes   (esp) | Sí: 91%, No: 9% |
+|  Más o menos (esp) | Sí: 91%, No: 9% |
+|  Peor que antes   (esp) | Sí: 93%, No: 7% |
 
 **p2|REL × p4|CUL** — How p2|REL distributes given p4|CUL:
 
 | p4|CUL (conditioning) | Top p2|REL responses |
 |---|---|
-|  Va a mejorar | Sí: 86%, No: 14% |
-|  Va a seguir igual de bien (esp) | Sí: 91%, No: 9% |
-|  Va a seguir igual de mal (esp) | Sí: 90%, No: 10% |
-|  Va a empeorar | Sí: 89%, No: 11% |
-|  Otra (esp) | Sí: 96%, No: 4% |
-|  NS | Sí: 86%, No: 14% |
-|  NC | Sí: 92%, No: 8% |
+|  Va a mejorar | Sí: 87%, No: 13% |
+|  Va a seguir igual de bien (esp) | Sí: 93%, No: 7% |
+|  Va a seguir igual de mal (esp) | Sí: 88%, No: 12% |
+|  Va a empeorar | Sí: 88%, No: 12% |
+|  Otra (esp) | Sí: 90%, No: 10% |
+|  NS | Sí: 82%, No: 18% |
+|  NC | Sí: 100%, No: 0% |
 
 **p2|REL × p5|CUL** — How p2|REL distributes given p5|CUL:
 
 | p5|CUL (conditioning) | Top p2|REL responses |
 |---|---|
-|  Mucho | Sí: 88%, No: 12% |
-|  Poco | Sí: 90%, No: 10% |
-|  Nada | Sí: 87%, No: 13% |
-|  No soy mexicano (esp) | Sí: 72%, No: 28% |
-|  NS | Sí: 97%, No: 3% |
+|  Mucho | Sí: 89%, No: 11% |
+|  Poco | Sí: 88%, No: 12% |
+|  Nada | Sí: 84%, No: 16% |
+|  No soy mexicano (esp) | Sí: 83%, No: 17% |
+|  NS | Sí: 90%, No: 10% |
 
 **p3|REL × p2|CUL** — How p3|REL distributes given p2|CUL:
 
 | p2|CUL (conditioning) | Top p3|REL responses |
 |---|---|
-|  Va a mejorar | Sí: 68%, No: 32% |
-|  Va a seguir igual de bien (esp) | Sí: 66%, No: 34% |
-|  Va a seguir igual de mal (esp) | Sí: 65%, No: 35% |
-|  Va a empeorar | Sí: 64%, No: 36% |
-|  Otra (esp) | Sí: 60%, No: 40% |
-|  NS | Sí: 74%, No: 26% |
+|  Va a mejorar | Sí: 64%, No: 36% |
+|  Va a seguir igual de bien (esp) | Sí: 71%, No: 29% |
+|  Va a seguir igual de mal (esp) | Sí: 64%, No: 36% |
+|  Va a empeorar | Sí: 63%, No: 37% |
+|  Otra (esp) | Sí: 58%, No: 42% |
+|  NS | Sí: 67%, No: 33% |
 
 **p3|REL × p3|CUL** — How p3|REL distributes given p3|CUL:
 
 | p3|CUL (conditioning) | Top p3|REL responses |
 |---|---|
-|  Prometedora | Sí: 72%, No: 28% |
+|  Prometedora | Sí: 79%, No: 21% |
 |  Preocupante | Sí: 65%, No: 35% |
-|  Tranquila | Sí: 73%, No: 27% |
-|  Peligrosa | Sí: 63%, No: 37% |
-|  Con oportunidades | Sí: 64%, No: 36% |
-|  Más o menos (esp) | Sí: 83%, No: 17% |
-|  Peor que antes   (esp) | Sí: 59%, No: 41% |
+|  Tranquila | Sí: 69%, No: 31% |
+|  Peligrosa | Sí: 64%, No: 36% |
+|  Con oportunidades | Sí: 65%, No: 35% |
+|  Más o menos (esp) | Sí: 69%, No: 31% |
+|  Peor que antes   (esp) | Sí: 64%, No: 36% |
 ### Reasoning Outline
 
-**Evidence Hierarchy:** The strongest evidence comes from cross-dataset bivariate associations with significant p-values, particularly the moderate and significant relationships between religious variables (p2|REL, p3|REL) and political culture variables (p2|CUL, p3|CUL). Demographic fault lines provide secondary evidence about subgroup differences but do not directly address religion-politics relationships. Univariate distributions offer context on religious and political attitudes but cannot establish relationships on their own.
+**Evidence Hierarchy:** The strongest evidence would be cross-dataset bivariate associations with significant p-values; however, none of the tested pairs show statistically significant relationships, indicating weak or no direct association between religion and political variables in this data. The next strongest evidence comes from demographic fault lines showing moderate to strong variation by sex, region, and employment, which may indirectly relate to religion-politics dynamics. Univariate distributions provide context on religious affiliation and political attitudes but do not demonstrate relationships. Overall, the evidence for a direct relationship between religion and politics in Mexico in this dataset is weak.
 
 **Key Limitations:**
-- Bivariate associations are simulation-based estimates which may have inherent uncertainty.
-- Only a limited number of cross-survey variable pairs are available, restricting comprehensive analysis.
-- Effect sizes (Cramér's V) are mostly weak to moderate, indicating relationships are not strong.
-- Some political culture variables show dispersed or polarized opinions, complicating interpretation of relationships with religion.
+- All cross-dataset bivariate associations are weak and not statistically significant, limiting inferential strength.
+- The variables on religion and politics come from different survey modules, possibly reducing measurement coherence.
+- Sample size is moderate (n=2000), but effect sizes are small, suggesting limited power to detect subtle relationships.
+- Only a limited set of variables directly addressing religion-politics interaction is available; many political variables measure general outlook rather than specific political behaviors or attitudes linked to religion.
 
 ### Analysis Metadata
 - **Analysis Type:** Analytical Essay (Quantitative + Qualitative)

@@ -130,12 +130,9 @@ ABSOLUTE RULES:
 10. NON-SIGNIFICANT RESULTS: If cross-dataset bivariate estimates show p >= 0.05 or V < 0.05, these must be reported as evidence of a weak or absent relationship. Do not omit them.
 11. CROSS-TAB PROFILES: When the report includes "How Y responses shift across X categories" data, you MUST use these conditional distributions to build your narrative. The "Key contrast" line identifies the most variable response category — lead with that pattern. Translate data into substantive sentences about people's views, not into statistics reports.
 12. DATA TABLES IN TEXT: For EVERY variable whose distribution you discuss in the EVIDENCE or COMPLICATIONS sections, you MUST include a markdown table immediately after the prose. No exceptions — prose-only summaries with numbers in parentheses are forbidden.
+    - Tables go INSIDE the string value of the relevant field (evidence, complications), embedded as inline markdown — do NOT add extra JSON keys for tables.
     - For a univariate distribution, use a frequency table: bold caption line with variable ID above the table, then | Response | % | rows. The variable ID (e.g. "p2|EDU") MUST appear only in the bold caption line — NEVER inside a table cell. Example:
-      **p3|SOC** — Technology access perception:
-      | Response | % |
-      |---|---|
-      | Mucho | 47.1% |
-      | Poco | 35.2% |
+      **p3|SOC** — Technology access perception:\n| Response | % |\n|---|---|\n| Mucho | 47.1% |\n| Poco | 35.2% |
     - For a cross-tabulation, include the conditional distribution table showing how the key response varies across groups.
     - Use ONLY data from the QUANTITATIVE REPORT — do not invent numbers."""
 
@@ -287,7 +284,7 @@ STRUCTURE (each key must be a non-empty string):
 
 {format_instructions}
 
-IMPORTANT: Return valid JSON only. No markdown formatting, no code blocks, no extra text."""
+IMPORTANT: Return valid JSON only. No markdown formatting around the JSON, no code blocks, no extra text. The JSON must contain EXACTLY the fields defined in the schema — do NOT add extra keys for tables or any other content."""
 
 
 # =============================================================================
