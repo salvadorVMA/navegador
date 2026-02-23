@@ -128,7 +128,8 @@ ABSOLUTE RULES:
 8. Only discuss data points that are LOGICALLY CONNECTED to the query. Follow the REASONING OUTLINE to maintain analytical coherence.
 9. DEMOGRAPHIC FAULT LINES: Describe concrete subgroup differences in the COMPLICATIONS section: "Women are 15 points more likely than men to say X." Do not just cite V values — state what the actual difference IS, using the demographic breakdowns provided per variable.
 10. NON-SIGNIFICANT RESULTS: If cross-dataset bivariate estimates show p >= 0.05 or V < 0.05, these must be reported as evidence of a weak or absent relationship. Do not omit them.
-11. CROSS-TAB PROFILES: When the report includes "How Y responses shift across X categories" data, you MUST use these conditional distributions to build your narrative. The "Key contrast" line identifies the most variable response category — lead with that pattern. Translate data into substantive sentences about people's views, not into statistics reports."""
+11. CROSS-TAB PROFILES: When the report includes "How Y responses shift across X categories" data, you MUST use these conditional distributions to build your narrative. The "Key contrast" line identifies the most variable response category — lead with that pattern. Translate data into substantive sentences about people's views, not into statistics reports.
+12. DATA TABLES IN TEXT: Whenever you discuss a specific variable's distribution or a cross-tabulation relationship in the EVIDENCE or COMPLICATIONS sections, you MUST include the relevant table as a markdown table immediately after the prose that discusses it. For a univariate distribution, include the frequency table (Response | %). For a cross-tabulation, include the conditional distribution table showing how the key category varies across groups. Use only data from the QUANTITATIVE REPORT — do not invent numbers."""
 
 
 REASONING_SYSTEM_PROMPT = """You are an expert survey research methodologist.
@@ -238,12 +239,23 @@ STRUCTURE (each key must be a non-empty string):
       remain virtually identical (~Z% across all groups), confirming no meaningful
       association (V=0.05, p=0.32)."
       A weak or absent relationship IS a finding — describe the uniformity.
+      IMPORTANT: After describing each cross-tab relationship, include the
+      conditional distribution as a markdown table:
+        | [var_b] category | [key var_a response] % |
+        |---|---|
+        | CategoryA | X% |
+        | CategoryB | Y% |
    B) DEMOGRAPHIC MODERATION: Describe how responses differ across SES groups using
       the expanded demographic breakdowns. Do not just cite V values — state what
       the difference IS: "Women are 15 points more likely than men to say X (V=0.14)."
       Use the top-2 response categories shown per group.
-   C) SUPPORTING UNIVARIATE PATTERNS: Describe individual variable distributions
-      as context for the cross-tab patterns above. Cite exact percentages and
+   C) SUPPORTING UNIVARIATE PATTERNS: For each variable discussed, include its
+      frequency table as a markdown table:
+        | Response | % |
+        |---|---|
+        | OptionA | X% |
+        | OptionB | Y% |
+      Use only data from the QUANTITATIVE REPORT. Cite exact percentages and
       variable IDs. Group by distribution shape.
 
 4. "complications": Discuss factors that complicate the main findings:
@@ -536,6 +548,14 @@ def _format_variable_details(quant_report: Optional[QuantitativeReport]) -> str:
                 f"{label} ({pct:.1f}%)" for label, pct in v.minority_opinions.items()
             )
             lines.append(f"- Minority opinions: {minorities}")
+        # Full marginal frequency table
+        if v.frequencies:
+            lines.append("\n| Response | % |")
+            lines.append("|----------|---|")
+            for label, pct in sorted(
+                v.frequencies.items(), key=lambda x: x[1], reverse=True
+            ):
+                lines.append(f"| {label} | {pct:.1f}% |")
     return "\n".join(lines) + "\n"
 
 
@@ -644,6 +664,25 @@ def _format_cross_dataset_bivariate(cross_dataset_bivariate: dict) -> str:
                 f"| {cv:.3f} | {pv:.3f} | {strength} | {est.get('n_simulated')} |"
             )
     lines.append("\n*Estimates derived from SES-bridge regression simulation.*\n")
+
+    # Conditional distribution sub-tables for each pair
+    for pair_key, est in cross_dataset_bivariate.items():
+        col_profiles = est.get('column_profiles')
+        if not col_profiles:
+            continue
+        var_a = est.get('var_a', '?')
+        var_b = est.get('var_b', '?')
+        lines.append(
+            f"\n**{var_a} × {var_b}** — "
+            f"How {var_a} distributes given {var_b}:\n"
+        )
+        lines.append(f"| {var_b} (conditioning) | Top {var_a} responses |")
+        lines.append("|---|---|")
+        for cond_cat, profile in list(col_profiles.items())[:8]:
+            top = sorted(profile.items(), key=lambda x: x[1], reverse=True)[:3]
+            parts = [f"{cat}: {pct * 100:.0f}%" for cat, pct in top]
+            lines.append(f"| {cond_cat} | {', '.join(parts)} |")
+
     return "\n".join(lines)
 
 

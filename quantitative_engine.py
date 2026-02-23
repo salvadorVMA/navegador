@@ -227,7 +227,33 @@ def compute_variable_statistics(
 
     # Extract frequencies as dict
     values = df_clean.iloc[:, 0]
-    frequencies = {str(idx): float(val) for idx, val in values.items()}
+    raw_frequencies = {str(idx): float(val) for idx, val in values.items()}
+
+    # Filter out NaN indices (not-applicable / skip-pattern rows) and sentinel numeric
+    # codes (>= 97: no-answer / don't-know / refuse; < 0: invalid / filter codes).
+    # These are never substantive responses and must not reach the LLM.
+    # After filtering, renormalize so percentages reflect only substantive responses.
+    frequencies: Dict[str, float] = {}
+    for label, pct in raw_frequencies.items():
+        if label == 'nan':
+            continue  # NaN index = conditional question not asked of this respondent
+        try:
+            f = float(label)
+            if f < 0 or f >= 97:
+                continue  # sentinel code (99=no answer, -1=invalid, etc.)
+        except (ValueError, TypeError):
+            pass  # non-numeric label = valid substantive response text
+        frequencies[label] = pct
+
+    if not frequencies:
+        print(f"Warning: Variable {var_id} has no substantive categories after sentinel filtering")
+        return None
+
+    # Renormalize to 100% if sentinel/NaN values were filtered out
+    total_pct = sum(frequencies.values())
+    if total_pct > 0 and abs(total_pct - 100.0) > 0.5:
+        scale = 100.0 / total_pct
+        frequencies = {k: v * scale for k, v in frequencies.items()}
 
     # Sort by value descending
     sorted_freqs = sorted(frequencies.items(), key=lambda x: x[1], reverse=True)
@@ -688,8 +714,10 @@ def format_quantitative_report_for_llm(report: QuantitativeReport) -> str:
             if col_profiles:
                 var_a = est.get('var_a', '?')
                 var_b = est.get('var_b', '?')
+                # column_profiles: {var_b_cat → {var_a_cat → pct}}
+                # i.e. for each var_b conditioning category, the var_a distribution
                 lines.append(
-                    f"    How {var_b} responses shift across {var_a} categories:"
+                    f"    How {var_a} distributes given {var_b} categories:"
                 )
                 for cond_cat, profile in col_profiles.items():
                     sorted_items = sorted(
@@ -699,15 +727,15 @@ def format_quantitative_report_for_llm(report: QuantitativeReport) -> str:
                     if len(sorted_items) > 4:
                         parts.append("...")
                     lines.append(
-                        f"      When {var_a}=\"{cond_cat}\": {', '.join(parts)}"
+                        f"      When {var_b}=\"{cond_cat}\": {', '.join(parts)}"
                     )
                 if top_contrasts:
                     top_cat = next(iter(top_contrasts))
                     tc = top_contrasts[top_cat]
                     lines.append(
-                        f"    Key contrast: \"{top_cat}\" ranges from "
-                        f"{tc['min_pct']*100:.1f}% (when \"{tc['min_when']}\") to "
-                        f"{tc['max_pct']*100:.1f}% (when \"{tc['max_when']}\")"
+                        f"    Key contrast ({var_a}): \"{top_cat}\" ranges from "
+                        f"{tc['min_pct']*100:.1f}% (when {var_b}=\"{tc['min_when']}\") "
+                        f"to {tc['max_pct']*100:.1f}% (when {var_b}=\"{tc['max_when']}\")"
                     )
         lines.append("")
 
@@ -880,7 +908,27 @@ def _enrich_with_bivariate_stats(variables: List) -> None:
                         and result.get('p_value') is not None
                         and result['p_value'] < 0.05):
                     biv_results[ses_var] = result
+
             if biv_results:
+                # Apply label resolution to leader response categories so the LLM
+                # sees human-readable labels (e.g. "Sí"/"No") not raw codes ("1.0"/"2.0").
+                # _get_var_labels and _resolve_label are defined later in this module;
+                # they are resolved at call time (no forward-reference issue in Python).
+                var_col = var_stats.var_id.split('|')[0]
+                survey_name_v = enc_nom_dict_rev.get(var_stats.survey_code)
+                if survey_name_v:
+                    var_labels = _get_var_labels(
+                        var_col, enc_dict.get(survey_name_v, {})
+                    )
+                    if var_labels:
+                        for biv in biv_results.values():
+                            for info in biv.get('leaders', {}).values():
+                                for rank in ('first', 'second'):
+                                    entry = info.get(rank)
+                                    if entry and 'category' in entry:
+                                        entry['category'] = _resolve_label(
+                                            str(entry['category']), var_labels
+                                        )
                 var_stats.bivariate_stats = biv_results
 
         n_with = sum(1 for v in variables if v.bivariate_stats)
@@ -919,6 +967,107 @@ def _compute_demographic_fault_lines(variables: List) -> Optional[Dict[str, Any]
         key=lambda x: x[1]['mean_cramers_v'],
         reverse=True,
     ))
+
+
+def _get_var_labels(col: str, survey_data: dict) -> Dict[str, str]:
+    """
+    Return a str→str label lookup for a survey variable's response codes.
+
+    Handles both integer-keyed ('1', '2') and float-keyed ('1.0', '2.0')
+    JSON metadata so that DataFrame-style codes (e.g. '1.0') always resolve.
+    """
+    meta = survey_data.get('metadata', {})
+    vvl = meta.get('variable_value_labels', {})
+    raw = vvl.get(col, {})
+    if not isinstance(raw, dict):
+        return {}
+    result: Dict[str, str] = {}
+    for k, v in raw.items():
+        label = str(v)
+        k_str = str(k)
+        result[k_str] = label
+        # Also register float form so "1" matches "1.0" and vice-versa
+        try:
+            f = float(k_str)
+            if f == int(f):
+                result[f"{int(f)}.0"] = label   # "1" → "1.0"
+                result[str(int(f))] = label      # "1.0" → "1"
+        except (ValueError, OverflowError):
+            pass
+    return result
+
+
+def _resolve_label(code: str, label_map: Dict[str, str]) -> str:
+    """
+    Resolve a raw numeric code to a human-readable label using a label map.
+    Falls back to the original code if no match is found.
+    Handles both "1" and "1.0" forms of the same integer key.
+    """
+    if code in label_map:
+        return label_map[code]
+    try:
+        f = float(code)
+        if f == int(f):
+            for alt in (str(int(f)), f"{int(f)}.0"):
+                if alt in label_map:
+                    return label_map[alt]
+    except (ValueError, OverflowError):
+        pass
+    return code
+
+
+def _apply_labels_to_estimate(
+    est: Dict[str, Any],
+    labels_a: Dict[str, str],
+    labels_b: Dict[str, str],
+) -> Dict[str, Any]:
+    """
+    Replace raw numeric codes with human-readable labels in column_profiles and
+    top_contrasts.
+
+    column_profiles structure: {var_b_cat: {var_a_cat: pct}}
+      - outer keys = var_b conditioning categories
+      - inner keys = var_a response categories
+
+    top_contrasts structure: {var_a_cat: {min_when: var_b_cat, max_when: var_b_cat, ...}}
+      - outer keys = var_a categories
+      - min_when / max_when = var_b categories
+    """
+    def _resolve(code: str, label_map: Dict[str, str]) -> str:
+        if code in label_map:
+            return label_map[code]
+        # Try normalised forms ("1.0" → "1" and vice-versa)
+        try:
+            f = float(code)
+            for alt in (str(int(f)), f"{int(f)}.0"):
+                if alt in label_map:
+                    return label_map[alt]
+        except (ValueError, OverflowError):
+            pass
+        return code  # fall back to raw code
+
+    if est.get('column_profiles') and (labels_a or labels_b):
+        new_profiles: Dict[str, Dict[str, float]] = {}
+        for cond_cat, profile in est['column_profiles'].items():
+            labeled_cond = _resolve(cond_cat, labels_b)
+            new_profiles[labeled_cond] = {
+                _resolve(resp_cat, labels_a): pct
+                for resp_cat, pct in profile.items()
+            }
+        est['column_profiles'] = new_profiles
+
+    if est.get('top_contrasts') and (labels_a or labels_b):
+        new_tc: Dict[str, Any] = {}
+        for row_cat, tc in est['top_contrasts'].items():
+            labeled_row = _resolve(row_cat, labels_a)
+            new_tc[labeled_row] = {
+                **tc,
+                'min_when': _resolve(tc['min_when'], labels_b),
+                'max_when': _resolve(tc['max_when'], labels_b),
+            }
+        est['top_contrasts'] = new_tc
+
+    return est
 
 
 def _estimate_cross_dataset_pairs(
@@ -986,6 +1135,11 @@ def _estimate_cross_dataset_pairs(
                 col_b=col_b,
             )
             if est is not None:
+                # Replace raw numeric codes with human-readable labels in
+                # column_profiles and top_contrasts before the LLM sees them.
+                labels_a = _get_var_labels(col_a, enc_dict.get(survey_name_a, {}))
+                labels_b = _get_var_labels(col_b, enc_dict.get(survey_name_b, {}))
+                est = _apply_labels_to_estimate(est, labels_a, labels_b)
                 results[pair_key] = est
         except Exception as e:
             print(f"[cross-bivariate] Skipping {pair_key}: {e}")

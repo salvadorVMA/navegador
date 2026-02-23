@@ -48,6 +48,20 @@ _ORDINAL_SES = ('edad',)
 # SES variables used in regression features
 SES_REGRESSION_VARS: List[str] = ['sexo', 'edad', 'region', 'empleo']
 
+# Survey sentinel codes: values < 0 (invalid/missing) or >= 97 (no-answer, don't-know, refuse)
+# These are never substantive responses and must be excluded from model fitting.
+_SENTINEL_HIGH = 97.0
+_SENTINEL_LOW  = 0.0   # exclusive lower bound (0 itself is valid in some scales)
+
+
+def _is_sentinel(val) -> bool:
+    """Return True if val is a survey no-answer / invalid code."""
+    try:
+        f = float(str(val))
+        return f < _SENTINEL_LOW or f >= _SENTINEL_HIGH
+    except (TypeError, ValueError):
+        return False
+
 
 # ---------------------------------------------------------------------------
 # SESEncoder
@@ -207,6 +221,17 @@ class SurveyVarModel:
             raise ValueError(
                 f"Insufficient data after dropping NAs: {len(work)} rows"
             )
+
+        # Remove sentinel-coded target values (99 = no answer, -1 = invalid, etc.)
+        # These must not be modelled or appear in simulated distributions / cross-tabs.
+        sentinel_mask = work[target_col].apply(_is_sentinel)
+        if sentinel_mask.any():
+            work = work[~sentinel_mask]
+            if len(work) < 30:
+                raise ValueError(
+                    f"Too few non-sentinel rows for {target_col}: {len(work)} "
+                    f"(dropped {sentinel_mask.sum()} sentinel-coded rows)"
+                )
 
         # Detect ordinal vs nominal using question values/labels
         var_labels = {target_col: target_col}   # no label text, fall back to values
@@ -402,6 +427,21 @@ class CrossDatasetBivariateEstimator:
             # --- Column-normalized conditional distributions ---
             # P(var_a_category | var_b_category) for each var_b category
             col_normed = crosstab.div(crosstab.sum(axis=0), axis=1)
+
+            # Belt-and-suspenders: drop any sentinel-coded categories that slipped
+            # through (should not happen after the fit() sentinel filter, but guards
+            # against edge cases in the simulation).
+            substantive_rows = [
+                r for r in col_normed.index if not _is_sentinel(r)
+            ]
+            substantive_cols = [
+                c for c in col_normed.columns if not _is_sentinel(c)
+            ]
+            if len(substantive_rows) < len(col_normed.index) or len(substantive_cols) < len(col_normed.columns):
+                col_normed = col_normed.loc[substantive_rows, substantive_cols]
+                # Renormalize columns after dropping sentinel rows
+                col_sums = col_normed.sum(axis=0).replace(0, 1.0)
+                col_normed = col_normed.div(col_sums, axis=1)
 
             column_profiles = {}
             for col_cat in col_normed.columns:

@@ -63,9 +63,12 @@ Data Layer (ChromaDB embeddings, JSON files)
 | Module | Purpose |
 |--------|---------|
 | `agent.py` | Main agent workflow and orchestration |
+| `analytical_essay.py` | **[NEW]** Two-step essay pipeline: reasoning outline + essay generation |
+| `quantitative_engine.py` | **[NEW]** Pure-computation report with sentinel filtering, label resolution, cross-dataset bivariate |
+| `ses_regression.py` | **[NEW]** SES-bridge cross-dataset bivariate estimation (OrderedModel / MNLogit) |
 | `dashboard.py` | Dash web interface |
 | `config.py` | Configuration and path management |
-| `detailed_analysis.py` | Analysis pipeline |
+| `detailed_analysis.py` | Legacy analysis pipeline (OLD architecture) |
 | `variable_selector.py` | Query-to-variable semantic matching |
 | `meta_prompting.py` | Prompt optimization system |
 | `cache_manager.py` | LLM response caching |
@@ -88,12 +91,32 @@ Data Layer (ChromaDB embeddings, JSON files)
 
 ## Current Branch
 
-`Claude1` - Active development branch with:
-- Anthropic/Claude model integration
-- Automatic Codespaces authentication
-- JSON data format (converted from pickle)
-- Reorganized folder structure
-- Docker sandbox for safe testing
+`feature/bivariate-analysis` (branched from `Claude1`) — active development branch.
+
+### Key Modules Added / Significantly Changed
+
+| Module | Status | Purpose |
+|--------|--------|---------|
+| `analytical_essay.py` | Active | Two-step LLM pipeline: reasoning outline → analytical essay. Entry point: `generate_analytical_essay()` |
+| `quantitative_engine.py` | Active | Pure-computation report builder. Handles sentinel/NaN filtering, label resolution for cross-tab profiles and bivariate leaders, SES bridge cross-dataset estimation |
+| `ses_regression.py` | Active | `CrossDatasetBivariateEstimator` — SES-bridge simulation via `OrderedModel`/`MNLogit` to estimate associations between cross-survey variable pairs |
+| `tool_enhanced_analysis.py` | Updated | Migrated from deprecated `AgentExecutor` to `langgraph.prebuilt.create_react_agent` |
+
+### Recent Work (as of 2026-02-22)
+
+- **Cross-dataset bivariate pipeline** (Phase 5): SES-bridge simulation estimates Cramér's V between variables from different surveys. Results include conditional distribution profiles and key contrasts.
+- **Analytical essay pipeline**: Two-step LLM chain (reasoning outline → essay). Essays lead with data patterns ("25% vs 12%") not statistics recitation.
+- **Label resolution**: `_get_var_labels` + `_apply_labels_to_estimate` in `quantitative_engine.py` resolve raw numeric codes (e.g. "1.0", "2.0") to human-readable labels in cross-tab profiles before the LLM sees them.
+- **Sentinel filtering**: `_is_sentinel()` in `ses_regression.py` and NaN/sentinel filtering in `compute_variable_statistics()` ensure codes like 99 (no-answer) and NaN (not-applicable) are excluded from marginal tables, bivariate models, and LLM-facing reports.
+- **Sweep/viz scripts**: `scripts/debug/sweep_cross_domain.py` (276-pair sweep), `scripts/debug/visualize_cross_domain.py`, `scripts/debug/visualize_kg.py`.
+- **Essay tests**: 10 cross-topic essay tests in `scripts/debug/run_essay_tests.py`; outputs saved to `data/results/essay_tests/`.
+
+### Known Data Quality Rules
+
+- **Sentinel codes** (`>= 97` or `< 0`): must be filtered from all marginal tables, bivariate leader categories, and regression models before LLM sees the data.
+- **NaN indices** in `df_tables`: represent conditional/skip-pattern questions (not applicable to subgroups). Filter and renormalize before passing to LLM.
+- **Label resolution** for cross-tab profiles uses `variable_value_labels` from `enc_dict[survey_name]['metadata']`. Verified to be present in the JSON data structure.
+- **Essay test outputs** in `data/results/essay_tests/` were generated before sentinel filtering was added and contain raw codes like "99.0" and "nan" — these should be regenerated after fixes are committed.
 
 ## Quick Start
 

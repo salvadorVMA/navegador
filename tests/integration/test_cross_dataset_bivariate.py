@@ -310,9 +310,12 @@ def test_cross_dataset_surfaces_in_essay_markdown():
     assert 'Cross-Dataset Bivariate Estimates' in formatted, (
         "Expected 'Cross-Dataset Bivariate Estimates' section in formatted_report"
     )
-    assert 'ses_simulation' in formatted or 'SES bridge' in formatted, (
-        "Expected simulation method reference in formatted_report"
-    )
+    assert (
+        'ses_simulation' in formatted
+        or 'SES bridge' in formatted
+        or 'SES-bridge' in formatted
+        or 'Simulation-Based' in formatted
+    ), "Expected simulation method reference in formatted_report"
 
 
 if __name__ == "__main__":
