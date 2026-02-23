@@ -1,7 +1,7 @@
 """
 SES Regression Module for Navegador — Simulation-Based Cross-Dataset Bivariate Estimation
 
-Uses SES variables (sexo, edad, region, empleo) as bridge variables to estimate
+Uses SES variables (sexo, edad, region, empleo, escol) as bridge variables to estimate
 bivariate associations between survey questions that come from *different* surveys and
 therefore never appear together in a single DataFrame.
 
@@ -43,10 +43,10 @@ _EDAD_ORDER: Dict[str, int] = {
 
 # Nominal SES vars get one-hot encoding (first category dropped)
 _NOMINAL_SES = ('sexo', 'region', 'empleo')
-_ORDINAL_SES = ('edad',)
+_ORDINAL_SES = ('edad', 'escol')
 
 # SES variables used in regression features
-SES_REGRESSION_VARS: List[str] = ['sexo', 'edad', 'region', 'empleo']
+SES_REGRESSION_VARS: List[str] = ['sexo', 'edad', 'region', 'empleo', 'escol']
 
 # Survey sentinel codes: values < 0 (invalid/missing) or >= 97 (no-answer, don't-know, refuse)
 # These are never substantive responses and must be excluded from model fitting.
@@ -111,6 +111,7 @@ class SESEncoder:
       edad   — ordinal int (0-18→0 … 65+→6)
       region — one-hot, drop first (3 dummy columns)
       empleo — one-hot, drop first (4 dummy columns)
+      escol  — ordinal int (1=Ninguna … 5=Universidad/Posgrado)
 
     Usage:
       enc = SESEncoder()
@@ -199,6 +200,14 @@ class SESEncoder:
                     (df['empleo'] == cat).astype(float).rename(f'empleo_{cat}')
                 )
 
+        # escol — ordinal int (education grade, 1=Ninguna … 5=Universidad/Posgrado)
+        # Already stored as numeric float in all surveys; sentinel rows are removed
+        # upstream by _drop_ses_sentinel_rows before transform() is called.
+        if 'escol' in df.columns:
+            parts.append(
+                pd.to_numeric(df['escol'], errors='coerce').rename('escol')
+            )
+
         if not parts:
             raise ValueError("No SES columns found in DataFrame.")
 
@@ -222,6 +231,7 @@ class SESEncoder:
             names.extend(f'region_{c}' for c in self._region_cats[1:])
         if len(self._empleo_cats) > 1:
             names.extend(f'empleo_{c}' for c in self._empleo_cats[1:])
+        names.append('escol')
         return names
 
 
@@ -239,7 +249,7 @@ class SurveyVarModel:
 
     Usage:
       model = SurveyVarModel()
-      model.fit(df, target_col='p1', ses_vars=['sexo','edad','region','empleo'])
+      model.fit(df, target_col='p1', ses_vars=['sexo','edad','region','empleo','escol'])
       probs = model.predict_proba(ses_feature_df)   # shape (n, n_categories)
       responses = model.simulate_responses(ses_pop_df)
     """

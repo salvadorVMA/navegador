@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(find:*)",
-      "Read(//workspaces/navegador/.claude/worktrees/knowledge-graph/**)"
+      "Read(//workspaces/navegador/.claude/worktrees/knowledge-graph/**)",
+      "Bash(NAVEGADOR_ENCUESTAS_PATH=/workspaces/navegador/data/encuestas python -:*)"
+    ],
+    "additionalDirectories": [
+      "/workspaces/navegador/.claude/worktrees/knowledge-graph"
     ]
   }
 }
