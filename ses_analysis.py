@@ -131,12 +131,38 @@ class AnalysisConfig:
                 changes_made.append('edad')
                 mapping_stats['edad_created'] += 1
             
-            # 3. Create 'empleo' from 'sd5' 
+            # 3. Create 'empleo' from 'sd5'
             if 'sd5' in df.columns and 'empleo' not in df.columns:
                 df['empleo'] = df['sd5'].map(empleo_mapping)
                 changes_made.append('empleo')
                 mapping_stats['empleo_created'] += 1
-            
+
+            # 4. Normalise 'escol' to a consistent 1-5 ordinal scale.
+            #
+            # Two issues found across the 26 surveys:
+            #
+            # a) Sentinel codes: most surveys use 9=NC; two use 99=NC; one
+            #    uses 98=NS.  These are below the _is_sentinel() threshold of
+            #    >= 97, so they are NOT automatically filtered by the bridge
+            #    regression.  Remap all of them to NaN here.
+            #
+            # b) Scale mismatch: JUEGOS_DE_AZAR and CULTURA_CONSTITUCIONAL
+            #    encode education as 1/3/4/5/6 (skip code 2; 6=Licenciatura)
+            #    instead of the standard 1/2/3/4/5.  Detected by the presence
+            #    of 6 and absence of 2 among non-NaN values.  Remap to 1-5 so
+            #    the numeric ordinal is consistent across all surveys.
+            if 'escol' in df.columns:
+                s = df['escol'].copy()
+                # a) Sentinel → NaN
+                s = s.where(~s.isin([9.0, 98.0, 99.0]), other=float('nan'))
+                # b) Alternative 1/3/4/5/6 coding → standard 1/2/3/4/5
+                present = set(s.dropna().unique())
+                if 6.0 in present and 2.0 not in present:
+                    alt_map = {1.0: 1.0, 3.0: 2.0, 4.0: 3.0, 5.0: 4.0, 6.0: 5.0}
+                    s = s.map(lambda x: alt_map.get(x, x) if pd.notna(x) else x)
+                df['escol'] = s
+                changes_made.append('escol_normalized')
+
             # Update the dataframe in the dictionary
             if changes_made:
                 los_mex_dict['enc_dict'][survey_name]['dataframe'] = df
