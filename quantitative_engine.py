@@ -910,16 +910,14 @@ def _enrich_with_bivariate_stats(variables: List) -> None:
                     biv_results[ses_var] = result
 
             if biv_results:
-                # Apply label resolution to leader response categories so the LLM
-                # sees human-readable labels (e.g. "Sí"/"No") not raw codes ("1.0"/"2.0").
-                # _get_var_labels and _resolve_label are defined later in this module;
-                # they are resolved at call time (no forward-reference issue in Python).
+                # Apply label resolution so the LLM sees human-readable labels
+                # (e.g. "Sí"/"No", "Hombre"/"Mujer") not raw codes ("1.0"/"2.0").
                 var_col = var_stats.var_id.split('|')[0]
                 survey_name_v = enc_nom_dict_rev.get(var_stats.survey_code)
                 if survey_name_v:
-                    var_labels = _get_var_labels(
-                        var_col, enc_dict.get(survey_name_v, {})
-                    )
+                    survey_data_v = enc_dict.get(survey_name_v, {})
+                    # (A) Resolve leader RESPONSE category labels (inner 'category' field)
+                    var_labels = _get_var_labels(var_col, survey_data_v)
                     if var_labels:
                         for biv in biv_results.values():
                             for info in biv.get('leaders', {}).values():
@@ -929,6 +927,15 @@ def _enrich_with_bivariate_stats(variables: List) -> None:
                                         entry['category'] = _resolve_label(
                                             str(entry['category']), var_labels
                                         )
+                    # (B) Resolve demographic GROUP labels (outer keys of leaders dict)
+                    for ses_var, biv in biv_results.items():
+                        ses_labels = _get_var_labels(ses_var, survey_data_v)
+                        if ses_labels:
+                            old_leaders = biv.get('leaders', {})
+                            biv['leaders'] = {
+                                _resolve_label(str(group), ses_labels): info
+                                for group, info in old_leaders.items()
+                            }
                 var_stats.bivariate_stats = biv_results
 
         n_with = sum(1 for v in variables if v.bivariate_stats)
