@@ -4,7 +4,7 @@
 **Query (EN):** What do Mexicans think about the relationship between democracy and corruption?
 **Variables:** p1|CUL, p2|CUL, p3|CUL, p4|CUL, p5|CUL, p2|COR, p3|COR, p5|COR, p8|COR
 **Status:** ✅ success
-**Time:** 30841ms | **Cross-dataset pairs:** 6
+**Time:** 48388ms | **Cross-dataset pairs:** 6
 
 ---
 
@@ -13,19 +13,77 @@
 **Query:** ¿Qué piensan los mexicanos sobre la relación entre democracia y corrupción?
 
 ## Summary
-Mexicans overwhelmingly perceive that corruption has increased compared to their childhood and expect it to worsen further in the next five years, with 77.0% and 67.7% endorsing "mayor" corruption respectively. However, the relationship between perceptions of democracy-related political culture and corruption is generally weak or modest; only the belief that corruption originates in government or political parties shows a moderate and significant association with negative political culture expectations. Evidence quality is moderate, based on eight variables and several bivariate pairs, with most associations statistically significant but effect sizes mostly weak to moderate.
+The most important finding is that Mexican perceptions of corruption and democracy are weakly but significantly related: those who expect corruption to increase tend to describe the political situation as more "preocupante" (worrying) and anticipate the political situation will worsen or remain bad. However, all bivariate associations show weak effect sizes (Cramér's V below 0.1), indicating only modest alignment between views on corruption and democracy. Evidence quality is moderate, based on five significant but weak associations among eight variables, limiting strong causal inferences.
 
 ## Data Landscape
-The analysis encompasses eight variables from political culture and corruption surveys, revealing a fragmented public opinion landscape. Two variables show strong consensus, two lean toward a dominant view, one is polarized, and two are dispersed, indicating significant divergence in how Mexicans perceive political and corruption issues. The divergence index confirms that 75% of variables lack consensus, highlighting widespread opinion fragmentation on democracy and corruption topics.
+Eight variables from two surveys on political culture and corruption perceptions were analyzed. Three variables show strong consensus (e.g., 77.0% say corruption is greater than in their childhood), one variable is polarized (expectations about the political situation next year split between worsening and remaining bad), one variable shows dispersed opinions, and three lean toward one dominant view without full consensus. The divergence index of 62% indicates substantial variation and fragmentation in public opinion about democracy and corruption in Mexico.
 
 ## Evidence
-Cross-tabulations reveal that perceptions of corruption compared to childhood (p2|COR) consistently show a strong majority (77.0%) believing corruption is greater, regardless of political culture expectations (p2|CUL). The proportion endorsing "mayor" corruption ranges modestly from 39.4% to 51.7% across political culture categories, indicating a weak and non-significant association (V=0.052, p=0.364). Similarly, expectations about corruption in five years (p3|COR) show a weak association with political culture (p2|CUL), with "mayor" corruption responses ranging from 30.3% to 49.3% (V=0.063, p=0.073). In contrast, the belief that corruption originates in government (p5|COR) varies substantially (20.0% to 83.3%) across political culture categories, reflecting a moderate and significant association (V=0.116, p=0.000). Self-assessed honesty (p8|COR) shows a weak but significant link with political culture (V=0.086, p=0.017), though opinions are dispersed. Emotional descriptions of the political situation (p3|CUL) moderately associate with expectations of future corruption (p3|COR), with the modal "2.0" response ranging from 31.9% to 48.8% (V=0.109, p=0.000). Demographically, employment status strongly moderates views on political situation and corruption, with younger and employed groups more likely to describe the situation as "preocupante" or "peligrosa" and to expect increased corruption. Region and age also show moderate effects. Univariate distributions show that while pride in being Mexican is high (59.7% "mucho"), expectations about political deterioration are dispersed, with 37.2% expecting worsening and 29.4% expecting conditions to remain equally bad, indicating no consensus on political outlook.
+Cross-tabulations reveal that expectations about the political situation (p2|CUL) vary only slightly with perceptions of corruption change compared to childhood (p2|COR). For example, the share expecting political conditions to "improve" ranges narrowly from 7.7% among those uncertain about corruption change to 17.3% among those perceiving corruption as "menor" (less) (V=0.049, p=0.480), showing a weak and statistically non-significant relationship. Similarly, when conditioning political outlook on corruption expectations in five years (p3|COR), the proportion expecting the political situation to "remain equally bad" varies from 20.0% among those uncertain about corruption to 41.4% among those expecting corruption to be "menor" (V=0.068, p=0.023), indicating a weak but significant association. Regarding where corruption begins (p5|COR), those who identify "en la escuela" as the origin are most pessimistic about political improvement (only 14.7% expect improvement), while those pointing to "en el trabajo" show slightly more optimism (17.9% expect improvement) (V=0.078, p=0.018). Emotional descriptions of the political situation (p3|CUL) also relate weakly to corruption perceptions: the label "preocupante" ranges from 38.0% among those expecting less corruption to 49.3% among those expecting corruption to remain the same (V=0.090, p=0.000). These patterns illustrate a modest alignment where more negative corruption expectations correspond to more negative democratic outlooks, but the relationships are weak. Demographically, employment status most strongly moderates political sentiment, with some regions and age groups showing variation in pessimism. For instance, employed individuals in category 03 report 53% "preocupante" vs. 30% in category 02. Women and men differ modestly in honesty self-assessments, but this variable has data quality issues. Univariate distributions support these findings: 77.0% perceive corruption as greater now than in childhood (p2|COR), 67.7% expect corruption to be greater in five years (p3|COR), and 51.3% identify government as the origin of corruption acts (p5|COR). Political outlooks are more fragmented: 37.2% expect the political situation to worsen next year, 29.4% expect it to remain equally bad (p2|CUL), and 40.7% describe the political situation as "preocupante" (p3|CUL). 
+
+| p2|COR category | "Va a mejorar" % |
+|---|---|
+| Mayor | 16.0% |
+| Menor | 17.3% |
+| Igual (esp.) | 13.3% |
+| NS | 7.7% |
+
+| p3|COR category | "Va a seguir igual de mal (esp)" % |
+|---|---|
+| Mayor | 29.8% |
+| Menor | 41.4% |
+| Igual (esp.) | 26.4% |
+| NS | 20.0% |
+
+| p5|COR category | "Va a seguir igual de mal (esp)" % |
+|---|---|
+| En la escuela | 22.9% |
+| En la colonia | 33.3% |
+| En el trabajo | 20.0% |
+| En el gobierno | 28.1% |
+
+| p3|COR category | "Preocupante" % |
+|---|---|
+| Mayor | 48.1% |
+| Menor | 38.0% |
+| Igual (esp.) | 49.3% |
+| NS | 42.4% |
+
+| Response | % |
+|---|---|
+| Mayor (p2|COR) | 77.0% |
+| Igual (esp.) (p2|COR) | 14.7% |
+| Menor (p2|COR) | 6.9% |
+
+| Response | % |
+|---|---|
+| Mayor (p3|COR) | 67.7% |
+| Igual (esp.) (p3|COR) | 19.3% |
+| Menor (p3|COR) | 8.2% |
+
+| Response | % |
+|---|---|
+| En el gobierno (p5|COR) | 51.3% |
+| En los partidos políticos (p5|COR) | 12.3% |
+| En la escuela (p5|COR) | 11.8% |
+
+| Response | % |
+|---|---|
+| Va a empeorar (p2|CUL) | 37.2% |
+| Va a seguir igual de mal (esp) (p2|CUL) | 29.4% |
+| Va a mejorar (p2|CUL) | 17.8% |
+
+| Response | % |
+|---|---|
+| Preocupante (p3|CUL) | 40.7% |
+| Peligrosa (p3|CUL) | 21.0% |
+| Tranquila (p3|CUL) | 10.8% |
 
 ## Complications
-Employment is the strongest demographic fault line (mean V=0.29), with younger and employed individuals more pessimistic about political and corruption trends. Gender and region show moderate effects; for example, women are about 15 points more likely than men to rate themselves as honest. Minority views are notable: despite dominant perceptions of worsening corruption, 14.7% see corruption as unchanged compared to childhood, and 19.3% expect corruption to remain stable in five years. The associations between political culture and corruption perceptions are generally weak, with several bivariate pairs showing non-significant results, indicating that the relationship is modest at best. Simulation-based estimates and limited variable pairs constrain the depth of causal inference. Furthermore, variables like self-assessed honesty and pride in being Mexican relate only tangentially to democracy-corruption perceptions, complicating interpretation. Polarization in political outlook (p4|CUL) also suggests divided public sentiment that may affect how corruption is perceived in relation to democratic health.
+The main complication is the consistently weak strength of associations between corruption perceptions and political outlooks (all Cramér's V values below 0.1), which limits the ability to draw strong conclusions about the relationship. Employment status is the strongest demographic moderator (mean V=0.29), with some employment groups differing by up to 23 percentage points in political sentiment labels, indicating socioeconomic factors influence views independently of corruption perceptions. Regional and age differences also moderate opinions modestly. Minority views challenge the dominant narrative: for example, 17.8% expect political conditions to improve despite high perceived corruption, and 21.0% describe the political situation as "peligrosa" rather than just "preocupante." The variable measuring self-assessed honesty (p8|COR) is unusable due to 100% non-response, removing a potentially relevant personal integrity dimension. Simulation-based bivariate estimates rely on SES-bridge assumptions and sample size (n=2000), which may affect precision. Notably, some cross-tabulations are statistically non-significant (e.g., p2|CUL × p2|COR, p=0.480), confirming that some expected relationships are absent or too weak to detect reliably.
 
 ## Implications
-First, the strong consensus that corruption has increased and will worsen suggests urgent need for anti-corruption policies and institutional reforms to restore public trust, focusing on government transparency and accountability since corruption is widely seen as originating there. Second, the weak to moderate association between political culture and corruption perceptions indicates that improving democratic culture alone may not suffice to change corruption attitudes; targeted anti-corruption measures may be more effective than broad democratic reforms in altering public perceptions. Third, given demographic differences, tailored communication and engagement strategies are needed for different employment and age groups to address their specific concerns and perceptions about democracy and corruption. Finally, the fragmentation and polarization in political outlooks warn policymakers that unified consensus on democracy-corruption issues is lacking, complicating collective action and requiring inclusive dialogue to bridge divides.
+First, the weak but significant association between corruption perceptions and democratic outlooks suggests that anti-corruption policies alone may not substantially shift public confidence in democracy; broader political reforms and communication strategies addressing multiple facets of governance might be necessary to improve political sentiment. Second, given the demographic moderation by employment and region, tailored interventions that consider socioeconomic contexts could be more effective in addressing political disillusionment linked to corruption. For example, programs targeting employment sectors with more pessimistic views could focus on transparency and citizen engagement. Third, the presence of sizable minority groups with more optimistic or alternative views indicates space for narratives that emphasize democratic resilience and progress, which policymakers could leverage to build social cohesion. Finally, the data limitations highlight the need for improved measurement tools, especially regarding personal integrity and honesty, to better understand the individual-level factors connecting corruption and democratic attitudes in future research and policy design.
 
 ---
 
@@ -34,11 +92,11 @@ First, the strong consensus that corruption has increased and will worsen sugges
 | Metric | Value |
 |--------|-------|
 | Variables Analyzed | 8 |
-| Divergence Index | 75.0% |
-| Consensus Variables | 2 |
+| Divergence Index | 62.5% |
+| Consensus Variables | 3 |
 | Lean Variables | 3 |
 | Polarized Variables | 1 |
-| Dispersed Variables | 2 |
+| Dispersed Variables | 1 |
 
 ### Variable Details
 
@@ -50,12 +108,34 @@ First, the strong consensus that corruption has increased and will worsen sugges
 - HHI: 2703
 - Minority opinions: Va a mejorar (17.8%), Va a seguir igual de mal (29.4%)
 
+| Response | % |
+|----------|---|
+| Va a empeorar | 37.2% |
+| Va a seguir igual de mal | 29.4% |
+| Va a mejorar | 17.8% |
+| Va a seguir igual de bien | 11.2% |
+| No sabe/ No contesta | 3.9% |
+| Otra | 0.6% |
+
 **p3|CUL** (lean)
 - Question: CULTURA_POLITICA|De las siguientes palabras, ¿con cuál está usted más de acuerdo para describir la situación política del país?
 - Mode: Preocupante (40.7%)
 - Runner-up: Peligrosa (21.0%), margin: 19.7pp
 - HHI: 2394
 - Minority opinions: Peligrosa (21.0%)
+
+| Response | % |
+|----------|---|
+| Preocupante | 40.7% |
+| Peligrosa | 21.0% |
+| Tranquila | 10.8% |
+| Prometedora | 8.6% |
+| Peor que antes | 8.4% |
+| Con oportunidades | 5.2% |
+| Más o menos | 3.1% |
+| No sabe/ No contesta | 1.2% |
+| Mejor que antes | 0.8% |
+| Otra | 0.2% |
 
 **p4|CUL** (polarized)
 - Question: CULTURA_POLITICA|¿Y cree usted que en el próximo año…?
@@ -64,6 +144,15 @@ First, the strong consensus that corruption has increased and will worsen sugges
 - HHI: 2613
 - Minority opinions: Va a mejorar (21.7%), Va a seguir igual de mal (30.4%)
 
+| Response | % |
+|----------|---|
+| Va a empeorar | 32.9% |
+| Va a seguir igual de mal | 30.4% |
+| Va a mejorar | 21.7% |
+| Va a seguir igual de bien | 11.0% |
+| No sabe/ No contesta | 3.7% |
+| Otra | 0.3% |
+
 **p5|CUL** (lean)
 - Question: CULTURA_POLITICA|¿Qué tan orgulloso se siente de ser mexicano?
 - Mode: Mucho (59.7%)
@@ -71,11 +160,27 @@ First, the strong consensus that corruption has increased and will worsen sugges
 - HHI: 4424
 - Minority opinions: Poco (27.5%)
 
+| Response | % |
+|----------|---|
+| Mucho | 59.7% |
+| Poco | 27.5% |
+| Nada | 10.2% |
+| No soy mexicano | 1.8% |
+| Otra | 0.4% |
+| No sabe/ No contesta | 0.4% |
+
 **p2|COR** (consensus)
 - Question: CORRUPCION_Y_CULTURA_DE_LA_LEGALIDAD|En comparación con su infancia, actualmente la corrupción es:
 - Mode: Mayor (77.0%)
 - Runner-up: Igual (esp.) (14.7%), margin: 62.3pp
 - HHI: 6194
+
+| Response | % |
+|----------|---|
+| Mayor | 77.0% |
+| Igual (esp.) | 14.7% |
+| Menor | 6.9% |
+| No sabe/ No contesta | 1.4% |
 
 **p3|COR** (consensus)
 - Question: CORRUPCION_Y_CULTURA_DE_LA_LEGALIDAD|Dentro de 5 años, cree usted que la corrupción será:
@@ -84,17 +189,41 @@ First, the strong consensus that corruption has increased and will worsen sugges
 - HHI: 5043
 - Minority opinions: Igual (esp.) (19.3%)
 
+| Response | % |
+|----------|---|
+| Mayor | 67.7% |
+| Igual (esp.) | 19.3% |
+| Menor | 8.2% |
+| No sabe/ No contesta | 4.8% |
+
 **p5|COR** (lean)
 - Question: CORRUPCION_Y_CULTURA_DE_LA_LEGALIDAD|En su opinión, ¿dónde se realizan los primeros actos de corrupción?
 - Mode: En el gobierno (51.3%)
 - Runner-up: En los partidos políticos (12.3%), margin: 39.0pp
 - HHI: 3054
 
-**p8|COR** (dispersed)
+| Response | % |
+|----------|---|
+| En el gobierno | 51.3% |
+| En los partidos políticos | 12.3% |
+| En la escuela | 11.8% |
+| En la colonia | 7.8% |
+| En la familia | 5.5% |
+| En el trabajo | 4.2% |
+| En el sector privado | 3.9% |
+| No sabe/ No contesta | 2.2% |
+| En la iglesia | 0.8% |
+| Otro (esp.) | 0.2% |
+
+**p8|COR** (consensus)
 - Question: CORRUPCION_Y_CULTURA_DE_LA_LEGALIDAD|En una escala donde 0 es 'nada honesto' y 10 es 'muy honesto', ¿cómo se considera usted a sí mismo?
-- Mode: No sabe/ No contesta (12.8%)
-- Runner-up: nan (11.2%), margin: 1.6pp
-- HHI: 291
+- Mode: No sabe/ No contesta (100.0%)
+- Runner-up:  (0.0%), margin: 100.0pp
+- HHI: 10000
+
+| Response | % |
+|----------|---|
+| No sabe/ No contesta | 100.0% |
 
 ### Demographic Fault Lines
 
@@ -108,32 +237,32 @@ First, the strong consensus that corruption has increased and will worsen sugges
 **Variable-Level Demographic Detail:**
 
 *p2|CUL*
-- region: V=0.141 (p=0.000) — 01: 4.0 (42%); 02: 4.0 (42%); 03: 3.0 (29%)
+- region: V=0.141 (p=0.000) — 01:  Va a empeorar (42%); 02:  Va a empeorar (42%); 03:  Va a seguir igual de mal (esp) (29%)
 
 *p3|CUL*
-- empleo: V=0.321 (p=0.035) — 02: 2.0 (30%); 03: 2.0 (53%)
-- region: V=0.131 (p=0.001) — 01: 2.0 (43%); 02: 2.0 (38%); 03: 2.0 (41%)
-- edad: V=0.110 (p=0.013) — 0-18: 2.0 (34%); 19-24: 2.0 (40%); 25-34: 2.0 (46%)
+- empleo: V=0.321 (p=0.035) — 02:  Preocupante (30%); 03:  Preocupante (53%)
+- region: V=0.131 (p=0.001) — 01:  Preocupante (43%); 02:  Preocupante (38%); 03:  Preocupante (41%)
+- edad: V=0.110 (p=0.013) — 0-18:  Preocupante (34%); 19-24:  Preocupante (40%); 25-34:  Preocupante (46%)
 
 *p4|CUL*
-- region: V=0.123 (p=0.000) — 01: 4.0 (41%); 02: 4.0 (36%); 03: 1.0 (30%)
+- region: V=0.123 (p=0.000) — 01:  Va a empeorar (41%); 02:  Va a empeorar (36%); 03:  Va a mejorar (30%)
 
 *p5|CUL*
-- edad: V=0.098 (p=0.001) — 0-18: 1.0 (66%); 19-24: 1.0 (58%); 25-34: 1.0 (57%)
-- region: V=0.090 (p=0.045) — 01: 1.0 (56%); 02: 1.0 (54%); 03: 1.0 (66%)
+- edad: V=0.098 (p=0.001) — 0-18:  Mucho (66%); 19-24:  Mucho (58%); 25-34:  Mucho (57%)
+- region: V=0.090 (p=0.045) — 01:  Mucho (56%); 02:  Mucho (54%); 03:  Mucho (66%)
 
 *p2|COR*
-- edad: V=0.118 (p=0.000) — 0-18: 1.0 (70%); 19-24: 1.0 (74%); 25-34: 1.0 (77%)
-- region: V=0.110 (p=0.000) — 01: 1.0 (80%); 02: 1.0 (82%); 03: 1.0 (71%)
+- edad: V=0.118 (p=0.000) — 0-18: Mayor (70%); 19-24: Mayor (74%); 25-34: Mayor (77%)
+- region: V=0.110 (p=0.000) — 01: Mayor (80%); 02: Mayor (82%); 03: Mayor (71%)
 
 *p3|COR*
-- empleo: V=0.233 (p=0.002) — 01: 2.0 (100%); 02: 1.0 (57%); 03: 1.0 (72%)
-- region: V=0.112 (p=0.000) — 01: 1.0 (74%); 02: 1.0 (67%); 03: 1.0 (62%)
-- edad: V=0.108 (p=0.000) — 0-18: 1.0 (67%); 19-24: 1.0 (64%); 25-34: 1.0 (70%)
+- empleo: V=0.233 (p=0.002) — 01: Menor (100%); 02: Mayor (57%); 03: Mayor (72%)
+- region: V=0.112 (p=0.000) — 01: Mayor (74%); 02: Mayor (67%); 03: Mayor (62%)
+- edad: V=0.108 (p=0.000) — 0-18: Mayor (67%); 19-24: Mayor (64%); 25-34: Mayor (70%)
 
 *p5|COR*
-- region: V=0.112 (p=0.035) — 01: 4.0 (54%); 02: 4.0 (58%); 03: 4.0 (48%)
-- edad: V=0.110 (p=0.011) — 0-18: 4.0 (52%); 19-24: 4.0 (53%); 25-34: 4.0 (50%)
+- region: V=0.112 (p=0.035) — 01: En el gobierno (54%); 02: En el gobierno (58%); 03: En el gobierno (48%)
+- edad: V=0.110 (p=0.011) — 0-18: En el gobierno (52%); 19-24: En el gobierno (53%); 25-34: En el gobierno (50%)
 
 *p8|COR*
 - empleo: V=0.323 (p=0.004) — 01: 5.0 (100%); 02: 8.0 (43%); 03: 8.0 (26%)
@@ -144,27 +273,89 @@ First, the strong consensus that corruption has increased and will worsen sugges
 
 | Variable Pair | Cramér's V | p-value | Key Pattern | n sim |
 |---------------|------------|---------|-------------|-------|
-| p2|CUL × p2|COR | 0.052 (weak) | 0.364 | "4.0": 39% ("1.0") → 52% ("8.0") | 2000 |
-| p2|CUL × p3|COR | 0.063 (weak) | 0.073 | "4.0": 30% ("2.0") → 49% ("8.0") | 2000 |
-| p2|CUL × p5|COR | 0.116 (moderate) | 0.000 | "4.0": 20% ("99.0") → 83% ("98.0") | 2000 |
-| p2|CUL × p8|COR | 0.086 (weak) | 0.017 | "4.0": 12% ("2.0") → 86% ("0.0") | 2000 |
-| p3|CUL × p2|COR | 0.076 (weak) | 0.012 | "3.0": 8% ("1.0") → 23% ("8.0") | 2000 |
-| p3|CUL × p3|COR | 0.109 (moderate) | 0.000 | "2.0": 32% ("8.0") → 49% ("1.0") | 2000 |
+| p2|CUL × p2|COR | 0.049 (weak) | 0.480 | " Va a mejorar": 8% ("NS") → 17% ("Menor") | 2000 |
+| p2|CUL × p3|COR | 0.068 (weak) | 0.023 | " Va a seguir igual de mal (esp)": 20% ("NS") → 41% ("Menor") | 2000 |
+| p2|CUL × p5|COR | 0.078 (weak) | 0.018 | " Va a seguir igual de mal (esp)": 16% ("En la iglesia") → 33% ("En la colonia") | 2000 |
+| p2|CUL × p8|COR | 0.077 (weak) | 0.026 | " Va a seguir igual de mal (esp)": 24% ("7.0") → 62% ("0.0") | 2000 |
+| p3|CUL × p2|COR | 0.072 (weak) | 0.026 | " Peligrosa": 4% ("NS") → 26% ("Menor") | 2000 |
+| p3|CUL × p3|COR | 0.090 (weak) | 0.000 | " Preocupante": 38% ("Menor") → 49% ("Igual (esp.)") | 2000 |
 
 *Estimates derived from SES-bridge regression simulation.*
 
+
+**p2|CUL × p2|COR** — How p2|CUL distributes given p2|COR:
+
+| p2|COR (conditioning) | Top p2|CUL responses |
+|---|---|
+| Mayor |  Va a empeorar: 40%,  Va a seguir igual de mal (esp): 29%,  Va a mejorar: 16% |
+| Menor |  Va a empeorar: 37%,  Va a seguir igual de mal (esp): 34%,  Va a mejorar: 17% |
+| Igual (esp.) |  Va a empeorar: 44%,  Va a seguir igual de mal (esp): 26%,  Va a mejorar: 13% |
+| NS |  Va a empeorar: 42%,  Va a seguir igual de mal (esp): 35%,  Va a mejorar: 8% |
+
+**p2|CUL × p3|COR** — How p2|CUL distributes given p3|COR:
+
+| p3|COR (conditioning) | Top p2|CUL responses |
+|---|---|
+| Mayor |  Va a empeorar: 40%,  Va a seguir igual de mal (esp): 30%,  Va a mejorar: 17% |
+| Menor |  Va a seguir igual de mal (esp): 41%,  Va a empeorar: 29%,  Va a mejorar: 14% |
+| Igual (esp.) |  Va a empeorar: 44%,  Va a seguir igual de mal (esp): 26%,  Va a mejorar: 14% |
+| NS |  Va a empeorar: 51%,  Va a seguir igual de mal (esp): 20%,  Va a mejorar: 15% |
+
+**p2|CUL × p5|COR** — How p2|CUL distributes given p5|COR:
+
+| p5|COR (conditioning) | Top p2|CUL responses |
+|---|---|
+| En la escuela |  Va a empeorar: 50%,  Va a seguir igual de mal (esp): 23%,  Va a mejorar: 15% |
+| En la colonia |  Va a empeorar: 44%,  Va a seguir igual de mal (esp): 33%,  Va a mejorar: 15% |
+| En el trabajo |  Va a empeorar: 39%,  Va a seguir igual de mal (esp): 20%,  Va a mejorar: 18% |
+| En el gobierno |  Va a empeorar: 42%,  Va a seguir igual de mal (esp): 28%,  Va a mejorar: 15% |
+| En el sector privado |  Va a empeorar: 43%,  Va a seguir igual de mal (esp): 28%,  Va a mejorar: 20% |
+| En la iglesia |  Va a empeorar: 53%,  Va a mejorar: 21%,  Va a seguir igual de mal (esp): 16% |
+| En la familia |  Va a empeorar: 35%,  Va a seguir igual de mal (esp): 33%,  Va a seguir igual de bien (esp): 14% |
+| En los partidos políticos |  Va a empeorar: 38%,  Va a seguir igual de mal (esp): 28%,  Va a seguir igual de bien (esp): 15% |
+
+**p2|CUL × p8|COR** — How p2|CUL distributes given p8|COR:
+
+| p8|COR (conditioning) | Top p2|CUL responses |
+|---|---|
+| 0.0 |  Va a seguir igual de mal (esp): 62%,  Va a empeorar: 19%,  Va a seguir igual de bien (esp): 12% |
+| 2.0 |  Va a seguir igual de mal (esp): 43%,  Va a empeorar: 43%,  Va a seguir igual de bien (esp): 14% |
+| 3.0 |  Va a empeorar: 50%,  Va a seguir igual de mal (esp): 32%,  Va a mejorar: 9% |
+| 5.0 |  Va a empeorar: 54%,  Va a seguir igual de mal (esp): 25%,  Va a mejorar: 17% |
+| 6.0 |  Va a empeorar: 47%,  Va a seguir igual de mal (esp): 29%,  Va a mejorar: 19% |
+| 7.0 |  Va a empeorar: 42%,  Va a seguir igual de mal (esp): 24%,  Va a mejorar: 18% |
+| 8.0 |  Va a empeorar: 38%,  Va a seguir igual de mal (esp): 28%,  Va a mejorar: 17% |
+| 9.0 |  Va a empeorar: 47%,  Va a seguir igual de mal (esp): 27%,  Va a mejorar: 15% |
+
+**p3|CUL × p2|COR** — How p3|CUL distributes given p2|COR:
+
+| p2|COR (conditioning) | Top p3|CUL responses |
+|---|---|
+| Mayor |  Preocupante: 49%,  Peligrosa: 22%,  Tranquila: 8% |
+| Menor |  Preocupante: 52%,  Peligrosa: 26%,  Tranquila: 9% |
+| Igual (esp.) |  Preocupante: 46%,  Peligrosa: 18%,  Tranquila: 12% |
+| NS |  Preocupante: 60%,  Tranquila: 20%,  Peor que antes   (esp): 8% |
+
+**p3|CUL × p3|COR** — How p3|CUL distributes given p3|COR:
+
+| p3|COR (conditioning) | Top p3|CUL responses |
+|---|---|
+| Mayor |  Preocupante: 48%,  Peligrosa: 22%,  Tranquila: 10% |
+| Menor |  Preocupante: 38%,  Peligrosa: 30%,  Más o menos (esp): 10% |
+| Igual (esp.) |  Preocupante: 49%,  Peligrosa: 20%,  Tranquila: 10% |
+| NS |  Preocupante: 42%,  Peligrosa: 21%,  Peor que antes   (esp): 14% |
 ### Reasoning Outline
 
-**Evidence Hierarchy:** The strongest evidence comes from cross-dataset bivariate associations with statistically significant p-values, especially those with moderate effect sizes (e.g., p2|CUL × p5|COR and p3|CUL × p3|COR). These provide primary insight into how political culture perceptions relate to corruption views. Demographic fault lines offer secondary evidence about subgroup differences but do not directly address the query. Univariate distributions provide contextual background on overall opinion fragmentation but do not demonstrate relationships.
+**Evidence Hierarchy:** The strongest evidence comes from cross-dataset bivariate estimates with significant p-values, which provide direct insight into how perceptions of corruption relate to political outlooks. Among these, the associations involving p2|CUL and p3|CUL with corruption variables (p2|COR, p3|COR, p5|COR) are primary. Demographic fault lines offer secondary contextual understanding of opinion variation. Univariate distributions serve as background context but do not establish relationships on their own.
 
 **Key Limitations:**
-- Bivariate associations are simulation-based estimates which may have inherent uncertainty.
-- Effect sizes (Cramér's V) are generally weak to moderate, indicating modest relationships.
-- Only a limited number of cross-survey variable pairs are available, restricting comprehensive analysis.
-- Some variables (e.g., p5|CUL, p8|COR) are only tangentially related to the query, limiting their interpretive value.
+- All cross-dataset bivariate associations show weak effect sizes (low V values), limiting interpretive strength.
+- Some variables, notably p8|COR, have data quality issues (100% no response), reducing their utility.
+- The number of cross-survey variable pairs is limited, restricting comprehensive analysis of democracy-corruption relationships.
+- Estimates are simulation-based, which may introduce uncertainty in significance testing and effect size estimation.
 
 ### Analysis Metadata
 - **Analysis Type:** Analytical Essay (Quantitative + Qualitative)
 - **Polarized Variables:** p4|CUL
-- **Dispersed Variables:** p2|CUL, p8|COR
+- **Dispersed Variables:** p2|CUL
 
