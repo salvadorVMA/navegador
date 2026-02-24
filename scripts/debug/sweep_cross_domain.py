@@ -41,7 +41,7 @@ warnings.filterwarnings("ignore", message=".*Maximum Likelihood.*")
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
-OUTPUT_PATH = Path("/tmp/cross_domain_sweep.json")
+OUTPUT_PATH = ROOT / "data" / "results" / "cross_domain_sweep.json"
 
 # Domains to exclude: JUE has 0 questions, CON has 1 question
 EXCLUDE_DOMAINS = {"JUE", "CON"}
@@ -242,7 +242,7 @@ def estimate_domain_pair(
 # Main sweep
 # ---------------------------------------------------------------------------
 
-def main(n_vars: int = 3, max_workers: int = 8) -> None:
+def main(n_vars: int = 3, max_workers: int = 8, output_path: Path = OUTPUT_PATH) -> None:
     t0 = time.time()
     print("=" * 60)
     print("Cross-Domain Bivariate Sweep")
@@ -334,7 +334,8 @@ def main(n_vars: int = 3, max_workers: int = 8) -> None:
     }
 
     # Save
-    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
     print(f"\n{'=' * 60}")
     print(f"SWEEP COMPLETE")
@@ -343,7 +344,7 @@ def main(n_vars: int = 3, max_workers: int = 8) -> None:
     print(f"  Domain pairs:      {n_successful}/{len(all_pairs)} with results")
     print(f"  Estimates:         {total_estimates} successful")
     print(f"  Significant:       {total_significant} (p<0.05)")
-    print(f"  Output:            {OUTPUT_PATH}")
+    print(f"  Output:            {output_path}")
 
     # Top 15 strongest pairs
     ranked = sorted(
@@ -365,5 +366,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Full cross-domain bivariate sweep")
     parser.add_argument("--workers", type=int, default=8, help="Parallel workers (default: 8)")
     parser.add_argument("--vars-per-domain", type=int, default=3, help="Vars per domain (default: 3)")
+    parser.add_argument("--output", type=Path, default=OUTPUT_PATH, help="Output JSON path (default: data/results/cross_domain_sweep.json)")
     args = parser.parse_args()
-    main(n_vars=args.vars_per_domain, max_workers=args.workers)
+    main(n_vars=args.vars_per_domain, max_workers=args.workers, output_path=args.output)
