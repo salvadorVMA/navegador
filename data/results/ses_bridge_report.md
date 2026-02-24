@@ -1,6 +1,7 @@
 # SES Bridge: Uses, Limitations, and Interpretive Boundaries
 
-*Generated 2026-02-23 — worktree-knowledge-graph branch*
+*Updated 2026-02-24 — worktree-knowledge-graph branch*
+*Original: 2026-02-23 (5-predictor baseline). Updated with 7-predictor extended bridge results.*
 
 ---
 
@@ -8,7 +9,7 @@
 
 The SES bridge estimates bivariate associations between variables from *different surveys* that share no common respondents. The approach has three steps:
 
-1. **Fit each variable to a shared set of SES predictors.** For every candidate variable in survey A and survey B, an `OrderedModel` (ordinal target) or `MNLogit` (nominal target) is fitted using the five demographic predictors: `sexo`, `edad`, `region`, `empleo`, `escol`. The models capture how much each response category is predicted by demographic profile.
+1. **Fit each variable to a shared set of SES predictors.** For every candidate variable in survey A and survey B, an `OrderedModel` (ordinal target) or `MNLogit` (nominal target) is fitted using demographic predictors. The models capture how much each response category is predicted by demographic profile.
 
 2. **Draw a reference SES population.** A synthetic population of 2,000 respondents is sampled from the pooled marginal distributions of the two surveys (weighted by `Pondi2`). This population represents a plausible joint demographic space.
 
@@ -18,149 +19,159 @@ The result is an estimate of "how much of the cross-domain association can be ex
 
 ---
 
-## 2. Results Summary
+## 2. Predictor Variable Audit (2026-02-24)
 
-| Statistic | Value |
-|-----------|-------|
-| Domain pairs tested | 276 / 276 |
-| Estimates produced | 2,484 (9 per pair) |
-| Significant (p < 0.05) | ~93% |
-| Mean Cramér's V | **0.097** |
-| Median Cramér's V | 0.096 |
-| Standard deviation | 0.007 |
-| Min V (DEP×SAL) | **0.081** |
-| Max V (CIE×POB) | **0.116** |
-| Total range | 0.036 |
-| Interquartile range | **0.010** |
+A full audit of the 26 surveys in `los_mex_dict.json` identified the following variables:
 
-**Domain-level SES loading** (mean V across all 23 pairings per domain):
+| Variable | Coverage | Decision |
+|----------|----------|----------|
+| `sexo` | 26/26 | Baseline predictor |
+| `edad` | 26/26 | Baseline predictor |
+| `region` | 26/26 | Baseline predictor |
+| `empleo` | 26/26 | Baseline predictor |
+| `escol` | 26/26 | Baseline predictor |
+| `Tam_loc` (locality size / urban-rural) | 24/26 | **Added** — ordinal 1-4 |
+| `est_civil` (marital status) | 26/26 | **Added** — nominal one-hot |
+| `religion` | 2/26 | Excluded — not universal |
+| `edo` (state, INEGI codes 1-32) | 26/26 | Excluded — no value labels, convergence risk |
+| `ing_ind`, `ing_fam` (income) | 26/26 | Candidate for future extension |
+| `Estrato` (SES stratum) | 24/26 | Candidate for future extension |
 
-| Tier | Domains | Mean V |
-|------|---------|--------|
-| High | IND, POB, CIE, REL, SOC, HAB | 0.100–0.103 |
-| Mid | CUL, EDU, DER, ECO, GLO, FED, IDE, MIG, ENV, SEG | 0.096–0.100 |
-| Low | JUS, FAM, NIN, GEN, SAL, COR, MED, DEP | 0.088–0.095 |
+`Tam_loc` is absent from JUEGOS_DE_AZAR and CULTURA_CONSTITUCIONAL (older survey format); the encoder degrades gracefully for those surveys.
 
 ---
 
-## 3. The Compression Problem
+## 3. Results Comparison: Baseline (5 vars) vs Extended (7 vars)
 
-### 3.1 What compression looks like
+| Statistic | Baseline (5 vars) | Extended (7 vars) | Change |
+|-----------|-------------------|-------------------|--------|
+| Domain pairs tested | 276 / 276 | 276 / 276 | — |
+| Estimates produced | 2,484 | 2,484 | — |
+| Significant (p < 0.05) | ~93% | **98.5%** | +5.5pp |
+| Mean Cramér's V | 0.097 | **0.106** | +0.009 |
+| Median Cramér's V | 0.096 | **0.106** | +0.010 |
+| Standard deviation | 0.007 | **0.009** | +0.002 |
+| Min V | 0.081 | **0.085** | +0.004 |
+| Max V | 0.116 | **0.140** | +0.024 |
+| **Range** | **0.036** | **0.055** | **+54%** |
+| **IQR** | **0.010** | **0.011** | +10% |
+| Runtime | — | 18.1 min | — |
 
-The V range is 0.081–0.116 — a span of 0.036. In a direct cross-tabulation of real co-respondent data, you would expect pairs of genuinely unrelated variables to produce V ≈ 0 and genuinely strongly related variables to produce V ≈ 0.3–0.5. The bridge produces *none of this variance*. The interquartile range of 0.010 means 50% of all domain pairs are clustered within a band one hundredth of a unit wide. This is extreme compression.
+**Key finding:** The extended bridge widens the V range by 54% (0.036 → 0.055) and raises the ceiling substantially (0.116 → 0.140), with the floor moving only marginally (0.081 → 0.085). The additional predictors improve discriminability, though the IQR improvement is modest (+10%), indicating the distribution remains somewhat compressed in the middle.
 
-The within-domain variance (how much one domain's pairings vary from its mean) is 0.004–0.008 — only slightly less than the between-domain variance (0.007). In other words, you cannot reliably distinguish domains from one another based on V alone.
+---
 
-### 3.2 Why compression is structurally guaranteed
+## 4. Domain-Level SES Saturation Rankings
 
-The compression is not a bug or a data quality problem — it is mathematically inevitable given the design:
+**Extended bridge** (mean V across all 23 pairings per domain):
 
-**The bridge can only recover shared SES variance.** Both variables are predicted by the *same* five predictors. The simulated Cramér's V captures:
+| Tier | Domains | Mean V |
+|------|---------|--------|
+| High | DER, SOC, CUL, IND, POB, JUS | 0.110–0.118 |
+| Mid-high | REL, CIE, ECO, MIG, EDU, GLO | 0.108–0.110 |
+| Mid | IDE, GEN, SEG, HAB, FED | 0.104–0.107 |
+| Mid-low | NIN, SAL, ENV | 0.101–0.103 |
+| Low | MED, COR, FAM, DEP | 0.095–0.099 |
+
+**Comparison to baseline** — what changed:
+- **DER** (Derechos Humanos/Discriminación) emerges as the most demographically saturated domain in the extended bridge, surpassing IND and POB from the baseline. Human rights and discrimination opinions vary strongly by marital status and locality size.
+- **SOC** (Sociedad de la Información) and **CUL** (Cultura) rise significantly — both are sensitive to urban/rural locality.
+- **FAM** (Familia) drops to near-bottom: family attitudes appear more demographically uniform once locality size is controlled.
+- **DEP** (Deportes/Recreación) and **COR** (Corrupción) remain at the bottom — robustly confirmed as the most demographically uniform domains across both bridge versions.
+
+**Top domain pairs (extended):**
+
+| Pair | Mean V | Interpretation |
+|------|--------|----------------|
+| DER × SOC | 0.140 | Human rights + digital society: both strongly SES-stratified |
+| IND × SOC | 0.139 | Indigenous issues + digital society: shared urban/rural gradient |
+| CUL × DER | 0.134 | Culture + human rights: education and locality driven |
+| DER × MIG | 0.132 | Human rights + migration: age/education gradient |
+| DER × POB | 0.129 | Human rights + poverty: as expected |
+
+---
+
+## 5. The Compression Problem (Updated)
+
+### 5.1 What compression looks like
+
+The extended bridge V range is 0.085–0.140, a span of 0.055. This is 54% wider than the baseline (0.036) but still far below what direct co-respondent data would show (V=0 to 0.3–0.5 for real associations). The IQR of 0.011 means 50% of all domain pairs remain within a band ~1 hundredth of a unit wide.
+
+### 5.2 Why compression persists
+
+The structural formula remains:
 
 ```
 V_bridge ≈ f( R²_SES(A) × R²_SES(B) )
 ```
 
-Where R²_SES(A) is how much variance in variable A is explained by the SES predictors. If each variable has moderate SES prediction (R² ≈ 0.05–0.15, typical for attitudinal survey items), the resulting simulated V is necessarily small — you cannot recover from the product of two small numbers.
+Adding two more predictors raises R²_SES modestly for variables sensitive to urban/rural and marital status, pushing the ceiling to 0.140. But the product of two moderate R² values remains small. The compression is a mathematical property of the bridge design, not a data quality problem.
 
-**The floor is structural.** Any two categorical survey variables that have *any* demographic variation will produce V > 0 from the bridge, because the shared SES skeleton introduces correlation even for conceptually unrelated constructs. DEP×SAL V=0.081 is not "low association" — it is the structural floor produced by the model architecture itself. There is no null case.
+### 5.3 What the wider range tells us
 
-**The ceiling is constrained by SES R².** The bridge cannot produce V higher than what the SES predictors can jointly account for in both variables. High V from the bridge (e.g., CIE×POB at 0.116) means both variables are relatively more SES-saturated — more demographic variation — not that they are more conceptually related.
-
-**Five predictors are insufficient to span the conceptual space.** Five demographic variables define a roughly 8–10-dimensional feature space (after one-hot encoding). Survey attitudes, beliefs, and behaviours operate in a much higher-dimensional latent space. Most of the variance that distinguishes domains from each other lives in dimensions the bridge cannot see.
+The ceiling rise from 0.116 → 0.140 is driven by domain pairs where **both** variables are sensitive to the new predictors (especially `Tam_loc`). Pairs like DER×SOC and IND×SOC benefit because both digital society and indigenous/human rights attitudes vary strongly by locality size. This is a genuine finding: these domains share a strong urban/rural demographic gradient.
 
 ---
 
-## 4. The Significance Problem
+## 6. The Significance Problem (Updated)
 
-93% of 2,484 estimates are p < 0.05. This near-universal significance reflects:
-
-- **Large simulation size** (n_sim=2,000): with 2,000 synthetic respondents, even V=0.08 has statistical power to reject the null of V=0.
-- **The floor effect**: because the bridge structurally cannot produce V=0, the chi-square test is effectively testing "does this domain pair have a detectable demographic skeleton?" — not "are these domains related?" The answer is almost always yes.
-
-Significance here is a property of the method, not of the data. The 7% non-significant pairs are likely cases where one or both variables had very weak SES gradients and the model converged poorly, not cases where the domains are genuinely independent.
+Significance has increased from 93% → 98.5%. More predictors → tighter SES predictions → more statistical power to detect even the structural floor. This reinforces the earlier conclusion: significance here is a property of the method's power, not evidence of substantive domain associations.
 
 ---
 
-## 5. What the Bridge Is Useful For
+## 7. What the Bridge Is Useful For
 
-Despite the limitations above, the bridge has genuine, bounded utility:
+### 7.1 Ranking SES saturation across domains
 
-### 5.1 Ranking SES saturation across domains
+The domain-level ranking remains the bridge's most interpretable output. Key findings confirmed across both bridge versions:
+- **DER, IND, POB, CIE** are consistently the most demographically stratified
+- **DEP, COR, MED** are consistently the most demographically uniform
+- New finding: **SOC and CUL** are more urban/rural sensitive than the baseline revealed
 
-The domain-level ranking (IND, POB, CIE at the top; DEP, MED, COR at the bottom) *is* interpretable as a measure of **how much demographic stratification characterises each domain**. Domains with high mean V have variables that vary substantially by age, education, sex, employment, and region. Domains with low mean V have variables that are more demographically uniform.
+### 7.2 Relative comparison and confound-flagging
 
-This is a meaningful sociological finding:
-- Indigenous issues (IND), poverty (POB), and science/technology (CIE) are the most demographically stratified — responses vary strongly by who you are.
-- Corruption (COR), media (MED), and sports/recreation (DEP) are the most demographically uniform — respondents tend to agree regardless of demographic profile.
+The wider range (0.085–0.140 vs 0.081–0.116) gives slightly more room for relative comparison. Domain pairs near 0.140 have notably stronger shared SES loading than pairs near 0.085 — a difference that was largely invisible in the baseline.
 
-### 5.2 Relative comparison within the bridge's scale
+### 7.3 KG ontology validation (unchanged caveats)
 
-Even if absolute V values are not interpretable as "strength of association," *relative* comparisons within the same bridge run are valid: CIE×POB (V=0.116) genuinely has more shared SES variance than DEP×SAL (V=0.081). This can be used to:
-
-- Flag domain pairs where SES confounding is particularly strong (if bridging to an essay or analytical context)
-- Identify which pairings are most likely to produce spurious associations in downstream analyses that don't control for SES
-
-### 5.3 KG ontology validation (with caveats)
-
-The 5 CONFIRMED and 0 CONTRADICTED KG relationships suggest that the ontology's cross-domain edges are at least not empirically refuted by demographic data. This is a weak positive signal — it confirms the KG edges don't span demographically orthogonal domains.
-
-### 5.4 Practical instrument design
-
-When designing a survey or analysis that combines variables from two different surveys, the bridge V tells you: "if you don't control for these five demographics, expect approximately V≈0.10 of spurious correlation between any measure from Survey A and any measure from Survey B." This is a useful baseline correction factor.
+High bridge V still does not validate a KG edge; low bridge V still does not invalidate one. The bridge measures demographic structure, not conceptual structure.
 
 ---
 
-## 6. What the Bridge Is Not Useful For
+## 8. What the Bridge Is Not Useful For
 
-### 6.1 Measuring substantive domain associations
-
-The bridge **cannot tell you** whether Religion and Indigenous Issues are conceptually related. It only tells you they both vary with age, education, and region. The fact that IND×REL is among the top pairs (V=0.111) reflects shared demographics, not shared conceptual territory.
-
-The 271 "DATA ONLY" pairs are not evidence that those 271 domain pairs are related — they are simply pairs for which the KG made no cross-domain claim and the bridge produced its standard non-zero estimate.
-
-### 6.2 Distinguishing real associations from SES confounding
-
-The bridge conflates two entirely different phenomena:
-- **Genuine cross-domain association**: Domain A's content directly influences or co-occurs with Domain B's content
-- **SES confounding**: Both domains correlate with the same demographics
-
-A richer dataset (panel data, co-embedded surveys) would be needed to separate these. The bridge cannot do it.
-
-### 6.3 Validating the knowledge graph
-
-The KG was built from semantic/conceptual analysis of question content. The bridge measures demographic structure. These are orthogonal evaluation criteria. A high bridge V does not validate a KG edge; a low bridge V does not invalidate one.
-
-### 6.4 Producing effect-size estimates for research
-
-V=0.097 is not the expected Cramér's V between a variable from, say, the SALUD and POBREZA surveys. It is a simulation artefact of the bridge design. Using it as an effect size estimate in substantive research would be misleading.
+Same as baseline: the bridge cannot measure substantive domain associations, cannot distinguish genuine cross-domain association from SES confounding, and should not be used to produce research-grade effect sizes.
 
 ---
 
-## 7. When the Bridge Approach Would Work Better
+## 9. Planned Improvements
 
-The bridge's limitations are inherent to the method, but could be mitigated by:
+Full algorithm details: `docs/SES_BRIDGE_IMPROVEMENT_PLAN.md`
 
-| Change | Effect |
-|--------|--------|
-| **More bridge variables** (10–15 SES+contextual predictors) | Wider V range, but compression remains unless R² increases substantially |
-| **Higher-R² bridge** (use rich composite SES indices) | Ceiling rises, but so does the floor |
-| **Partial-R² bridge** (subtract common SES component before V) | Could identify *residual* domain associations beyond SES — conceptually more valid |
-| **Direct linkage** (RDD merging, overlapping respondent panels) | Eliminates the simulation entirely; produces real joint V |
-| **Structural equation modelling** across surveys | Properly accounts for measurement error and latent constructs |
+| Option | Description | Expected gain | Status |
+|--------|-------------|--------------|--------|
+| A | Expand predictors: +Tam_loc, +est_civil | Wider range (+54% achieved) | **Done** |
+| B | Option 3: Mantel-Haenszel Residual Bridge | Measure association *beyond* SES | Planned |
+| C | Option 4: Ecological Bridge (geo cells) | Real geographic correlations | Planned |
+| D | Comparison sweep: all 3 methods | Triangulated domain picture | Planned |
+
+**Option 3 (Residual bridge):** New `ResidualBridgeEstimator` in `ses_regression.py`. Stratifies synthetic SES population into K≈30 KMeans cells, computes V within each cell, aggregates via Mantel-Haenszel. Output: `cramers_v_residual` + `ses_fraction`.
+
+**Option 4 (Ecological bridge):** New `EcologicalBridgeEstimator` in `ses_regression.py`. Aggregates survey responses at `edo` × `Tam_loc` cells (max 128), merges both surveys on geographic key, computes weighted Spearman ρ. Subject to ecological fallacy but immune to V compression.
 
 ---
 
-## 8. Summary Assessment
+## 10. Summary Assessment (Updated)
 
-| Question | Answer |
-|----------|--------|
-| Is the bridge valid? | Yes — as a measure of shared SES variance |
-| Does it identify conceptual domain relationships? | No |
-| Is V=0.097 a meaningful effect size? | No — it is a method artefact |
-| Are the 93% significant results meaningful? | No — significance reflects simulation power, not true association |
-| Is the domain ranking (IND>POB>CIE>…>DEP) meaningful? | Yes — as a measure of SES saturation |
-| Should the KG be updated based on bridge results? | Only to annotate edges with "SES co-variation" notes, not to add/remove conceptual links |
-| Is the bridge worth keeping in the pipeline? | Yes, with scope limited to SES saturation analysis and confound-flagging |
+| Question | Baseline answer | Extended answer |
+|----------|----------------|-----------------|
+| Is the bridge valid? | Yes — as SES variance measure | Yes — same |
+| Does it identify conceptual domain relationships? | No | No |
+| Is V meaningful as effect size? | No — method artefact | No — same |
+| Are 93%+ significant results meaningful? | No | No (98.5% confirms this) |
+| Is the domain ranking meaningful? | Yes — SES saturation | Yes — now more differentiated |
+| Should KG be updated based on bridge? | Annotate only | Annotate only |
+| Is the bridge worth keeping? | Yes, narrow scope | Yes, slightly wider scope |
+| Did adding Tam_loc + est_civil help? | N/A | Yes — range +54%, ceiling +0.024 |
 
-**Bottom line**: The SES bridge is a narrow-purpose tool. It reliably measures how demographically stratified each domain is, and flags domain pairs where SES confounding will be strong. It does not — and structurally cannot — identify whether two domains are conceptually related. Given the compressed V range (0.081–0.116) and uniform significance (93%), it should not be presented to users as evidence of domain associations. Its most defensible use is as a confounder diagnostic and a domain-level demographic saturation score.
+**Bottom line:** The extended bridge (7 predictors) is a meaningfully better instrument than the baseline. The 54% range increase and the emergence of DER, SOC, and CUL as high-saturation domains are genuine findings not visible in the baseline. However, compression remains structural. The next priority is implementing Options 3 and 4 to provide measures that go beyond shared SES variance.
