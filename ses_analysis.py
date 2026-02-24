@@ -76,22 +76,27 @@ class AnalysisConfig:
     @staticmethod
     def preprocess_survey_data(los_mex_dict: Dict) -> Dict:
         """
-        Create missing SES variables (edad, region, empleo) from available raw variables.
-        
+        Create missing SES variables (edad, region, empleo) from available raw variables,
+        and normalise Tam_loc and est_civil for use as extended SES bridge predictors.
+
         Mappings based on investigation:
         - Region → region (24/26 surveys have this)
         - sd2 → edad (24/26 surveys, needs categorization)
         - sd5 → empleo (23/26 surveys)
-        
+        - Tam_loc: normalised in-place (24/26; absent in JUEGOS_DE_AZAR, CULTURA_CONSTITUCIONAL)
+        - est_civil: sentinel codes remapped to NaN in-place (26/26)
+
         Returns:
             Updated los_mex_dict with new SES variables added to dataframes
         """
         logger.info("🔧 CREATING MISSING SES VARIABLES")
-        
+
         mapping_stats = {
             'region_created': 0,
-            'edad_created': 0, 
+            'edad_created': 0,
             'empleo_created': 0,
+            'tam_loc_normalized': 0,
+            'est_civil_normalized': 0,
             'total_surveys': 0
         }
         
@@ -162,6 +167,31 @@ class AnalysisConfig:
                     s = s.map(lambda x: alt_map.get(x, x) if pd.notna(x) else x)
                 df['escol'] = s
                 changes_made.append('escol_normalized')
+
+            # 5. Normalise 'Tam_loc' (locality size / urban-rural proxy).
+            # Values 1.0–4.0: 1=≥100k inhabitants (large urban) → 4=<2,500 (rural).
+            # Present in 24/26 surveys; gracefully absent in JUEGOS_DE_AZAR and
+            # CULTURA_CONSTITUCIONAL (older survey format).  Anything outside 1–4
+            # is treated as an invalid/sentinel code and remapped to NaN.
+            if 'Tam_loc' in df.columns:
+                s = pd.to_numeric(df['Tam_loc'], errors='coerce')
+                s = s.where(s.between(1.0, 4.0), other=float('nan'))
+                df['Tam_loc'] = s
+                changes_made.append('Tam_loc_normalized')
+                mapping_stats['tam_loc_normalized'] += 1
+
+            # 6. Normalise 'est_civil' (marital status) sentinel codes.
+            # Substantive categories: 1.0=Unión libre/Casado, 2.0=Separado/Divorciado/Viudo,
+            # 6.0=Soltero (most surveys) or 3.0=Soltero (JUEGOS_DE_AZAR).
+            # Sentinel codes 8.0 and 9.0 are below the _is_sentinel() threshold of >=97
+            # and must be explicitly remapped to NaN here.  98.0 and 99.0 are caught by
+            # _is_sentinel() in the bridge regression but are also remapped for safety.
+            if 'est_civil' in df.columns:
+                s = pd.to_numeric(df['est_civil'], errors='coerce')
+                s = s.where(~s.isin([8.0, 9.0, 98.0, 99.0]), other=float('nan'))
+                df['est_civil'] = s
+                changes_made.append('est_civil_normalized')
+                mapping_stats['est_civil_normalized'] += 1
 
             # Update the dataframe in the dictionary
             if changes_made:

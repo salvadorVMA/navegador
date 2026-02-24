@@ -42,11 +42,16 @@ _EDAD_ORDER: Dict[str, int] = {
 }
 
 # Nominal SES vars get one-hot encoding (first category dropped)
-_NOMINAL_SES = ('sexo', 'region', 'empleo')
-_ORDINAL_SES = ('edad', 'escol')
+_NOMINAL_SES = ('sexo', 'region', 'empleo', 'est_civil')
+_ORDINAL_SES = ('edad', 'escol', 'Tam_loc')
 
-# SES variables used in regression features
-SES_REGRESSION_VARS: List[str] = ['sexo', 'edad', 'region', 'empleo', 'escol']
+# SES variables used in regression features.
+# Tam_loc and est_civil are included when present (24/26 and 26/26 surveys resp.).
+# Surveys missing Tam_loc (JUEGOS_DE_AZAR, CULTURA_CONSTITUCIONAL) degrade
+# gracefully: SESEncoder skips any column absent from the DataFrame.
+SES_REGRESSION_VARS: List[str] = [
+    'sexo', 'edad', 'region', 'empleo', 'escol', 'Tam_loc', 'est_civil'
+]
 
 # Survey sentinel codes: values < 0 (invalid/missing) or >= 97 (no-answer, don't-know, refuse)
 # These are never substantive responses and must be excluded from model fitting.
@@ -122,6 +127,8 @@ class SESEncoder:
     def __init__(self) -> None:
         self._region_cats: List[str] = []
         self._empleo_cats: List[str] = []
+        self._est_civil_cats: List = []
+        self._has_tam_loc: bool = False
         self._fitted = False
 
     # ------------------------------------------------------------------
@@ -141,6 +148,15 @@ class SESEncoder:
                 c for c in df['empleo'].dropna().unique()
                 if not _is_sentinel(c)
             )
+        if 'est_civil' in df.columns:
+            # est_civil stores numeric codes (1.0, 2.0, 6.0 etc.) after preprocessing.
+            # Sort numerically so the dropped first category is consistently the
+            # lowest code across surveys.
+            self._est_civil_cats = sorted(
+                c for c in df['est_civil'].dropna().unique()
+                if not _is_sentinel(c)
+            )
+        self._has_tam_loc = 'Tam_loc' in df.columns
         self._fitted = True
         return self
 
@@ -208,6 +224,25 @@ class SESEncoder:
                 pd.to_numeric(df['escol'], errors='coerce').rename('escol')
             )
 
+        # Tam_loc — ordinal int (locality size: 1=≥100k urban → 4=rural).
+        # Present in 24/26 surveys; absent in JUEGOS_DE_AZAR and CULTURA_CONSTITUCIONAL.
+        # Values are already clipped to 1–4 by preprocess_survey_data(); pass through
+        # as a continuous ordinal feature (same treatment as escol).
+        if 'Tam_loc' in df.columns:
+            parts.append(
+                pd.to_numeric(df['Tam_loc'], errors='coerce').rename('Tam_loc')
+            )
+
+        # est_civil — nominal one-hot (marital status, drop first category).
+        # Sentinel codes 8/9/98/99 are remapped to NaN by preprocess_survey_data();
+        # any residual sentinels will produce NaN after pd.to_numeric and be excluded.
+        if 'est_civil' in df.columns and len(self._est_civil_cats) > 1:
+            est_civil_num = pd.to_numeric(df['est_civil'], errors='coerce')
+            for cat in self._est_civil_cats[1:]:
+                parts.append(
+                    (est_civil_num == cat).astype(float).rename(f'est_civil_{cat}')
+                )
+
         if not parts:
             raise ValueError("No SES columns found in DataFrame.")
 
@@ -232,6 +267,10 @@ class SESEncoder:
         if len(self._empleo_cats) > 1:
             names.extend(f'empleo_{c}' for c in self._empleo_cats[1:])
         names.append('escol')
+        if self._has_tam_loc:
+            names.append('Tam_loc')
+        if len(self._est_civil_cats) > 1:
+            names.extend(f'est_civil_{c}' for c in self._est_civil_cats[1:])
         return names
 
 

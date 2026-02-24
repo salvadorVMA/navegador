@@ -86,14 +86,76 @@ Data Layer (ChromaDB embeddings, JSON files)
 - **Format**: JSON dictionary mapping questions to aggregated responses
 - **Processing**: ChromaDB embeddings for semantic search
 
-## Current Branch
+## Current Branch / Worktree
 
-`Claude1` - Active development branch with:
-- Anthropic/Claude model integration
-- Automatic Codespaces authentication
-- JSON data format (converted from pickle)
-- Reorganized folder structure
-- Docker sandbox for safe testing
+**Worktree:** `worktree-knowledge-graph`
+**Path:** `.claude/worktrees/knowledge-graph/` (relative to main repo root)
+**Branched from:** `feature/bivariate-analysis`
+
+This worktree is the active development environment for the **SES bridge / knowledge graph** work.
+Always run code and make changes here, not in the main working directory, unless merging back.
+
+**How to load the survey data:** The data file lives in the main repo, not the worktree.
+Always pass the path explicitly when running scripts:
+```bash
+NAVEGADOR_LOS_MEX_DICT_PATH=/workspaces/navegador/data/encuestas/los_mex_dict.json \
+  python scripts/debug/sweep_cross_domain.py --workers 1
+```
+(2-core machine: use `--workers 1` to leave 1 core idle.)
+
+### Key modules in this worktree
+
+| Module | Purpose |
+|--------|---------|
+| `ses_regression.py` | `CrossDatasetBivariateEstimator` — SES bridge simulation |
+| `ses_analysis.py` | `AnalysisConfig.preprocess_survey_data()` — normalises SES columns |
+| `scripts/debug/sweep_cross_domain.py` | 276-pair sweep; outputs to `data/results/` |
+| `scripts/debug/visualize_cross_domain.py` | Heatmap viz of sweep results |
+
+### SES Bridge — current state (as of 2026-02-24)
+
+**Baseline bridge predictors:** `sexo`, `edad`, `region`, `empleo`, `escol` (5 variables)
+
+**Extended bridge predictors (added 2026-02-24):** `Tam_loc`, `est_civil`
+- `Tam_loc`: locality size (1=large urban → 4=rural), ordinal, 24/26 surveys
+  (absent: JUEGOS_DE_AZAR, CULTURA_CONSTITUCIONAL — graceful degradation)
+- `est_civil`: marital status (nominal one-hot), 26/26 surveys;
+  sentinel codes 8/9 → NaN added to `preprocess_survey_data()`
+- `religion`: only 2/26 surveys — NOT included as a bridge predictor
+- `edo` (state): 32 INEGI codes, no value labels, convergence risk — excluded for now
+
+**Data audit findings:** Complete audit in `data/results/ses_bridge_report.md`.
+Additional variables present across all 26 surveys: `ing_ind` (individual income),
+`ing_fam` (family income), `Estrato` (stratum, 24/26) — candidates for future extension.
+
+### SES Bridge — improvement plan
+
+Full plan: `docs/SES_BRIDGE_IMPROVEMENT_PLAN.md`
+
+| Option | Description | Status |
+|--------|-------------|--------|
+| A | Expand predictors (Tam_loc, est_civil) | **Done** |
+| B | Run baseline sweep with expanded predictors | In progress |
+| C | Option 3: Mantel-Haenszel Residual Bridge | Planned |
+| D | Option 4: Ecological Bridge (geo × locality cells) | Planned |
+| E | Comparison sweep: all three methods on 276 pairs | Planned |
+
+**Option 3 (Residual bridge):** New class `ResidualBridgeEstimator` in `ses_regression.py`.
+Stratifies the synthetic SES population into K≈30 cells (KMeans), computes V within each cell,
+aggregates via Mantel-Haenszel. Measures domain association *beyond* shared demographics.
+
+**Option 4 (Ecological bridge):** New class `EcologicalBridgeEstimator` in `ses_regression.py`.
+Aggregates survey responses at state × Tam_loc cells (max 128 cells), merges both surveys on
+the geographic key, computes weighted Spearman ρ. Measures co-variation *across Mexican geography*.
+Subject to ecological fallacy but immune to the SES bridge's compression problem.
+
+### Known data quality rules
+
+- Sentinel codes `>= 97` or `< 0`: filtered by `_is_sentinel()` in `ses_regression.py`
+- `est_civil` codes 8 and 9: below sentinel threshold; explicitly remapped → NaN in `preprocess_survey_data()`
+- `escol` codes 9, 98, 99: remapped in `preprocess_survey_data()`; JUEGOS_DE_AZAR/CULTURA_CONSTITUCIONAL use 1/3/4/5/6 scale → remapped to 1-5
+- `Tam_loc`: clipped to 1–4; values outside range → NaN
+- NaN in `df_tables`: conditional/skip-pattern questions — filter and renormalize before LLM
 
 ## Quick Start
 
