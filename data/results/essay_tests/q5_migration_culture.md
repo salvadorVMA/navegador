@@ -4,7 +4,7 @@
 **Query (EN):** How does migration affect Mexican cultural identity?
 **Variables:** p1|MIG, p2|MIG, p9|MIG, p13|MIG, p4|IDE, p6|IDE, p7|IDE, p8|IDE, p9|IDE
 **Status:** ✅ success
-**Time:** 40744ms | **Cross-dataset pairs:** 6
+**Time:** 58234ms | **Cross-dataset pairs:** 6
 
 ---
 
@@ -13,54 +13,35 @@
 **Query:** ¿Cómo afecta la migración a la identidad cultural mexicana?
 
 ## Summary
-The most important finding is that migration's effect on Mexican cultural identity is weakly associated with views on national unity based on cultural similarity versus diversity, as shown by a moderate and significant association between perceived migration-related problems and identity views (V=0.102, p=0.000). Other direct measures of identity and migration show weak or non-significant relationships, indicating limited evidence for a strong impact of migration on cultural identity perceptions. The evidence quality is moderate, with only one significant bivariate association among several tested, limiting confidence in strong conclusions.
+The data shows that migration status has very limited direct impact on Mexican cultural identity perceptions, with most bivariate associations between migration-related variables and identity measures being weak or non-significant. The only notable significant relationship is a moderate association between perceived main problems related to migration and views on national unity based on cultural similarity or diversity, suggesting some linkage between socio-economic concerns and identity perspectives. Overall, evidence quality is moderate with 9 variables analyzed and 7 bivariate pairs tested, but most associations are weak, limiting strong conclusions.
 
 ## Data Landscape
-Nine variables from migration and identity surveys were analyzed, revealing a complex opinion landscape: 3 variables show strong consensus, 3 lean toward one view without full consensus, 1 is polarized, and 2 show dispersed opinions. The divergence index of 67% indicates substantial variation in public opinion about migration and cultural identity in Mexico, reflecting nuanced and sometimes conflicting views among the population.
+The analysis includes 9 variables from migration and identity surveys, with a divergence index of 67%, indicating substantial variation in public opinion. Among these, 3 variables show strong consensus, 3 lean toward one view without strong consensus, 1 is polarized, and 2 show dispersed opinions. This mix reflects a complex landscape where agreement on migration and cultural identity issues is uneven, highlighting both dominant views and significant minority perspectives.
 
 ## Evidence
-The key significant relationship is between perceived main migration-related problems (p2|MIG) and agreement with national unity statements based on cultural similarity versus diversity (p4|IDE). Those who agree that Mexico can build a great nation despite cultural differences report economic problems more frequently (up to 40.6%) than those who believe unity requires similar culture and values (31.4%). Conversely, insecurity and unemployment concerns vary across these identity views, showing a moderate association (V=0.102, p=0.000).
+The strongest substantive relationship is between the main problems attributed to migration (p2|MIG) and agreement with identity statements about national unity (p4|IDE). Economic concerns as a main problem vary from 10.5% among those uncertain about identity statements to 34.7% among those with no opinion, indicating that those emphasizing economic issues tend to hold differing views on cultural unity (V=0.108, p=0.000).
 
 | p4|IDE category | Económico % |
 |---|---|
-| Otra (Espontánea) | 40.6% |
-| Podemos construir una gran nación aunque tengamos culturas y valores distintos | 33.9% |
-| Los mexicanos podemos construir una gran nación sólo si tenemos una cultura y valores semejantes | 31.4% |
-| Ninguna (Espontánea) | 21.1% |
-| NS | 21.7% |
+| Los mexicanos podemos construir una gran nación sólo si tenemos una cultura y valores semejantes | 31.3% |
+| Podemos construir una gran nación aunque tengamos culturas y valores distintos | 32.8% |
+| Otra (Espontánea) | 20.8% |
+| Ninguna (Espontánea) | 34.7% |
+| NS | 10.5% |
 
-Other bivariate associations between migration satisfaction (p1|MIG) and various identity measures (p4, p6, p7, p8, p9) are weak and non-significant (V<0.1, p>0.1), indicating uniformity in identity responses regardless of migration satisfaction levels. For example, pride in being Mexican (p6|IDE) remains high (47.5%-63.9% very satisfied) across migration satisfaction categories.
+Other bivariate pairs between migration life satisfaction (p1|MIG) and identity variables (pride in being Mexican p6|IDE, self-identification p7|IDE, importance of traditions p8|IDE, attitudes toward cultural groups p9|IDE, and identity agreement p4|IDE) show weak or no significant associations (V values mostly below 0.07, p-values often above 0.05). For example, pride in being Mexican (p6|IDE) shows a weak but significant association with migration life satisfaction, where "Algo satisfecho" ranges from 21.1% to 46.6% across pride levels, suggesting some positive link between pride and satisfaction (V=0.067, p=0.007).
 
-Demographically, region and age moderately influence migration satisfaction and identity views. For instance, younger respondents (0-18) are 11 points more likely than 25-34-year-olds to feel "muy satisfecho" with their migration status (45% vs. 36%). Regionally, some areas show higher "algo satisfecho" migration satisfaction (47%) compared to others (34%). Identity self-categorization also varies by region, with 56% in one region identifying as "Sólo mexicano" versus 32% in another identifying as "Tan mexicano como (yucateco)".
-
-Supporting univariate data show a polarized distribution in migration satisfaction (p1|MIG) with 44.0% "Algo satisfecho" and 39.1% "Muy satisfecho" responses, and a consensus on the importance of preserving traditions (p8|IDE) with 73.4% saying "Mucho".
-
-**p2|MIG** — Main current problem:
-| Response | % |
+| p6|IDE category | Algo satisfecho % |
 |---|---|
-| Económico | 30.0% |
-| Desempleo | 26.4% |
-| Inseguridad, delincuencia | 15.7% |
-| Mal gobierno, política | 5.9% |
-| Inestabilidad laboral | 5.2% |
-| Problemas personales | 4.9% |
-| Violencia | 3.4% |
-| Falta de acceso a educación | 2.4% |
-| Salud | 2.1% |
-| Otro | 1.3% |
-| Ninguno | 1.1% |
-| Falta de prestaciones | 0.7% |
-| Relaciones interpersonales (familiares, amigos) | 0.5% |
-| No sabe/ No contesta | 0.4% |
+| Mucho | 41.6% |
+| Algo | 44.9% |
+| Poco | 46.6% |
+| Nada | 40.5% |
+| Otra (esp) | 21.1% |
 
-**p4|IDE** — Agreement with national unity statements:
-| Response | % |
-|---|---|
-| Podemos construir una gran nación aunque tengamos culturas y valores distintos | 55.2% |
-| Los mexicanos podemos construir una gran nación sólo si tenemos una cultura y valores semejantes | 38.4% |
-| No sabe/ No contesta | 2.3% |
-| Otra (Espontánea) | 2.2% |
-| Ninguna (Espontánea) | 1.8% |
+Demographically, region and age moderate responses moderately. For migration life satisfaction (p1|MIG), younger respondents (0-18) are 11 points more likely than 25-34 year-olds to report "Muy satisfecho" (45% vs 36%). Regionally, some areas show up to 17 points difference in "Muy satisfecho" responses. Identity variables like pride in being Mexican (p6|IDE) also vary by region, with 70% in region 01 expressing "Mucho" pride versus 54% in region 03.
+
+Supporting univariate distributions show migration life satisfaction is polarized between "Algo satisfecho" (44.0%) and "Muy satisfecho" (39.1%). Most respondents (86.7%) do not report heritage from a different culture (p3|MIG). A majority (55.2%) agree that Mexico can build a nation with diverse cultures and values (p4|IDE). Pride in being Mexican is high, with 63.4% reporting "Mucho" pride (p6|IDE). Importance of preserving traditions is strongly consensual at 73.4% "Mucho" (p8|IDE). Respecting cultural groups is the dominant view at 70.4% (p9|IDE).
 
 **p1|MIG** — Migration life satisfaction:
 | Response | % |
@@ -71,6 +52,32 @@ Supporting univariate data show a polarized distribution in migration satisfacti
 | Nada satisfecho | 3.1% |
 | No sabe/ No contesta | 0.3% |
 
+**p2|MIG** — Main current problem:
+| Response | % |
+|---|---|
+| Económico | 30.0% |
+| Desempleo | 26.4% |
+| Inseguridad, delincuencia | 15.7% |
+| Mal gobierno, política | 5.9% |
+| Inestabilidad laboral | 5.2% |
+
+**p3|MIG** — Heritage from different culture:
+| Response | % |
+|---|---|
+| No | 86.7% |
+| Sí | 6.8% |
+| Sí, en parte | 4.8% |
+| No sabe/ No contesta | 1.7% |
+
+**p4|IDE** — Agreement on national unity:
+| Response | % |
+|---|---|
+| Podemos construir una gran nación aunque tengamos culturas y valores distintos | 55.2% |
+| Los mexicanos podemos construir una gran nación sólo si tenemos una cultura y valores semejantes | 38.4% |
+| No sabe/ No contesta | 2.3% |
+| Otra (Espontánea) | 2.2% |
+| Ninguna (Espontánea) | 1.8% |
+
 **p6|IDE** — Pride in being Mexican:
 | Response | % |
 |---|---|
@@ -78,28 +85,34 @@ Supporting univariate data show a polarized distribution in migration satisfacti
 | Algo | 25.4% |
 | Poco | 8.2% |
 | Nada | 1.9% |
-| No soy mexicano | 0.5% |
-| Otra | 0.2% |
-| No sabe/ No contesta | 0.2% |
 
-**p8|IDE** — Importance of conserving traditions:
+**p7|IDE** — Self-identification:
+| Response | % |
+|---|---|
+| Sólo mexicano | 42.0% |
+| Tan mexicano como (yucateco) | 26.0% |
+| Más (yucateco) que mexicano | 15.0% |
+
+**p8|IDE** — Importance of preserving traditions:
 | Response | % |
 |---|---|
 | Mucho | 73.4% |
 | Poco | 22.6% |
 | Nada | 3.9% |
 
-## Complications
-Demographically, region (mean V=0.15) and age (mean V=0.14) show moderate influence on migration satisfaction and identity views, complicating a uniform interpretation. For example, regions differ by up to 17 percentage points in migration satisfaction categories, and age groups vary in identity agreement. Minority opinions are notable: 38.4% believe national unity requires cultural similarity, countering the majority view favoring diversity; 24.8% prefer assimilation of ethnic groups rather than respect for their cultures. These minority views challenge a simplistic consensus narrative.
+**p9|IDE** — Treatment of ethnic/cultural groups:
+| Response | % |
+|---|---|
+| Respetar su cultura y sus costumbres | 70.4% |
+| Procurar que adopten nuestra cultura y nuestras costumbres | 24.8% |
+| Otra | 3.1% |
+| No sabe/ No contesta | 1.8% |
 
-Simulation-based bivariate estimates rely on SES-bridge assumptions and moderate sample size (n=2000), which may limit detection of subtle effects or causal inference. Most identity variables show weak or non-significant relationships with migration satisfaction, indicating that migration's impact on cultural identity is not strongly reflected in the data. Variables tangentially related to migration, like preferred city to live, add little clarity. Thus, the evidence is limited and should be interpreted cautiously.
+## Complications
+Demographic factors such as region and age moderately influence responses, with regional differences up to 17 points in migration life satisfaction and pride in being Mexican. Minority views exceeding 15% include those who believe Mexico can only unify with similar culture and values (38.4%) and those who think migrants should adopt Mexican culture (24.8%), indicating meaningful dissent from dominant views. The simulation-based SES-bridge method may limit precision, and sample size (n=2000) constrains detection of subtle effects. Several key bivariate associations between migration and identity variables (e.g., life satisfaction with identity agreement, self-identification, tradition importance, and cultural group treatment) are weak or non-significant, indicating an absence of strong direct relationships. This weak or absent evidence complicates definitive conclusions about migration's impact on cultural identity.
 
 ## Implications
-First, the significant association between perceived economic problems related to migration and openness to cultural diversity suggests that policies addressing economic concerns could foster more inclusive national identity narratives that embrace cultural pluralism. Supporting economic stability may reduce identity tensions linked to migration.
-
-Second, given the weak direct relationships between migration satisfaction and cultural identity pride or self-identification, policymakers should recognize that migration alone does not drastically reshape cultural identity perceptions. Efforts to preserve traditions and respect cultural differences (supported by strong consensus) should be prioritized to maintain social cohesion amid migration flows.
-
-Third, the presence of substantial minority views favoring cultural homogeneity or assimilation indicates a need for dialogue and education to bridge divergent identity perspectives. Policies promoting intercultural understanding and respect for ethnic groups might mitigate polarization and strengthen collective identity in a multicultural context.
+First, policy efforts should recognize that migration's effect on cultural identity is complex and not strongly deterministic; promoting respect for cultural diversity aligns with the majority view (70.4%) and can support social cohesion without forcing assimilation. Second, given the moderate association between socio-economic concerns and identity perspectives, addressing economic and employment challenges faced by migrants may indirectly influence national unity attitudes. Third, the presence of significant minority opinions suggests that policies must also engage with groups favoring cultural homogeneity or assimilation to foster inclusive dialogue. Finally, further research with larger samples and refined methods is needed to clarify subtle identity dynamics related to migration, guiding more targeted cultural integration strategies.
 
 ---
 
@@ -383,12 +396,12 @@ Third, the presence of substantial minority views favoring cultural homogeneity 
 
 | Variable Pair | Cramér's V | p-value | Key Pattern | n sim |
 |---------------|------------|---------|-------------|-------|
-| p1|MIG × p4|IDE | 0.045 (weak) | 0.435 | "Algo satisfecho": 32% ("NS") → 56% ("Ninguna (Espontánea)") | 2000 |
-| p1|MIG × p6|IDE | 0.055 (weak) | 0.109 | "Muy satisfecho": 48% (" Mucho") → 64% (" Nada") | 2000 |
-| p1|MIG × p7|IDE | 0.071 (weak) | 0.186 | "Muy satisfecho": 38% ("Sólo (yucateco) (esp)") → 63% ("Me siento de todo el mundo (esp)") | 2000 |
-| p1|MIG × p8|IDE | 0.030 (weak) | 0.723 | "Algo satisfecho": 34% (" Nada") → 44% (" Poco") | 2000 |
-| p1|MIG × p9|IDE | 0.049 (weak) | 0.285 | "Algo satisfecho": 30% (" NS") → 46% (" Procurar que adopten nuestra cultura y nuestras costumbres") | 2000 |
-| p2|MIG × p4|IDE | 0.102 (moderate) | 0.000 | " Económico": 21% ("Ninguna (Espontánea)") → 41% ("Otra (Espontánea)") | 2000 |
+| p1|MIG × p4|IDE | 0.037 (weak) | 0.753 | "Algo satisfecho": 42% ("Los mexicanos podemos construir una gran nación sólo si tenemos una cultura y valores semejantes") → 60% ("Otra (Espontánea)") | 2000 |
+| p1|MIG × p6|IDE | 0.067 (weak) | 0.007 | "Algo satisfecho": 21% (" Otra (esp)") → 47% (" Poco") | 2000 |
+| p1|MIG × p7|IDE | 0.060 (weak) | 0.593 | "Algo satisfecho": 39% ("Más (yucateco) que mexicano") → 64% ("NS") | 2000 |
+| p1|MIG × p8|IDE | 0.047 (weak) | 0.176 | "Muy satisfecho": 46% (" Mucho") → 61% (" Nada") | 2000 |
+| p1|MIG × p9|IDE | 0.053 (weak) | 0.164 | "Algo satisfecho": 21% (" Otra (esp)") → 44% (" Respetar su cultura y sus costumbres") | 2000 |
+| p2|MIG × p4|IDE | 0.108 (moderate) | 0.000 | " Económico": 10% ("NS") → 35% ("Ninguna (Espontánea)") | 2000 |
 
 *Estimates derived from SES-bridge regression simulation.*
 
@@ -398,70 +411,117 @@ Third, the presence of substantial minority views favoring cultural homogeneity 
 | p4|IDE (conditioning) | Top p1|MIG responses |
 |---|---|
 | Los mexicanos podemos construir una gran nación sólo si tenemos una cultura y valores semejantes | Muy satisfecho: 49%, Algo satisfecho: 42%, Poco satisfecho: 8% |
-| Podemos construir una gran nación aunque tengamos culturas y valores distintos | Muy satisfecho: 52%, Algo satisfecho: 39%, Poco satisfecho: 7% |
-| Otra (Espontánea) | Muy satisfecho: 58%, Algo satisfecho: 42%, Poco satisfecho: 0% |
-| Ninguna (Espontánea) | Algo satisfecho: 56%, Muy satisfecho: 40%, Poco satisfecho: 4% |
-| NS | Muy satisfecho: 64%, Algo satisfecho: 32%, Poco satisfecho: 4% |
+| Podemos construir una gran nación aunque tengamos culturas y valores distintos | Muy satisfecho: 47%, Algo satisfecho: 44%, Poco satisfecho: 7% |
+| Otra (Espontánea) | Algo satisfecho: 60%, Muy satisfecho: 40%, Poco satisfecho: 0% |
+| Ninguna (Espontánea) | Algo satisfecho: 50%, Muy satisfecho: 48%, Poco satisfecho: 2% |
+| NS | Muy satisfecho: 46%, Algo satisfecho: 46%, Poco satisfecho: 8% |
 
 **p1|MIG × p6|IDE** — How p1|MIG distributes given p6|IDE:
 
 | p6|IDE (conditioning) | Top p1|MIG responses |
 |---|---|
-|  Mucho | Muy satisfecho: 48%, Algo satisfecho: 43%, Poco satisfecho: 9% |
-|  Algo | Muy satisfecho: 48%, Algo satisfecho: 44%, Poco satisfecho: 8% |
-|  Poco | Muy satisfecho: 58%, Algo satisfecho: 35%, Poco satisfecho: 6% |
-|  Nada | Muy satisfecho: 64%, Algo satisfecho: 31%, Poco satisfecho: 5% |
-|  Otra (esp) | Muy satisfecho: 50%, Algo satisfecho: 38%, Poco satisfecho: 12% |
+|  Mucho | Muy satisfecho: 49%, Algo satisfecho: 42%, Poco satisfecho: 8% |
+|  Algo | Muy satisfecho: 47%, Algo satisfecho: 45%, Poco satisfecho: 8% |
+|  Poco | Muy satisfecho: 51%, Algo satisfecho: 47%, Poco satisfecho: 2% |
+|  Nada | Muy satisfecho: 57%, Algo satisfecho: 40%, Poco satisfecho: 3% |
+|  Otra (esp) | Muy satisfecho: 58%, Algo satisfecho: 21%, Poco satisfecho: 21% |
 
 **p1|MIG × p7|IDE** — How p1|MIG distributes given p7|IDE:
 
 | p7|IDE (conditioning) | Top p1|MIG responses |
 |---|---|
-| Más mexicano que (yucateco) | Muy satisfecho: 52%, Algo satisfecho: 40%, Poco satisfecho: 9% |
-| Más (yucateco) que mexicano | Muy satisfecho: 57%, Algo satisfecho: 36%, Poco satisfecho: 6% |
+| Más mexicano que (yucateco) | Muy satisfecho: 51%, Algo satisfecho: 42%, Poco satisfecho: 6% |
+| Más (yucateco) que mexicano | Muy satisfecho: 54%, Algo satisfecho: 39%, Poco satisfecho: 6% |
 | Sólo mexicano (esp) | Muy satisfecho: 47%, Algo satisfecho: 43%, Poco satisfecho: 9% |
-| Sólo (yucateco) (esp) | Algo satisfecho: 53%, Muy satisfecho: 38%, Poco satisfecho: 7% |
-| Tan mexicano como (yucateco) (esp) | Muy satisfecho: 49%, Algo satisfecho: 44%, Poco satisfecho: 6% |
-| Me siento de todo el mundo (esp) | Muy satisfecho: 63%, Algo satisfecho: 29%, Poco satisfecho: 7% |
-| No me siento de ningún lado (esp) | Algo satisfecho: 49%, Muy satisfecho: 48%, Poco satisfecho: 3% |
-| NS | Muy satisfecho: 50%, Algo satisfecho: 50%, Poco satisfecho: 0% |
+| Sólo (yucateco) (esp) | Algo satisfecho: 48%, Muy satisfecho: 43%, Poco satisfecho: 9% |
+| Tan mexicano como (yucateco) (esp) | Muy satisfecho: 50%, Algo satisfecho: 41%, Poco satisfecho: 8% |
+| Me siento de todo el mundo (esp) | Muy satisfecho: 51%, Algo satisfecho: 42%, Poco satisfecho: 5% |
+| No me siento de ningún lado (esp) | Muy satisfecho: 49%, Algo satisfecho: 44%, Poco satisfecho: 7% |
+| NS | Algo satisfecho: 64%, Muy satisfecho: 36%, Poco satisfecho: 0% |
 
 **p1|MIG × p8|IDE** — How p1|MIG distributes given p8|IDE:
 
 | p8|IDE (conditioning) | Top p1|MIG responses |
 |---|---|
-|  Mucho | Muy satisfecho: 48%, Algo satisfecho: 43%, Poco satisfecho: 8% |
-|  Poco | Muy satisfecho: 46%, Algo satisfecho: 44%, Poco satisfecho: 8% |
-|  Nada | Muy satisfecho: 56%, Algo satisfecho: 34%, Poco satisfecho: 10% |
+|  Mucho | Muy satisfecho: 46%, Algo satisfecho: 45%, Poco satisfecho: 7% |
+|  Poco | Muy satisfecho: 48%, Algo satisfecho: 42%, Poco satisfecho: 9% |
+|  Nada | Muy satisfecho: 61%, Algo satisfecho: 37%, Poco satisfecho: 2% |
 
 **p1|MIG × p9|IDE** — How p1|MIG distributes given p9|IDE:
 
 | p9|IDE (conditioning) | Top p1|MIG responses |
 |---|---|
-|  Procurar que adopten nuestra cultura y nuestras costumbres | Algo satisfecho: 46%, Muy satisfecho: 44%, Poco satisfecho: 9% |
-|  Respetar su cultura y sus costumbres | Muy satisfecho: 49%, Algo satisfecho: 41%, Poco satisfecho: 9% |
-|  Otra (esp) | Muy satisfecho: 59%, Algo satisfecho: 41%, Poco satisfecho: 0% |
-|  NS | Muy satisfecho: 60%, Algo satisfecho: 30%, Poco satisfecho: 7% |
-|  NC | Muy satisfecho: 59%, Algo satisfecho: 39%, Poco satisfecho: 2% |
+|  Procurar que adopten nuestra cultura y nuestras costumbres | Muy satisfecho: 52%, Algo satisfecho: 39%, Poco satisfecho: 8% |
+|  Respetar su cultura y sus costumbres | Muy satisfecho: 47%, Algo satisfecho: 44%, Poco satisfecho: 8% |
+|  Otra (esp) | Muy satisfecho: 63%, Algo satisfecho: 21%, Poco satisfecho: 16% |
+|  NS | Muy satisfecho: 60%, Algo satisfecho: 40%, Poco satisfecho: 0% |
+|  NC | Muy satisfecho: 60%, Algo satisfecho: 29%, Poco satisfecho: 12% |
 
 **p2|MIG × p4|IDE** — How p2|MIG distributes given p4|IDE:
 
 | p4|IDE (conditioning) | Top p2|MIG responses |
 |---|---|
-| Los mexicanos podemos construir una gran nación sólo si tenemos una cultura y valores semejantes |  Económico: 31%,  Inseguridad, delincuencia: 20%,  Desempleo: 18% |
-| Podemos construir una gran nación aunque tengamos culturas y valores distintos |  Económico: 34%,  Desempleo: 19%,  Inseguridad, delincuencia: 18% |
-| Otra (Espontánea) |  Económico: 41%,  Desempleo: 34%,  Inseguridad, delincuencia: 12% |
-| Ninguna (Espontánea) |  Económico: 21%,  Inseguridad, delincuencia: 21%,  Desempleo: 16% |
-| NS |  Económico: 22%,  Desempleo: 22%,  Violencia: 17% |
+| Los mexicanos podemos construir una gran nación sólo si tenemos una cultura y valores semejantes |  Económico: 31%,  Desempleo: 20%,  Inseguridad, delincuencia: 20% |
+| Podemos construir una gran nación aunque tengamos culturas y valores distintos |  Económico: 33%,  Inseguridad, delincuencia: 20%,  Desempleo: 18% |
+| Otra (Espontánea) |  Desempleo: 33%,  Inseguridad, delincuencia: 33%,  Económico: 21% |
+| Ninguna (Espontánea) |  Económico: 35%,  Desempleo: 20%,  Inseguridad, delincuencia: 12% |
+| NS |  Inestabilidad laboral: 21%,  Inseguridad, delincuencia: 16%,  Mal gobierno, política: 16% |
+### Bridge Model Diagnostics
+
+> For human inspection only — not passed to the LLM.
+
+#### Summary
+
+| Variable | Model | Pseudo-R² | LLR p | Dominant SES | Quality |
+|----------|-------|-----------|-------|--------------|---------|
+| p1|MIG | mnlogit | 0.032 | 0.819 | ? | weak |
+| p2|MIG | mnlogit | 0.072 | 0.809 | ? | weak |
+| p4|IDE | mnlogit | 0.104 | 0.228 | ? | weak |
+| p6|IDE | mnlogit | 0.087 | 0.308 | ? | weak |
+| p7|IDE | mnlogit | 0.088 | 0.626 | ? | weak |
+| p8|IDE | mnlogit | 0.100 | 0.080 | ? | fair |
+| p9|IDE | mnlogit | 0.078 | 0.768 | ? | weak |
+
+**Mean pseudo-R²:** 0.080 &ensp;|&ensp; **Overall dominant SES dimension:** ?
+
+> ⚠ 6/7 bridge models are weak (R²<0.02 or LLR p≥0.10). Simulated Cramér's V for those variables may underestimate the true association.
+
+#### Per-Variable SES Predictor Detail
+
+Top predictors by |t|-statistic — answers: which SES variable is doing the work?
+
+**p1|MIG** (mnlogit, R²=0.032, LLR p=0.819, quality=weak)
+*(coefficient table unavailable)*
+
+**p2|MIG** (mnlogit, R²=0.072, LLR p=0.809, quality=weak)
+*(coefficient table unavailable)*
+
+**p4|IDE** (mnlogit, R²=0.104, LLR p=0.228, quality=weak)
+*(coefficient table unavailable)*
+
+**p6|IDE** (mnlogit, R²=0.087, LLR p=0.308, quality=weak)
+*(coefficient table unavailable)*
+
+**p7|IDE** (mnlogit, R²=0.088, LLR p=0.626, quality=weak)
+*(coefficient table unavailable)*
+
+**p8|IDE** (mnlogit, R²=0.100, LLR p=0.080, quality=fair)
+*(coefficient table unavailable)*
+
+**p9|IDE** (mnlogit, R²=0.078, LLR p=0.768, quality=weak)
+*(coefficient table unavailable)*
+
+*Pseudo-R² = McFadden's. Low values mean SES explains little variance in that variable — the bridge simulation still produces an estimate, but its precision is reduced.*
+
 ### Reasoning Outline
 
-**Evidence Hierarchy:** The strongest evidence comes from the significant cross-dataset bivariate association between perceived migration-related problems (p2|MIG) and views on cultural unity versus diversity (p4|IDE). Other cross-survey pairs involving life satisfaction and identity variables show weak and non-significant relationships. Demographic fault lines provide moderate secondary context on regional and age differences. Univariate distributions offer supporting descriptive context but do not establish relationships relevant to the query.
+**Evidence Hierarchy:** The strongest evidence comes from the cross-dataset bivariate associations with significant p-values, notably the relationship between p2|MIG (main problems) and p4|IDE (identity agreement), and between p1|MIG (life satisfaction) and p6|IDE (pride in being Mexican). These provide primary insights into how migration relates to cultural identity. Demographic fault lines offer secondary evidence about subgroup differences but do not directly address the query. Univariate distributions provide contextual background but cannot establish relationships relevant to the query.
 
 **Key Limitations:**
-- All cross-dataset bivariate estimates are simulation-based and may have limited power to detect subtle effects.
-- Only one pair of variables (p2|MIG × p4|IDE) shows statistically significant association; others are weak and non-significant, limiting strong conclusions.
-- Sample size is moderate (n=2000) but the number of variables directly addressing cultural identity and migration is limited.
-- Some variables (e.g., life satisfaction, preferred city) are only tangentially related to the query, reducing the directness of evidence on migration's effect on Mexican cultural identity.
+- Most cross-dataset associations show weak effect sizes, limiting interpretability.
+- Several key variable pairs lack significant relationships, indicating limited direct evidence linking migration to cultural identity.
+- Sample size is moderate (n=2000) but some variables have dispersed or polarized distributions, complicating analysis.
+- Estimates are simulation-based, which may affect precision and robustness of significance tests.
 
 ### Analysis Metadata
 - **Analysis Type:** Analytical Essay (Quantitative + Qualitative)

@@ -1,6 +1,6 @@
 # q7_democracy_corruption
 
-**Generated:** 2026-02-21 21:13:35
+**Generated:** 2026-02-23 01:04:33
 
 ## Query
 **ES:** ¿Qué piensan los mexicanos sobre la relación entre democracia y corrupción?
@@ -15,10 +15,10 @@
 | Metric | OLD (detailed_report) | NEW (analytical_essay) |
 |--------|----------------------|------------------------|
 | Success | ✅ | ✅ |
-| Latency | 446 ms | 45684 ms |
-| Variables Analyzed | — | 8 |
-| Divergence Index | — | 75% |
-| SES Bivariate Vars | — | 8/8 |
+| Latency | 28812 ms | 41903 ms |
+| Variables Analyzed | — | 6 |
+| Divergence Index | — | 50% |
+| SES Bivariate Vars | — | 6/6 |
 | Cross-Dataset Pairs | — | 6 |
 
 ---
@@ -29,7 +29,7 @@
 |-----------|----------------|----------------|----------|
 | empleo | 0.292 (moderate) | 0.323 | 3 |
 | sexo | 0.136 (moderate) | 0.136 | 1 |
-| region | 0.120 (moderate) | 0.141 | 8 |
+| region | 0.116 (moderate) | 0.140 | 6 |
 | edad | 0.109 (moderate) | 0.118 | 5 |
 
 
@@ -39,12 +39,12 @@
 
 | Variable Pair | Cramér's V | p-value | Key Pattern | n sim |
 |---------------|------------|---------|-------------|-------|
-| p2|CUL × p2|COR | 0.062 (weak) | 0.089 | "2.0": 6% ("2.0") → 15% ("8.0") | 2000 |
-| p2|CUL × p3|COR | 0.060 (weak) | 0.113 | "4.0": 33% ("2.0") → 46% ("8.0") | 2000 |
-| p2|CUL × p5|COR | 0.082 (weak) | 0.059 | "3.0": 12% ("9.0") → 42% ("6.0") | 2000 |
-| p2|CUL × p8|COR | 0.083 (weak) | 0.036 | "4.0": 18% ("0.0") → 53% ("6.0") | 2000 |
-| p3|CUL × p2|COR | 0.069 (weak) | 0.058 | "4.0": 6% ("8.0") → 23% ("2.0") | 2000 |
-| p3|CUL × p3|COR | 0.055 (weak) | 0.460 | "2.0": 36% ("8.0") → 48% ("1.0") | 2000 |
+| p3|CUL × p2|COR | 0.088 (weak) | 0.000 | " Peor que antes   (esp)": 6% ("Igual (esp.)") → 17% ("NS") | 2000 |
+| p3|CUL × p3|COR | 0.069 (weak) | 0.056 | " Preocupante": 41% ("Menor") → 52% ("NS") | 2000 |
+| p3|CUL × p5|COR | 0.073 (weak) | 0.064 | " Peligrosa": 9% ("En la iglesia") → 31% ("En la colonia") | 2000 |
+| p3|CUL × p8|COR | 0.067 (weak) | 0.255 | " Preocupante": 40% ("0.0") → 70% ("3.0") | 2000 |
+| p5|CUL × p2|COR | 0.054 (weak) | 0.124 | " Poco": 12% ("NS") → 25% ("Igual (esp.)") | 2000 |
+| p5|CUL × p3|COR | 0.047 (weak) | 0.355 | " Poco": 21% ("Menor") → 30% ("NS") | 2000 |
 
 *Estimates via SES-bridge simulation (OrderedModel / MNLogit).*
 
@@ -60,31 +60,31 @@
 **Query:** ¿Qué piensan los mexicanos sobre la relación entre democracia y corrupción?
 
 ## Executive Summary
-Los mexicanos perciben que la corrupción es un problema creciente que afecta la calidad de la democracia y genera desconfianza en las instituciones. A pesar de este panorama, mantienen un fuerte orgullo nacional que puede ser clave para fortalecer la cultura de legalidad y la participación ciudadana.
+Los mexicanos creen que la corrupción está aumentando y está vinculada a fallas en las instituciones, lo que afecta la percepción de la democracia y el liderazgo político. Sin embargo, mantienen un fuerte orgullo nacional que se separa del descontento político y la preocupación por la corrupción.
 
 ## Analysis Overview  
-La encuesta revela que la mayoría de los mexicanos perciben un aumento creciente en la corrupción, con un 77.00% afirmando que ha empeorado desde su infancia (p2|COR) y un 67.67% esperando que siga creciendo (p3|COR). Este sentimiento se acompaña de una fuerte atribución de la corrupción a los actores gubernamentales (51.33%, p5|COR) y una incertidumbre sobre la honestidad personal (12.83%, p8|COR), lo que indica una compleja cultura de legalidad. Al mismo tiempo, hay una percepción pesimista respecto a la estabilidad política, con 37.17% esperando un empeoramiento político (p2|CUL) y 32.92% una caída en la cultura política (p4|CUL), además de una visión negativa sobre la economía actual (43.42%, p1|CUL). No obstante, el sentido de identidad nacional se mantiene fuerte, ya que 59.67% expresa mucho orgullo de ser mexicano (p5|CUL). En conjunto, estos resultados sugieren una población que, aunque orgullosa de su país, está profundamente preocupada por la corrupción y la gobernabilidad, lo que plantea retos importantes para políticas públicas y la confianza ciudadana.
+Los mexicanos perciben que la corrupción ha aumentado considerablemente desde su infancia, con un 77.0% afirmándolo (p2|COR) y un 67.7% esperando que siga empeorando (p3|COR). Esta percepción está vinculada a instituciones como las escuelas y los barrios, aunque pocos reconocen culpa personal (p5|COR, p8|COR). Al mismo tiempo, existe una considerable preocupación por la situación política (40.7% la considera preocupante, p3|CUL) y la economía, donde casi 30% la ve igual o peor que el año previo (p1|CUL) y anticipa que seguirá igual o peor (p4|CUL). No obstante, más de la mitad mantiene un fuerte orgullo nacional (59.7%) que contrasta con la insatisfacción hacia la corrupción y el liderazgo político (p5|CUL, p2|COR, p3|CUL). Estos resultados reflejan una sociedad que cuestiona la integridad de sus instituciones y la eficacia del gobierno, pero que sigue identificándose positivamente con su país.
 
 ## Topic Analysis
 
-### CORRUPCIÓN Y CULTURA DE LEGALIDAD
-Los resultados de la encuesta muestran una percepción mayoritaria sobre el aumento de la corrupción, con 77.00% de los encuestados opinando que la corrupción ha empeorado desde su infancia (p2|COR) y 67.67% esperando que continúe en aumento en los próximos cinco años (p3|COR). Además, 51.33% atribuye la corrupción principalmente a actores gubernamentales (p5|COR), mientras que un 12.83% muestra incertidumbre o ambivalencia sobre su propia honestidad (p8|COR). Esta combinación de desconfianza en las instituciones y dudas internas sobre la honestidad personal resalta la necesidad urgente de fortalecer las políticas anticorrupción, incrementar la conciencia pública y promover una cultura de legalidad sólida.
+### CORRUPCIÓN
+La corrupción es percibida por una amplia mayoría como un problema creciente y persistente, con 77.0% de los encuestados afirmando que ha aumentado significativamente desde su infancia (p2|COR) y 67.7% anticipando que seguirá empeorando en los próximos cinco años (p3|COR). Además, existe una percepción clara de que la corrupción se origina en instituciones como las escuelas (11.8%, p5|COR) y los barrios (7.8%, p5|COR), aunque los individuos tienden a desvincularse de la responsabilidad personal, reflejado en una casi nula autoadmisión de deshonestidad (p8|COR). Estos resultados evidencian una fuerte preocupación social sobre la integridad institucional y una compleja dinámica de autoexoneración en la que se critica el entorno sin aceptar la propia responsabilidad.
 
-### ESTABILIDAD POLÍTICA Y CULTURA POLÍTICA
-Existe un sentimiento pesimista respecto al futuro político, ya que 37.17% anticipa un empeoramiento de la situación política en el próximo año (p2|CUL) y 32.92% espera un deterioro en la cultura política (p4|CUL). Además, el 43.42% percibe que la situación económica actual es peor que hace un año (p1|CUL), lo que puede afectar la confianza en las instituciones y la participación ciudadana. Estos datos reflejan una atmósfera de incertidumbre y descontento que deben considerar los actores políticos, empresas y organizaciones civiles para ajustar sus estrategias y respuestas.
+### PERCEPCIÓN POLÍTICA Y ECONÓMICA
+La opinión pública refleja una considerable inquietud respecto a la situación política y económica del país, con 40.7% de los participantes describiendo la situación política actual como preocupante (p3|CUL) y 29.9% calificando la economía como igual de mala que hace un año (p1|CUL). Esta percepción negativa se extiende al futuro, ya que 30.4% creen que la economía permanecerá igual o empeorará en el próximo año (p4|CUL). Estos datos señalan un sentimiento predominante de incertidumbre y desconfianza hacia la estabilidad y el rumbo económico y político del país.
 
-### IDENTIDAD NACIONAL Y PERCEPCIONES DE GOBERNANZA
-Una mayoría significativa, 59.67%, expresa un gran orgullo por ser mexicano (p5|CUL), lo que muestra un fuerte vínculo emocional con la identidad nacional. Sin embargo, este orgullo convive con una preocupante percepción sobre la corrupción, que 77.00% considera en aumento (p2|COR). Esta dualidad refleja un tejido social complejo donde se mantiene una identidad nacional positiva pese a la insatisfacción con la integridad política y la gobernanza. Estos hallazgos sugieren que las políticas y campañas deben equilibrar el fortalecimiento del orgullo nacional con acciones concretas para mejorar la confianza en las instituciones públicas.
+### ORGULLO NACIONAL Y DESCONTENTO POLÍTICO
+A pesar de las preocupaciones profundas sobre la corrupción y el deterioro político —el 77.0% ve que la corrupción aumenta (p2|COR) y el 40.7% considera la situación política preocupante (p3|CUL)—, una mayoría significativa del 59.7% mantiene un fuerte orgullo por ser mexicano (p5|CUL). Este contraste revela una opinión pública que distingue entre el amor y orgullo por la identidad nacional y el desencanto con el liderazgo político y las instituciones, mostrando que el sentimiento patriótico sigue vigente incluso en contextos de insatisfacción política.
 
 ## Expert Analysis
 
 ### Expert Insight 1
-The survey results clearly illustrate a strong and prevailing perception of increasing corruption over time, with 77.00% of respondents believing corruption has worsened since their childhood (p2|COR). This significant majority underscores a widespread public sentiment of deteriorating legal culture, reinforcing concerns relevant to experts in corruption and legal culture. Furthermore, 67.67% of respondents expect corruption to continue rising over the next five years (p3|COR), indicating a pronounced pessimism about the future trajectory of corruption. The data also reflects a degree of uncertainty or lack of confidence in anti-corruption efforts, as evidenced by the 4.83% of respondents who are unsure or do not know about corruption trends (p3|COR). These figures highlight the necessity of enhancing public awareness and confidence through stronger anti-corruption policies and targeted campaigns to improve the culture of legality. Collectively, the findings provide a valuable basis for designing informed policy responses, community engagements, and public discourse aimed at curbing corruption and fostering a robust legal culture.
+The survey results clearly demonstrate a strong public perception that corruption has increased significantly compared to the respondents' childhood, with 77.0% affirming this view (p2|COR). Furthermore, a substantial majority, 67.7%, anticipate that corruption will continue to worsen over the next five years (p3|COR). These findings illustrate a deeply held belief in a persistent and growing problem of corruption, indicating widespread concern about governance and institutional integrity. The consistency between the retrospective assessment and future expectations underscores a general sentiment of declining ethical standards and trust in public institutions over time.
 
 ### Expert Insight 2
-The survey results reveal a notably pessimistic public sentiment regarding political stability, confirming key concerns highlighted for experts in 
+The survey results reveal significant public concern regarding the political and economic outlook of the country. Specifically, 40.7% of respondents describe the current political situation as worrying (p3|CUL), indicating a considerable level of apprehension about governance or political stability. Alongside this, perceptions of the economic situation are predominantly negative or stagnant, with 29.9% stating that the economy is "igual de mal" (just as bad) compared to a year ago (p1|CUL). This pessimism extends into future expectations, as 30.4% anticipate that the economic situation will either remain the same or worsen over the next year (p4|CUL). These findings collectively illustrate a prevailing sentiment of uncertainty and concern among the population regarding both political and economic conditions, underscoring the importance of addressing these 
 ```
-*(Truncated from 9154 chars)*
+*(Truncated from 7056 chars)*
 
 ---
 
@@ -96,18 +96,71 @@ The survey results reveal a notably pessimistic public sentiment regarding polit
 **Query:** ¿Qué piensan los mexicanos sobre la relación entre democracia y corrupción?
 
 ## Summary
-La mayoría de los mexicanos percibe que la corrupción ha aumentado respecto a su infancia (77.0%) y que seguirá aumentando en los próximos cinco años (67.7%). Sin embargo, la relación entre las percepciones sobre la situación política y las opiniones sobre corrupción es muy débil o inexistente, con asociaciones bivariadas no significativas en casi todos los casos, salvo una relación débil pero significativa entre cultura política y autoevaluación de honestidad (V=0.083, p=0.036). En conjunto, la evidencia indica una fragmentación de opiniones y una baja confianza en una conexión directa entre democracia y corrupción, con baja confianza estadística en las asociaciones observadas.
+Mexican perceptions reveal a generally negative view of the political situation, with most seeing corruption as having increased compared to their childhood. However, the relationship between views on democracy (political situation) and corruption perceptions is weak, with only a small but statistically significant association found between current corruption increase perceptions and political situation views. Other tested relationships between democracy and corruption attitudes show weak or non-significant associations, indicating limited confidence in strong links between these topics in the data.
 
 ## Data Landscape
-Se analizaron ocho variables provenientes de encuestas sobre cultura política y corrupción en México. De estas, dos muestran consenso fuerte (p2|COR y p3|COR), tres se inclinan hacia una opinión predominante (p3|CUL, p5|CUL, p5|COR), una está polarizada (p4|CUL) y dos presentan distribuciones dispersas sin consenso claro (p2|CUL y p8|COR). El índice de divergencia indica que el 75% de las variables reflejan opiniones fragmentadas o no consensuadas, lo que revela un alto nivel de desacuerdo o diversidad de percepciones entre la población sobre democracia y corrupción.
+The analysis covers six variables from political culture and corruption surveys, with three variables showing strong consensus (e.g., 77% see corruption as greater now) and three leaning toward a dominant view without full consensus (e.g., 40.7% describe the political situation as "Preocupante"). The divergence index of 50% indicates a substantial variation in public opinion, reflecting both shared perceptions and notable minority views on democracy and corruption in Mexico.
 
 ## Evidence
-A) En cuanto a las asociaciones bivariadas entre cultura política y percepciones de corrupción, las relaciones son débiles y en su mayoría no significativas. Por ejemplo, la percepción de que la corrupción es mayor comparada con la infancia varía poco según expectativas políticas: oscila entre 35.3% y 40.6% en la categoría más alta de corrupción percibida, sin diferencias sustanciales (V=0.062, p=0.089). De forma similar, la expectativa de que la corrupción aumentará en cinco años varía entre 33.3% y 45.9% según la visión política, sin asociación significativa (V=0.060, p=0.113). La percepción de que los primeros actos de corrupción ocurren en el gobierno es la opinión dominante (51.3%), pero también varía poco con la cultura política (V=0.082, p=0.059). La única asociación significativa, aunque débil, es entre cultura política y autoevaluación de honestidad, donde la proporción que se considera muy honesta varía de 18.2% a 53.2% según la expectativa política (V=0.083, p=0.036). B) En cuanto a diferencias demográficas, el empleo modera fuertemente la percepción de la situación política (V=0.32) y la expectativa sobre corrupción futura (V=0.23), mostrando que trabajadores en diferentes sectores tienen percepciones distintas sobre la gravedad política y la corrupción. Por región, la percepción de corrupción mayoritaria es más alta en las regiones 01 y 02 (80% y 82%) que en la 03 y 04 (71% y 72%). Las mujeres y hombres difieren moderadamente en su autoevaluación de honestidad, con mujeres 11 puntos más propensas a asignarse puntuaciones altas. C) En cuanto a distribuciones univariadas, el 77.0% considera que la corrupción ha aumentado respecto a su infancia (p2|COR), y el 67.7% cree que seguirá aumentando en cinco años (p3|COR), mostrando un consenso fuerte en la percepción negativa sobre corrupción. En contraste, la cultura política muestra fragmentación: el 37.2% cree que la situación política empeorará, pero un 17.8% espera mejora, y el 40.7% describe la situación actual como preocupante, con un 21.0% que la ve peligrosa, reflejando diversidad de opiniones.
+The strongest cross-tab pattern is between perceptions of corruption increase compared to childhood (p2|COR) and political situation views (p3|CUL). Here, the "Peor que antes" political situation response varies from 6.4% among those perceiving corruption as "Igual" to 16.7% among those who "No saben" corruption change, indicating some sensitivity of political views to corruption perceptions (V=0.088, p=0.000).
+
+| p2|COR category | Peor que antes % |
+|---|---|
+| Mayor | 8.3% |
+| Menor | 10.5% |
+| Igual (esp.) | 6.4% |
+| NS | 16.7% |
+
+Other bivariate associations between political situation and future corruption expectations (p3|COR), or corruption locations (p5|COR), show weak and non-significant relationships, with political views remaining relatively stable (~40-50% "Preocupante") regardless of corruption expectations or perceived corruption sources (V<0.1, p>0.05). For example, the "Peligrosa" political view ranges from 9.1% when corruption is perceived in the church to 30.9% when perceived in the colonia, but this variation is not statistically significant.
+
+| p5|COR category | Peligrosa % |
+|---|---|
+| En la iglesia | 9.1% |
+| En la colonia | 30.9% |
+
+Demographically, employment status strongly moderates political situation views: employed persons in category 03 report 53% "Preocupante" and 23% "Peligrosa", while category 02 reports 30% and 19%, respectively. Region and age show moderate variation, with younger respondents (0-18) less likely to say "Preocupante" (34%) and more likely to say "Peligrosa" (24%) than older groups.
+
+| Empleo category | Preocupante % | Peligrosa % |
+|---|---|---|
+| 02 | 30% | 19% |
+| 03 | 53% | 23% |
+
+Supporting univariate distributions highlight that 77.0% perceive corruption as "Mayor" now compared to childhood, and 67.7% expect corruption to be "Mayor" in five years, showing strong consensus on worsening corruption. The political situation is described as "Preocupante" by 40.7% and "Peligrosa" by 21.0%, reflecting a leaning toward negative views but with notable minorities.
+
+**p3|CUL** — Political situation description:
+| Response | % |
+|---|---|
+| Preocupante | 40.7% |
+| Peligrosa | 21.0% |
+| Tranquila | 10.8% |
+| Prometedora | 8.6% |
+| Peor que antes | 8.4% |
+
+**p2|COR** — Corruption compared to childhood:
+| Response | % |
+|---|---|
+| Mayor | 77.0% |
+| Igual (esp.) | 14.7% |
+| Menor | 6.9% |
+
+**p3|COR** — Expected corruption in 5 years:
+| Response | % |
+|---|---|
+| Mayor | 67.7% |
+| Igual (esp.) | 19.3% |
+| Menor | 8.2% |
+
+**p5|COR** — Where corruption first occurs:
+| Response | % |
+|---|---|
+| En el gobierno | 51.3% |
+| En los partidos políticos | 12.3% |
+| En la escuela | 11.8% |
 
 ## Complications
-Las dimensiones socioeconómicas que más moderan las opiniones son el empleo (V=0.29 promedio) y la región (V=0.12 promedio), lo que indica que las percepciones sobre corrupción y democracia varían según el contexto laboral y geográfico. Existen minorías significativas que no coinciden con la opinión dominante, como el 17.8% que espera que la situación política mejore y el 27.5% que se siente poco orgulloso de ser mexicano, lo que desafía una narrativa homogénea. Las asociaciones bivariadas entre cultura política y corrupción son en su mayoría no significativas (p>0.05) y con efectos muy débiles (V<0.1), lo que limita la capacidad para establecer conclusiones sólidas sobre la interrelación entre democracia y corrupción. Además, la autoevaluación de honestidad, aunque significativa, es solo un indicador indirecto y muestra opiniones dispersas, lo que complica su interpretación. El uso de un puente SES para simular asociaciones puede introducir limitaciones metodológicas y la muestra de 2000 casos, aunque adecuada, restringe el análisis más detallado de subgrupos.
+Employment status is the strongest demographic moderator, with a 22-point difference in "Preocupante" political views between employment categories 02 and 03 (V=0.32). Region and age also moderately influence opinions, with younger respondents more likely to perceive the political situation as "Peligrosa". Minority views are present, such as 14.7% perceiving corruption as "Igual" compared to childhood and 19.3% expecting corruption to remain the same in five years, challenging the dominant narrative of worsening corruption. The cross-dataset bivariate associations mostly show weak effect sizes (V<0.1) and several are not statistically significant, limiting confidence in strong links between democracy and corruption perceptions. Additionally, the self-assessed honesty variable (p8|COR) is unusable due to 100% non-response, removing a potentially relevant perspective. The SES-bridge simulation method and sample size of 2000 provide moderate robustness but cannot fully capture complex causal relationships or nuanced attitudes.
 
 ## Implications
-Primero, la débil relación entre percepciones políticas y corrupción sugiere que las políticas anticorrupción deberían enfocarse más en cambios estructurales y en la transparencia institucional que en modificar percepciones o discursos políticos, dado que la opinión pública no vincula claramente estos ámbitos. Segundo, la fragmentación y las diferencias demográficas indican que
+First, the weak but 
 ```
-*(Truncated from 11702 chars)*
+*(Truncated from 15336 chars)*

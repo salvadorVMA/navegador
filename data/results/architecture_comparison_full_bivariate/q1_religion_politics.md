@@ -1,6 +1,6 @@
 # q1_religion_politics
 
-**Generated:** 2026-02-21 21:10:05
+**Generated:** 2026-02-23 00:56:27
 
 ## Query
 **ES:** ¿Cómo se relacionan la religión y la política en México?
@@ -15,9 +15,9 @@
 | Metric | OLD (detailed_report) | NEW (analytical_essay) |
 |--------|----------------------|------------------------|
 | Success | ✅ | ✅ |
-| Latency | 2393 ms | 31447 ms |
+| Latency | 32055 ms | 55560 ms |
 | Variables Analyzed | — | 8 |
-| Divergence Index | — | 88% |
+| Divergence Index | — | 62% |
 | SES Bivariate Vars | — | 8/8 |
 | Cross-Dataset Pairs | — | 6 |
 
@@ -39,12 +39,12 @@
 
 | Variable Pair | Cramér's V | p-value | Key Pattern | n sim |
 |---------------|------------|---------|-------------|-------|
-| p2|REL × p2|CUL | 0.081 (weak) | 0.001 | "-1.0": 12% ("5.0") → 24% ("3.0") | 2000 |
-| p2|REL × p3|CUL | 0.091 (weak) | 0.000 | "1.0": 59% ("5.0") → 75% ("7.0") | 2000 |
-| p2|REL × p4|CUL | 0.097 (weak) | 0.000 | "-1.0": 8% ("2.0") → 40% ("5.0") | 2000 |
-| p2|REL × p5|CUL | 0.056 (weak) | 0.094 | "1.0": 57% ("4.0") → 80% ("8.0") | 2000 |
-| p3|REL × p2|CUL | 0.079 (weak) | 0.001 | "1.0": 50% ("3.0") → 73% ("5.0") | 2000 |
-| p3|REL × p3|CUL | 0.069 (weak) | 0.060 | "1.0": 48% ("7.0") → 67% ("1.0") | 2000 |
+| p2|REL × p2|CUL | 0.111 (moderate) | 0.000 | "Sí": 81% (" Otra (esp)") → 94% (" NS") | 2000 |
+| p2|REL × p3|CUL | 0.049 (weak) | 0.576 | "Sí": 84% (" Tranquila") → 91% (" Prometedora") | 2000 |
+| p2|REL × p4|CUL | 0.049 (weak) | 0.571 | "Sí": 84% (" Va a seguir igual de bien (esp)") → 92% (" Otra (esp)") | 2000 |
+| p2|REL × p5|CUL | 0.063 (weak) | 0.091 | "Sí": 78% (" No soy mexicano (esp)") → 89% (" Poco") | 2000 |
+| p3|REL × p2|CUL | 0.083 (weak) | 0.017 | "Sí": 62% (" Va a seguir igual de mal (esp)") → 75% (" Va a seguir igual de bien (esp)") | 2000 |
+| p3|REL × p3|CUL | 0.124 (moderate) | 0.000 | "Sí": 61% (" Preocupante") → 87% (" Más o menos (esp)") | 2000 |
 
 *Estimates via SES-bridge simulation (OrderedModel / MNLogit).*
 
@@ -60,31 +60,34 @@
 **Query:** ¿Cómo se relacionan la religión y la política en México?
 
 ## Executive Summary
-La religión en México se caracteriza por una marcada continuidad y estabilidad dentro de las familias, mientras que la política genera mayor incertidumbre y ambivalencia en la opinión pública. Esta dinámica indica que, aunque la identidad religiosa se mantiene firme, la percepción política es más variable, lo que influye tanto en la cohesión social como en la participación ciudadana.
+La religión en México se mantiene como un elemento fuerte y estable que influye en la cohesión familiar y social. Por otro lado, la política genera preocupación y una percepción negativa en la población, mostrando una relación en la que la religión actúa como un ancla social frente a la incertidumbre política.
 
 ## Analysis Overview  
-Los resultados de la encuesta muestran que en México existe una notable continuidad religiosa familiar, con alrededor del 60% de los individuos compartiendo la religión de sus padres y un alto porcentaje (64.42%) con familias donde todos comparten la misma religión (p3|REL, p4|REL, p5|REL). No obstante, un considerable segmento (35-39%) experimenta cambios o no comparte esas creencias, reflejando procesos de secularización y diversidad religiosa (p5|REL). Además, aunque la afiliación religiosa es históricamente alta, con 72.67% de miembros activos en iglesias o denominaciones (p2|REL), la fluidez religiosa dentro de las familias es significativa (32.75% reportan cambios) (p5|REL). En el ámbito político, la población muestra mayor incertidumbre y duda sobre el futuro político (3.92% no respondió y 3.67% está inseguro) (p2|CUL, p4|CUL), mientras que la identidad religiosa se mantiene mucho más estable y con muy baja incertidumbre (1.25%) (p5|REL). Estos hallazgos apuntan a la coexistencia de estabilidad religiosa y volatilidad política en la opinión pública mexicana, con importantes implicaciones para políticas sociales, diálogo religioso y participación ciudadana.
+La encuesta revela que la religión es un factor social muy sólido y estable en México, con más del 70% afiliados a una religión y una alta continuidad intergeneracional y familiar (p2|REL a p5|REL). En contraste, la opinión pública sobre la economía y la política es mayormente pesimista, con casi un 30% que percibe la situación económica como igual o peor y más del 40% que ve la política como preocupante (p1|CUL a p4|CUL). Además, la cohesión basada en la religión dentro de las familias es más fuerte que el orgullo nacional, lo que indica que la religión es un ancla social incluso cuando la confianza en ámbitos económicos y políticos disminuye (p5|REL y p5|CUL).
 
 ## Topic Analysis
 
-### CONTINUIDAD Y CAMBIO RELIGIOSO FAMILIAR
-Los resultados revelan una notable continuidad religiosa familiar, con 60.92% y 62.58% de los encuestados que comparten la religión de su padre y madre respectivamente (p3|REL, p4|REL). Además, el 64.42% indica que todos los miembros de su familia comparten la misma religión (p5|REL). Sin embargo, existe una minoría significativa, alrededor del 35-39%, que no comparte la religión de sus padres, lo que indica procesos de diversificación o secularización. También se observa que el 32.75% reporta cambios en la afiliación religiosa dentro de la familia (p5|REL), evidenciando fluidez religiosa y dinámicas de cambio intergeneracional que aportan a la comprensión de la secularización y religiosidad contemporánea.
+### RELIGIÓN Y FAMILIA
+Los resultados muestran un alto grado de continuidad religiosa intergeneracional en México, con 72.7% de los encuestados afiliados a una denominación religiosa (p2|REL). Además, el 60.9% comparte la misma religión que su padre (p3|REL) y el 62.6% la misma que su madre (p4|REL). La cohesión religiosa familiar es fuerte, ya que el 64.4% reporta que todos los miembros de su familia comparten la misma religión (p5|REL). Esto demuestra que la religión sigue siendo un componente social muy arraigado y homogéneo dentro de las familias mexicanas.
 
-### NIVELES DE AFILIACIÓN Y FLUIDEZ RELIGIOSA
-Un 72.67% de los encuestados han sido miembros de una iglesia o denominación religiosa (p2|REL), lo que refleja un nivel históricamente alto de afiliación religiosa. No obstante, la existencia de un 32.75% que reporta cambios en la afiliación religiosa familiar (p5|REL) subraya la presencia de una dinámica de cambio y fluidez en las creencias religiosas dentro de los núcleos familiares. Esto enfatiza un contraste entre la alta afiliación religiosa histórica y la transformación actual de las identidades religiosas, útil para analizar procesos contemporáneos de secularización y pluralidad religiosa.
+### PERCEPCIÓN PÚBLICA SOBRE ECONOMÍA Y POLÍTICA
+La opinión pública es mayormente pesimista respecto a la economía y la política. Cerca del 29.9% de los encuestados percibe la situación económica actual como igual de mala (p1|CUL), y 29.4% espera que las condiciones económicas permanezcan igual o empeoren en el próximo año (p2|CUL). En cuanto a la política, un 40.7% considera la situación preocupante (p3|CUL), y un 30.4% anticipa que las condiciones políticas seguirán siendo malas (p4|CUL). Estos datos reflejan una desconfianza y preocupación significativa en aspectos económicos y políticos.
 
-### INCERTIDUMBRE POLÍTICA Y ESTABILIDAD RELIGIOSA
-Los datos muestran una diferencia clara en la certeza ciudadana respecto a política y religión. En lo político, el 3.92% de los encuestados no respondió sobre condiciones políticas futuras (p2|CUL) y 3.67% manifestó incertidumbre sobre cambios políticos en el próximo año (p4|CUL), evidenciando cierto grado de duda y ambivalencia. En contraste, la incertidumbre sobre identidad religiosa es baja, con menos del 2%, específicamente 1.25% en preguntas sobre identidad religiosa familiar (p5|REL). Esta estabilidad religiosa frente a la incertidumbre política tiene implicaciones para la cohesión social y el análisis de la laicidad y secularización en México.
+### IDENTIDAD SOCIAL: RELIGIÓN VS ORGULLO NACIONAL
+Existe una diferencia clara entre la cohesión religiosa familiar y el orgullo nacional. Mientras que el 64.4% de los encuestados reporta uniformidad religiosa en su familia (p5|REL), sólo el 59.7% siente mucho orgullo por ser mexicano (p5|CUL). Esto indica que la religión funciona como un factor unificador más fuerte dentro del núcleo familiar que la identidad nacional, lo que sugiere que diferentes tipos de identidad colectiva influyen de manera distinta en la cohesión social y el sentimiento cultural en México.
 
 ## Expert Analysis
 
 ### Expert Insight 1
-The survey results indicate a notable familial religious continuity, with 60.92% of respondents sharing the same religion as their father and 62.58% sharing that of their mother (p3|REL, p4|REL). While this majority suggests that a substantial portion of individuals maintain their familial religious identity, the complement—approximately 39% not sharing their father's religion—points to a significant minority potentially participating in religious diversification or secularization. This dual pattern aligns with the experts’ focus on familial religious continuity as well as shifts in religious identity. Such data is critical for understanding secularization trends and changes in religiosity within families, which can have broader implications for societal norms, social cohesion, and policy development. Policymakers and religious organizations may utilize these insights to adapt strategies that engage communities undergoing shifts in religious affiliation and to foster dialogue around laicidad and emerging secular identities.
+The survey results reveal a pronounced pattern of religious affiliation and familial religious consistency among respondents. Specifically, a substantial majority of 72.7% have been members of a religious denomination (p2|REL), which underscores the persistence of religious identity in the population. Furthermore, the alignment of respondents' religion with that of their parents is notable, with 60.9% sharing the same religion as their father (p3|REL) and 62.6% with their mother (p4|REL). This high degree of intergenerational religious continuity is reinforced by the finding that 64.4% of respondents report all family members share the same religion (p5|REL). Together, these figures illustrate strong familial influence and transmission of religious identity, suggesting that religious affiliation remains a deeply embedded social characteristic within family units.
 
 ### Expert Insight 2
-The survey results reveal a significant d
+The survey results reveal a predominantly pessimistic public outlook on both the economic and political situations. Nearly 30% of respondents perceive the current economic situation as either unchanged or poor, with 29.9% specifically stating it is "igual de mal" (p1|CUL). This sentiment persists into expectations for the next year, where 29.4% anticipate the economic conditions will remain the same or worsen (p2|CUL). In the political realm, a significant 40.7% describe the situation as "preocupante," indicating substantial concern (p3|CUL), and 30.4% expect political conditions to stay bad over the coming year (p4|CUL). These figures collectively illustrate widespread economic and political unease among the public, emphasizing a need for detailed analysis of factors contributing to this sustained negativity, especially as it may influence future policy acceptance and social stability.
+
+### Expert Insight 3
+The survey results reveal a notable distinction between religious cohesion and national pride within families. Specifically, 64.4% of respondents report that all family members share the same religion (p5|REL), indicating a strong and consistent religio
 ```
-*(Truncated from 9390 chars)*
+*(Truncated from 6729 chars)*
 
 ---
 
@@ -96,18 +99,95 @@ The survey results reveal a significant d
 **Query:** ¿Cómo se relacionan la religión y la política en México?
 
 ## Summary
-The relationship between religion and politics in Mexico is characterized by weak but statistically significant associations, indicating that religious affiliation and familial religious continuity slightly influence political perceptions and expectations. Specifically, religious groups show modest variation in political outlooks, such as the expectation that the political situation will worsen, but these differences are small and fragmented across the population. The evidence is based on seven bivariate pairs, mostly showing weak effect sizes (Cramér's V below 0.1) but significant p-values, reflecting low confidence in strong or consistent relationships.
+The relationship between religion and politics in Mexico is characterized by modest but significant associations, particularly between religious affiliation or continuity and political expectations or perceptions. Specifically, individuals with religious backgrounds or those sharing their father's religion show some variation in how they view the country's political future and situation, though these associations are generally moderate or weak. The evidence is based on eight variable pairs analyzed, with three showing statistically significant moderate associations, indicating a moderate confidence level in these findings.
 
 ## Data Landscape
-The analysis includes eight variables spanning religious affiliation and familial religious continuity (from the religion survey) and political culture perceptions and expectations (from the political culture survey). Among these, one variable shows strong consensus, five lean toward a dominant view, one is polarized, and one is dispersed. The divergence index is high at 88%, indicating widespread fragmentation and lack of consensus in public opinion on these topics. This suggests that while some dominant views exist, opinions on religion and politics in Mexico are generally diverse and divided.
+Eight variables from surveys on religion and political culture were analyzed, revealing a mixed landscape of public opinion. Three variables show strong consensus on religious identity and familial religious continuity, one variable is polarized regarding political expectations, one is dispersed reflecting fragmented political outlooks, and three lean toward dominant views without full consensus. The divergence index of 62% indicates substantial variation and disagreement in opinions across these topics, reflecting complexity in how religion and politics are perceived and related in Mexico.
 
 ## Evidence
-Cross-tabulation of religious affiliation (p2|REL) with political expectations about the country's future (p2|CUL) reveals that the proportion of respondents with a negative political outlook (-1.0) ranges from 11.8% to 24.3% across religious groups, indicating modest variation but a generally weak association (V=0.081, p=0.001). Similarly, religious affiliation influences perceptions of the political situation (p3|CUL), where agreement with the term 'Preocupante' varies between 59.3% and 75.4% depending on religious category, again a weak but significant effect (V=0.091, p=0.000). Political expectations (p4|CUL) also shift with religion, with negative outlooks ranging from 8.3% to 40.0% across groups (V=0.097, p=0.000). However, religious affiliation shows no significant relation to national pride (p5|CUL) (V=0.056, p=0.094), indicating religion's limited role in this dimension. Family religious continuity (p3|REL) relates weakly to political expectations (p2|CUL), with optimistic views (1.0) ranging from 50.1% to 72.7% across categories (V=0.079, p=0.001), but no significant association with political situation perceptions (p3|CUL) (V=0.069, p=0.060). Demographically, women are about 15 points more likely than men to report past religious membership and to share their parents' religion, and regional differences show some variation in religious continuity and political outlooks. Univariate distributions show strong consensus on past religious membership (72.7% say yes) and familial religious homogeneity (64.4%), while political outlooks are dispersed or polarized, with many expecting the political situation to worsen or remain bad.
+The strongest relationship is between past religious membership (p2|REL) and political expectations for the next year (p2|CUL), where the share of respondents who were formerly religious rises from 81.2% among those expecting an uncertain political future to 90.8% among those expecting deterioration, with a moderate association (V=0.111, p=0.000).
+| p2|CUL category | Sí (past religious member) % |
+|---|---|
+| Otra (esp) | 81.2% |
+| Va a seguir igual de bien (esp) | 82.6% |
+| Va a mejorar | 82.3% |
+| Va a seguir igual de mal (esp) | 85.3% |
+| Va a empeorar | 90.8% |
+| NS | 93.6% |
 
-## Complications
-The strongest demographic moderator is employment status (V=0.32) influencing political perceptions, while sex (V=0.17) and region (V=0.12) moderately affect religious and political variables. Women are notably more likely than men to affirm religious affiliation and continuity, which may affect the observed associations. Minority views are substantial; for example, 32.8% report that some family members have changed religion, and about 27.5% express only little pride in being Mexican, challenging dominant narratives. The weak effect sizes (all V values below 0.1 for religion-politics pairs) limit the strength of conclusions, and some pairs such as religion and national pride show no significant relationship. The reliance on simulation-based SES-bridge methods and moderate sample size (n=2000) further constrain robustness and detection of subtle effects. Thus, the evidence reveals fragmented and weak links between religion and political attitudes in Mexico, with important demographic nuances and minority perspectives.
+Religious continuity with father (p3|REL) also relates modestly to political expectations (p2|CUL), with those sharing their father's religion ranging from 62.3% among pessimists to 75.1% among optimists (V=0.083, p=0.017).
+| p2|CUL category | Sí (same religion as father) % |
+|---|---|
+| Va a seguir igual de mal (esp) | 62.3% |
+| Va a empeorar | 63.6% |
+| NS | 64.0% |
+| Va a mejorar | 67.4% |
+| Otra (esp) | 68.8% |
+| Va a seguir igual de bien (esp) | 75.1% |
 
-## Implications
-First, the weak but significant associations suggest that while religion plays some role in shaping political perceptions, it is not a dominant or uniform influence, implying that policy or political strategies invoking religion should be cautious about overestimating its mobilizing power. Second, the demographic differences, especially by sex and region, indicate that targeted approaches may be necessary to understand and engage religiously-influenced political attitudes, recognizing that women and certain regions have distinct religious-political profiles. Third, given the fragmentation and polarization in political outlooks regardless of religion, efforts to build political consensus in Mexico might need to address broader socio-political factors beyond religious identity. Finally, the absence of a significant link between religion and national pride sugges
+More notably, religious continuity with father (p3|REL) shows a moderate association with political characterization (p3|CUL), with agreement ranging from 60.6% among those describing politics as "Preocupante" to 87.1% among those saying "Más o menos (esp)" (V=0.124, p=0.000).
+| p3|CUL category | Sí (same religion as father) % |
+|---|---|
+| Preocupante | 60.6% |
+| Peor que antes (esp) | 63.6% |
+| Tranquila | 62.3% |
+| Peligrosa | 65.9% |
+| Prometedora | 69.8% |
+| Con oportunidades | 78.3% |
+| Más o menos (esp) | 87.1% |
+
+Other tested relationships between religious affiliation and political variables such as political characterization (p2|REL × p3|CUL), political expectations (p2|REL × p4|CUL), and national pride (p2|REL × p5|CUL) show weak or no significant associations, with response distributions remaining largely uniform across categories (V≈0.05, p>0.05).
+
+Demographically, women are substantially more likely than men to report past religious membership (79% vs. 65%) and religious continuity with parents. Regionally, some variation exists, with the South (region 03) showing lower religious continuity. Younger age groups report lower religious continuity than older ones.
+
+Supporting univariate distributions show strong consensus on religious affiliation (85.1% former members), religious continuity with father (70.2%) and mother (72.1%), and moderate consensus on family religious homogeneity (64.4%). Political outlook variables are more fragmented, with polarized views on the country's political future and a leaning perception of the political situation as "Preocupante" (40.7%).
+
+**p2|REL** — Past religious membership:
+| Response | % |
+|---|---|
+| Sí | 85.1% |
+| No | 13.7% |
+| No sabe/ No contesta | 1.3% |
+
+**p3|REL** — Same religion as father:
+| Response | % |
+|---|---|
+| Sí | 70.2% |
+| No | 23.1% |
+| No sabe/ No contesta | 6.6% |
+
+**p4|REL** — Same religion as mother:
+| Response | % |
+|---|---|
+| Sí | 72.1% |
+| No | 21.4% |
+| No sabe/ No contesta | 6.4% |
+
+**p5|REL** — Family religious homogeneity:
+| Response | % |
+|---|---|
+| Sí | 64.4% |
+| No, algunos cambiaron | 32.8% |
+| Otra (esp) | 1.6% |
+| No sabe/ No contesta | 1.2% |
+
+**p2|CUL** — Political expectations next year:
+| Response | % |
+|---|---|
+| Va a empeorar | 37.2% |
+| Va a seguir igual de mal | 29.4% |
+| Va a mejorar | 17.8% |
+| Va a seguir igual de bien | 11.2% |
+| No sabe/ No contesta | 3.9% |
+| Otra | 0.6% |
+
+**p3|CUL** — Political situation description:
+| Response | % |
+|---|---|
+| Preocupante | 40.7% |
+| Peligrosa | 21.0% |
+| Tranquila | 10.8% |
+| Prometedora | 8.6% |
+| Peo
 ```
-*(Truncated from 11081 chars)*
+*(Truncated from 18063 chars)*

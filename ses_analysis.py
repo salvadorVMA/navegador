@@ -432,15 +432,20 @@ class SESAnalyzer:
             p1, p2 = top_cats.iloc[0], top_cats.iloc[1]
             
             # Standard error of difference between proportions
-            se_diff = np.sqrt((p1 * (1-p1) + p2 * (1-p2)) / n)
-            
-            # Calculate z-score and p-value
+            se_diff = np.sqrt((p1 * (1-p1) + p2 * (1-p2)) / n) if n > 0 else 0.0
+
+            # Calculate z-score and p-value (guard against se_diff == 0)
             diff = p1 - p2
-            z_score = diff / se_diff
-            p_value = 2 * (1 - stats.norm.cdf(abs(z_score)))  # Two-tailed test
-            
+            if se_diff > 0:
+                z_score = diff / se_diff
+                p_value = 2 * (1 - stats.norm.cdf(abs(z_score)))  # Two-tailed test
+                ci_margin = stats.norm.ppf(1 - (1 - self.config.confidence_level) / 2) * se_diff
+            else:
+                z_score = 0.0
+                p_value = 1.0
+                ci_margin = 0.0
+
             # Calculate confidence interval
-            ci_margin = stats.norm.ppf(1 - (1 - self.config.confidence_level) / 2) * se_diff
             ci_lower = diff - ci_margin
             ci_upper = diff + ci_margin
             

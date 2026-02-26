@@ -1,6 +1,6 @@
 # q8_indigenous_discrimination
 
-**Generated:** 2026-02-21 21:14:04
+**Generated:** 2026-02-23 01:05:44
 
 ## Query
 **ES:** ¿Cómo perciben los mexicanos la discriminación hacia pueblos indígenas?
@@ -15,11 +15,11 @@
 | Metric | OLD (detailed_report) | NEW (analytical_essay) |
 |--------|----------------------|------------------------|
 | Success | ✅ | ✅ |
-| Latency | 294 ms | 28461 ms |
-| Variables Analyzed | — | 9 |
+| Latency | 22818 ms | 47695 ms |
+| Variables Analyzed | — | 5 |
 | Divergence Index | — | 100% |
-| SES Bivariate Vars | — | 9/9 |
-| Cross-Dataset Pairs | — | 6 |
+| SES Bivariate Vars | — | 5/5 |
+| Cross-Dataset Pairs | — | 4 |
 
 ---
 
@@ -27,9 +27,7 @@
 
 | Dimension | Mean Cramér's V | Max Cramér's V | Variables |
 |-----------|----------------|----------------|----------|
-| region | 0.315 (strong) | 0.921 | 9 |
-| empleo | 0.310 (strong) | 0.310 | 1 |
-| edad | 0.179 (moderate) | 0.179 | 1 |
+| region | 0.139 (moderate) | 0.165 | 5 |
 
 
 ---
@@ -38,12 +36,10 @@
 
 | Variable Pair | Cramér's V | p-value | Key Pattern | n sim |
 |---------------|------------|---------|-------------|-------|
-| p1|IND × p2|DER | 0.053 (weak) | 0.303 | "4.0": 38% ("3.0") → 50% ("5.0") | 2000 |
-| p1|IND × p3|DER | 0.083 (weak) | 0.000 | "4.0": 36% ("2.0") → 50% ("8.0") | 2000 |
-| p1|IND × p4|DER | 0.109 (moderate) | 0.000 | "2.0": 1% ("5.0") → 30% ("6.0") | 2000 |
-| p1|IND × p5|DER | 0.094 (weak) | 0.000 | "4.0": 10% ("8.0") → 50% ("4.0") | 2000 |
-| p2|IND × p2|DER | 0.082 (weak) | 0.000 | "3.0": 20% ("5.0") → 38% ("1.0") | 2000 |
-| p2|IND × p3|DER | 0.090 (weak) | 0.000 | "4.0": 33% ("3.0") → 61% ("8.0") | 2000 |
+| p5|IND × p2|DER | 0.070 (weak) | 0.028 | "0.0": 27% ("Muy en desacuerdo") → 58% ("Ni de acuerdo ni desacuerdo (esp.)") | 2000 |
+| p5|IND × p3|DER | 0.098 (weak) | 0.000 | "0.0": 50% (" Poco") → 70% (" NS") | 2000 |
+| p5|IND × p4|DER | 0.069 (weak) | 0.056 | "Cada año": 5% ("Las autoridades de salud") → 25% ("El Gobierno") | 2000 |
+| p5|IND × p5|DER | 0.078 (weak) | 0.001 | "0.0": 48% (" Nada") → 71% (" NS") | 2000 |
 
 *Estimates via SES-bridge simulation (OrderedModel / MNLogit).*
 
@@ -59,28 +55,34 @@
 **Query:** ¿Cómo perciben los mexicanos la discriminación hacia pueblos indígenas?
 
 ## Executive Summary
-Los mexicanos perciben que existe una fuerte discriminación hacia los pueblos indígenas, expresada en una visión negativa sobre su situación económica y una falta de protección y respeto efectivo a sus derechos humanos. Esto refleja la necesidad de políticas y acciones específicas que aborden tanto la inseguridad económica como las fallas en la garantía de sus derechos y protección personal.
+No se proporcionan datos específicos sobre la percepción de la discriminación hacia pueblos indígenas en las declaraciones analizadas. Sin embargo, la información disponible indica una preocupación general por el respeto y protección de los derechos humanos en el país.
 
 ## Analysis Overview  
-La encuesta revela una percepción ampliamente negativa de la situación económica entre los pueblos indígenas, donde 42.45% la considera peor y 33.78% mala, sumado a que 34.70% anticipa un empeoramiento y 29.69% no espera mejoras (p1|IND, p2|IND). En cuanto a los derechos humanos, aunque 77.91% apoya su respeto, sólo 9.42% cree que se respetan mucho, y la mayoría percibe un respeto limitado (p2|DER, p3|DER). Esta contradicción se refuerza con la poca sensación de protección personal contra abusos de autoridad, donde solo 7% se siente protegido y 21.33% nada protegido (p5|DER). La claridad en la percepción económica contrasta con la incertidumbre sobre las autoridades de derechos humanos, evidenciando un área crítica para educar y fortalecer la confianza en las instituciones (p1|IND, p4|DER). En conjunto, estos resultados destacan la urgencia de políticas inclusivas y de derechos humanos que aborden la inseguridad económica y las deficiencias en protección y respeto efectivo, especialmente en comunidades vulnerables.
+La encuesta revela un amplio pesimismo sobre la economía, con más de un tercio de los mexicanos considerando que la situación económica actual es tan mala como el año pasado y expectativas bajas para el próximo año (p1|IND, p2|IND). En materia de derechos humanos, existe una fuerte valoración y consenso sobre su importancia (77.9%, p2|DER), aunque la percepción sobre su respeto y protección es notablemente menor; solo un pequeño porcentaje siente que sus derechos son plenamente respetados o que está bien protegido contra abusos (p3|DER, p5|DER). Además, se identifican ciertas autoridades como fuentes frecuentes de violaciones, lo que refleja desconfianza en las instituciones encargadas de proteger estos derechos (p4|DER).
 
 ## Topic Analysis
 
-### PERCEPCIÓN ECONÓMICA EN PUEBLOS INDÍGENAS
-La percepción económica entre los pueblos indígenas es mayoritariamente negativa, con 42.45% de los encuestados considerando que la situación económica actual es peor que hace un año y 33.78% que la ven como mala (p1|IND). Las expectativas hacia el futuro también son pesimistas: 34.70% anticipa un empeoramiento económico y 29.69% no espera mejoras (p2|IND). Además, existe una baja incertidumbre sobre esta valoración, ya que sólo 1.75% respondió "No sabe/ No contesta" (p1|IND), lo que muestra una conciencia clara sobre la situación económica en estas comunidades. Estos datos subrayan la urgencia de políticas económicas inclusivas que atiendan las percepciones y necesidades específicas de las comunidades indígenas.
+### SITUACIÓN ECONÓMICA
+Los resultados de la encuesta muestran un fuerte pesimismo respecto a la situación económica del país, con un 33.8% de los encuestados que perciben que está 'Igual de mala' que el año anterior y solo un 8.5% que cree que ha mejorado (p1|IND). De cara al siguiente año, el 29.7% espera que las condiciones económicas continúen 'Igual de mal', mientras que apenas un 18.3% anticipa una mejoría (p2|IND). Estos datos revelan una insatisfacción generalizada y baja expectativa de recuperación económica, lo que puede influir en las decisiones políticas y económicas futuras.
 
-### RESPETO Y REALIDAD DE LOS DERECHOS HUMANOS
-Aunque 77.91% de los encuestados apoya el respeto a los derechos humanos junto con las obligaciones legales (p2|DER), sólo un 9.42% considera que estos derechos se respetan "mucho" en el país. La mayoría percibe un respeto limitado, con 46.50% diciendo "algo" y 29.42% "poco" (p3|DER). Esta discrepancia apunta a una brecha entre el ideal social de respeto a derechos humanos y su aplicación práctica, evidenciando la necesidad de intervenciones en educación, políticas y campañas para aumentar la conciencia, cumplimiento y respeto efectivo de estos derechos.
+### DERECHOS HUMANOS: IMPORTANCIA Y PERCEPCIÓN
+Existe un consenso sólido sobre la importancia de respetar los derechos humanos, con un 77.9% de acuerdo en que esto es fundamental ('Muy de acuerdo' 29.3% y 'De acuerdo' 48.6%) (p2|DER). Sin embargo, la percepción sobre el respeto real a estos derechos es más moderada: solo un 9.4% cree que se respetan 'Mucho' y un 46.5% dice que 'Algo' (p3|DER). Esta brecha entre el valor otorgado y la percepción de su cumplimiento apunta a un desajuste importante que debe ser atendido en la política y la comunicación pública.
 
-### SENSACIÓN DE PROTECCIÓN PERSONAL Y CONOCIMIENTO SOBRE AUTORIDADES EN DERECHOS HUMANOS
-Existe una gran diferencia entre la percepción general sobre el respeto a derechos humanos y la sensación personal de protección contra abusos de autoridad: sólo 7% se siente altamente protegido, mientras 21.33% se siente nada protegido (p5|DER). Asimismo, hay un mayor nivel de incertidumbre respecto a las autoridades responsables de violaciones a derechos humanos, con un 3.50% que no sabe o no responde, cifra que duplica la incertidumbre sobre la situación económica en pueblos indígenas (p4|DER, p1|IND). Estos resultados indican la importancia de mejorar la transparencia institucional, la educación y las políticas orientadas a fortalecer la confianza y protección efectiva de los ciudadanos, especialmente los grupos vulnerables.
+### PROTECCIÓN Y VIOLACIONES DE DERECHOS HUMANOS
+Aunque la población reconoce la importancia de los derechos humanos (77.9% en acuerdo, p2|DER), solo el 7.0% se siente altamente protegido contra abusos de autoridad, frente a un 35.9% que se siente poco protegido (p5|DER). Además, se identifican a autoridades específicas como principales violadores: policía municipal (31.6%), Ministerio Público (25.1%) y Fuerzas Armadas (13.2%) (p4|DER). Esto revela una preocupación significativa sobre la eficacia de los mecanismos de protección y la confianza en las instituciones encargadas de salvaguardar estos derechos.
 
 ## Expert Analysis
 
 ### Expert Insight 1
-The survey results provide critical insights into the economic perceptions within indigenous communities, directly addressing the concerns highlighted in the expert statements. Notably, 42.45% of respondents perceive the current economic situation as worse than a year ago, and an additional 33.78% feel that it remains bad, underscoring a deeply negative assessment of present conditions (p1|IND). Furthermore, future expectations are similarly pessimistic: 34.70% anticipate the economic situation to deteriorate further next year, while 29.69% expect no improvement, suggesting a persistent outlook of economic hardship (p2|IND). These findings reveal a strong sentiment of economic insecurity among indigenous populations, which is essential for policymakers and organizations aiming to design targeted support and empowerment initiatives. The data emphasize the need for inclusive economic strategies that respond to these negative perceptions and address the specific challenges faced by indigenous communities, thereby validating the experts' emphasis on utilizing such information for constructive policy-making and the fostering of econo
+The survey results highlight a prevailing pessimism regarding the country's economic situation, with a substantial 33.8% of respondents perceiving it as 'Igual de mala' (equally bad) compared to the previous year, while only a small fraction, 8.5%, believe it has improved (p1|IND). This sentiment extends into expectations for the following year, as 29.7% anticipate that economic conditions will remain 'Igual de mal' (equally bad), contrasted with only 18.3% who expect an improvement (p2|IND). These figures suggest widespread economic dissatisfaction and limited optimism about future economic recovery among the population, illustrating important trends in public opinion that could influence policy and economic decision-making.
+
+### Expert Insight 2
+The survey results reveal a strong consensus on the importance of respecting human rights, with a combined 77.9% of respondents expressing agreement ('Muy de acuerdo' 29.3% and 'De acuerdo' 48.6%) indicating that human rights are valued highly among the population (p2|DER). However, perceptions of the actual respect for human rights within the country are notably more moderate, as only 9.4% believe human rights are respected 'Mucho' and 46.5% say 'Algo', suggesting a significant gap between the ideal importance placed on human rights and the lived reality or perception of their enforcement and respect domestically (p3|DER). This divergence highlights potential areas for policy emphasis and public communication to address the discrepancy between values and perceptions.
+
+### Expert Insight 3
+The survey results reveal a significant discrepancy between the strong public endorsement of human rights and the perceived inadequacy of protection against abuses of authority. Specifically, while 77.9% of respondents express agreement with the importance of respecting human rights (p2|DER), only a small fraction, 7.0%, feel highly protected ('Mucho') against abuses of authority, and a substantial 35.9% feel only minimally protected ('Poco
 ```
-*(Truncated from 9311 chars)*
+*(Truncated from 6724 chars)*
 
 ---
 
@@ -92,18 +94,82 @@ The survey results provide critical insights into the economic perceptions withi
 **Query:** ¿Cómo perciben los mexicanos la discriminación hacia pueblos indígenas?
 
 ## Summary
-Mexican perceptions of discrimination against indigenous peoples are characterized by fragmented and weakly associated views with economic outlook and human rights attitudes. Significant but weak relationships exist between perceptions of the country's economic situation and views on human rights respect and authority abuses, indicating that opinions on discrimination are not strongly unified or directly linked to economic perceptions. The evidence quality is moderate, based on nine variables and multiple bivariate associations, most of which show weak effect sizes but some statistically significant patterns.
+Mexican perceptions of discrimination toward indigenous peoples are fragmented and show weak but statistically significant associations with general attitudes toward human rights and feelings of protection against authority abuses. Specifically, those who strongly agree with respecting human rights or feel more protected tend to report fewer instances of never visiting indigenous places of origin, suggesting some link between human rights awareness and connection to indigenous communities. However, all relationships are weak (Cramér's V below 0.10), indicating low confidence in strong conclusions.
 
 ## Data Landscape
-The analysis covers nine variables from surveys addressing indigenous peoples' economic perceptions and human rights attitudes related to discrimination. The distribution shapes are diverse: three variables lean toward a dominant view, two are polarized, and four are dispersed, reflecting a high divergence index of 100%, which indicates a complete lack of consensus and significant fragmentation in public opinion on these topics. This diversity suggests that Mexicans hold varied and divided views on discrimination toward indigenous peoples and related issues.
+The analysis includes five variables from a human rights and discrimination survey, all showing non-consensus distributions: two lean, one polarized, and two dispersed. The divergence index at 100% signals complete fragmentation of opinion on these topics, reflecting diverse and divided public views about indigenous discrimination and related human rights issues in Mexico.
 
 ## Evidence
-Cross-tabulations reveal that perceptions of the country's economic situation (p1|IND) have weak but statistically significant associations with human rights attitudes relevant to discrimination. For example, agreement that human rights should be respected (p2|DER) remains relatively stable (~40% agreeing) across economic views, indicating a weak relationship (V=0.053, p=0.303). However, perceptions of how well human rights are respected (p3|DER) show a slight increase in the highest agreement category from 35.7% to 50.0% as economic views improve (V=0.083, p=0.000). Similarly, views on which authorities violate rights (p4|DER) vary moderately, with the proportion selecting certain authorities ranging from 1.3% to 29.8% across economic perceptions (V=0.109, p=0.000). Feelings of protection against authority abuses (p5|DER) also shift weakly but significantly, with the highest agreement category ranging from 9.5% to 50.2% (V=0.094, p=0.000). Expectations about the economic future (p2|IND) show weak but significant associations with human rights respect and discrimination perceptions (V=0.082 and V=0.090, p=0.000), where agreement levels vary between 20.0% and 37.9%. Demographically, region and employment status moderate responses most strongly, with regional differences showing up to 15-20 percentage points variation in key responses. For instance, some regions report higher perceptions of human rights respect and protection against abuses. Univariate distributions show polarized views on economic conditions (42.5% say "worse," 33.8% "equally bad") and protection against abuses (35.9% "little," 34.3% "somewhat"), while agreement on the importance of human rights is leaning positive (48.6% "agree," 29.3% "strongly agree"). The dispersed nature of state and municipality origins among respondents adds geographic complexity but is less directly tied to discrimination perceptions.
+A) Cross-tab patterns reveal weak but significant relationships between frequency of visiting indigenous places (p5|IND) and attitudes about human rights importance (p2|DER), respect for human rights (p3|DER), and feelings of protection against authority abuses (p5|DER). For example, the proportion reporting never visiting indigenous places ranges from 27.3% among those 'Muy en desacuerdo' with human rights importance to 57.8% among those 'Ni de acuerdo ni desacuerdo' (V=0.070, p=0.028). Similarly, those perceiving 'Poco' respect for human rights have 49.8% never visiting indigenous places, compared to 70.0% among those who responded 'No sabe' (V=0.098, p=0.000). Feelings of protection show 47.6% never visiting indigenous places among those feeling 'Nada' protected, versus 71.4% among 'No sabe' respondents (V=0.078, p=0.001). In contrast, perceptions of which authorities most frequently violate human rights (p4|DER) show no significant association with indigenous place visits (V=0.069, p=0.056). 
+
+| p2|DER category | 0.0 visits to indigenous places % |
+|---|---|
+| Muy de acuerdo | 52.6% |
+| De acuerdo | 54.7% |
+| Ni de acuerdo ni desacuerdo (esp.) | 57.8% |
+| En desacuerdo | 43.8% |
+| Muy en desacuerdo | 27.3% |
+
+| p3|DER category | 0.0 visits to indigenous places % |
+|---|---|
+| Mucho | 53.0% |
+| Algo | 53.8% |
+| Poco | 49.8% |
+| Nada | 51.7% |
+| NS | 70.0% |
+
+| p5|DER category | 0.0 visits to indigenous places % |
+|---|---|
+| Mucho | 55.3% |
+| Algo | 53.7% |
+| Poco | 54.7% |
+| Nada | 47.6% |
+| NS | 71.4% |
+
+B) Demographically, region shows moderate influence on responses. For instance, region 01 has 55% reporting never visiting indigenous places, while region 04 has 55% reporting visiting every six months. Also, agreement with the importance of respecting human rights varies by region, with region 01 having 54% 'De acuerdo' and 23% 'Muy de acuerdo', while region 03 has 46% and 34% respectively. 
+
+C) Univariate distributions show dispersed or polarized opinions: frequency of visiting indigenous places is dispersed with no category above 40%, modal response 'Cada año' at 18.4%. Agreement with human rights importance leans positive with 48.6% 'De acuerdo' and 29.3% 'Muy de acuerdo'. Perceptions of human rights respect lean toward moderate respect ('Algo' 46.5%), but 29.4% say 'Poco'. Feelings of protection against authority abuse are polarized between 'Poco' (35.9%) and 'Algo' (34.3%). 
+
+**p5|IND** — Frequency of visiting indigenous place of origin:
+| Response | % |
+|---|---|
+| Cada año | 18.4% |
+| Cada seis meses | 18.2% |
+| Casi nunca | 17.3% |
+| Cada mes | 16.3% |
+| Cada semana/quince días | 13.0% |
+| No sabe/ No contesta | 8.7% |
+| Nunca | 8.1% |
+
+**p2|DER** — Agreement with importance of respecting human rights:
+| Response | % |
+|---|---|
+| De acuerdo | 48.6% |
+| Muy de acuerdo | 29.3% |
+| Ni de acuerdo ni desacuerdo (esp.) | 13.7% |
+| En desacuerdo | 5.2% |
+| No sabe/ No contesta | 2.1% |
+| Muy en desacuerdo | 1.2% |
+
+**p3|DER** — Perception of human rights respect in the country:
+| Response | % |
+|---|---|
+| Algo | 46.5% |
+| Poco | 29.4% |
+| Nada | 14.2% |
+| Mucho | 9.4% |
+| No sabe/ No contesta | 0.5% |
+
+**p5|DER** — Feeling protected against abuses of authority:
+| Response | % |
+|---|---|
+| Poco | 35.9% |
+| Algo | 34.3% |
+| Nada | 21.3% |
+| Mucho | 7.0% |
+| No sabe/ No contesta | 1.4% |
 
 ## Complications
-The strongest demographic moderators are region (mean V=0.32) and employment status (mean V=0.31), indicating that geographic and socioeconomic factors influence perceptions of discrimination and related human rights attitudes. Minority opinions are substantial; for example, 29.7% expect the economic situation to remain equally bad, and 21.3% feel no protection against authority abuses, challenging any simplistic majority narrative. The weak effect sizes and dispersed opinion patterns limit causal interpretations and suggest a fragmented societal view. Simulation-based SES-bridge methods introduce uncertainty, and some variables, particularly those directly measuring discrimination perceptions, are limited in number and scope. Additionally, economic perception variables show only weak or no significant relationships with discrimination attitudes, complicating the understanding of how economic views shape discrimination perceptions.
-
-## Implications
-First, the weak but significant links between economic perceptions and human rights attitudes suggest that improving economic conditions alone may not substantially shift public perceptions of discrimination against indigenous peoples; targeted policies addressing human rights education and institutional accountability may be necessary. Second, the strong regional and employment-related differences imply that anti-discrimination interventions should be tailored to local contexts and socioeconomic groups to be effective. Given the polarization and fragmentation of opinions, fostering inclusive dialogue and awareness campaigns could help bridge divides and build consensus on indigenous rights and discrimination issues. Finally, the data's limitations highlight the need for 
+The strongest demographic moderator is region, with moderate effect sizes (V around 0.14-0.16), indicating geographic differences in perceptions and behaviors related to indigenous discrimination and human rights. Minority opinions are substantial; for example, 29.3% are 'Muy de acuerdo' on the importance of respecting human rights, and 21.3% feel 'Nada' protected against authority abuses, challenging any uniform interpretation. The weak effect sizes (all V < 0.10) limit confidence in strong c
 ```
-*(Truncated from 11003 chars)*
+*(Truncated from 14094 chars)*

@@ -4,7 +4,7 @@
 **Query (EN):** How do Mexicans balance environmental concerns with economic development?
 **Variables:** p2|MED, p4|MED, p5|MED, p6|MED, p1|ECO, p2|ECO, p3|ECO, p4|ECO, p5|ECO
 **Status:** ✅ success
-**Time:** 36227ms | **Cross-dataset pairs:** 6
+**Time:** 69630ms | **Cross-dataset pairs:** 6
 
 ---
 
@@ -13,33 +13,58 @@
 **Query:** ¿Cómo equilibran los mexicanos las preocupaciones ambientales con el desarrollo económico?
 
 ## Summary
-The most important finding is that Mexican opinions on balancing environmental concerns with economic development are deeply divided, with a polarized split between prioritizing social order (38.6%) and giving people more voice and vote in government decisions (30.6%). Despite examining multiple relationships between environmental priorities and economic satisfaction or outlook, the associations are generally weak and mostly not statistically significant, except for a significant but weak link between perceived economic responsibility and environmental priorities. This suggests low confidence in a clear, unified public stance on how to balance these concerns.
+Mexican public opinion on balancing environmental concerns with economic development is deeply divided, with a polarized distribution between prioritizing maintaining social order (38.6%) and giving the people more voice in government decisions (30.6%). Cross-tabulation analyses reveal no significant associations between environmental priorities and economic satisfaction, indicating that economic conditions do not strongly influence how Mexicans balance these concerns. The evidence quality is moderate, based on nine variables and multiple bivariate tests, all showing weak or non-significant relationships.
 
 ## Data Landscape
-The analysis includes nine variables from environmental and economic surveys, covering perceptions of environmental priorities, environmental conditions, economic satisfaction, and responsibility for economic outcomes. Among these, five variables show polarized opinion distributions, three are dispersed, and only one shows consensus, reflecting a high divergence index of 89%. This indicates a fragmented and heterogeneous public opinion landscape regarding the interplay of environmental and economic issues in Mexico.
+The analysis encompasses nine variables from environmental and economic surveys, revealing a high divergence index with 89% of variables showing non-consensus distributions. Among these, five variables exhibit polarized opinion distributions, and three are dispersed, reflecting fragmented public views on environmental and economic issues. Only one variable shows consensus, highlighting the broad lack of agreement on how to balance environmental priorities with economic development in Mexico.
 
 ## Evidence
-Examining the relationship between environmental priorities (p2|MED) and various economic satisfaction variables (p1|ECO, p2|ECO, p3|ECO, p4|ECO) reveals weak and statistically non-significant associations (V values below 0.1 and p-values above 0.05). For example, the preference for "Darle al pueblo más voz y voto en las decisiones del gobie" ranges narrowly from 26.5% among those very dissatisfied with the economy to 38.5% among those very satisfied (V=0.049, p=0.102), showing no strong pattern. Similarly, environmental priorities remain stable across personal economic satisfaction and expectations for children's economic futures, underscoring the lack of a clear economic influence on environmental attitudes. However, a statistically significant but weak association exists between perceived responsibility for the economic situation (p5|ECO) and environmental priorities (p2|MED) (V=0.084, p=0.000). Notably, those who hold "Los trabajadores" responsible for the economy are much more likely (57.8%) to prioritize giving people more voice and vote in government decisions compared to other groups (ranging from 18.6% to 30.2%). This suggests that trust in social actors influences environmental governance preferences more than economic satisfaction does. Regionally, preferences differ moderately: in region 01, 38% prioritize more democratic participation versus 32% prioritizing order, while in region 02, 40% prioritize order versus 22% democratic participation. Age differences are weaker but show younger groups slightly favoring democratic participation. Regarding environmental situation perception (p4|MED), opinions are polarized between "Mala" (35.2%) and "Regular (esp.)" (33.5%), with regional variation: region 02 perceives the environment as worse (44% Mala) than region 03 (42% Regular). Economic satisfaction is also polarized, with 37.2% somewhat satisfied and 35.7% not satisfied nationally. These fragmented views on both environment and economy reflect complex attitudes without a dominant consensus. 
-
-p2|MED x p1|ECO (Environmental priority by national economic satisfaction):
-| p1|ECO category | Darle al pueblo más voz y voto % |
+| p1|ECO category | Mantener el orden en el país % |
 |---|---|
-| Mucho | 38.5% |
-| Algo | 28.4% |
-| Poco | 31.3% |
-| Nada | 26.5% |
+| Mucho | 35.7% |
+| Algo | 45.3% |
+| Poco | 43.9% |
+| Nada | 44.8% |
 
-p2|MED x p5|ECO (Environmental priority by perceived economic responsibility):
-| p5|ECO category | Darle al pueblo más voz y voto % |
+| p2|ECO category | Mantener el orden en el país % |
 |---|---|
-| El gobierno | 30.2% |
-| Los empresarios | 25.0% |
-| Los trabajadores | 57.8% |
-| Los partidos políticos | 23.7% |
-| NS | 18.6% |
-| NC | 18.9% |
+| Mucho | 39.0% |
+| Algo | 39.5% |
+| Poco | 44.8% |
+| Nada | 44.0% |
 
-**p2|MED** — Priorities for Mexico regarding environment:
+| p3|ECO category | Mantener el orden en el país % |
+|---|---|
+| Mejor | 40.7% |
+| Igual | 42.6% |
+| Peor | 43.9% |
+| NS | 41.7% |
+| NC | 50.0% |
+
+| p5|ECO category | Mantener el orden en el país % |
+|---|---|
+| El gobierno | 43.9% |
+| Los empresarios | 44.3% |
+| Los trabajadores | 48.1% |
+| Los partidos políticos | 44.4% |
+| NS | 39.4% |
+| NC | 55.6% |
+
+| Region | Darle al pueblo más voz y voto % | Mantener el orden en el país % |
+|---|---|---|
+| 01 | 38% | 32% |
+| 02 | 22% | 40% |
+| 03 | 32% | 40% |
+| 04 | 29% | 43% |
+
+| Edad | Darle al pueblo más voz y voto % | Mantener el orden en el país % |
+|---|---|---|
+| 0-18 | 29% | 33% |
+| 19-24 | 33% | 38% |
+| 25-34 | 30% | 39% |
+| 35-44 | 33% | 37% |
+
+**p2|MED** — Prioridad mayor para México respecto a medio ambiente y sociedad:
 | Response | % |
 |---|---|
 | Mantener el orden en el país | 38.6% |
@@ -48,7 +73,7 @@ p2|MED x p5|ECO (Environmental priority by perceived economic responsibility):
 | Proteger la libertad de expresión | 9.6% |
 | No sabe/ No contesta | 2.1% |
 
-**p4|MED** — Perception of Mexico's environmental situation:
+**p4|MED** — Percepción de la situación ambiental en México:
 | Response | % |
 |---|---|
 | Mala | 35.2% |
@@ -58,7 +83,31 @@ p2|MED x p5|ECO (Environmental priority by perceived economic responsibility):
 | No sabe/ No contesta | 1.9% |
 | Muy buena | 1.3% |
 
-**p1|ECO** — Satisfaction with national economy:
+**p5|MED** — Situación ambiental local percibida:
+| Response | % |
+|---|---|
+| Regular (esp.) | 37.8% |
+| Mala | 26.0% |
+| Buena | 23.2% |
+| Muy mala | 8.4% |
+| Muy buena | 3.3% |
+| No sabe/ No contesta | 1.2% |
+
+**p6|MED** — Problema ambiental más importante para México:
+| Response | % |
+|---|---|
+| Contaminación del aire | 26.6% |
+| Contaminación del agua | 19.1% |
+| Basura | 13.4% |
+| Escasez de agua | 11.8% |
+| Contaminación por químicos y pesticidas | 11.4% |
+| Sobrexplotación de los recursos naturales | 7.9% |
+| Cambio climático | 6.2% |
+| No sabe/ No contesta | 1.5% |
+| Transgénicos | 1.1% |
+| Otro (esp.) | 1.0% |
+
+**p1|ECO** — Satisfacción con la situación económica del país:
 | Response | % |
 |---|---|
 | Poco | 37.2% |
@@ -67,7 +116,16 @@ p2|MED x p5|ECO (Environmental priority by perceived economic responsibility):
 | Mucho | 3.2% |
 | No sabe/ No contesta | 0.7% |
 
-**p5|ECO** — Perceived responsibility for economic situation:
+**p2|ECO** — Satisfacción personal con la situación económica:
+| Response | % |
+|---|---|
+| Poco | 35.1% |
+| Nada | 31.8% |
+| Algo | 28.1% |
+| Mucho | 4.7% |
+| No sabe/ No contesta | 0.4% |
+
+**p5|ECO** — Responsabilidad percibida por la situación económica:
 | Response | % |
 |---|---|
 | El gobierno | 67.6% |
@@ -77,10 +135,10 @@ p2|MED x p5|ECO (Environmental priority by perceived economic responsibility):
 | No sabe/ No contesta | 6.2% |
 
 ## Complications
-Demographically, region is the strongest moderator of opinions, with a moderate Cramér's V around 0.14, showing that in some regions (e.g., region 01), more people prioritize democratic participation, while in others (region 02), maintaining order is favored. Age differences are weaker but present, with younger groups slightly more inclined to favor giving people more voice. Gender differences are minimal for environmental priorities but appear weakly in economic responsibility perceptions. Minority opinions are substantial: 30.6% prioritize democratic participation over order, and 19.2% emphasize fighting price increases, indicating significant heterogeneity. The SES-bridge simulation method used to estimate bivariate associations yields generally weak effect sizes, limiting causal inference and confidence in interpreting the relationships. Most cross-variable associations between environmental and economic variables are statistically non-significant, highlighting the absence of a strong, consistent pattern linking economic satisfaction or outlook with environmental priorities. This fragmentation complicates policy consensus and suggests nuanced, context-dependent attitudes.
+The strongest demographic moderator is region, with moderate Cramér's V values (up to 0.17), showing that some regions prioritize social order more while others favor political voice. Age effects are weaker but indicate younger Mexicans slightly favor more voice in government decisions. Gender differences are minimal and limited to economic responsibility perceptions. Minority opinions are substantial: 30.6% prioritize giving people more voice, and 19.2% emphasize fighting price increases, which complicates a simple dichotomy between economic and environmental priorities. The simulation-based SES-bridge method and sample size (n=2000) limit the power to detect subtle associations, possibly obscuring nuanced relationships. All tested bivariate associations between environmental priorities and economic satisfaction are weak and statistically non-significant, demonstrating an absence of direct linkage in the data. This absence challenges assumptions that economic satisfaction strongly shapes environmental priority trade-offs in Mexico.
 
 ## Implications
-First, the polarization between prioritizing social order and democratic participation in environmental governance suggests policy approaches must carefully balance stability with inclusive decision-making to avoid alienating large population segments. Policies promoting participatory environmental governance could engage the 30.6% who prioritize voice and vote, while also addressing concerns of those prioritizing order. Second, given the weak and mostly non-significant links between economic satisfaction and environmental priorities, economic improvements alone may not shift environmental attitudes; thus, targeted environmental education and communication are necessary to build broader consensus. Additionally, the significant association between perceived economic responsibility and environmental priorities implies that empowering workers and civil society in economic governance could foster support for environmentally sustainable policies. Policymakers should consider regional differences and demographic nuances to tailor interventions effectively, acknowledging the fragmented and polarized public opinion landscape.
+First, policy approaches should recognize the polarized public opinion on balancing social order and democratic participation in environmental governance, suggesting that inclusive decision-making mechanisms could address diverse priorities. Second, given the weak association between economic satisfaction and environmental priorities, policies that integrate environmental protection with economic development need to be framed independently from current economic grievances to gain broader acceptance. Additionally, regional variation in priorities implies that localized policy designs might be more effective than one-size-fits-all national strategies. Finally, the significant minority emphasizing price concerns signals that economic affordability must be considered alongside environmental goals to avoid alienating segments of the population.
 
 ---
 
@@ -282,12 +340,12 @@ First, the polarization between prioritizing social order and democratic partici
 
 | Variable Pair | Cramér's V | p-value | Key Pattern | n sim |
 |---------------|------------|---------|-------------|-------|
-| p2|MED × p1|ECO | 0.049 (weak) | 0.102 | "Darle al pueblo más voz y  voto en las decisiones del gobie": 26% (" Nada") → 38% (" Mucho") | 2000 |
-| p2|MED × p2|ECO | 0.032 (weak) | 0.706 | "Proteger la libertad de expresión": 14% (" Poco") → 23% (" Mucho") | 2000 |
-| p2|MED × p3|ECO | 0.057 (weak) | 0.073 | "Darle al pueblo más voz y  voto en las decisiones del gobie": 17% (" NS") → 67% (" NC") | 2000 |
-| p2|MED × p4|ECO | 0.027 (weak) | 0.890 | "Mantener el orden en el país": 43% (" Igual") → 47% (" NS") | 2000 |
-| p2|MED × p5|ECO | 0.084 (weak) | 0.000 | "Darle al pueblo más voz y  voto en las decisiones del gobie": 19% (" NS") → 58% (" Los trabajadores") | 2000 |
-| p4|MED × p1|ECO | 0.062 (weak) | 0.077 | "Regular (esp.)": 28% (" Poco") → 38% (" Algo") | 2000 |
+| p2|MED × p1|ECO | 0.039 (weak) | 0.436 | "Mantener el orden en el país": 36% (" Mucho") → 45% (" Algo") | 2000 |
+| p2|MED × p2|ECO | 0.053 (weak) | 0.053 | "Proteger la libertad de expresión": 13% (" Poco") → 22% (" Mucho") | 2000 |
+| p2|MED × p3|ECO | 0.046 (weak) | 0.381 | "Luchar contra las alzas de precio": 0% (" NC") → 17% (" NS") | 2000 |
+| p2|MED × p4|ECO | 0.032 (weak) | 0.717 | "Darle al pueblo más voz y  voto en las decisiones del gobie": 27% (" NS") → 31% (" Peor") | 2000 |
+| p2|MED × p5|ECO | 0.048 (weak) | 0.522 | "Mantener el orden en el país": 39% (" NS") → 56% (" NC") | 2000 |
+| p4|MED × p1|ECO | 0.038 (weak) | 0.889 | "Mala": 37% (" Algo") → 42% (" Mucho") | 2000 |
 
 *Estimates derived from SES-bridge regression simulation.*
 
@@ -296,67 +354,114 @@ First, the polarization between prioritizing social order and democratic partici
 
 | p1|ECO (conditioning) | Top p2|MED responses |
 |---|---|
-|  Mucho | Mantener el orden en el país: 38%, Darle al pueblo más voz y  voto en las decisiones del gobie: 38%, Proteger la libertad de expresión: 17% |
-|  Algo | Mantener el orden en el país: 45%, Darle al pueblo más voz y  voto en las decisiones del gobie: 28%, Luchar contra las alzas de precio: 13% |
-|  Poco | Mantener el orden en el país: 40%, Darle al pueblo más voz y  voto en las decisiones del gobie: 31%, Proteger la libertad de expresión: 16% |
-|  Nada | Mantener el orden en el país: 43%, Darle al pueblo más voz y  voto en las decisiones del gobie: 26%, Luchar contra las alzas de precio: 16% |
+|  Mucho | Mantener el orden en el país: 36%, Darle al pueblo más voz y  voto en las decisiones del gobie: 36%, Proteger la libertad de expresión: 18% |
+|  Algo | Mantener el orden en el país: 45%, Darle al pueblo más voz y  voto en las decisiones del gobie: 27%, Luchar contra las alzas de precio: 14% |
+|  Poco | Mantener el orden en el país: 44%, Darle al pueblo más voz y  voto en las decisiones del gobie: 29%, Luchar contra las alzas de precio: 14% |
+|  Nada | Mantener el orden en el país: 45%, Darle al pueblo más voz y  voto en las decisiones del gobie: 27%, Proteger la libertad de expresión: 17% |
 
 **p2|MED × p2|ECO** — How p2|MED distributes given p2|ECO:
 
 | p2|ECO (conditioning) | Top p2|MED responses |
 |---|---|
-|  Mucho | Mantener el orden en el país: 39%, Darle al pueblo más voz y  voto en las decisiones del gobie: 24%, Proteger la libertad de expresión: 23% |
-|  Algo | Mantener el orden en el país: 43%, Darle al pueblo más voz y  voto en las decisiones del gobie: 29%, Proteger la libertad de expresión: 16% |
-|  Poco | Mantener el orden en el país: 44%, Darle al pueblo más voz y  voto en las decisiones del gobie: 28%, Proteger la libertad de expresión: 14% |
-|  Nada | Mantener el orden en el país: 41%, Darle al pueblo más voz y  voto en las decisiones del gobie: 27%, Proteger la libertad de expresión: 17% |
+|  Mucho | Mantener el orden en el país: 39%, Darle al pueblo más voz y  voto en las decisiones del gobie: 30%, Proteger la libertad de expresión: 22% |
+|  Algo | Mantener el orden en el país: 40%, Darle al pueblo más voz y  voto en las decisiones del gobie: 34%, Proteger la libertad de expresión: 14% |
+|  Poco | Mantener el orden en el país: 45%, Darle al pueblo más voz y  voto en las decisiones del gobie: 28%, Luchar contra las alzas de precio: 14% |
+|  Nada | Mantener el orden en el país: 44%, Darle al pueblo más voz y  voto en las decisiones del gobie: 26%, Luchar contra las alzas de precio: 15% |
 
 **p2|MED × p3|ECO** — How p2|MED distributes given p3|ECO:
 
 | p3|ECO (conditioning) | Top p2|MED responses |
 |---|---|
-|  Mejor | Mantener el orden en el país: 43%, Darle al pueblo más voz y  voto en las decisiones del gobie: 31%, Proteger la libertad de expresión: 16% |
-|  Igual | Mantener el orden en el país: 46%, Darle al pueblo más voz y  voto en las decisiones del gobie: 28%, Proteger la libertad de expresión: 14% |
-|  Peor | Mantener el orden en el país: 46%, Darle al pueblo más voz y  voto en las decisiones del gobie: 28%, Luchar contra las alzas de precio: 13% |
-|  NS | Mantener el orden en el país: 46%, Proteger la libertad de expresión: 21%, Darle al pueblo más voz y  voto en las decisiones del gobie: 17% |
-|  NC | Darle al pueblo más voz y  voto en las decisiones del gobie: 67%, Mantener el orden en el país: 20%, Proteger la libertad de expresión: 13% |
+|  Mejor | Mantener el orden en el país: 41%, Darle al pueblo más voz y  voto en las decisiones del gobie: 31%, Proteger la libertad de expresión: 16% |
+|  Igual | Mantener el orden en el país: 43%, Darle al pueblo más voz y  voto en las decisiones del gobie: 26%, Proteger la libertad de expresión: 17% |
+|  Peor | Mantener el orden en el país: 44%, Darle al pueblo más voz y  voto en las decisiones del gobie: 26%, Proteger la libertad de expresión: 17% |
+|  NS | Mantener el orden en el país: 42%, Darle al pueblo más voz y  voto en las decisiones del gobie: 36%, Luchar contra las alzas de precio: 17% |
+|  NC | Mantener el orden en el país: 50%, Darle al pueblo más voz y  voto en las decisiones del gobie: 33%, Proteger la libertad de expresión: 17% |
 
 **p2|MED × p4|ECO** — How p2|MED distributes given p4|ECO:
 
 | p4|ECO (conditioning) | Top p2|MED responses |
 |---|---|
-|  Mejor | Mantener el orden en el país: 44%, Darle al pueblo más voz y  voto en las decisiones del gobie: 30%, Proteger la libertad de expresión: 14% |
-|  Igual | Mantener el orden en el país: 43%, Darle al pueblo más voz y  voto en las decisiones del gobie: 30%, Proteger la libertad de expresión: 14% |
-|  Peor | Mantener el orden en el país: 45%, Darle al pueblo más voz y  voto en las decisiones del gobie: 26%, Proteger la libertad de expresión: 16% |
-|  NS | Mantener el orden en el país: 47%, Darle al pueblo más voz y  voto en las decisiones del gobie: 26%, Proteger la libertad de expresión: 16% |
+|  Mejor | Mantener el orden en el país: 41%, Darle al pueblo más voz y  voto en las decisiones del gobie: 31%, Luchar contra las alzas de precio: 14% |
+|  Igual | Mantener el orden en el país: 44%, Darle al pueblo más voz y  voto en las decisiones del gobie: 28%, Proteger la libertad de expresión: 14% |
+|  Peor | Mantener el orden en el país: 43%, Darle al pueblo más voz y  voto en las decisiones del gobie: 31%, Proteger la libertad de expresión: 15% |
+|  NS | Mantener el orden en el país: 44%, Darle al pueblo más voz y  voto en las decisiones del gobie: 27%, Proteger la libertad de expresión: 16% |
 
 **p2|MED × p5|ECO** — How p2|MED distributes given p5|ECO:
 
 | p5|ECO (conditioning) | Top p2|MED responses |
 |---|---|
-|  El gobierno | Mantener el orden en el país: 43%, Darle al pueblo más voz y  voto en las decisiones del gobie: 30%, Proteger la libertad de expresión: 14% |
-|  Los empresarios | Mantener el orden en el país: 40%, Darle al pueblo más voz y  voto en las decisiones del gobie: 25%, Proteger la libertad de expresión: 19% |
-|  Los trabajadores | Darle al pueblo más voz y  voto en las decisiones del gobie: 58%, Mantener el orden en el país: 33%, Proteger la libertad de expresión: 7% |
-|  Los partidos políticos | Mantener el orden en el país: 47%, Darle al pueblo más voz y  voto en las decisiones del gobie: 24%, Luchar contra las alzas de precio: 16% |
-|  NS | Mantener el orden en el país: 54%, Darle al pueblo más voz y  voto en las decisiones del gobie: 19%, Luchar contra las alzas de precio: 16% |
-|  NC | Mantener el orden en el país: 43%, Darle al pueblo más voz y  voto en las decisiones del gobie: 19%, Luchar contra las alzas de precio: 19% |
+|  El gobierno | Mantener el orden en el país: 44%, Darle al pueblo más voz y  voto en las decisiones del gobie: 29%, Proteger la libertad de expresión: 15% |
+|  Los empresarios | Mantener el orden en el país: 44%, Darle al pueblo más voz y  voto en las decisiones del gobie: 24%, Luchar contra las alzas de precio: 16% |
+|  Los trabajadores | Mantener el orden en el país: 48%, Darle al pueblo más voz y  voto en las decisiones del gobie: 37%, Luchar contra las alzas de precio: 7% |
+|  Los partidos políticos | Mantener el orden en el país: 44%, Darle al pueblo más voz y  voto en las decisiones del gobie: 29%, Proteger la libertad de expresión: 14% |
+|  NS | Mantener el orden en el país: 39%, Darle al pueblo más voz y  voto en las decisiones del gobie: 28%, Luchar contra las alzas de precio: 18% |
+|  NC | Mantener el orden en el país: 56%, Darle al pueblo más voz y  voto en las decisiones del gobie: 22%, Proteger la libertad de expresión: 15% |
 
 **p4|MED × p1|ECO** — How p4|MED distributes given p1|ECO:
 
 | p1|ECO (conditioning) | Top p4|MED responses |
 |---|---|
-|  Mucho | Mala: 42%, Regular (esp.): 32%, Muy mala: 18% |
-|  Algo | Regular (esp.): 38%, Mala: 36%, Muy mala: 16% |
-|  Poco | Mala: 40%, Regular (esp.): 28%, Muy mala: 20% |
-|  Nada | Mala: 38%, Regular (esp.): 33%, Muy mala: 20% |
+|  Mucho | Mala: 42%, Regular (esp.): 28%, Muy mala: 22% |
+|  Algo | Mala: 37%, Regular (esp.): 32%, Muy mala: 19% |
+|  Poco | Mala: 39%, Regular (esp.): 27%, Muy mala: 21% |
+|  Nada | Mala: 37%, Regular (esp.): 30%, Muy mala: 21% |
+### Bridge Model Diagnostics
+
+> For human inspection only — not passed to the LLM.
+
+#### Summary
+
+| Variable | Model | Pseudo-R² | LLR p | Dominant SES | Quality |
+|----------|-------|-----------|-------|--------------|---------|
+| p1|ECO | mnlogit | 0.059 | 0.181 | ? | weak |
+| p2|ECO | mnlogit | 0.039 | 0.547 | ? | weak |
+| p2|MED | mnlogit | 0.042 | 0.486 | ? | weak |
+| p3|ECO | mnlogit | 0.036 | 0.925 | ? | weak |
+| p4|ECO | mnlogit | 0.043 | 0.375 | ? | weak |
+| p4|MED | mnlogit | 0.059 | 0.674 | ? | weak |
+| p5|ECO | mnlogit | 0.070 | 0.654 | ? | weak |
+
+**Mean pseudo-R²:** 0.050 &ensp;|&ensp; **Overall dominant SES dimension:** ?
+
+> ⚠ 7/7 bridge models are weak (R²<0.02 or LLR p≥0.10). Simulated Cramér's V for those variables may underestimate the true association.
+
+#### Per-Variable SES Predictor Detail
+
+Top predictors by |t|-statistic — answers: which SES variable is doing the work?
+
+**p1|ECO** (mnlogit, R²=0.059, LLR p=0.181, quality=weak)
+*(coefficient table unavailable)*
+
+**p2|ECO** (mnlogit, R²=0.039, LLR p=0.547, quality=weak)
+*(coefficient table unavailable)*
+
+**p2|MED** (mnlogit, R²=0.042, LLR p=0.486, quality=weak)
+*(coefficient table unavailable)*
+
+**p3|ECO** (mnlogit, R²=0.036, LLR p=0.925, quality=weak)
+*(coefficient table unavailable)*
+
+**p4|ECO** (mnlogit, R²=0.043, LLR p=0.375, quality=weak)
+*(coefficient table unavailable)*
+
+**p4|MED** (mnlogit, R²=0.059, LLR p=0.674, quality=weak)
+*(coefficient table unavailable)*
+
+**p5|ECO** (mnlogit, R²=0.070, LLR p=0.654, quality=weak)
+*(coefficient table unavailable)*
+
+*Pseudo-R² = McFadden's. Low values mean SES explains little variance in that variable — the bridge simulation still produces an estimate, but its precision is reduced.*
+
 ### Reasoning Outline
 
-**Evidence Hierarchy:** The strongest evidence comes from the cross-dataset bivariate association between environmental priorities (p2|MED) and perceived responsibility for the economy (p5|ECO), which is statistically significant despite a weak effect size. Other cross-survey bivariate relationships between environmental priorities and economic satisfaction or outlook variables are weak and not statistically significant, limiting their interpretive power. Demographic fault lines provide moderate secondary evidence on opinion fragmentation but do not directly address the balance between environment and economic development. Univariate distributions offer useful context on public opinion fragmentation but cannot establish relationships relevant to the query.
+**Evidence Hierarchy:** The strongest evidence would be cross-dataset bivariate associations with statistically significant relationships; however, none of the tested pairs show significant associations, indicating weak or no direct links between economic satisfaction and environmental priorities. The next tier is demographic fault lines, which show moderate effects by region and weaker effects by sex and age, providing some context on opinion fragmentation. Univariate distributions offer descriptive context but do not establish relationships relevant to the query.
 
 **Key Limitations:**
-- All cross-dataset bivariate associations are simulation-based estimates with generally weak effect sizes, limiting causal inference.
-- Most bivariate relationships between environmental and economic variables are not statistically significant, restricting strong conclusions about balancing concerns.
-- The number of cross-survey variable pairs analyzed is limited, leaving gaps in understanding direct environment-economy trade-offs.
-- High opinion fragmentation and polarized distributions suggest complex, heterogeneous attitudes that may not be fully captured by the available variables.
+- All cross-dataset bivariate associations are weak and statistically non-significant, limiting inference about relationships between economic and environmental variables.
+- The analysis relies on simulation-based estimates with moderate sample size (n=2000), which may limit power to detect subtle associations.
+- Only nine variables are analyzed, with limited direct measures of environmental-economic trade-offs, constraining the scope of evidence.
+- Demographic fault lines provide secondary evidence but do not directly address the query about balancing environmental concerns with economic development.
 
 ### Analysis Metadata
 - **Analysis Type:** Analytical Essay (Quantitative + Qualitative)

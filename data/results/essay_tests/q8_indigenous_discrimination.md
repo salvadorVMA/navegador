@@ -4,7 +4,7 @@
 **Query (EN):** How do Mexicans perceive discrimination against indigenous peoples?
 **Variables:** p1|IND, p2|IND, p3|IND, p4|IND, p5|IND, p2|DER, p3|DER, p4|DER, p5|DER
 **Status:** ✅ success
-**Time:** 41748ms | **Cross-dataset pairs:** 6
+**Time:** 80615ms | **Cross-dataset pairs:** 6
 
 ---
 
@@ -13,43 +13,58 @@
 **Query:** ¿Cómo perciben los mexicanos la discriminación hacia pueblos indígenas?
 
 ## Summary
-Mexicans perceive the economic situation of indigenous peoples as predominantly worsening or remaining equally bad, reflecting a perception of ongoing discrimination and disadvantage. The strongest association found is a moderate link between perceptions of indigenous economic conditions and which authorities are seen as frequent human rights violators, while other relationships with human rights attitudes show weak but significant associations. Evidence quality is moderate with nine variable pairs analyzed, most showing weak or moderate associations and significant p-values, indicating cautious confidence in these patterns.
+Mexicans perceive the economic situation of indigenous peoples as largely negative and stagnant, with 42.5% saying it is worse than a year ago and 33.8% saying it is equally bad. These perceptions show a moderate but significant association with views on which authorities most frequently violate human rights, indicating that perceptions of institutional discrimination relate to beliefs about indigenous peoples' economic conditions. However, most other associations between perceptions of human rights and indigenous economic outlooks are weak, reflecting fragmented and nuanced public opinion. The evidence is based on multiple bivariate analyses, with several significant but mostly weak associations, leading to moderate confidence in these conclusions.
 
 ## Data Landscape
-The analysis covers nine variables from two surveys: one focused on indigenous peoples' economic perceptions (p1|IND to p5|IND) and another on human rights and discrimination issues (p2|DER to p5|DER). Among these, three variables show polarized or dispersed opinion distributions, and the divergence index is 100%, indicating no consensus across all variables. This fragmentation reveals a highly divided public opinion landscape regarding indigenous peoples' situation and discrimination in Mexico.
+The analysis incorporates nine variables from surveys on indigenous peoples' economic perceptions and human rights attitudes, all showing non-consensus distributions: three lean, two polarized, and four dispersed. The divergence index at 100% indicates a complete lack of consensus across all variables, highlighting a highly fragmented public opinion landscape on indigenous economic conditions and discrimination. Variables directly addressing indigenous economic perceptions are polarized or dispersed, reflecting divided views, while human rights variables tend to lean toward agreement but with significant minority dissent.
 
 ## Evidence
-The strongest relationship is between perceptions of indigenous economic situation (p1|IND) and which authorities are perceived to violate human rights most frequently (p4|DER), with a moderate association (V=0.112, p=0.000). Here, the share saying the situation is "Igual de buena (esp.)" varies widely from 0.0% among those blaming the government to 24.2% among those blaming health authorities, indicating that views on institutional responsibility relate to perceptions of indigenous conditions.
+The strongest relationship appears between perceptions of indigenous economic situation (p1|IND) and which authorities are seen as frequent violators of human rights (p4|DER). The proportion who say the indigenous situation is "Peor" (worse) varies notably from 30.1% among those who identify health authorities as main violators to 55.6% among those blaming the government (V=0.104, p=0.000).
 
-| p4|DER category | Igual de buena (esp.) % |
+| p4|DER category | Peor % |
 |---|---|
-| El Gobierno | 0.0% |
-| Las autoridades de salud | 24.2% |
+| Las autoridades de salud | 30.1% |
+| Las Fuerzas Armadas | 42.6% |
+| La policía municipal/delegación | 41.2% |
+| La policía estatal/ del D.F. | 45.6% |
+| La Policía Federal | 42.4% |
+| El Ministerio Público | 46.7% |
+| Los políticos | 36.9% |
+| El Gobierno | 55.6% |
 
-Other bivariate associations between indigenous economic perceptions and human rights attitudes show weak but significant effects. For example, when respondents perceive human rights respect as "Algo," 46.2% say the indigenous situation is "Igual de mala (esp.)" and 35.3% say "Peor," but when respect is perceived as "Nada," the "Peor" category rises to 57.1% (V=0.086, p=0.000). This suggests that worse perceived human rights respect correlates with more negative views on indigenous economic conditions.
+Other associations are weaker but significant. For instance, perceptions of indigenous economic situation also vary weakly with perceived respect for human rights (p3|DER). The "Igual de mala (esp.)" (equally bad) response ranges from 41.2% to 60.0% across levels of perceived human rights respect (V=0.084, p=0.000).
 
-| p3|DER category | Peor % |
+| p3|DER category | Igual de mala (esp.) % |
 |---|---|
-| Algo | 35.3% |
-| Nada | 57.1% |
+| Poco | 41.2% |
+| Algo | 41.6% |
+| Mucho | 47.6% |
+| NS | 60.0% |
 
-Perceptions of protection against abuses (p5|DER) also relate weakly to views on indigenous economic situation, with "Peor" ranging from 28.6% among those who "No sabe" to 75.0% among those who "No contesta" (V=0.085, p=0.000).
+Similarly, feeling protected against authority abuses (p5|DER) relates weakly to perceptions of indigenous economic situation, with "Igual de mala (esp.)" responses ranging from 25.0% (NS) to 80.0% (NC) (V=0.098, p=0.000).
 
-| p5|DER category | Peor % |
+| p5|DER category | Igual de mala (esp.) % |
 |---|---|
-| NS | 28.6% |
-| NC | 75.0% |
+| NS | 25.0% |
+| Nada | 46.0% |
+| Poco | 41.3% |
+| Algo | 45.2% |
+| Mucho | 43.7% |
+| NC | 80.0% |
 
-Regarding expectations for the indigenous economic future (p2|IND), opinions are fragmented: 34.7% expect it to worsen, 29.7% expect it to stay equally bad, and 18.3% expect improvement. These expectations shift weakly by agreement with human rights importance (p2|DER), where "Va a empeorar" ranges from 34.8% to 47.9% across agreement levels (V=0.073, p=0.001).
+In contrast, agreement with the importance of respecting human rights (p2|DER) shows no meaningful association with perceptions of indigenous economic situation (p1|IND) (V=0.042, p=0.560), with the "Igual de mala (esp.)" response stable around 40-58% across agreement levels.
 
-| p2|DER category | Va a empeorar % |
+| p2|DER category | Igual de mala (esp.) % |
 |---|---|
-| Ni de acuerdo ni desacuerdo (esp.) | 34.8% |
-| En desacuerdo | 47.9% |
+| Muy de acuerdo | 42.8% |
+| De acuerdo | 42.4% |
+| Ni de acuerdo ni desacuerdo (esp.) | 40.4% |
+| En desacuerdo | 49.4% |
+| Muy en desacuerdo | 58.3% |
 
-Demographically, region strongly moderates perceptions, with some regions more likely to perceive the indigenous situation as "Peor" (e.g., Region 02 at 54%) and others more balanced or optimistic (Region 03 with 30% "Igual de buena (esp.)"). Employment status also strongly moderates future expectations, with unemployed or inactive groups more pessimistic.
+Demographically, region strongly moderates perceptions: for example, in the indigenous economic situation variable (p1|IND), the "Peor" response ranges from 47% to 54% in regions 01, 02, and 04, while region 03 shows a higher share of "Igual de mala (esp.)" (34%) and "Igual de buena (esp.)" (30%). Employment status also strongly influences expectations about the future economic situation of indigenous peoples (p2|IND), with unemployed respondents more pessimistic (46% say "Va a empeorar") than others.
 
-**p1|IND** — Perception of current indigenous economic situation:
+**p1|IND** — Perception of indigenous economic situation compared to one year ago:
 | Response | % |
 |---|---|
 | Peor | 42.5% |
@@ -58,7 +73,7 @@ Demographically, region strongly moderates perceptions, with some regions more l
 | Mejor | 8.5% |
 | No sabe/ No contesta | 1.8% |
 
-**p2|IND** — Expectations for indigenous economic future:
+**p2|IND** — Expectations for indigenous economic situation next year:
 | Response | % |
 |---|---|
 | Va a empeorar | 34.7% |
@@ -75,8 +90,9 @@ Demographically, region strongly moderates perceptions, with some regions more l
 | Ni de acuerdo ni desacuerdo (esp.) | 13.7% |
 | En desacuerdo | 5.2% |
 | No sabe/ No contesta | 2.1% |
+| Muy en desacuerdo | 1.2% |
 
-**p3|DER** — Perception of human rights respect:
+**p3|DER** — Perceived respect for human rights in the country:
 | Response | % |
 |---|---|
 | Algo | 46.5% |
@@ -85,7 +101,7 @@ Demographically, region strongly moderates perceptions, with some regions more l
 | Mucho | 9.4% |
 | No sabe/ No contesta | 0.5% |
 
-**p4|DER** — Authorities perceived as most frequent human rights violators:
+**p4|DER** — Authorities perceived to violate human rights most frequently:
 | Response | % |
 |---|---|
 | La policía municipal/delegación | 31.6% |
@@ -95,8 +111,11 @@ Demographically, region strongly moderates perceptions, with some regions more l
 | La Policía Federal | 8.0% |
 | Las autoridades de salud | 3.9% |
 | No sabe/ No contesta | 3.5% |
+| Los políticos | 2.8% |
+| El Gobierno | 0.9% |
+| El presidente Enrique Peña Nieto | 0.2% |
 
-**p5|DER** — Feeling of protection against abuses:
+**p5|DER** — Feeling protected against abuses of authority:
 | Response | % |
 |---|---|
 | Poco | 35.9% |
@@ -106,10 +125,16 @@ Demographically, region strongly moderates perceptions, with some regions more l
 | No sabe/ No contesta | 1.4% |
 
 ## Complications
-The strongest demographic moderators are region (mean V=0.32) and employment status (mean V=0.31), indicating that geographic and economic factors shape perceptions of indigenous peoples' situation. For example, Region 02 respondents are 15 points more likely than Region 03 to say the indigenous economic situation is "Peor." Minority views are substantial; for instance, 13.5% perceive the situation as "Igual de buena (esp.)" and 18.3% expect improvement, challenging the dominant pessimism. The bivariate associations are mostly weak (V<0.1) except one moderate (V=0.112), limiting causal inference and indicating fragmented opinion. The data rely on SES-bridge simulations, which may introduce uncertainty, and sample sizes, while moderate, restrict detailed subgroup analysis. Notably, the expected strong link between agreement on human rights importance and perception of indigenous economic situation is absent (V=0.049, p=0.287), suggesting complexity beyond human rights attitudes alone.
+The strongest demographic moderators are region (mean V=0.32) and employment status (mean V=0.31), indicating that geographic and socioeconomic factors strongly influence perceptions about indigenous peoples' economic situation and future. For example, region 03 shows a notably higher share of more positive perceptions than others. Minority opinions are substantial; for instance, 33.8% say the situation is "Igual de mala (esp.)" and 18.3% expect improvement, indicating significant fragmentation. The bivariate associations between perceptions of indigenous economic conditions and human rights attitudes are mostly weak (V < 0.1), except for a moderate association with perceived violators of human rights (p4|DER). This limits causal inference and suggests complex, nuanced public views. Additionally, some variables have high non-response rates (e.g., p4|IND with 58.3% NC), reducing precision. The SES-bridge simulation approach may introduce assumptions that affect effect size estimates, and the moderate sample size (n=2000) constrains the analysis of smaller subgroups. Notably, agreement with the importance of respecting human rights (p2|DER) does not meaningfully relate to perceptions of indigenous economic conditions, counter to expectations.
 
 ## Implications
-First, the moderate association between perceived indigenous economic conditions and which authorities are seen as human rights violators suggests policy efforts should focus on institutional accountability, especially targeting government and security forces, to improve indigenous peoples' conditions and reduce discrimination. Second, the fragmentation and weak associations with general human rights attitudes imply that broader human rights education alone may be insufficient; tailored regional and employment-sensitive interventions are needed to address diverse perceptions and experiences. Policymakers should also consider the significant minority optimism as a resource for community engagement and empowerment programs. Finally, the data limitations call for more direct measurement of discrimination perceptions to better inform targeted policies.
+First, the moderate association between perceptions of indigenous economic hardship and views on institutional human rights violations suggests that policy efforts addressing discrimination should focus on improving institutional accountability, particularly regarding government and law enforcement agencies, which are seen as frequent violators. Enhancing institutional trust and reducing abuses could positively influence public perceptions of indigenous peoples' conditions.
+
+Second, the pervasive fragmentation and weak associations imply that public opinion is not monolithic and that communication strategies must be tailored regionally and socioeconomically. Policies promoting indigenous rights and economic inclusion should consider regional disparities and employment contexts to effectively address diverse perceptions and experiences.
+
+Third, the lack of a strong link between general human rights attitudes and indigenous economic perceptions suggests that raising awareness about indigenous-specific discrimination requires targeted education and advocacy beyond general human rights promotion. This highlights the need for specialized programs that directly address indigenous issues to shift public perceptions and support.
+
+Overall, these findings call for multifaceted policy approaches that combine institutional reform, regional targeting, and focused indigenous rights education to effectively combat discrimination and improve perceptions of indigenous peoples' economic and social conditions in Mexico.
 
 ---
 
@@ -335,12 +360,12 @@ First, the moderate association between perceived indigenous economic conditions
 
 | Variable Pair | Cramér's V | p-value | Key Pattern | n sim |
 |---------------|------------|---------|-------------|-------|
-| p1|IND × p2|DER | 0.049 (weak) | 0.287 | "Igual de buena (esp.)": 0% ("Muy en desacuerdo") → 14% ("Ni de acuerdo ni desacuerdo (esp.)") | 2000 |
-| p1|IND × p3|DER | 0.086 (weak) | 0.000 | "Peor": 35% (" Algo") → 57% (" NS") | 2000 |
-| p1|IND × p4|DER | 0.112 (moderate) | 0.000 | "Igual de buena (esp.)": 0% ("El Gobierno") → 24% ("Las autoridades de salud") | 2000 |
-| p1|IND × p5|DER | 0.085 (weak) | 0.000 | "Peor": 29% (" NS") → 75% (" NC") | 2000 |
-| p2|IND × p2|DER | 0.073 (weak) | 0.001 | "Va a empeorar": 35% ("Ni de acuerdo ni desacuerdo (esp.)") → 48% ("En desacuerdo") | 2000 |
-| p2|IND × p3|DER | 0.069 (weak) | 0.004 | "Va a seguir igual de bien (esp.)": 2% (" Nada") → 15% (" NS") | 2000 |
+| p1|IND × p2|DER | 0.042 (weak) | 0.560 | "Igual de mala (esp.)": 40% ("Ni de acuerdo ni desacuerdo (esp.)") → 58% ("Muy en desacuerdo") | 2000 |
+| p1|IND × p3|DER | 0.084 (weak) | 0.000 | "Igual de mala (esp.)": 41% (" Poco") → 60% (" NS") | 2000 |
+| p1|IND × p4|DER | 0.104 (moderate) | 0.000 | "Peor": 30% ("Las autoridades de salud") → 56% ("El Gobierno") | 2000 |
+| p1|IND × p5|DER | 0.098 (weak) | 0.000 | "Igual de mala (esp.)": 25% (" NS") → 80% (" NC") | 2000 |
+| p2|IND × p2|DER | 0.067 (weak) | 0.008 | "Va a seguir igual de mal (esp.)": 28% ("Muy en desacuerdo") → 41% ("Muy de acuerdo") | 2000 |
+| p2|IND × p3|DER | 0.087 (weak) | 0.000 | "Va a seguir igual de mal (esp.)": 33% (" Algo") → 53% (" NS") | 2000 |
 
 *Estimates derived from SES-bridge regression simulation.*
 
@@ -349,74 +374,117 @@ First, the moderate association between perceived indigenous economic conditions
 
 | p2|DER (conditioning) | Top p1|IND responses |
 |---|---|
-| Muy de acuerdo | Peor: 43%, Igual de mala (esp.): 42%, Igual de buena (esp.): 10% |
-| De acuerdo | Peor: 42%, Igual de mala (esp.): 42%, Igual de buena (esp.): 11% |
-| Ni de acuerdo ni desacuerdo (esp.) | Igual de mala (esp.): 47%, Peor: 36%, Igual de buena (esp.): 14% |
-| En desacuerdo | Igual de mala (esp.): 45%, Peor: 44%, Mejor: 6% |
-| Muy en desacuerdo | Igual de mala (esp.): 50%, Peor: 38%, Mejor: 12% |
+| Muy de acuerdo | Igual de mala (esp.): 43%, Peor: 42%, Igual de buena (esp.): 9% |
+| De acuerdo | Igual de mala (esp.): 42%, Peor: 40%, Igual de buena (esp.): 12% |
+| Ni de acuerdo ni desacuerdo (esp.) | Peor: 43%, Igual de mala (esp.): 40%, Igual de buena (esp.): 11% |
+| En desacuerdo | Igual de mala (esp.): 49%, Peor: 40%, Igual de buena (esp.): 8% |
+| Muy en desacuerdo | Igual de mala (esp.): 58%, Peor: 33%, Mejor: 8% |
 
 **p1|IND × p3|DER** — How p1|IND distributes given p3|DER:
 
 | p3|DER (conditioning) | Top p1|IND responses |
 |---|---|
-|  Mucho | Igual de mala (esp.): 43%, Peor: 41%, Igual de buena (esp.): 11% |
-|  Algo | Igual de mala (esp.): 46%, Peor: 35%, Igual de buena (esp.): 13% |
-|  Poco | Peor: 47%, Igual de mala (esp.): 40%, Igual de buena (esp.): 9% |
-|  Nada | Peor: 47%, Igual de mala (esp.): 44%, Igual de buena (esp.): 5% |
-|  NS | Peor: 57%, Igual de mala (esp.): 29%, Igual de buena (esp.): 14% |
+|  Mucho | Igual de mala (esp.): 48%, Peor: 34%, Igual de buena (esp.): 13% |
+|  Algo | Igual de mala (esp.): 42%, Peor: 37%, Igual de buena (esp.): 16% |
+|  Poco | Peor: 46%, Igual de mala (esp.): 41%, Igual de buena (esp.): 10% |
+|  Nada | Peor: 46%, Igual de mala (esp.): 42%, Mejor: 7% |
+|  NS | Igual de mala (esp.): 60%, Peor: 40%, Mejor: 0% |
 
 **p1|IND × p4|DER** — How p1|IND distributes given p4|DER:
 
 | p4|DER (conditioning) | Top p1|IND responses |
 |---|---|
-| El Ministerio Público | Igual de mala (esp.): 46%, Peor: 44%, Igual de buena (esp.): 5% |
-| Las Fuerzas Armadas | Igual de mala (esp.): 46%, Peor: 36%, Igual de buena (esp.): 14% |
-| La policía municipal/delegación | Peor: 42%, Igual de mala (esp.): 38%, Igual de buena (esp.): 15% |
-| La policía estatal/ del D.F. | Igual de mala (esp.): 44%, Peor: 40%, Igual de buena (esp.): 11% |
-| La Policía Federal | Peor: 53%, Igual de mala (esp.): 41%, Igual de buena (esp.): 3% |
-| Las autoridades de salud | Peor: 36%, Igual de mala (esp.): 32%, Igual de buena (esp.): 24% |
-| Los políticos | Peor: 46%, Igual de mala (esp.): 41%, Igual de buena (esp.): 11% |
-| El Gobierno | Igual de mala (esp.): 47%, Peor: 47%, Mejor: 5% |
+| El Ministerio Público | Peor: 47%, Igual de mala (esp.): 45%, Igual de buena (esp.): 5% |
+| Las Fuerzas Armadas | Peor: 43%, Igual de mala (esp.): 40%, Igual de buena (esp.): 12% |
+| La policía municipal/delegación | Peor: 41%, Igual de mala (esp.): 40%, Igual de buena (esp.): 14% |
+| La policía estatal/ del D.F. | Peor: 46%, Igual de mala (esp.): 37%, Igual de buena (esp.): 12% |
+| La Policía Federal | Igual de mala (esp.): 49%, Peor: 42%, Igual de buena (esp.): 5% |
+| Las autoridades de salud | Igual de mala (esp.): 40%, Peor: 30%, Igual de buena (esp.): 22% |
+| Los políticos | Igual de mala (esp.): 54%, Peor: 37%, Igual de buena (esp.): 7% |
+| El Gobierno | Peor: 56%, Igual de mala (esp.): 39%, Mejor: 6% |
 
 **p1|IND × p5|DER** — How p1|IND distributes given p5|DER:
 
 | p5|DER (conditioning) | Top p1|IND responses |
 |---|---|
-|  Mucho | Igual de mala (esp.): 44%, Peor: 37%, Igual de buena (esp.): 14% |
-|  Algo | Igual de mala (esp.): 44%, Peor: 38%, Igual de buena (esp.): 13% |
-|  Poco | Igual de mala (esp.): 43%, Peor: 40%, Igual de buena (esp.): 13% |
-|  Nada | Peor: 49%, Igual de mala (esp.): 43%, Igual de buena (esp.): 5% |
-|  NS | Igual de mala (esp.): 36%, Peor: 29%, Igual de buena (esp.): 21% |
-|  NC | Peor: 75%, Igual de mala (esp.): 25%, Mejor: 0% |
+|  Mucho | Igual de mala (esp.): 44%, Peor: 41%, Igual de buena (esp.): 8% |
+|  Algo | Igual de mala (esp.): 45%, Peor: 35%, Igual de buena (esp.): 14% |
+|  Poco | Peor: 42%, Igual de mala (esp.): 41%, Igual de buena (esp.): 11% |
+|  Nada | Peor: 46%, Igual de mala (esp.): 46%, Igual de buena (esp.): 5% |
+|  NS | Peor: 38%, Igual de buena (esp.): 31%, Igual de mala (esp.): 25% |
+|  NC | Igual de mala (esp.): 80%, Peor: 20%, Mejor: 0% |
 
 **p2|IND × p2|DER** — How p2|IND distributes given p2|DER:
 
 | p2|DER (conditioning) | Top p2|IND responses |
 |---|---|
-| Muy de acuerdo | Va a seguir igual de mal (esp.): 40%, Va a empeorar: 36%, Va a mejorar: 18% |
-| De acuerdo | Va a empeorar: 41%, Va a seguir igual de mal (esp.): 32%, Va a mejorar: 17% |
-| Ni de acuerdo ni desacuerdo (esp.) | Va a seguir igual de mal (esp.): 39%, Va a empeorar: 35%, Va a mejorar: 18% |
-| En desacuerdo | Va a empeorar: 48%, Va a seguir igual de mal (esp.): 34%, Va a mejorar: 17% |
-| Muy en desacuerdo | Va a empeorar: 47%, Va a seguir igual de mal (esp.): 41%, Va a mejorar: 12% |
+| Muy de acuerdo | Va a seguir igual de mal (esp.): 41%, Va a empeorar: 37%, Va a mejorar: 17% |
+| De acuerdo | Va a empeorar: 40%, Va a seguir igual de mal (esp.): 33%, Va a mejorar: 18% |
+| Ni de acuerdo ni desacuerdo (esp.) | Va a empeorar: 37%, Va a seguir igual de mal (esp.): 36%, Va a mejorar: 17% |
+| En desacuerdo | Va a empeorar: 50%, Va a seguir igual de mal (esp.): 35%, Va a mejorar: 13% |
+| Muy en desacuerdo | Va a empeorar: 50%, Va a seguir igual de mal (esp.): 28%, Va a mejorar: 22% |
 
 **p2|IND × p3|DER** — How p2|IND distributes given p3|DER:
 
 | p3|DER (conditioning) | Top p2|IND responses |
 |---|---|
-|  Mucho | Va a empeorar: 41%, Va a seguir igual de mal (esp.): 37%, Va a mejorar: 14% |
-|  Algo | Va a empeorar: 37%, Va a seguir igual de mal (esp.): 36%, Va a mejorar: 19% |
-|  Poco | Va a seguir igual de mal (esp.): 43%, Va a empeorar: 34%, Va a mejorar: 17% |
-|  Nada | Va a empeorar: 40%, Va a seguir igual de mal (esp.): 40%, Va a mejorar: 18% |
-|  NS | Va a empeorar: 46%, Va a seguir igual de mal (esp.): 31%, Va a seguir igual de bien (esp.): 15% |
+|  Mucho | Va a seguir igual de mal (esp.): 41%, Va a empeorar: 37%, Va a mejorar: 17% |
+|  Algo | Va a empeorar: 40%, Va a seguir igual de mal (esp.): 33%, Va a mejorar: 18% |
+|  Poco | Va a seguir igual de mal (esp.): 40%, Va a empeorar: 36%, Va a mejorar: 18% |
+|  Nada | Va a empeorar: 46%, Va a seguir igual de mal (esp.): 36%, Va a mejorar: 16% |
+|  NS | Va a seguir igual de mal (esp.): 53%, Va a empeorar: 27%, Va a seguir igual de bien (esp.): 13% |
+### Bridge Model Diagnostics
+
+> For human inspection only — not passed to the LLM.
+
+#### Summary
+
+| Variable | Model | Pseudo-R² | LLR p | Dominant SES | Quality |
+|----------|-------|-----------|-------|--------------|---------|
+| p1|IND | mnlogit | 0.087 | 0.072 | ? | fair |
+| p2|DER | mnlogit | 0.076 | 0.324 | ? | weak |
+| p2|IND | mnlogit | 0.133 | 0.000 | ? | good |
+| p3|DER | mnlogit | 0.131 | 0.001 | ? | good |
+| p4|DER | mnlogit | 0.118 | 0.049 | ? | good |
+| p5|DER | mnlogit | 0.142 | 0.005 | ? | good |
+
+**Mean pseudo-R²:** 0.115 &ensp;|&ensp; **Overall dominant SES dimension:** ?
+
+> ⚠ 1/6 bridge models are weak (R²<0.02 or LLR p≥0.10). Simulated Cramér's V for those variables may underestimate the true association.
+
+#### Per-Variable SES Predictor Detail
+
+Top predictors by |t|-statistic — answers: which SES variable is doing the work?
+
+**p1|IND** (mnlogit, R²=0.087, LLR p=0.072, quality=fair)
+*(coefficient table unavailable)*
+
+**p2|DER** (mnlogit, R²=0.076, LLR p=0.324, quality=weak)
+*(coefficient table unavailable)*
+
+**p2|IND** (mnlogit, R²=0.133, LLR p=0.000, quality=good)
+*(coefficient table unavailable)*
+
+**p3|DER** (mnlogit, R²=0.131, LLR p=0.001, quality=good)
+*(coefficient table unavailable)*
+
+**p4|DER** (mnlogit, R²=0.118, LLR p=0.049, quality=good)
+*(coefficient table unavailable)*
+
+**p5|DER** (mnlogit, R²=0.142, LLR p=0.005, quality=good)
+*(coefficient table unavailable)*
+
+*Pseudo-R² = McFadden's. Low values mean SES explains little variance in that variable — the bridge simulation still produces an estimate, but its precision is reduced.*
+
 ### Reasoning Outline
 
-**Evidence Hierarchy:** The strongest evidence comes from cross-dataset bivariate estimates with statistically significant p-values, particularly the moderate association between perceptions of indigenous economic situation and perceived human rights violators (p1|IND × p4|DER). Weak but significant bivariate associations provide secondary evidence. Demographic fault lines offer additional context but do not directly address the query. Univariate distributions serve as background information but do not demonstrate relationships.
+**Evidence Hierarchy:** The strongest evidence comes from cross-dataset bivariate estimates with statistically significant p-values, especially those involving p1|IND and p4|DER which show moderate association. Weaker but significant associations are found in other cross-survey pairs involving perceptions of human rights and indigenous economic situation. Demographic fault lines provide secondary evidence about opinion fragmentation and regional differences. Univariate distributions offer contextual background but do not establish relationships relevant to the query.
 
 **Key Limitations:**
-- All bivariate estimates are simulation-based which may affect precision.
-- Effect sizes (Cramér's V) are mostly weak to moderate, indicating limited strength of associations.
-- Sample size is moderate (n=2000) but only a limited number of cross-survey variable pairs are available.
-- Most variables relate indirectly to the query, focusing on economic perceptions or general human rights rather than direct measures of perceived discrimination towards indigenous peoples.
+- All bivariate estimates are simulation-based with relatively weak effect sizes, limiting causal inference.
+- Sample size is moderate (n=2000), but some variables have high non-response or dispersed distributions reducing precision.
+- Only a limited number of cross-survey variable pairs are available, restricting comprehensive analysis of perceptions of discrimination.
+- Most variables measure general economic or human rights perceptions rather than direct measures of perceived discrimination against indigenous peoples, limiting specificity to the query.
 
 ### Analysis Metadata
 - **Analysis Type:** Analytical Essay (Quantitative + Qualitative)

@@ -1,6 +1,6 @@
 # q3_education_poverty
 
-**Generated:** 2026-02-21 21:11:08
+**Generated:** 2026-02-23 00:58:40
 
 ## Query
 **ES:** ¿Qué relación ven los mexicanos entre educación y pobreza?
@@ -15,11 +15,11 @@
 | Metric | OLD (detailed_report) | NEW (analytical_essay) |
 |--------|----------------------|------------------------|
 | Success | ✅ | ✅ |
-| Latency | 330 ms | 33830 ms |
-| Variables Analyzed | — | 9 |
-| Divergence Index | — | 33% |
-| SES Bivariate Vars | — | 9/9 |
-| Cross-Dataset Pairs | — | 6 |
+| Latency | 21611 ms | 36055 ms |
+| Variables Analyzed | — | 4 |
+| Divergence Index | — | 0% |
+| SES Bivariate Vars | — | 4/4 |
+| Cross-Dataset Pairs | — | 3 |
 
 ---
 
@@ -27,9 +27,8 @@
 
 | Dimension | Mean Cramér's V | Max Cramér's V | Variables |
 |-----------|----------------|----------------|----------|
-| empleo | 0.564 (strong) | 0.564 | 1 |
-| edad | 0.300 (strong) | 0.676 | 9 |
-| sexo | 0.255 (moderate) | 0.514 | 8 |
+| edad | 0.372 (strong) | 0.676 | 4 |
+| sexo | 0.162 (moderate) | 0.326 | 4 |
 
 
 ---
@@ -38,12 +37,9 @@
 
 | Variable Pair | Cramér's V | p-value | Key Pattern | n sim |
 |---------------|------------|---------|-------------|-------|
-| p2|EDU × p1|POB | 0.432 (strong) | 0.000 | "1.0": 0% ("6.0") → 100% ("99.0") | 2000 |
-| p2|EDU × p2|POB | 0.155 (moderate) | 0.000 | "1.0": 27% ("1.0") → 79% ("99.0") | 2000 |
-| p2|EDU × p3|POB | 0.283 (moderate) | 0.000 | "1.0": 23% ("1.0") → 92% ("99.0") | 2000 |
-| p2|EDU × p4|POB | 0.351 (strong) | 0.000 | "1.0": 3% ("20.0") → 88% ("98.0") | 2000 |
-| p3|EDU × p1|POB | 0.315 (strong) | 0.000 | "-1.0": 10% ("99.0") → 100% ("6.0") | 2000 |
-| p3|EDU × p2|POB | 0.121 (moderate) | 0.000 | "-1.0": 10% ("99.0") → 70% ("-1.0") | 2000 |
+| p2|EDU × p2|POB | 0.064 (weak) | 0.018 | " Sí": 29% ("Ayudó a trabajar en un negocio familiar") → 44% ("Vendió algunos productos: ropa,  cosméticos, alimentos") | 2000 |
+| p3|EDU × p2|POB | 0.019 (weak) | 0.707 | " Sí": 30% ("Vendió algunos productos: ropa,  cosméticos, alimentos") → 33% ("No trabajó") | 2000 |
+| p6|EDU × p2|POB | 0.127 (moderate) | 0.000 | "Porque deseo superarme": 47% ("Ayudó a trabajar en un negocio familiar") → 68% ("Vendió algunos productos: ropa,  cosméticos, alimentos") | 2000 |
 
 *Estimates via SES-bridge simulation (OrderedModel / MNLogit).*
 
@@ -59,34 +55,34 @@
 **Query:** ¿Qué relación ven los mexicanos entre educación y pobreza?
 
 ## Executive Summary
-Los mexicanos perciben una relación directa entre la educación y la pobreza, donde la baja participación educativa y la falta de apoyos económicos limitan las oportunidades de movilidad social. Además, la precariedad laboral y la inseguridad en el empleo refuerzan las dificultades para salir de la pobreza.
+Los mexicanos perciben una estrecha relación entre educación y pobreza, donde la necesidad económica obliga a priorizar el trabajo sobre los estudios. Esta situación limita la participación educativa y refleja dificultades para acceder y mantener apoyos económicos, afectando las oportunidades de superación y desarrollo.
 
 ## Analysis Overview  
-La encuesta revela que solo el 16.85% de los entrevistados está actualmente en educación formal, mientras que un elevado 83.15% no estudia ni recibe apoyos económicos para hacerlo (p2|EDU, p3|EDU). Al mismo tiempo, el 45.42% trabajó recientemente, pero un 2.92% no sabe o no contesta sobre la duración de su empleo, lo que sugiere inestabilidad laboral (p1|POB, p4|POB). Estas cifras evidencian una relación estrecha entre baja participación educativa, falta de financiamiento accesible y precariedad laboral, elementos que dificultan la movilidad social y contribuyen a mantener condiciones de pobreza. Los resultados apuntan a la urgente necesidad de intervenciones políticas que integren apoyo económico para estudiantes y estabilidad laboral para mejorar las oportunidades socioeconómicas de la población.
+La mayoría de los mexicanos encuestados no están matriculados en educación formal (83.2%) y sólo una minoría estudia activamente (16.9%) (p2|EDU). De quienes estudian, una parte importante tiene motivaciones de superación personal (11.0%) (p6|EDU), pero el apoyo económico es escaso, con sólo 3.1% recibiendo becas y un 96.8% sin especificar la fuente de financiamiento (p3|EDU, p4|EDU). Además, una proporción mayor trabaja (45.4%) (p1|POB), lo que indica que las presiones económicas y la pobreza influyen en que muchas personas prioricen el empleo sobre la educación, limitando así las oportunidades de desarrollo educativo y social.
 
 ## Topic Analysis
 
-### EDUCACIÓN Y PARTICIPACIÓN ESCOLAR
-Los resultados de la encuesta muestran una marcada baja participación en la educación formal, con un 83.15% de los encuestados que no estudian actualmente (p2|EDU) y un porcentaje igual que no especifica realizar estudios (p5|EDU). Solo el 16.85% está activo en educación formal (p2|EDU), lo que indica importantes barreras de acceso o interés en la educación para la población encuestada. Esta baja participación contrasta con una participación laboral considerable, lo que sugiere presiones económicas que limitan la educación y afectan el desarrollo de habilidades para la movilidad social.
+### EDUCACIÓN Y PARTICIPACIÓN EN EL APRENDIZAJE
+Una gran mayoría de los encuestados, el 83.2%, no están inscritos actualmente en ningún tipo de educación, mientras que sólo el 16.9% participan activamente en estudios (p2|EDU). Entre quienes estudian, un 11.0% lo hace motivado por el mejoramiento personal (p6|EDU), lo que indica una actitud positiva hacia la educación a pesar de la baja participación general. Esta baja proporción de estudiantes sugiere la necesidad de políticas que promuevan la educación continua y alternativas no tradicionales, considerando el perfil demográfico de los encuestados.
 
-### APOYO FINANCIERO A LA EDUCACIÓN
-La encuesta evidencia una crítica carencia de apoyo financiero para quienes estudian, con un 83.15% que indica no recibir becas ni apoyos económicos (p3|EDU). Además, un 96.83% no identificó fuentes específicas de apoyo educativo (p4|EDU), lo que refleja grandes vacíos en la disponibilidad y conocimiento de los apoyos financieros. Estos datos resaltan la necesidad de políticas públicas y programas dirigidos a mejorar la financiación y difusión de recursos para estudiantes en situación vulnerable.
+### APOYO ECONÓMICO Y TRANSPARENCIA EN LA EDUCACIÓN
+Sólo el 3.1% de los encuestados recibe algún tipo de beca o apoyo económico para estudiar (p3|EDU), y dentro de este pequeño grupo, el 96.8% no detalla la fuente de este apoyo (p4|EDU). Esto apunta a vacíos en la transparencia y comunicación sobre las ayudas económicas, dificultando intervenciones precisas para aumentar y mejorar la distribución de becas. La falta de información sobre las fuentes de financiamiento es un reto clave para diseñar políticas públicas efectivas en materia de apoyo educativo.
 
-### SITUACIÓN LABORAL E INCERTIDUMBRE EN POBREZA
-El 45.42% de los encuestados reportó haber trabajado en la semana previa (p1|POB), lo que indica un nivel más alto de participación en el mercado laboral frente a la educación. Sin embargo, un 2.92% manifestó desconocimiento o falta de respuesta sobre la duración en su empleo actual (p4|POB), superando el umbral del 2.0% y señalando una posible precariedad laboral y vulnerabilidad. Esta incertidumbre laboral, unida a la baja educación formal, refleja condiciones que pueden perpetuar la pobreza y que requieren atención desde políticas sociales y de empleo.
+### RELACIÓN ENTRE EMPLEO, EDUCACIÓN Y CONDICIONES SOCIOECONÓMICAS
+Existe una notable disparidad entre la proporción de personas que estudian (16.9%) y las que han trabajado durante la última semana (45.4%) (p2|EDU, p1|POB). Esto sugiere que muchas personas priorizan el empleo sobre la educación, posiblemente por necesidad económica y condiciones de pobreza. La presión financiera obliga a elegir trabajo en lugar de estudios, lo que plantea importantes desafíos para la movilidad social y el desarrollo económico, subrayando la urgencia de abordar factores socioeconómicos que limitan la educación.
 
 ## Expert Analysis
 
 ### Expert Insight 1
-The survey results reveal a pronounced lack of engagement in formal education, with 83.15% of respondents not currently studying (p2|EDU) and a matching 83.15% not specifying any current studies (p5|EDU). This strikingly high percentage underscores significant barriers to educational access or interest within the surveyed population. Such data provide critical insight for experts in education and policymakers, suggesting urgent need for targeted interventions and outreach programs to improve educational participation and attainment. These findings illustrate the necessity of understanding underlying causes—whether economic, social, or infrastructural—that prevent active study, thereby offering a foundation for strategic efforts to increase engagement in formal education among this group.
+The survey results show that a significant majority of respondents, 83.2%, are not currently enrolled in any form of education, while only 16.9% are actively studying (p2|EDU). This distribution highlights a crucial demographic characteristic that could influence public opinion on various topics, particularly those related to education policy, workforce development, or lifelong learning initiatives. Understanding that most respondents are not engaged in formal education may suggest the need to focus on adult education, vocational training, or other non-traditional learning opportunities when interpreting the survey results or designing policy interventions. Additionally, this low enrollment rate could reflect broader socioeconomic factors affecting access to education, which might be relevant for policymakers and stakeholders interested in reducing educational disparities.
 
 ### Expert Insight 2
-The survey results reveal a critical lack of financial support for individuals pursuing education, with 83.15% of respondents indicating they do not receive scholarships or any form of economic assistance for their studies (p3|EDU). Furthermore, the data underscores an overwhelming reliance on unreported or undefined sources of support, as 96.83% of participants did not identify any specific educational support source (p4|EDU). These findings highlight significant gaps in both the availability and awareness of financial aid, corroborating concerns about the insufficiency of accessible educational funding and the need for enhanced outreach and resource development. This information is essential for education policymakers, funding bodies, and academic institutions to prioritize the allocation of resources and to design targeted programs aimed at bridging these gaps in financial assistance and support system awareness.
+The survey results highlight a significant issue regarding financial support for students, with only 3.1% of respondents indicating that they receive scholarships or economic assistance for their studies (p3|EDU). Furthermore, among this small subgroup, an overwhelming majority of 96.8% do not specify the source of their economic support (p4|EDU). This lack of disclosure about the origin of financial aid suggests potential gaps in transparency or awareness about support programs, which may impede targeted interventions or policy development aimed at increasing and improving scholarship distribution. The data underscores the importance of not only expanding economic support mechanisms but also ensuring better documentation and communication regarding the sources of such funding.
 
 ### Expert Insight 3
-The survey results reveal that only 16.85% of respondents are currently engaged in formal education (p2|EDU), highlight
+The survey results reveal that only 16.9% of respondents are currently engaged in studying (p2|EDU), which indicates a relatively low level of active participation in education. However, among those who are studying, a notable 11.0% identify self-improvement as their motivation (p6|EDU), reflecting a positive attitude towards education despite
 ```
-*(Truncated from 7713 chars)*
+*(Truncated from 6575 chars)*
 
 ---
 
@@ -98,30 +94,65 @@ The survey results reveal that only 16.85% of respondents are currently engaged 
 **Query:** ¿Qué relación ven los mexicanos entre educación y pobreza?
 
 ## Summary
-Los mexicanos perciben una relación significativa y fuerte entre la educación y la pobreza, especialmente en cómo el estatus educativo influye en la actividad laboral relacionada con la pobreza. Por ejemplo, la proporción de personas que trabajaron varía notablemente según si están estudiando o no, con asociaciones estadísticamente significativas en seis pares bivariados analizados. La calidad de la evidencia es alta, con asociaciones significativas y valores de Cramér's V que van desde moderados hasta fuertes, lo que permite un alto nivel de confianza en estas conclusiones.
+The most important finding is that Mexicans perceive a weak but statistically significant relationship between education participation and poverty-related work activities, with those selling products being more likely to be studying (44.4%) compared to those helping in a family business (28.9%). Motivations for studying also vary moderately by poverty work, with a higher proportion studying to improve themselves among those selling products (67.5%) than those helping family businesses (47.2%). Three bivariate pairs were analyzed, two showing significant associations and one not, indicating moderate confidence in these nuanced relationships.
 
 ## Data Landscape
-Se analizaron nueve variables provenientes de encuestas sobre educación y pobreza, con seis mostrando consenso en las respuestas, una polarizada y una dispersa, lo que indica un nivel moderado de acuerdo en la opinión pública (índice de divergencia del 33%). Las variables incluyen estado actual de estudio, apoyos económicos para educación, niveles educativos, motivaciones para estudiar, y diversas dimensiones del empleo relacionadas con la pobreza. Esta diversidad de formas de distribución refleja tanto acuerdos claros como opiniones divididas en ciertos aspectos.
+Four variables related to education and poverty were analyzed from the same survey, all showing consensus distribution shapes indicating broad agreement among respondents. The divergence index is 0%, confirming no variables displayed polarized or dispersed opinions. This consensus suggests relatively uniform public views on education status, financial support for studies, motivations for studying, and recent poverty-related work activities.
 
 ## Evidence
-La relación más fuerte se observa entre el estatus educativo actual y la actividad laboral reciente (p2|EDU × p1|POB, V=0.432, p=0.000), donde, por ejemplo, quienes tienen educación codificada como "6.0" reportan un 100% en la categoría '2.0' de trabajo, mientras que en la categoría "99.0" es 0%, mostrando un cambio drástico en la participación laboral según educación. De forma similar, otras asociaciones entre educación y variables de pobreza laboral (p2|EDU × p2|POB, p2|EDU × p3|POB, p2|EDU × p4|POB) muestran patrones donde la proporción de ciertas respuestas varía significativamente con la educación, aunque con fuerza moderada (V entre 0.121 y 0.351). Por ejemplo, en p2|EDU × p4|POB, la proporción de la respuesta '1.0' varía de 3.3% a 87.9%, indicando que la estabilidad laboral está fuertemente ligada al nivel educativo. En cuanto a apoyos económicos para estudios (p3|EDU), también se observa una relación significativa con la actividad laboral (p3|EDU × p1|POB, V=0.315), donde la proporción de ciertos estados laborales cambia desde 10.0% hasta 100.0% según el estatus de apoyo. En términos demográficos, las diferencias de género y edad modulan estas percepciones: por ejemplo, las mujeres tienen una mayor proporción de dedicarse a los quehaceres del hogar (22.0%) y los jóvenes de 0-18 años muestran mayor proporción de no trabajar o estudiar. En educación, el 83.2% no estudia actualmente, pero un 16.9% sí, con mayor proporción de estudio en edades jóvenes (19-24 años). Estas distribuciones univariadas contextualizan las relaciones observadas.
+Regarding the relationship between current education participation and poverty-related work, the proportion studying ranges from 28.9% among those who helped in a family business to 44.4% among those who sold products like clothing or food, indicating some variation by poverty activity type (V=0.064, p=0.018).
+| p2|POB category | Sí (currently studying) % |
+|---|---|
+| Ayudó a trabajar en un negocio familiar | 28.9% |
+| Vendió algunos productos: ropa, cosméticos, alimentos | 44.4% |
+| No trabajó | 34.5% |
+
+For receiving financial support for studies, the proportion with scholarships or aid is nearly uniform across poverty work categories, varying between 29.9% and 33.0%, showing no meaningful association (V=0.019, p=0.707).
+| p2|POB category | Sí (has financial support) % |
+|---|---|
+| Ayudó a trabajar en un negocio familiar | 31.5% |
+| Vendió algunos productos: ropa, cosméticos, alimentos | 29.9% |
+| No trabajó | 33.0% |
+
+Motivations for studying differ more substantially by poverty-related work. The key motivation "Porque deseo superarme" ranges from 47.2% among those helping in a family business to 67.5% among those selling products, reflecting a moderate association (V=0.127, p=0.000).
+| p2|POB category | Porque deseo superarme % |
+|---|---|
+| Ayudó a trabajar en un negocio familiar | 47.2% |
+| Vendió algunos productos: ropa, cosméticos, alimentos | 67.5% |
+| No trabajó | 64.5% |
+
+Demographically, younger respondents (0-18 years) are far more likely to be currently studying (84%) compared to older groups, and men are 8 points more likely than women to be studying (21% vs. 13%). Regarding poverty work, men are more likely not to have worked recently (82%) than women (53%).
+
+**p2|EDU** — ¿Usted estudia actualmente?:
+| Response | % |
+|---|---|
+| No | 83.2% |
+| Sí | 16.9% |
+
+**p3|EDU** — ¿Cuenta con una beca u otro apoyo económico para realizar sus estudios?:
+| Response | % |
+|---|---|
+| No | 81.2% |
+| Sí | 18.3% |
+
+**p6|EDU** — ¿Por qué está usted estudiando?:
+| Response | % |
+|---|---|
+| Porque deseo superarme | 65.4% |
+| Porque deseo aprender | 11.4% |
+| Porque quiero tener un mejor trabajo o un mejor sueldo | 10.4% |
+
+**p2|POB** — La semana pasada usted…:
+| Response | % |
+|---|---|
+| No trabajó | 85.1% |
+| Ayudó a trabajar en un negocio familiar | 5.6% |
+| Vendió algunos productos: ropa, cosméticos, alimentos | 4.3% |
 
 ## Complications
-Las dimensiones sociodemográficas que más moderan las percepciones son el empleo (V=0.56), la edad (V=0.30) y el sexo (V=0.26), mostrando que jóvenes y mujeres tienen patrones distintos en relación con educación y pobreza. La opinión está polarizada en algunas variables, como en la dedicación al trabajo principal (p3|POB), donde las respuestas están divididas casi a partes iguales entre "nan" y "permanentemente" (43.2% vs 37.7%). Además, la alta proporción de respuestas "nan" en variables educativas limita el análisis en algunos casos, y la dependencia de estimaciones basadas en simulación SES-bridge introduce incertidumbre inherente. También hay minorías significativas, como el 22.0% que se dedica a los quehaceres del hogar, que desafían la narrativa dominante de trabajo formal o estudio. En ciertas variables, la relación es moderada o débil, por ejemplo, p3|EDU × p2|POB (V=0.121), lo que indica que no todas las dimensiones de pobreza laboral se asocian fuertemente con la educación.
+Age is the strongest demographic moderator, with a Cramér's V of 0.68 for current education participation, showing that youth are much more likely to be studying. Gender also moderates responses moderately (V=0.16 average), with men more likely to be studying and more likely to report not working recently. Minority opinions include 16.9% currently studying and 18.3% receiving financial support, which are substantial but do not challenge the dominant consensus. The weak effect sizes (V values mostly below 0.13) limit the strength of conclusions about education-poverty relationships. The bivariate association between financial support and poverty work is not significant, indicating economic aid may not differ by poverty-related work status. The data relies on simulation-based SES bridging, which introduces uncertainty, and the limited number of variables restricts comprehensive understanding. No strong or polarized views were detected, indicating uniformity but also limited variability to detect stronger associations.
 
 ## Implications
-Primero, la fuerte asociación entre educación y empleo sugiere que políticas públicas deben enfocarse en facilitar el acceso y la permanencia en la educación para mejorar las condiciones laborales y reducir la pobreza. Esto incluye fortalecer apoyos económicos para estudiantes y vincular la educación con empleos estables. Segundo, dado que las percepciones varían según edad y género, las intervenciones deben ser diferenciadas, por ejemplo, promoviendo la educación y el empleo formal entre jóvenes y mujeres para cerrar brechas específicas. Además, la polarización y minorías en la dedicación laboral indican la necesidad de políticas inclusivas que reconozcan y apoyen formas no tradicionales de trabajo y estudio. Finalmente, la evidencia moderada en algunas áreas aconseja complementar estos hallazgos con estudios cualitativos o longitudinales para afinar estrategias y validar las asociaciones observadas.
-
----
-
-## Quantitative Appendix
-
-| Metric | Value |
-|--------|-------|
-| Variables Analyzed | 9 |
-| Divergence Index | 33.3% |
-| Consensus Variables | 6 |
-| Lean Variables | 1 |
-| Polarized Variab
+First, the moderate variation in motivations for studying by poverty-related work suggests policies promoting education as a pathway for self-improvement and economic mobility could resonate differently across poverty contexts; tailored messaging and support might enhance educational engagement among those involved in family businesses ver
 ```
-*(Truncated from 10538 chars)*
+*(Truncated from 11878 chars)*

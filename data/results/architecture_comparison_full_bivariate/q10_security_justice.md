@@ -1,6 +1,6 @@
 # q10_security_justice
 
-**Generated:** 2026-02-21 21:15:10
+**Generated:** 2026-02-23 01:08:31
 
 ## Query
 **ES:** ¿Qué relación ven los mexicanos entre seguridad pública y justicia?
@@ -15,10 +15,10 @@
 | Metric | OLD (detailed_report) | NEW (analytical_essay) |
 |--------|----------------------|------------------------|
 | Success | ✅ | ✅ |
-| Latency | 383 ms | 30676 ms |
-| Variables Analyzed | — | 9 |
+| Latency | 28554 ms | 51082 ms |
+| Variables Analyzed | — | 7 |
 | Divergence Index | — | 100% |
-| SES Bivariate Vars | — | 9/9 |
+| SES Bivariate Vars | — | 7/7 |
 | Cross-Dataset Pairs | — | 6 |
 
 ---
@@ -27,9 +27,8 @@
 
 | Dimension | Mean Cramér's V | Max Cramér's V | Variables |
 |-----------|----------------|----------------|----------|
-| region | 0.142 (moderate) | 0.172 | 9 |
-| sexo | 0.096 (weak) | 0.096 | 1 |
-| edad | 0.092 (weak) | 0.095 | 2 |
+| region | 0.152 (moderate) | 0.172 | 7 |
+| edad | 0.090 (weak) | 0.090 | 1 |
 
 
 ---
@@ -38,12 +37,12 @@
 
 | Variable Pair | Cramér's V | p-value | Key Pattern | n sim |
 |---------------|------------|---------|-------------|-------|
-| p3|SEG × p1|JUS | 0.072 (weak) | 0.004 | "3.0": 20% ("8.0") → 42% ("4.0") | 2000 |
-| p3|SEG × p2|JUS | 0.080 (weak) | 0.011 | "4.0": 11% ("4.0") → 38% ("6.0") | 2000 |
-| p3|SEG × p4|JUS | 0.063 (weak) | 0.030 | "3.0": 21% ("9.0") → 44% ("5.0") | 2000 |
-| p3|SEG × p7|JUS | 0.096 (weak) | 0.000 | "2.0": 12% ("6.0") → 41% ("9.0") | 2000 |
-| p4|SEG × p1|JUS | 0.060 (weak) | 0.084 | "4.0": 23% ("2.0") → 35% ("8.0") | 2000 |
-| p4|SEG × p2|JUS | 0.090 (weak) | 0.000 | "2.0": 7% ("98.0") → 40% ("6.0") | 2000 |
+| p3|SEG × p2|JUS | 0.087 (weak) | 0.000 | "Un poco más inseguro": 5% ("Mejor que antes (esp.)") → 28% ("Peligrosa") | 2000 |
+| p3|SEG × p4|JUS | 0.054 (weak) | 0.271 | "Igual (esp.)": 20% ("NC") → 43% ("Muy en desacuerdo") | 2000 |
+| p3|SEG × p7|JUS | 0.101 (moderate) | 0.000 | "Un poco más seguro": 12% ("Otra") → 43% ("NC") | 2000 |
+| p4|SEG × p2|JUS | 0.074 (weak) | 0.018 | " Igual": 24% ("Mejor que antes (esp.)") → 49% ("Tranquila") | 2000 |
+| p4|SEG × p4|JUS | 0.053 (weak) | 0.317 | " Mejor": 19% ("Muy de acuerdo") → 28% ("De acuerdo") | 2000 |
+| p4|SEG × p7|JUS | 0.056 (weak) | 0.419 | " Igual": 31% ("NC") → 75% ("Otra") | 2000 |
 
 *Estimates via SES-bridge simulation (OrderedModel / MNLogit).*
 
@@ -59,28 +58,31 @@
 **Query:** ¿Qué relación ven los mexicanos entre seguridad pública y justicia?
 
 ## Executive Summary
-Los mexicanos ven una relación estrecha entre la seguridad pública y la justicia, considerando que las condiciones económicas y políticas impactan directamente su percepción de seguridad. Existe una conciencia compartida de que mejorar la justicia y la gobernabilidad es esencial para fortalecer la seguridad y la confianza ciudadana.
+Los mexicanos parecen relacionar la seguridad pública con la justicia en términos de estabilidad y orden social, aunque existe una tensión entre apoyar medidas duras y valorar la obediencia basada en el beneficio colectivo. Esta relación muestra una visión compleja donde la justicia se entiende tanto desde la protección social como desde respuestas punitivas.
 
 ## Analysis Overview  
-La encuesta revela que la mayoría de los mexicanos perciben un deterioro o estancamiento en la seguridad pública tanto personal como nacional, con 35.84% sintiéndose menos seguros personalmente (p3|SEG) y 31.00% observando un empeoramiento en la seguridad del país (p5|SEG). Además, el 75.25% considera que la situación económica es igual o peor que el año anterior (p1|JUS), y un 57.00% ve la estabilidad política como preocupante o peligrosa (p2|JUS), lo que refleja una relación estrecha entre dificultades económicas, políticas y la percepción de inseguridad. En cuanto a las actitudes hacia la justicia, hay una división marcada sobre el uso de la tortura en la prevención del delito (36.42% en desacuerdo y 24.84% a favor, p4|JUS), aunque predomina la motivación para cumplir la ley por razones colectivas y morales (45.00% y 22.08%, p7|JUS). Estos resultados sugieren que la inseguridad y la justicia son vistas como fenómenos interrelacionados que requieren políticas integrales que atiendan a las causas económicas, políticas y sociales para restaurar la confianza pública y mejorar la gobernabilidad.
+La encuesta indica que una parte considerable de mexicanos percibe estabilidad en su seguridad personal y pública (31.2% y 34.3%, respectivamente; p3|SEG, p5|SEG), aunque muestran una moderada esperanza de mejora futura (p4|SEG, p6|SEG). En cuanto a la justicia, existe una paradoja en las actitudes: 24.9% aprueba medidas severas como la tortura (p4|JUS), mientras que 45.0% obedece la ley por un sentido de beneficio colectivo (p7|JUS). Además, el pesimismo económico es notable con solo 8.9% que percibe mejoría (p1|JUS), pero la preocupación política es mayor, con 37.2% que la considera alarmante (p2|JUS). Estos resultados reflejan cómo las percepciones sobre seguridad y justicia están ligadas a sentimientos complejos sobre el orden social y la situación política del país.
 
 ## Topic Analysis
 
-### SEGURIDAD PÚBLICA
-Las percepciones sobre la seguridad pública reflejan una sensación predominante de inseguridad y estancamiento tanto a nivel personal como nacional. Un 35.84% de los encuestados se sienten menos seguros personalmente en comparación con el año anterior (20.42% un poco menos seguro y 15.42% mucho menos seguro, p3|SEG), mientras que otro 31.25% percibe que su seguridad personal no ha cambiado. A nivel nacional, el 31.00% reporta un empeoramiento en la seguridad (10.33% mucho peor y 20.67% peor, p5|SEG), con solo 22.67% viendo mejoras. Las expectativas futuras también son pesimistas: 32.50% anticipan un deterioro en su seguridad personal y 37.42% en la seguridad nacional (p4|SEG, p6|SEG). Estas percepciones subrayan la necesidad de intervenciones focalizadas, comunicación eficaz y estrategias comunitarias para restaurar la confianza pública y mejorar la seguridad.
+### SEGURIDAD
+Los resultados de la encuesta muestran que una parte significativa de los encuestados percibe estabilidad en la seguridad tanto personal como pública en el país, con un 31.2% señalando que su situación personal de seguridad se ha mantenido igual en el último año (p3|SEG) y un 34.3% opinando que la seguridad pública nacional está estable en comparación con hace un año (p5|SEG). Además, hay un nivel moderado de optimismo respecto al futuro de la seguridad: el 5.6% espera que su seguridad personal sea mucho mejor en 12 meses y otro 22.2% que sea mejor (p4|SEG), mientras que para la seguridad pública nacional el 3.4% prevé una mejora considerable y el 23.8% una mejora moderada (p6|SEG). Estos datos reflejan un sentimiento general de estabilidad y una expectativa cautelosa de progreso en la seguridad a nivel personal y nacional.
 
-### JUSTICIA ECONÓMICA Y POLÍTICA
-El ámbito de la justicia, especialmente desde una perspectiva económica y política, muestra una fuerte percepción de condiciones adversas que afectan la estabilidad social. El 75.25% de los encuestados perciben la economía igual o peor que el año previo (37.33% igual de mala y 37.92% peor, p1|JUS), indicando dificultades económicas que pueden aumentar la delincuencia y la inestabilidad social. En cuanto a la estabilidad política, el 37.25% la consideran preoccupante y un 19.75% peligrosa (p2|JUS), reflejando una ansiedad notable que podría socavar la confianza pública y requerir intervenciones legales y sociales para restablecer la justicia política y social. Estos datos enfatizan la urgencia de estrategias integradas para mejorar la justicia y la gobernabilidad.
+### JUSTICIA Y ACTITUDES PÚBLICAS
+La encuesta revela una dinámica compleja en las actitudes hacia la justicia y la obediencia a la ley. Por un lado, un 24.9% de los encuestados está de acuerdo o muy de acuerdo con el uso de tortura para obtener información de detenidos (p4|JUS), mostrando cierta apertura hacia medidas punitivas severas. Por otro lado, un porcentaje mayor, del 45.0%, obedece las leyes porque cree que esto beneficia a todos en general (p7|JUS), indicando un apoyo importante a la justicia basada en valores colectivos y beneficios sociales. Esta tensión entre aceptación de medidas duras y adhesión a un orden social legítimo evidencia complejidades en cómo la población justifica y apoya las políticas de justicia y seguridad.
 
-### ACTITUDES SOCIALES HACIA EL SISTEMA DE JUSTICIA
-Las opiniones públicas en relación a aspectos específicos del sistema de justicia muestran tanto consensos como controversias. Un 36.42% de los encuestados se oponen al uso de la tortura para prevenir delitos, mientras que el 24.84% la apoyan y un 25.42% se mantienen neutrales (p4|JUS), indicando una ambivalencia moral significativa. Por otro lado, la mayoría expresa motivos claros para el cumplimiento de la ley: el 45.00% lo hace por beneficio colectivo y el 22.08% por deber moral (p7|JUS). Estos hallazgos muestran una base sólida para el diseño de políticas y programas educativos que promuevan el respeto a los derechos humanos y refuercen la obediencia a la ley desde valores compartidos.
+### ECONOMÍA Y POLÍTICA
+La percepción pública sobre la situación económica y política muestra contrastes marcados. Solo el 8.9% percibe una mejora en la economía respecto al año anterior (p1|JUS), evidenciando un pesimismo generalizado en este ámbito. Sin embargo, la preocupación política es más pronunciada, con un 37.2% describiendo esta situación como alarmante (p2|JUS). Esta divergencia sugiere que aunque la economía es vista de manera negativa, la inquietud por la política y sus efectos es aún más significativa para la población, lo que puede influir en las percepciones y demandas sociales relacionadas con seguridad y justicia.
 
 ## Expert Analysis
 
 ### Expert Insight 1
-The survey results clearly reflect and quantify public concerns about safety that are crucial for informing policy decisions and resource allocation in the domain of seguridad pública. Notably, 35.84% of respondents feel less safe personally compared to the previous year (20.42% a little less safe and 15.42% much less safe, p3|SEG), while another 31.25% perceive their personal security as unchanged, highlighting a significant sense of insecurity or stagnation in personal safety. This aligns with perceptions about the country’s public security, where 31.00% report a worsening in safety (10.33% much worse and 20.67% worse, p5|SEG), and only 22.67% see improvements, with 34.33% perceiving stability. These data underscore the need for targeted interventions and community engagement strategies to reverse these trends. The shared view of declining or stagnant security at both
+The survey results indicate that a substantial portion of respondents perceive stability in both their personal security and the overall public security of the country compared to the previous year. Specifically, 31.2% of participants reported that their personal security situation has remained unchanged over the past year (p3|SEG), while a slightly higher percentage, 34.3%, believe that the country's public security status is stable relative to one year ago (p5|SEG). These findings highlight a prevailing sense of maintained security among a notable segment of the population, which can serve as a baseline for further analysis of public sentiment on safety and security issues.
+
+### Expert Insight 2
+The survey results indicate a moderate level of optimism among respondents regarding future security prospects both at the personal and national levels. Specifically, 5.6% of respondents expect their personal security to be much better in 12 months, with an additional 22.2% anticipating it to be better (p4|SEG). In parallel, expectations for national public security show that 3.4% foresee it as much better and 23.8% as better over the next year (p6|SEG). These figures reflect a cautiously positive outlook on security improvements, suggesting that while a minority predicts substantial enhancement, a larger segment anticipates incremental progress. This nuanced pattern of optimism highli
 ```
-*(Truncated from 10104 chars)*
+*(Truncated from 7098 chars)*
 
 ---
 
@@ -92,18 +94,89 @@ The survey results clearly reflect and quantify public concerns about safety tha
 **Query:** ¿Qué relación ven los mexicanos entre seguridad pública y justicia?
 
 ## Summary
-Mexicanos muestran una relación débil pero estadísticamente significativa entre sus percepciones de seguridad pública y justicia, evidenciada en cinco pares de variables con asociaciones bajas (V entre 0.063 y 0.096) pero significativas (p < 0.05). Aunque la conexión existe, la fuerza de la relación es limitada, lo que indica que seguridad y justicia se perciben como temas relacionados pero no fuertemente vinculados en la opinión pública. Se evaluaron ocho pares bivariados, de los cuales cinco mostraron asociaciones significativas, pero todas con efectos pequeños, lo que reduce la confianza en conclusiones contundentes.
+The Mexican public perceives a subtle but significant relationship between justice and public security: those who view the justice situation as more dangerous or problematic tend to feel more insecure in terms of public safety, while more positive justice perceptions align with greater feelings of security. This relationship is evidenced by significant but weak to moderate associations across three bivariate pairs involving personal security perceptions and justice views, based on four estimated pairs with mixed significance and effect sizes below 0.1, indicating cautious confidence in these findings.
 
 ## Data Landscape
-Se analizaron nueve variables provenientes de encuestas sobre seguridad pública y justicia en México, con formas de distribución mayormente dispersas (cinco variables), dos polarizadas y dos inclinadas hacia una opinión mayoritaria. El índice de divergencia es del 100%, indicando ausencia de consenso claro en todas las variables, lo que refleja fragmentación y diversidad de opiniones en la población respecto a seguridad y justicia. Esta heterogeneidad complica la identificación de patrones claros y sugiere debates sociales intensos sobre estos temas.
+Seven variables were analyzed, spanning perceptions of public security and justice from two surveys. The variables exhibit no consensus, with one showing polarization, one leaning, and five dispersed distributions, reflecting fragmented and diverse public opinions on these topics. The divergence index at 100% confirms a complete lack of consensus, highlighting widespread disagreement or ambivalence among respondents regarding both security and justice issues.
 
 ## Evidence
-Los patrones cruzados entre variables de seguridad pública (p3|SEG, p4|SEG) y justicia (p1|JUS, p2|JUS, p4|JUS, p7|JUS) muestran relaciones débiles pero significativas. Por ejemplo, la respuesta modal '3.0' en p1|JUS (situación económica) varía entre 20.5% y 41.9% según la percepción de seguridad personal (p3|SEG), reflejando un vínculo tenue entre seguridad y economía (V=0.072, p=0.004). Similarmente, en p2|JUS (situación política), la categoría '4.0' oscila entre 11.4% y 37.5% según p3|SEG (V=0.080, p=0.011), mostrando una relación débil pero significativa. En actitudes hacia la tortura para obtener información (p4|JUS), la categoría '3.0' fluctúa de 21.2% a 43.8% según p3|SEG (V=0.063, p=0.030), indicando una conexión leve entre seguridad y métodos de justicia. Finalmente, las razones para obedecer la ley (p7|JUS) muestran que la categoría '2.0' varía ampliamente (12.5% a 40.7%) según p3|SEG (V=0.096, p=0.000), sugiriendo que la percepción de seguridad influye en las motivaciones normativas. En contraste, la relación entre expectativas futuras de seguridad (p4|SEG) y percepción económica (p1|JUS) no fue significativa (V=0.060, p=0.084). En cuanto a diferencias demográficas, la región geográfica modera las percepciones con efectos moderados (V hasta 0.17), por ejemplo, regiones con mayor percepción de inseguridad tienden a asociar la situación política como más preocupante. Las distribuciones univariadas muestran que la mayoría de los mexicanos siente que su seguridad personal es igual o un poco mejor que hace un año (31.2% y 27.4%), pero también hay una proporción considerable que se siente más insegura (35.8%). En justicia, las opiniones están polarizadas entre quienes consideran la situación económica peor (37.9%) o igual de mala (37.3%) que hace un año, y la mayoría considera la situación política preocupante (37.2%).
+The strongest substantive relationship appears between personal security feelings (p3|SEG) and justice perceptions of the political situation (p2|JUS). Here, the key contrast is in the "Un poco más inseguro" category, which ranges from a low 5.3% among those who see justice as "Mejor que antes" to a high 27.9% when justice is perceived as "Peligrosa" (V=0.087, p=0.000). This pattern indicates that more negative justice views correspond to greater feelings of insecurity.
+
+| p2|JUS category | Un poco más inseguro % |
+|---|---|
+| Mejor que antes (esp.) | 5.3% |
+| Prometedora | 15.6% |
+| Con oportunidades | 16.8% |
+| Más o menos (esp.) | 16.4% |
+| Peor que antes (esp.) | 20.6% |
+| Preocupante | 24.7% |
+| Peligrosa | 27.9% |
+
+Another significant relationship exists between personal security (p3|SEG) and reasons for obeying laws (p7|JUS), with the "Un poco más seguro" response varying widely from 12.5% to 42.9% depending on the reason given (V=0.101, p=0.000). For example, those citing "Porque cumplir la ley nos beneficia a todos" report 29.4% feeling a bit more secure, while those with "Otra" reasons report only 12.5%.
+
+| p7|JUS category | Un poco más seguro % |
+|---|---|
+| Porque cumplir la ley nos beneficia a todos | 29.4% |
+| Porque es un deber moral | 32.9% |
+| Para evitar daños a mi familia y amistades | 30.3% |
+| Para evitar castigos | 24.8% |
+| Para no ser criticado por los demás | 22.6% |
+| Otra | 12.5% |
+| NC | 42.9% |
+
+Expectations about future personal security (p4|SEG) also relate weakly but significantly to justice perceptions (p2|JUS), with the "Igual" response ranging from 23.8% to 48.6% across justice categories (V=0.074, p=0.018). This suggests that justice views influence expectations of future security, though less strongly.
+
+| p2|JUS category | Igual (future security) % |
+|---|---|
+| Mejor que antes (esp.) | 23.8% |
+| Con oportunidades | 34.5% |
+| Peligrosa | 38.7% |
+| Preocupante | 41.7% |
+| Peor que antes (esp.) | 45.4% |
+| Más o menos (esp.) | 44.3% |
+| Tranquila | 48.6% |
+| Prometedora | 40.9% |
+
+No significant relationships were found between security and attitudes toward torture (p4|JUS) or future security expectations and reasons for obeying laws (p7|JUS).
+
+Demographically, region moderates responses moderately (V=0.15-0.17), with some regions reporting higher insecurity or more negative justice perceptions, but age shows only weak moderation.
+
+**p3|SEG** — Personal security compared to one year ago:
+| Response | % |
+|---|---|
+| Igual (esp.) | 31.2% |
+| Un poco más seguro | 27.4% |
+| Un poco más inseguro | 20.4% |
+| Mucho más inseguro | 15.4% |
+| Mucho más seguro | 4.8% |
+| No sabe/ No contesta | 0.8% |
+
+**p2|JUS** — Justice political situation description:
+| Response | % |
+|---|---|
+| Preocupante | 37.2% |
+| Peligrosa | 19.8% |
+| Con oportunidades | 11.2% |
+| Peor que antes (esp.) | 10.6% |
+| Tranquila | 6.3% |
+| Más o menos (esp.) | 5.9% |
+| Prometedora | 5.5% |
+| No sabe/ No contesta | 1.6% |
+| Mejor que antes (esp.) | 1.5% |
+| Otra (esp.) | 0.3% |
+
+**p7|JUS** — Reasons for obeying laws:
+| Response | % |
+|---|---|
+| Porque cumplir la ley nos beneficia a todos | 45.0% |
+| Porque es un deber moral | 22.1% |
+| Para no ser criticado por los demás | 11.5% |
+| Para evitar castigos | 9.6% |
+| Para evitar daños a mi familia y amistades | 9.0% |
+| No sabe/ No contesta | 1.9% |
+| Otra | 0.9% |
 
 ## Complications
-Las asociaciones entre seguridad y justicia son consistentemente débiles (V entre 0.060 y 0.096), lo que limita la fuerza interpretativa de los hallazgos. La región es la dimensión demográfica que más modera las opiniones, con diferencias de hasta 15 puntos porcentuales en percepciones de seguridad y justicia, mientras que sexo y edad tienen efectos menores. La fragmentación de opiniones es alta, con variables polarizadas y dispersas, y minorías significativas (más del 15%) que sostienen visiones contrarias, como 19.2% que están de acuerdo con tortura para obtener información. La metodología basada en simulaciones SES-bridge y el tamaño muestral de 2000 pueden introducir incertidumbre y sesgos en las asociaciones estimadas. Además, algunas variables de justicia, como la percepción económica, están solo tangencialmente relacionadas con justicia, lo que puede diluir la relación con seguridad. En un caso (p4|SEG × p1|JUS) no se encontró asociación significativa, evidenciando que no todas las dimensiones de seguridad y justicia están conectadas.
-
-## Implications
-Primero, la débil relación entre seguridad pública y justicia sugiere que políticas integrales deben abordar ambos temas de manera diferenciada, reconociendo que mejorar la percepción de seguridad no garantiza un cambio paralelo en la confianza o actitudes hacia la justicia. Segundo, la fragmentación y polarización indican la necesidad de estrategias de comunicación y participación ciudadana que reconozcan la diversidad de opiniones y construyan consensos sobre qué significa justicia y seguridad para diferentes regiones y grupos sociales. Alternativamente, dada la baja intensidad de la relación, se podría priorizar intervenciones focalizadas en aspectos específicos (por ejemplo, mejorar métodos de justicia sin esp
+The relationship between justice and security perceptions is consistently weak, with Cramér's V values below 0.1 in most cases, indicating subtle associations rather than strong links. Region is the demographic dimension with the strongest moderating effect, showing moderate differences in perceptions of security and justice; for example, some regions report up to 29% feeling "Mucho más insegu
 ```
-*(Truncated from 11842 chars)*
+*(Truncated from 18247 chars)*

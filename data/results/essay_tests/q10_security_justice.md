@@ -4,7 +4,7 @@
 **Query (EN):** What relationship do Mexicans see between public security and justice?
 **Variables:** p3|SEG, p4|SEG, p5|SEG, p6|SEG, p7|SEG, p1|JUS, p2|JUS, p4|JUS, p7|JUS
 **Status:** ✅ success
-**Time:** 40098ms | **Cross-dataset pairs:** 6
+**Time:** 66992ms | **Cross-dataset pairs:** 6
 
 ---
 
@@ -13,63 +13,37 @@
 **Query:** ¿Qué relación ven los mexicanos entre seguridad pública y justicia?
 
 ## Summary
-The relationship between public security and justice perceptions among Mexicans is generally weak, with most cross-tabulations showing minimal or no significant association. The only moderate and statistically significant relationship is between personal security perceptions and reasons for obeying laws, indicating that motivations for legal compliance somewhat influence feelings of security. Overall, nine variable pairs were analyzed with only two showing significant associations, reflecting low confidence in a strong direct link between security and justice perceptions.
+Los mexicanos muestran una relación débil pero estadísticamente significativa entre sus percepciones de seguridad pública y de justicia, especialmente en cómo perciben la situación económica del país y las razones para obedecer las leyes. Aunque estas asociaciones son consistentes, su fuerza es baja (Cramér's V < 0.1), lo que indica que la relación entre seguridad y justicia es limitada y fragmentada. Se analizaron cinco pares bivariados, de los cuales dos mostraron asociaciones significativas, pero débiles, lo que sugiere un nivel de confianza moderado en la interpretación de estos vínculos.
 
 ## Data Landscape
-Nine variables from surveys on public security and justice perceptions were analyzed, covering personal and national security views, economic and political justice assessments, and moral attitudes toward law obedience. The distributions are predominantly dispersed or polarized, with no consensus in any variable and a 100% divergence index, indicating highly fragmented public opinions on these topics. This fragmentation suggests diverse and conflicting views across the Mexican population regarding security and justice.
+Se analizaron nueve variables provenientes de encuestas sobre seguridad pública y justicia, con formas de distribución mayormente dispersas (cinco variables) y polarizadas (dos variables), además de dos variables con sesgo hacia una opinión. El índice de divergencia del 100% indica una ausencia total de consenso entre la población, reflejando una fragmentación marcada en las opiniones sobre seguridad y justicia. Esta dispersión y polarización evidencian un escenario complejo y dividido en la percepción social sobre estos temas.
 
 ## Evidence
-A) Cross-tab patterns reveal mostly weak or absent relationships between security and justice variables. For example, personal security perceptions over the past year ('Igual (esp.)') vary only slightly from 28.9% to 42.5% across economic justice categories (p1|JUS), showing no meaningful association (V=0.051, p=0.388).
-
-| p1|JUS category | Igual (esp.) % |
+La relación entre la percepción de seguridad personal y la percepción económica de justicia (p3|SEG × p1|JUS) muestra que la proporción de personas que se sienten "Un poco más seguro" oscila entre 20.5% cuando la percepción de justicia es "NS" y 32.8% cuando la justicia es percibida como "Peor" (V=0.073, p=0.002), indicando una asociación débil pero significativa. 
+| p1|JUS category | Un poco más seguro % |
 |---|---|
-| Mejor | 42.5% |
-| Igual de bien (esp.) | 33.8% |
-| Igual de mal (esp.) | 36.4% |
-| Peor | 39.9% |
-| NS | 28.9% |
+| Mejor | 31.4% |
+| Igual de bien (esp.) | 22.2% |
+| Igual de mal (esp.) | 31.7% |
+| Peor | 32.8% |
+| NS | 20.5% |
 
-Similarly, security perceptions by political situation views (p2|JUS) show 'Igual (esp.)' ranging from 30.8% to 50.0%, again with no significant pattern (V=0.063, p=0.256).
-
-| p2|JUS category | Igual (esp.) % |
+En cuanto a la relación entre seguridad personal y razones para obedecer las leyes (p3|SEG × p7|JUS), la categoría "Un poco más seguro" varía desde 25.9% para quienes obedecen "Para evitar castigos" hasta 60.9% para quienes respondieron "NC" (V=0.090, p=0.000), mostrando también una asociación débil pero significativa.
+| p7|JUS category | Un poco más seguro % |
 |---|---|
-| Prometedora | 45.8% |
-| Con oportunidades | 30.8% |
-| Preocupante | 38.1% |
-| Tranquila | 34.0% |
-| Peligrosa | 39.1% |
-| Mejor que antes (esp.) | 50.0% |
-| Más o menos (esp.) | 35.7% |
-| Peor que antes (esp.) | 42.2% |
+| Porque cumplir la ley nos beneficia a todos | 31.3% |
+| Para no ser criticado por los demás | 26.6% |
+| Porque es un deber moral | 31.0% |
+| Para evitar daños a mi familia y amistades | 29.5% |
+| Para evitar castigos | 25.9% |
+| Otra | 30.8% |
+| NC | 60.9% |
 
-Agreement with harsh justice measures (p4|JUS) also shows weak linkage to security perceptions, with 'Igual (esp.)' between 26.9% and 42.9% (V=0.057, p=0.154).
+Las otras asociaciones entre seguridad y justicia, como la percepción política (p3|SEG × p2|JUS) y la actitud hacia la tortura para obtener información (p3|SEG × p4|JUS), no mostraron relaciones significativas, indicando uniformidad en las respuestas.
 
-| p4|JUS category | Igual (esp.) % |
-|---|---|
-| Muy de acuerdo | 42.9% |
-| De acuerdo | 34.5% |
-| Ni de acuerdo ni en desacuerdo (esp..) | 37.6% |
-| En desacuerdo | 35.2% |
-| Muy en desacuerdo | 36.2% |
-| NC | 26.9% |
+Demográficamente, la región es la dimensión que más modera las percepciones, con diferencias moderadas en la percepción de seguridad y justicia. Por ejemplo, en seguridad pública, la percepción "Igual (esp.)" varía entre 27% y 34% según la región, y en justicia económica, la categoría "Peor" varía entre 29% y 50% según la región.
 
-The only moderate and significant association is between personal security perceptions (p3|SEG) and reasons for obeying laws (p7|JUS). Here, the proportion feeling "Mucho más seguro" varies widely from 0.8% among those who obey laws because it is a moral duty to 21.4% among those citing "Otra" reason (V=0.102, p=0.000).
-
-| p7|JUS category | Mucho más seguro % |
-|---|---|
-| Porque cumplir la ley nos beneficia a todos | 7.7% |
-| Para no ser criticado por los demás | 11.5% |
-| Porque es un deber moral | 0.8% |
-| Para evitar daños a mi familia y amistades | 10.2% |
-| Para evitar castigos | 10.1% |
-| Otra | 21.4% |
-| NC | 4.8% |
-
-B) Demographically, region moderately influences security perceptions, with some regions showing higher insecurity. Women are slightly more likely than men to have lived longer in their neighborhoods, which may affect security feelings. Age differences are weak but present.
-
-C) Supporting univariate distributions show dispersed or polarized opinions. For example, personal security compared to a year ago (p3|SEG) is dispersed: 31.2% feel the same, 27.4% a little more secure, and 20.4% a little more insecure.
-
-**p3|SEG** — Perceived change in personal public security over past year:
+**p3|SEG** — Percepción personal de seguridad pública respecto a hace un año:
 | Response | % |
 |---|---|
 | Igual (esp.) | 31.2% |
@@ -77,9 +51,16 @@ C) Supporting univariate distributions show dispersed or polarized opinions. For
 | Un poco más inseguro | 20.4% |
 | Mucho más inseguro | 15.4% |
 | Mucho más seguro | 4.8% |
-| No sabe/ No contesta | 0.8% |
 
-**p7|JUS** — Reasons for obeying laws:
+**p1|JUS** — Percepción de la situación económica actual respecto a hace un año:
+| Response | % |
+|---|---|
+| Peor | 37.9% |
+| Igual de mal (esp.) | 37.3% |
+| Igual de bien (esp.) | 14.9% |
+| Mejor | 8.9% |
+
+**p7|JUS** — Razones para obedecer las leyes:
 | Response | % |
 |---|---|
 | Porque cumplir la ley nos beneficia a todos | 45.0% |
@@ -87,14 +68,20 @@ C) Supporting univariate distributions show dispersed or polarized opinions. For
 | Para no ser criticado por los demás | 11.5% |
 | Para evitar castigos | 9.6% |
 | Para evitar daños a mi familia y amistades | 9.0% |
-| No sabe/ No contesta | 1.9% |
-| Otra | 0.9% |
 
 ## Complications
-Demographically, region is the strongest moderator (mean V=0.14), with some regions showing more pessimistic views on security and justice. Gender and age have weaker effects. Minority views are substantial; for instance, 19.2% agree with torture for information, and nearly 20% describe the political situation as "Peligrosa," challenging any simple consensus. The main limitation is the weak or non-significant associations between most security and justice variables, limiting strong conclusions. The justice variables focus more on economic and political perceptions or moral attitudes rather than direct justice system performance, which may obscure relationships with security perceptions. The sample size is moderate and the simulation-based SES-bridge method introduces uncertainty, requiring cautious interpretation. Overall, the data reveal fragmented and polarized opinions with no clear, strong linkage between security and justice perceptions.
+La relación entre seguridad pública y justicia está moderada principalmente por la región, que muestra diferencias de hasta 20 puntos porcentuales en algunas categorías clave, como la percepción económica y de seguridad. El sexo y la edad tienen efectos moderados y débiles respectivamente, con diferencias menores en las respuestas. Además, hay opiniones minoritarias relevantes, por ejemplo, un 19.2% está de acuerdo con la tortura para obtener información, lo que desafía la mayoría que se opone a esta práctica.
+
+Las asociaciones bivariadas entre seguridad y justicia son estadísticamente significativas solo en dos casos, pero con valores de Cramér's V menores a 0.1, lo que indica relaciones muy débiles. Esto limita la capacidad para hacer afirmaciones fuertes sobre la conexión entre estas percepciones. La ausencia de asociaciones significativas en otras variables sugiere que la relación es fragmentada y no uniforme.
+
+Finalmente, las estimaciones derivadas del puente SES pueden tener limitaciones inherentes a la simulación y al tamaño muestral, lo que añade incertidumbre a la interpretación de las asociaciones débiles observadas.
 
 ## Implications
-First, the weak associations suggest that policies aiming to improve public security may not directly shift public perceptions of justice or vice versa; integrated approaches addressing both domains separately may be necessary. Second, the significant link between reasons for obeying laws and feelings of security implies that fostering a moral and communal sense of legal compliance could enhance security perceptions, suggesting educational and cultural interventions to strengthen law-abiding motivations. Third, given the fragmentation and polarization, policymakers should tailor communications and interventions regionally and demographically to address diverse and conflicting public views. Finally, the lack of strong correlations calls for improved measurement and data collection on justice system performance and its direct impact on security perceptions to better inform policy design.
+Primero, la débil pero significativa relación entre percepción de seguridad y justicia sugiere que mejorar la confianza en la justicia económica y en las razones éticas para obedecer leyes podría tener un impacto positivo, aunque limitado, en la percepción de seguridad pública. Políticas que fortalezcan la transparencia y eficacia del sistema judicial podrían contribuir a mejorar la sensación de seguridad.
+
+Segundo, dada la fragmentación y polarización de opiniones, las intervenciones deben ser regionalmente diferenciadas, considerando las disparidades en percepción y actitudes. Además, la presencia de minorías que apoyan medidas controversiales como la tortura indica la necesidad de campañas educativas y de fortalecimiento de derechos humanos para evitar que percepciones negativas de justicia erosionen la cohesión social y la seguridad.
+
+En conjunto, la evidencia apunta a que las políticas deben abordar tanto la mejora tangible en justicia como la construcción de confianza pública para influir en la percepción de seguridad, reconociendo que la relación entre ambos es compleja y no lineal.
 
 ---
 
@@ -303,12 +290,12 @@ First, the weak associations suggest that policies aiming to improve public secu
 
 | Variable Pair | Cramér's V | p-value | Key Pattern | n sim |
 |---------------|------------|---------|-------------|-------|
-| p3|SEG × p1|JUS | 0.051 (weak) | 0.388 | "Igual (esp.)": 29% ("NS") → 42% ("Mejor") | 2000 |
-| p3|SEG × p2|JUS | 0.063 (weak) | 0.256 | "Igual (esp.)": 31% ("Con oportunidades") → 50% ("Mejor que antes (esp.)") | 2000 |
-| p3|SEG × p4|JUS | 0.057 (weak) | 0.154 | "Igual (esp.)": 27% ("NC") → 43% ("Muy de acuerdo") | 2000 |
-| p3|SEG × p7|JUS | 0.102 (moderate) | 0.000 | "Mucho más seguro": 1% ("Porque es un deber moral") → 21% ("Otra") | 2000 |
-| p4|SEG × p1|JUS | 0.066 (weak) | 0.018 | " Peor": 22% ("Peor") → 39% ("NS") | 2000 |
-| p4|SEG × p2|JUS | 0.070 (weak) | 0.054 | " Igual": 34% ("Tranquila") → 53% ("Mejor que antes (esp.)") | 2000 |
+| p3|SEG × p1|JUS | 0.073 (weak) | 0.002 | "Un poco más seguro": 20% ("NS") → 33% ("Peor") | 2000 |
+| p3|SEG × p2|JUS | 0.068 (weak) | 0.107 | "Un poco más inseguro": 13% ("Tranquila") → 46% ("Mejor que antes (esp.)") | 2000 |
+| p3|SEG × p4|JUS | 0.057 (weak) | 0.141 | "Un poco más seguro": 17% ("NC") → 34% ("Muy de acuerdo") | 2000 |
+| p3|SEG × p7|JUS | 0.090 (weak) | 0.000 | "Un poco más seguro": 26% ("Para evitar castigos") → 61% ("NC") | 2000 |
+| p4|SEG × p1|JUS | 0.063 (weak) | 0.045 | " Peor": 20% ("Igual de mal (esp.)") → 37% ("NS") | 2000 |
+| p4|SEG × p2|JUS | 0.067 (weak) | 0.115 | " Mejor": 22% ("Preocupante") → 39% ("Más o menos (esp.)") | 2000 |
 
 *Estimates derived from SES-bridge regression simulation.*
 
@@ -317,79 +304,122 @@ First, the weak associations suggest that policies aiming to improve public secu
 
 | p1|JUS (conditioning) | Top p3|SEG responses |
 |---|---|
-| Mejor | Igual (esp.): 42%, Un poco más seguro: 25%, Un poco más inseguro: 21% |
-| Igual de bien (esp.) | Igual (esp.): 34%, Un poco más seguro: 32%, Un poco más inseguro: 24% |
-| Igual de mal (esp.) | Igual (esp.): 36%, Un poco más seguro: 32%, Un poco más inseguro: 18% |
-| Peor | Igual (esp.): 40%, Un poco más seguro: 28%, Un poco más inseguro: 20% |
-| NS | Un poco más seguro: 33%, Igual (esp.): 29%, Un poco más inseguro: 29% |
+| Mejor | Igual (esp.): 36%, Un poco más seguro: 31%, Un poco más inseguro: 22% |
+| Igual de bien (esp.) | Igual (esp.): 39%, Un poco más inseguro: 27%, Un poco más seguro: 22% |
+| Igual de mal (esp.) | Igual (esp.): 37%, Un poco más seguro: 32%, Un poco más inseguro: 21% |
+| Peor | Igual (esp.): 39%, Un poco más seguro: 33%, Un poco más inseguro: 18% |
+| NS | Igual (esp.): 38%, Un poco más inseguro: 23%, Un poco más seguro: 20% |
 
 **p3|SEG × p2|JUS** — How p3|SEG distributes given p2|JUS:
 
 | p2|JUS (conditioning) | Top p3|SEG responses |
 |---|---|
-| Prometedora | Igual (esp.): 46%, Un poco más seguro: 25%, Un poco más inseguro: 22% |
-| Con oportunidades | Igual (esp.): 31%, Un poco más seguro: 29%, Un poco más inseguro: 28% |
-| Preocupante | Igual (esp.): 38%, Un poco más seguro: 28%, Un poco más inseguro: 22% |
-| Tranquila | Un poco más seguro: 40%, Igual (esp.): 34%, Un poco más inseguro: 15% |
-| Peligrosa | Igual (esp.): 39%, Un poco más seguro: 26%, Un poco más inseguro: 22% |
-| Mejor que antes (esp.) | Igual (esp.): 50%, Un poco más seguro: 28%, Un poco más inseguro: 22% |
-| Más o menos (esp.) | Un poco más seguro: 38%, Igual (esp.): 36%, Un poco más inseguro: 14% |
-| Peor que antes (esp.) | Igual (esp.): 42%, Un poco más seguro: 34%, Un poco más inseguro: 17% |
+| Prometedora | Igual (esp.): 46%, Un poco más inseguro: 22%, Un poco más seguro: 20% |
+| Con oportunidades | Igual (esp.): 40%, Un poco más seguro: 31%, Un poco más inseguro: 22% |
+| Preocupante | Igual (esp.): 39%, Un poco más seguro: 27%, Un poco más inseguro: 22% |
+| Tranquila | Igual (esp.): 47%, Un poco más seguro: 34%, Un poco más inseguro: 13% |
+| Peligrosa | Igual (esp.): 35%, Un poco más seguro: 28%, Un poco más inseguro: 24% |
+| Mejor que antes (esp.) | Un poco más inseguro: 46%, Un poco más seguro: 36%, Igual (esp.): 18% |
+| Más o menos (esp.) | Un poco más seguro: 41%, Igual (esp.): 36%, Un poco más inseguro: 14% |
+| Peor que antes (esp.) | Igual (esp.): 44%, Un poco más seguro: 31%, Un poco más inseguro: 18% |
 
 **p3|SEG × p4|JUS** — How p3|SEG distributes given p4|JUS:
 
 | p4|JUS (conditioning) | Top p3|SEG responses |
 |---|---|
-| Muy de acuerdo | Igual (esp.): 43%, Un poco más inseguro: 25%, Un poco más seguro: 19% |
-| De acuerdo | Igual (esp.): 34%, Un poco más seguro: 31%, Un poco más inseguro: 21% |
-| Ni de acuerdo ni en desacuerdo (esp..) | Igual (esp.): 38%, Un poco más seguro: 31%, Un poco más inseguro: 20% |
-| En desacuerdo | Igual (esp.): 35%, Un poco más seguro: 34%, Un poco más inseguro: 18% |
-| Muy en desacuerdo | Igual (esp.): 36%, Un poco más seguro: 28%, Un poco más inseguro: 22% |
-| NC | Un poco más inseguro: 31%, Igual (esp.): 27%, Un poco más seguro: 23% |
+| Muy de acuerdo | Un poco más seguro: 34%, Igual (esp.): 31%, Un poco más inseguro: 21% |
+| De acuerdo | Igual (esp.): 38%, Un poco más seguro: 27%, Un poco más inseguro: 20% |
+| Ni de acuerdo ni en desacuerdo (esp..) | Igual (esp.): 40%, Un poco más seguro: 28%, Un poco más inseguro: 21% |
+| En desacuerdo | Igual (esp.): 37%, Un poco más seguro: 30%, Un poco más inseguro: 23% |
+| Muy en desacuerdo | Igual (esp.): 41%, Un poco más seguro: 26%, Un poco más inseguro: 17% |
+| NC | Igual (esp.): 41%, Mucho más inseguro: 22%, Un poco más seguro: 17% |
 
 **p3|SEG × p7|JUS** — How p3|SEG distributes given p7|JUS:
 
 | p7|JUS (conditioning) | Top p3|SEG responses |
 |---|---|
-| Porque cumplir la ley nos beneficia a todos | Igual (esp.): 38%, Un poco más seguro: 33%, Un poco más inseguro: 19% |
-| Para no ser criticado por los demás | Igual (esp.): 34%, Un poco más inseguro: 27%, Un poco más seguro: 22% |
-| Porque es un deber moral | Igual (esp.): 41%, Un poco más seguro: 29%, Un poco más inseguro: 20% |
-| Para evitar daños a mi familia y amistades | Igual (esp.): 37%, Un poco más seguro: 27%, Un poco más inseguro: 24% |
-| Para evitar castigos | Igual (esp.): 31%, Un poco más inseguro: 28%, Un poco más seguro: 25% |
-| Otra | Igual (esp.): 29%, Mucho más seguro: 21%, Un poco más inseguro: 21% |
-| NC | Igual (esp.): 38%, Un poco más seguro: 33%, Un poco más inseguro: 24% |
+| Porque cumplir la ley nos beneficia a todos | Igual (esp.): 41%, Un poco más seguro: 31%, Un poco más inseguro: 17% |
+| Para no ser criticado por los demás | Igual (esp.): 30%, Un poco más inseguro: 30%, Un poco más seguro: 27% |
+| Porque es un deber moral | Igual (esp.): 36%, Un poco más seguro: 31%, Un poco más inseguro: 23% |
+| Para evitar daños a mi familia y amistades | Igual (esp.): 37%, Un poco más seguro: 30%, Un poco más inseguro: 25% |
+| Para evitar castigos | Igual (esp.): 37%, Un poco más seguro: 26%, Un poco más inseguro: 23% |
+| Otra | Igual (esp.): 54%, Un poco más seguro: 31%, Un poco más inseguro: 8% |
+| NC | Un poco más seguro: 61%, Igual (esp.): 35%, NS: 4% |
 
 **p4|SEG × p1|JUS** — How p4|SEG distributes given p1|JUS:
 
 | p1|JUS (conditioning) | Top p4|SEG responses |
 |---|---|
-| Mejor |  Igual: 33%,  Mejor: 32%,  Peor: 25% |
-| Igual de bien (esp.) |  Igual: 40%,  Peor: 32%,  Mejor: 21% |
-| Igual de mal (esp.) |  Igual: 42%,  Mejor: 27%,  Peor: 24% |
-| Peor |  Igual: 44%,  Mejor: 25%,  Peor: 22% |
-| NS |  Peor: 39%,  Igual: 30%,  Mejor: 23% |
+| Mejor |  Igual: 45%,  Peor: 28%,  Mejor: 24% |
+| Igual de bien (esp.) |  Igual: 38%,  Peor: 30%,  Mejor: 22% |
+| Igual de mal (esp.) |  Igual: 41%,  Mejor: 28%,  Peor: 20% |
+| Peor |  Igual: 40%,  Mejor: 26%,  Peor: 25% |
+| NS |  Peor: 37%,  Igual: 32%,  Mejor: 22% |
 
 **p4|SEG × p2|JUS** — How p4|SEG distributes given p2|JUS:
 
 | p2|JUS (conditioning) | Top p4|SEG responses |
 |---|---|
-| Prometedora |  Igual: 41%,  Mejor: 28%,  Peor: 24% |
-| Con oportunidades |  Igual: 39%,  Peor: 24%,  Mejor: 24% |
-| Preocupante |  Igual: 39%,  Peor: 27%,  Mejor: 26% |
-| Tranquila |  Mejor: 37%,  Igual: 34%,  Peor: 27% |
-| Peligrosa |  Igual: 43%,  Peor: 25%,  Mejor: 25% |
-| Mejor que antes (esp.) |  Igual: 53%,  Mejor: 20%,  Peor: 20% |
-| Más o menos (esp.) |  Igual: 50%,  Mejor: 25%,  Peor: 18% |
-| Peor que antes (esp.) |  Igual: 42%,  Mejor: 28%,  Peor: 17% |
+| Prometedora |  Igual: 42%,  Peor: 26%,  Mejor: 26% |
+| Con oportunidades |  Igual: 42%,  Peor: 25%,  Mejor: 23% |
+| Preocupante |  Igual: 45%,  Peor: 26%,  Mejor: 22% |
+| Tranquila |  Igual: 40%,  Mejor: 31%,  Peor: 26% |
+| Peligrosa |  Igual: 40%,  Mejor: 27%,  Peor: 24% |
+| Mejor que antes (esp.) |  Igual: 44%,  Mejor: 33%,  Mucho mejor: 11% |
+| Más o menos (esp.) |  Mejor: 39%,  Igual: 39%,  Peor: 20% |
+| Peor que antes (esp.) |  Igual: 34%,  Mejor: 27%,  Peor: 25% |
+### Bridge Model Diagnostics
+
+> For human inspection only — not passed to the LLM.
+
+#### Summary
+
+| Variable | Model | Pseudo-R² | LLR p | Dominant SES | Quality |
+|----------|-------|-----------|-------|--------------|---------|
+| p1|JUS | mnlogit | 0.066 | 0.631 | ? | weak |
+| p2|JUS | mnlogit | 0.088 | 0.604 | ? | weak |
+| p3|SEG | mnlogit | 0.128 | 0.001 | ? | good |
+| p4|JUS | mnlogit | 0.047 | 0.959 | ? | weak |
+| p4|SEG | mnlogit | 0.063 | 0.535 | ? | weak |
+| p7|JUS | mnlogit | 0.099 | 0.392 | ? | weak |
+
+**Mean pseudo-R²:** 0.082 &ensp;|&ensp; **Overall dominant SES dimension:** ?
+
+> ⚠ 5/6 bridge models are weak (R²<0.02 or LLR p≥0.10). Simulated Cramér's V for those variables may underestimate the true association.
+
+#### Per-Variable SES Predictor Detail
+
+Top predictors by |t|-statistic — answers: which SES variable is doing the work?
+
+**p1|JUS** (mnlogit, R²=0.066, LLR p=0.631, quality=weak)
+*(coefficient table unavailable)*
+
+**p2|JUS** (mnlogit, R²=0.088, LLR p=0.604, quality=weak)
+*(coefficient table unavailable)*
+
+**p3|SEG** (mnlogit, R²=0.128, LLR p=0.001, quality=good)
+*(coefficient table unavailable)*
+
+**p4|JUS** (mnlogit, R²=0.047, LLR p=0.959, quality=weak)
+*(coefficient table unavailable)*
+
+**p4|SEG** (mnlogit, R²=0.063, LLR p=0.535, quality=weak)
+*(coefficient table unavailable)*
+
+**p7|JUS** (mnlogit, R²=0.099, LLR p=0.392, quality=weak)
+*(coefficient table unavailable)*
+
+*Pseudo-R² = McFadden's. Low values mean SES explains little variance in that variable — the bridge simulation still produces an estimate, but its precision is reduced.*
+
 ### Reasoning Outline
 
-**Evidence Hierarchy:** The strongest evidence comes from cross-dataset bivariate associations with statistically significant p-values, notably the moderate significant relationship between personal security change (p3|SEG) and reasons for obeying laws (p7|JUS), and the weak but significant association between future personal security expectations (p4|SEG) and economic justice perceptions (p1|JUS). Demographic fault lines provide secondary context about opinion fragmentation but do not directly address the security-justice relationship. Univariate distributions offer background on opinion diversity but do not establish relationships.
+**Evidence Hierarchy:** The strongest evidence comes from cross-dataset bivariate associations with significant p-values, notably between personal security perceptions (p3|SEG) and justice economic perceptions (p1|JUS), as well as between personal security and reasons for obeying laws (p7|JUS). These indicate weak but statistically significant relationships linking security and justice perceptions. Demographic fault lines provide secondary context on opinion fragmentation by region, sex, and age. Univariate distributions offer supporting context but do not demonstrate relationships on their own.
 
 **Key Limitations:**
-- All cross-dataset bivariate associations except two are weak and mostly non-significant, limiting strong conclusions about security-justice relationships.
-- The variables on justice focus more on economic and political perceptions or moral attitudes rather than direct measures of justice system performance or fairness, limiting direct linkage to security perceptions.
-- Sample size is moderate (n=2000), but effect sizes (Cramér's V) are generally low, indicating weak associations.
-- Simulation-based estimation methods may introduce uncertainty in significance testing and effect size estimation, requiring cautious interpretation.
+- All cross-dataset associations show weak effect sizes (Cramér's V below 0.1), limiting strength of conclusions.
+- Simulation-based bivariate estimates may have inherent uncertainty despite significance testing.
+- Limited number of cross-survey variable pairs restricts comprehensive analysis of security-justice relationships.
+- Variables related to justice focus more on economic and political perceptions rather than direct justice system evaluations, which may limit relevance to the query.
 
 ### Analysis Metadata
 - **Analysis Type:** Analytical Essay (Quantitative + Qualitative)

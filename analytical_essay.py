@@ -698,6 +698,136 @@ def _format_cross_dataset_bivariate(cross_dataset_bivariate: dict) -> str:
     return "\n".join(lines)
 
 
+def _format_bridge_diagnostics(cross_dataset_bivariate: dict) -> str:
+    """Render SES bridge model diagnostics as a markdown appendix.
+
+    De-duplicates by variable: if var_a appears in multiple pairs it is shown
+    once (first occurrence wins — model is fit on the same data each time so
+    diagnostics are deterministic).
+
+    Includes:
+      - Summary table: one row per variable (pseudo-R², LLR p, dominant SES, quality)
+      - Per-variable coefficient detail: top SES predictors by |t-stat|
+      - Footer: mean R², overall dominant SES, warning if weak bridges present
+
+    This section is appended AFTER the LLM has produced its essay so it never
+    enters the prompt context.  It is purely for human inspection.
+    """
+    # Collect per-variable diagnostics, keyed by var_id, first-occurrence wins
+    var_diags: dict = {}
+    for est in cross_dataset_bivariate.values():
+        for diag_key, var_key in (
+            ('model_a_diagnostics', 'var_a'),
+            ('model_b_diagnostics', 'var_b'),
+        ):
+            diag = est.get(diag_key)
+            var_id = est.get(var_key)
+            if diag and var_id and var_id not in var_diags:
+                var_diags[var_id] = diag
+
+    if not var_diags:
+        return ""
+
+    def _fmt(v) -> str:
+        return f"{v:.3f}" if v == v else "n/a"   # NaN != NaN
+
+    def _quality(r2, llr_p) -> str:
+        if r2 != r2:           # NaN
+            return "?"
+        if r2 >= 0.05 and llr_p < 0.05:
+            return "good"
+        if r2 >= 0.02 and llr_p < 0.10:
+            return "fair"
+        return "weak"
+
+    lines = [
+        "\n### Bridge Model Diagnostics\n",
+        "> For human inspection only — not passed to the LLM.\n",
+        "#### Summary\n",
+        "| Variable | Model | Pseudo-R² | LLR p | Dominant SES | Quality |",
+        "|----------|-------|-----------|-------|--------------|---------|",
+    ]
+
+    r2_vals = []
+    dominant_counts: dict = {}
+
+    for var_id in sorted(var_diags):
+        d = var_diags[var_id]
+        r2    = d.get('pseudo_r2', float('nan'))
+        llr_p = d.get('llr_pvalue', float('nan'))
+        mtype = d.get('model_type', '?')
+        dom   = d.get('dominant_ses_group') or '?'
+        qual  = _quality(r2, llr_p)
+
+        lines.append(
+            f"| {var_id} | {mtype} | {_fmt(r2)} | {_fmt(llr_p)} | {dom} | {qual} |"
+        )
+        if r2 == r2:           # not NaN
+            r2_vals.append(r2)
+        dominant_counts[dom] = dominant_counts.get(dom, 0) + 1
+
+    # Summary footer
+    if r2_vals:
+        mean_r2 = sum(r2_vals) / len(r2_vals)
+        overall_dom = max(dominant_counts, key=dominant_counts.get)
+        n_weak = sum(
+            1 for d in var_diags.values()
+            if _quality(d.get('pseudo_r2', float('nan')),
+                        d.get('llr_pvalue', float('nan'))) == 'weak'
+        )
+        lines.append(
+            f"\n**Mean pseudo-R²:** {mean_r2:.3f} &ensp;|&ensp; "
+            f"**Overall dominant SES dimension:** {overall_dom}"
+        )
+        if n_weak:
+            lines.append(
+                f"\n> ⚠ {n_weak}/{len(var_diags)} bridge models are weak "
+                f"(R²<0.02 or LLR p≥0.10). "
+                f"Simulated Cramér's V for those variables may underestimate the true association."
+            )
+
+    # --- Per-variable coefficient breakdown ---
+    lines.append("\n#### Per-Variable SES Predictor Detail\n")
+    lines.append(
+        "Top predictors by |t|-statistic — answers: which SES variable is doing the work?\n"
+    )
+
+    for var_id in sorted(var_diags):
+        d = var_diags[var_id]
+        r2         = d.get('pseudo_r2', float('nan'))
+        llr_p      = d.get('llr_pvalue', float('nan'))
+        mtype      = d.get('model_type', '?')
+        coef_table = d.get('coef_table', [])
+        qual       = _quality(r2, llr_p)
+
+        lines.append(
+            f"**{var_id}** ({mtype}, R²={_fmt(r2)}, LLR p={_fmt(llr_p)}, quality={qual})"
+        )
+
+        if coef_table:
+            lines.append("| SES Predictor | Coef | Std Err | t-stat | p-value |")
+            lines.append("|---------------|------|---------|--------|---------|")
+            for row in coef_table[:6]:   # top 6 by |t|, covers all main SES groups
+                feat  = row.get('feature', '?')
+                coef  = row.get('coef', float('nan'))
+                se    = row.get('std_err', float('nan'))
+                tstat = row.get('t_stat', float('nan'))
+                pval  = row.get('p_value', float('nan'))
+                lines.append(
+                    f"| {feat} | {_fmt(coef)} | {_fmt(se)} | {_fmt(tstat)} | {_fmt(pval)} |"
+                )
+        else:
+            lines.append("*(coefficient table unavailable)*")
+        lines.append("")   # blank line between variables
+
+    lines.append(
+        "*Pseudo-R² = McFadden's. "
+        "Low values mean SES explains little variance in that variable — "
+        "the bridge simulation still produces an estimate, but its precision is reduced.*\n"
+    )
+    return "\n".join(lines)
+
+
 def _format_reasoning_section(reasoning_dict: Optional[dict]) -> str:
     """Render the reasoning outline block."""
     if not reasoning_dict or not reasoning_dict.get('evidence_hierarchy'):
@@ -767,6 +897,7 @@ def format_analytical_essay_report(
     cross_biv = quant_report.cross_dataset_bivariate if quant_report else None
     if cross_biv:
         report += _format_cross_dataset_bivariate(cross_biv)
+        report += _format_bridge_diagnostics(cross_biv)
     report += _format_reasoning_section(reasoning_dict)
 
     polarized = metadata.get('polarized_variables', [])
