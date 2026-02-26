@@ -28,11 +28,14 @@ def _make_ses_df(n: int = 400, seed: int = 0) -> pd.DataFrame:
     """Synthetic DataFrame with SES columns and two target variables."""
     rng = np.random.default_rng(seed)
 
-    sexo   = rng.choice(['01', '02'], n)
-    edad   = rng.choice(['19-24', '25-34', '35-44', '45-54', '55-64', '65+'], n)
-    region = rng.choice(['01', '02', '03', '04'], n)
-    empleo = rng.choice(['01', '02', '03', '04', '05'], n)
-    weight = rng.uniform(0.5, 2.5, n).round(4)
+    sexo      = rng.choice(['01', '02'], n)
+    edad      = rng.choice(['19-24', '25-34', '35-44', '45-54', '55-64', '65+'], n)
+    region    = rng.choice(['01', '02', '03', '04'], n)
+    empleo    = rng.choice(['01', '02', '03', '04', '05'], n)
+    escol     = rng.choice([1.0, 2.0, 3.0, 4.0, 5.0], n)
+    tam_loc   = rng.choice([1.0, 2.0, 3.0, 4.0], n)
+    est_civil = rng.choice([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0], n)
+    weight    = rng.uniform(0.5, 2.5, n).round(4)
 
     # Nominal target (5 response categories)
     nominal = rng.choice(['1', '2', '3', '4', '5'], n)
@@ -44,6 +47,9 @@ def _make_ses_df(n: int = 400, seed: int = 0) -> pd.DataFrame:
         'edad': edad,
         'region': region,
         'empleo': empleo,
+        'escol': escol,
+        'Tam_loc': tam_loc,
+        'est_civil': est_civil,
         'Pondi2': weight,
         'p_nominal': nominal,
         'p_ordinal': ordinal,
@@ -63,8 +69,8 @@ class TestSESEncoder(unittest.TestCase):
     def test_fit_transform_shape(self):
         X = self.enc.fit_transform(self.df)
         self.assertEqual(len(X), len(self.df))
-        # sexo(1) + edad(1) + region(3) + empleo(4) = 9 columns
-        self.assertEqual(X.shape[1], 9)
+        # sexo(1) + edad(1) + region(3) + empleo(4) + escol(1) + Tam_loc(1) + est_civil(6) = 17 columns
+        self.assertEqual(X.shape[1], 17)
 
     def test_no_nans_in_output(self):
         X = self.enc.fit_transform(self.df)

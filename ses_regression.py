@@ -800,5 +800,6 @@ class CrossDatasetBivariateEstimator:
         probs = (weights / total_w).values
         rng = np.random.default_rng(seed=42)
         idx = rng.choice(len(pool), size=self.n_sim, replace=True, p=probs)
-        sample = pool.iloc[idx][ses_vars].reset_index(drop=True)
+        available_in_pool = [v for v in ses_vars if v in pool.columns]
+        sample = pool.iloc[idx][available_in_pool].reset_index(drop=True)
         return sample

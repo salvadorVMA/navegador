@@ -63,9 +63,11 @@ Data Layer (ChromaDB embeddings, JSON files)
 | Module | Purpose |
 |--------|---------|
 | `agent.py` | Main agent workflow and orchestration |
-| `analytical_essay.py` | **[NEW]** Two-step essay pipeline: reasoning outline + essay generation |
-| `quantitative_engine.py` | **[NEW]** Pure-computation report with sentinel filtering, label resolution, cross-dataset bivariate |
-| `ses_regression.py` | **[NEW]** SES-bridge cross-dataset bivariate estimation (OrderedModel / MNLogit) |
+| `analytical_essay.py` | Two-step essay pipeline: reasoning outline + essay generation |
+| `quantitative_engine.py` | Pure-computation report with sentinel filtering, label resolution, cross-dataset bivariate |
+| `ses_regression.py` | SES-bridge cross-dataset bivariate estimation (OrderedModel / MNLogit) |
+| `ses_analysis.py` | SES preprocessing: variable creation, sentinel remapping, ordinal normalisation |
+| `survey_kg.py` | Knowledge graph ontology for survey domains (domain/variable/concept nodes) |
 | `dashboard.py` | Dash web interface |
 | `config.py` | Configuration and path management |
 | `detailed_analysis.py` | Legacy analysis pipeline (OLD architecture) |
@@ -89,9 +91,11 @@ Data Layer (ChromaDB embeddings, JSON files)
 - **Format**: JSON dictionary mapping questions to aggregated responses
 - **Processing**: ChromaDB embeddings for semantic search
 
-## Current Branch / Worktree
+## Current Branch
 
 `feature/bivariate-analysis` (branched from `Claude1`) — active development branch.
+
+The `worktree-knowledge-graph` worktree has been **merged** into this branch (commit `0f1fb30`). All knowledge-graph and expanded SES-bridge work now lives in the main workspace.
 
 ### Key Modules Added / Significantly Changed
 
@@ -100,10 +104,14 @@ Data Layer (ChromaDB embeddings, JSON files)
 | `analytical_essay.py` | Active | Two-step LLM pipeline: reasoning outline → analytical essay. Entry point: `generate_analytical_essay()` |
 | `quantitative_engine.py` | Active | Pure-computation report builder. Handles sentinel/NaN filtering, label resolution for cross-tab profiles and bivariate leaders, SES bridge cross-dataset estimation |
 | `ses_regression.py` | Active | `CrossDatasetBivariateEstimator` — SES-bridge simulation via `OrderedModel`/`MNLogit` to estimate associations between cross-survey variable pairs |
+| `ses_analysis.py` | Active | SES preprocessing: create region/edad/empleo from raw vars, normalise escol/Tam_loc/est_civil |
+| `survey_kg.py` | Active | Knowledge graph ontology for survey domains (merged from worktree-knowledge-graph) |
 | `tool_enhanced_analysis.py` | Updated | Migrated from deprecated `AgentExecutor` to `langgraph.prebuilt.create_react_agent` |
 
 ### Recent Work (as of 2026-02-26)
 
+- **Worktree merge**: `worktree-knowledge-graph` merged into `feature/bivariate-analysis`. Brought in `survey_kg.py`, `docs/SES_BRIDGE_IMPROVEMENT_PLAN.md`, 276-pair sweep results, and 7-var SES bridge. Bug fixed in `_sample_ses_population` (indexing pool with `available_in_pool` not full `ses_vars`). Test fixture updated for 7 SES vars; all 47 unit tests pass.
+- **Knowledge graph**: `survey_kg.py` defines domain/variable/concept ontology for survey topics.
 - **Cross-dataset bivariate pipeline** (Phase 5): SES-bridge simulation estimates Cramér's V between variables from different surveys. Results include conditional distribution profiles and key contrasts.
 - **Analytical essay pipeline**: Two-step LLM chain (reasoning outline → essay). Essays lead with data patterns ("25% vs 12%") not statistics recitation.
 - **SES bridge predictor expansion**: `SES_REGRESSION_VARS` now 7 variables: `sexo`, `edad`, `region`, `empleo`, `escol`, `Tam_loc`, `est_civil`. `SESEncoder` handles ordinal (`Tam_loc`) and one-hot (`est_civil`). Absent columns degrade gracefully.
