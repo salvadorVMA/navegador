@@ -409,6 +409,131 @@ class SurveyVarModel:
         return self
 
     # ------------------------------------------------------------------
+    def diagnostics(self) -> Dict[str, Any]:
+        """
+        Return regression diagnostics for the fitted model.
+
+        Exposes per-coefficient statistics (coef, std_err, t-stat, p-value),
+        McFadden pseudo-R², and the likelihood-ratio test p-value for overall
+        model fit. Works for both OrderedModel and MNLogit results.
+
+        The ``top_predictor`` field names the single feature with the highest
+        |t-stat| — i.e. the SES variable doing the most work in the bridge.
+        ``dominant_ses_group`` maps that feature back to the root SES variable
+        (e.g. ``'empleo_03'`` → ``'empleo'``).
+
+        Returns:
+            dict with:
+              'model_type'       : 'ordered' or 'mnlogit'
+              'n_categories'     : number of outcome categories
+              'pseudo_r2'        : McFadden's pseudo-R² ∈ [0, 1] (nan if unavailable)
+              'llr_pvalue'       : LR-test p-value vs null model (nan if unavailable)
+              'coef_table'       : list of dicts sorted by |t_stat| descending,
+                                   each with keys:
+                                     feature, coef, std_err, t_stat, p_value, abs_t
+              'top_predictor'    : feature name with highest |t_stat|
+              'dominant_ses_group': root SES variable for top_predictor
+
+        Raises:
+            RuntimeError: if the model has not been fitted yet.
+        """
+        if self._model_result is None:
+            raise RuntimeError("Model not fitted. Call fit() first.")
+
+        result = self._model_result
+        n_cats = len(self._categories)
+        model_type = 'ordered' if (self._var_type == 'ordinal' and n_cats > 2) else 'mnlogit'
+
+        # --- Pseudo R² (McFadden's) ---
+        try:
+            pseudo_r2 = float(result.prsquared)
+            pseudo_r2 = max(0.0, min(1.0, pseudo_r2))
+        except Exception:
+            pseudo_r2 = float('nan')
+
+        # --- Likelihood-ratio test p-value ---
+        try:
+            llr_pvalue = float(result.llr_pvalue)
+        except Exception:
+            llr_pvalue = float('nan')
+
+        # --- Per-coefficient table ---
+        rows: List[Dict[str, Any]] = []
+        try:
+            params  = result.params
+            tvals   = result.tvalues
+            pvals   = result.pvalues
+            bse     = result.bse
+
+            if model_type == 'mnlogit':
+                # params / tvals are DataFrames: index=feature_names, columns=class_indices
+                # Summarise each feature by taking the class with the highest |t|.
+                if hasattr(params, 'index'):
+                    feature_names = [n for n in params.index if n != 'const']
+                else:
+                    feature_names = self._encoder.feature_names if self._encoder else []
+
+                for feat in feature_names:
+                    if feat not in params.index:
+                        continue
+                    t_vec  = np.asarray(tvals.loc[feat], dtype=float)
+                    p_vec  = np.asarray(pvals.loc[feat], dtype=float)
+                    c_vec  = np.asarray(params.loc[feat], dtype=float)
+                    se_vec = np.asarray(bse.loc[feat], dtype=float)
+                    best   = int(np.nanargmax(np.abs(t_vec)))
+                    rows.append({
+                        'feature' : feat,
+                        'coef'    : float(np.nanmean(c_vec)),
+                        'std_err' : float(np.nanmean(se_vec)),
+                        't_stat'  : float(t_vec[best]),
+                        'p_value' : float(p_vec[best]),
+                        'abs_t'   : float(np.nanmax(np.abs(t_vec))),
+                    })
+
+            else:  # ordered logit — params is a Series
+                # Last (n_cats - 1) params are threshold intercepts; their index
+                # labels contain '/' (e.g. '0/1', '1/2').  Everything else is a
+                # predictor coefficient.
+                all_idx = list(params.index)
+                feature_labels = [l for l in all_idx if '/' not in str(l)]
+                for feat in feature_labels:
+                    rows.append({
+                        'feature' : str(feat),
+                        'coef'    : float(params[feat]),
+                        'std_err' : float(bse[feat]),
+                        't_stat'  : float(tvals[feat]),
+                        'p_value' : float(pvals[feat]),
+                        'abs_t'   : float(abs(tvals[feat])),
+                    })
+
+        except Exception:
+            rows = []
+
+        # Sort by |t_stat| descending so callers see dominant predictors first
+        rows.sort(key=lambda r: r['abs_t'], reverse=True)
+
+        top_predictor = rows[0]['feature'] if rows else None
+
+        def _ses_group(feat_name: str) -> Optional[str]:
+            """Map encoded feature name back to root SES variable."""
+            for ses_var in SES_REGRESSION_VARS:
+                if feat_name == ses_var or feat_name.startswith(ses_var + '_'):
+                    return ses_var
+            return feat_name
+
+        dominant_ses_group = _ses_group(top_predictor) if top_predictor else None
+
+        return {
+            'model_type'        : model_type,
+            'n_categories'      : n_cats,
+            'pseudo_r2'         : pseudo_r2,
+            'llr_pvalue'        : llr_pvalue,
+            'coef_table'        : rows,
+            'top_predictor'     : top_predictor,
+            'dominant_ses_group': dominant_ses_group,
+        }
+
+    # ------------------------------------------------------------------
     def predict_proba(self, ses_feature_df: pd.DataFrame) -> pd.DataFrame:
         """
         Predict P(category | SES) for each row in ses_feature_df.
@@ -602,6 +727,18 @@ class CrossDatasetBivariateEstimator:
                 top_contrasts.items(), key=lambda x: x[1]['range'], reverse=True
             )[:3])
 
+            # --- Bridge model diagnostics (for human inspection, not passed to LLM) ---
+            diag_a: Optional[Dict[str, Any]] = None
+            diag_b: Optional[Dict[str, Any]] = None
+            try:
+                diag_a = model_a.diagnostics()
+            except Exception:
+                pass
+            try:
+                diag_b = model_b.diagnostics()
+            except Exception:
+                pass
+
             return {
                 'var_a': var_id_a,
                 'var_b': var_id_b,
@@ -614,6 +751,8 @@ class CrossDatasetBivariateEstimator:
                 'note': 'Cross-dataset estimate via SES bridge simulation',
                 'column_profiles': column_profiles,
                 'top_contrasts': top_contrasts,
+                'model_a_diagnostics': diag_a,
+                'model_b_diagnostics': diag_b,
             }
 
         except Exception as e:
