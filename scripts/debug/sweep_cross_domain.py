@@ -41,7 +41,7 @@ warnings.filterwarnings("ignore", message=".*Maximum Likelihood.*")
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
-OUTPUT_PATH = Path("/tmp/cross_domain_sweep.json")
+OUTPUT_PATH = ROOT / "data" / "results" / "cross_domain_sweep.json"
 
 # Domains to exclude: JUE has 0 questions, CON has 1 question
 EXCLUDE_DOMAINS = {"JUE", "CON"}
@@ -85,6 +85,15 @@ def _shannon_entropy(series: pd.Series) -> float:
     return float(-np.sum(counts * np.log2(counts)))
 
 
+
+# Maximum number of unique response categories for a variable to be considered
+# ordinal/categorical and therefore suitable for OrderedModel / MNLogit.
+# Variables with more unique values are open-ended text fields (e.g. "what word
+# comes to mind?") or continuous numeric fields (e.g. income in pesos, housing
+# area in m²) — neither can be meaningfully modelled by the SES bridge regression.
+MAX_ORDINAL_CATEGORIES = 15
+
+
 def select_representative_vars(
     domain: str,
     pregs_dict: dict,
@@ -93,8 +102,17 @@ def select_representative_vars(
     n_vars: int = 3,
 ) -> List[str]:
     """
-    Select the top-N highest-entropy variables for a domain.
-    Falls back to evenly spaced variables if entropy fails.
+    Select the top-N highest-entropy *categorical/ordinal* variables for a domain.
+
+    Only variables with at most MAX_ORDINAL_CATEGORIES unique non-NaN values are
+    eligible.  Open-ended text fields and continuous numeric fields (income, area,
+    counts) are excluded because:
+      - Shannon entropy is maximised by text/continuous fields, which would
+        otherwise always be selected.
+      - OrderedModel / MNLogit requires categorical / ordinal targets with a
+        small, finite number of levels.
+
+    Falls back to evenly spaced variables if too few categorical vars are found.
     """
     # Collect all var IDs for this domain
     domain_vars = [qid for qid in pregs_dict if qid.endswith(f"|{domain}")]
@@ -109,21 +127,33 @@ def select_representative_vars(
     if not isinstance(df, pd.DataFrame):
         return domain_vars[:n_vars]
 
-    # Compute entropy per variable
+    # Compute entropy per variable, skipping continuous / open-text ones
     scored: List[Tuple[str, float]] = []
     for qid in domain_vars:
         col = qid.split("|")[0]
         if col in df.columns:
+            series = df[col].dropna()
+            # Exclude open-ended text / continuous numeric variables
+            if series.nunique() > MAX_ORDINAL_CATEGORIES:
+                continue
             try:
-                h = _shannon_entropy(df[col])
+                h = _shannon_entropy(series)
                 scored.append((qid, h))
             except Exception:
                 pass
 
     if len(scored) < n_vars:
-        # Fallback: evenly spaced
-        step = max(1, len(domain_vars) // n_vars)
-        return [domain_vars[i * step] for i in range(min(n_vars, len(domain_vars)))]
+        # Fallback: evenly spaced from the categorical-eligible list
+        eligible = [
+            qid for qid in domain_vars
+            if qid.split("|")[0] in df.columns
+            and df[qid.split("|")[0]].dropna().nunique() <= MAX_ORDINAL_CATEGORIES
+        ]
+        if not eligible:
+            # Last resort: use domain_vars without filtering
+            eligible = domain_vars
+        step = max(1, len(eligible) // n_vars)
+        return [eligible[i * step] for i in range(min(n_vars, len(eligible)))]
 
     # Top-N by entropy
     scored.sort(key=lambda x: -x[1])
@@ -212,7 +242,7 @@ def estimate_domain_pair(
 # Main sweep
 # ---------------------------------------------------------------------------
 
-def main(n_vars: int = 3, max_workers: int = 8) -> None:
+def main(n_vars: int = 3, max_workers: int = 8, output_path: Path = OUTPUT_PATH) -> None:
     t0 = time.time()
     print("=" * 60)
     print("Cross-Domain Bivariate Sweep")
@@ -304,7 +334,8 @@ def main(n_vars: int = 3, max_workers: int = 8) -> None:
     }
 
     # Save
-    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
     print(f"\n{'=' * 60}")
     print(f"SWEEP COMPLETE")
@@ -313,7 +344,7 @@ def main(n_vars: int = 3, max_workers: int = 8) -> None:
     print(f"  Domain pairs:      {n_successful}/{len(all_pairs)} with results")
     print(f"  Estimates:         {total_estimates} successful")
     print(f"  Significant:       {total_significant} (p<0.05)")
-    print(f"  Output:            {OUTPUT_PATH}")
+    print(f"  Output:            {output_path}")
 
     # Top 15 strongest pairs
     ranked = sorted(
@@ -335,5 +366,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Full cross-domain bivariate sweep")
     parser.add_argument("--workers", type=int, default=8, help="Parallel workers (default: 8)")
     parser.add_argument("--vars-per-domain", type=int, default=3, help="Vars per domain (default: 3)")
+    parser.add_argument("--output", type=Path, default=OUTPUT_PATH, help="Output JSON path (default: data/results/cross_domain_sweep.json)")
     args = parser.parse_args()
-    main(n_vars=args.vars_per_domain, max_workers=args.workers)
+    main(n_vars=args.vars_per_domain, max_workers=args.workers, output_path=args.output)

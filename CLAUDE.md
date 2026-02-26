@@ -89,7 +89,7 @@ Data Layer (ChromaDB embeddings, JSON files)
 - **Format**: JSON dictionary mapping questions to aggregated responses
 - **Processing**: ChromaDB embeddings for semantic search
 
-## Current Branch
+## Current Branch / Worktree
 
 `feature/bivariate-analysis` (branched from `Claude1`) — active development branch.
 
@@ -102,21 +102,27 @@ Data Layer (ChromaDB embeddings, JSON files)
 | `ses_regression.py` | Active | `CrossDatasetBivariateEstimator` — SES-bridge simulation via `OrderedModel`/`MNLogit` to estimate associations between cross-survey variable pairs |
 | `tool_enhanced_analysis.py` | Updated | Migrated from deprecated `AgentExecutor` to `langgraph.prebuilt.create_react_agent` |
 
-### Recent Work (as of 2026-02-22)
+### Recent Work (as of 2026-02-26)
 
 - **Cross-dataset bivariate pipeline** (Phase 5): SES-bridge simulation estimates Cramér's V between variables from different surveys. Results include conditional distribution profiles and key contrasts.
 - **Analytical essay pipeline**: Two-step LLM chain (reasoning outline → essay). Essays lead with data patterns ("25% vs 12%") not statistics recitation.
+- **SES bridge predictor expansion**: `SES_REGRESSION_VARS` now 7 variables: `sexo`, `edad`, `region`, `empleo`, `escol`, `Tam_loc`, `est_civil`. `SESEncoder` handles ordinal (`Tam_loc`) and one-hot (`est_civil`). Absent columns degrade gracefully.
+- **Regression diagnostics**: `SurveyVarModel.diagnostics()` returns pseudo-R² (McFadden), LLR p-value, per-coefficient table sorted by |t|, `top_predictor`, and `dominant_ses_group`. `estimate()` exposes `model_a_diagnostics` / `model_b_diagnostics` in the return dict.
+- **Essay Bridge Diagnostics appendix**: `_format_bridge_diagnostics()` in `analytical_essay.py` appends a human-readable per-variable diagnostics table (R², quality flag, top SES coefficients) AFTER the LLM essay — never in the LLM prompt.
 - **Label resolution**: `_get_var_labels` + `_apply_labels_to_estimate` in `quantitative_engine.py` resolve raw numeric codes (e.g. "1.0", "2.0") to human-readable labels in cross-tab profiles before the LLM sees them.
-- **Sentinel filtering**: `_is_sentinel()` in `ses_regression.py` and NaN/sentinel filtering in `compute_variable_statistics()` ensure codes like 99 (no-answer) and NaN (not-applicable) are excluded from marginal tables, bivariate models, and LLM-facing reports.
-- **Sweep/viz scripts**: `scripts/debug/sweep_cross_domain.py` (276-pair sweep), `scripts/debug/visualize_cross_domain.py`, `scripts/debug/visualize_kg.py`.
-- **Essay tests**: 10 cross-topic essay tests in `scripts/debug/run_essay_tests.py`; outputs saved to `data/results/essay_tests/`.
+- **Sentinel filtering**: `_is_sentinel()` in `ses_regression.py` and NaN/sentinel filtering in `compute_variable_statistics()` ensure codes like 99 (no-answer) and NaN (not-applicable) are excluded.
+- **Sweep scripts**: `scripts/debug/sweep_cross_domain.py` (276-pair sweep with `MAX_ORDINAL_CATEGORIES=15` gate), `scripts/debug/visualize_cross_domain.py`, `scripts/debug/visualize_kg.py`.
+- **Test runner**: `scripts/run_tests.sh [unit|essays|all]` — essays run via nohup in background.
+- **SES bridge improvement plan**: `docs/SES_BRIDGE_IMPROVEMENT_PLAN.md` — Options C (Residual bridge) and D (Ecological bridge) designed and ready to implement.
 
 ### Known Data Quality Rules
 
-- **Sentinel codes** (`>= 97` or `< 0`): must be filtered from all marginal tables, bivariate leader categories, and regression models before LLM sees the data.
+- **Sentinel codes** (`>= 97` or `< 0`): filtered by `_is_sentinel()` in `ses_regression.py`. Must be excluded from all marginal tables, bivariate models, and LLM-facing reports.
+- **`est_civil` codes 8 and 9**: below sentinel threshold — explicitly remapped → NaN in `preprocess_survey_data()`.
+- **`escol` codes 9, 98, 99**: remapped in `preprocess_survey_data()`; JUEGOS_DE_AZAR/CULTURA_CONSTITUCIONAL use 1/3/4/5/6 scale → remapped to 1–5.
+- **`Tam_loc`**: clipped to 1–4; values outside range → NaN.
 - **NaN indices** in `df_tables`: represent conditional/skip-pattern questions (not applicable to subgroups). Filter and renormalize before passing to LLM.
 - **Label resolution** for cross-tab profiles uses `variable_value_labels` from `enc_dict[survey_name]['metadata']`. Verified to be present in the JSON data structure.
-- **Essay test outputs** in `data/results/essay_tests/` were generated before sentinel filtering was added and contain raw codes like "99.0" and "nan" — these should be regenerated after fixes are committed.
 
 ## Quick Start
 

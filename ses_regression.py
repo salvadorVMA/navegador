@@ -1,7 +1,7 @@
 """
 SES Regression Module for Navegador — Simulation-Based Cross-Dataset Bivariate Estimation
 
-Uses SES variables (sexo, edad, region, empleo) as bridge variables to estimate
+Uses SES variables (sexo, edad, region, empleo, escol) as bridge variables to estimate
 bivariate associations between survey questions that come from *different* surveys and
 therefore never appear together in a single DataFrame.
 
@@ -42,25 +42,64 @@ _EDAD_ORDER: Dict[str, int] = {
 }
 
 # Nominal SES vars get one-hot encoding (first category dropped)
-_NOMINAL_SES = ('sexo', 'region', 'empleo')
-_ORDINAL_SES = ('edad',)
+_NOMINAL_SES = ('sexo', 'region', 'empleo', 'est_civil')
+_ORDINAL_SES = ('edad', 'escol', 'Tam_loc')
 
-# SES variables used in regression features
-SES_REGRESSION_VARS: List[str] = ['sexo', 'edad', 'region', 'empleo']
+# SES variables used in regression features.
+# Tam_loc and est_civil are included when present (24/26 and 26/26 surveys resp.).
+# Surveys missing Tam_loc (JUEGOS_DE_AZAR, CULTURA_CONSTITUCIONAL) degrade
+# gracefully: SESEncoder skips any column absent from the DataFrame.
+SES_REGRESSION_VARS: List[str] = [
+    'sexo', 'edad', 'region', 'empleo', 'escol', 'Tam_loc', 'est_civil'
+]
 
 # Survey sentinel codes: values < 0 (invalid/missing) or >= 97 (no-answer, don't-know, refuse)
 # These are never substantive responses and must be excluded from model fitting.
+# Common examples: 97=not applicable, 98=don't know, 99=no answer, -1=system missing
 _SENTINEL_HIGH = 97.0
 _SENTINEL_LOW  = 0.0   # exclusive lower bound (0 itself is valid in some scales)
 
 
 def _is_sentinel(val) -> bool:
-    """Return True if val is a survey no-answer / invalid code."""
+    """Return True if val is a survey no-answer / invalid code.
+
+    Catches:
+      - Numeric codes >= 97  (97=N/A, 98=don't know, 99=no answer, 999=…)
+      - Numeric codes < 0    (-1=system missing, -9=not conducted, etc.)
+    Works on floats, ints, and string-coded numerics ('99', '99.0', '-1').
+    Returns False for non-numeric strings (categorical labels like '01', 'Norte').
+    """
     try:
         f = float(str(val))
         return f < _SENTINEL_LOW or f >= _SENTINEL_HIGH
     except (TypeError, ValueError):
         return False
+
+
+def _drop_ses_sentinel_rows(df: pd.DataFrame, ses_vars: List[str]) -> pd.DataFrame:
+    """Drop rows where any SES predictor column contains a sentinel code.
+
+    This guards the regression models and the SES population sample against
+    responses coded as 'no answer' (99), 'don't know' (98), 'not applicable'
+    (97), or any negative invalid code — even when those values are stored as
+    strings ('99', '99.0') rather than NaN, which would otherwise pass through
+    a bare dropna() call.
+
+    Applied to both SurveyVarModel.fit() and _sample_ses_population() so that
+    sentinel-coded respondents are excluded from the bridge regression at every
+    stage of the pipeline.
+    """
+    cols = [v for v in ses_vars if v in df.columns]
+    if not cols:
+        return df
+    keep = pd.Series(True, index=df.index)
+    for col in cols:
+        sentinel_mask = df[col].apply(_is_sentinel)
+        keep &= ~sentinel_mask
+    result = df[keep].copy()
+    # Also drop any remaining NaN in SES columns (e.g. from failed mappings)
+    result = result.dropna(subset=cols)
+    return result
 
 
 # ---------------------------------------------------------------------------
@@ -77,6 +116,7 @@ class SESEncoder:
       edad   — ordinal int (0-18→0 … 65+→6)
       region — one-hot, drop first (3 dummy columns)
       empleo — one-hot, drop first (4 dummy columns)
+      escol  — ordinal int (1=Ninguna … 5=Universidad/Posgrado)
 
     Usage:
       enc = SESEncoder()
@@ -87,39 +127,80 @@ class SESEncoder:
     def __init__(self) -> None:
         self._region_cats: List[str] = []
         self._empleo_cats: List[str] = []
+        self._est_civil_cats: List = []
+        self._has_tam_loc: bool = False
         self._fitted = False
 
     # ------------------------------------------------------------------
     def fit(self, df: pd.DataFrame) -> 'SESEncoder':
-        """Learn category sets from DataFrame (for one-hot vars)."""
+        """Learn category sets from DataFrame (for one-hot vars).
+
+        Sentinel-coded categories (e.g. region='99', empleo='97') are excluded
+        so they never appear as dummy columns in the feature matrix.
+        """
         if 'region' in df.columns:
-            self._region_cats = sorted(df['region'].dropna().unique().tolist())
+            self._region_cats = sorted(
+                c for c in df['region'].dropna().unique()
+                if not _is_sentinel(c)
+            )
         if 'empleo' in df.columns:
-            self._empleo_cats = sorted(df['empleo'].dropna().unique().tolist())
+            self._empleo_cats = sorted(
+                c for c in df['empleo'].dropna().unique()
+                if not _is_sentinel(c)
+            )
+        if 'est_civil' in df.columns:
+            # est_civil stores numeric codes (1.0, 2.0, 6.0 etc.) after preprocessing.
+            # Sort numerically so the dropped first category is consistently the
+            # lowest code across surveys.
+            self._est_civil_cats = sorted(
+                c for c in df['est_civil'].dropna().unique()
+                if not _is_sentinel(c)
+            )
+        self._has_tam_loc = 'Tam_loc' in df.columns
         self._fitted = True
         return self
 
     # ------------------------------------------------------------------
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Return numeric feature DataFrame, one row per input row."""
+        """Return numeric feature DataFrame, one row per input row.
+
+        Sentinel codes that slipped past upstream filtering will map to NaN
+        rather than being silently recoded as the base category (the previous
+        fillna(0.0) behaviour).  Callers should ensure _drop_ses_sentinel_rows
+        has been applied before transform(); any residual NaN here indicates a
+        data quality issue and will propagate visibly rather than silently.
+        """
         if not self._fitted:
             self.fit(df)
 
         parts: List[pd.Series] = []
 
         # sexo — binary
+        # Surveys store sexo either as strings ('01','02') or as floats (1.0, 2.0).
+        # Normalise to string first so both forms are handled uniformly.
         if 'sexo' in df.columns:
             parts.append(
-                df['sexo'].map({'01': 0, '02': 1}).rename('sexo')
-                .astype(float)
+                df['sexo'].astype(str).str.strip()
+                .map({'01': 0, '1': 0, '1.0': 0, '02': 1, '2': 1, '2.0': 1})
+                .rename('sexo').astype(float)
             )
 
         # edad — ordinal int
+        # Most surveys store edad as pre-binned strings ('25-34', '45-54', etc.).
+        # FAMILIA and a few others store raw numeric ages (15.0, 47.0, …).
+        # Detect the format by attempting string-map first; if >50% map to NaN
+        # fall back to numeric age binning.
         if 'edad' in df.columns:
-            parts.append(
-                df['edad'].map(_EDAD_ORDER).rename('edad')
-                .astype(float)
-            )
+            mapped_edad = df['edad'].map(_EDAD_ORDER)
+            if mapped_edad.isna().mean() > 0.5:
+                # Numeric raw-age fallback: bin into the same ordinal brackets
+                numeric_age = pd.to_numeric(df['edad'], errors='coerce')
+                mapped_edad = pd.cut(
+                    numeric_age,
+                    bins=[-1, 18, 24, 34, 44, 54, 64, 999],
+                    labels=[0, 1, 2, 3, 4, 5, 6],
+                ).astype(float)
+            parts.append(mapped_edad.rename('edad').astype(float))
 
         # region — one-hot (drop first category to avoid multicollinearity)
         if 'region' in df.columns and len(self._region_cats) > 1:
@@ -135,11 +216,42 @@ class SESEncoder:
                     (df['empleo'] == cat).astype(float).rename(f'empleo_{cat}')
                 )
 
+        # escol — ordinal int (education grade, 1=Ninguna … 5=Universidad/Posgrado)
+        # Already stored as numeric float in all surveys; sentinel rows are removed
+        # upstream by _drop_ses_sentinel_rows before transform() is called.
+        if 'escol' in df.columns:
+            parts.append(
+                pd.to_numeric(df['escol'], errors='coerce').rename('escol')
+            )
+
+        # Tam_loc — ordinal int (locality size: 1=≥100k urban → 4=rural).
+        # Present in 24/26 surveys; absent in JUEGOS_DE_AZAR and CULTURA_CONSTITUCIONAL.
+        # Values are already clipped to 1–4 by preprocess_survey_data(); pass through
+        # as a continuous ordinal feature (same treatment as escol).
+        if 'Tam_loc' in df.columns:
+            parts.append(
+                pd.to_numeric(df['Tam_loc'], errors='coerce').rename('Tam_loc')
+            )
+
+        # est_civil — nominal one-hot (marital status, drop first category).
+        # Sentinel codes 8/9/98/99 are remapped to NaN by preprocess_survey_data();
+        # any residual sentinels will produce NaN after pd.to_numeric and be excluded.
+        if 'est_civil' in df.columns and len(self._est_civil_cats) > 1:
+            est_civil_num = pd.to_numeric(df['est_civil'], errors='coerce')
+            for cat in self._est_civil_cats[1:]:
+                parts.append(
+                    (est_civil_num == cat).astype(float).rename(f'est_civil_{cat}')
+                )
+
         if not parts:
             raise ValueError("No SES columns found in DataFrame.")
 
         X = pd.concat(parts, axis=1)
-        return X.fillna(0.0)
+        # Do NOT fillna(0.0) here. Residual NaN means an unmapped / sentinel
+        # value slipped through; propagate it so the issue is visible and rows
+        # with unknown SES codes are excluded from model fitting rather than
+        # silently assigned to the base category.
+        return X
 
     # ------------------------------------------------------------------
     def fit_transform(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -154,6 +266,11 @@ class SESEncoder:
             names.extend(f'region_{c}' for c in self._region_cats[1:])
         if len(self._empleo_cats) > 1:
             names.extend(f'empleo_{c}' for c in self._empleo_cats[1:])
+        names.append('escol')
+        if self._has_tam_loc:
+            names.append('Tam_loc')
+        if len(self._est_civil_cats) > 1:
+            names.extend(f'est_civil_{c}' for c in self._est_civil_cats[1:])
         return names
 
 
@@ -171,7 +288,7 @@ class SurveyVarModel:
 
     Usage:
       model = SurveyVarModel()
-      model.fit(df, target_col='p1', ses_vars=['sexo','edad','region','empleo'])
+      model.fit(df, target_col='p1', ses_vars=['sexo','edad','region','empleo','escol'])
       probs = model.predict_proba(ses_feature_df)   # shape (n, n_categories)
       responses = model.simulate_responses(ses_pop_df)
     """
@@ -222,8 +339,7 @@ class SurveyVarModel:
                 f"Insufficient data after dropping NAs: {len(work)} rows"
             )
 
-        # Remove sentinel-coded target values (99 = no answer, -1 = invalid, etc.)
-        # These must not be modelled or appear in simulated distributions / cross-tabs.
+        # Remove sentinel-coded TARGET values (99=no answer, -1=invalid, etc.)
         sentinel_mask = work[target_col].apply(_is_sentinel)
         if sentinel_mask.any():
             work = work[~sentinel_mask]
@@ -232,6 +348,17 @@ class SurveyVarModel:
                     f"Too few non-sentinel rows for {target_col}: {len(work)} "
                     f"(dropped {sentinel_mask.sum()} sentinel-coded rows)"
                 )
+
+        # Remove sentinel-coded SES PREDICTOR values.
+        # Sentinel codes in predictors (e.g. sexo='99', empleo='97') are string-
+        # valued and therefore survive dropna(); they would otherwise be silently
+        # mapped to the base category by SESEncoder.transform(). Drop them here
+        # before the encoder sees the data.
+        work = _drop_ses_sentinel_rows(work, available_ses)
+        if len(work) < 30:
+            raise ValueError(
+                f"Too few rows for {target_col} after SES sentinel filtering: {len(work)}"
+            )
 
         # Detect ordinal vs nominal using question values/labels
         var_labels = {target_col: target_col}   # no label text, fall back to values
@@ -248,6 +375,16 @@ class SurveyVarModel:
         # Encode SES features
         self._encoder = SESEncoder()
         X = self._encoder.fit_transform(work[available_ses])
+
+        # Drop any rows where encoding produced NaN (residual unmapped codes)
+        valid_rows = X.notna().all(axis=1)
+        if not valid_rows.all():
+            X = X[valid_rows]
+            work = work.loc[X.index]
+            if len(work) < 30:
+                raise ValueError(
+                    f"Too few rows for {target_col} after SES encoding: {len(work)}"
+                )
 
         # Target: map categories to integer codes 0..K-1
         cat_to_int = {c: i for i, c in enumerate(self._categories)}
@@ -633,6 +770,9 @@ class CrossDatasetBivariateEstimator:
         """
         Pool SES rows from both surveys and draw n_sim rows with replacement,
         weighted by Pondi2 (real marginal distribution).
+
+        Sentinel-coded SES values (e.g. sexo='99', empleo='97') are dropped
+        before pooling so they cannot corrupt the reference SES distribution.
         """
         frames = []
         for df in (df_a, df_b):
@@ -641,6 +781,8 @@ class CrossDatasetBivariateEstimator:
                 continue
             cols = available + ([weight_col] if weight_col in df.columns else [])
             sub = df[cols].dropna(subset=available).copy()
+            # Drop rows where any SES column is sentinel-coded (e.g. '99', '-1')
+            sub = _drop_ses_sentinel_rows(sub, available)
             if weight_col not in sub.columns:
                 sub[weight_col] = 1.0
             frames.append(sub)
