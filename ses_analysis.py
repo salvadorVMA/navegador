@@ -102,11 +102,11 @@ class AnalysisConfig:
         
         # Variable mappings
         region_mapping = {
-            1.0: '01',  # Norte
-            2.0: '02',  # Centro
-            3.0: '03',  # Centro Occidente
-            4.0: '04',  # Sureste
-            5.0: '01'   # Some surveys have 5 regions, map to Norte
+            1.0: '01',  # Centro
+            2.0: '02',  # D.F. / CDMX y Estado de México
+            3.0: '03',  # Norte
+            4.0: '04',  # Sur
+            5.0: '01'   # Some surveys have 5 regions; map to Centro (code 1)
         }
         
         empleo_mapping = {

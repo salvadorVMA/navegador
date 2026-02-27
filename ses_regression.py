@@ -47,6 +47,54 @@ _EDAD_ORDER: Dict[str, int] = {
 _NOMINAL_SES = ('sexo', 'region', 'empleo', 'est_civil')
 _ORDINAL_SES = ('edad', 'escol', 'Tam_loc')
 
+# ---------------------------------------------------------------------------
+# Human-readable labels for one-hot SES category columns.
+# Keys are normalised to int (int(float(code))) to handle both '01' and 1.0.
+# Source: survey metadata variable_value_labels across all 26 surveys.
+# ---------------------------------------------------------------------------
+
+# Region codes 1-4 (raw Region column) → string code '01'-'04' → label
+# Verified from survey metadata: 1=Centro, 2=CDMX/Estado de México, 3=Norte, 4=Sur
+_REGION_LABEL_MAP: Dict[int, str] = {
+    1: 'Centro',
+    2: 'CDMX_Edo',   # D.F. y Estado de México
+    3: 'Norte',
+    4: 'Sur',
+}
+
+# Employment status (sd5 / empleo): 1=Empleado … 5=Jubilado
+_EMPLEO_LABEL_MAP: Dict[int, str] = {
+    1: 'Empleado',
+    2: 'Desempleado',
+    3: 'Estudiante',
+    4: 'Hogar',
+    5: 'Jubilado',
+}
+
+# Marital status (est_civil): survey metadata confirmed codes 1, 2, 6 in most surveys
+_EST_CIVIL_LABEL_MAP: Dict[int, str] = {
+    1: 'CasadoUL',    # Casado / Unión libre
+    2: 'SepDivVdo',   # Separado / Divorciado / Viudo
+    3: 'UnionLibre',  # Unión libre (some surveys split this from Casado)
+    4: 'Separado',
+    5: 'Divorciado',
+    6: 'Soltero',
+    7: 'Otro',
+}
+
+
+def _ses_label(label_map: Dict[int, str], code, fallback: str = '') -> str:
+    """Return human-readable label for a SES category code.
+
+    Normalises code to int so both string codes ('01', '1') and float codes
+    (1.0) all resolve to the same label.
+    """
+    try:
+        key = int(float(str(code).strip()))
+    except (ValueError, TypeError):
+        return fallback or str(code)
+    return label_map.get(key, fallback or str(code))
+
 # SES variables used in regression features.
 # Tam_loc and est_civil are included when present (24/26 and 26/26 surveys resp.).
 # Surveys missing Tam_loc (JUEGOS_DE_AZAR, CULTURA_CONSTITUCIONAL) degrade
@@ -142,21 +190,21 @@ class SESEncoder:
         """
         if 'region' in df.columns:
             self._region_cats = sorted(
-                c for c in df['region'].dropna().unique()
-                if not _is_sentinel(c)
+                (c for c in df['region'].dropna().unique() if not _is_sentinel(c)),
+                key=str,
             )
         if 'empleo' in df.columns:
             self._empleo_cats = sorted(
-                c for c in df['empleo'].dropna().unique()
-                if not _is_sentinel(c)
+                (c for c in df['empleo'].dropna().unique() if not _is_sentinel(c)),
+                key=str,
             )
         if 'est_civil' in df.columns:
             # est_civil stores numeric codes (1.0, 2.0, 6.0 etc.) after preprocessing.
             # Sort numerically so the dropped first category is consistently the
             # lowest code across surveys.
             self._est_civil_cats = sorted(
-                c for c in df['est_civil'].dropna().unique()
-                if not _is_sentinel(c)
+                (c for c in df['est_civil'].dropna().unique() if not _is_sentinel(c)),
+                key=str,
             )
         self._has_tam_loc = 'Tam_loc' in df.columns
         self._fitted = True
@@ -207,15 +255,17 @@ class SESEncoder:
         # region — one-hot (drop first category to avoid multicollinearity)
         if 'region' in df.columns and len(self._region_cats) > 1:
             for cat in self._region_cats[1:]:           # drop first
+                label = _ses_label(_REGION_LABEL_MAP, cat)
                 parts.append(
-                    (df['region'] == cat).astype(float).rename(f'region_{cat}')
+                    (df['region'] == cat).astype(float).rename(f'region_{label}')
                 )
 
         # empleo — one-hot (drop first category)
         if 'empleo' in df.columns and len(self._empleo_cats) > 1:
             for cat in self._empleo_cats[1:]:           # drop first
+                label = _ses_label(_EMPLEO_LABEL_MAP, cat)
                 parts.append(
-                    (df['empleo'] == cat).astype(float).rename(f'empleo_{cat}')
+                    (df['empleo'] == cat).astype(float).rename(f'empleo_{label}')
                 )
 
         # escol — ordinal int (education grade, 1=Ninguna … 5=Universidad/Posgrado)
@@ -241,8 +291,9 @@ class SESEncoder:
         if 'est_civil' in df.columns and len(self._est_civil_cats) > 1:
             est_civil_num = pd.to_numeric(df['est_civil'], errors='coerce')
             for cat in self._est_civil_cats[1:]:
+                label = _ses_label(_EST_CIVIL_LABEL_MAP, cat)
                 parts.append(
-                    (est_civil_num == cat).astype(float).rename(f'est_civil_{cat}')
+                    (est_civil_num == cat).astype(float).rename(f'est_civil_{label}')
                 )
 
         if not parts:
@@ -265,14 +316,17 @@ class SESEncoder:
         names.append('sexo')
         names.append('edad')
         if len(self._region_cats) > 1:
-            names.extend(f'region_{c}' for c in self._region_cats[1:])
+            names.extend(f'region_{_ses_label(_REGION_LABEL_MAP, c)}'
+                         for c in self._region_cats[1:])
         if len(self._empleo_cats) > 1:
-            names.extend(f'empleo_{c}' for c in self._empleo_cats[1:])
+            names.extend(f'empleo_{_ses_label(_EMPLEO_LABEL_MAP, c)}'
+                         for c in self._empleo_cats[1:])
         names.append('escol')
         if self._has_tam_loc:
             names.append('Tam_loc')
         if len(self._est_civil_cats) > 1:
-            names.extend(f'est_civil_{c}' for c in self._est_civil_cats[1:])
+            names.extend(f'est_civil_{_ses_label(_EST_CIVIL_LABEL_MAP, c)}'
+                         for c in self._est_civil_cats[1:])
         return names
 
 
@@ -604,7 +658,15 @@ class SurveyVarModel:
             chosen = rng.choice(self._categories, p=p)
             responses.append(chosen)
 
-        return pd.Series(responses, index=ses_population_df.index, name=self._target_col)
+        # Normalise response values to a single comparable type so that
+        # pd.crosstab can sort the index without a "<" str-vs-float error.
+        # (Columns from object-dtype survey vars can be a mix of str and float.)
+        out = pd.Series(responses, index=ses_population_df.index, name=self._target_col)
+        try:
+            out = out.astype(float)
+        except (ValueError, TypeError):
+            out = out.astype(str)
+        return out
 
 
 # ---------------------------------------------------------------------------
@@ -1054,8 +1116,17 @@ class EcologicalBridgeEstimator:
         if col_a not in df_a.columns or col_b not in df_b.columns:
             return None
 
-        # Keep only columns present in both surveys
-        available_cols = [c for c in cell_cols if c in df_a.columns and c in df_b.columns]
+        # Keep only columns present in both surveys AND with low enough cardinality.
+        # Columns like 'edad' may be raw ages (70+ unique values) in some surveys but
+        # binned groups ('19-24', etc.) in others — their cell keys never overlap.
+        # Skip any col where EITHER survey has more than max_cardinality unique values.
+        _MAX_CARDINALITY = 20
+        available_cols = [
+            c for c in cell_cols
+            if c in df_a.columns and c in df_b.columns
+            and df_a[c].dropna().nunique() <= _MAX_CARDINALITY
+            and df_b[c].dropna().nunique() <= _MAX_CARDINALITY
+        ]
         if not available_cols:
             return None
 

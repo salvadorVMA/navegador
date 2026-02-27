@@ -168,8 +168,15 @@ class TestSurveyVarModel(unittest.TestCase):
         model.fit(self.df, 'p_nominal', self.ses_vars)
         sim_pop = self.df[self.ses_vars].copy()
         responses = model.simulate_responses(sim_pop)
-        valid_cats = set(model._categories)
-        self.assertTrue(set(responses.unique()).issubset(valid_cats))
+        # simulate_responses normalises to float-or-str for crosstab compatibility;
+        # compare using the same normalisation so int 1 == float 1.0 == "1.0" etc.
+        def _norm(v):
+            try:
+                return float(v)
+            except (ValueError, TypeError):
+                return str(v)
+        valid_cats = {_norm(c) for c in model._categories}
+        self.assertTrue({_norm(r) for r in responses.unique()}.issubset(valid_cats))
 
     def test_insufficient_data_raises(self):
         model = SurveyVarModel()
