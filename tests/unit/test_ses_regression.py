@@ -668,12 +668,12 @@ class TestEcologicalBridgeEstimator(unittest.TestCase):
             min_cell_n=5, min_merged_cells=10, n_bootstrap=50
         )
 
-    def _run(self, col_b='p_nominal'):
+    def _run(self, col_b='p_nominal', cell_cols=None):
         return self.estimator.estimate(
             var_id_a='p1|AAA', var_id_b='p1|BBB',
             df_a=self.df_a, df_b=self.df_b,
             col_a='p_nominal', col_b=col_b,
-            geo_col='edo', loc_col='Tam_loc',
+            cell_cols=cell_cols or ['edo', 'Tam_loc'],
         )
 
     def test_returns_dict(self):
@@ -683,8 +683,16 @@ class TestEcologicalBridgeEstimator(unittest.TestCase):
 
     def test_required_keys(self):
         result = self._run()
-        for key in ('spearman_rho', 'p_value', 'ci_95', 'n_cells', 'method', 'note'):
+        for key in ('spearman_rho', 'p_value', 'ci_95', 'n_cells',
+                    'cell_cols_used', 'method', 'note'):
             self.assertIn(key, result, f"Missing key: {key}")
+
+    def test_cell_cols_used_is_subset_of_requested(self):
+        result = self._run()
+        self.assertIsInstance(result['cell_cols_used'], list)
+        self.assertGreater(len(result['cell_cols_used']), 0)
+        for c in result['cell_cols_used']:
+            self.assertIn(c, ['edo', 'Tam_loc'])
 
     def test_method_label(self):
         self.assertEqual(self._run()['method'], 'ecological_bridge')
@@ -714,28 +722,49 @@ class TestEcologicalBridgeEstimator(unittest.TestCase):
         result = self._run(col_b='nonexistent_col')
         self.assertIsNone(result)
 
-    def test_missing_geo_column_returns_none(self):
+    def test_all_cell_cols_missing_returns_none(self):
+        """When none of the requested cell_cols exist in either df, return None."""
         result = self.estimator.estimate(
             var_id_a='p1|AAA', var_id_b='p1|BBB',
             df_a=self.df_a, df_b=self.df_b,
             col_a='p_nominal', col_b='p_nominal',
-            geo_col='nonexistent_geo',
+            cell_cols=['nonexistent_col_a', 'nonexistent_col_b'],
         )
         self.assertIsNone(result)
 
-    def test_works_without_loc_col(self):
-        """When loc_col is absent the cell key falls back to geo_col only."""
+    def test_partial_cell_cols_degrade_gracefully(self):
+        """When one cell_col is absent, the key falls back to the available one."""
         df_a_no_loc = self.df_a.drop(columns=['Tam_loc'])
         df_b_no_loc = self.df_b.drop(columns=['Tam_loc'])
         result = self.estimator.estimate(
             var_id_a='p1|AAA', var_id_b='p1|BBB',
             df_a=df_a_no_loc, df_b=df_b_no_loc,
             col_a='p_nominal', col_b='p_nominal',
-            geo_col='edo', loc_col='Tam_loc',
+            cell_cols=['edo', 'Tam_loc'],
         )
-        # With only 10 geo cells and min_merged_cells=10, may succeed or fail —
-        # just check it doesn't raise.
+        # Falls back to 'edo' only (10 cells); with min_merged_cells=10 may pass
         self.assertTrue(result is None or isinstance(result, dict))
+        if result is not None:
+            self.assertEqual(result['cell_cols_used'], ['edo'])
+
+    def test_demographic_cell_cols(self):
+        """cell_cols=['escol', 'edad'] uses the SES fixture directly."""
+        ses_est = EcologicalBridgeEstimator(
+            min_cell_n=5, min_merged_cells=10, n_bootstrap=20
+        )
+        # _make_ses_df has escol and edad — 5×7=35 possible cells
+        df_a = _make_ses_df(n=600, seed=80)
+        df_b = _make_ses_df(n=600, seed=81)
+        result = ses_est.estimate(
+            var_id_a='p1|AAA', var_id_b='p1|BBB',
+            df_a=df_a, df_b=df_b,
+            col_a='p_nominal', col_b='p_nominal',
+            cell_cols=['escol', 'edad'],
+        )
+        self.assertIsNotNone(result)
+        self.assertEqual(result['method'], 'ecological_bridge')
+        self.assertIn('escol', result['cell_cols_used'])
+        self.assertIn('edad', result['cell_cols_used'])
 
 
 # ---------------------------------------------------------------------------
@@ -782,7 +811,7 @@ class TestBridgeComparison(unittest.TestCase):
             'p1|AAA', 'p1|BBB',
             self.df_geo_a, self.df_geo_b,
             'p_nominal', 'p_nominal',
-            geo_col='edo', loc_col='Tam_loc',
+            cell_cols=['edo', 'Tam_loc'],
         )
 
     def test_all_three_return_results(self):

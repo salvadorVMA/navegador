@@ -983,14 +983,26 @@ class ResidualBridgeEstimator:
 
 class EcologicalBridgeEstimator:
     """
-    Ecological Bridge: geographic cell-level Spearman correlation.
+    Ecological Bridge: cell-level Spearman correlation across shared strata.
 
-    Aggregates each variable by geo_col × loc_col cells (e.g. edo × Tam_loc,
-    up to 32 × 4 = 128 cells), merges both surveys on the cell key, and
-    computes weighted Spearman ρ with a bootstrap 95% CI.
+    Aggregates each variable within cells defined by one or more shared columns
+    (``cell_cols``), merges both surveys on the cell key, and computes weighted
+    Spearman ρ with a bootstrap 95% CI.
 
-    Unlike the SES-bridge simulation, this method uses *real* aggregate data,
-    so it is not subject to the compression problem.  It IS subject to the
+    The default ``cell_cols=['edo', 'Tam_loc']`` uses geography (up to 128 cells),
+    but any columns present in both surveys work.  Recommended alternatives:
+
+      ['escol', 'edad']      — 5×7=35 demographic cells; education and age often
+                               explain opinion better than geography, and cells are
+                               denser (~57 rows each at n=2000).
+      ['region', 'edad']     — 4×7=28 cells; larger but still demographic.
+      ['region', 'escol']    — 4×5=20 cells; education within macro-region.
+
+    Columns absent from either survey are silently dropped from the key; if no
+    requested column is present in both surveys the method returns None.
+
+    Unlike the SES-bridge simulation this method uses *real* aggregate data
+    and is not subject to the compression problem.  It IS subject to the
     ecological fallacy: cell-level correlations can diverge from individual-
     level ones.
 
@@ -999,6 +1011,7 @@ class EcologicalBridgeEstimator:
       p_value        — p-value from scipy.stats.spearmanr
       ci_95          — (lower, upper) bootstrap 95% CI
       n_cells        — number of overlapping cells with ≥ min_cell_n in both surveys
+      cell_cols_used — list of columns actually used for the cell key
       method         — 'ecological_bridge'
     """
 
@@ -1021,35 +1034,38 @@ class EcologicalBridgeEstimator:
         df_b: pd.DataFrame,
         col_a: str,
         col_b: str,
-        geo_col: str = 'edo',
-        loc_col: str = 'Tam_loc',
+        cell_cols: Optional[List[str]] = None,
         weight_col: str = 'Pondi2',
         ses_vars: Optional[List[str]] = None,  # unused; kept for API parity
     ) -> Optional[Dict[str, Any]]:
         """
-        Estimate geographic cell-level correlation between col_a (df_a) and
-        col_b (df_b).
+        Estimate cell-level correlation between col_a (df_a) and col_b (df_b).
 
         Args:
-            geo_col:   Column with state/geographic code (e.g. 'edo')
-            loc_col:   Column with locality-size code (e.g. 'Tam_loc'); optional
-                       — if absent in either df the cell key is geo_col alone.
+            cell_cols: Columns used to define cells (default ['edo', 'Tam_loc']).
+                       Any mix of geographic, demographic, or SES columns.
+                       Columns absent from either survey are silently dropped.
 
         Returns a dict or None when coverage is insufficient.
         """
+        if cell_cols is None:
+            cell_cols = ['edo', 'Tam_loc']
+
         if col_a not in df_a.columns or col_b not in df_b.columns:
             return None
-        if geo_col not in df_a.columns or geo_col not in df_b.columns:
+
+        # Keep only columns present in both surveys
+        available_cols = [c for c in cell_cols if c in df_a.columns and c in df_b.columns]
+        if not available_cols:
             return None
 
         try:
-            # --- Build composite cell key ---
+            # --- Build composite cell key from available columns ---
             def _cell_key(df: pd.DataFrame) -> pd.Series:
-                geo = df[geo_col].astype(str)
-                if loc_col in df.columns:
-                    loc = pd.to_numeric(df[loc_col], errors='coerce').fillna(0).astype(int).astype(str)
-                    return geo + '_' + loc
-                return geo
+                parts = [df[c].astype(str).str.strip() for c in available_cols]
+                if len(parts) == 1:
+                    return parts[0]
+                return parts[0].str.cat(parts[1:], sep='_')
 
             # --- Rank-encode target variables ---
             enc_a = _rank_encode_col(df_a[col_a])
@@ -1122,6 +1138,7 @@ class EcologicalBridgeEstimator:
                 else (float('nan'), float('nan'))
             )
 
+            cell_desc = ' × '.join(available_cols)
             return {
                 'var_a': var_id_a,
                 'var_b': var_id_b,
@@ -1130,10 +1147,8 @@ class EcologicalBridgeEstimator:
                 'p_value': round(float(p_val), 4),
                 'ci_95': ci_95,
                 'n_cells': len(merged),
-                'note': (
-                    f'Geographic cell-level correlation '
-                    f'({geo_col} × {loc_col if loc_col else "none"})'
-                ),
+                'cell_cols_used': available_cols,
+                'note': f'Cell-level correlation ({cell_desc})',
             }
 
         except Exception as e:
