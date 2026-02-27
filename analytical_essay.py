@@ -129,11 +129,10 @@ ABSOLUTE RULES:
 9. DEMOGRAPHIC FAULT LINES: Describe concrete subgroup differences in the COMPLICATIONS section: "Women are 15 points more likely than men to say X." Do not just cite V values — state what the actual difference IS, using the demographic breakdowns provided per variable.
 10. NON-SIGNIFICANT RESULTS: If cross-dataset bivariate estimates show p >= 0.05 or V < 0.05, these must be reported as evidence of a weak or absent relationship. Do not omit them.
 11. CROSS-TAB PROFILES: When the report includes "How Y responses shift across X categories" data, you MUST use these conditional distributions to build your narrative. The "Key contrast" line identifies the most variable response category — lead with that pattern. Translate data into substantive sentences about people's views, not into statistics reports.
-12. DATA TABLES IN TEXT: For EVERY variable whose distribution you discuss in the EVIDENCE or COMPLICATIONS sections, you MUST include a markdown table immediately after the prose. No exceptions — prose-only summaries with numbers in parentheses are forbidden.
+12. DATA TABLES IN TEXT: Use markdown tables ONLY for cross-tabulations (bivariate conditional distributions). Do NOT add tables for single-variable (univariate) distributions — cite those numbers inline in prose instead.
     - Tables go INSIDE the string value of the relevant field (evidence, complications), embedded as inline markdown — do NOT add extra JSON keys for tables.
-    - For a univariate distribution, use a frequency table: bold caption line with variable ID above the table, then | Response | % | rows. The variable ID (e.g. "p2|EDU") MUST appear only in the bold caption line — NEVER inside a table cell. Example:
-      **p3|SOC** — Technology access perception:\n| Response | % |\n|---|---|\n| Mucho | 47.1% |\n| Poco | 35.2% |
-    - For a cross-tabulation, include the conditional distribution table showing how the key response varies across groups.
+    - For a cross-tabulation, include the conditional distribution table showing how the key response varies across groups: | [var_b] category | [key response] % |
+    - Univariate distributions (single variable frequencies) must be described in prose only: e.g. "63% feel 'Mucho' pride in being Mexican, with only 10% feeling 'Poco' or 'Nada'."
     - Use ONLY data from the QUANTITATIVE REPORT — do not invent numbers."""
 
 
@@ -254,21 +253,12 @@ STRUCTURE (each key must be a non-empty string):
       the expanded demographic breakdowns. Do not just cite V values — state what
       the difference IS: "Women are 15 points more likely than men to say X (V=0.14)."
       Use the top-2 response categories shown per group.
-   C) SUPPORTING UNIVARIATE PATTERNS: For each variable discussed, include its
-      frequency table as a markdown table. The variable ID is a CAPTION that goes
-      on its own line ABOVE the table header — it must NEVER appear inside a table
-      cell. Use this exact format:
-
-      **[variable_id]** — [brief question description]:
-      | Response | % |
-      |---|---|
-      | OptionA | X% |
-      | OptionB | Y% |
-
-      The Response column contains only the response label (e.g. "Sí", "No",
-      "Mucho"). The variable ID (e.g. "p2|EDU") belongs only in the bold caption
-      line above the table, never in the Response column.
-      Use only data from the QUANTITATIVE REPORT. Group by distribution shape.
+   C) SUPPORTING UNIVARIATE PATTERNS: For each variable discussed, describe its
+      distribution in prose only — do NOT add a frequency table. Cite percentages
+      inline: e.g. "63% feel 'Mucho' pride in being Mexican, with only 2% saying
+      'Nada'." Group variables by distribution shape (consensus, lean, polarized,
+      dispersed) to highlight where public opinion is unified vs divided.
+      Use only data from the QUANTITATIVE REPORT.
 
 4. "complications": Discuss factors that complicate the main findings:
    - Which SES dimensions moderate responses most strongly (exact V values)?
