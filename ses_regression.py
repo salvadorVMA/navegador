@@ -15,9 +15,11 @@ Approach:
   4. Compute chi-square + Cramér's V on the simulated joint distribution
 
 Classes:
-  SESEncoder                 — String SES codes → numeric feature matrix
-  SurveyVarModel             — Fits and simulates one survey variable
-  CrossDatasetBivariateEstimator — Orchestrates the two-model simulation
+  SESEncoder                    — String SES codes → numeric feature matrix
+  SurveyVarModel                — Fits and simulates one survey variable
+  CrossDatasetBivariateEstimator — Baseline: pooled simulation over shared SES pop
+  ResidualBridgeEstimator       — Within-SES-cell V (Mantel-Haenszel style)
+  EcologicalBridgeEstimator     — Geographic cell-level Spearman ρ (edo × Tam_loc)
 """
 
 from __future__ import annotations
@@ -803,3 +805,337 @@ class CrossDatasetBivariateEstimator:
         available_in_pool = [v for v in ses_vars if v in pool.columns]
         sample = pool.iloc[idx][available_in_pool].reset_index(drop=True)
         return sample
+
+
+# ---------------------------------------------------------------------------
+# Shared helper: rank-encode a categorical Series for ecological aggregation
+# ---------------------------------------------------------------------------
+
+def _rank_encode_col(series: pd.Series) -> pd.Series:
+    """Map category values to ordinal ranks (1, 2, 3, …) sorted by str().
+
+    Used by EcologicalBridgeEstimator to convert categorical survey responses
+    into a numeric scale suitable for computing weighted cell means.
+    """
+    cats = sorted(series.dropna().unique(), key=str)
+    rank_map = {c: float(i + 1) for i, c in enumerate(cats)}
+    return series.map(rank_map)
+
+
+# ---------------------------------------------------------------------------
+# ResidualBridgeEstimator
+# ---------------------------------------------------------------------------
+
+class ResidualBridgeEstimator:
+    """
+    Mantel-Haenszel Residual Bridge: within-SES-cell Cramér's V.
+
+    The baseline CrossDatasetBivariateEstimator pools all simulated respondents
+    together, so any two SES-correlated variables appear associated even when
+    there is no conceptual link.  This estimator removes that confound by:
+
+      1. Fitting the same two SES models as the baseline.
+      2. Sampling the same reference SES population.
+      3. Discretizing the SES population into K cells (KMeans on encoded features).
+      4. Simulating var_a and var_b *within* each cell independently.
+      5. Computing Cramér's V within each cell and returning a cell-size-weighted mean.
+
+    Result interpretation:
+      V_residual ≈ V_baseline → association is NOT demographically mediated.
+      V_residual << V_baseline → association is mostly SES confounding.
+      ses_fraction = V_residual / V_baseline (ratio of residual to baseline).
+
+    Output dict keys:
+      cramers_v_residual  — weighted-mean within-SES-cell V
+      cramers_v_baseline  — baseline V over full SES pop (same run, for comparison)
+      ses_fraction        — cramers_v_residual / cramers_v_baseline
+      n_cells_used        — number of cells with ≥ min_cell_size respondents
+      n_simulated         — total respondents across valid cells
+      method              — 'ses_residual_bridge'
+    """
+
+    def __init__(self, n_sim: int = 2000, n_cells: int = 30,
+                 min_cell_size: int = 5) -> None:
+        self.n_sim = n_sim
+        self.n_cells = n_cells
+        self.min_cell_size = min_cell_size
+
+    # ------------------------------------------------------------------
+    def estimate(
+        self,
+        var_id_a: str,
+        var_id_b: str,
+        df_a: pd.DataFrame,
+        df_b: pd.DataFrame,
+        col_a: str,
+        col_b: str,
+        ses_vars: Optional[List[str]] = None,
+        weight_col: str = 'Pondi2',
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Estimate within-SES-cell association between col_a (df_a) and col_b (df_b).
+
+        Returns a dict or None on failure.
+        """
+        if ses_vars is None:
+            ses_vars = SES_REGRESSION_VARS
+
+        if col_a not in df_a.columns or col_b not in df_b.columns:
+            return None
+
+        try:
+            from scipy.cluster.vq import kmeans2, whiten
+
+            # --- Fit SES models (identical to baseline estimator) ---
+            model_a = SurveyVarModel()
+            model_a.fit(df_a, col_a, ses_vars, weight_col)
+
+            model_b = SurveyVarModel()
+            model_b.fit(df_b, col_b, ses_vars, weight_col)
+
+            # --- Sample reference SES population ---
+            _helper = CrossDatasetBivariateEstimator(n_sim=self.n_sim)
+            ses_pop = _helper._sample_ses_population(df_a, df_b, ses_vars, weight_col)
+            if len(ses_pop) < max(10, self.min_cell_size * 2):
+                return None
+
+            # --- Encode SES pop for clustering (fresh encoder, col-mean imputation) ---
+            cluster_enc = SESEncoder()
+            X_enc = cluster_enc.fit_transform(ses_pop)
+            X_arr = X_enc.fillna(X_enc.mean()).values.astype(float)
+
+            # Whiten (standardise columns) for stable KMeans; replace zero-std cols
+            col_stds = X_arr.std(axis=0)
+            col_stds[col_stds == 0] = 1.0
+            X_white = X_arr / col_stds
+
+            # Clamp K so each cell can have >= min_cell_size rows on average
+            k = min(self.n_cells, len(ses_pop) // max(self.min_cell_size, 1))
+            if k < 2:
+                return None
+
+            with warnings.catch_warnings():
+                warnings.simplefilter('ignore')
+                _, cell_labels = kmeans2(X_white, k, minit='points', seed=42)
+
+            # --- Per-cell Cramér's V ---
+            cell_vs: List[float] = []
+            cell_ns: List[int] = []
+            for cell_k in range(k):
+                mask = cell_labels == cell_k
+                ses_cell = ses_pop[mask].reset_index(drop=True)
+                if len(ses_cell) < self.min_cell_size:
+                    continue
+                sim_a = model_a.simulate_responses(ses_cell)
+                sim_b = model_b.simulate_responses(ses_cell)
+                ct = pd.crosstab(sim_a, sim_b)
+                if ct.shape[0] < 2 or ct.shape[1] < 2:
+                    continue
+                v_k = float(association(ct, method='cramer'))
+                cell_vs.append(v_k)
+                cell_ns.append(len(ses_cell))
+
+            n_cells_used = len(cell_vs)
+            if n_cells_used == 0:
+                return None
+
+            total_n = sum(cell_ns)
+            v_residual = sum(v * n / total_n for v, n in zip(cell_vs, cell_ns))
+
+            # Baseline V over full SES pop (same models, same pop — for ses_fraction)
+            sim_a_full = model_a.simulate_responses(ses_pop)
+            sim_b_full = model_b.simulate_responses(ses_pop)
+            ct_full = pd.crosstab(sim_a_full, sim_b_full)
+            v_baseline = (
+                float(association(ct_full, method='cramer'))
+                if ct_full.shape[0] >= 2 and ct_full.shape[1] >= 2
+                else float('nan')
+            )
+            ses_fraction = (
+                round(v_residual / v_baseline, 4)
+                if v_baseline > 0 and not np.isnan(v_baseline)
+                else None
+            )
+
+            return {
+                'var_a': var_id_a,
+                'var_b': var_id_b,
+                'method': 'ses_residual_bridge',
+                'cramers_v_residual': round(v_residual, 4),
+                'cramers_v_baseline': round(v_baseline, 4),
+                'ses_fraction': ses_fraction,
+                'n_cells_used': n_cells_used,
+                'n_simulated': total_n,
+                'note': (
+                    'Within-SES-cell V via KMeans stratification '
+                    '(Mantel-Haenszel style)'
+                ),
+            }
+
+        except Exception as e:
+            print(f"[residual-bridge] Failed for {var_id_a} × {var_id_b}: {e}")
+            return None
+
+
+# ---------------------------------------------------------------------------
+# EcologicalBridgeEstimator
+# ---------------------------------------------------------------------------
+
+class EcologicalBridgeEstimator:
+    """
+    Ecological Bridge: geographic cell-level Spearman correlation.
+
+    Aggregates each variable by geo_col × loc_col cells (e.g. edo × Tam_loc,
+    up to 32 × 4 = 128 cells), merges both surveys on the cell key, and
+    computes weighted Spearman ρ with a bootstrap 95% CI.
+
+    Unlike the SES-bridge simulation, this method uses *real* aggregate data,
+    so it is not subject to the compression problem.  It IS subject to the
+    ecological fallacy: cell-level correlations can diverge from individual-
+    level ones.
+
+    Output dict keys:
+      spearman_rho   — weighted Spearman ρ across merged cells
+      p_value        — p-value from scipy.stats.spearmanr
+      ci_95          — (lower, upper) bootstrap 95% CI
+      n_cells        — number of overlapping cells with ≥ min_cell_n in both surveys
+      method         — 'ecological_bridge'
+    """
+
+    def __init__(
+        self,
+        min_cell_n: int = 20,
+        min_merged_cells: int = 30,
+        n_bootstrap: int = 500,
+    ) -> None:
+        self.min_cell_n = min_cell_n
+        self.min_merged_cells = min_merged_cells
+        self.n_bootstrap = n_bootstrap
+
+    # ------------------------------------------------------------------
+    def estimate(
+        self,
+        var_id_a: str,
+        var_id_b: str,
+        df_a: pd.DataFrame,
+        df_b: pd.DataFrame,
+        col_a: str,
+        col_b: str,
+        geo_col: str = 'edo',
+        loc_col: str = 'Tam_loc',
+        weight_col: str = 'Pondi2',
+        ses_vars: Optional[List[str]] = None,  # unused; kept for API parity
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Estimate geographic cell-level correlation between col_a (df_a) and
+        col_b (df_b).
+
+        Args:
+            geo_col:   Column with state/geographic code (e.g. 'edo')
+            loc_col:   Column with locality-size code (e.g. 'Tam_loc'); optional
+                       — if absent in either df the cell key is geo_col alone.
+
+        Returns a dict or None when coverage is insufficient.
+        """
+        if col_a not in df_a.columns or col_b not in df_b.columns:
+            return None
+        if geo_col not in df_a.columns or geo_col not in df_b.columns:
+            return None
+
+        try:
+            # --- Build composite cell key ---
+            def _cell_key(df: pd.DataFrame) -> pd.Series:
+                geo = df[geo_col].astype(str)
+                if loc_col in df.columns:
+                    loc = pd.to_numeric(df[loc_col], errors='coerce').fillna(0).astype(int).astype(str)
+                    return geo + '_' + loc
+                return geo
+
+            # --- Rank-encode target variables ---
+            enc_a = _rank_encode_col(df_a[col_a])
+            enc_b = _rank_encode_col(df_b[col_b])
+
+            # --- Weighted cell aggregation ---
+            def _cell_agg(
+                df: pd.DataFrame,
+                encoded: pd.Series,
+                cell_keys: pd.Series,
+                wt: str,
+            ) -> Tuple[pd.Series, pd.Series]:
+                weights = df[wt].astype(float) if wt in df.columns else pd.Series(1.0, index=df.index)
+                work = pd.DataFrame({
+                    'cell': cell_keys,
+                    'val': encoded,
+                    'w': weights,
+                }).dropna()
+                sizes = work.groupby('cell').size()
+                valid = sizes[sizes >= self.min_cell_n].index
+                work = work[work['cell'].isin(valid)]
+                agg = work.groupby('cell').apply(
+                    lambda g: (g['val'] * g['w']).sum() / g['w'].sum()
+                )
+                return agg, work.groupby('cell').size()
+
+            keys_a = _cell_key(df_a)
+            keys_b = _cell_key(df_b)
+            agg_a, sz_a = _cell_agg(df_a, enc_a, keys_a, weight_col)
+            agg_b, sz_b = _cell_agg(df_b, enc_b, keys_b, weight_col)
+
+            # --- Inner join on cell key ---
+            merged = pd.DataFrame({'agg_a': agg_a, 'agg_b': agg_b}).dropna()
+            if len(merged) < self.min_merged_cells:
+                return None
+
+            # Cell weight = geometric mean of cell sizes in both surveys
+            merged['w'] = np.sqrt(
+                sz_a.reindex(merged.index).fillna(1).values *
+                sz_b.reindex(merged.index).fillna(1).values
+            )
+
+            # --- Weighted Spearman ρ ---
+            # Use scipy; repeat rows by integer weight for a weighted approximation
+            int_weights = (merged['w'] / merged['w'].min()).round().clip(1, 20).astype(int)
+            expanded_a = merged['agg_a'].repeat(int_weights).values
+            expanded_b = merged['agg_b'].repeat(int_weights).values
+            rho, p_val = stats.spearmanr(expanded_a, expanded_b)
+
+            # --- Bootstrap 95% CI (resample cells) ---
+            rng = np.random.default_rng(seed=42)
+            n = len(merged)
+            boot_rhos: List[float] = []
+            for _ in range(self.n_bootstrap):
+                idx = rng.integers(0, n, size=n)
+                s = merged.iloc[idx]
+                iw = int_weights.iloc[idx]
+                ea = s['agg_a'].repeat(iw.values).values
+                eb = s['agg_b'].repeat(iw.values).values
+                if len(ea) < 4:
+                    continue
+                r, _ = stats.spearmanr(ea, eb)
+                if not np.isnan(r):
+                    boot_rhos.append(r)
+
+            ci_95: Tuple[float, float] = (
+                (round(float(np.percentile(boot_rhos, 2.5)), 4),
+                 round(float(np.percentile(boot_rhos, 97.5)), 4))
+                if boot_rhos
+                else (float('nan'), float('nan'))
+            )
+
+            return {
+                'var_a': var_id_a,
+                'var_b': var_id_b,
+                'method': 'ecological_bridge',
+                'spearman_rho': round(float(rho), 4),
+                'p_value': round(float(p_val), 4),
+                'ci_95': ci_95,
+                'n_cells': len(merged),
+                'note': (
+                    f'Geographic cell-level correlation '
+                    f'({geo_col} × {loc_col if loc_col else "none"})'
+                ),
+            }
+
+        except Exception as e:
+            print(f"[ecological-bridge] Failed for {var_id_a} × {var_id_b}: {e}")
+            return None

@@ -1,6 +1,7 @@
 """
 Unit tests for ses_regression.py — SESEncoder, SurveyVarModel,
-CrossDatasetBivariateEstimator.
+CrossDatasetBivariateEstimator, ResidualBridgeEstimator,
+EcologicalBridgeEstimator.
 
 All tests use synthetic data so the 191 MB los_mex_dict.json is not required.
 """
@@ -16,6 +17,8 @@ from ses_regression import (
     SESEncoder,
     SurveyVarModel,
     CrossDatasetBivariateEstimator,
+    ResidualBridgeEstimator,
+    EcologicalBridgeEstimator,
     SES_REGRESSION_VARS,
 )
 
@@ -559,6 +562,277 @@ class TestSurveyVarModelDiagnostics(unittest.TestCase):
         model = SurveyVarModel()
         with self.assertRaises(RuntimeError):
             model.diagnostics()
+
+
+# ---------------------------------------------------------------------------
+# Fixture: geographic DataFrame for EcologicalBridgeEstimator tests
+# ---------------------------------------------------------------------------
+
+def _make_geo_df(n: int = 800, seed: int = 0) -> pd.DataFrame:
+    """Synthetic DataFrame with geographic columns (edo, Tam_loc) and targets.
+
+    Uses 10 states × 4 locality sizes = 40 possible cells.
+    At n=800 the expected cell size is 20, matching the default min_cell_n.
+    """
+    rng = np.random.default_rng(seed)
+    edo     = rng.integers(1, 11, n).astype(str)          # states 1-10
+    tam_loc = rng.choice([1.0, 2.0, 3.0, 4.0], n)
+    weight  = rng.uniform(0.5, 2.5, n).round(4)
+    nominal = rng.choice(['1', '2', '3', '4', '5'], n)
+    ordinal = rng.choice(['mucho', 'bastante', 'poco', 'nada'], n)
+    return pd.DataFrame({
+        'edo': edo,
+        'Tam_loc': tam_loc,
+        'Pondi2': weight,
+        'p_nominal': nominal,
+        'p_ordinal': ordinal,
+    })
+
+
+# ---------------------------------------------------------------------------
+# ResidualBridgeEstimator tests
+# ---------------------------------------------------------------------------
+
+class TestResidualBridgeEstimator(unittest.TestCase):
+    """Tests for ResidualBridgeEstimator.estimate()."""
+
+    def setUp(self):
+        self.df_a = _make_ses_df(n=500, seed=50)
+        self.df_b = _make_ses_df(n=500, seed=51)
+        # Small n_sim and n_cells for test speed
+        self.estimator = ResidualBridgeEstimator(n_sim=300, n_cells=8, min_cell_size=5)
+
+    def _run(self):
+        return self.estimator.estimate(
+            var_id_a='p1|AAA', var_id_b='p1|BBB',
+            df_a=self.df_a, df_b=self.df_b,
+            col_a='p_nominal', col_b='p_nominal',
+        )
+
+    def test_returns_dict(self):
+        result = self._run()
+        self.assertIsNotNone(result)
+        self.assertIsInstance(result, dict)
+
+    def test_required_keys(self):
+        result = self._run()
+        for key in ('cramers_v_residual', 'cramers_v_baseline', 'ses_fraction',
+                    'n_cells_used', 'n_simulated', 'method', 'note'):
+            self.assertIn(key, result, f"Missing key: {key}")
+
+    def test_method_label(self):
+        self.assertEqual(self._run()['method'], 'ses_residual_bridge')
+
+    def test_cramers_v_residual_in_range(self):
+        v = self._run()['cramers_v_residual']
+        self.assertGreaterEqual(v, 0.0)
+        self.assertLessEqual(v, 1.0)
+
+    def test_cramers_v_baseline_in_range(self):
+        v = self._run()['cramers_v_baseline']
+        self.assertGreaterEqual(v, 0.0)
+        self.assertLessEqual(v, 1.0)
+
+    def test_ses_fraction_non_negative(self):
+        frac = self._run()['ses_fraction']
+        if frac is not None:
+            self.assertGreaterEqual(frac, 0.0)
+
+    def test_n_cells_used_positive(self):
+        self.assertGreater(self._run()['n_cells_used'], 0)
+
+    def test_n_simulated_positive(self):
+        self.assertGreater(self._run()['n_simulated'], 0)
+
+    def test_missing_column_returns_none(self):
+        result = self.estimator.estimate(
+            var_id_a='p1|AAA', var_id_b='p1|BBB',
+            df_a=self.df_a, df_b=self.df_b,
+            col_a='p_nominal', col_b='nonexistent_col',
+        )
+        self.assertIsNone(result)
+
+
+# ---------------------------------------------------------------------------
+# EcologicalBridgeEstimator tests
+# ---------------------------------------------------------------------------
+
+class TestEcologicalBridgeEstimator(unittest.TestCase):
+    """Tests for EcologicalBridgeEstimator.estimate()."""
+
+    def setUp(self):
+        # Use small min_cell_n and min_merged_cells for test fixture size
+        self.df_a = _make_geo_df(n=800, seed=60)
+        self.df_b = _make_geo_df(n=800, seed=61)
+        self.estimator = EcologicalBridgeEstimator(
+            min_cell_n=5, min_merged_cells=10, n_bootstrap=50
+        )
+
+    def _run(self, col_b='p_nominal'):
+        return self.estimator.estimate(
+            var_id_a='p1|AAA', var_id_b='p1|BBB',
+            df_a=self.df_a, df_b=self.df_b,
+            col_a='p_nominal', col_b=col_b,
+            geo_col='edo', loc_col='Tam_loc',
+        )
+
+    def test_returns_dict(self):
+        result = self._run()
+        self.assertIsNotNone(result)
+        self.assertIsInstance(result, dict)
+
+    def test_required_keys(self):
+        result = self._run()
+        for key in ('spearman_rho', 'p_value', 'ci_95', 'n_cells', 'method', 'note'):
+            self.assertIn(key, result, f"Missing key: {key}")
+
+    def test_method_label(self):
+        self.assertEqual(self._run()['method'], 'ecological_bridge')
+
+    def test_spearman_rho_in_range(self):
+        rho = self._run()['spearman_rho']
+        self.assertGreaterEqual(rho, -1.0)
+        self.assertLessEqual(rho, 1.0)
+
+    def test_p_value_in_range(self):
+        p = self._run()['p_value']
+        self.assertGreaterEqual(p, 0.0)
+        self.assertLessEqual(p, 1.0)
+
+    def test_ci_95_is_ordered_pair(self):
+        ci = self._run()['ci_95']
+        self.assertIsInstance(ci, tuple)
+        self.assertEqual(len(ci), 2)
+        lo, hi = ci
+        if not (np.isnan(lo) or np.isnan(hi)):
+            self.assertLessEqual(lo, hi)
+
+    def test_n_cells_positive(self):
+        self.assertGreater(self._run()['n_cells'], 0)
+
+    def test_missing_target_column_returns_none(self):
+        result = self._run(col_b='nonexistent_col')
+        self.assertIsNone(result)
+
+    def test_missing_geo_column_returns_none(self):
+        result = self.estimator.estimate(
+            var_id_a='p1|AAA', var_id_b='p1|BBB',
+            df_a=self.df_a, df_b=self.df_b,
+            col_a='p_nominal', col_b='p_nominal',
+            geo_col='nonexistent_geo',
+        )
+        self.assertIsNone(result)
+
+    def test_works_without_loc_col(self):
+        """When loc_col is absent the cell key falls back to geo_col only."""
+        df_a_no_loc = self.df_a.drop(columns=['Tam_loc'])
+        df_b_no_loc = self.df_b.drop(columns=['Tam_loc'])
+        result = self.estimator.estimate(
+            var_id_a='p1|AAA', var_id_b='p1|BBB',
+            df_a=df_a_no_loc, df_b=df_b_no_loc,
+            col_a='p_nominal', col_b='p_nominal',
+            geo_col='edo', loc_col='Tam_loc',
+        )
+        # With only 10 geo cells and min_merged_cells=10, may succeed or fail —
+        # just check it doesn't raise.
+        self.assertTrue(result is None or isinstance(result, dict))
+
+
+# ---------------------------------------------------------------------------
+# Bridge comparison tests
+# ---------------------------------------------------------------------------
+
+class TestBridgeComparison(unittest.TestCase):
+    """
+    Cross-method comparison tests.
+
+    Verifies that all three estimators can run on the same variable pair and
+    that their outputs have the expected structural relationships.
+
+    Uses the SES fixture (_make_ses_df) for the baseline + residual estimators,
+    and the geographic fixture (_make_geo_df) for the ecological estimator.
+    Note: EcologicalBridgeEstimator requires geo columns not present in the
+    SES fixture, so it is tested separately.
+    """
+
+    def setUp(self):
+        self.df_a = _make_ses_df(n=500, seed=70)
+        self.df_b = _make_ses_df(n=500, seed=71)
+        self.df_geo_a = _make_geo_df(n=800, seed=72)
+        self.df_geo_b = _make_geo_df(n=800, seed=73)
+
+        self.baseline  = CrossDatasetBivariateEstimator(n_sim=300)
+        self.residual  = ResidualBridgeEstimator(n_sim=300, n_cells=8, min_cell_size=5)
+        self.ecological = EcologicalBridgeEstimator(
+            min_cell_n=5, min_merged_cells=10, n_bootstrap=50
+        )
+
+    def _baseline_result(self):
+        return self.baseline.estimate(
+            'p1|AAA', 'p1|BBB', self.df_a, self.df_b, 'p_nominal', 'p_nominal'
+        )
+
+    def _residual_result(self):
+        return self.residual.estimate(
+            'p1|AAA', 'p1|BBB', self.df_a, self.df_b, 'p_nominal', 'p_nominal'
+        )
+
+    def _ecological_result(self):
+        return self.ecological.estimate(
+            'p1|AAA', 'p1|BBB',
+            self.df_geo_a, self.df_geo_b,
+            'p_nominal', 'p_nominal',
+            geo_col='edo', loc_col='Tam_loc',
+        )
+
+    def test_all_three_return_results(self):
+        self.assertIsNotNone(self._baseline_result())
+        self.assertIsNotNone(self._residual_result())
+        self.assertIsNotNone(self._ecological_result())
+
+    def test_method_labels_are_distinct(self):
+        labels = {
+            self._baseline_result()['method'],
+            self._residual_result()['method'],
+            self._ecological_result()['method'],
+        }
+        self.assertEqual(len(labels), 3,
+                         "All three methods must have distinct 'method' labels")
+
+    def test_baseline_has_cramers_v(self):
+        r = self._baseline_result()
+        self.assertIn('cramers_v', r)
+        self.assertGreaterEqual(r['cramers_v'], 0.0)
+
+    def test_residual_has_cramers_v_residual(self):
+        r = self._residual_result()
+        self.assertIn('cramers_v_residual', r)
+        self.assertGreaterEqual(r['cramers_v_residual'], 0.0)
+
+    def test_ecological_has_spearman_rho(self):
+        r = self._ecological_result()
+        self.assertIn('spearman_rho', r)
+        self.assertGreaterEqual(r['spearman_rho'], -1.0)
+        self.assertLessEqual(r['spearman_rho'], 1.0)
+
+    def test_residual_baseline_v_also_in_range(self):
+        """cramers_v_baseline in residual result must match valid V range."""
+        r = self._residual_result()
+        v_bl = r['cramers_v_baseline']
+        self.assertGreaterEqual(v_bl, 0.0)
+        self.assertLessEqual(v_bl, 1.0)
+
+    def test_ses_fraction_when_present(self):
+        """ses_fraction = V_residual / V_baseline must be >= 0."""
+        frac = self._residual_result().get('ses_fraction')
+        if frac is not None:
+            self.assertGreaterEqual(frac, 0.0)
+
+    def test_ecological_ci_ordered(self):
+        ci = self._ecological_result()['ci_95']
+        lo, hi = ci
+        if not (np.isnan(lo) or np.isnan(hi)):
+            self.assertLessEqual(lo, hi)
 
 
 if __name__ == '__main__':
