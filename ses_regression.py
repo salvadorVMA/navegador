@@ -1319,18 +1319,13 @@ class BayesianBridgeEstimator:
             if len(ses_pop) < 30:
                 return None
 
-            # Encode with a fresh encoder; since both models were fit on the same
-            # available_ses columns, this X matches both models' params shapes.
-            enc = SESEncoder()
-            X_ref = enc.fit_transform(ses_pop).fillna(0.0)
-
             # --- Extract MLE params + covariance for each model ---
-            def _draw_proba(model: SurveyVarModel, X: pd.DataFrame,
-                            rng: np.random.Generator) -> np.ndarray:
+            def _draw_proba(model: SurveyVarModel, ses_pop_raw: pd.DataFrame,
+                            avail: List[str], rng: np.random.Generator) -> np.ndarray:
                 """Draw one posterior sample of P(Y|X) via Laplace approximation.
 
-                Avoids monkey-patching: draws perturbed params from the Laplace
-                approximation and evaluates predictions directly via matrix ops.
+                Uses the model's own encoder to transform ses_pop_raw, guaranteeing
+                that the feature column count exactly matches the model's params.
 
                 MNLogit:    params is (n_feat+1, K-1); cov_params() is (p, p)
                 OrderedModel: params is a 1D Series (n_feat + K-1 thresholds);
@@ -1351,7 +1346,9 @@ class BayesianBridgeEstimator:
                     cov = np.diag(np.asarray(res.bse, dtype=float).ravel() ** 2)
 
                 params_draw = rng.multivariate_normal(params_mle, cov)
-                X_arr = np.array(X, dtype=float)
+                # Re-encode using model's own encoder so columns match params exactly.
+                X_encoded = model._encoder.transform(ses_pop_raw[avail]).fillna(0.0)
+                X_arr = np.array(X_encoded, dtype=float)
                 K = len(model._categories)
 
                 if model._var_type == 'ordinal' and K > 2:
@@ -1406,8 +1403,8 @@ class BayesianBridgeEstimator:
             joint_tables = np.zeros((self.n_draws, K_a, K_b))
 
             for m in range(self.n_draws):
-                pa = _draw_proba(model_a, X_ref, rng)  # (n, K_a)
-                pb = _draw_proba(model_b, X_ref, rng)  # (n, K_b)
+                pa = _draw_proba(model_a, ses_pop, available_ses, rng)  # (n, K_a)
+                pb = _draw_proba(model_b, ses_pop, available_ses, rng)  # (n, K_b)
                 # Trim to consistent shapes
                 pa = pa[:, :K_a]
                 pb = pb[:, :K_b]
@@ -1765,11 +1762,20 @@ class DoublyRobustBridgeEstimator:
             # --- AIPW-corrected marginal for var_a in survey B population ---
             def _aipw_marginal(
                 model: SurveyVarModel, sub_src: pd.DataFrame, col_src: str,
-                X_src: pd.DataFrame, X_tgt: pd.DataFrame,
+                sub_tgt: pd.DataFrame, avail: List[str],
                 cats: list, w: np.ndarray,
             ) -> np.ndarray:
-                """DR-corrected P(Y=k) for the target population."""
+                """DR-corrected P(Y=k) for the target population.
+
+                Uses model's own encoder to encode sub_src and sub_tgt, guaranteeing
+                that feature column count matches model's params regardless of which
+                categories appear in the reference encoder's training data.
+                """
                 K = len(cats)
+                # Re-encode using model's own encoder (avoids column count mismatch)
+                X_tgt = model._encoder.transform(sub_tgt[avail]).fillna(0.0)
+                X_src = model._encoder.transform(sub_src[avail]).fillna(0.0)
+
                 # Outcome model predictions on target
                 pred_tgt = model.predict_proba(X_tgt).values  # (n_tgt, K)
                 imputed = pred_tgt.mean(axis=0)  # (K,)
@@ -1802,7 +1808,7 @@ class DoublyRobustBridgeEstimator:
                 return dr_marginal
 
             # Marginal of Y_A in B's population
-            marg_a = _aipw_marginal(model_a, sub_a, col_a, X_a, X_b, cats_a, weights)
+            marg_a = _aipw_marginal(model_a, sub_a, col_a, sub_b, available, cats_a, weights)
 
             # For Y_B in A's population, compute reverse propensity
             prop_b_units = np.clip(prop_b, 0.01, 0.99)
@@ -1811,7 +1817,7 @@ class DoublyRobustBridgeEstimator:
             weights_b = np.minimum(raw_weights_b, cap_b)
             weights_b /= weights_b.sum()
 
-            marg_b = _aipw_marginal(model_b, sub_b, col_b, X_b, X_a, cats_b, weights_b)
+            marg_b = _aipw_marginal(model_b, sub_b, col_b, sub_a, available, cats_b, weights_b)
 
             # --- Joint table under CIA: outer product of DR marginals ---
             joint_table = np.outer(marg_a, marg_b)
@@ -1837,10 +1843,13 @@ class DoublyRobustBridgeEstimator:
                     bm_b = SurveyVarModel()
                     bm_b.fit(boot_b_df, col_b, available, weight_col)
 
-                    # Predict on original target populations (X_a / X_b were
-                    # already encoded from the same shared available features)
-                    pred_a_b = bm_a.predict_proba(X_b).values.mean(axis=0)
-                    pred_b_a = bm_b.predict_proba(X_a).values.mean(axis=0)
+                    # Re-encode target populations using each bootstrap model's own
+                    # encoder (avoids column count mismatch when bootstrap resamples
+                    # happen to exclude certain categorical levels).
+                    X_b_boot = bm_a._encoder.transform(sub_b[available]).fillna(0.0)
+                    X_a_boot = bm_b._encoder.transform(sub_a[available]).fillna(0.0)
+                    pred_a_b = bm_a.predict_proba(X_b_boot).values.mean(axis=0)
+                    pred_b_a = bm_b.predict_proba(X_a_boot).values.mean(axis=0)
                     pred_a_b = np.clip(pred_a_b[:K_a], 1e-8, None)
                     pred_b_a = np.clip(pred_b_a[:K_b], 1e-8, None)
                     pred_a_b /= pred_a_b.sum()
