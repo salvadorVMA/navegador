@@ -1300,22 +1300,29 @@ class BayesianBridgeEstimator:
         try:
             import statsmodels.api as sm
 
-            # --- Fit models ---
+            # Restrict to SES vars present in BOTH surveys so that models and the
+            # reference SES population share the exact same feature space.
+            available_ses = [v for v in ses_vars
+                             if v in df_a.columns and v in df_b.columns]
+            if len(available_ses) < 2:
+                return None
+
+            # --- Fit models (shared SES features only) ---
             model_a = SurveyVarModel()
-            model_a.fit(df_a, col_a, ses_vars, weight_col)
+            model_a.fit(df_a, col_a, available_ses, weight_col)
             model_b = SurveyVarModel()
-            model_b.fit(df_b, col_b, ses_vars, weight_col)
+            model_b.fit(df_b, col_b, available_ses, weight_col)
 
             # --- Reference SES population ---
             helper = CrossDatasetBivariateEstimator(n_sim=self.n_sim)
-            ses_pop = helper._sample_ses_population(df_a, df_b, ses_vars, weight_col)
+            ses_pop = helper._sample_ses_population(df_a, df_b, available_ses, weight_col)
             if len(ses_pop) < 30:
                 return None
 
-            # --- Encode reference pop for prediction ---
+            # Encode with a fresh encoder; since both models were fit on the same
+            # available_ses columns, this X matches both models' params shapes.
             enc = SESEncoder()
-            X_ref = enc.fit_transform(ses_pop)
-            X_ref = X_ref.fillna(X_ref.mean())
+            X_ref = enc.fit_transform(ses_pop).fillna(0.0)
 
             # --- Extract MLE params + covariance for each model ---
             def _draw_proba(model: SurveyVarModel, X: pd.DataFrame,
@@ -1371,11 +1378,12 @@ class BayesianBridgeEstimator:
                                            - expit(thresholds[k - 1] - eta))
                 else:
                     # MNLogit: params shape (n_feat+1, K-1); cov is (p*(K-1), p*(K-1))
-                    # After ravel, params_draw has length n_feat*(K-1) or (n_feat+1)*(K-1)
-                    Xc = np.column_stack([np.ones(len(X_arr)), X_arr])
-                    n_rows = Xc.shape[1]  # features including constant
+                    # Derive n_rows from actual params shape (ground truth) so that
+                    # reshape is always consistent regardless of X column count.
+                    n_rows = np.asarray(res.params, dtype=float).shape[0]
                     n_cols = K - 1
                     params_2d = params_draw.reshape(n_rows, n_cols)
+                    Xc = np.column_stack([np.ones(len(X_arr)), X_arr])
                     eta = Xc @ params_2d  # (n, K-1)
                     # Softmax: reference class has eta=0
                     exp_eta = np.exp(eta - eta.max(axis=1, keepdims=True))
@@ -1699,11 +1707,18 @@ class DoublyRobustBridgeEstimator:
         try:
             import statsmodels.api as sm
 
-            # --- Fit outcome models (same as baseline) ---
+            # --- Restrict to shared SES features ---
+            available = [v for v in ses_vars if v in df_a.columns and v in df_b.columns]
+            if len(available) < 2:
+                return None
+
+            # --- Fit outcome models on shared SES features only ---
+            # Using the intersection ensures the feature space matches when we
+            # predict model_a on survey B's population (and vice versa).
             model_a = SurveyVarModel()
-            model_a.fit(df_a, col_a, ses_vars, weight_col)
+            model_a.fit(df_a, col_a, available, weight_col)
             model_b = SurveyVarModel()
-            model_b.fit(df_b, col_b, ses_vars, weight_col)
+            model_b.fit(df_b, col_b, available, weight_col)
 
             cats_a = model_a._categories
             cats_b = model_b._categories
@@ -1711,9 +1726,6 @@ class DoublyRobustBridgeEstimator:
 
             # --- Encode SES for both surveys ---
             enc = SESEncoder()
-            available = [v for v in ses_vars if v in df_a.columns and v in df_b.columns]
-            if len(available) < 2:
-                return None
 
             sub_a = _drop_ses_sentinel_rows(
                 df_a[[col_a] + [v for v in available if v in df_a.columns]].dropna(), available
@@ -1793,8 +1805,6 @@ class DoublyRobustBridgeEstimator:
             marg_a = _aipw_marginal(model_a, sub_a, col_a, X_a, X_b, cats_a, weights)
 
             # For Y_B in A's population, compute reverse propensity
-            prop_b_clipped = np.clip(1 - prop_a_clipped, 0.01, 0.99)
-            # We need weights for B units: w_j = π_j / (1 - π_j)
             prop_b_units = np.clip(prop_b, 0.01, 0.99)
             raw_weights_b = prop_b_units / (1 - prop_b_units)
             cap_b = np.percentile(raw_weights_b, 95)
@@ -1819,15 +1829,16 @@ class DoublyRobustBridgeEstimator:
                 idx_a = rng.choice(n_a, size=n_a, replace=True)
                 idx_b = rng.choice(n_b, size=n_b, replace=True)
                 try:
-                    # Re-fit on bootstrap samples
+                    # Re-fit on bootstrap samples using shared SES features
                     boot_a_df = sub_a.iloc[idx_a].reset_index(drop=True)
                     boot_b_df = sub_b.iloc[idx_b].reset_index(drop=True)
                     bm_a = SurveyVarModel()
-                    bm_a.fit(boot_a_df, col_a, ses_vars, weight_col)
+                    bm_a.fit(boot_a_df, col_a, available, weight_col)
                     bm_b = SurveyVarModel()
-                    bm_b.fit(boot_b_df, col_b, ses_vars, weight_col)
+                    bm_b.fit(boot_b_df, col_b, available, weight_col)
 
-                    # Predict on original target populations
+                    # Predict on original target populations (X_a / X_b were
+                    # already encoded from the same shared available features)
                     pred_a_b = bm_a.predict_proba(X_b).values.mean(axis=0)
                     pred_b_a = bm_b.predict_proba(X_a).values.mean(axis=0)
                     pred_a_b = np.clip(pred_a_b[:K_a], 1e-8, None)
