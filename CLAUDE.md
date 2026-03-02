@@ -103,25 +103,75 @@ The `worktree-knowledge-graph` worktree has been **merged** into this branch (co
 |--------|--------|---------|
 | `analytical_essay.py` | Active | Two-step LLM pipeline: reasoning outline → analytical essay. Entry point: `generate_analytical_essay()` |
 | `quantitative_engine.py` | Active | Pure-computation report builder. Handles sentinel/NaN filtering, label resolution for cross-tab profiles and bivariate leaders, SES bridge cross-dataset estimation |
-| `ses_regression.py` | Active | `CrossDatasetBivariateEstimator` — SES-bridge simulation via `OrderedModel`/`MNLogit` to estimate associations between cross-survey variable pairs |
+| `ses_regression.py` | Active | All 6 bridge estimators (see table below). `OrderedModel`/`MNLogit` backbone. |
 | `ses_analysis.py` | Active | SES preprocessing: create region/edad/empleo from raw vars, normalise escol/Tam_loc/est_civil |
 | `survey_kg.py` | Active | Knowledge graph ontology for survey domains (merged from worktree-knowledge-graph) |
 | `tool_enhanced_analysis.py` | Updated | Migrated from deprecated `AgentExecutor` to `langgraph.prebuilt.create_react_agent` |
 
+### Bridge Estimators in ses_regression.py (all 6 active)
+
+| Class | `method` key | Primary output | Notes |
+|-------|-------------|----------------|-------|
+| `CrossDatasetBivariateEstimator` | `ses_simulation` | `cramers_v`, `p_value`, `column_profiles` | Baseline SES simulation |
+| `ResidualBridgeEstimator` | `ses_residual_bridge` | `cramers_v_residual`, `ses_fraction` | Within-cell Mantel-Haenszel |
+| `EcologicalBridgeEstimator` | `ecological_bridge` | `spearman_rho`, `ci_95` | Geographic cell Spearman ρ |
+| `BayesianBridgeEstimator` | `bayesian_bridge` | `gamma`, `gamma_ci_95`, `cramers_v_ci_95` | Laplace posterior, no PyMC |
+| `MRPBridgeEstimator` | `mrp_bridge` | `gamma`, `gamma_ci_95`, `n_cells_used` | James-Stein shrinkage cells |
+| `DoublyRobustBridgeEstimator` | `doubly_robust_bridge` | `gamma`, `gamma_ci_95`, `propensity_overlap` | AIPW + propensity weights |
+
+Module-level helper: `goodman_kruskal_gamma(joint_table)` — ordinal γ ∈ [-1,1].
+
+SES label maps (verified from survey metadata):
+- `_REGION_LABEL_MAP`: `{1:'Centro', 2:'CDMX_Edo', 3:'Norte', 4:'Sur'}`
+- `_EMPLEO_LABEL_MAP`: `{1:'Empleado', 2:'Desempleado', 3:'Estudiante', 4:'Hogar', 5:'Jubilado'}`
+- `_EST_CIVIL_LABEL_MAP`: `{1:'CasadoUL', 2:'SepDivVdo', 3:'UnionLibre', 4:'Separado', 5:'Divorciado', 6:'Soltero', 7:'Otro'}`
+
+### Test Suites
+
+| File | Tests | Coverage |
+|------|-------|---------|
+| `tests/unit/test_ses_regression.py` | 76 | `SESEncoder`, `SurveyVarModel`, `CrossDatasetBivariateEstimator`, `ResidualBridgeEstimator`, `EcologicalBridgeEstimator` |
+| `tests/unit/test_bridge_estimators_v2.py` | 36 | `goodman_kruskal_gamma`, `BayesianBridgeEstimator`, `MRPBridgeEstimator`, `DoublyRobustBridgeEstimator`, 6-way comparison |
+
+Run all unit tests (112 total, ~22s):
+```bash
+python -m pytest tests/unit/test_ses_regression.py tests/unit/test_bridge_estimators_v2.py -v
+```
+
+### Sweep Scripts
+
+| Script | Purpose |
+|--------|---------|
+| `scripts/debug/sweep_cross_domain.py` | Original 276-pair baseline sweep |
+| `scripts/debug/sweep_bridge_comparison.py` | All 6 methods on 276 pairs. `N_BOOTSTRAP_DR=50` for speed. Output: `data/results/bridge_comparison_results.json` + `bridge_comparison_report.md` |
+| `scripts/debug/visualize_cross_domain.py` | Visualise baseline sweep |
+| `scripts/debug/visualize_kg.py` | Visualise knowledge graph |
+
+Run 6-method comparison sweep:
+```bash
+nohup python scripts/debug/sweep_bridge_comparison.py --workers 1 > /tmp/bridge_comparison.log 2>&1 &
+tail -f /tmp/bridge_comparison.log
+```
+
+### Recent Work (as of 2026-03-02)
+
+- **6-method bridge suite**: Added `BayesianBridgeEstimator` (Laplace posterior), `MRPBridgeEstimator` (James-Stein shrinkage), `DoublyRobustBridgeEstimator` (AIPW) to `ses_regression.py`. No PyMC/sklearn — uses only scipy/statsmodels/numpy.
+- **`goodman_kruskal_gamma()`**: Module-level helper for ordinal association γ ∈ [-1,1].
+- **Test suite v2**: `tests/unit/test_bridge_estimators_v2.py` — 36 tests (5 + 8 + 9 + 8 + 6 across 5 test classes).
+- **Sweep script updated**: `sweep_bridge_comparison.py` now runs all 6 methods per pair.
+- **SES labels**: `SESEncoder` column names now human-readable (`region_Norte`, `empleo_Desempleado`, etc). Wrong region comments fixed in `ses_analysis.py`.
+- **Bug fixes**: Bayesian `_draw_proba` avoids monkey-patching (MNLogit params is 2D DataFrame); DR propensity cast to numpy; SESEncoder `sorted(..., key=str)` prevents mixed-type errors; Ecological cardinality guard added.
+- **Essay prompt fix** (2026-02-27): tables restricted to bivariate cross-tabs only; univariate distributions → inline prose.
+- **Worktree merge** (2026-02-26): `worktree-knowledge-graph` merged → `survey_kg.py`, expanded SES bridge.
+
 ### Recent Work (as of 2026-02-26)
 
-- **Worktree merge**: `worktree-knowledge-graph` merged into `feature/bivariate-analysis`. Brought in `survey_kg.py`, `docs/SES_BRIDGE_IMPROVEMENT_PLAN.md`, 276-pair sweep results, and 7-var SES bridge. Bug fixed in `_sample_ses_population` (indexing pool with `available_in_pool` not full `ses_vars`). Test fixture updated for 7 SES vars; all 47 unit tests pass.
-- **Knowledge graph**: `survey_kg.py` defines domain/variable/concept ontology for survey topics.
-- **Cross-dataset bivariate pipeline** (Phase 5): SES-bridge simulation estimates Cramér's V between variables from different surveys. Results include conditional distribution profiles and key contrasts.
-- **Analytical essay pipeline**: Two-step LLM chain (reasoning outline → essay). Essays lead with data patterns ("25% vs 12%") not statistics recitation.
+- **Worktree merge**: `worktree-knowledge-graph` merged into `feature/bivariate-analysis`. Brought in `survey_kg.py`, `docs/SES_BRIDGE_IMPROVEMENT_PLAN.md`, 276-pair sweep results, and 7-var SES bridge.
 - **SES bridge predictor expansion**: `SES_REGRESSION_VARS` now 7 variables: `sexo`, `edad`, `region`, `empleo`, `escol`, `Tam_loc`, `est_civil`. `SESEncoder` handles ordinal (`Tam_loc`) and one-hot (`est_civil`). Absent columns degrade gracefully.
-- **Regression diagnostics**: `SurveyVarModel.diagnostics()` returns pseudo-R² (McFadden), LLR p-value, per-coefficient table sorted by |t|, `top_predictor`, and `dominant_ses_group`. `estimate()` exposes `model_a_diagnostics` / `model_b_diagnostics` in the return dict.
-- **Essay Bridge Diagnostics appendix**: `_format_bridge_diagnostics()` in `analytical_essay.py` appends a human-readable per-variable diagnostics table (R², quality flag, top SES coefficients) AFTER the LLM essay — never in the LLM prompt.
-- **Label resolution**: `_get_var_labels` + `_apply_labels_to_estimate` in `quantitative_engine.py` resolve raw numeric codes (e.g. "1.0", "2.0") to human-readable labels in cross-tab profiles before the LLM sees them.
-- **Sentinel filtering**: `_is_sentinel()` in `ses_regression.py` and NaN/sentinel filtering in `compute_variable_statistics()` ensure codes like 99 (no-answer) and NaN (not-applicable) are excluded.
-- **Sweep scripts**: `scripts/debug/sweep_cross_domain.py` (276-pair sweep with `MAX_ORDINAL_CATEGORIES=15` gate), `scripts/debug/visualize_cross_domain.py`, `scripts/debug/visualize_kg.py`.
+- **Regression diagnostics**: `SurveyVarModel.diagnostics()` returns pseudo-R² (McFadden), LLR p-value, per-coefficient table sorted by |t|, `top_predictor`, and `dominant_ses_group`.
+- **Label resolution**: `_get_var_labels` + `_apply_labels_to_estimate` in `quantitative_engine.py` resolve raw numeric codes to human-readable labels before the LLM sees them.
+- **Sentinel filtering**: `_is_sentinel()` in `ses_regression.py` excludes codes like 99 (no-answer) and NaN (not-applicable).
 - **Test runner**: `scripts/run_tests.sh [unit|essays|all]` — essays run via nohup in background.
-- **SES bridge improvement plan**: `docs/SES_BRIDGE_IMPROVEMENT_PLAN.md` — Options C (Residual bridge) and D (Ecological bridge) designed and ready to implement.
 
 ### Known Data Quality Rules
 

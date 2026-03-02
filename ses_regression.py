@@ -1225,3 +1225,650 @@ class EcologicalBridgeEstimator:
         except Exception as e:
             print(f"[ecological-bridge] Failed for {var_id_a} × {var_id_b}: {e}")
             return None
+
+
+# ---------------------------------------------------------------------------
+# Goodman-Kruskal gamma (ordinal association measure)
+# ---------------------------------------------------------------------------
+
+def goodman_kruskal_gamma(joint_table: np.ndarray) -> float:
+    """Compute Goodman-Kruskal γ from a K_a × K_b joint probability table.
+
+    γ = (C - D) / (C + D) where C = concordant pairs, D = discordant pairs.
+    γ ∈ [-1, 1]: +1 = perfect positive ordinal association, 0 = independence.
+    Appropriate for ordinal × ordinal tables (v3 §2.2).
+    """
+    K_a, K_b = joint_table.shape
+    concordant = discordant = 0.0
+    for i in range(K_a):
+        for j in range(K_b):
+            p_ij = joint_table[i, j]
+            concordant += p_ij * joint_table[i + 1:, j + 1:].sum()
+            discordant += p_ij * joint_table[i + 1:, :j].sum()
+    denom = concordant + discordant
+    return float((concordant - discordant) / denom) if denom > 0 else 0.0
+
+
+# ---------------------------------------------------------------------------
+# BayesianBridgeEstimator
+# ---------------------------------------------------------------------------
+
+class BayesianBridgeEstimator:
+    """
+    Bayesian bridge: Laplace-approximate posterior over the joint table.
+
+    Uses the fitted statsmodels OrderedModel/MNLogit covariance matrix as a
+    Gaussian approximation to the posterior.  Draws M coefficient samples,
+    propagates each through the CIA joint-table formula, and reports the
+    posterior distribution of Goodman-Kruskal γ and Cramér's V.
+
+    This addresses v3 §1.3 (estimation uncertainty) and §4.3 (Bayesian PO):
+    the credible interval reflects parameter uncertainty, unlike the baseline's
+    single-point chi-square p-value.
+
+    Output dict keys:
+      gamma            — posterior mean Goodman-Kruskal γ
+      gamma_ci_95      — (lower, upper) 95% credible interval
+      cramers_v        — posterior mean Cramér's V (for backward compat)
+      cramers_v_ci_95  — 95% CI for V
+      joint_table      — posterior mean K_a × K_b joint probability table
+      pseudo_r2_a      — McFadden pseudo-R² for variable A model
+      pseudo_r2_b      — McFadden pseudo-R² for variable B model
+      method           — 'bayesian_bridge'
+    """
+
+    def __init__(self, n_sim: int = 500, n_draws: int = 200) -> None:
+        self.n_sim = n_sim
+        self.n_draws = n_draws
+
+    def estimate(
+        self,
+        var_id_a: str,
+        var_id_b: str,
+        df_a: pd.DataFrame,
+        df_b: pd.DataFrame,
+        col_a: str,
+        col_b: str,
+        ses_vars: Optional[List[str]] = None,
+        weight_col: str = 'Pondi2',
+    ) -> Optional[Dict[str, Any]]:
+        if ses_vars is None:
+            ses_vars = SES_REGRESSION_VARS
+        if col_a not in df_a.columns or col_b not in df_b.columns:
+            return None
+
+        try:
+            import statsmodels.api as sm
+
+            # --- Fit models ---
+            model_a = SurveyVarModel()
+            model_a.fit(df_a, col_a, ses_vars, weight_col)
+            model_b = SurveyVarModel()
+            model_b.fit(df_b, col_b, ses_vars, weight_col)
+
+            # --- Reference SES population ---
+            helper = CrossDatasetBivariateEstimator(n_sim=self.n_sim)
+            ses_pop = helper._sample_ses_population(df_a, df_b, ses_vars, weight_col)
+            if len(ses_pop) < 30:
+                return None
+
+            # --- Encode reference pop for prediction ---
+            enc = SESEncoder()
+            X_ref = enc.fit_transform(ses_pop)
+            X_ref = X_ref.fillna(X_ref.mean())
+
+            # --- Extract MLE params + covariance for each model ---
+            def _draw_proba(model: SurveyVarModel, X: pd.DataFrame,
+                            rng: np.random.Generator) -> np.ndarray:
+                """Draw one posterior sample of P(Y|X) via Laplace approximation.
+
+                Avoids monkey-patching: draws perturbed params from the Laplace
+                approximation and evaluates predictions directly via matrix ops.
+
+                MNLogit:    params is (n_feat+1, K-1); cov_params() is (p, p)
+                OrderedModel: params is a 1D Series (n_feat + K-1 thresholds);
+                              threshold entries have '/' in their index label.
+                """
+                from scipy.special import expit
+                res = model._model_result
+                params_mle = np.asarray(res.params, dtype=float).ravel()
+                try:
+                    cov = np.asarray(res.cov_params(), dtype=float)
+                    # Guard: use diagonal if cov is not PSD (numerical issues)
+                    cov = np.nan_to_num(cov, nan=0.0)
+                    cov = (cov + cov.T) / 2.0
+                    min_eig = np.linalg.eigvalsh(cov).min()
+                    if min_eig < 0:
+                        cov += (-min_eig + 1e-6) * np.eye(len(params_mle))
+                except Exception:
+                    cov = np.diag(np.asarray(res.bse, dtype=float).ravel() ** 2)
+
+                params_draw = rng.multivariate_normal(params_mle, cov)
+                X_arr = np.array(X, dtype=float)
+                K = len(model._categories)
+
+                if model._var_type == 'ordinal' and K > 2:
+                    # OrderedModel: betas + thresholds. Threshold indices have '/'.
+                    idx = res.params.index if hasattr(res.params, 'index') else []
+                    thresh_mask = np.array([('/' in str(i)) for i in idx])
+                    if thresh_mask.any():
+                        betas = params_draw[~thresh_mask]
+                        thresholds = np.sort(params_draw[thresh_mask])
+                    else:
+                        # Fallback: last K-1 entries are thresholds
+                        betas = params_draw[:-(K - 1)]
+                        thresholds = np.sort(params_draw[-(K - 1):])
+
+                    eta = X_arr @ betas  # (n,)
+                    probs = np.zeros((len(X_arr), K))
+                    for k in range(K):
+                        if k == 0:
+                            probs[:, k] = expit(thresholds[0] - eta)
+                        elif k == K - 1:
+                            probs[:, k] = 1.0 - expit(thresholds[-1] - eta)
+                        else:
+                            probs[:, k] = (expit(thresholds[k] - eta)
+                                           - expit(thresholds[k - 1] - eta))
+                else:
+                    # MNLogit: params shape (n_feat+1, K-1); cov is (p*(K-1), p*(K-1))
+                    # After ravel, params_draw has length n_feat*(K-1) or (n_feat+1)*(K-1)
+                    Xc = np.column_stack([np.ones(len(X_arr)), X_arr])
+                    n_rows = Xc.shape[1]  # features including constant
+                    n_cols = K - 1
+                    params_2d = params_draw.reshape(n_rows, n_cols)
+                    eta = Xc @ params_2d  # (n, K-1)
+                    # Softmax: reference class has eta=0
+                    exp_eta = np.exp(eta - eta.max(axis=1, keepdims=True))
+                    ref = np.ones((len(eta), 1))
+                    all_exp = np.hstack([exp_eta, ref])
+                    probs = all_exp / all_exp.sum(axis=1, keepdims=True)
+
+                probs = np.nan_to_num(probs, nan=0.0)
+                probs = np.clip(probs, 1e-8, 1.0)
+                probs /= probs.sum(axis=1, keepdims=True)
+                return probs
+
+            # --- Monte Carlo over posterior draws ---
+            K_a = len(model_a._categories)
+            K_b = len(model_b._categories)
+            rng = np.random.default_rng(seed=42)
+
+            gammas = []
+            vs = []
+            joint_tables = np.zeros((self.n_draws, K_a, K_b))
+
+            for m in range(self.n_draws):
+                pa = _draw_proba(model_a, X_ref, rng)  # (n, K_a)
+                pb = _draw_proba(model_b, X_ref, rng)  # (n, K_b)
+                # Trim to consistent shapes
+                pa = pa[:, :K_a]
+                pb = pb[:, :K_b]
+                # Joint table under CIA
+                joint_m = (pa[:, :, None] * pb[:, None, :]).mean(axis=0)
+                joint_tables[m] = joint_m
+                gammas.append(goodman_kruskal_gamma(joint_m))
+                vs.append(float(association(
+                    (joint_m * self.n_sim).astype(int).clip(1),
+                    method='cramer'
+                )))
+
+            gammas = np.array(gammas)
+            vs = np.array(vs)
+            joint_mean = joint_tables.mean(axis=0)
+
+            diag_a = model_a.diagnostics()
+            diag_b = model_b.diagnostics()
+
+            return {
+                'var_a': var_id_a,
+                'var_b': var_id_b,
+                'method': 'bayesian_bridge',
+                'gamma': round(float(gammas.mean()), 4),
+                'gamma_ci_95': (
+                    round(float(np.percentile(gammas, 2.5)), 4),
+                    round(float(np.percentile(gammas, 97.5)), 4),
+                ),
+                'cramers_v': round(float(vs.mean()), 4),
+                'cramers_v_ci_95': (
+                    round(float(np.percentile(vs, 2.5)), 4),
+                    round(float(np.percentile(vs, 97.5)), 4),
+                ),
+                'joint_table': joint_mean.tolist(),
+                'pseudo_r2_a': diag_a.get('pseudo_r2'),
+                'pseudo_r2_b': diag_b.get('pseudo_r2'),
+                'n_draws': self.n_draws,
+                'n_simulated': self.n_sim,
+                'note': (
+                    'Laplace-approximate Bayesian posterior over joint table; '
+                    'gamma and V CIs reflect parameter uncertainty'
+                ),
+            }
+
+        except Exception as e:
+            print(f"[bayesian-bridge] Failed for {var_id_a} × {var_id_b}: {e}")
+            return None
+
+
+# ---------------------------------------------------------------------------
+# MRPBridgeEstimator
+# ---------------------------------------------------------------------------
+
+class MRPBridgeEstimator:
+    """
+    MRP Bridge: cell-level empirical distributions with partial pooling.
+
+    Defines SES cells from categorical variables (default: escol × edad × sexo),
+    computes the empirical P(Y_A|cell) and P(Y_B|cell) within each cell, applies
+    shrinkage toward the global marginal, and poststratifies to produce the
+    population joint table.
+
+    This implements v3 §5.4: MRP for joint distribution at cell level.
+    Shrinkage (James-Stein style) replaces full multilevel modeling — at n≈1000
+    with ~70 cells, this gives comparable results without requiring PyMC.
+
+    Output dict keys:
+      gamma            — Goodman-Kruskal γ from poststratified joint table
+      gamma_ci_95      — 95% bootstrap CI
+      cramers_v        — Cramér's V (for comparison)
+      joint_table      — K_a × K_b poststratified joint probability table
+      n_cells_used     — number of cells with data in both surveys
+      mean_cell_n      — average cell size across used cells
+      method           — 'mrp_bridge'
+    """
+
+    def __init__(
+        self,
+        cell_cols: Optional[List[str]] = None,
+        shrinkage_kappa: float = 10.0,
+        min_cell_n: int = 3,
+        n_bootstrap: int = 200,
+    ) -> None:
+        self.cell_cols = cell_cols or ['escol', 'edad', 'sexo']
+        self.shrinkage_kappa = shrinkage_kappa
+        self.min_cell_n = min_cell_n
+        self.n_bootstrap = n_bootstrap
+
+    def estimate(
+        self,
+        var_id_a: str,
+        var_id_b: str,
+        df_a: pd.DataFrame,
+        df_b: pd.DataFrame,
+        col_a: str,
+        col_b: str,
+        ses_vars: Optional[List[str]] = None,
+        weight_col: str = 'Pondi2',
+    ) -> Optional[Dict[str, Any]]:
+        if col_a not in df_a.columns or col_b not in df_b.columns:
+            return None
+
+        try:
+            _MAX_CARD = 20
+            available_cols = [
+                c for c in self.cell_cols
+                if c in df_a.columns and c in df_b.columns
+                and df_a[c].dropna().nunique() <= _MAX_CARD
+                and df_b[c].dropna().nunique() <= _MAX_CARD
+            ]
+            if not available_cols:
+                return None
+
+            # --- Build cell keys ---
+            def _cell_key(df: pd.DataFrame) -> pd.Series:
+                parts = [df[c].astype(str).str.strip() for c in available_cols]
+                return parts[0].str.cat(parts[1:], sep='_') if len(parts) > 1 else parts[0]
+
+            # --- Cell-level empirical distributions with shrinkage ---
+            def _cell_distributions(
+                df: pd.DataFrame, col: str, wt: str,
+            ) -> Tuple[Dict[str, np.ndarray], np.ndarray, list, Dict[str, float]]:
+                """
+                Returns:
+                  cell_dists: {cell_key: probability vector} with shrinkage
+                  global_dist: global marginal distribution
+                  categories: sorted list of non-sentinel category values
+                  cell_weights: {cell_key: total weight in cell}
+                """
+                work = df[[col] + available_cols].copy()
+                work['_cell'] = _cell_key(df)
+                work['_w'] = df[wt].astype(float) if wt in df.columns else 1.0
+                work = work.dropna(subset=[col, '_cell'])
+                # Filter sentinels from target
+                mask = work[col].apply(lambda v: not _is_sentinel(v))
+                work = work[mask]
+
+                cats = sorted(work[col].dropna().unique().tolist(), key=str)
+                if len(cats) < 2:
+                    return {}, np.array([]), cats, {}
+                K = len(cats)
+                cat_idx = {c: i for i, c in enumerate(cats)}
+
+                # Global marginal
+                global_dist = np.zeros(K)
+                for c, i in cat_idx.items():
+                    m = work[col] == c
+                    global_dist[i] = work.loc[m, '_w'].sum()
+                total = global_dist.sum()
+                if total > 0:
+                    global_dist /= total
+
+                # Per-cell distributions with shrinkage
+                cell_dists: Dict[str, np.ndarray] = {}
+                cell_weights: Dict[str, float] = {}
+                for cell_key, grp in work.groupby('_cell'):
+                    n_cell = len(grp)
+                    if n_cell < self.min_cell_n:
+                        continue
+                    emp = np.zeros(K)
+                    for c, i in cat_idx.items():
+                        m = grp[col] == c
+                        emp[i] = grp.loc[m, '_w'].sum()
+                    emp_total = emp.sum()
+                    if emp_total > 0:
+                        emp /= emp_total
+                    # Shrinkage: λ = n / (n + κ)
+                    lam = n_cell / (n_cell + self.shrinkage_kappa)
+                    pooled = lam * emp + (1 - lam) * global_dist
+                    pooled_total = pooled.sum()
+                    if pooled_total > 0:
+                        pooled /= pooled_total
+                    cell_dists[cell_key] = pooled
+                    cell_weights[cell_key] = emp_total
+
+                return cell_dists, global_dist, cats, cell_weights
+
+            dist_a, global_a, cats_a, wt_a = _cell_distributions(df_a, col_a, weight_col)
+            dist_b, global_b, cats_b, wt_b = _cell_distributions(df_b, col_b, weight_col)
+
+            if len(cats_a) < 2 or len(cats_b) < 2:
+                return None
+
+            # --- Overlapping cells ---
+            shared_cells = sorted(set(dist_a.keys()) & set(dist_b.keys()))
+            if len(shared_cells) < 3:
+                return None
+
+            K_a, K_b = len(cats_a), len(cats_b)
+
+            # --- Poststratified joint table ---
+            def _compute_joint(cell_list, d_a, d_b, w_a, w_b):
+                joint = np.zeros((K_a, K_b))
+                total_w = 0.0
+                for cell in cell_list:
+                    # Cell weight = geometric mean of survey weights
+                    cw = np.sqrt(w_a.get(cell, 1.0) * w_b.get(cell, 1.0))
+                    joint += cw * np.outer(d_a[cell], d_b[cell])
+                    total_w += cw
+                if total_w > 0:
+                    joint /= total_w
+                return joint
+
+            joint_table = _compute_joint(shared_cells, dist_a, dist_b, wt_a, wt_b)
+            gamma_point = goodman_kruskal_gamma(joint_table)
+
+            # Convert to integer counts for Cramér's V
+            counts = (joint_table * 1000).astype(int).clip(1)
+            v_point = float(association(counts, method='cramer'))
+
+            # --- Bootstrap CI ---
+            rng = np.random.default_rng(seed=42)
+            boot_gammas = []
+            for _ in range(self.n_bootstrap):
+                boot_cells = rng.choice(shared_cells, size=len(shared_cells), replace=True).tolist()
+                jt_b = _compute_joint(boot_cells, dist_a, dist_b, wt_a, wt_b)
+                boot_gammas.append(goodman_kruskal_gamma(jt_b))
+
+            boot_gammas = np.array(boot_gammas)
+            gamma_ci = (
+                round(float(np.percentile(boot_gammas, 2.5)), 4),
+                round(float(np.percentile(boot_gammas, 97.5)), 4),
+            )
+
+            cell_sizes = [len(df_a[_cell_key(df_a) == c]) + len(df_b[_cell_key(df_b) == c])
+                          for c in shared_cells]
+            mean_cell_n = float(np.mean(cell_sizes)) if cell_sizes else 0.0
+
+            return {
+                'var_a': var_id_a,
+                'var_b': var_id_b,
+                'method': 'mrp_bridge',
+                'gamma': round(gamma_point, 4),
+                'gamma_ci_95': gamma_ci,
+                'cramers_v': round(v_point, 4),
+                'joint_table': joint_table.tolist(),
+                'n_cells_used': len(shared_cells),
+                'mean_cell_n': round(mean_cell_n, 1),
+                'cell_cols_used': available_cols,
+                'note': (
+                    f'MRP with shrinkage (κ={self.shrinkage_kappa}) '
+                    f'over {len(shared_cells)} cells ({", ".join(available_cols)})'
+                ),
+            }
+
+        except Exception as e:
+            print(f"[mrp-bridge] Failed for {var_id_a} × {var_id_b}: {e}")
+            return None
+
+
+# ---------------------------------------------------------------------------
+# DoublyRobustBridgeEstimator
+# ---------------------------------------------------------------------------
+
+class DoublyRobustBridgeEstimator:
+    """
+    Doubly robust bridge: AIPW-corrected marginals + CIA joint table.
+
+    Combines an outcome model P(Y|X) with a propensity model P(survey=A|X)
+    using the augmented IPW formula (v3 §5.2, §7.1).  The DR estimator is
+    consistent if EITHER the outcome model OR the propensity model is correct.
+
+    Propensity weights are trimmed at the 95th percentile to guard against
+    extreme weights from near-separation (v3 §6 pitfall).
+
+    Output dict keys:
+      gamma              — Goodman-Kruskal γ from DR-corrected joint table
+      gamma_ci_95        — 95% bootstrap CI
+      cramers_v          — Cramér's V
+      joint_table        — K_a × K_b joint probability table
+      propensity_overlap — Kolmogorov-Smirnov statistic for SES overlap
+      max_weight         — maximum trimmed propensity weight
+      n_trimmed          — weights trimmed
+      method             — 'doubly_robust_bridge'
+    """
+
+    def __init__(self, n_sim: int = 500, n_bootstrap: int = 200) -> None:
+        self.n_sim = n_sim
+        self.n_bootstrap = n_bootstrap
+
+    def estimate(
+        self,
+        var_id_a: str,
+        var_id_b: str,
+        df_a: pd.DataFrame,
+        df_b: pd.DataFrame,
+        col_a: str,
+        col_b: str,
+        ses_vars: Optional[List[str]] = None,
+        weight_col: str = 'Pondi2',
+    ) -> Optional[Dict[str, Any]]:
+        if ses_vars is None:
+            ses_vars = SES_REGRESSION_VARS
+        if col_a not in df_a.columns or col_b not in df_b.columns:
+            return None
+
+        try:
+            import statsmodels.api as sm
+
+            # --- Fit outcome models (same as baseline) ---
+            model_a = SurveyVarModel()
+            model_a.fit(df_a, col_a, ses_vars, weight_col)
+            model_b = SurveyVarModel()
+            model_b.fit(df_b, col_b, ses_vars, weight_col)
+
+            cats_a = model_a._categories
+            cats_b = model_b._categories
+            K_a, K_b = len(cats_a), len(cats_b)
+
+            # --- Encode SES for both surveys ---
+            enc = SESEncoder()
+            available = [v for v in ses_vars if v in df_a.columns and v in df_b.columns]
+            if len(available) < 2:
+                return None
+
+            sub_a = _drop_ses_sentinel_rows(
+                df_a[[col_a] + [v for v in available if v in df_a.columns]].dropna(), available
+            )
+            sub_b = _drop_ses_sentinel_rows(
+                df_b[[col_b] + [v for v in available if v in df_b.columns]].dropna(), available
+            )
+            if len(sub_a) < 30 or len(sub_b) < 30:
+                return None
+
+            X_a = enc.fit_transform(sub_a[available]).fillna(0.0)
+            X_b = enc.transform(sub_b[available]).fillna(0.0)
+
+            # --- Propensity model: P(survey=A | X) ---
+            X_pooled = pd.concat([X_a, X_b], ignore_index=True)
+            delta = np.concatenate([np.ones(len(X_a)), np.zeros(len(X_b))])
+            Xc = sm.add_constant(X_pooled, has_constant='add')
+            with warnings.catch_warnings():
+                warnings.simplefilter('ignore')
+                prop_model = sm.Logit(delta, Xc).fit(method='bfgs', disp=False)
+            prop_all = np.asarray(prop_model.predict(Xc), dtype=float)
+            prop_a = prop_all[:len(X_a)]
+            prop_b = prop_all[len(X_a):]
+
+            # KS overlap diagnostic
+            ks_stat = float(stats.ks_2samp(prop_a, prop_b).statistic)
+
+            # IPW weights for survey A units: w_i = (1 - π_i) / π_i
+            prop_a_clipped = np.clip(prop_a, 0.01, 0.99)
+            raw_weights = (1 - prop_a_clipped) / prop_a_clipped
+            # Trim extreme weights
+            cap = np.percentile(raw_weights, 95)
+            n_trimmed = int((raw_weights > cap).sum())
+            weights = np.minimum(raw_weights, cap)
+            weights /= weights.sum()  # normalise
+
+            # --- AIPW-corrected marginal for var_a in survey B population ---
+            def _aipw_marginal(
+                model: SurveyVarModel, sub_src: pd.DataFrame, col_src: str,
+                X_src: pd.DataFrame, X_tgt: pd.DataFrame,
+                cats: list, w: np.ndarray,
+            ) -> np.ndarray:
+                """DR-corrected P(Y=k) for the target population."""
+                K = len(cats)
+                # Outcome model predictions on target
+                pred_tgt = model.predict_proba(X_tgt).values  # (n_tgt, K)
+                imputed = pred_tgt.mean(axis=0)  # (K,)
+
+                # Outcome model predictions on source (for residual)
+                pred_src = model.predict_proba(X_src).values  # (n_src, K)
+
+                # Observed indicators in source
+                y_src = sub_src[col_src].values
+                indicators = np.zeros((len(y_src), K))
+                cat_map = {c: i for i, c in enumerate(cats)}
+                for idx, val in enumerate(y_src):
+                    if val in cat_map:
+                        indicators[idx, cat_map[val]] = 1.0
+                    else:
+                        try:
+                            fval = float(val)
+                            if fval in cat_map:
+                                indicators[idx, cat_map[fval]] = 1.0
+                        except (ValueError, TypeError):
+                            pass
+
+                # AIPW correction
+                residual = indicators - pred_src  # (n_src, K)
+                correction = (residual * w[:, None]).sum(axis=0)
+                dr_marginal = imputed + correction
+                # Clip and renorm
+                dr_marginal = np.clip(dr_marginal, 1e-8, None)
+                dr_marginal /= dr_marginal.sum()
+                return dr_marginal
+
+            # Marginal of Y_A in B's population
+            marg_a = _aipw_marginal(model_a, sub_a, col_a, X_a, X_b, cats_a, weights)
+
+            # For Y_B in A's population, compute reverse propensity
+            prop_b_clipped = np.clip(1 - prop_a_clipped, 0.01, 0.99)
+            # We need weights for B units: w_j = π_j / (1 - π_j)
+            prop_b_units = np.clip(prop_b, 0.01, 0.99)
+            raw_weights_b = prop_b_units / (1 - prop_b_units)
+            cap_b = np.percentile(raw_weights_b, 95)
+            weights_b = np.minimum(raw_weights_b, cap_b)
+            weights_b /= weights_b.sum()
+
+            marg_b = _aipw_marginal(model_b, sub_b, col_b, X_b, X_a, cats_b, weights_b)
+
+            # --- Joint table under CIA: outer product of DR marginals ---
+            joint_table = np.outer(marg_a, marg_b)
+            joint_table /= joint_table.sum()
+
+            gamma_point = goodman_kruskal_gamma(joint_table)
+            counts = (joint_table * 1000).astype(int).clip(1)
+            v_point = float(association(counts, method='cramer'))
+
+            # --- Bootstrap CI ---
+            rng = np.random.default_rng(seed=42)
+            boot_gammas = []
+            n_a, n_b = len(sub_a), len(sub_b)
+            for _ in range(self.n_bootstrap):
+                idx_a = rng.choice(n_a, size=n_a, replace=True)
+                idx_b = rng.choice(n_b, size=n_b, replace=True)
+                try:
+                    # Re-fit on bootstrap samples
+                    boot_a_df = sub_a.iloc[idx_a].reset_index(drop=True)
+                    boot_b_df = sub_b.iloc[idx_b].reset_index(drop=True)
+                    bm_a = SurveyVarModel()
+                    bm_a.fit(boot_a_df, col_a, ses_vars, weight_col)
+                    bm_b = SurveyVarModel()
+                    bm_b.fit(boot_b_df, col_b, ses_vars, weight_col)
+
+                    # Predict on original target populations
+                    pred_a_b = bm_a.predict_proba(X_b).values.mean(axis=0)
+                    pred_b_a = bm_b.predict_proba(X_a).values.mean(axis=0)
+                    pred_a_b = np.clip(pred_a_b[:K_a], 1e-8, None)
+                    pred_b_a = np.clip(pred_b_a[:K_b], 1e-8, None)
+                    pred_a_b /= pred_a_b.sum()
+                    pred_b_a /= pred_b_a.sum()
+
+                    jt_boot = np.outer(pred_a_b, pred_b_a)
+                    jt_boot /= jt_boot.sum()
+                    boot_gammas.append(goodman_kruskal_gamma(jt_boot))
+                except Exception:
+                    continue
+
+            if len(boot_gammas) < 10:
+                gamma_ci = (gamma_point, gamma_point)
+            else:
+                boot_gammas = np.array(boot_gammas)
+                gamma_ci = (
+                    round(float(np.percentile(boot_gammas, 2.5)), 4),
+                    round(float(np.percentile(boot_gammas, 97.5)), 4),
+                )
+
+            return {
+                'var_a': var_id_a,
+                'var_b': var_id_b,
+                'method': 'doubly_robust_bridge',
+                'gamma': round(gamma_point, 4),
+                'gamma_ci_95': gamma_ci,
+                'cramers_v': round(v_point, 4),
+                'joint_table': joint_table.tolist(),
+                'propensity_overlap': round(ks_stat, 4),
+                'max_weight': round(float(cap), 4),
+                'n_trimmed': n_trimmed,
+                'n_a': n_a,
+                'n_b': n_b,
+                'note': (
+                    'AIPW doubly-robust correction; joint table from '
+                    'DR-corrected marginals under CIA'
+                ),
+            }
+
+        except Exception as e:
+            print(f"[doubly-robust-bridge] Failed for {var_id_a} × {var_id_b}: {e}")
+            return None
