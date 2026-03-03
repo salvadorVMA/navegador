@@ -579,11 +579,23 @@ class SurveyVarModel:
 
         dominant_ses_group = _ses_group(top_predictor) if top_predictor else None
 
+        # --- AIC / BIC (available on both MNLogit and OrderedModel results) ---
+        try:
+            aic = float(result.aic)
+        except Exception:
+            aic = float('nan')
+        try:
+            bic = float(result.bic)
+        except Exception:
+            bic = float('nan')
+
         return {
             'model_type'        : model_type,
             'n_categories'      : n_cats,
             'pseudo_r2'         : pseudo_r2,
             'llr_pvalue'        : llr_pvalue,
+            'aic'               : aic,
+            'bic'               : bic,
             'coef_table'        : rows,
             'top_predictor'     : top_predictor,
             'dominant_ses_group': dominant_ses_group,
@@ -625,6 +637,56 @@ class SurveyVarModel:
         row_sums = probs_df.sum(axis=1).replace(0, 1.0)
         probs_df = probs_df.div(row_sums, axis=0)
         return probs_df
+
+    # ------------------------------------------------------------------
+    def held_out_accuracy(
+        self,
+        X_test: pd.DataFrame,
+        y_test: pd.Series,
+    ) -> Dict[str, float]:
+        """Compute held-out prediction accuracy metrics.
+
+        Args:
+            X_test: Encoded SES feature matrix (from SESEncoder.transform)
+            y_test: True category labels for test set
+
+        Returns:
+            dict with accuracy, log_loss, mse, mae
+        """
+        if self._model_result is None:
+            raise RuntimeError("Model not fitted. Call fit() first.")
+
+        probs_df = self.predict_proba(X_test)
+
+        # Modal prediction accuracy
+        modal = probs_df.idxmax(axis=1)
+        # Normalise types for comparison
+        try:
+            modal_f = modal.astype(float)
+            y_f = y_test.astype(float)
+            accuracy = float((modal_f == y_f).mean())
+        except (ValueError, TypeError):
+            accuracy = float((modal.astype(str) == y_test.astype(str)).mean())
+
+        # Per-observation probability of true class
+        p_true = np.array([
+            float(probs_df.at[idx, val])
+            if val in probs_df.columns
+            else 1.0 / len(self._categories)
+            for idx, val in y_test.items()
+        ])
+        p_true = np.clip(p_true, 1e-10, 1.0)
+
+        log_loss = float(-np.log(p_true).mean())
+        mse = float(((1.0 - p_true) ** 2).mean())
+        mae = float((1.0 - p_true).mean())
+
+        return {
+            'accuracy': round(accuracy, 4),
+            'log_loss': round(log_loss, 4),
+            'mse': round(mse, 4),
+            'mae': round(mae, 4),
+        }
 
     # ------------------------------------------------------------------
     def simulate_responses(self, ses_population_df: pd.DataFrame) -> pd.Series:
@@ -1333,7 +1395,20 @@ class BayesianBridgeEstimator:
                 """
                 from scipy.special import expit
                 res = model._model_result
-                params_mle = np.asarray(res.params, dtype=float).ravel()
+                K = len(model._categories)
+
+                is_mnlogit = not (model._var_type == 'ordinal' and K > 2)
+
+                if is_mnlogit:
+                    # MNLogit params DataFrame is (n_feat+1, K-1), but
+                    # cov_params() is ordered alternative-first:
+                    #   [(alt1,const), (alt1,x1), ..., (alt2,const), ...].
+                    # Ravel with Fortran (column-major) order to match cov.
+                    params_mle = np.asarray(res.params, dtype=float).ravel(order='F')
+                else:
+                    # OrderedModel: params is 1-D Series, ordering matches cov.
+                    params_mle = np.asarray(res.params, dtype=float).ravel()
+
                 try:
                     cov = np.asarray(res.cov_params(), dtype=float)
                     # Guard: use diagonal if cov is not PSD (numerical issues)
@@ -1349,9 +1424,8 @@ class BayesianBridgeEstimator:
                 # Re-encode using model's own encoder so columns match params exactly.
                 X_encoded = model._encoder.transform(ses_pop_raw[avail]).fillna(0.0)
                 X_arr = np.array(X_encoded, dtype=float)
-                K = len(model._categories)
 
-                if model._var_type == 'ordinal' and K > 2:
+                if not is_mnlogit:
                     # OrderedModel: betas + thresholds. Threshold indices have '/'.
                     idx = res.params.index if hasattr(res.params, 'index') else []
                     thresh_mask = np.array([('/' in str(i)) for i in idx])
@@ -1374,19 +1448,21 @@ class BayesianBridgeEstimator:
                             probs[:, k] = (expit(thresholds[k] - eta)
                                            - expit(thresholds[k - 1] - eta))
                 else:
-                    # MNLogit: params shape (n_feat+1, K-1); cov is (p*(K-1), p*(K-1))
-                    # Derive n_rows from actual params shape (ground truth) so that
-                    # reshape is always consistent regardless of X column count.
+                    # MNLogit: params drawn in alternative-first order.
+                    # Reshape back to (n_feat+1, K-1) using column-major order
+                    # so each column holds one alternative's coefficients.
                     n_rows = np.asarray(res.params, dtype=float).shape[0]
                     n_cols = K - 1
-                    params_2d = params_draw.reshape(n_rows, n_cols)
+                    params_2d = params_draw.reshape(n_rows, n_cols, order='F')
                     Xc = np.column_stack([np.ones(len(X_arr)), X_arr])
-                    eta = Xc @ params_2d  # (n, K-1)
-                    # Softmax: reference class has eta=0
-                    exp_eta = np.exp(eta - eta.max(axis=1, keepdims=True))
-                    ref = np.ones((len(eta), 1))
-                    all_exp = np.hstack([exp_eta, ref])
-                    probs = all_exp / all_exp.sum(axis=1, keepdims=True)
+                    eta = Xc @ params_2d  # (n, K-1) for non-reference categories
+                    # Softmax: reference class (first category) has eta=0.
+                    # Prepend ref eta so the max subtraction is consistent
+                    # across ALL K alternatives (avoids inflating the ref).
+                    eta_all = np.hstack([np.zeros((len(Xc), 1)), eta])
+                    max_eta = eta_all.max(axis=1, keepdims=True)
+                    probs = np.exp(eta_all - max_eta)
+                    probs /= probs.sum(axis=1, keepdims=True)
 
                 probs = np.nan_to_num(probs, nan=0.0)
                 probs = np.clip(probs, 1e-8, 1.0)
@@ -1807,7 +1883,7 @@ class DoublyRobustBridgeEstimator:
                 dr_marginal /= dr_marginal.sum()
                 return dr_marginal
 
-            # Marginal of Y_A in B's population
+            # Marginal of Y_A in B's population (kept for diagnostics)
             marg_a = _aipw_marginal(model_a, sub_a, col_a, sub_b, available, cats_a, weights)
 
             # For Y_B in A's population, compute reverse propensity
@@ -1819,8 +1895,18 @@ class DoublyRobustBridgeEstimator:
 
             marg_b = _aipw_marginal(model_b, sub_b, col_b, sub_a, available, cats_b, weights_b)
 
-            # --- Joint table under CIA: outer product of DR marginals ---
-            joint_table = np.outer(marg_a, marg_b)
+            # --- Joint table under CIA via individual-level predictions ---
+            # Using a shared reference SES population (same as Bayesian),
+            # predict P(Y_a|X_i) and P(Y_b|X_i) for each individual and
+            # compute mean outer product.  This recovers ordinal association;
+            # outer(marg_a, marg_b) would always give gamma ≈ 0 by construction.
+            helper = CrossDatasetBivariateEstimator(n_sim=self.n_sim)
+            ses_pop = helper._sample_ses_population(df_a, df_b, available, weight_col)
+            X_ref_a = model_a._encoder.transform(ses_pop[available]).fillna(0.0)
+            X_ref_b = model_b._encoder.transform(ses_pop[available]).fillna(0.0)
+            pa_ref = model_a.predict_proba(X_ref_a).values[:, :K_a]
+            pb_ref = model_b.predict_proba(X_ref_b).values[:, :K_b]
+            joint_table = (pa_ref[:, :, None] * pb_ref[:, None, :]).mean(axis=0)
             joint_table /= joint_table.sum()
 
             gamma_point = goodman_kruskal_gamma(joint_table)
@@ -1843,19 +1929,13 @@ class DoublyRobustBridgeEstimator:
                     bm_b = SurveyVarModel()
                     bm_b.fit(boot_b_df, col_b, available, weight_col)
 
-                    # Re-encode target populations using each bootstrap model's own
-                    # encoder (avoids column count mismatch when bootstrap resamples
-                    # happen to exclude certain categorical levels).
-                    X_b_boot = bm_a._encoder.transform(sub_b[available]).fillna(0.0)
-                    X_a_boot = bm_b._encoder.transform(sub_a[available]).fillna(0.0)
-                    pred_a_b = bm_a.predict_proba(X_b_boot).values.mean(axis=0)
-                    pred_b_a = bm_b.predict_proba(X_a_boot).values.mean(axis=0)
-                    pred_a_b = np.clip(pred_a_b[:K_a], 1e-8, None)
-                    pred_b_a = np.clip(pred_b_a[:K_b], 1e-8, None)
-                    pred_a_b /= pred_a_b.sum()
-                    pred_b_a /= pred_b_a.sum()
-
-                    jt_boot = np.outer(pred_a_b, pred_b_a)
+                    # Individual-level CIA on reference population using
+                    # each bootstrap model's own encoder.
+                    X_ref_a_boot = bm_a._encoder.transform(ses_pop[available]).fillna(0.0)
+                    X_ref_b_boot = bm_b._encoder.transform(ses_pop[available]).fillna(0.0)
+                    pa_b = bm_a.predict_proba(X_ref_a_boot).values[:, :K_a]
+                    pb_b = bm_b.predict_proba(X_ref_b_boot).values[:, :K_b]
+                    jt_boot = (pa_b[:, :, None] * pb_b[:, None, :]).mean(axis=0)
                     jt_boot /= jt_boot.sum()
                     boot_gammas.append(goodman_kruskal_gamma(jt_boot))
                 except Exception:
