@@ -1036,6 +1036,7 @@ class SemanticVariableSelector:
     def build_causal_direction_map(
         cache_dir: Path | str = CACHE_DIR,
         dr_sweep_path: Optional[Path | str] = None,
+        construct_network_path: Optional[Path | str] = None,
         empirical_gamma_threshold: float = 0.15,
     ) -> Dict[str, Dict[str, Any]]:
         """Build a construct-to-construct causal direction map.
@@ -1102,13 +1103,19 @@ class SemanticVariableSelector:
                         continue
                     targets = [s.strip() for s in str(sources).split(",")]
                     for tgt_domain in targets:
-                        if (tgt_domain == domain
-                                or tgt_domain not in all_constructs):
+                        if tgt_domain not in all_constructs:
+                            continue
+                        # For intra-domain: exclude self-loops
+                        candidates = all_constructs[tgt_domain]
+                        if tgt_domain == domain:
+                            candidates = [c for c in candidates
+                                          if c != src_name]
+                        if not candidates:
                             continue
                         related = rel.get("related_construct", "")
                         tgt_construct = (
                             SemanticVariableSelector._match_construct(
-                                related, all_constructs[tgt_domain]))
+                                related, candidates))
                         if tgt_construct:
                             src_id = f"{domain}:{src_name}"
                             tgt_id = f"{tgt_domain}:{tgt_construct}"
@@ -1183,6 +1190,32 @@ class SemanticVariableSelector:
                                 "gamma": round(gamma, 4),
                             }
 
+        # --- Step 4: Empirical intra-domain edges from construct network ---
+        if construct_network_path is not None:
+            construct_network_path = Path(construct_network_path)
+            if construct_network_path.exists():
+                with open(construct_network_path) as fh:
+                    network = json.load(fh)
+                for edge in network.get("edges", []):
+                    gamma = edge.get("gamma")
+                    if gamma is None:
+                        continue
+                    if abs(gamma) < empirical_gamma_threshold:
+                        continue
+                    src = edge.get("source", "")
+                    tgt = edge.get("target", "")
+                    if not src or not tgt:
+                        continue
+                    pair_key = "::".join(sorted([src, tgt]))
+                    if pair_key not in result:
+                        result[pair_key] = {
+                            "cause": None, "effect": None,
+                            "fwd": 0, "rev": 0, "corr": 0,
+                            "direction": "empirical",
+                            "source": "empirical",
+                            "gamma": round(gamma, 4),
+                        }
+
         return result
 
     @staticmethod
@@ -1190,6 +1223,7 @@ class SemanticVariableSelector:
         cache_dir: Path | str = CACHE_DIR,
         output_path: Path | str | None = None,
         dr_sweep_path: Optional[Path | str] = None,
+        construct_network_path: Optional[Path | str] = None,
         empirical_gamma_threshold: float = 0.15,
     ) -> Dict[str, Dict[str, Any]]:
         """Build and save construct-level causal direction map to JSON."""
@@ -1197,14 +1231,20 @@ class SemanticVariableSelector:
             output_path = Path(cache_dir).parent / "causal_direction_map.json"
         output_path = Path(output_path)
 
+        results_dir = Path(cache_dir).parent
         if dr_sweep_path is None:
-            default_dr = Path(cache_dir).parent / "dr_sweep_results.json"
+            default_dr = results_dir / "dr_sweep_results.json"
             if default_dr.exists():
                 dr_sweep_path = default_dr
+        if construct_network_path is None:
+            default_cn = results_dir / "construct_network.json"
+            if default_cn.exists():
+                construct_network_path = default_cn
 
         direction_map = SemanticVariableSelector.build_causal_direction_map(
             cache_dir=cache_dir,
             dr_sweep_path=dr_sweep_path,
+            construct_network_path=construct_network_path,
             empirical_gamma_threshold=empirical_gamma_threshold,
         )
 
