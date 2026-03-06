@@ -1,0 +1,66 @@
+[
+  {
+    "construct_name": "perceived_education_quality",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p49",
+      "p51",
+      "p55_3",
+      "p55_4",
+      "p55_5"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Perceived education quality is inherently multi-dimensional, spanning satisfaction with teaching, school resources, and service ratings, so no single item captures it fully. The selected items (p49, p51, p55_3, p55_4, p55_5) share compatible 4–5 category Likert-style scales, making mean aggregation appropriate and reducing individual item measurement error. Items p52, p20, and p37 are excluded due to very low entropy (p20: H=0.92, p37: H=0.91) or a substantially wider scale (p52: K=13) that would distort the mean; the retained items offer reasonable entropy and scale compatibility."
+  },
+  {
+    "construct_name": "school_environment_quality",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p30_1",
+      "p28_1",
+      "p12",
+      "p13"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "School environment quality is multi-dimensional, encompassing physical safety, social climate, and interpersonal relationships, requiring aggregation across items. However, the available items span heterogeneous scales (K=5 to K=14) and likely tap distinct sub-dimensions, making PCA on the first component the safest method to extract a common latent signal without assuming additive equivalence. The four selected items (p30_1 H=2.36, p28_1 H=2.64, p12, p13) are chosen for their higher entropy and stronger face validity as environment quality indicators, while items with very low entropy (p12 H=0.85, p13 H=0.84 are borderline but retained for content coverage) and highly idiosyncratic scales (p16_6 K=14, p17_5, p18) are deprioritized or excluded to keep the PCA stable."
+  },
+  {
+    "construct_name": "digital_and_cultural_capital",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p47_1",
+      "p47_2",
+      "p47_3",
+      "p47_4",
+      "p47_6",
+      "p47_8",
+      "p47_9",
+      "p48_1",
+      "p48_2",
+      "p48_3"
+    ],
+    "aggregation_method": "sum_score",
+    "justification": "Digital and cultural capital is best captured as an additive index of resource access and cultural participation, a classic approach in SES research. The p47_x and p48_x items all share a uniform 4-category scale (K=4), making them directly summable into a count-like composite that reflects cumulative capital. Items p44_5 and p45_2 use a different 7-category scale and are excluded to preserve scale homogeneity; the 10 retained items provide broad coverage of digital devices and cultural practices with adequate entropy, and the summed score will be binned into ≤5 ordinal categories."
+  },
+  {
+    "construct_name": "educational_equity_beliefs",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p55_1",
+      "p55_2",
+      "p39_1",
+      "p40_1"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Educational equity beliefs reflect attitudes toward fairness and access in education, a latent construct best measured by combining multiple attitudinal items to reduce response bias. The four selected items (p55_1, p55_2, p39_1, p40_1) use compatible 4–5 category Likert scales, supporting mean aggregation, and together cover beliefs about equity in school quality and opportunity. Items p38, p53_1, and p54_1 are excluded because their wide categorical ranges (K=12–14) reflect factual or behavioral dimensions rather than pure belief attitudes, and mixing them would distort the mean of the Likert-based items."
+  },
+  {
+    "construct_name": "educational_trajectory_and_continuity",
+    "strategy": "single_max_entropy",
+    "selected_qids": [
+      "p1_2"
+    ],
+    "aggregation_method": null,
+    "justification": "Educational trajectory and continuity is most directly captured by a single item measuring the respondent's educational level or progression, and p1_2 has the highest Shannon entropy (H=3.06, K=15) indicating maximum discrimination across the population. The construct does not require aggregation (requires_aggregation=False), and p1_2 as an educational attainment or grade-level item is a gold-standard single measure of educational trajectory in survey research. Its 15 categories sit at the ≤15 limit and can be passed directly to the bridge model, preserving the full ordinal gradient of educational continuity."
+  }
+]

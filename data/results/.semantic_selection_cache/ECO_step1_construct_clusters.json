@@ -1,0 +1,69 @@
+[
+  {
+    "name": "economic_wellbeing_perception",
+    "description": "Captures respondents' subjective assessment of economic welfare at both the national and personal level, including intergenerational comparisons of living standards. Reflects how individuals situate themselves and their families within broader economic trajectories.",
+    "question_cluster": [
+      "p1",
+      "p2",
+      "p3",
+      "p4"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "job_quality_precariousness",
+    "description": "Measures the objective conditions of employment quality, including contract type, social security coverage, work schedule, overtime compensation, and secondary employment, capturing the degree of labor precariousness experienced by workers.",
+    "question_cluster": [
+      "p34",
+      "p36",
+      "p40",
+      "p41",
+      "p42",
+      "p43",
+      "p52",
+      "p53"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "labor_market_attachment",
+    "description": "Assesses the strength and nature of individuals' connection to the labor market, including employment status, job search behavior, willingness to accept unfavorable job conditions, and perceived probability of finding or losing employment.",
+    "question_cluster": [
+      "p25",
+      "p27",
+      "p48",
+      "p49",
+      "p50",
+      "p56",
+      "p58",
+      "p60"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "work_values_preferences",
+    "description": "Captures what individuals value most in a job — such as income, advancement opportunities, and contract arrangements — reflecting underlying orientations toward work that shape labor market behavior and satisfaction.",
+    "question_cluster": [
+      "p18_2",
+      "p19",
+      "p20",
+      "p21",
+      "p45_1",
+      "p46_1"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "human_capital_labor_alignment",
+    "description": "Measures the relationship between respondents' educational attainment, training participation, and the skill requirements of their jobs, capturing the degree of match or mismatch between human capital and labor market demands.",
+    "question_cluster": [
+      "p64",
+      "p65",
+      "p66",
+      "p67",
+      "p71",
+      "p72"
+    ],
+    "requires_aggregation": true
+  }
+]

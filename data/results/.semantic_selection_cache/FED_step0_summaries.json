@@ -1,0 +1,327 @@
+{
+  "p1|FED": {
+    "summary": "Assessment of current national economic situation compared to one year ago (better or worse).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p2|FED": {
+    "summary": "Descriptive characterization of the country's political situation using provided word options.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3|FED": {
+    "summary": "Expectation for the country's economic situation in the next year.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p4|FED": {
+    "summary": "Expectation for the country's political situation in the next year.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5|FED": {
+    "summary": "Frequency of consuming news or programs about politics or public affairs.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6|FED": {
+    "summary": "Level of personal interest in politics.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7|FED": {
+    "summary": "Perceived relevance of politics to respondent's daily life.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8|FED": {
+    "summary": "Agreement with statement that personal household well-being matters more than political engagement.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10|FED": {
+    "summary": "Perceived quality of relationship between municipal and state government.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11|FED": {
+    "summary": "Perceived quality of relationship between state and federal government.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12_1|FED": {
+    "summary": "Perceived representativeness of political parties for people like the respondent.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12_2|FED": {
+    "summary": "Perceived representativeness of local deputies for people like the respondent.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12_3|FED": {
+    "summary": "Perceived representativeness of federal deputies for people like the respondent.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12_4|FED": {
+    "summary": "Perceived representativeness of the state governor for people like the respondent.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12_5|FED": {
+    "summary": "Perceived representativeness of the president for people like the respondent.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12_6|FED": {
+    "summary": "Perceived representativeness of the municipal president for people like the respondent.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p13_1|FED": {
+    "summary": "Trust in the police on a 0-10 scale.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14_1|FED": {
+    "summary": "Perceived responsiveness of municipal presidents to citizens.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15_1|FED": {
+    "summary": "Approval of the municipal president or Delegate's job performance.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16|FED": {
+    "summary": "Perception of which level of government complies most with the law.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17|FED": {
+    "summary": "Perception of which level of government complies least with the law.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18_1|FED": {
+    "summary": "Perceived level of corruption in state government.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19_1|FED": {
+    "summary": "Pride in being from one's municipality.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21_1|FED": {
+    "summary": "Opinion on whether federal government should intervene in school curriculum decisions.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22|FED": {
+    "summary": "Preference for decision-making authority on community issues (centralized vs. local).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23|FED": {
+    "summary": "Acceptance of majority-based decision-making.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24|FED": {
+    "summary": "Preference for how important national decisions should be made.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25|FED": {
+    "summary": "Preference for how important state-level decisions should be made.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26_1|FED": {
+    "summary": "Knowledge of which government level organizes municipal presidential elections.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30|FED": {
+    "summary": "Opinion on how to resolve a very close presidential election.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31_1|FED": {
+    "summary": "Attribution of responsibility for water supply problems to a government level.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32_1|FED": {
+    "summary": "Preference for which government level should manage water supply.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33|FED": {
+    "summary": "Preference for which government level should resolve local community problems.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34_1|FED": {
+    "summary": "Opinion on which government level should manage educational services in the state.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35_1|FED": {
+    "summary": "Knowledge of which government level is responsible for vehicle registration tax.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36|FED": {
+    "summary": "Preference for how tax revenue should be distributed among government levels.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37_1|FED": {
+    "summary": "Assessment of whether municipal government services match the taxes paid.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38|FED": {
+    "summary": "Agreement with statements about government power distribution.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39|FED": {
+    "summary": "Agreement with the role of the National Conference of Governors (CONAGO) as a counterweight to federal government.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40|FED": {
+    "summary": "Opinion on whether the governors' association has benefited states and the Federal District.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p41|FED": {
+    "summary": "Opinion on who should decide to remove a governor for non-compliance with mandate.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p43|FED": {
+    "summary": "Agreement with appointing municipal presidents by governors instead of popular election if performance is guaranteed.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44|FED": {
+    "summary": "Perception of whether the president treats all state governments equally or favors some.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45|FED": {
+    "summary": "Assessment of coordination between federal and state government in combating insecurity.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46|FED": {
+    "summary": "Preference for how to improve police functioning (centralized vs. decentralized).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47|FED": {
+    "summary": "Assessment of whether state government does enough for public security.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48|FED": {
+    "summary": "Preference for which government level should handle security emergencies in the state.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49|FED": {
+    "summary": "Preference for which government level should manage public security in the state.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p50_1|FED": {
+    "summary": "Perception of organized crime penetration in churches.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51_1|FED": {
+    "summary": "Trust in state judges for administering justice.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p52|FED": {
+    "summary": "Opinion on which institution should resolve differences in law application between federal and state governments.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53_1|FED": {
+    "summary": "Preference for unified national law versus state-specific laws for combating crime.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53_2|FED": {
+    "summary": "Preference for unified national law versus state-specific laws for combating corruption.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53_3|FED": {
+    "summary": "Preference for unified national law versus state-specific laws for government information access.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53_4|FED": {
+    "summary": "Preference for unified national law versus state-specific laws for public security.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53_5|FED": {
+    "summary": "Preference for unified national law versus state-specific laws for environmental protection.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53_6|FED": {
+    "summary": "Preference for unified national law versus state-specific laws for tax collection.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54|FED": {
+    "summary": "Opinion on whether state senators defend state interests.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55|FED": {
+    "summary": "Opinion on whether federal deputies defend citizens' interests in their district.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p56|FED": {
+    "summary": "Opinion on whether state deputies defend citizens' interests in their locality.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p57|FED": {
+    "summary": "Opinion on whether Chamber of Deputies discussions are important for citizens or only for politicians.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58|FED": {
+    "summary": "Preference for whether important state decisions should be made at state or federal level.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p59|FED": {
+    "summary": "Perception of how free states are to make their own decisions relative to federal government.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p60|FED": {
+    "summary": "Opinion on whether federal government should concentrate or share important decisions with state governments.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61|FED": {
+    "summary": "Assessment of the current constitution.",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

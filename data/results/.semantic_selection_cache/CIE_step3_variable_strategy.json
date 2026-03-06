@@ -1,0 +1,82 @@
+[
+  {
+    "construct_name": "science_self_efficacy",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p16",
+      "p17",
+      "p45_1",
+      "p37_1",
+      "p18",
+      "p27"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Science self-efficacy is inherently multi-dimensional, encompassing perceived ability to understand, evaluate, and engage with scientific information, so no single item captures it fully. The questions span two scale families (0–10 for p16/p17 and 5–7-point Likert for the rest), making simple summation inappropriate; PCA extracts the dominant latent dimension while accommodating scale heterogeneity. Binning the first principal component into 5 quantiles yields an ordinal variable within the ≤15 category constraint while maximising variance explained across all six indicators."
+  },
+  {
+    "construct_name": "institutional_trust_in_science",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p32_1",
+      "p33",
+      "p34",
+      "p40_1",
+      "p49_1",
+      "p50_1",
+      "p31_1"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Institutional trust in science is a latent construct that spans trust in scientists, scientific institutions, and science-based policy bodies, requiring multiple items to cover its breadth reliably. The scale mix (one 0–10 item p31_1 alongside 6- and 7-point Likert items) makes raw summation inadvisable, whereas PCA on standardised items recovers the shared trust dimension without distortion from differing response ranges. The first principal component, binned into 5 quantiles, provides a high-importance, high-entropy composite that is well-suited to the bridge regression."
+  },
+  {
+    "construct_name": "science_technology_engagement",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p9_1",
+      "p10_1",
+      "p11",
+      "p22",
+      "p23",
+      "p24_1",
+      "p19",
+      "p25"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Science and technology engagement covers behavioural frequency (media consumption, event attendance, online activity) across diverse channels, so a single item would miss most of the construct's scope. The items use heterogeneous scales (5- to 13-point), making PCA on standardised scores the most principled aggregation method to extract the common engagement factor. Quantile-binning the first PC into 5 ordered categories keeps the variable within bridge model constraints while preserving the ordinal gradient from low to high engagement."
+  },
+  {
+    "construct_name": "information_capital",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p3_1",
+      "p3_2",
+      "p3_3",
+      "p3_6",
+      "p3_7",
+      "p3_8",
+      "p3_15",
+      "p4",
+      "p5",
+      "p6"
+    ],
+    "aggregation_method": "sum_score",
+    "justification": "Information capital reflects access to and use of diverse information sources; the nine 4-point items (p3_1–p3_15, p4, p5) are on an identical scale and function as a checklist of media/source access, making simple summation both theoretically appropriate and psychometrically sound. The single 7-point item p6 adds complementary depth (e.g., frequency or breadth of use) and can be recoded to a 4-point scale before summing without distorting the composite. Binning the total sum into ≤5 ordered categories produces a parsimonious ordinal variable that captures cumulative information resource richness for the bridge model."
+  },
+  {
+    "construct_name": "science_technology_policy_attitudes",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p46_1",
+      "p47_1",
+      "p48_1",
+      "p51_1",
+      "p57",
+      "p58",
+      "p59_1",
+      "p53",
+      "p54"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Science and technology policy attitudes span support for public funding, regulation, risk perception, and trust in expert-led policy, making this a genuinely multi-faceted construct that no single item can represent adequately. The items use highly heterogeneous scales (4- to 14-point), so PCA on standardised scores is the appropriate method to isolate the dominant attitudinal dimension without scale-range artefacts. Binning the first PC into 5 quantiles yields an ordinal bridge variable that captures the pro- to anti-science-policy gradient while respecting the ≤15 category constraint."
+  }
+]

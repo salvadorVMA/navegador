@@ -1,0 +1,81 @@
+[
+  {
+    "name": "perceived_education_quality",
+    "description": "Captures respondents' overall evaluations of the Mexican education system, including perceived changes over time, quality ratings, and beliefs about whether schooling delivers practical life and labor market value.",
+    "question_cluster": [
+      "p49",
+      "p52",
+      "p51",
+      "p20",
+      "p37",
+      "p55_3",
+      "p55_4",
+      "p55_5"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "school_environment_quality",
+    "description": "Measures respondents' assessments of the physical and social conditions of their school, including infrastructure adequacy, safety perceptions, teacher engagement, and peer prosocial behavior.",
+    "question_cluster": [
+      "p12",
+      "p13",
+      "p14_4",
+      "p30_1",
+      "p16_6",
+      "p17_5",
+      "p18",
+      "p28_1"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "digital_and_cultural_capital",
+    "description": "Assesses the breadth of informational, technological, and cultural resources available to and used by respondents, reflecting socioeconomic and educational capital relevant to educational opportunity and outcomes.",
+    "question_cluster": [
+      "p47_1",
+      "p47_2",
+      "p47_3",
+      "p47_4",
+      "p47_6",
+      "p47_8",
+      "p47_9",
+      "p48_1",
+      "p48_2",
+      "p48_3",
+      "p44_5",
+      "p45_2"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "educational_equity_beliefs",
+    "description": "Captures respondents' beliefs about fairness and inclusivity in the education system, including whether schooling is accessible to all, treats women equitably, and accommodates students with disabilities.",
+    "question_cluster": [
+      "p55_1",
+      "p55_2",
+      "p39_1",
+      "p40_1",
+      "p38",
+      "p53_1",
+      "p54_1"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "educational_trajectory_and_continuity",
+    "description": "Measures the respondent's educational history, current enrollment status, reasons for leaving or continuing school, and aspirations for future study, reflecting patterns of educational persistence and dropout.",
+    "question_cluster": [
+      "p1_1",
+      "p1_2",
+      "p2",
+      "p22",
+      "p34",
+      "p36",
+      "p43",
+      "p19",
+      "p35"
+    ],
+    "requires_aggregation": false
+  }
+]

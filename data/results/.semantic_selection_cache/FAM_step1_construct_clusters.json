@@ -1,0 +1,71 @@
+[
+  {
+    "name": "family_cohesion_quality",
+    "description": "Measures the perceived quality and strength of relationships within and outside the household, as well as the values and behaviors that keep families united. Captures the latent construct of family solidarity and relational well-being.",
+    "question_cluster": [
+      "p25",
+      "p26",
+      "p27",
+      "p52",
+      "p49",
+      "p10"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "traditional_family_ideology",
+    "description": "Captures the degree to which respondents hold traditional versus pluralistic views of family structure, ideal family type, and gender roles within the family, including attitudes toward mothers working outside the home. Reflects an underlying conservative-to-progressive ideological dimension on family norms.",
+    "question_cluster": [
+      "p13",
+      "p16",
+      "p43",
+      "p28",
+      "p29",
+      "p30",
+      "p55"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "union_formation_motivations",
+    "description": "Measures the motivations, values, and criteria that drive individuals to form conjugal unions and choose a spouse, tapping into instrumental versus affective orientations toward partnership and family formation.",
+    "question_cluster": [
+      "p19",
+      "p20",
+      "p21",
+      "p22",
+      "p23",
+      "p24a",
+      "p45"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "family_instability_and_conflict",
+    "description": "Assesses respondents' perceptions of the sources and consequences of family breakdown, including infidelity, divorce, violence, and conflict, reflecting a latent construct of perceived family vulnerability and social disorganization.",
+    "question_cluster": [
+      "p32",
+      "p33",
+      "p35",
+      "p38",
+      "p39",
+      "p41",
+      "p42"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "family_socialization_and_values_transmission",
+    "description": "Measures the role of the family as an agent of socialization, capturing the values parents transmit to children, the influence of religion and institutions on family life, and the most important values learned and practiced. Reflects the latent construct of intergenerational normative transmission.",
+    "question_cluster": [
+      "p53",
+      "p54",
+      "p56",
+      "p57",
+      "p60_1",
+      "p61_1",
+      "p67"
+    ],
+    "requires_aggregation": true
+  }
+]

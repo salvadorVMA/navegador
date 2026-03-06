@@ -1,0 +1,392 @@
+{
+  "p1|JUS": {
+    "summary": "Perception of change in national economic situation compared to one year ago (better or worse).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p2|JUS": {
+    "summary": "Word choice to describe the current political situation of the country.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18|JUS": {
+    "summary": "Agreement with security forces killing organized crime members instead of detaining them for justice.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5_1|JUS": {
+    "summary": "Willingness to disagree with parents when respondent believes they are right.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6_1|JUS": {
+    "summary": "Opinion on who should set limits on people's behavior (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7|JUS": {
+    "summary": "Reasons why respondent obeys the laws.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8|JUS": {
+    "summary": "Perceived respect for laws by government officials in Mexico (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9|JUS": {
+    "summary": "Perceived respect for laws by citizens in Mexico (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10|JUS": {
+    "summary": "Respondent's self-reported respect for the law (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11_1|JUS": {
+    "summary": "Opinion on who violates laws most frequently (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12|JUS": {
+    "summary": "Self-assessed knowledge of personal rights and obligations.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14|JUS": {
+    "summary": "Most effective method to change an unjust or harmful government decision.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16|JUS": {
+    "summary": "Least effective method to change an unjust or harmful government decision.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17|JUS": {
+    "summary": "Agreement that community members have the right to punish a killer if authorities do nothing.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19|JUS": {
+    "summary": "Opinion on what is worse for society: justice system errors or other specified outcomes.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20_1|JUS": {
+    "summary": "Most important priority regarding justice (first choice).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20_2|JUS": {
+    "summary": "Second most important priority regarding justice.",
+    "duplicate_of": "p20_1|JUS",
+    "keep": false
+  },
+  "p21|JUS": {
+    "summary": "Phrase that best describes justice according to respondent.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22|JUS": {
+    "summary": "Opinion on whether justice in Mexico functions well or poorly.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24_1|JUS": {
+    "summary": "Respect for federal police (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25a_1|JUS": {
+    "summary": "Opinion on whether police resolve problems fairly.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27|JUS": {
+    "summary": "Preference between two approaches when two people have a dispute.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28|JUS": {
+    "summary": "Action respondent would take if needing legal defense without money for a lawyer.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29|JUS": {
+    "summary": "Knowledge of constitutional provisions regarding justice administered by judges and magistrates.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30|JUS": {
+    "summary": "Action respondent would take if a judge's sentence negatively affects their interests.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32|JUS": {
+    "summary": "Opinion on how much oral trials will improve justice administration in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33|JUS": {
+    "summary": "Opinion on whether all people receive equal treatment in courts or if money and connections determine outcomes.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34|JUS": {
+    "summary": "Knowledge of what amparo (constitutional remedy) is.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34_1|JUS": {
+    "summary": "Knowledge of the purpose and function of amparo.",
+    "duplicate_of": "p34|JUS",
+    "keep": false
+  },
+  "p35|JUS": {
+    "summary": "Opinion on how much amparo serves to defend people's rights.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36|JUS": {
+    "summary": "Belief in whether it is possible to sue the government for damages in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37|JUS": {
+    "summary": "Perceived likelihood of winning a lawsuit against the government.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38_1|JUS": {
+    "summary": "Trust in police (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39|JUS": {
+    "summary": "Opinion on whether it is worthwhile to go to court to file a lawsuit.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40_1|JUS": {
+    "summary": "Expectation that courts and judges would be respectful in treatment.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40_1_1|JUS": {
+    "summary": "Expectation that the Public Ministry would be respectful in treatment.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40_2_1|JUS": {
+    "summary": "Expectation that police would be respectful in treatment.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p41|JUS": {
+    "summary": "Opinion on how independent judges and magistrates are in making their own decisions.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42_1|JUS": {
+    "summary": "Agreement that judges and magistrates generally guarantee everyone a fair trial.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p43|JUS": {
+    "summary": "Preference for whether judge sentences should be just or strictly follow the law.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44|JUS": {
+    "summary": "Opinion on whether President should follow a judge's decision blocking a desired airport project.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45|JUS": {
+    "summary": "Respondent's reaction to a judge's guilty verdict in a criminal case.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46|JUS": {
+    "summary": "Opinion on whether sentences from the Supreme Court of Justice are fair or unfair.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47|JUS": {
+    "summary": "Opinion on who should appoint judges and magistrates.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_1|JUS": {
+    "summary": "Credibility of guilt claims heard on radio.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_2|JUS": {
+    "summary": "Credibility of guilt claims read in newspapers.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_3|JUS": {
+    "summary": "Credibility of guilt claims seen on television.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_4|JUS": {
+    "summary": "Credibility of guilt claims read on social media.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_5|JUS": {
+    "summary": "Credibility of guilt claims made by social organizations.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_6|JUS": {
+    "summary": "Credibility of guilt when a judge issues a guilty verdict.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49|JUS": {
+    "summary": "Opinion on who should sanction a judge or magistrate for misconduct during a trial.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p50|JUS": {
+    "summary": "Opinion on whether judges and magistrates who act improperly receive punishment or go unpunished.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51|JUS": {
+    "summary": "Opinion on whether judges in Mexico are well or poorly paid for their work.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53|JUS": {
+    "summary": "Experience hiring or requesting legal services from a lawyer.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54|JUS": {
+    "summary": "Preference between paying a lawyer or resolving a legal problem independently.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55|JUS": {
+    "summary": "Opinion on whether a lawyer must know the judge to win a legal case.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p56|JUS": {
+    "summary": "Opinion on how well public defenders defend accused persons who cannot afford a lawyer.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p57|JUS": {
+    "summary": "Agreement that lawyers generally practice their profession honestly.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58|JUS": {
+    "summary": "Opinion on appropriate percentage fee lawyers should charge from recovered client funds.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p59|JUS": {
+    "summary": "Opinion on how to prevent police abuse and improve their work during investigations.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p60_1|JUS": {
+    "summary": "Experience of theft in the last five years and whether the problem was resolved.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_1|JUS": {
+    "summary": "Resolution of theft problem.",
+    "duplicate_of": "p60_1|JUS",
+    "keep": false
+  },
+  "p61_2|JUS": {
+    "summary": "Resolution of defective purchase problem.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_3|JUS": {
+    "summary": "Resolution of vehicle damage payment dispute.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_4|JUS": {
+    "summary": "Resolution of unpaid loan problem.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_5|JUS": {
+    "summary": "Resolution of unjustified job termination problem.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_6|JUS": {
+    "summary": "Resolution of neighbor property damage problem.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_7|JUS": {
+    "summary": "Resolution of family violence problem.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_8|JUS": {
+    "summary": "Resolution of tax difficulties problem.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_9|JUS": {
+    "summary": "Resolution of school authority or teacher problems.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_10|JUS": {
+    "summary": "Resolution of contract non-compliance problem.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_11|JUS": {
+    "summary": "Resolution of unpaid salary problem.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_12|JUS": {
+    "summary": "Resolution of unpaid child support problem.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_13|JUS": {
+    "summary": "Resolution of child-related problems after separation from partner.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_14|JUS": {
+    "summary": "Resolution of inheritance dispute with family members.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_16|JUS": {
+    "summary": "Resolution of tenant non-payment of rent problem.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_17|JUS": {
+    "summary": "Resolution of unresolved government petition or administrative procedure.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_18|JUS": {
+    "summary": "Resolution of other similar legal or administrative problems.",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

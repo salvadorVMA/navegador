@@ -1,0 +1,407 @@
+{
+  "p1|MIG": {
+    "summary": "Life satisfaction (general assessment of satisfaction with one's life).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p2|MIG": {
+    "summary": "Main personal problem currently facing the respondent (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_1|MIG": {
+    "summary": "Perceived opportunities to obtain a good education (Likert scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_2|MIG": {
+    "summary": "Perceived opportunities to find employment (Likert scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_3|MIG": {
+    "summary": "Perceived opportunities to start one's own business (Likert scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_4|MIG": {
+    "summary": "Perceived opportunities to obtain credit (Likert scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_9|MIG": {
+    "summary": "Perceived opportunities to live in another country (Likert scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5_1|MIG": {
+    "summary": "Opinion on whether a racially diverse society is positive or negative (Likert scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6_1|MIG": {
+    "summary": "Justification for undocumented migration to another country for economic opportunity (agree/disagree).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7_1|MIG": {
+    "summary": "Willingness to allow people of another religion to live in one's home (agree/disagree).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8_2|MIG": {
+    "summary": "Word association with the term 'illegal migrant' (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9|MIG": {
+    "summary": "Self-identification with a cultural heritage different from the Mexican majority (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9_2|MIG": {
+    "summary": "Maintenance of ancestral customs or traditions through food, clothing, or dance (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10_1|MIG": {
+    "summary": "Trust in Spanish people (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11a_1|MIG": {
+    "summary": "Word association with the term 'northern border of Mexico' (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15_1|MIG": {
+    "summary": "Willingness to live outside Mexico for work (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16|MIG": {
+    "summary": "Past experience living in another country (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16_1|MIG": {
+    "summary": "Country where respondent previously lived (open-ended follow-up to p16).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16_3|MIG": {
+    "summary": "Primary reason for living in another country (open-ended follow-up to p16).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17|MIG": {
+    "summary": "Desire to live outside Mexico if possible (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18|MIG": {
+    "summary": "Likelihood of moving to another country within the next five years (probability scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19_1|MIG": {
+    "summary": "Most missed aspect of Mexico if respondent were to live abroad—first mention (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20_1a_1|MIG": {
+    "summary": "Least missed aspect of Mexico if respondent were to live abroad—first mention (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21|MIG": {
+    "summary": "Whether respondent has family members currently living outside Mexico (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21_1|MIG": {
+    "summary": "Country or countries where respondent's family members live (open-ended follow-up to p21).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21_2|MIG": {
+    "summary": "Receipt of remittances from family members working abroad (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21_3|MIG": {
+    "summary": "Percentage of household monthly income from remittances (numeric).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22|MIG": {
+    "summary": "Whether respondent has friends living abroad (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23|MIG": {
+    "summary": "Frequency of contact with Mexicans known to respondent who live abroad (frequency scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24|MIG": {
+    "summary": "Perceived support from known contacts abroad if respondent were to migrate (Likert scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25|MIG": {
+    "summary": "Perceived prevalence of emigration from respondent's municipality (Likert scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26_1|MIG": {
+    "summary": "Perceived impact of Mexican emigration on respondent's physical health (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27a_1|MIG": {
+    "summary": "Main problem faced by undocumented Mexicans crossing into the United States (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28|MIG": {
+    "summary": "Primary reason Mexicans decide to cross into the United States (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29a|MIG": {
+    "summary": "Main benefit Mexico receives from emigration to the United States (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30aa_1|MIG": {
+    "summary": "Main disadvantage Mexico experiences from emigration to the United States (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31|MIG": {
+    "summary": "Perceived discrimination against Mexicans in the United States (Likert scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32_1|MIG": {
+    "summary": "Perceived job quality of most Mexicans working in the United States (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33|MIG": {
+    "summary": "Opinion on who should monitor Mexican workers' rights in the United States (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34|MIG": {
+    "summary": "Opinion on rights that Mexicans living abroad should have (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35_1|MIG": {
+    "summary": "Agreement with right of Mexicans abroad to bring family members to live with them (agree/disagree).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36|MIG": {
+    "summary": "Opinion on characteristics or outcomes of Mexicans who move abroad (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37|MIG": {
+    "summary": "Primary reason Mexicans living in the United States do not return to Mexico (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38|MIG": {
+    "summary": "Perceived number of Mexicans returning from abroad since the 2008 economic crisis (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39|MIG": {
+    "summary": "Main problem faced by Mexicans returning to the country after living abroad (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40|MIG": {
+    "summary": "Opinion on whether Mexicans who study abroad should return or stay after graduation (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p41aa_1|MIG": {
+    "summary": "Main problem currently faced by foreigners living in Mexico (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42|MIG": {
+    "summary": "Overall opinion of foreigners living in Mexico (very good/good/bad/very bad).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p43_1|MIG": {
+    "summary": "Agreement that foreigners living in Mexico contribute to the economy (agree/disagree).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44|MIG": {
+    "summary": "Daily interaction with foreigners living in Mexico (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45|MIG": {
+    "summary": "Opinion on whether the number of foreigners living in Mexico is too high, appropriate, or too low (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46|MIG": {
+    "summary": "Opinion on government policy toward foreign workers in Mexico (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47|MIG": {
+    "summary": "Perceived respect for foreigners' rights in Mexico (Likert scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48|MIG": {
+    "summary": "Opinion on rights that foreigners living in Mexico should have (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49_1|MIG": {
+    "summary": "Perceived respect for rights of U.S. foreigners in Mexico (Likert scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p50_1|MIG": {
+    "summary": "Perceived ease of finding employment for foreigners in Mexico compared to Mexicans (easier/equal/harder).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51|MIG": {
+    "summary": "Perceived discrimination by Mexicans against foreigners living in the country (Likert scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p52|MIG": {
+    "summary": "Opinion on whether foreigners in Mexico are treated equally or differently based on country of origin (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55|MIG": {
+    "summary": "Agreement with statement about migration or related policy (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p57a_1|MIG": {
+    "summary": "Main problem faced by Central Americans crossing Mexico to reach the United States (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58|MIG": {
+    "summary": "Opinion on whether Mexican government should protect Central American migrants from organized crime (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p59|MIG": {
+    "summary": "Opinion on government action regarding unaccompanied children crossing Mexico to the United States (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p60_1|MIG": {
+    "summary": "Satisfaction with Mexican government's economic policy performance (satisfied/unsatisfied).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61|MIG": {
+    "summary": "Opinion on government support for people who must work abroad (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p62_1|MIG": {
+    "summary": "Awareness of the Institute of Mexicans Abroad (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63_1|MIG": {
+    "summary": "Rating of the Institute of Mexicans Abroad's performance (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p64|MIG": {
+    "summary": "Opinion on government action regarding deaths at the U.S.-Mexico border (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p65|MIG": {
+    "summary": "Opinion on whether allowing Mexicans abroad to vote strengthens democracy or wastes resources (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p66_1|MIG": {
+    "summary": "Perceived government control over security and violence (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p67_1|MIG": {
+    "summary": "Opinion on whether Mexican government should allow undocumented immigrants to enter without obstacles (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p68|MIG": {
+    "summary": "Awareness of federal government migrant support programs (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p68_1|MIG": {
+    "summary": "Name of federal government migrant support program (open-ended follow-up to p68).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p70|MIG": {
+    "summary": "Number of children respondent has (numeric).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p71|MIG": {
+    "summary": "Whether respondent speaks a language other than Spanish (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p71_1_1|MIG": {
+    "summary": "Language other than Spanish spoken by respondent—first mention (open-ended follow-up to p71).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p72|MIG": {
+    "summary": "Employment or occupational status of respondent (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p73_1|MIG": {
+    "summary": "Presence of landline telephone in respondent's household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p73_2|MIG": {
+    "summary": "Presence of personal vehicle in respondent's household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p73_3|MIG": {
+    "summary": "Presence of computer in respondent's household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p73_4|MIG": {
+    "summary": "Presence of internet connection in respondent's household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p66|MIG": {
+    "summary": "MIGRACION|Ante el clima de inseguridad y de violencia, usted considera que el gobierno federal tiene control sobre….",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

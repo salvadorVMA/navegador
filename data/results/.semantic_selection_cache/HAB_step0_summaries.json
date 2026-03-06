@@ -1,0 +1,487 @@
+{
+  "p1|HAB": {
+    "summary": "Material composition of the majority of walls or exterior walls of the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p2|HAB": {
+    "summary": "Material composition of the majority of the roof of the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3|HAB": {
+    "summary": "Material composition of the majority of the floor of the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p4|HAB": {
+    "summary": "Number of rooms used for sleeping, excluding hallways.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p4_1|HAB": {
+    "summary": "Total number of rooms in the dwelling, excluding hallways and bathrooms.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5|HAB": {
+    "summary": "Whether the dwelling has a dedicated cooking room.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5a|HAB": {
+    "summary": "Type of cooking appliance used in the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5_1|HAB": {
+    "summary": "Whether people sleep in the room where cooking occurs.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6|HAB": {
+    "summary": "Amenities or services available in the dwelling (unspecified in question text).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7|HAB": {
+    "summary": "Number of days per week that water is available to the household.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7_1|HAB": {
+    "summary": "Method or schedule by which water is delivered to the household.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8|HAB": {
+    "summary": "Services or utilities available in the dwelling (unspecified in question text).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9|HAB": {
+    "summary": "Whether water or sanitation services are used exclusively by household members.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10|HAB": {
+    "summary": "Type of drainage or sewage system available in the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11|HAB": {
+    "summary": "Whether the dwelling has electric lighting.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11_1|HAB": {
+    "summary": "Whether electric lighting is available on the street where the dwelling is located.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12|HAB": {
+    "summary": "Primary fuel type used for cooking in the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p13|HAB": {
+    "summary": "Whether the dwelling is owned by a person living in it.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14|HAB": {
+    "summary": "Owner or entity to whom the dwelling belongs.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15|HAB": {
+    "summary": "Tenure status or ownership classification of the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15_1|HAB": {
+    "summary": "Person or entity who lends or manages the dwelling if not owner-occupied.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16|HAB": {
+    "summary": "Whether the dwelling was purchased pre-built or constructed by the owner.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17|HAB": {
+    "summary": "Person or entity who purchased the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18|HAB": {
+    "summary": "Institution through which the dwelling was acquired if purchased via formal financing.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19|HAB": {
+    "summary": "Whether the respondent owns other properties or real estate beyond the primary dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20|HAB": {
+    "summary": "Number of additional properties or real estate owned by the respondent.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21_1|HAB": {
+    "summary": "Whether the respondent owns a commercial or retail property.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21_2|HAB": {
+    "summary": "Whether the respondent owns an apartment or condominium.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21_3|HAB": {
+    "summary": "Whether the respondent owns a house.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21_4|HAB": {
+    "summary": "Whether the respondent owns a warehouse or storage facility.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21_5|HAB": {
+    "summary": "Whether the respondent owns a ranch or agricultural property.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21_6|HAB": {
+    "summary": "Whether the respondent owns undeveloped land or a lot.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21_7|HAB": {
+    "summary": "Whether the respondent owns other types of real estate not listed in previous categories.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22|HAB": {
+    "summary": "Geographic location or zone where the respondent's additional properties are situated.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23|HAB": {
+    "summary": "Type of terrain or ground on which the primary dwelling is built.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24|HAB": {
+    "summary": "Geographic or administrative location of the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26t|HAB": {
+    "summary": "Number of different transportation modes required to reach the respondent's workplace.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27_1|HAB": {
+    "summary": "Whether the respondent has ever used train transportation.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28|HAB": {
+    "summary": "Type or classification of the dwelling structure.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29|HAB": {
+    "summary": "Geographic or administrative location of the dwelling.",
+    "duplicate_of": "p24|HAB",
+    "keep": false
+  },
+  "p30|HAB": {
+    "summary": "Whether each room in the dwelling has at least one window.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32|HAB": {
+    "summary": "Estimated total surface area or size of the dwelling including all rooms and spaces.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34|HAB": {
+    "summary": "Whether the respondent or household members invested in dwelling maintenance during the current year.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34_1|HAB": {
+    "summary": "Reasons why the respondent has not invested in dwelling maintenance.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35_1|HAB": {
+    "summary": "Whether the respondent has remodeled or upgraded infrastructure as part of dwelling maintenance.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_1|HAB": {
+    "summary": "Whether the dwelling has a radio or radio-cassette player.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_2|HAB": {
+    "summary": "Whether the dwelling has a television.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_3|HAB": {
+    "summary": "Whether the dwelling has a video player or DVD player.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_4|HAB": {
+    "summary": "Whether the dwelling has a blender.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_5|HAB": {
+    "summary": "Whether the dwelling has a washing machine.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_6|HAB": {
+    "summary": "Whether the dwelling has a refrigerator.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_7|HAB": {
+    "summary": "Whether the dwelling has a landline telephone.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_8|HAB": {
+    "summary": "Whether the dwelling has a mobile phone or cellular telephone.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_9|HAB": {
+    "summary": "Whether the dwelling has a personal automobile or pickup truck.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_10|HAB": {
+    "summary": "Whether the dwelling has a computer.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_11|HAB": {
+    "summary": "Whether the dwelling has a laundry sink or wash basin.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_12|HAB": {
+    "summary": "Whether the dwelling has a kitchen sink or counter basin.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_13|HAB": {
+    "summary": "Whether the dwelling has a bathroom sink or washbasin.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_14|HAB": {
+    "summary": "Whether the dwelling has a shower or bathing facility.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_15|HAB": {
+    "summary": "Whether the dwelling has a cistern or underground water storage tank.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_16|HAB": {
+    "summary": "Whether the dwelling has a rooftop water tank or tinaco.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_17|HAB": {
+    "summary": "Whether the dwelling has a water storage tank or reservoir.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_18|HAB": {
+    "summary": "Whether the dwelling has a gas water heater or boiler.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_20|HAB": {
+    "summary": "Whether the dwelling has a water pump.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_21|HAB": {
+    "summary": "Whether the dwelling has heating or climate control.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_22|HAB": {
+    "summary": "Whether the dwelling has solar panels for electricity generation.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_23|HAB": {
+    "summary": "Whether the dwelling has solar water heaters on the rooftop.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_24|HAB": {
+    "summary": "Whether the dwelling has a gas tank.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_25|HAB": {
+    "summary": "Whether the dwelling has a stationary or fixed gas tank.",
+    "duplicate_of": "p36_24|HAB",
+    "keep": false
+  },
+  "p36_26|HAB": {
+    "summary": "Whether the dwelling has rainwater collection wells or cisterns.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_27|HAB": {
+    "summary": "Whether the dwelling has absorption wells for wastewater.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_28|HAB": {
+    "summary": "Whether the dwelling has permeable concrete in the parking area.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_29|HAB": {
+    "summary": "Whether the dwelling has air conditioning.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_30|HAB": {
+    "summary": "Whether the dwelling has a drainage system.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_31|HAB": {
+    "summary": "Whether the dwelling has septic tanks or pit latrines.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_32|HAB": {
+    "summary": "Whether the dwelling has a kitchen.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_33|HAB": {
+    "summary": "Whether the dwelling has other amenities or features not listed in previous categories.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37_1|HAB": {
+    "summary": "Whether the street where the dwelling is located has electric lighting.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38_8|HAB": {
+    "summary": "Duration for which the street has had other unspecified services.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39a_1|HAB": {
+    "summary": "Whether a school is located near the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39b_1|HAB": {
+    "summary": "Whether the respondent uses or accesses school services near the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39b_2|HAB": {
+    "summary": "Whether the respondent uses or accesses health clinic or hospital services near the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39b_3|HAB": {
+    "summary": "Whether the respondent uses or accesses market, street market, or retail stores near the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39b_5|HAB": {
+    "summary": "Whether the respondent uses or accesses police services near the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39b_7|HAB": {
+    "summary": "Whether the respondent uses or accesses religious institutions or places of worship near the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39b_11|HAB": {
+    "summary": "Whether the respondent uses or accesses children's play areas or parks near the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39b_12|HAB": {
+    "summary": "Whether the respondent uses or accesses outdoor gym facilities near the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39b_13|HAB": {
+    "summary": "Whether the respondent uses or accesses main transportation routes near the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39b_15|HAB": {
+    "summary": "Whether the respondent uses or accesses other unspecified services near the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40_1|HAB": {
+    "summary": "Whether the household pays for piped water service.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42_1|HAB": {
+    "summary": "Whether the dwelling is constructed with natural or traditional materials.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p43_1|HAB": {
+    "summary": "Extent to which external noise is bothersome to the respondent at the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45_1|HAB": {
+    "summary": "Importance of neighbors' behavior to the respondent's household quality of life.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46_1|HAB": {
+    "summary": "Respondent's satisfaction level with the size or spaciousness of the dwelling.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47|HAB": {
+    "summary": "Respondent's overall quality rating of housing in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p50_1|HAB": {
+    "summary": "Primary solution the respondent believes would address housing problems in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51|HAB": {
+    "summary": "Entity or institution the respondent believes is primarily responsible for solving housing problems in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

@@ -100,7 +100,8 @@ def _ses_label(label_map: Dict[int, str], code, fallback: str = '') -> str:
 # Surveys missing Tam_loc (JUEGOS_DE_AZAR, CULTURA_CONSTITUCIONAL) degrade
 # gracefully: SESEncoder skips any column absent from the DataFrame.
 SES_REGRESSION_VARS: List[str] = [
-    'sexo', 'edad', 'region', 'empleo', 'escol', 'Tam_loc', 'est_civil'
+    'sexo', 'edad', 'region', 'empleo', 'escol', 'Tam_loc', 'est_civil',
+    'income_quintile', 'empleo_formality', 'region_x_Tam_loc',
 ]
 
 # Survey sentinel codes: values < 0 (invalid/missing) or >= 97 (no-answer, don't-know, refuse)
@@ -153,6 +154,76 @@ def _drop_ses_sentinel_rows(df: pd.DataFrame, ses_vars: List[str]) -> pd.DataFra
 
 
 # ---------------------------------------------------------------------------
+# Category binning — collapse high-cardinality outcome variables
+# ---------------------------------------------------------------------------
+
+def bin_categories(
+    series: pd.Series,
+    max_categories: int = 5,
+    var_type: str = 'nominal',
+) -> Tuple[pd.Series, Dict]:
+    """Collapse high-cardinality target variables into max_categories bins.
+
+    For ordinal variables: equal-width binning into max_categories groups,
+    preserving ordinal order.
+    For nominal variables: keep the top (max_categories - 1) most frequent
+    categories, merge the rest into a single bin.
+
+    Reduces MNLogit parameter count and avoids near-separation in models
+    with many sparse categories (Peduzzi et al. 1996; Agresti 2002 §6.5).
+
+    Args:
+        series: Target variable Series (sentinels already removed).
+        max_categories: Maximum number of output categories (default 5).
+        var_type: 'ordinal' or 'nominal'.
+
+    Returns:
+        (binned_series, bin_map) where bin_map maps original → binned values.
+        If len(unique) <= max_categories, returns series unchanged with
+        identity bin_map.
+    """
+    unique_vals = sorted(series.dropna().unique().tolist(), key=lambda x: str(x))
+    if len(unique_vals) <= max_categories:
+        bin_map = {v: v for v in unique_vals}
+        return series.copy(), bin_map
+
+    if var_type == 'ordinal':
+        # Quantile-based binning: equal-frequency groups so every bin has
+        # observations. Equal-width fails for skewed continuous scores
+        # (e.g. PCA aggregates scaled to [1,10] with mean~9) because most
+        # observations pile into one bin, causing near-separation in
+        # OrderedModel and singular Hessians.
+        numeric = pd.to_numeric(series, errors='coerce').dropna()
+        binned_num = pd.qcut(numeric, q=max_categories, labels=False,
+                             duplicates='drop') + 1.0
+        bin_map = {}
+        for orig_val, bin_val in zip(numeric, binned_num):
+            bin_map.setdefault(orig_val, bin_val)
+        # Ensure all unique original values get a mapping (qcut may drop dupes)
+        remaining = sorted([float(v) for v in unique_vals
+                            if float(v) not in bin_map])
+        if remaining:
+            # Map unmapped values to nearest bin by value
+            mapped_keys = sorted(bin_map.keys())
+            for rv in remaining:
+                closest = min(mapped_keys, key=lambda k: abs(k - rv))
+                bin_map[rv] = bin_map[closest]
+    else:
+        # Nominal: keep most frequent categories, merge the rest
+        freq = series.value_counts()
+        top_cats = freq.head(max_categories - 1).index.tolist()
+        bin_map = {}
+        for v in unique_vals:
+            if v in top_cats:
+                bin_map[v] = v
+            else:
+                bin_map[v] = float(max_categories)  # "other" bin
+
+    binned = series.map(bin_map)
+    return binned, bin_map
+
+
+# ---------------------------------------------------------------------------
 # SESEncoder
 # ---------------------------------------------------------------------------
 
@@ -178,7 +249,11 @@ class SESEncoder:
         self._region_cats: List[str] = []
         self._empleo_cats: List[str] = []
         self._est_civil_cats: List = []
+        self._region_x_tam_cats: List = []
         self._has_tam_loc: bool = False
+        self._has_income_quintile: bool = False
+        self._has_empleo_formality: bool = False
+        self._has_region_x_tam: bool = False
         self._fitted = False
 
     # ------------------------------------------------------------------
@@ -207,6 +282,15 @@ class SESEncoder:
                 key=str,
             )
         self._has_tam_loc = 'Tam_loc' in df.columns
+        self._has_income_quintile = 'income_quintile' in df.columns
+        self._has_empleo_formality = 'empleo_formality' in df.columns
+        if 'region_x_Tam_loc' in df.columns:
+            self._has_region_x_tam = True
+            self._region_x_tam_cats = sorted(
+                (c for c in df['region_x_Tam_loc'].dropna().unique()
+                 if not _is_sentinel(c)),
+                key=float,
+            )
         self._fitted = True
         return self
 
@@ -252,8 +336,12 @@ class SESEncoder:
                 ).astype(float)
             parts.append(mapped_edad.rename('edad').astype(float))
 
-        # region — one-hot (drop first category to avoid multicollinearity)
-        if 'region' in df.columns and len(self._region_cats) > 1:
+        # region — one-hot (drop first category to avoid multicollinearity).
+        # Skip when region_x_Tam_loc is present: the interaction encodes all
+        # region × Tam_loc combinations, making region and Tam_loc marginals
+        # exact linear combinations of the interaction dummies → rank deficiency.
+        if ('region' in df.columns and len(self._region_cats) > 1
+                and not self._has_region_x_tam):
             for cat in self._region_cats[1:]:           # drop first
                 label = _ses_label(_REGION_LABEL_MAP, cat)
                 parts.append(
@@ -278,9 +366,8 @@ class SESEncoder:
 
         # Tam_loc — ordinal int (locality size: 1=≥100k urban → 4=rural).
         # Present in 24/26 surveys; absent in JUEGOS_DE_AZAR and CULTURA_CONSTITUCIONAL.
-        # Values are already clipped to 1–4 by preprocess_survey_data(); pass through
-        # as a continuous ordinal feature (same treatment as escol).
-        if 'Tam_loc' in df.columns:
+        # Skip when region_x_Tam_loc is present (same collinearity reason as region).
+        if 'Tam_loc' in df.columns and not self._has_region_x_tam:
             parts.append(
                 pd.to_numeric(df['Tam_loc'], errors='coerce').rename('Tam_loc')
             )
@@ -294,6 +381,34 @@ class SESEncoder:
                 label = _ses_label(_EST_CIVIL_LABEL_MAP, cat)
                 parts.append(
                     (est_civil_num == cat).astype(float).rename(f'est_civil_{label}')
+                )
+
+        # income_quintile — ordinal 1–5 (sd14: personal income bin).
+        # Available in ~23/26 surveys. Stronger SES signal than escol alone.
+        if 'income_quintile' in df.columns:
+            parts.append(
+                pd.to_numeric(df['income_quintile'], errors='coerce')
+                .rename('income_quintile')
+            )
+
+        # empleo_formality — ordinal 1–4 (sd11: employment formality).
+        # 1=formal salaried, 2=self-employed, 3=informal, 4=unpaid/other.
+        if 'empleo_formality' in df.columns:
+            parts.append(
+                pd.to_numeric(df['empleo_formality'], errors='coerce')
+                .rename('empleo_formality')
+            )
+
+        # region_x_Tam_loc — local fixed effects (one-hot, drop first).
+        # 16 cells: 4 regions × 4 locality sizes. Captures geographic-structural
+        # confounding invisible to individual-level SES variables.
+        if ('region_x_Tam_loc' in df.columns
+                and len(self._region_x_tam_cats) > 1):
+            rtl_num = pd.to_numeric(df['region_x_Tam_loc'], errors='coerce')
+            for cat in self._region_x_tam_cats[1:]:
+                parts.append(
+                    (rtl_num == cat).astype(float)
+                    .rename(f'rtl_{int(cat)}')
                 )
 
         if not parts:
@@ -355,6 +470,7 @@ class SurveyVarModel:
         self._encoder: Optional[SESEncoder] = None
         self._var_type: str = 'nominal'
         self._target_col: str = ''
+        self._bin_map: Optional[Dict] = None
 
     # ------------------------------------------------------------------
     def fit(
@@ -363,6 +479,7 @@ class SurveyVarModel:
         target_col: str,
         ses_vars: List[str],
         weight_col: str = 'Pondi2',
+        max_categories: Optional[int] = 5,
     ) -> 'SurveyVarModel':
         """
         Fit the appropriate regression model.
@@ -427,6 +544,20 @@ class SurveyVarModel:
 
         if len(self._categories) < 2:
             raise ValueError(f"Variable {target_col} has fewer than 2 categories.")
+
+        # Category binning: collapse high-cardinality targets to improve
+        # model conditioning (Peduzzi et al. 1996 EPV rule)
+        if max_categories is not None and len(self._categories) > max_categories:
+            binned_col, self._bin_map = bin_categories(
+                work[target_col], max_categories=max_categories,
+                var_type=self._var_type,
+            )
+            work = work.copy()
+            work[target_col] = binned_col
+            self._categories = sorted(
+                work[target_col].dropna().unique().tolist(),
+                key=lambda x: str(x),
+            )
 
         # Encode SES features
         self._encoder = SESEncoder()
@@ -748,8 +879,9 @@ class CrossDatasetBivariateEstimator:
       5. Returns chi-square + Cramér's V on the simulated joint distribution
     """
 
-    def __init__(self, n_sim: int = 2000) -> None:
+    def __init__(self, n_sim: int = 2000, max_categories: Optional[int] = 5) -> None:
         self.n_sim = n_sim
+        self.max_categories = max_categories
 
     # ------------------------------------------------------------------
     def estimate(
@@ -790,10 +922,12 @@ class CrossDatasetBivariateEstimator:
         try:
             # --- Fit models ---
             model_a = SurveyVarModel()
-            model_a.fit(df_a, col_a, ses_vars, weight_col)
+            model_a.fit(df_a, col_a, ses_vars, weight_col,
+                        max_categories=self.max_categories)
 
             model_b = SurveyVarModel()
-            model_b.fit(df_b, col_b, ses_vars, weight_col)
+            model_b.fit(df_b, col_b, ses_vars, weight_col,
+                        max_categories=self.max_categories)
 
             # --- Build reference SES population from real marginals ---
             ses_pop = self._sample_ses_population(df_a, df_b, ses_vars, weight_col)
@@ -979,10 +1113,12 @@ class ResidualBridgeEstimator:
     """
 
     def __init__(self, n_sim: int = 2000, n_cells: int = 30,
-                 min_cell_size: int = 5) -> None:
+                 min_cell_size: int = 5,
+                 max_categories: Optional[int] = 5) -> None:
         self.n_sim = n_sim
         self.n_cells = n_cells
         self.min_cell_size = min_cell_size
+        self.max_categories = max_categories
 
     # ------------------------------------------------------------------
     def estimate(
@@ -1012,10 +1148,12 @@ class ResidualBridgeEstimator:
 
             # --- Fit SES models (identical to baseline estimator) ---
             model_a = SurveyVarModel()
-            model_a.fit(df_a, col_a, ses_vars, weight_col)
+            model_a.fit(df_a, col_a, ses_vars, weight_col,
+                        max_categories=self.max_categories)
 
             model_b = SurveyVarModel()
-            model_b.fit(df_b, col_b, ses_vars, weight_col)
+            model_b.fit(df_b, col_b, ses_vars, weight_col,
+                        max_categories=self.max_categories)
 
             # --- Sample reference SES population ---
             _helper = CrossDatasetBivariateEstimator(n_sim=self.n_sim)
@@ -1042,9 +1180,14 @@ class ResidualBridgeEstimator:
                 warnings.simplefilter('ignore')
                 _, cell_labels = kmeans2(X_white, k, minit='points', seed=42)
 
-            # --- Per-cell Cramér's V ---
+            # --- Per-cell bias-corrected V + CMH-style stratified gamma ---
+            # Uses Bergsma (2013) bias-corrected V instead of classical V,
+            # and pools concordance/discordance counts across cells (Mantel &
+            # Haenszel 1959; Cochran 1954) for a proper stratified gamma.
             cell_vs: List[float] = []
             cell_ns: List[int] = []
+            total_concordant = 0.0
+            total_discordant = 0.0
             for cell_k in range(k):
                 mask = cell_labels == cell_k
                 ses_cell = ses_pop[mask].reset_index(drop=True)
@@ -1055,9 +1198,16 @@ class ResidualBridgeEstimator:
                 ct = pd.crosstab(sim_a, sim_b)
                 if ct.shape[0] < 2 or ct.shape[1] < 2:
                     continue
-                v_k = float(association(ct, method='cramer'))
+                ct_arr = ct.values.astype(float)
+                # Bias-corrected Cramér's V per cell (Bergsma 2013)
+                v_k = bias_corrected_cramers_v(ct_arr)
                 cell_vs.append(v_k)
                 cell_ns.append(len(ses_cell))
+                # Pool concordance/discordance for CMH stratified gamma
+                for i in range(ct_arr.shape[0]):
+                    for j in range(ct_arr.shape[1]):
+                        total_concordant += ct_arr[i, j] * ct_arr[i + 1:, j + 1:].sum()
+                        total_discordant += ct_arr[i, j] * ct_arr[i + 1:, :j].sum()
 
             n_cells_used = len(cell_vs)
             if n_cells_used == 0:
@@ -1065,6 +1215,13 @@ class ResidualBridgeEstimator:
 
             total_n = sum(cell_ns)
             v_residual = sum(v * n / total_n for v, n in zip(cell_vs, cell_ns))
+
+            # Stratified gamma (CMH-style pooled concordance/discordance)
+            cd_denom = total_concordant + total_discordant
+            stratified_gamma = (
+                float((total_concordant - total_discordant) / cd_denom)
+                if cd_denom > 0 else 0.0
+            )
 
             # Baseline V over full SES pop (same models, same pop — for ses_fraction)
             sim_a_full = model_a.simulate_responses(ses_pop)
@@ -1088,11 +1245,12 @@ class ResidualBridgeEstimator:
                 'cramers_v_residual': round(v_residual, 4),
                 'cramers_v_baseline': round(v_baseline, 4),
                 'ses_fraction': ses_fraction,
+                'stratified_gamma': round(stratified_gamma, 4),
                 'n_cells_used': n_cells_used,
                 'n_simulated': total_n,
                 'note': (
-                    'Within-SES-cell V via KMeans stratification '
-                    '(Mantel-Haenszel style)'
+                    'Within-SES-cell V (Bergsma 2013 bias-corrected) '
+                    'with CMH stratified gamma'
                 ),
             }
 
@@ -1311,6 +1469,36 @@ def goodman_kruskal_gamma(joint_table: np.ndarray) -> float:
     return float((concordant - discordant) / denom) if denom > 0 else 0.0
 
 
+def bias_corrected_cramers_v(contingency_table: np.ndarray) -> float:
+    """Bergsma (2013) bias-corrected Cramér's V.
+
+    Removes the first-order upward bias of classical V in small tables.
+    Formula:
+        phi2_c = max(0, chi2/n - (r-1)(c-1)/(n-1))
+        r_c = r - (r-1)^2/(n-1)
+        c_c = c - (c-1)^2/(n-1)
+        V_c = sqrt(phi2_c / (min(r_c, c_c) - 1))
+
+    Reference: Bergsma, W. (2013). "A bias-correction for Cramér's V and
+    Tschuprow's T." Journal of the Korean Statistical Society 42(3):323-328.
+    DOI: 10.1016/j.jkss.2012.10.002
+    """
+    n = contingency_table.sum()
+    if n <= 1:
+        return 0.0
+    r, c = contingency_table.shape
+    if r < 2 or c < 2:
+        return 0.0
+    chi2 = stats.chi2_contingency(contingency_table, correction=False)[0]
+    phi2_corrected = max(0.0, chi2 / n - (r - 1) * (c - 1) / (n - 1))
+    r_corrected = r - (r - 1) ** 2 / (n - 1)
+    c_corrected = c - (c - 1) ** 2 / (n - 1)
+    denom = min(r_corrected, c_corrected) - 1
+    if denom <= 0:
+        return 0.0
+    return float(np.sqrt(phi2_corrected / denom))
+
+
 # ---------------------------------------------------------------------------
 # BayesianBridgeEstimator
 # ---------------------------------------------------------------------------
@@ -1339,9 +1527,11 @@ class BayesianBridgeEstimator:
       method           — 'bayesian_bridge'
     """
 
-    def __init__(self, n_sim: int = 500, n_draws: int = 200) -> None:
+    def __init__(self, n_sim: int = 2000, n_draws: int = 200,
+                 max_categories: Optional[int] = 5) -> None:
         self.n_sim = n_sim
         self.n_draws = n_draws
+        self.max_categories = max_categories
 
     def estimate(
         self,
@@ -1371,9 +1561,11 @@ class BayesianBridgeEstimator:
 
             # --- Fit models (shared SES features only) ---
             model_a = SurveyVarModel()
-            model_a.fit(df_a, col_a, available_ses, weight_col)
+            model_a.fit(df_a, col_a, available_ses, weight_col,
+                        max_categories=self.max_categories)
             model_b = SurveyVarModel()
-            model_b.fit(df_b, col_b, available_ses, weight_col)
+            model_b.fit(df_b, col_b, available_ses, weight_col,
+                        max_categories=self.max_categories)
 
             # --- Reference SES population ---
             helper = CrossDatasetBivariateEstimator(n_sim=self.n_sim)
@@ -1417,8 +1609,32 @@ class BayesianBridgeEstimator:
                     min_eig = np.linalg.eigvalsh(cov).min()
                     if min_eig < 0:
                         cov += (-min_eig + 1e-6) * np.eye(len(params_mle))
+
+                    # Ledoit-Wolf-style diagonal shrinkage to regularise
+                    # ill-conditioned Hessians from near-separation.
+                    # Tierney & Kadane (1986): Laplace requires well-conditioned
+                    # Hessian; Mansournia et al. (2018): penalized likelihood.
+                    alpha = 0.1
+                    diag_vals = np.diag(cov)
+                    target = np.median(diag_vals[diag_vals > 0]) if (diag_vals > 0).any() else 1.0
+                    cov = (1 - alpha) * cov + alpha * target * np.eye(len(params_mle))
+
+                    # Cap extreme BSEs: scale down rows/cols where sqrt(diag) > 10
+                    bse_cap = 10.0
+                    bse_draw = np.sqrt(np.diag(cov))
+                    scale_mask = bse_draw > bse_cap
+                    if scale_mask.any():
+                        scale = np.ones(len(params_mle))
+                        scale[scale_mask] = bse_cap / bse_draw[scale_mask]
+                        cov = cov * np.outer(scale, scale)
                 except Exception:
-                    cov = np.diag(np.asarray(res.bse, dtype=float).ravel() ** 2)
+                    try:
+                        cov = np.diag(np.asarray(res.bse, dtype=float).ravel() ** 2)
+                    except Exception:
+                        # bse also calls cov_params() internally; fall back to
+                        # a small isotropic covariance so draws stay near MLE.
+                        p = len(params_mle)
+                        cov = np.eye(p) * 0.01
 
                 params_draw = rng.multivariate_normal(params_mle, cov)
                 # Re-encode using model's own encoder so columns match params exactly.
@@ -1497,6 +1713,17 @@ class BayesianBridgeEstimator:
             vs = np.array(vs)
             joint_mean = joint_tables.mean(axis=0)
 
+            # Point estimate: gamma from the mean joint table, NOT mean of
+            # per-draw gammas. Averaging per-draw gammas suffers sign
+            # cancellation because gamma is a nonlinear function of the table
+            # entries (Jensen's inequality). The mean table preserves the
+            # MLE's ordinal structure.
+            gamma_point = goodman_kruskal_gamma(joint_mean)
+            v_point = float(association(
+                (joint_mean * self.n_sim).astype(int).clip(1),
+                method='cramer'
+            ))
+
             diag_a = model_a.diagnostics()
             diag_b = model_b.diagnostics()
 
@@ -1504,12 +1731,12 @@ class BayesianBridgeEstimator:
                 'var_a': var_id_a,
                 'var_b': var_id_b,
                 'method': 'bayesian_bridge',
-                'gamma': round(float(gammas.mean()), 4),
+                'gamma': round(float(gamma_point), 4),
                 'gamma_ci_95': (
                     round(float(np.percentile(gammas, 2.5)), 4),
                     round(float(np.percentile(gammas, 97.5)), 4),
                 ),
-                'cramers_v': round(float(vs.mean()), 4),
+                'cramers_v': round(float(v_point), 4),
                 'cramers_v_ci_95': (
                     round(float(np.percentile(vs, 2.5)), 4),
                     round(float(np.percentile(vs, 97.5)), 4),
@@ -1563,11 +1790,18 @@ class MRPBridgeEstimator:
         shrinkage_kappa: float = 10.0,
         min_cell_n: int = 3,
         n_bootstrap: int = 200,
+        bin_cell_vars: Optional[Dict[str, int]] = None,
+        max_categories: Optional[int] = 5,
     ) -> None:
         self.cell_cols = cell_cols or ['escol', 'edad', 'sexo']
         self.shrinkage_kappa = shrinkage_kappa
         self.min_cell_n = min_cell_n
         self.n_bootstrap = n_bootstrap
+        # Default: bin edad (7→3) and escol (5→3) to reduce cell count.
+        # With sexo binary: 3×3×2 = 18 cells (vs ~70 without binning).
+        self.bin_cell_vars = (bin_cell_vars if bin_cell_vars is not None
+                              else {'edad': 3, 'escol': 3})
+        self.max_categories = max_categories
 
     def estimate(
         self,
@@ -1585,11 +1819,39 @@ class MRPBridgeEstimator:
 
         try:
             _MAX_CARD = 20
+
+            # --- Bin cell columns to reduce cell count ---
+            def _bin_col(series: pd.Series, n_bins: int) -> pd.Series:
+                """Bin a cell column into n_bins groups via equal-width."""
+                vals = pd.to_numeric(series, errors='coerce')
+                if vals.notna().sum() < 2:
+                    return series
+                lo, hi = vals.min(), vals.max()
+                if lo == hi:
+                    return series.fillna(0).astype(int).astype(str)
+                edges = np.linspace(lo - 0.5, hi + 0.5, n_bins + 1)
+                return pd.cut(vals, bins=edges, labels=[str(i) for i in range(n_bins)],
+                              include_lowest=True).astype(str)
+
+            # Apply binning to working copies
+            df_a_work = df_a.copy()
+            df_b_work = df_b.copy()
+            binned_cols_map: Dict[str, str] = {}
+            for col_name, n_bins in self.bin_cell_vars.items():
+                if col_name in df_a_work.columns and col_name in df_b_work.columns:
+                    new_name = f'{col_name}_bin'
+                    df_a_work[new_name] = _bin_col(df_a_work[col_name], n_bins)
+                    df_b_work[new_name] = _bin_col(df_b_work[col_name], n_bins)
+                    binned_cols_map[col_name] = new_name
+
+            # Resolve cell_cols: use binned version if available
+            resolved_cols = [binned_cols_map.get(c, c) for c in self.cell_cols]
+
             available_cols = [
-                c for c in self.cell_cols
-                if c in df_a.columns and c in df_b.columns
-                and df_a[c].dropna().nunique() <= _MAX_CARD
-                and df_b[c].dropna().nunique() <= _MAX_CARD
+                c for c in resolved_cols
+                if c in df_a_work.columns and c in df_b_work.columns
+                and df_a_work[c].dropna().nunique() <= _MAX_CARD
+                and df_b_work[c].dropna().nunique() <= _MAX_CARD
             ]
             if not available_cols:
                 return None
@@ -1658,8 +1920,8 @@ class MRPBridgeEstimator:
 
                 return cell_dists, global_dist, cats, cell_weights
 
-            dist_a, global_a, cats_a, wt_a = _cell_distributions(df_a, col_a, weight_col)
-            dist_b, global_b, cats_b, wt_b = _cell_distributions(df_b, col_b, weight_col)
+            dist_a, global_a, cats_a, wt_a = _cell_distributions(df_a_work, col_a, weight_col)
+            dist_b, global_b, cats_b, wt_b = _cell_distributions(df_b_work, col_b, weight_col)
 
             if len(cats_a) < 2 or len(cats_b) < 2:
                 return None
@@ -1705,7 +1967,7 @@ class MRPBridgeEstimator:
                 round(float(np.percentile(boot_gammas, 97.5)), 4),
             )
 
-            cell_sizes = [len(df_a[_cell_key(df_a) == c]) + len(df_b[_cell_key(df_b) == c])
+            cell_sizes = [len(df_a_work[_cell_key(df_a_work) == c]) + len(df_b_work[_cell_key(df_b_work) == c])
                           for c in shared_cells]
             mean_cell_n = float(np.mean(cell_sizes)) if cell_sizes else 0.0
 
@@ -1757,9 +2019,15 @@ class DoublyRobustBridgeEstimator:
       method             — 'doubly_robust_bridge'
     """
 
-    def __init__(self, n_sim: int = 500, n_bootstrap: int = 200) -> None:
+    def __init__(self, n_sim: int = 2000, n_bootstrap: int = 200,
+                 max_categories: Optional[int] = 5,
+                 propensity_vars: Optional[List[str]] = None,
+                 ks_threshold: float = 0.4) -> None:
         self.n_sim = n_sim
         self.n_bootstrap = n_bootstrap
+        self.max_categories = max_categories
+        self.propensity_vars = propensity_vars or ['sexo', 'escol', 'edad']
+        self.ks_threshold = ks_threshold
 
     def estimate(
         self,
@@ -1789,9 +2057,11 @@ class DoublyRobustBridgeEstimator:
             # Using the intersection ensures the feature space matches when we
             # predict model_a on survey B's population (and vice versa).
             model_a = SurveyVarModel()
-            model_a.fit(df_a, col_a, available, weight_col)
+            model_a.fit(df_a, col_a, available, weight_col,
+                        max_categories=self.max_categories)
             model_b = SurveyVarModel()
-            model_b.fit(df_b, col_b, available, weight_col)
+            model_b.fit(df_b, col_b, available, weight_col,
+                        max_categories=self.max_categories)
 
             cats_a = model_a._categories
             cats_b = model_b._categories
@@ -1813,15 +2083,26 @@ class DoublyRobustBridgeEstimator:
             X_b = enc.transform(sub_b[available]).fillna(0.0)
 
             # --- Propensity model: P(survey=A | X) ---
-            X_pooled = pd.concat([X_a, X_b], ignore_index=True)
-            delta = np.concatenate([np.ones(len(X_a)), np.zeros(len(X_b))])
-            Xc = sm.add_constant(X_pooled, has_constant='add')
+            # Use restricted feature set for propensity to avoid near-separation
+            # when too many one-hot columns overpower the logistic model.
+            # Petersen et al. (2012); Li, Morgan & Zaslavsky (2018).
+            prop_avail = [v for v in self.propensity_vars
+                          if v in df_a.columns and v in df_b.columns]
+            if len(prop_avail) < 1:
+                prop_avail = available  # fallback to full features
+
+            prop_enc = SESEncoder()
+            Xp_a = prop_enc.fit_transform(sub_a[prop_avail]).fillna(0.0)
+            Xp_b = prop_enc.transform(sub_b[prop_avail]).fillna(0.0)
+            X_pooled_prop = pd.concat([Xp_a, Xp_b], ignore_index=True)
+            delta = np.concatenate([np.ones(len(Xp_a)), np.zeros(len(Xp_b))])
+            Xc = sm.add_constant(X_pooled_prop, has_constant='add')
             with warnings.catch_warnings():
                 warnings.simplefilter('ignore')
                 prop_model = sm.Logit(delta, Xc).fit(method='bfgs', disp=False)
             prop_all = np.asarray(prop_model.predict(Xc), dtype=float)
-            prop_a = prop_all[:len(X_a)]
-            prop_b = prop_all[len(X_a):]
+            prop_a = prop_all[:len(Xp_a)]
+            prop_b = prop_all[len(Xp_a):]
 
             # KS overlap diagnostic
             ks_stat = float(stats.ks_2samp(prop_a, prop_b).statistic)
@@ -1959,6 +2240,8 @@ class DoublyRobustBridgeEstimator:
                 'cramers_v': round(v_point, 4),
                 'joint_table': joint_table.tolist(),
                 'propensity_overlap': round(ks_stat, 4),
+                'ks_warning': ks_stat > self.ks_threshold,
+                'propensity_features': prop_avail,
                 'max_weight': round(float(cap), 4),
                 'n_trimmed': n_trimmed,
                 'n_a': n_a,

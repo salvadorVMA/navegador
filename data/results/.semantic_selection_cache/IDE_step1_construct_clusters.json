@@ -1,0 +1,70 @@
+[
+  {
+    "name": "institutional_and_social_trust",
+    "description": "Measures the degree to which individuals trust formal institutions (police) and informal social actors (neighbors, strangers), capturing generalized interpersonal and institutional confidence that underpins civic cooperation.",
+    "question_cluster": [
+      "p50_1",
+      "p51_1",
+      "p52_1",
+      "p48",
+      "p49",
+      "p40"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "national_identity_and_pride",
+    "description": "Captures the emotional and symbolic attachment respondents feel toward Mexico as a nation, including pride in being Mexican, primary emotions about the country, and the importance of preserving cultural traditions of origin.",
+    "question_cluster": [
+      "p3_2",
+      "p5_1a",
+      "p6",
+      "p8",
+      "p9",
+      "p78"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "subjective_wellbeing_and_life_satisfaction",
+    "description": "Measures hedonic and evaluative dimensions of personal wellbeing, including overall happiness, life satisfaction, perceived control over one's future, and confidence in realizing personal projects.",
+    "question_cluster": [
+      "p24",
+      "p29",
+      "p20",
+      "p74",
+      "p30_1",
+      "p25_2"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "socioeconomic_mobility_and_opportunity_perception",
+    "description": "Assesses respondents' perceptions of economic progress across generations and their expectations about future opportunity, reflecting beliefs about social mobility and structural fairness in Mexico.",
+    "question_cluster": [
+      "p11",
+      "p18",
+      "p19",
+      "p22",
+      "p23_1",
+      "p27"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "moral_conservatism_and_social_values",
+    "description": "Taps into traditional versus liberal value orientations across family, gender, and ethical domains, including attitudes toward corporal punishment, premarital sex, abortion, same-sex adoption, and self-placement on a conservative-liberal scale.",
+    "question_cluster": [
+      "p55",
+      "p56",
+      "p57",
+      "p58",
+      "p60",
+      "p66_1",
+      "p67",
+      "p68",
+      "p71_2"
+    ],
+    "requires_aggregation": true
+  }
+]

@@ -1,0 +1,73 @@
+[
+  {
+    "construct_name": "democratic_legitimacy",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p30",
+      "p33",
+      "p34",
+      "p32",
+      "p35",
+      "p41"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Democratic legitimacy is inherently multi-dimensional, encompassing satisfaction with democracy, support for democratic institutions, and evaluations of democratic performance, so no single item captures it fully. The selected questions span evaluative and attitudinal dimensions of legitimacy and are selected for higher entropy (H≥2.12), ensuring sufficient variance for PCA to extract a meaningful first component. PCA is preferred over sum/mean scoring because the items have heterogeneous scale widths (K=5 to K=13), and the first principal component will weight items by their shared variance rather than treating all scales as equivalent."
+  },
+  {
+    "construct_name": "institutional_trust_and_efficacy",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p81_1",
+      "p82_1",
+      "p84_4",
+      "p84_6",
+      "p84_7",
+      "p63_1",
+      "p46"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Institutional trust and efficacy is a broad construct requiring multiple institutions and efficacy dimensions to be represented, so aggregation is necessary. The p84_x battery items share a common 6-point scale and tap trust in specific institutions, while p81_1 and p82_1 (K=13, highest entropy) capture broader systemic trust and efficacy perceptions; p63_1 and p46 add evaluative and efficacy facets. PCA is chosen because of the mixed scale widths (6-point battery vs. 7-point vs. 13-point items), allowing the first component to capture the dominant trust dimension without distortion from raw score differences."
+  },
+  {
+    "construct_name": "civic_and_political_participation",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p70",
+      "p52",
+      "p51",
+      "p77",
+      "p25",
+      "p69_1"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Civic and political participation spans voting, organizational membership, protest, and community engagement, making it inherently multi-dimensional and requiring aggregation. The selected items cover distinct participation modes (electoral, associational, collective action) and are chosen for higher entropy (H≥1.89), ensuring they carry sufficient distributional information. PCA is preferred because scale widths vary (K=5 to K=14), and the first component will isolate the general participation propensity factor while downweighting low-variance or redundant items like p48_1 and p53_1 (H<1.0)."
+  },
+  {
+    "construct_name": "political_interest_and_engagement",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p16",
+      "p15_1",
+      "p14_1",
+      "p78",
+      "p11",
+      "p10"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Political interest and engagement encompasses self-reported interest, media consumption, political discussion, and knowledge, requiring multiple items to avoid single-item bias. The selected questions have the highest entropy values (H≥1.89) and span cognitive engagement (interest, attention) and behavioral engagement (discussion, information-seeking), providing good construct coverage. PCA is appropriate given the heterogeneous scale widths (K=6 to K=14), and the first component will capture the latent general engagement factor that underlies these correlated but not identical indicators."
+  },
+  {
+    "construct_name": "authoritarian_versus_democratic_values",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p65",
+      "p7",
+      "p50",
+      "p56_1",
+      "p60",
+      "p23"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "The authoritarian-democratic values dimension is a latent attitudinal construct that cannot be captured by any single item, as it encompasses preferences for strong leadership, rule of law, minority rights, and democratic norms. The selected items have the highest entropy (H≥1.74) and collectively span both the authoritarian pole (preference for strong leaders, order) and the democratic pole (support for rights, pluralism), ensuring the PCA first component reflects the full ideological continuum. PCA is preferred over sum scoring because scale widths are mixed (K=5 to K=7) and items at opposite poles of the construct need to be oriented consistently by the factor loadings rather than assumed to be additive."
+  }
+]

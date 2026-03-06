@@ -1,0 +1,302 @@
+{
+  "p2|DER": {
+    "summary": "Agreement that human rights of citizens should be respected and citizens should fulfill legal obligations (agreement scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3|DER": {
+    "summary": "Perception of whether human rights are respected in the country (yes/no/don't know).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p4|DER": {
+    "summary": "Identification of which authority most frequently violates human rights (multiple choice).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5|DER": {
+    "summary": "Perceived protection against abuse of authority (scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6|DER": {
+    "summary": "Perceived effectiveness of amparo legal remedy in defending people's rights (scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7|DER": {
+    "summary": "Agreement with statement about rights and security trade-off (two-choice comparison).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8|DER": {
+    "summary": "Belief about citizens' right to protest or civil disobedience (incomplete question text).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9|DER": {
+    "summary": "Perception of whether human rights respect is an obstacle to public security (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11_1|DER": {
+    "summary": "Belief that crime victims have a right to reparation of damages (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12|DER": {
+    "summary": "Belief that authorities protect people and their property (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p13|DER": {
+    "summary": "Perception of whether public protest demonstrations are correct or incorrect (correct/incorrect).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14|DER": {
+    "summary": "Opinion on what limits should exist on the right to public protest (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15|DER": {
+    "summary": "Justifiability of violence by protesters against authorities (justifiable/not justifiable).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16|DER": {
+    "summary": "Agreement that police or armed forces should harm a person after subduing them (agreement scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17|DER": {
+    "summary": "Agreement that torture of detainees is acceptable to obtain crime information (agreement scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18|DER": {
+    "summary": "Evaluation of prosecutor offices' performance in finding crime perpetrators (good/bad scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19|DER": {
+    "summary": "Evaluation of treatment of crime victims in prosecutor offices (quality scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20|DER": {
+    "summary": "Trust in judges (confidence scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21|DER": {
+    "summary": "Perception that Supreme Court of Justice sentences have defended human rights (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22|DER": {
+    "summary": "Belief that prisoners should have rights (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23|DER": {
+    "summary": "Perception of whether human rights of prisoners are respected in national prisons (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24_1|DER": {
+    "summary": "Perception that prison system fulfills its function of supervising and controlling prisoners (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26|DER": {
+    "summary": "Belief that freedom of expression should have limits (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26_1_1|DER": {
+    "summary": "Belief that freedom of expression should have limits in private life (yes/no).",
+    "duplicate_of": "p26|DER",
+    "keep": false
+  },
+  "p27|DER": {
+    "summary": "Employment status - whether respondent currently works or has worked (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28_1|DER": {
+    "summary": "Experience of labor rights violation - required to work overtime without corresponding pay (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29|DER": {
+    "summary": "Family household income level (income bracket scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30|DER": {
+    "summary": "Evaluation of efficiency of public health services (efficient/inefficient scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31|DER": {
+    "summary": "Perception of living in dignified housing (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32|DER": {
+    "summary": "Evaluation of quality of public education (quality scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33|DER": {
+    "summary": "Opinion on the principal function of human rights commissions in Mexico (multiple choice).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34|DER": {
+    "summary": "Perception of how much human rights commissions defend human rights (scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35_1|DER": {
+    "summary": "Experience of human rights violation due to physical appearance (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_1|DER": {
+    "summary": "Willingness to rent housing to someone based on religion (would/would not rent).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37|DER": {
+    "summary": "Agreement that people with disabilities should be offered work opportunities according to their abilities (agreement scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39|DER": {
+    "summary": "Perception of how dark-skinned people are treated in Mexico (treatment evaluation).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40_1|DER": {
+    "summary": "Tolerance of child's homosexuality expression (would/would not tolerate).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p41|DER": {
+    "summary": "Agreement that public display of homosexuality should be penalized (agreement scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42|DER": {
+    "summary": "Support for approval of same-sex civil marriage nationwide (should/should not approve).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44|DER": {
+    "summary": "Perception of whether excluding people from public places based on appearance is correct or incorrect (correct/incorrect).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45|DER": {
+    "summary": "Perception of whether respondent's human rights have ever been violated (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46_1|DER": {
+    "summary": "Experience of human rights violation in past year - being treated with dignity and respect regardless of sex, race or other condition (yes/no).",
+    "duplicate_of": "p45|DER",
+    "keep": false
+  },
+  "p47|DER": {
+    "summary": "Opinion that those at disadvantage in exercising rights should receive special treatment (should/should not).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49|DER": {
+    "summary": "Belief that authorities should intervene in domestic violence or if it is a private couple matter (should/should not intervene).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p52|DER": {
+    "summary": "Agreement with statement about gender roles or family relations (two-choice comparison).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53|DER": {
+    "summary": "Experience of school bullying victimization (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54|DER": {
+    "summary": "Experience of workplace harassment (mobbing) victimization (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55|DER": {
+    "summary": "Belief that there are or are not limits to corporal punishment of children (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55_1_1|DER": {
+    "summary": "Belief that raising voice is an acceptable limit for child discipline (yes/no).",
+    "duplicate_of": "p55|DER",
+    "keep": false
+  },
+  "p55_1_2|DER": {
+    "summary": "Belief that physical contact without pain is an acceptable limit for child discipline (yes/no).",
+    "duplicate_of": "p55|DER",
+    "keep": false
+  },
+  "p55_1_3|DER": {
+    "summary": "Belief that physical contact causing pain is an acceptable limit for child discipline (yes/no).",
+    "duplicate_of": "p55|DER",
+    "keep": false
+  },
+  "p55_1_4|DER": {
+    "summary": "Belief that humiliating words or acts are an acceptable limit for child discipline (yes/no).",
+    "duplicate_of": "p55|DER",
+    "keep": false
+  },
+  "p55_1_5|DER": {
+    "summary": "Belief that words or acts causing anguish or fear are an acceptable limit for child discipline (yes/no).",
+    "duplicate_of": "p55|DER",
+    "keep": false
+  },
+  "p55_1_6|DER": {
+    "summary": "Other acceptable limits for child discipline (open-ended).",
+    "duplicate_of": "p55|DER",
+    "keep": false
+  },
+  "p56|DER": {
+    "summary": "Belief that parents should allow children to freely express their opinions (should/should not).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58|DER": {
+    "summary": "Belief that adult children have a duty to care for elderly parents (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p59|DER": {
+    "summary": "Agreement with statement about family or intergenerational relations (two-choice comparison).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61|DER": {
+    "summary": "Belief that people with mental disability should always be institutionalized in psychiatric centers (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p62|DER": {
+    "summary": "Belief that Mexican government should protect migrants from organized crime (should/should not).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63|DER": {
+    "summary": "Perception of how much Mexican authorities protect human rights of migrants crossing the country (much/some/little/none scale).",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

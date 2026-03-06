@@ -1,0 +1,362 @@
+[
+  {
+    "construct_name": "environmental_knowledge_literacy",
+    "sources": [
+      {
+        "citation": "Dunlap, R. E., & Jones, R. E. (2002). Environmental concern: Conceptual and measurement issues. In R. E. Dunlap & W. Michelson (Eds.), Handbook of environmental sociology (pp. 482–524). Greenwood Press.",
+        "relevance": "Provides foundational framework for distinguishing environmental knowledge from concern and behavior, establishing environmental literacy as a distinct cognitive dimension in survey research.",
+        "key_finding": "Environmental knowledge is a necessary but insufficient predictor of pro-environmental behavior, operating through mediating attitudinal pathways."
+      },
+      {
+        "citation": "Tobler, C., Visschers, V. H. M., & Siegrist, M. (2012). Consumers' knowledge about climate change. Climatic Change, 114(2), 189–209.",
+        "relevance": "Directly measures self-assessed and objective knowledge about climate change causes and solutions, closely mirroring the construct's inclusion of knowledge about environmental problems and renewable energy.",
+        "key_finding": "Objective knowledge about climate change causes was a stronger predictor of willingness to act than self-assessed knowledge, highlighting the importance of measuring both dimensions."
+      },
+      {
+        "citation": "Fernández-Manzanal, R., Rodríguez-Barreiro, L., & Carrasquer, J. (2007). Evaluation of environmental attitudes: Analysis and results of a scale applied to university students. Science Education, 91(6), 988–1009.",
+        "relevance": "Validates multi-item scales for environmental literacy including knowledge of causes and solutions to environmental problems in a Spanish-speaking educational context.",
+        "key_finding": "Environmental knowledge scales showed acceptable reliability and were positively associated with pro-environmental attitudes among Spanish-speaking university students."
+      },
+      {
+        "citation": "Liere, K. D. V., & Dunlap, R. E. (1980). The social bases of environmental concern: A review of hypotheses, explanations and empirical evidence. Public Opinion Quarterly, 44(2), 181–197.",
+        "relevance": "Reviews the sociodemographic predictors of environmental knowledge and concern, establishing education and age as key correlates of environmental literacy.",
+        "key_finding": "Education is the most consistent predictor of environmental knowledge and concern across multiple studies."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "pro-environmental behavior",
+        "measurable_in_data": true,
+        "data_source": "MED"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "cause",
+        "related_construct": "environmental concern and risk perception",
+        "measurable_in_data": true,
+        "data_source": "MED"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "science and technology literacy",
+        "measurable_in_data": true,
+        "data_source": "CIE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "media and information access",
+        "measurable_in_data": true,
+        "data_source": "SOC"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "support for environmental governance",
+        "measurable_in_data": true,
+        "data_source": "MED"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "environmental_concern_risk_perception",
+    "sources": [
+      {
+        "citation": "Dunlap, R. E., Van Liere, K. D., Mertig, A. G., & Jones, R. E. (2000). New trends in measuring environmental attitudes: Measuring endorsement of the New Ecological Paradigm: A revised NEP scale. Journal of Social Issues, 56(3), 425–442.",
+        "relevance": "The revised NEP scale is the most widely used instrument for measuring environmental concern, and its dimensions of ecological limits and human-nature balance directly inform the concern/risk perception construct.",
+        "key_finding": "The revised NEP scale demonstrates strong internal consistency and predictive validity for environmental attitudes and behaviors across diverse populations."
+      },
+      {
+        "citation": "Leiserowitz, A. (2006). Climate change risk perception and policy preferences: The role of affect, imagery, and values. Climatic Change, 77(1–2), 45–72.",
+        "relevance": "Directly examines how risk perception of climate change shapes policy preferences, closely matching the construct's focus on perceived seriousness of climate change and fossil fuel impacts.",
+        "key_finding": "Risk perception of climate change is strongly influenced by affective imagery and cultural values, and is a primary driver of support for mitigation policies."
+      },
+      {
+        "citation": "Ponce de León Atria, M., & Escotto Quesada, T. (2014). Percepción social del cambio climático en México. In B. Ortiz & C. Velasco (Eds.), La percepción social del cambio climático (pp. 73–94). Universidad Iberoamericana.",
+        "relevance": "One of the few studies examining environmental risk perception specifically in the Mexican context, analyzing how Mexicans perceive climate change threats at national and local levels.",
+        "key_finding": "Mexican respondents show high levels of concern about climate change but significant variation by region and socioeconomic status, with local environmental degradation amplifying risk perception."
+      },
+      {
+        "citation": "Brody, S. D., Zahran, S., Vedlitz, A., & Grover, H. (2008). Examining the relationship between physical vulnerability and public perceptions of global climate change in the United States. Environment and Behavior, 40(1), 72–95.",
+        "relevance": "Examines how local environmental conditions and physical vulnerability shape perceptions of climate change risk, relevant to the construct's inclusion of both national and local threat perception.",
+        "key_finding": "Individuals living in areas with greater physical vulnerability to climate impacts report significantly higher levels of climate change risk perception."
+      },
+      {
+        "citation": "Weber, E. U. (2006). Experience-based and description-based perceptions of long-term risk: Why global warming does not scare us (yet). Climatic Change, 77(1–2), 103–120.",
+        "relevance": "Provides theoretical grounding for why environmental risk perception varies, distinguishing between experiential and analytical processing of environmental threats.",
+        "key_finding": "Personal experience with environmental hazards is a more powerful driver of risk perception than statistical information, explaining variation in concern across populations."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "support for environmental policy and regulation",
+        "measurable_in_data": true,
+        "data_source": "MED"
+      },
+      {
+        "role": "cause",
+        "related_construct": "pro-environmental civic engagement",
+        "measurable_in_data": true,
+        "data_source": "MED"
+      },
+      {
+        "role": "effect",
+        "related_construct": "environmental knowledge and literacy",
+        "measurable_in_data": true,
+        "data_source": "MED"
+      },
+      {
+        "role": "effect",
+        "related_construct": "direct experience with environmental hazards",
+        "measurable_in_data": true,
+        "data_source": "MED, HAB"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "generalized institutional trust",
+        "measurable_in_data": true,
+        "data_source": "CUL, COR"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "health risk perception",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "poverty and material deprivation",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "pro_environmental_civic_engagement",
+    "sources": [
+      {
+        "citation": "Stern, P. C. (2000). New environmental theories: Toward a coherent theory of environmentally significant behavior. Journal of Social Issues, 56(3), 407–424.",
+        "relevance": "Stern's Value-Belief-Norm theory distinguishes between private-sphere and public-sphere (civic) environmental behaviors, directly informing the construct's focus on collective action beyond individual lifestyle choices.",
+        "key_finding": "Public-sphere environmental behaviors (activism, policy support, civic engagement) are driven by a distinct causal chain from personal norms activated by awareness of consequences and ascription of responsibility."
+      },
+      {
+        "citation": "Lubell, M. (2002). Environmental activism as collective action. Environment and Behavior, 34(4), 431–454.",
+        "relevance": "Applies collective action theory to environmental civic engagement, examining why individuals participate in environmental protests, organizations, and political actions.",
+        "key_finding": "Perceived collective benefits, civic duty norms, and social trust significantly predict participation in environmental collective action, overcoming free-rider problems."
+      },
+      {
+        "citation": "Hadler, M., & Haller, M. (2011). Global activism and nationally driven recycling: The influence of world society and national contexts on public and private environmental behavior. International Sociology, 26(3), 315–345.",
+        "relevance": "Compares civic environmental engagement across countries, showing how national context shapes the relationship between attitudes and collective environmental action.",
+        "key_finding": "National-level factors such as democratic governance and civil society strength moderate the translation of environmental concern into civic engagement."
+      },
+      {
+        "citation": "Leff, E. (2012). Political ecology in Latin America: The social re-appropriation of nature, the reinvention of territories and the construction of an environmental rationality. Desenvolvimento e Meio Ambiente, 35, 65–88.",
+        "relevance": "Provides a Latin American theoretical framework for understanding environmental civic mobilization in the context of resource conflicts, indigenous rights, and social movements in Mexico.",
+        "key_finding": "Environmental civic engagement in Latin America is deeply intertwined with social justice movements, territorial defense, and indigenous epistemologies, distinguishing it from Northern environmentalism."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "environmental concern and risk perception",
+        "measurable_in_data": true,
+        "data_source": "MED"
+      },
+      {
+        "role": "effect",
+        "related_construct": "general civic and political participation",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "social trust and institutional trust",
+        "measurable_in_data": true,
+        "data_source": "CUL, COR"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "human rights awareness and activism",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "indigenous community membership and collective action",
+        "measurable_in_data": true,
+        "data_source": "IND"
+      },
+      {
+        "role": "effect",
+        "related_construct": "environmental knowledge and literacy",
+        "measurable_in_data": true,
+        "data_source": "MED"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "environmental_governance_attitudes",
+    "sources": [
+      {
+        "citation": "Dryzek, J. S. (2013). The politics of the earth: Environmental discourses (3rd ed.). Oxford University Press.",
+        "relevance": "Provides a comprehensive typology of environmental governance discourses—including regulatory, market-based, and participatory approaches—that frame how publics assign responsibility for environmental protection.",
+        "key_finding": "Public attitudes toward environmental governance reflect deeper ideological commitments about the appropriate role of the state, markets, and civil society in managing environmental commons."
+      },
+      {
+        "citation": "Fairbrother, M. (2016). Trust and public support for environmental protection in diverse national contexts. Sociological Science, 3, 359–382.",
+        "relevance": "Examines how trust in government moderates public support for environmental regulation, directly relevant to the construct's focus on beliefs about governmental responsibility.",
+        "key_finding": "Higher trust in government is associated with greater support for environmental regulation, but this relationship is stronger in countries with lower corruption."
+      },
+      {
+        "citation": "Lezama, J. L. (2010). Sociedad, medio ambiente y política ambiental, 1970–2000. In J. L. Lezama & B. Graizbord (Eds.), Los grandes problemas de México, Vol. IV: Medio ambiente (pp. 23–60). El Colegio de México.",
+        "relevance": "Analyzes the evolution of environmental governance attitudes in Mexico, including public expectations of government responsibility and the role of SEMARNAT and other institutions.",
+        "key_finding": "Mexican environmental governance attitudes are shaped by a legacy of centralized state control over natural resources, creating high expectations of government responsibility alongside deep skepticism about enforcement capacity."
+      },
+      {
+        "citation": "Harring, N. (2013). Understanding the effects of corruption and political trust on willingness to make economic sacrifices for environmental protection in a cross-national perspective. Social Science Quarterly, 94(3), 660–671.",
+        "relevance": "Directly tests how corruption perceptions affect willingness to support environmental governance measures, relevant to the Mexican context where corruption is a salient concern.",
+        "key_finding": "Perceived corruption significantly reduces willingness to accept economic costs for environmental protection, as citizens doubt that government will use resources effectively."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "institutional trust and corruption perceptions",
+        "measurable_in_data": true,
+        "data_source": "COR, CUL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "political ideology and values",
+        "measurable_in_data": true,
+        "data_source": "CUL, IDE"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support for specific environmental policies",
+        "measurable_in_data": true,
+        "data_source": "MED"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "attitudes toward federalism and decentralization",
+        "measurable_in_data": true,
+        "data_source": "FED"
+      },
+      {
+        "role": "effect",
+        "related_construct": "environmental concern and risk perception",
+        "measurable_in_data": true,
+        "data_source": "MED"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "attitudes toward economic regulation and market role",
+        "measurable_in_data": true,
+        "data_source": "ECO, GLO"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "socioeconomic_environmental_context",
+    "sources": [
+      {
+        "citation": "Cutter, S. L., Boruff, B. J., & Shirley, W. L. (2003). Social vulnerability to environmental hazards. Social Science Quarterly, 84(2), 242–261.",
+        "relevance": "Develops the Social Vulnerability Index (SoVI) framework, which conceptualizes socioeconomic and infrastructural conditions as determinants of environmental vulnerability, directly paralleling this construct's proxy for socio-environmental vulnerability.",
+        "key_finding": "Social vulnerability to environmental hazards is a composite of socioeconomic status, housing quality, infrastructure access, and demographic characteristics that determine differential exposure and adaptive capacity."
+      },
+      {
+        "citation": "Sánchez-Rodríguez, R. (2002). Sustentabilidad urbana, descentralización y gestión local. In E. Leff, E. Ezcurra, I. Pisanty, & P. Romero Lankao (Eds.), La transición hacia el desarrollo sustentable (pp. 293–314). SEMARNAT/INE/UAM/PNUMA.",
+        "relevance": "Examines how urban infrastructure, housing conditions, and municipal governance in Mexico create differential environmental vulnerability, directly relevant to the construct's measurement of household and community conditions.",
+        "key_finding": "Uneven urban development in Mexico creates pockets of extreme socio-environmental vulnerability where lack of basic services (water, sanitation, waste management) compounds exposure to environmental hazards."
+      },
+      {
+        "citation": "Adger, W. N. (2006). Vulnerability. Global Environmental Change, 16(3), 268–281.",
+        "relevance": "Provides the theoretical framework linking material conditions (exposure, sensitivity, adaptive capacity) to environmental vulnerability, justifying the use of household infrastructure as a proxy measure.",
+        "key_finding": "Vulnerability is a function of exposure to environmental stressors, sensitivity of the system, and adaptive capacity, all of which are shaped by socioeconomic conditions and infrastructure."
+      },
+      {
+        "citation": "CONEVAL. (2018). Estudio diagnóstico del derecho a un medio ambiente sano. Consejo Nacional de Evaluación de la Política de Desarrollo Social.",
+        "relevance": "Provides Mexico-specific data on how poverty, housing quality, and access to basic services (water, sanitation) intersect with environmental quality and exposure to hazards.",
+        "key_finding": "In Mexico, the poorest municipalities face disproportionate environmental degradation and lack of basic environmental services, creating a reinforcing cycle of poverty and environmental vulnerability."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "environmental concern and risk perception",
+        "measurable_in_data": true,
+        "data_source": "MED"
+      },
+      {
+        "role": "cause",
+        "related_construct": "health outcomes and health risk exposure",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "poverty and material deprivation",
+        "measurable_in_data": true,
+        "data_source": "POB"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "housing quality and access to services",
+        "measurable_in_data": true,
+        "data_source": "HAB"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "pro-environmental behavior and civic engagement",
+        "measurable_in_data": true,
+        "data_source": "MED"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment and human capital",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "indigenous community membership",
+        "measurable_in_data": true,
+        "data_source": "IND"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "migration patterns and displacement",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "employment and economic conditions",
+        "measurable_in_data": true,
+        "data_source": "ECO"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  }
+]

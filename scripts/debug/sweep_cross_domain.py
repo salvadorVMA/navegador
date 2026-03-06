@@ -242,7 +242,13 @@ def estimate_domain_pair(
 # Main sweep
 # ---------------------------------------------------------------------------
 
-def main(n_vars: int = 3, max_workers: int = 8, output_path: Path = OUTPUT_PATH) -> None:
+def main(
+    n_vars: int = 3,
+    max_workers: int = 8,
+    output_path: Path = OUTPUT_PATH,
+    var_selection: str = "naive",
+    semantic_selection_file: Optional[Path] = None,
+) -> None:
     t0 = time.time()
     print("=" * 60)
     print("Cross-Domain Bivariate Sweep")
@@ -258,14 +264,35 @@ def main(n_vars: int = 3, max_workers: int = 8, output_path: Path = OUTPUT_PATH)
     print(f"Viable domains: {len(viable)} (excluded: {EXCLUDE_DOMAINS})")
 
     # Select representative variables per domain
-    print(f"\nSelecting {n_vars} representative variables per domain (top entropy)...")
     selected_vars: Dict[str, List[str]] = {}
-    for domain in viable:
-        selected = select_representative_vars(
-            domain, pregs_dict, enc_dict, enc_nom_dict_rev, n_vars
+    if var_selection == "semantic" and semantic_selection_file is not None:
+        print(f"\nLoading semantic variable selection from {semantic_selection_file}...")
+        sys.path.insert(0, str(ROOT / "scripts" / "debug"))
+        from select_bridge_variables_semantic import SemanticVariableSelector
+        loaded = SemanticVariableSelector.load(semantic_selection_file)
+        # Build aggregated columns in enc_dict DataFrames
+        SemanticVariableSelector.build_aggregates(
+            enc_dict, enc_nom_dict_rev,
+            selection_path=semantic_selection_file,
         )
-        selected_vars[domain] = selected
-        print(f"  {domain}: {selected}")
+        for domain in viable:
+            if domain in loaded:
+                selected_vars[domain] = loaded[domain]
+                print(f"  {domain}: {loaded[domain]}")
+            else:
+                # Fallback for missing domains
+                selected_vars[domain] = select_representative_vars(
+                    domain, pregs_dict, enc_dict, enc_nom_dict_rev, n_vars
+                )
+                print(f"  {domain}: {selected_vars[domain]}  [fallback to entropy]")
+    else:
+        print(f"\nSelecting {n_vars} representative variables per domain (top entropy)...")
+        for domain in viable:
+            selected = select_representative_vars(
+                domain, pregs_dict, enc_dict, enc_nom_dict_rev, n_vars
+            )
+            selected_vars[domain] = selected
+            print(f"  {domain}: {selected}")
 
     # Enumerate all pairs
     all_pairs = list(combinations(viable, 2))
@@ -326,7 +353,7 @@ def main(n_vars: int = 3, max_workers: int = 8, output_path: Path = OUTPUT_PATH)
             "n_estimates_total": total_estimates,
             "n_estimates_significant": total_significant,
             "vars_per_domain": n_vars,
-            "selection_method": "top_entropy",
+            "selection_method": var_selection,
             "elapsed_seconds": round(elapsed, 1),
         },
         "domain_pairs": results,
@@ -366,6 +393,18 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Full cross-domain bivariate sweep")
     parser.add_argument("--workers", type=int, default=8, help="Parallel workers (default: 8)")
     parser.add_argument("--vars-per-domain", type=int, default=3, help="Vars per domain (default: 3)")
-    parser.add_argument("--output", type=Path, default=OUTPUT_PATH, help="Output JSON path (default: data/results/cross_domain_sweep.json)")
+    parser.add_argument("--output", type=Path, default=OUTPUT_PATH,
+                        help="Output JSON path (default: data/results/cross_domain_sweep.json)")
+    parser.add_argument("--var-selection", choices=["naive", "semantic"], default="naive",
+                        help="Variable selection method: naive (max entropy) or semantic (LLM pipeline)")
+    parser.add_argument("--semantic-selection-file", type=Path,
+                        default=ROOT / "data" / "results" / "semantic_variable_selection.json",
+                        help="Path to semantic_variable_selection.json (used when --var-selection=semantic)")
     args = parser.parse_args()
-    main(n_vars=args.vars_per_domain, max_workers=args.workers, output_path=args.output)
+    main(
+        n_vars=args.vars_per_domain,
+        max_workers=args.workers,
+        output_path=args.output,
+        var_selection=args.var_selection,
+        semantic_selection_file=args.semantic_selection_file if args.var_selection == "semantic" else None,
+    )

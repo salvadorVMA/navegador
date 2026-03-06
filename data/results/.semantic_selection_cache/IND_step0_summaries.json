@@ -1,0 +1,272 @@
+{
+  "p1|IND": {
+    "summary": "Perception of national economic situation compared to one year ago (better or worse).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p2|IND": {
+    "summary": "Expectation of national economic situation improvement or deterioration in the next year.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5|IND": {
+    "summary": "Frequency of visits to place of origin.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8|IND": {
+    "summary": "Self-identified racial/ethnic category (white, mestizo, indigenous, or Black).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8_1|IND": {
+    "summary": "Self-identification with indigenous ancestry.",
+    "duplicate_of": "p8|IND",
+    "keep": false
+  },
+  "p9|IND": {
+    "summary": "Self-perceived indigenous roots.",
+    "duplicate_of": "p8|IND",
+    "keep": false
+  },
+  "p10|IND": {
+    "summary": "Whether any family members speak or spoke an indigenous language.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10_1_1|IND": {
+    "summary": "Whether respondent's mother speaks or spoke an indigenous language.",
+    "duplicate_of": "p10|IND",
+    "keep": false
+  },
+  "p10_1_2|IND": {
+    "summary": "Whether respondent's father speaks or spoke an indigenous language.",
+    "duplicate_of": "p10|IND",
+    "keep": false
+  },
+  "p10_1_3|IND": {
+    "summary": "Whether respondent's maternal grandmother speaks or spoke an indigenous language.",
+    "duplicate_of": "p10|IND",
+    "keep": false
+  },
+  "p10_1_4|IND": {
+    "summary": "Whether respondent's maternal grandfather speaks or spoke an indigenous language.",
+    "duplicate_of": "p10|IND",
+    "keep": false
+  },
+  "p10_1_5|IND": {
+    "summary": "Whether respondent's paternal grandmother speaks or spoke an indigenous language.",
+    "duplicate_of": "p10|IND",
+    "keep": false
+  },
+  "p10_1_6|IND": {
+    "summary": "Whether respondent's paternal grandfather speaks or spoke an indigenous language.",
+    "duplicate_of": "p10|IND",
+    "keep": false
+  },
+  "p10_1_7|IND": {
+    "summary": "Whether respondent's spouse speaks or spoke an indigenous language.",
+    "duplicate_of": "p10|IND",
+    "keep": false
+  },
+  "p10_1_8|IND": {
+    "summary": "Whether respondent's mother-in-law speaks or spoke an indigenous language.",
+    "duplicate_of": "p10|IND",
+    "keep": false
+  },
+  "p10_1_9|IND": {
+    "summary": "Whether respondent's father-in-law speaks or spoke an indigenous language.",
+    "duplicate_of": "p10|IND",
+    "keep": false
+  },
+  "p12_1|IND": {
+    "summary": "Belief about whether indigenous language speakers are considered indigenous.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p13a_1|IND": {
+    "summary": "Perceived greatest advantage of being indigenous in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14a_1|IND": {
+    "summary": "Perceived greatest disadvantage of being indigenous in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15|IND": {
+    "summary": "Opinion on whether life is more difficult for indigenous or non-indigenous people.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16|IND": {
+    "summary": "Knowledge of approximate number of indigenous groups in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17|IND": {
+    "summary": "Knowledge of approximate number of indigenous language speakers in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18_1a_1|IND": {
+    "summary": "First mentioned indigenous group that respondent can recall.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20|IND": {
+    "summary": "Belief about whether skin color influences treatment people receive.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21|IND": {
+    "summary": "Perception of existence of racism in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22|IND": {
+    "summary": "Belief about whether indigenous customs are an obstacle to regional progress.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23|IND": {
+    "summary": "Opinion on most appropriate government action for indigenous peoples.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24_1|IND": {
+    "summary": "Agreement level that indigenous and non-indigenous people should be treated equally.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25_1|IND": {
+    "summary": "Perception of whether denying employment to indigenous people is discriminatory.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26_1|IND": {
+    "summary": "Positivity or negativity of family's image of indigenous people.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27_1|IND": {
+    "summary": "First mentioned type of work where indigenous men are most frequently seen.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28_1|IND": {
+    "summary": "First mentioned type of work where indigenous women are most frequently seen.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29|IND": {
+    "summary": "Agreement with statement about indigenous peoples (specific statement not fully specified).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30|IND": {
+    "summary": "Perception of whether indigenous human rights are respected in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31|IND": {
+    "summary": "Belief about whether most indigenous people can attend school.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32|IND": {
+    "summary": "Perception of whether indigenous people have equal employment opportunities as non-indigenous people.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33_1|IND": {
+    "summary": "Perception of how effectively white people assert their rights in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34_1|IND": {
+    "summary": "Belief about whether being indigenous is an obstacle to obtaining good employment.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35_1|IND": {
+    "summary": "Belief about whether indigenous people can freely express themselves.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36|IND": {
+    "summary": "Hiring preference between equally qualified indigenous and non-indigenous candidates.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37_1|IND": {
+    "summary": "Willingness to hire an indigenous person as childcare provider.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38_1|IND": {
+    "summary": "Belief about whether children of mixed indigenous-non-indigenous parentage would face discrimination.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39_1|IND": {
+    "summary": "Whether respondent has or has had an indigenous friend.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40_1|IND": {
+    "summary": "Willingness to allow indigenous people to live in respondent's home.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p41_1|IND": {
+    "summary": "Agreement level with government providing food/provisions to indigenous people.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p43|IND": {
+    "summary": "Perceived reasons for indigenous poverty in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44_1|IND": {
+    "summary": "Belief about whether indigenous community poverty is due to lack of work effort.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45a_1|IND": {
+    "summary": "Perceived principal problem facing indigenous peoples.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46|IND": {
+    "summary": "Opinion on indigenous self-determination versus equal electoral participation with non-indigenous citizens.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47|IND": {
+    "summary": "Opinion on indigenous peoples' right to decide whether to sell ancestral lands to mining or extraction companies.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48|IND": {
+    "summary": "Opinion on appropriate language for indigenous children's education.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49|IND": {
+    "summary": "Agreement with providing translation services versus requiring Spanish for indigenous access to public services.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p50_1|IND": {
+    "summary": "Importance of Spanish language instruction for indigenous children.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51_1|IND": {
+    "summary": "Attendance at indigenous product fairs.",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

@@ -1,0 +1,69 @@
+[
+  {
+    "name": "ageism_and_age_discrimination",
+    "description": "Captures attitudes and beliefs about discrimination, stereotyping, and unequal treatment of older adults in social, employment, and media contexts. Reflects internalized ageist beliefs as well as perceived structural discrimination.",
+    "question_cluster": [
+      "p14_1",
+      "p15_1",
+      "p18_1",
+      "p25_1",
+      "p26",
+      "p27",
+      "p13_1"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "elder_abuse_awareness",
+    "description": "Measures awareness, recognition, and personal exposure to various forms of abuse against older adults, including physical, psychological neglect, and age-based mistreatment. Reflects both normative beliefs about what constitutes abuse and direct knowledge of abusive situations.",
+    "question_cluster": [
+      "p16_1",
+      "p17_1",
+      "p19_1",
+      "p20",
+      "p20aa_1"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "state_and_family_responsibility_for_elder_care",
+    "description": "Measures beliefs about who bears primary responsibility for the care and wellbeing of older adults, distinguishing between state/institutional obligations and family-based obligations. Relevant to welfare state attitudes and intergenerational solidarity norms.",
+    "question_cluster": [
+      "p8",
+      "p30",
+      "p31",
+      "p42_1",
+      "p43",
+      "p44",
+      "p29_1"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "perceived_quality_of_life_and_social_inclusion_of_older_adults",
+    "description": "Captures perceptions of the overall living conditions, dignity, social consideration, and public policy adequacy for older adults in Mexico, including assessments of past trends and future expectations. Reflects a broader evaluative orientation toward aging as a social problem.",
+    "question_cluster": [
+      "p9",
+      "p10",
+      "p11",
+      "p36",
+      "p37_1",
+      "p38",
+      "p39",
+      "p21_2"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "intergenerational_contact_and_family_integration",
+    "description": "Measures the degree to which older adults are integrated into family life and decision-making, including frequency of contact, inclusion in household decisions, and the physical and social proximity between generations.",
+    "question_cluster": [
+      "p2",
+      "p3",
+      "p12",
+      "p46_1",
+      "p45_1"
+    ],
+    "requires_aggregation": true
+  }
+]

@@ -1,0 +1,462 @@
+{
+  "p1_1|SEG": {
+    "summary": "First mention of the three most serious problems facing Mexico (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p2_1|SEG": {
+    "summary": "First mention of the three main causes of insecurity currently in the country (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3|SEG": {
+    "summary": "Perceived change in personal security over the past 12 months.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p4|SEG": {
+    "summary": "Expected change in personal security over the next 12 months.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5|SEG": {
+    "summary": "Perceived change in national public security over the past 12 months.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6|SEG": {
+    "summary": "Expected change in national public security over the next 12 months.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7|SEG": {
+    "summary": "Length of time respondent has lived in current neighborhood or locality.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8_1|SEG": {
+    "summary": "Perceived safety of living in respondent's neighborhood or locality regarding crime.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9_1|SEG": {
+    "summary": "Perceived safety in respondent's home regarding crime.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10_1|SEG": {
+    "summary": "Perceived trend in crime in respondent's neighborhood or locality over the past year.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11_1|SEG": {
+    "summary": "Fear of being a victim of street robbery with violence.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12_1|SEG": {
+    "summary": "Perceived probability of being a victim of street robbery with violence in the next 12 months (1-5 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p13_1|SEG": {
+    "summary": "Perceived probability of being involved in gang confrontations in the next 12 months (1-5 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14_1|SEG": {
+    "summary": "Perceived frequency of neighbor disputes near respondent's residence.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16|SEG": {
+    "summary": "Perceived change in mutual aid among community members over the past three years.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17|SEG": {
+    "summary": "Reasons why respondent believes people help each other more (open-ended follow-up).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19|SEG": {
+    "summary": "Perceived change in neighbor conversation frequency over the past three years.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20|SEG": {
+    "summary": "Reasons why respondent believes people converse more with neighbors (open-ended follow-up).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21|SEG": {
+    "summary": "Reasons why respondent believes people converse less with neighbors (open-ended follow-up).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22_1|SEG": {
+    "summary": "Avoidance of certain streets to prevent victimization by crime or violence.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23_1|SEG": {
+    "summary": "Cessation of nighttime activities in the past year to avoid crime or violence victimization.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24_1|SEG": {
+    "summary": "Implementation of home security measures such as private security or neighborhood surveillance.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25_2|SEG": {
+    "summary": "Awareness of State Police as an institution.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26_1|SEG": {
+    "summary": "Performance rating of municipal police on a 0-10 scale.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27_1|SEG": {
+    "summary": "Satisfaction with municipal police performance.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28_1|SEG": {
+    "summary": "Perceived corruption of municipal police.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29_1|SEG": {
+    "summary": "Perceived human rights violations by municipal police.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29_2|SEG": {
+    "summary": "Perceived human rights violations by state police.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29_3|SEG": {
+    "summary": "Perceived human rights violations by investigative police.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29_4|SEG": {
+    "summary": "Perceived human rights violations by federal police.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29_5|SEG": {
+    "summary": "Perceived human rights violations by the Army.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29_6|SEG": {
+    "summary": "Perceived human rights violations by the Navy.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29_7|SEG": {
+    "summary": "Perceived human rights violations by the Attorney General's Office (PGR).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29_8|SEG": {
+    "summary": "Perceived human rights violations by state attorney general's office.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30_1|SEG": {
+    "summary": "Rating of municipal police effectiveness in crime prevention.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31_1a|SEG": {
+    "summary": "First mention of most important action to reduce current insecurity levels (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32|SEG": {
+    "summary": "Presence of the Army in respondent's municipality or locality over the past three years.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33|SEG": {
+    "summary": "Perceived impact of Army presence on security in respondent's municipality or locality.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34|SEG": {
+    "summary": "Sense of security or insecurity when encountering Army members in the streets.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35|SEG": {
+    "summary": "Agreement with statement regarding Army performance in respondent's locality or municipality (first item).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36|SEG": {
+    "summary": "Agreement with statement regarding Army performance in respondent's locality or municipality (second item).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38|SEG": {
+    "summary": "Perceived impact of Navy presence on security in respondent's municipality or locality.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39|SEG": {
+    "summary": "Sense of security or insecurity when encountering Navy members in the streets.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40|SEG": {
+    "summary": "Agreement with statement regarding Navy performance in respondent's locality or municipality (first item).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p41|SEG": {
+    "summary": "Agreement with statement regarding Navy performance in respondent's locality or municipality (second item).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45|SEG": {
+    "summary": "Agreement with statement regarding Federal Police performance in respondent's locality or municipality.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47|SEG": {
+    "summary": "Belief that police will treat arrested suspects according to the law.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48|SEG": {
+    "summary": "Fear of being arrested without valid reason.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49|SEG": {
+    "summary": "Perceived probability of imprisonment if arrested for a crime not committed.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p50|SEG": {
+    "summary": "Perceived primary activities of police in their daily work (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51_1|SEG": {
+    "summary": "Willingness to call police for neighbor noise complaint.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51_2|SEG": {
+    "summary": "Willingness to call police to report a crime.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51_4|SEG": {
+    "summary": "Willingness to call police for public neighbor disputes.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p52|SEG": {
+    "summary": "Agreement that police are legitimate authority and should be obeyed.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53|SEG": {
+    "summary": "Degree to which police decisions should be accepted even if believed to be wrong.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54_1|SEG": {
+    "summary": "Trust in family on a 0-10 scale.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p56|SEG": {
+    "summary": "Victimization of any household member by crime in the past 12 months.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p56_1|SEG": {
+    "summary": "Number of household members who were crime victims in the past 12 months.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p57|SEG": {
+    "summary": "Personal victimization by crime in the past 12 months.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p57_1|SEG": {
+    "summary": "Number of times respondent was victimized by crime in the past 12 months.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58_1|SEG": {
+    "summary": "Victimization by street robbery in the past 12 months.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58a_1|SEG": {
+    "summary": "Frequency of street robbery victimization.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58a_2|SEG": {
+    "summary": "Frequency of home burglary victimization.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58a_3|SEG": {
+    "summary": "Frequency of vehicle theft victimization.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58a_4|SEG": {
+    "summary": "Frequency of vehicle parts theft victimization.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58a_5|SEG": {
+    "summary": "Frequency of public transportation robbery victimization.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58a_6|SEG": {
+    "summary": "Frequency of other types of robbery victimization.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58a_7|SEG": {
+    "summary": "Frequency of extortion victimization.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58a_8|SEG": {
+    "summary": "Frequency of express kidnapping victimization.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58a_9|SEG": {
+    "summary": "Frequency of kidnapping victimization.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58a_10|SEG": {
+    "summary": "Frequency of assault victimization.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58a_11|SEG": {
+    "summary": "Frequency of sexual assault victimization.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58a_12|SEG": {
+    "summary": "Frequency of other crime victimization.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p59|SEG": {
+    "summary": "Identification of most recent crime victimization experienced.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p60|SEG": {
+    "summary": "Filing of complaint with prosecutor for most recent crime victimization.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_1|SEG": {
+    "summary": "In-person contact with municipal police in the past three years.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p62a_1|SEG": {
+    "summary": "Rating of municipal police treatment during contact on a 0-10 scale.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63a_1|SEG": {
+    "summary": "Experience of extortion during contact with municipal police.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63a_2|SEG": {
+    "summary": "Experience of extortion during contact with state police.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63a_3|SEG": {
+    "summary": "Experience of extortion during contact with investigative police.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63a_4|SEG": {
+    "summary": "Experience of extortion during contact with federal police.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63c_5|SEG": {
+    "summary": "Experience of psychological aggression during contact with the Army.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63b_6|SEG": {
+    "summary": "Experience of physical aggression during contact with the Navy.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63a_7|SEG": {
+    "summary": "Experience of extortion during contact with armed forces (undifferentiated).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63a_8|SEG": {
+    "summary": "Experience of extortion during contact with police (undifferentiated).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63c_7|SEG": {
+    "summary": "Experience of psychological aggression during contact with armed forces (undifferentiated).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63c_8|SEG": {
+    "summary": "Experience of psychological aggression during contact with police (undifferentiated).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p66|SEG": {
+    "summary": "Agreement that violence can only be combated using violent means.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p67|SEG": {
+    "summary": "Choice between freedom and security as preferred value.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p68|SEG": {
+    "summary": "Belief in community right to administer justice when authorities fail to act.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p71|SEG": {
+    "summary": "Agreement with capital punishment.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p72|SEG": {
+    "summary": "Agreement with federal government actions to combat drug trafficking.",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

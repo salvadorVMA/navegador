@@ -1,0 +1,61 @@
+[
+  {
+    "construct_name": "institutional_and_social_trust",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p50_1",
+      "p48",
+      "p49",
+      "p40"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Institutional and social trust is inherently multi-dimensional, spanning trust in specific institutions and generalized social trust, so no single item captures the full construct. Items p50_1, p48, p49, and p40 all share a compatible 6-category scale, making them directly combinable into a mean score that can be binned into ≤5 ordinal categories. Items p51_1 and p52_1 are excluded because their 13-category scales are incompatible with the 6-point items and would distort the composite without standardization; the 6-point items alone provide sufficient breadth across institutional and interpersonal trust dimensions."
+  },
+  {
+    "construct_name": "national_identity_and_pride",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p3_2",
+      "p78"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "National identity and pride is a multi-faceted construct best captured by combining items that tap affective pride and identity salience rather than relying on a single indicator. Items p3_2 (6 categories) and p78 (5 categories) are the closest in scale and most face-valid for subjective national pride and identification, while p5_1a, p6, p8, and p9 appear to tap more specific behavioral or categorical identity dimensions with lower entropy and potentially incompatible scales. Averaging p3_2 and p78 and binning to 5 ordinal categories yields a parsimonious, content-valid composite that reduces single-item measurement error for this high-importance construct."
+  },
+  {
+    "construct_name": "subjective_wellbeing_and_life_satisfaction",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p20",
+      "p24",
+      "p30_1",
+      "p25_2"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Subjective wellbeing is a canonical multi-component construct encompassing hedonic and evaluative dimensions, so aggregation is strongly preferred over any single item. Items p20, p24, p30_1, and p25_2 all use 6- or 7-category scales that are close enough in range to be averaged after rescaling to a common 0–1 interval, then binned to 5 ordinal quantile categories. Items p29 and p74 are excluded because their 13-category scales would dominate the composite and introduce scale incompatibility; the four selected items already span life satisfaction, affect, and domain-specific wellbeing adequately for a bridge variable."
+  },
+  {
+    "construct_name": "socioeconomic_mobility_and_opportunity_perception",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p11",
+      "p18",
+      "p19",
+      "p22",
+      "p23_1"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Perceived socioeconomic mobility and opportunity is a latent construct requiring multiple items to capture both retrospective mobility assessments and prospective opportunity beliefs. Items p18, p19, p22, and p23_1 share a 5-category scale, and p11 uses a 7-category scale that is close enough to be rescaled to 0–1 before averaging; together they cover upward mobility expectations, perceived fairness of opportunity, and current economic situation. Item p27 (11 categories) is excluded to avoid scale incompatibility, and the five selected items provide sufficient construct coverage after mean-scoring and binning to 5 ordinal categories."
+  },
+  {
+    "construct_name": "moral_conservatism_and_social_values",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p55",
+      "p58",
+      "p60",
+      "p71_2"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Moral conservatism is a broad latent dimension best measured by combining multiple attitudinal items rather than relying on a single question, given the construct's importance rating and multi-item availability. Items p55, p58, p60, and p71_2 all use a uniform 5-category scale, making them directly summable and mean-scorable without rescaling, and they collectively tap traditional moral attitudes across social and ethical domains. Items with 7- or 8-category scales (p56, p57, p66_1, p68, p67) are excluded to maintain scale homogeneity; the four 5-point items provide a clean, internally consistent composite that can be binned into 5 ordinal categories for the bridge model."
+  }
+]

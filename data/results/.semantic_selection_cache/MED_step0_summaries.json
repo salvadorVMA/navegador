@@ -1,0 +1,197 @@
+{
+  "p1_1|MED": {
+    "summary": "Top three most important issues for Mexico (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p2|MED": {
+    "summary": "Single greatest priority issue for Mexico.",
+    "duplicate_of": "p1_1|MED",
+    "keep": false
+  },
+  "p3_1|MED": {
+    "summary": "Agreement that most people in respondent's area are honest and trustworthy (agreement scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p4|MED": {
+    "summary": "Perception of Mexico's overall environmental situation.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5|MED": {
+    "summary": "Perception of environmental situation in respondent's local area.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6|MED": {
+    "summary": "Most important environmental problem for Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7|MED": {
+    "summary": "Environmental problem most affecting respondent and family.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8|MED": {
+    "summary": "Self-assessed knowledge of causes of environmental problems (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9|MED": {
+    "summary": "Self-assessed knowledge of solutions to environmental problems (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10_1|MED": {
+    "summary": "Perceived harmfulness of car pollution to the environment.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12_1|MED": {
+    "summary": "Agreement that governments should control exploitation of natural resources.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p13|MED": {
+    "summary": "Best measure for companies in Mexico to protect the environment.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14|MED": {
+    "summary": "Best measures for individuals and families in Mexico to protect the environment.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25_1|MED": {
+    "summary": "Presence of solar panels in respondent's home.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26_1|MED": {
+    "summary": "Source of drinking water in respondent's home (tap water).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27_1|MED": {
+    "summary": "Belief that climate change is caused by a hole in Earth's atmosphere.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28_1|MED": {
+    "summary": "Knowledge of wind energy as a renewable energy source.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29|MED": {
+    "summary": "Self-assessed knowledge level about renewable energy (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30_1|MED": {
+    "summary": "Concern about environmental effects of gas, oil, or coal.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31_1|MED": {
+    "summary": "Television as a source of information about national and world events.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32|MED": {
+    "summary": "Perception of how informed the general public is about environmental topics.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33_1|MED": {
+    "summary": "Most trustworthy source of environmental information (first mention in ranking).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34_1|MED": {
+    "summary": "Participation in signing collective environmental petitions in past five years.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34_2|MED": {
+    "summary": "Donation to environmental groups in past five years.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34_3|MED": {
+    "summary": "Participation in environmental protests or demonstrations in past five years.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34_4|MED": {
+    "summary": "Reporting environmental damage or pollution to authorities in past five years.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34_5|MED": {
+    "summary": "Attendance at environmental talks or conferences in past five years.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_1|MED": {
+    "summary": "Three main causes of climate change in order of importance (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37|MED": {
+    "summary": "Perception that climate change has affected respondent's daily life.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38_1|MED": {
+    "summary": "Agreement that poor people are most exposed to climate change effects.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39|MED": {
+    "summary": "Willingness to relocate if authorities inform respondent lives in a risk zone.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40|MED": {
+    "summary": "Opinion on who should be responsible for environmental protection.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p41|MED": {
+    "summary": "Opinion that authorities should consider environmental problems when making decisions.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42|MED": {
+    "summary": "Respondent's characterization of residential area type.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44|MED": {
+    "summary": "Amenities and services available in respondent's home.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45|MED": {
+    "summary": "Wastewater disposal method in respondent's neighborhood or community.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46_1|MED": {
+    "summary": "Primary modes of transportation used by respondent (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47|MED": {
+    "summary": "Primary source of food for respondent's household.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_1g|MED": {
+    "summary": "Respondent's mother's highest level of educational attainment.",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

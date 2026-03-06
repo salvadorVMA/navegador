@@ -1,0 +1,61 @@
+[
+  {
+    "construct_name": "perceived_ethnic_discrimination",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p20",
+      "p21",
+      "p32",
+      "p34_1",
+      "p36",
+      "p38_1"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Perceived ethnic discrimination is inherently multi-dimensional, spanning personal experiences, witnessed events, and institutional contexts, so no single item captures the full construct. The questions share broadly compatible Likert-style ordinal scales (K=4–6) and collectively cover the construct's breadth, making aggregation appropriate to reduce measurement error. PCA is preferred over a simple sum because the slight scale heterogeneity (one item has K=6) and varying entropy levels suggest items may load differently on the latent discrimination dimension; the first principal component extracts the dominant shared variance while down-weighting idiosyncratic item variance. p25_1 is excluded due to its very low entropy (H=0.83), indicating near-zero variance that would add noise rather than signal."
+  },
+  {
+    "construct_name": "indigenous_rights_and_autonomy",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p30",
+      "p35_1",
+      "p46",
+      "p47",
+      "p49"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Indigenous rights and autonomy is a multi-faceted construct encompassing land rights, political self-determination, and cultural autonomy, so all five available items should be combined to capture its full scope. The questions use compatible 4- or 5-point ordinal scales, making a mean score appropriate for producing a continuous composite that can then be binned into ordinal categories. Mean scoring (rather than sum) is preferred because it handles the minor scale difference between the K=5 item (p30) and the K=4 items gracefully by normalizing each item's contribution, and the moderate entropy values across all items (0.85–1.52) indicate sufficient variance in each to contribute meaningfully."
+  },
+  {
+    "construct_name": "social_distance_toward_indigenous_people",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p26_1",
+      "p37_1",
+      "p39_1",
+      "p40_1"
+    ],
+    "aggregation_method": "sum_score",
+    "justification": "Social distance is a classic multi-item construct that requires aggregation across different social scenarios (e.g., neighborhood, workplace, family) to yield a reliable measure; no single scenario item is sufficient on its own. All four items use compatible 4- or 5-point ordinal scales measuring willingness or comfort with proximity to indigenous people, making them directly summable into a Bogardus-style composite. A sum score is appropriate here because the items are conceptually parallel indicators of the same underlying attitude, and summing preserves the additive structure of social distance scales before binning into ≤5 ordinal categories."
+  },
+  {
+    "construct_name": "attributions_for_indigenous_disadvantage",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p22",
+      "p44_1",
+      "p45a_1"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Attributions for indigenous disadvantage span internal (individual/cultural blame) versus external (structural/historical) causal dimensions, requiring multiple items to capture the attitudinal spectrum; aggregation reduces single-item bias. p43 (K=14) and p15 (K=6) are excluded because their very different category structures are incompatible with the remaining Likert-5 items and would distort a composite, while p22, p44_1, and p45a_1 share broadly compatible ordinal scales. PCA is chosen over a simple mean because p45a_1 has a notably wider response scale (K=11) and the highest entropy (H=2.63), so the first principal component will appropriately weight items by their shared variance rather than letting the high-K item dominate arithmetically."
+  },
+  {
+    "construct_name": "indigenous_cultural_knowledge_and_identity",
+    "strategy": "single_max_entropy",
+    "selected_qids": [
+      "p18_1a_1"
+    ],
+    "aggregation_method": null,
+    "justification": "The construct does not require aggregation (requires_aggregation=False), and p18_1a_1 has by far the highest Shannon entropy (H=2.41, K=8), indicating it captures the most variation across respondents and is therefore the most informative single indicator. The remaining items have low entropy (p10: H=0.65; p16: H=0.72; p17: H=0.58), suggesting they are near-constant and would add little discriminatory power. p18_1a_1 most plausibly taps a rich, multi-level identity or cultural knowledge question (given its 8 categories and high entropy), making it both statistically and substantively the best single representative of this construct."
+  }
+]

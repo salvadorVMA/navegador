@@ -4,7 +4,7 @@
 **Query (EN):** How does health access relate to poverty in Mexico?
 **Variables:** p1|SAL, p2|SAL, p3|SAL, p4|SAL, p5|SAL, p1|POB, p2|POB, p3|POB, p4|POB
 **Status:** ✅ success
-**Time:** 62165ms | **Cross-dataset pairs:** 6
+**Time:** 63093ms | **Cross-dataset pairs:** 6
 
 ---
 
@@ -13,53 +13,53 @@
 **Query:** ¿Cómo se relaciona el acceso a la salud con la pobreza en México?
 
 ## Summary
-La relación entre el acceso a la salud y la pobreza en México se manifiesta en que el estado de salud autopercibido y las limitaciones físicas varían significativamente según la condición laboral relacionada con la pobreza. Por ejemplo, la proporción de personas que reportan salud "Buena" oscila entre 54.2% y 66.7% según su situación laboral, y las limitaciones físicas son mayores en grupos como los jubilados o quienes no trabajan. Se estimaron seis asociaciones bivariadas significativas con tamaños de efecto moderados a débiles, lo que indica una confianza moderada en la relación detectada.
+La relación entre el acceso a la salud y la pobreza en México se manifiesta en que el estado de salud percibido y las limitaciones físicas varían significativamente según la situación laboral, un indicador clave de pobreza. Por ejemplo, quienes trabajaron reportan mejor salud general (57.4% "Buena") que quienes están jubilados o pensionados (47.6% "Buena" y 44.0% "Ni buena ni mala"). Se estimaron seis pares bivariados con asociaciones significativas, principalmente moderadas, lo que otorga un nivel de confianza medio-alto en la relación observada.
 
 ## Data Landscape
-Se analizaron nueve variables provenientes de encuestas sobre salud y pobreza laboral en México, con seis variables mostrando consenso fuerte y tres inclinándose hacia una opinión predominante, lo que indica un índice de divergencia del 33%. Esto refleja un nivel moderado de acuerdo en la opinión pública sobre salud y pobreza, con algunas variaciones notables en percepciones y condiciones de trabajo que afectan la salud.
+Se analizaron nueve variables provenientes de encuestas sobre salud y pobreza, con seis mostrando consenso fuerte y tres inclinándose hacia una opinión predominante, resultando en un índice de divergencia del 33%. Esto indica que, aunque existe una mayoría clara en ciertas percepciones, hay una moderada variabilidad en las opiniones públicas sobre salud y pobreza, reflejando complejidad en la experiencia social de estos temas.
 
 ## Evidence
-La asociación más destacada entre salud general (p1|SAL) y situación laboral (p1|POB) muestra que la proporción que reporta salud "Buena" varía desde 54.2% entre quienes "No trabajaron" hasta 66.7% entre quienes "No trabajaron pero sí tenían trabajo" (V=0.127, p=0.000). La categoría "Ni buena ni mala (esp.)" es especialmente alta (47.1%) entre jubilados o pensionados, indicando una percepción menos favorable en ese grupo.
+El análisis principal muestra que la percepción de salud general (p1|SAL) varía según la categoría de empleo (p1|POB), con un 57.4% que reporta salud "Buena" entre quienes trabajaron, y solo 45.1% en quienes se dedican a los quehaceres del hogar, mientras que el grupo jubilado presenta un 44.0% en "Ni buena ni mala" (V=0.132, p=0.000). La limitación física moderada o alta (p2|SAL) también difiere por empleo: el 100% de quienes buscaron trabajo no reportan limitaciones, frente al 69.2% en jubilados que no se sienten limitados (V=0.171, p=0.000). En contraste, la relación entre limitaciones físicas y actividades secundarias de trabajo (p2|POB) es débil y no significativa (V=0.039, p=0.203), indicando poca influencia. La permanencia en el empleo (p3|POB) muestra que trabajadores temporales reportan mejor salud "Muy buena" (23.9%) que permanentes (14.6%), sugiriendo una relación compleja (V=0.126, p=0.000). La antigüedad en el empleo (p4|POB) exhibe variaciones amplias en salud percibida, con "Ni buena ni mala" desde 6.7% hasta 77.8%, reflejando heterogeneidad (V=0.245, p=0.000).
 
-| p1|POB category | Buena % |
+| p1|POB category | % "Buena" health (p1|SAL) |
 |---|---|
-| Trabajó | 54.6% |
-| No trabajó pero sí tenía trabajo | 66.7% |
-| Buscó trabajo | 65.5% |
-| Es estudiante | 58.9% |
-| Se dedica a los quehaceres de su hogar | 59.3% |
-| Está jubilado(a) o pensionado(a) | 42.5% |
-| No trabajó | 54.2% |
+| Trabajó | 57.4% |
+| No trabajó pero sí tenía trabajo | 47.3% |
+| Buscó trabajo | 50.0% |
+| Es estudiante | 65.0% |
+| Se dedica a los quehaceres de su hogar | 45.1% |
+| Está jubilado(a) o pensionado(a) | 47.6% |
+| No trabajó | 63.6% |
 
-En cuanto a actividades laborales adicionales (p2|POB), la salud "Muy buena" varía de 9.8% en quienes ayudaron en un negocio familiar a 20.1% en quienes vendieron productos, aunque la asociación es débil (V=0.068, p=0.005). La permanencia en el trabajo (p3|POB) también influye: quienes trabajan "Sólo por temporadas" reportan salud "Muy buena" en 24.5%, superior al 15.0% de trabajadores permanentes (V=0.138, p=0.000).
-
-| p3|POB category | Muy buena % |
+| p1|POB category | % "No limita en nada" (p2|SAL) |
 |---|---|
-| Permanentemente | 15.0% |
-| Sólo por temporadas | 24.5% |
+| Trabajó | 85.9% |
+| No trabajó pero sí tenía trabajo | 91.6% |
+| Buscó trabajo | 100.0% |
+| Es estudiante | 94.2% |
+| Se dedica a los quehaceres de su hogar | 81.6% |
+| Está jubilado(a) o pensionado(a) | 69.2% |
+| No trabajó | 87.7% |
 
-La antigüedad en el trabajo (p4|POB) muestra una variación considerable en la categoría "Ni buena ni mala (esp.)", que va desde 6.0% en quienes tienen 3 años en el trabajo hasta 44.4% en quienes tienen 22 años (V=0.189, p=0.000), reflejando fluctuaciones en la percepción de salud con la estabilidad laboral.
-
-| p4|POB category | Ni buena ni mala (esp.) % |
+| p2|POB category | % "Buena" health (p1|SAL) |
 |---|---|
-| 3.0 años | 6.0% |
-| 22.0 años | 44.4% |
+| Ayudó a trabajar en un negocio familiar | 65.1% |
+| Vendió algunos productos: ropa, cosméticos, alimentos | 43.0% |
+| No trabajó | 58.9% |
 
-Respecto a limitaciones físicas moderadas (p2|SAL) según situación laboral (p1|POB), la proporción que dice "No, no me limita en nada" varía de 60.5% en jubilados a 94.1% en estudiantes, mostrando que la salud funcional está vinculada a la pobreza laboral (V=0.170, p=0.000).
-
-| p1|POB category | No me limita en nada % |
+| p3|POB category | % "Muy buena" health (p1|SAL) |
 |---|---|
-| Trabajó | 85.5% |
-| No trabajó pero sí tenía trabajo | 93.2% |
-| Buscó trabajo | 88.9% |
-| Es estudiante | 94.1% |
-| Se dedica a los quehaceres de su hogar | 82.5% |
-| Está jubilado(a) o pensionado(a) | 60.5% |
-| No trabajó | 85.1% |
+| Permanentemente | 14.6% |
+| Sólo por temporadas | 23.9% |
 
-Demográficamente, las mujeres son más propensas que los hombres a reportar limitaciones físicas, por ejemplo, 23% de mujeres reportan que su salud limita un poco subir escaleras frente a 17% de hombres. La edad también modera la percepción de salud y limitaciones, con jóvenes reportando mejor salud y menos limitaciones que adultos mayores.
+| p4|POB category | % "Ni buena ni mala" health (p1|SAL) |
+|---|---|
+| 3.0 años | 6.7% |
+| 61.0 años | 77.8% |
 
-**p1|SAL** — Estado general de salud:
+Demográficamente, las mujeres son 5 puntos porcentuales más propensas que los hombres a reportar limitaciones físicas leves (23% vs 17% en p2|SAL), y los jóvenes (0-18 años) reportan mejor salud general con 53% "Buena" y 33% "Muy buena", superando a grupos mayores. La región también modera ligeramente la percepción de salud, con variaciones de hasta 12 puntos en respuestas "Buena" entre regiones. 
+
+**p1|SAL** — Salud general percibida:
 | Response | % |
 |---|---|
 | Buena | 46.7% |
@@ -68,14 +68,14 @@ Demográficamente, las mujeres son más propensas que los hombres a reportar lim
 | Mala | 8.1% |
 | Muy mala | 1.3% |
 
-**p2|SAL** — Limitaciones para esfuerzos físicos moderados:
+**p2|SAL** — Limitación en esfuerzos físicos moderados:
 | Response | % |
 |---|---|
 | No, no me limita en nada | 72.6% |
 | Sí, me limita un poco | 20.2% |
 | Sí, me limita mucho | 6.5% |
 
-**p1|POB** — Situación laboral reciente:
+**p1|POB** — Situación laboral:
 | Response | % |
 |---|---|
 | Trabajó | 45.4% |
@@ -84,18 +84,12 @@ Demográficamente, las mujeres son más propensas que los hombres a reportar lim
 | Es estudiante | 7.7% |
 | Buscó trabajo | 3.8% |
 | Está jubilado(a) o pensionado(a) | 3.1% |
-| No trabajó pero sí tenía trabajo | 2.6% |
-| Está incapacitado(a) permanentemente para trabajar | 0.9% |
 
 ## Complications
-La relación entre salud y pobreza laboral está moderada por variables sociodemográficas como sexo y edad. Por ejemplo, las mujeres tienen 6 puntos porcentuales más que los hombres en reportar limitaciones físicas para subir escaleras (23% vs 17%), y los adultos jóvenes reportan mejor salud que los adultos mayores. La variable empleo muestra la mayor fuerza de asociación con salud (V=0.56 en variables relacionadas), indicando que el tipo y estabilidad del trabajo impactan fuertemente la salud percibida.
-
-Sin embargo, algunas asociaciones son débiles (V<0.1), como la relacionada con actividades laborales adicionales, lo que indica que no todos los aspectos de la pobreza laboral influyen sustancialmente en la salud. Además, la estimación basada en puentes SES y simulaciones con muestras de 2000 casos puede introducir incertidumbre y limitar la generalización. La alta proporción de respuestas "No sabe/No contesta" en algunas categorías, especialmente en antigüedad laboral, también dificulta la interpretación clara. Por último, la percepción de salud entre jubilados es más dispersa, con un 47.1% reportando salud "Ni buena ni mala", lo que desafía una interpretación lineal simple.
+Las dimensiones socioeconómicas que más moderan la relación entre salud y pobreza son el empleo (V=0.56 para p4|POB), el sexo (V=0.30 en promedio), y la edad (V=0.20), con mujeres y personas mayores reportando más limitaciones físicas. Un 28.3% de la población percibe su salud como "Ni buena ni mala", una minoría significativa que indica una percepción ambivalente que desafía la simple dicotomía buena/mala salud. La asociación entre salud y actividades secundarias de trabajo es débil y no significativa (p=0.203), lo que indica que no todas las dimensiones del trabajo influyen en la salud de forma clara. Además, las estimaciones se basan en un modelo de puente SES con una muestra moderada (n=2000), lo que puede limitar la precisión y generalización de los efectos, especialmente en subgrupos con respuestas escasas o categorías ambiguas como la antigüedad laboral con alta tasa de "No sabe/No contesta" (35.7%). Estas limitaciones sugieren cautela para interpretar causalidad y la necesidad de análisis complementarios.
 
 ## Implications
-Primero, las políticas públicas deben reconocer que la estabilidad y calidad del empleo están vinculadas a mejores percepciones y condiciones de salud, por lo que promover empleos formales y estables podría mejorar el acceso y resultados en salud. Segundo, dado que grupos vulnerables como jubilados y quienes no trabajan reportan peores condiciones de salud y más limitaciones, se requieren programas específicos de salud pública y apoyo social para estos segmentos, que contemplen sus necesidades particulares.
-
-Además, la evidencia débil en algunas áreas sugiere la necesidad de mejorar la recolección de datos y análisis para entender mejor las complejidades de la pobreza y salud, especialmente en sectores informales o con actividades laborales diversas. Esto permitiría diseñar intervenciones más focalizadas y efectivas, evitando políticas homogéneas que no consideren las diferencias dentro de la pobreza laboral.
+Primero, la asociación moderada y significativa entre empleo y salud sugiere que políticas públicas que mejoren la estabilidad laboral y condiciones de trabajo podrían tener un impacto positivo en la salud percibida y funcional de la población, especialmente para grupos vulnerables como jubilados y quienes realizan quehaceres domésticos. Segundo, dado que la relación entre salud y actividades secundarias de trabajo es débil, las intervenciones deben enfocarse en las condiciones del empleo principal más que en actividades informales o temporales para mejorar el acceso y resultados en salud. Además, la heterogeneidad en la percepción de salud según la antigüedad laboral indica que las políticas deben ser diferenciadas, considerando la duración y calidad del empleo para abordar desigualdades en salud. Finalmente, la presencia de una minoría considerable con percepciones neutrales o limitaciones físicas leves sugiere que programas de prevención y promoción de salud deben ser inclusivos y adaptarse a distintas experiencias y necesidades sociales.
 
 ---
 
@@ -294,12 +288,12 @@ Además, la evidencia débil en algunas áreas sugiere la necesidad de mejorar l
 
 | Variable Pair | Cramér's V | p-value | Key Pattern | n sim |
 |---------------|------------|---------|-------------|-------|
-| p1|SAL × p1|POB | 0.127 (moderate) | 0.000 | "Ni buena ni mala (esp.)": 10% ("Buscó trabajo") → 47% ("Está jubilado(a) o pensionado(a)") | 2000 |
-| p1|SAL × p2|POB | 0.068 (weak) | 0.005 | "Muy buena": 10% ("Ayudó a trabajar en un negocio familiar") → 20% ("Vendió algunos productos: ropa,  cosméticos, alimentos") | 2000 |
-| p1|SAL × p3|POB | 0.138 (moderate) | 0.000 | "Muy buena": 15% ("Permanentemente") → 24% ("Sólo por temporadas") | 2000 |
-| p1|SAL × p4|POB | 0.189 (moderate) | 0.000 | "Ni buena ni mala (esp.)": 6% ("3.0") → 44% ("22.0") | 2000 |
-| p2|SAL × p1|POB | 0.170 (moderate) | 0.000 | " No, no me limita en nada": 60% ("Está jubilado(a) o pensionado(a)") → 94% ("Es estudiante") | 2000 |
-| p2|SAL × p2|POB | 0.081 (weak) | 0.000 | " Sí, me limita mucho": 3% ("No trabajó") → 10% ("Ayudó a trabajar en un negocio familiar") | 2000 |
+| p1|SAL × p1|POB | 0.132 (moderate) | 0.000 | "Ni buena ni mala (esp.)": 6% ("Buscó trabajo") → 44% ("Está jubilado(a) o pensionado(a)") | 2000 |
+| p1|SAL × p2|POB | 0.094 (weak) | 0.000 | "Buena": 43% ("Vendió algunos productos: ropa,  cosméticos, alimentos") → 65% ("Ayudó a trabajar en un negocio familiar") | 2000 |
+| p1|SAL × p3|POB | 0.126 (moderate) | 0.000 | "Muy buena": 15% ("Permanentemente") → 24% ("Sólo por temporadas") | 2000 |
+| p1|SAL × p4|POB | 0.245 (moderate) | 0.000 | "Ni buena ni mala (esp.)": 7% ("3.0") → 78% ("61.0") | 2000 |
+| p2|SAL × p1|POB | 0.171 (moderate) | 0.000 | " No, no me limita en nada": 69% ("Está jubilado(a) o pensionado(a)") → 100% ("Buscó trabajo") | 2000 |
+| p2|SAL × p2|POB | 0.039 (weak) | 0.203 | " No, no me limita en nada": 86% ("Ayudó a trabajar en un negocio familiar") → 94% ("Vendió algunos productos: ropa,  cosméticos, alimentos") | 2000 |
 
 *Estimates derived from SES-bridge regression simulation.*
 
@@ -308,61 +302,61 @@ Además, la evidencia débil en algunas áreas sugiere la necesidad de mejorar l
 
 | p1|POB (conditioning) | Top p1|SAL responses |
 |---|---|
-| Trabajó | Buena: 55%, Ni buena ni mala (esp.): 28%, Muy buena: 15% |
-| No trabajó pero sí tenía trabajo | Buena: 67%, Ni buena ni mala (esp.): 20%, Muy buena: 11% |
-| Buscó trabajo | Buena: 66%, Muy buena: 24%, Ni buena ni mala (esp.): 10% |
-| Es estudiante | Buena: 59%, Muy buena: 27%, Ni buena ni mala (esp.): 13% |
-| Se dedica a los quehaceres de su hogar | Buena: 59%, Ni buena ni mala (esp.): 27%, Muy buena: 12% |
-| Está jubilado(a) o pensionado(a) | Ni buena ni mala (esp.): 47%, Buena: 42%, Muy buena: 6% |
-| No trabajó | Buena: 54%, Ni buena ni mala (esp.): 28%, Muy buena: 14% |
+| Trabajó | Buena: 57%, Ni buena ni mala (esp.): 24%, Muy buena: 16% |
+| No trabajó pero sí tenía trabajo | Buena: 47%, Ni buena ni mala (esp.): 30%, Muy buena: 22% |
+| Buscó trabajo | Buena: 50%, Muy buena: 44%, Ni buena ni mala (esp.): 6% |
+| Es estudiante | Buena: 65%, Muy buena: 22%, Ni buena ni mala (esp.): 12% |
+| Se dedica a los quehaceres de su hogar | Buena: 45%, Ni buena ni mala (esp.): 36%, Muy buena: 17% |
+| Está jubilado(a) o pensionado(a) | Buena: 48%, Ni buena ni mala (esp.): 44%, Muy buena: 7% |
+| No trabajó | Buena: 64%, Ni buena ni mala (esp.): 25%, Muy buena: 10% |
 
 **p1|SAL × p2|POB** — How p1|SAL distributes given p2|POB:
 
 | p2|POB (conditioning) | Top p1|SAL responses |
 |---|---|
-| Ayudó a trabajar en un negocio familiar | Buena: 61%, Ni buena ni mala (esp.): 21%, Muy buena: 10% |
-| Vendió algunos productos: ropa,  cosméticos, alimentos | Buena: 52%, Ni buena ni mala (esp.): 24%, Muy buena: 20% |
-| No trabajó | Buena: 55%, Ni buena ni mala (esp.): 27%, Muy buena: 16% |
+| Ayudó a trabajar en un negocio familiar | Buena: 65%, Ni buena ni mala (esp.): 24%, Muy buena: 6% |
+| Vendió algunos productos: ropa,  cosméticos, alimentos | Buena: 43%, Ni buena ni mala (esp.): 28%, Muy buena: 27% |
+| No trabajó | Buena: 59%, Ni buena ni mala (esp.): 22%, Muy buena: 15% |
 
 **p1|SAL × p3|POB** — How p1|SAL distributes given p3|POB:
 
 | p3|POB (conditioning) | Top p1|SAL responses |
 |---|---|
-| Permanentemente | Buena: 55%, Ni buena ni mala (esp.): 26%, Muy buena: 15% |
-| Sólo por temporadas | Buena: 56%, Muy buena: 24%, Ni buena ni mala (esp.): 17% |
+| Permanentemente | Buena: 56%, Ni buena ni mala (esp.): 27%, Muy buena: 15% |
+| Sólo por temporadas | Buena: 54%, Muy buena: 24%, Ni buena ni mala (esp.): 21% |
 
 **p1|SAL × p4|POB** — How p1|SAL distributes given p4|POB:
 
 | p4|POB (conditioning) | Top p1|SAL responses |
 |---|---|
-| 1.0 | Buena: 56%, Ni buena ni mala (esp.): 26%, Muy buena: 15% |
-| 2.0 | Buena: 59%, Muy buena: 28%, Ni buena ni mala (esp.): 13% |
-| 3.0 | Buena: 61%, Muy buena: 32%, Ni buena ni mala (esp.): 6% |
-| 4.0 | Buena: 56%, Muy buena: 25%, Ni buena ni mala (esp.): 18% |
-| 5.0 | Buena: 50%, Ni buena ni mala (esp.): 33%, Muy buena: 14% |
-| 6.0 | Buena: 60%, Ni buena ni mala (esp.): 25%, Muy buena: 12% |
-| 7.0 | Buena: 54%, Muy buena: 24%, Ni buena ni mala (esp.): 16% |
-| 8.0 | Buena: 68%, Ni buena ni mala (esp.): 15%, Muy buena: 12% |
+| 1.0 | Buena: 61%, Muy buena: 21%, Ni buena ni mala (esp.): 14% |
+| 2.0 | Buena: 48%, Muy buena: 38%, Ni buena ni mala (esp.): 14% |
+| 3.0 | Buena: 60%, Muy buena: 29%, Ni buena ni mala (esp.): 7% |
+| 4.0 | Buena: 56%, Muy buena: 23%, Ni buena ni mala (esp.): 17% |
+| 5.0 | Buena: 56%, Ni buena ni mala (esp.): 37%, Muy buena: 5% |
+| 6.0 | Buena: 55%, Ni buena ni mala (esp.): 29%, Muy buena: 14% |
+| 7.0 | Buena: 60%, Muy buena: 15%, Mala: 12% |
+| 8.0 | Buena: 72%, Ni buena ni mala (esp.): 13%, Muy buena: 11% |
 
 **p2|SAL × p1|POB** — How p2|SAL distributes given p1|POB:
 
 | p1|POB (conditioning) | Top p2|SAL responses |
 |---|---|
-| Trabajó |  No, no me limita en nada: 86%,  Sí, me limita un poco: 11%,  Sí, me limita mucho: 3% |
-| No trabajó pero sí tenía trabajo |  No, no me limita en nada: 93%,  Sí, me limita un poco: 6%,  Sí, me limita mucho: 1% |
-| Buscó trabajo |  No, no me limita en nada: 89%,  Sí, me limita un poco: 11%,  Sí, me limita mucho: 0% |
-| Es estudiante |  No, no me limita en nada: 94%,  Sí, me limita un poco: 4%,  Sí, me limita mucho: 2% |
-| Se dedica a los quehaceres de su hogar |  No, no me limita en nada: 82%,  Sí, me limita un poco: 14%,  Sí, me limita mucho: 4% |
-| Está jubilado(a) o pensionado(a) |  No, no me limita en nada: 60%,  Sí, me limita mucho: 22%,  Sí, me limita un poco: 17% |
-| No trabajó |  No, no me limita en nada: 85%,  Sí, me limita un poco: 10%,  Sí, me limita mucho: 5% |
+| Trabajó |  No, no me limita en nada: 86%,  Sí, me limita un poco: 9%,  Sí, me limita mucho: 6% |
+| No trabajó pero sí tenía trabajo |  No, no me limita en nada: 92%,  Sí, me limita un poco: 6%,  Sí, me limita mucho: 2% |
+| Buscó trabajo |  No, no me limita en nada: 100%,  Sí, me limita mucho: 0%,  Sí, me limita un poco: 0% |
+| Es estudiante |  No, no me limita en nada: 94%,  Sí, me limita un poco: 5%,  Sí, me limita mucho: 1% |
+| Se dedica a los quehaceres de su hogar |  No, no me limita en nada: 82%,  Sí, me limita un poco: 15%,  Sí, me limita mucho: 3% |
+| Está jubilado(a) o pensionado(a) |  No, no me limita en nada: 69%,  Sí, me limita mucho: 24%,  Sí, me limita un poco: 7% |
+| No trabajó |  No, no me limita en nada: 88%,  Sí, me limita un poco: 9%,  Sí, me limita mucho: 3% |
 
 **p2|SAL × p2|POB** — How p2|SAL distributes given p2|POB:
 
 | p2|POB (conditioning) | Top p2|SAL responses |
 |---|---|
-| Ayudó a trabajar en un negocio familiar |  No, no me limita en nada: 81%,  Sí, me limita mucho: 10%,  Sí, me limita un poco: 9% |
-| Vendió algunos productos: ropa,  cosméticos, alimentos |  No, no me limita en nada: 86%,  Sí, me limita un poco: 10%,  Sí, me limita mucho: 4% |
-| No trabajó |  No, no me limita en nada: 87%,  Sí, me limita un poco: 11%,  Sí, me limita mucho: 3% |
+| Ayudó a trabajar en un negocio familiar |  No, no me limita en nada: 86%,  Sí, me limita un poco: 9%,  Sí, me limita mucho: 5% |
+| Vendió algunos productos: ropa,  cosméticos, alimentos |  No, no me limita en nada: 94%,  Sí, me limita un poco: 5%,  Sí, me limita mucho: 1% |
+| No trabajó |  No, no me limita en nada: 87%,  Sí, me limita un poco: 8%,  Sí, me limita mucho: 5% |
 ### Bridge Model Diagnostics
 
 > For human inspection only — not passed to the LLM.
@@ -371,50 +365,92 @@ Además, la evidencia débil en algunas áreas sugiere la necesidad de mejorar l
 
 | Variable | Model | Pseudo-R² | LLR p | Dominant SES | Quality |
 |----------|-------|-----------|-------|--------------|---------|
-| p1|POB | mnlogit | 0.195 | 0.000 | ? | good |
-| p1|SAL | mnlogit | 0.102 | 0.003 | ? | good |
-| p2|POB | mnlogit | 0.234 | 0.259 | ? | weak |
-| p2|SAL | mnlogit | 0.106 | 0.103 | ? | weak |
-| p3|POB | mnlogit | 0.180 | 0.003 | ? | good |
-| p4|POB | mnlogit | 0.234 | 0.727 | ? | weak |
+| p1|POB | mnlogit | 0.288 | 0.000 | edad | good |
+| p1|SAL | mnlogit | 0.157 | 0.003 | Tam_loc | good |
+| p2|POB | mnlogit | 0.482 | 0.112 | region | weak |
+| p2|SAL | mnlogit | 0.180 | 0.088 | edad | fair |
+| p3|POB | mnlogit | 0.274 | 0.002 | edad | good |
+| p4|POB | mnlogit | 0.461 | 0.555 | escol | weak |
 
-**Mean pseudo-R²:** 0.175 &ensp;|&ensp; **Overall dominant SES dimension:** ?
+**Mean pseudo-R²:** 0.307 &ensp;|&ensp; **Overall dominant SES dimension:** edad
 
-> ⚠ 3/6 bridge models are weak (R²<0.02 or LLR p≥0.10). Simulated Cramér's V for those variables may underestimate the true association.
+> ⚠ 2/6 bridge models are weak (R²<0.02 or LLR p≥0.10). Simulated Cramér's V for those variables may underestimate the true association.
 
 #### Per-Variable SES Predictor Detail
 
 Top predictors by |t|-statistic — answers: which SES variable is doing the work?
 
-**p1|POB** (mnlogit, R²=0.195, LLR p=0.000, quality=good)
-*(coefficient table unavailable)*
+**p1|POB** (mnlogit, R²=0.288, LLR p=0.000, quality=good)
+| SES Predictor | Coef | Std Err | t-stat | p-value |
+|---------------|------|---------|--------|---------|
+| edad | -0.317 | 0.403 | -4.617 | 0.000 |
+| sexo | 1.007 | 0.921 | 4.053 | 0.000 |
+| escol | -0.428 | 0.427 | -2.229 | 0.026 |
+| est_civil_2.0 | -0.612 | 1.506 | 2.004 | 0.045 |
+| region_04 | -0.457 | 2.120 | -1.946 | 0.052 |
+| region_03 | -0.324 | 1.812 | -1.833 | 0.067 |
 
-**p1|SAL** (mnlogit, R²=0.102, LLR p=0.003, quality=good)
-*(coefficient table unavailable)*
+**p1|SAL** (mnlogit, R²=0.157, LLR p=0.003, quality=good)
+| SES Predictor | Coef | Std Err | t-stat | p-value |
+|---------------|------|---------|--------|---------|
+| Tam_loc | 1.333 | 1.450 | 1.118 | 0.264 |
+| escol | -0.478 | 0.510 | -1.103 | 0.270 |
+| est_civil_6.0 | 0.810 | 1.348 | 1.091 | 0.275 |
+| region_02 | 0.860 | 1.457 | 1.008 | 0.313 |
+| region_04 | -0.822 | 1.550 | -0.876 | 0.381 |
+| edad | -0.043 | 0.443 | 0.819 | 0.413 |
 
-**p2|POB** (mnlogit, R²=0.234, LLR p=0.259, quality=weak)
-*(coefficient table unavailable)*
+**p2|POB** (mnlogit, R²=0.482, LLR p=0.112, quality=weak)
+| SES Predictor | Coef | Std Err | t-stat | p-value |
+|---------------|------|---------|--------|---------|
+| region_03 | 9.228 | 6.639 | 1.430 | 0.153 |
+| region_02 | 5.856 | 4.489 | 1.419 | 0.156 |
+| edad | -1.145 | 0.960 | -1.402 | 0.161 |
+| escol | 1.188 | 1.281 | 1.307 | 0.191 |
+| Tam_loc | -3.920 | 4.614 | -1.300 | 0.194 |
+| sexo | 0.347 | 75.734 | -1.236 | 0.216 |
 
-**p2|SAL** (mnlogit, R²=0.106, LLR p=0.103, quality=weak)
-*(coefficient table unavailable)*
+**p2|SAL** (mnlogit, R²=0.180, LLR p=0.088, quality=fair)
+| SES Predictor | Coef | Std Err | t-stat | p-value |
+|---------------|------|---------|--------|---------|
+| edad | -0.692 | 0.427 | -2.259 | 0.024 |
+| sexo | 1.464 | 1.007 | 1.999 | 0.046 |
+| region_02 | 1.282 | 1.257 | 1.346 | 0.178 |
+| Tam_loc | 0.722 | 0.743 | 1.161 | 0.246 |
+| est_civil_2.0 | -0.854 | 1.425 | -0.923 | 0.356 |
+| escol | 0.213 | 0.501 | 0.904 | 0.366 |
 
-**p3|POB** (mnlogit, R²=0.180, LLR p=0.003, quality=good)
-*(coefficient table unavailable)*
+**p3|POB** (mnlogit, R²=0.274, LLR p=0.002, quality=good)
+| SES Predictor | Coef | Std Err | t-stat | p-value |
+|---------------|------|---------|--------|---------|
+| edad | -0.894 | 0.339 | -2.638 | 0.008 |
+| sexo | 1.258 | 0.641 | 1.965 | 0.049 |
+| est_civil_2.0 | -1.943 | 1.091 | -1.780 | 0.075 |
+| escol | -0.345 | 0.326 | -1.057 | 0.291 |
+| region_03 | 0.653 | 1.160 | 0.563 | 0.574 |
+| region_04 | 0.626 | 1.287 | 0.486 | 0.627 |
 
-**p4|POB** (mnlogit, R²=0.234, LLR p=0.727, quality=weak)
-*(coefficient table unavailable)*
+**p4|POB** (mnlogit, R²=0.461, LLR p=0.555, quality=weak)
+| SES Predictor | Coef | Std Err | t-stat | p-value |
+|---------------|------|---------|--------|---------|
+| escol | -1.814 | 4.702 | -2.677 | 0.007 |
+| Tam_loc | -0.201 | 9.244 | 1.922 | 0.055 |
+| edad | 0.949 | 2.181 | 1.657 | 0.098 |
+| est_civil_6.0 | -0.282 | 24.301 | 1.452 | 0.146 |
+| sexo | -0.497 | 7.152 | 1.265 | 0.206 |
+| est_civil_2.0 | 0.211 | 13.639 | 1.209 | 0.227 |
 
 *Pseudo-R² = McFadden's. Low values mean SES explains little variance in that variable — the bridge simulation still produces an estimate, but its precision is reduced.*
 
 ### Reasoning Outline
 
-**Evidence Hierarchy:** The strongest evidence comes from the cross-dataset bivariate associations with significant p-values, which directly link health variables to poverty-related work variables, showing moderate to weak but significant relationships. Next in strength are demographic fault lines that provide context on how variables vary by age, sex, and employment, supporting interpretation. Univariate distributions offer background on overall health and poverty statuses but do not establish relationships by themselves.
+**Evidence Hierarchy:** The strongest evidence comes from the cross-dataset bivariate associations with significant p-values, especially those involving p1|SAL and p1|POB, which show moderate and significant relationships directly linking health status and poverty indicators. Demographic fault lines provide secondary support by highlighting subgroup differences but do not establish direct relationships. Univariate distributions offer contextual background but are insufficient alone to infer relationships.
 
 **Key Limitations:**
-- Bivariate associations are simulation-based estimates which may have inherent uncertainty.
-- Effect sizes (Cramér's V) are mostly moderate to weak, indicating relationships are not very strong.
-- Only a limited number of poverty and health variables are analyzed, potentially missing other relevant dimensions.
-- Some poverty variables have high proportions of 'No sabe/No contesta', limiting interpretability.
+- All bivariate associations are simulation-based estimates, which may introduce uncertainty in effect size precision.
+- Sample size is moderate (n=2000), which supports statistical significance but may limit detection of smaller effects.
+- Only a limited number of poverty and health variables were analyzed, potentially omitting other relevant dimensions of access to health and poverty.
+- Some poverty variables (e.g., p4|POB tenure) have high non-response or ambiguous categories, complicating interpretation of relationships.
 
 ### Analysis Metadata
 - **Analysis Type:** Analytical Essay (Quantitative + Qualitative)

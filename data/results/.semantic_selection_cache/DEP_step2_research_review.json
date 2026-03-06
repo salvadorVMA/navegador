@@ -1,0 +1,344 @@
+[
+  {
+    "construct_name": "cultural_socialization_in_childhood",
+    "sources": [
+      {
+        "citation": "Bourdieu, P. (1984). Distinction: A social critique of the judgement of taste. Harvard University Press.",
+        "relevance": "Foundational theory of cultural capital formation through family socialization, directly relevant to how parental cultural practices shape children's dispositions toward culture.",
+        "key_finding": "Cultural capital is primarily transmitted through early family socialization, creating durable dispositions that reproduce social stratification across generations."
+      },
+      {
+        "citation": "De Graaf, N. D., De Graaf, P. M., & Kraaykamp, G. (2000). Parental cultural capital and educational attainment in the Netherlands: A refinement of the cultural capital perspective. Sociology of Education, 73(2), 92–111.",
+        "relevance": "Empirically tests how parental reading behavior and cultural participation in childhood predict educational outcomes, directly paralleling the construct's items on parental book-giving and childhood reading.",
+        "key_finding": "Parental reading climate (books in the home, reading habits) is a stronger predictor of children's educational attainment than parental participation in highbrow cultural activities."
+      },
+      {
+        "citation": "Kraaykamp, G., & van Eijck, K. (2010). The intergenerational reproduction of cultural capital: A threefold perspective. Social Forces, 89(1), 209–231.",
+        "relevance": "Examines multiple pathways of intergenerational cultural capital transmission including parental example, stimulation, and resource provision—matching the construct's items on parental discussion, museum visits, and book availability.",
+        "key_finding": "Parental cultural socialization operates through distinct mechanisms (modeling, active stimulation, and resource provision), each independently contributing to children's cultural participation in adulthood."
+      },
+      {
+        "citation": "Evans, M. D. R., Kelley, J., Sikora, J., & Treiman, D. J. (2010). Family scholarly culture and educational success: Books and schooling in 27 nations. Research in Social Stratification and Mobility, 28(2), 171–197.",
+        "relevance": "Cross-national study on the effect of books in the household during childhood on educational outcomes, directly relevant to the p13 item on childhood book presence.",
+        "key_finding": "Growing up in a household with 500 books propels a child 3.2 years further in education, on average, across 27 nations, independent of parents' education and occupation."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU, DEP"
+      },
+      {
+        "role": "cause",
+        "related_construct": "adult cultural participation and reading habits",
+        "measurable_in_data": true,
+        "data_source": "DEP"
+      },
+      {
+        "role": "effect",
+        "related_construct": "parental socioeconomic status",
+        "measurable_in_data": true,
+        "data_source": "DEP, POB, EDU"
+      },
+      {
+        "role": "cause",
+        "related_construct": "subjective socioeconomic status",
+        "measurable_in_data": true,
+        "data_source": "DEP, POB"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "civic and political engagement",
+        "measurable_in_data": true,
+        "data_source": "CUL, IDE"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "cultural_openness_and_national_identity",
+    "sources": [
+      {
+        "citation": "Roudometof, V. (2005). Transnationalism, cosmopolitanism and glocalization. Current Sociology, 53(1), 113–135.",
+        "relevance": "Theorizes the tension between cosmopolitan openness and local/national cultural identity, directly relevant to the construct's measurement of attitudes toward foreign cultural influence versus Mexican heritage preservation.",
+        "key_finding": "Cosmopolitanism and local identity are not mutually exclusive but exist on a continuum, with individuals negotiating multiple cultural attachments simultaneously."
+      },
+      {
+        "citation": "Béjar, R., & Rosales, H. (2005). La identidad nacional mexicana como problema político y cultural. Nuevas miradas. UNAM-CRIM.",
+        "relevance": "Directly addresses Mexican national identity as a contested cultural and political construct, relevant to items on singular vs. plural Mexican culture and national sentiment.",
+        "key_finding": "Mexican national identity is increasingly fragmented and contested, with tensions between official nationalist narratives and the lived experiences of diverse cultural groups."
+      },
+      {
+        "citation": "Inglehart, R., & Baker, W. E. (2000). Modernization, cultural change, and the persistence of traditional values. American Sociological Review, 65(1), 19–51.",
+        "relevance": "Examines how globalization and modernization affect cultural values and national identity orientations, relevant to perceptions of foreign cultural influence (p26, p27).",
+        "key_finding": "Economic development drives predictable cultural changes toward secular-rational and self-expression values, but traditional values persist due to the enduring influence of cultural heritage."
+      },
+      {
+        "citation": "Gutiérrez Martínez, D. (2010). Diversidad cultural en México. In D. Gutiérrez Martínez & H. Balslev Clausen (Eds.), Revisitar la etnicidad: Miradas cruzadas en torno a la diversidad. Siglo XXI/El Colegio Mexiquense.",
+        "relevance": "Analyzes cultural diversity and pluralism in Mexico, directly relevant to the item on discussing one vs. multiple Mexican cultures (p25).",
+        "key_finding": "Mexico's cultural diversity requires moving beyond homogenizing mestizo nationalism toward recognition of multiple coexisting cultural traditions and identities."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "correlate",
+        "related_construct": "attitudes toward globalization",
+        "measurable_in_data": true,
+        "data_source": "GLO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "attitudes toward migration and immigrants",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment and media exposure",
+        "measurable_in_data": true,
+        "data_source": "EDU, SOC"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "indigenous identity and recognition",
+        "measurable_in_data": true,
+        "data_source": "IND, DEP"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "political culture and democratic values",
+        "measurable_in_data": true,
+        "data_source": "CUL, IDE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "religiosity and traditional values",
+        "measurable_in_data": true,
+        "data_source": "REL, IDE"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "ethnocultural_identity_and_linguistic_capital",
+    "sources": [
+      {
+        "citation": "Stavenhagen, R. (2001). La cuestión étnica. El Colegio de México.",
+        "relevance": "Comprehensive analysis of ethnic identity and indigenous rights in Mexico, directly relevant to self-identification with indigenous heritage and minority cultural identities.",
+        "key_finding": "Ethnic identity in Mexico is shaped by structural inequalities, and indigenous self-identification is influenced by both cultural practices (language, customs) and socioeconomic marginalization."
+      },
+      {
+        "citation": "Terborg, R., & García Landa, L. (2011). Las presiones que causan el desplazamiento-Loss of indigenous languages in Mexico. In J. Fishman & O. García (Eds.), Handbook of language and ethnic identity (2nd ed., Vol. 2). Oxford University Press.",
+        "relevance": "Examines indigenous language vitality and shift in Mexico, directly relevant to items on indigenous language speaking and reading ability (p34, p35).",
+        "key_finding": "Indigenous language loss in Mexico is driven by urbanization, educational policies favoring Spanish, and social stigma, with younger generations showing significantly lower proficiency."
+      },
+      {
+        "citation": "Villarreal, A. (2010). Stratification by skin color in contemporary Mexico. American Sociological Review, 75(5), 652–678.",
+        "relevance": "Analyzes racial/ethnic self-classification and its socioeconomic consequences in Mexico, directly relevant to the racial/ethnic self-identification item (p54).",
+        "key_finding": "Skin color and racial self-identification significantly predict socioeconomic outcomes in Mexico, with lighter-skinned and mestizo-identified individuals enjoying substantial advantages over indigenous-identified individuals."
+      },
+      {
+        "citation": "Bourdieu, P. (1991). Language and symbolic power. Harvard University Press.",
+        "relevance": "Theorizes linguistic capital as a form of cultural capital that confers social advantages, relevant to the construct's measurement of multilingual competencies in indigenous and foreign languages.",
+        "key_finding": "Linguistic competencies function as forms of capital whose value depends on the linguistic market, with dominant languages conferring symbolic power and minority languages being devalued."
+      },
+      {
+        "citation": "INEGI. (2020). Censo de Población y Vivienda 2020: Perfil sociodemográfico de la población indígena. Instituto Nacional de Estadística y Geografía.",
+        "relevance": "Provides the official measurement framework for indigenous identity in Mexico using language and self-identification criteria, directly paralleling the construct's operationalization.",
+        "key_finding": "Approximately 6.1% of Mexico's population speaks an indigenous language, while 23.2% self-identify as indigenous, revealing a significant gap between linguistic and identity-based measures of indigeneity."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "socioeconomic stratification and poverty",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "educational attainment and school type",
+        "measurable_in_data": true,
+        "data_source": "EDU, DEP"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "experiences of discrimination and human rights",
+        "measurable_in_data": true,
+        "data_source": "DER, IND"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "cultural openness and national identity",
+        "measurable_in_data": true,
+        "data_source": "DEP"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "migration patterns and experiences",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "health access and outcomes",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "indigenous rights and political participation",
+        "measurable_in_data": true,
+        "data_source": "IND, CUL"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "reading_engagement_and_literacy_orientation",
+    "sources": [
+      {
+        "citation": "INEGI, CONACULTA, & SEP. (2015). Encuesta Nacional de Lectura y Escritura 2015. Consejo Nacional para la Cultura y las Artes.",
+        "relevance": "National survey measuring reading practices in Mexico, directly paralleling the construct's items on reading frequency, media types, perceived difficulty, and purpose of reading.",
+        "key_finding": "Mexican adults read an average of 3.8 books per year, with significant disparities by education level, socioeconomic status, and region, and the majority report reading primarily for school or work rather than pleasure."
+      },
+      {
+        "citation": "Barton, D., & Hamilton, M. (2000). Literacy practices. In D. Barton, M. Hamilton, & R. Ivanič (Eds.), Situated literacies: Reading and writing in context (pp. 7–15). Routledge.",
+        "relevance": "Provides the theoretical framework of literacy as social practice, relevant to understanding reading engagement as culturally situated rather than merely a cognitive skill.",
+        "key_finding": "Literacy is best understood as a set of social practices mediated by written texts, embedded in broader social goals and cultural practices rather than as a decontextualized skill."
+      },
+      {
+        "citation": "OECD. (2019). PISA 2018 results (Volume I): What students know and can do. OECD Publishing.",
+        "relevance": "International assessment of reading literacy including Mexico, relevant to understanding reading ease/difficulty and functional literacy orientation items.",
+        "key_finding": "Mexican 15-year-olds scored significantly below the OECD average in reading (420 vs. 487), with 35% not reaching minimum proficiency levels, indicating persistent challenges in functional literacy."
+      },
+      {
+        "citation": "Ramírez Leyva, E. M. (2016). De la promoción de la lectura por placer a la formación integral de lectores. Investigación Bibliotecológica, 30(69), 95–120.",
+        "relevance": "Examines reading promotion and the purposes of reading in the Mexican context, directly relevant to the item on perceived function of reading (p18_1).",
+        "key_finding": "Reading promotion in Mexico has shifted from emphasizing pleasure reading to a more comprehensive approach that includes informational, critical, and civic literacy dimensions."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "effect",
+        "related_construct": "cultural socialization in childhood",
+        "measurable_in_data": true,
+        "data_source": "DEP"
+      },
+      {
+        "role": "cause",
+        "related_construct": "civic knowledge and political participation",
+        "measurable_in_data": true,
+        "data_source": "CUL, IDE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "information society participation and digital literacy",
+        "measurable_in_data": true,
+        "data_source": "SOC, CIE"
+      },
+      {
+        "role": "effect",
+        "related_construct": "socioeconomic status and poverty",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "subjective socioeconomic status",
+        "measurable_in_data": true,
+        "data_source": "DEP"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 3
+  },
+  {
+    "construct_name": "subjective_socioeconomic_status",
+    "sources": [
+      {
+        "citation": "Adler, N. E., Epel, E. S., Castellazzo, G., & Ickovics, J. R. (2000). Relationship of subjective and objective social status with psychological and physiological functioning: Preliminary data in healthy, White women. Health Psychology, 19(6), 586–592.",
+        "relevance": "Foundational study establishing that subjective social status predicts health and well-being outcomes independently of objective SES measures, validating the importance of self-assessed economic situation and social class.",
+        "key_finding": "Subjective social status predicted health outcomes (psychological functioning, heart rate, cortisol) above and beyond objective measures of income, education, and occupation."
+      },
+      {
+        "citation": "Operario, D., Adler, N. E., & Williams, D. R. (2004). Subjective social status: Reliability and predictive utility for global health. Psychology & Health, 19(2), 237–246.",
+        "relevance": "Validates subjective social status as a reliable and cross-culturally applicable measure, relevant to the construct's use of self-assessed economic situation and social class in the Mexican context.",
+        "key_finding": "Subjective social status demonstrates good test-retest reliability and predicts global health status across diverse racial/ethnic groups, even after controlling for objective SES indicators."
+      },
+      {
+        "citation": "Campos-Vázquez, R. M., & Monroy-Gómez-Franco, J. A. (2016). La relación entre percepción de clase social y movilidad social en México. El Trimestre Económico, 83(330), 377–413.",
+        "relevance": "Directly examines self-identified social class in Mexico and its relationship to perceived social mobility, closely matching the p45 item on self-identified social class.",
+        "key_finding": "Most Mexicans identify as lower-middle or working class regardless of objective income, and perceived social class is strongly associated with expectations of intergenerational mobility."
+      },
+      {
+        "citation": "Rojas, M. (2007). The complexity of well-being: A life-satisfaction conception and a domains-of-life approach. In I. Gough & J. A. McGregor (Eds.), Wellbeing in developing countries (pp. 259–280). Cambridge University Press.",
+        "relevance": "Examines life satisfaction measurement in Mexico and developing countries, directly relevant to the p46 item on overall life satisfaction as a component of subjective status.",
+        "key_finding": "Life satisfaction in Mexico is shaped by multiple life domains including economic, family, and social dimensions, and cannot be reduced to income alone."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "objective socioeconomic indicators (income, education, occupation)",
+        "measurable_in_data": true,
+        "data_source": "ECO, EDU, POB"
+      },
+      {
+        "role": "cause",
+        "related_construct": "health outcomes and health-seeking behavior",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "political attitudes and democratic satisfaction",
+        "measurable_in_data": true,
+        "data_source": "CUL, IDE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "perceptions of corruption and institutional trust",
+        "measurable_in_data": true,
+        "data_source": "COR, JUS"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "housing quality and neighborhood conditions",
+        "measurable_in_data": true,
+        "data_source": "HAB"
+      },
+      {
+        "role": "effect",
+        "related_construct": "cultural socialization in childhood",
+        "measurable_in_data": true,
+        "data_source": "DEP"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "perceptions of public security",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "ethnocultural identity and racial self-classification",
+        "measurable_in_data": true,
+        "data_source": "DEP, IND"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  }
+]

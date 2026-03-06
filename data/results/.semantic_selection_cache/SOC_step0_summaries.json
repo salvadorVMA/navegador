@@ -1,0 +1,572 @@
+{
+  "p2|SOC": {
+    "summary": "Perceived level of access to new technologies among Mexicans (4-point scale: much, some, little, none)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_1|SOC": {
+    "summary": "Reasons why Mexicans have limited access to new technologies (first mention open-ended)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p4|SOC": {
+    "summary": "Respondent's personal level of access to new technologies",
+    "duplicate_of": "p2|SOC",
+    "keep": false
+  },
+  "p5_1|SOC": {
+    "summary": "Household ownership of radio (yes/no)",
+    "duplicate_of": null,
+    "keep": false
+  },
+  "p5a_1|SOC": {
+    "summary": "Number of radios in household",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5a_2|SOC": {
+    "summary": "Number of televisions in household",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5a_3|SOC": {
+    "summary": "Number of DVD/BluRay players in household",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5a_4|SOC": {
+    "summary": "Number of landline telephones in household",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5a_5|SOC": {
+    "summary": "Number of smartphones in household",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5a_6|SOC": {
+    "summary": "Number of basic mobile phones in household",
+    "duplicate_of": "p5a_5|SOC",
+    "keep": false
+  },
+  "p5a_7|SOC": {
+    "summary": "Number of desktop computers in household",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5a_8|SOC": {
+    "summary": "Number of laptops/notebooks/netbooks in household",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5a_9|SOC": {
+    "summary": "Number of tablets in household",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5a_10|SOC": {
+    "summary": "Number of internet connections in household",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5a_11|SOC": {
+    "summary": "Number of paid television subscriptions in household",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5a_12|SOC": {
+    "summary": "Number of video game systems in household",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6|SOC": {
+    "summary": "Perceived level of information among Mexicans about national events",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7|SOC": {
+    "summary": "Frequency of reading, watching, or listening to news about national events",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8_1|SOC": {
+    "summary": "Primary news source for information about national events (first mention)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9|SOC": {
+    "summary": "Frequency of discussing media content with others",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10_1|SOC": {
+    "summary": "Habit of reading printed newspapers (yes/no)",
+    "duplicate_of": null,
+    "keep": false
+  },
+  "p10_2|SOC": {
+    "summary": "Habit of reading online newspapers (yes/no)",
+    "duplicate_of": null,
+    "keep": false
+  },
+  "p10_3|SOC": {
+    "summary": "Habit of reading printed magazines (yes/no)",
+    "duplicate_of": null,
+    "keep": false
+  },
+  "p10_4|SOC": {
+    "summary": "Habit of reading online magazines (yes/no)",
+    "duplicate_of": null,
+    "keep": false
+  },
+  "p11_1|SOC": {
+    "summary": "Frequency of reading printed newspapers",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11_2|SOC": {
+    "summary": "Frequency of reading online newspapers",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11_3|SOC": {
+    "summary": "Frequency of reading printed magazines",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11_4|SOC": {
+    "summary": "Frequency of reading online magazines",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12_2|SOC": {
+    "summary": "Average monthly spending on online newspapers",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p13|SOC": {
+    "summary": "Television viewing habit (yes/no)",
+    "duplicate_of": null,
+    "keep": false
+  },
+  "p14|SOC": {
+    "summary": "Frequency of watching television",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16_1|SOC": {
+    "summary": "Use of television as a news source (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17|SOC": {
+    "summary": "Typical companions when watching television",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18|SOC": {
+    "summary": "Preferred time of day for watching favorite television programs",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19|SOC": {
+    "summary": "Preferred type of television programs",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20|SOC": {
+    "summary": "Awareness of advertisements in television programs in past six months (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21|SOC": {
+    "summary": "Perceived appropriateness of product placement and advertising in television programs",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22|SOC": {
+    "summary": "Evaluation of advertising quality in media communications",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23_1|SOC": {
+    "summary": "Habit of buying pirated DVDs/Blu-rays to watch movies (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23_2|SOC": {
+    "summary": "Habit of renting DVDs/Blu-rays from video stores to watch movies (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23_3|SOC": {
+    "summary": "Habit of going to movie theaters to watch movies (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23_4|SOC": {
+    "summary": "Habit of watching movies on broadcast television (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23_8|SOC": {
+    "summary": "Habit of downloading movies from the internet (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24|SOC": {
+    "summary": "Radio listening habit (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25|SOC": {
+    "summary": "Primary device used to listen to radio",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26|SOC": {
+    "summary": "Type of mobile phone owned (basic or smartphone)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27_9|SOC": {
+    "summary": "Other uses of smartphone not listed in main categories (open-ended)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28_1|SOC": {
+    "summary": "Primary reason for changing mobile phone models (first mention)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29|SOC": {
+    "summary": "Computer usage (yes/no)",
+    "duplicate_of": null,
+    "keep": false
+  },
+  "p36|SOC": {
+    "summary": "Self-assessed level of internet proficiency",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31|SOC": {
+    "summary": "Frequency of computer use",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33_1|SOC": {
+    "summary": "Use of computer for work (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33_2|SOC": {
+    "summary": "Use of computer for schoolwork (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33_3|SOC": {
+    "summary": "Use of computer for entertainment (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33_4|SOC": {
+    "summary": "Use of computer for gaming (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33_5|SOC": {
+    "summary": "Use of computer for communication with friends and family (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33_6|SOC": {
+    "summary": "Use of computer for information gathering (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33_7|SOC": {
+    "summary": "Use of computer for internet browsing (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33_8|SOC": {
+    "summary": "Other uses of computer not listed in main categories (open-ended)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34|SOC": {
+    "summary": "Most frequently used computer programs",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35|SOC": {
+    "summary": "Internet access availability (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37|SOC": {
+    "summary": "Frequency of internet connection",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39_5|SOC": {
+    "summary": "Use of internet at another person's house (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39_2|SOC": {
+    "summary": "Use of internet at work (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39_3|SOC": {
+    "summary": "Use of internet at school (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39_4|SOC": {
+    "summary": "Use of internet at internet cafes (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39_6|SOC": {
+    "summary": "Use of internet in public places (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39_7|SOC": {
+    "summary": "Use of internet anywhere with mobile data (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39_8|SOC": {
+    "summary": "Other locations for internet use not listed in main categories (open-ended)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40|SOC": {
+    "summary": "Evaluation of quality of primary internet connection",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42_1|SOC": {
+    "summary": "Use of computer to connect to internet (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p43_2|SOC": {
+    "summary": "Ever used internet for work purposes (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44_1|SOC": {
+    "summary": "Primary online news source: national newspaper websites (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45_2|SOC": {
+    "summary": "Ever used internet to report a crime (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46|SOC": {
+    "summary": "Willingness to pay for internet content",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47|SOC": {
+    "summary": "Frequency of sharing personal information when browsing the internet",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_4|SOC": {
+    "summary": "Social media account ownership: LinkedIn (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49_1|SOC": {
+    "summary": "Frequency of using Facebook",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49_2|SOC": {
+    "summary": "Frequency of using Twitter",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49_3|SOC": {
+    "summary": "Frequency of using Instagram",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49_4|SOC": {
+    "summary": "Frequency of using LinkedIn",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49_5|SOC": {
+    "summary": "Frequency of using Google+",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p50_1|SOC": {
+    "summary": "Habit of posting or sharing information about national events on social media (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51|SOC": {
+    "summary": "Perceived security of personal information published on the internet",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p52|SOC": {
+    "summary": "Comfort level expressing opinions on the internet without fear of criticism",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53_1|SOC": {
+    "summary": "Trust in information from family members (0-10 scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54|SOC": {
+    "summary": "Evaluation of quality of content offered by Mexican media",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55|SOC": {
+    "summary": "Agreement with how media covers public issues (social problems, economy, politics)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p56_1|SOC": {
+    "summary": "Perceived importance of new technologies like computers for personal life",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p57_1|SOC": {
+    "summary": "Experience of exclusion from school activities due to lack of computer and internet skills",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58_1|SOC": {
+    "summary": "Best media source for staying informed about national events (opinion)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p59_1|SOC": {
+    "summary": "Perceived influence of media on parent-child relationships (positive or negative)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p60|SOC": {
+    "summary": "Assessment of current level of violence presented in Mexican media",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61|SOC": {
+    "summary": "Opinion on the type of violence presented in media",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p62_1|SOC": {
+    "summary": "Perceived media portrayal of women (positive or negative image)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63_1|SOC": {
+    "summary": "Perceived importance of parental supervision of children's television content",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p64|SOC": {
+    "summary": "Perceived level of parental involvement in children's use of new technologies",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p65|SOC": {
+    "summary": "Assessment of current image of Mexico presented in film, music, and television",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p66|SOC": {
+    "summary": "Perceived ease or difficulty of obtaining reliable information about national events",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p67|SOC": {
+    "summary": "Perceived sufficiency of news media options available in respondent's area",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p69_1|SOC": {
+    "summary": "Agreement that media provides complete information and explains facts clearly",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p70|SOC": {
+    "summary": "Media outlet where respondent feels most confident expressing opinions",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p71_1|SOC": {
+    "summary": "Perceived openness of newspapers to public participation in content decisions",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p72|SOC": {
+    "summary": "Perceived importance of public opinion on media content",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p73|SOC": {
+    "summary": "Attendance at mass events learned about through the internet (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p74_1|SOC": {
+    "summary": "Attendance at social events (parties, gatherings) learned about through internet (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p74_2|SOC": {
+    "summary": "Attendance at religious events (mass, processions) learned about through internet (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p74_3|SOC": {
+    "summary": "Attendance at political events (marches, demonstrations) learned about through internet (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p74_4|SOC": {
+    "summary": "Attendance at cultural events (theater, exhibitions) learned about through internet (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p74_5|SOC": {
+    "summary": "Attendance at academic events learned about through internet (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p75_1|SOC": {
+    "summary": "Perceived effectiveness of new technologies in facilitating communication with political representatives",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p76|SOC": {
+    "summary": "Perceived necessity of government agency to handle complaints about media content",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p77_1|SOC": {
+    "summary": "Opinion on whether government should regulate internet content",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p78|SOC": {
+    "summary": "Opinion on government distribution of computers and tablets to public school students",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

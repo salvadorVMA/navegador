@@ -1,0 +1,367 @@
+[
+  {
+    "construct_name": "science_self_efficacy",
+    "sources": [
+      {
+        "citation": "Bauer, M. W., Allum, N., & Miller, S. (2007). What can we learn from 25 years of PUS survey research? Liberating and expanding the agenda. Public Understanding of Science, 16(1), 79–95.",
+        "relevance": "Discusses the evolution of measuring public understanding of science, including subjective self-assessments of scientific knowledge and competence as key indicators.",
+        "key_finding": "Subjective knowledge assessments capture a distinct dimension of scientific literacy that complements objective knowledge measures and predicts attitudes toward science."
+      },
+      {
+        "citation": "Bandura, A. (1997). Self-efficacy: The exercise of control. W.H. Freeman.",
+        "relevance": "Foundational work on self-efficacy theory, which underpins the measurement of perceived competence in any domain including science.",
+        "key_finding": "Self-efficacy beliefs are domain-specific and powerfully predict engagement, persistence, and performance in related tasks."
+      },
+      {
+        "citation": "Ramos, C., & Peiró, J. M. (2012). Percepción pública de la ciencia en México: Análisis de la ENPECYT. Revista Iberoamericana de Ciencia, Tecnología y Sociedad, 7(21), 1–25.",
+        "relevance": "Directly analyzes Mexican survey data (ENPECYT) on public perceptions of science, including self-assessed understanding of science and technology.",
+        "key_finding": "Mexican respondents' self-assessed scientific competence varies significantly by education level and region, and correlates with attitudes toward science policy."
+      },
+      {
+        "citation": "Eurobarometer. (2010). Science and Technology Report (Special Eurobarometer 340). European Commission.",
+        "relevance": "Provides a well-established survey framework for measuring self-assessed scientific knowledge and interest, comparable to the Mexican ENPECYT items.",
+        "key_finding": "Self-reported understanding of science is a robust predictor of support for science funding and trust in scientific institutions across European countries."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU, CIE"
+      },
+      {
+        "role": "cause",
+        "related_construct": "science and technology engagement",
+        "measurable_in_data": true,
+        "data_source": "CIE"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support for science policy",
+        "measurable_in_data": true,
+        "data_source": "CIE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "socioeconomic status",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "institutional trust in science",
+        "measurable_in_data": true,
+        "data_source": "CIE"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "gender differences in STEM attitudes",
+        "measurable_in_data": true,
+        "data_source": "GEN, CIE"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "institutional_trust_in_science",
+    "sources": [
+      {
+        "citation": "Hendriks, F., Kienhues, D., & Bromme, R. (2015). Measuring laypeople's trust in experts in a digital age: The Muenster Epistemic Trustworthiness Inventory (METI). PLoS ONE, 10(10), e0139309.",
+        "relevance": "Develops and validates a measure of epistemic trust in experts, directly relevant to understanding how publics evaluate scientific institutions and researchers.",
+        "key_finding": "Trust in scientific experts is multidimensional, comprising perceived expertise, integrity, and benevolence, each independently predicting acceptance of scientific claims."
+      },
+      {
+        "citation": "Funk, C., Hefferon, M., Kennedy, B., & Johnson, C. (2019). Trust and mistrust in Americans' views of scientific experts. Pew Research Center.",
+        "relevance": "Large-scale survey analysis of public trust in scientists and scientific institutions, providing a comparative framework for the Mexican context.",
+        "key_finding": "Trust in scientists is strongly associated with education, political orientation, and familiarity with scientific research, and shapes policy preferences on issues like climate change and vaccines."
+      },
+      {
+        "citation": "Dagnino, R., & Thomas, H. (2001). Panorama dos estudos sobre ciência, tecnologia e sociedade na América Latina. Taubaté: Cabral Editora.",
+        "relevance": "Reviews science-society relations in Latin America, including institutional trust in universities and research centers as mediators of public support for science.",
+        "key_finding": "In Latin American contexts, universities are among the most trusted institutions, and this trust is a key driver of public legitimacy for science and technology investments."
+      },
+      {
+        "citation": "Crettaz von Roten, F. (2006). Do we need a public understanding of statistics? Public Understanding of Science, 15(2), 243–249.",
+        "relevance": "Discusses how trust in scientific institutions interacts with statistical literacy and public understanding of science, relevant to survey items on trust in researchers and universities.",
+        "key_finding": "Trust in scientific institutions partially compensates for low scientific literacy in shaping positive attitudes toward science."
+      },
+      {
+        "citation": "Conacyt. (2017). Encuesta sobre la Percepción Pública de la Ciencia y la Tecnología en México (ENPECYT 2017). Consejo Nacional de Ciencia y Tecnología.",
+        "relevance": "The primary Mexican survey instrument from which these items derive, providing direct context for the measurement of institutional trust in science in Mexico.",
+        "key_finding": "Mexican respondents express relatively high trust in universities and researchers compared to government and media, but trust varies significantly by region and socioeconomic status."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "general institutional trust",
+        "measurable_in_data": true,
+        "data_source": "CUL, COR"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support for science and technology policy",
+        "measurable_in_data": true,
+        "data_source": "CIE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "effect",
+        "related_construct": "perceived corruption",
+        "measurable_in_data": true,
+        "data_source": "COR"
+      },
+      {
+        "role": "cause",
+        "related_construct": "vaccine acceptance / health behaviors",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "media consumption and information access",
+        "measurable_in_data": true,
+        "data_source": "SOC, CIE"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "science_technology_engagement",
+    "sources": [
+      {
+        "citation": "Schäfer, M. S. (2012). Taking stock: A meta-analysis of studies on the media's coverage of science. Public Understanding of Science, 21(6), 650–663.",
+        "relevance": "Meta-analysis of how media channels serve as conduits for public engagement with science, directly relevant to items measuring media-based science information seeking.",
+        "key_finding": "Media consumption patterns significantly predict public knowledge of and attitudes toward science, with digital media increasingly important."
+      },
+      {
+        "citation": "Brossard, D., & Scheufele, D. A. (2013). Science, new media, and the public. Science, 339(6115), 40–41.",
+        "relevance": "Examines how new media environments reshape public engagement with science, relevant to items on internet-based and informal science engagement.",
+        "key_finding": "Online information seeking about science is associated with both greater knowledge and greater polarization of attitudes, depending on pre-existing beliefs."
+      },
+      {
+        "citation": "Falk, J. H., Storksdieck, M., & Dierking, L. D. (2007). Investigating public science interest and understanding: Evidence for the importance of free-choice learning. Public Understanding of Science, 16(4), 455–469.",
+        "relevance": "Highlights the role of informal learning environments (museums, media, conversations) in shaping science engagement, matching the construct's focus on non-formal channels.",
+        "key_finding": "Free-choice science learning experiences are the primary driver of adult science literacy and engagement, surpassing formal education in long-term impact."
+      },
+      {
+        "citation": "Polino, C. (2015). Public perception of science and technology in Latin America. In M. Bauer, R. Shukla, & N. Allum (Eds.), The culture of science (pp. 271–296). Routledge.",
+        "relevance": "Provides a Latin American perspective on science engagement measurement, including museum visits, media consumption, and informal science activities.",
+        "key_finding": "Latin American publics show high interest in science but low active engagement, with significant gaps between interest and actual information-seeking behavior."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "science self-efficacy",
+        "measurable_in_data": true,
+        "data_source": "CIE"
+      },
+      {
+        "role": "effect",
+        "related_construct": "information capital (household resources)",
+        "measurable_in_data": true,
+        "data_source": "CIE"
+      },
+      {
+        "role": "cause",
+        "related_construct": "scientific literacy / knowledge",
+        "measurable_in_data": true,
+        "data_source": "CIE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "cultural participation",
+        "measurable_in_data": true,
+        "data_source": "DEP, CUL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "internet access and digital literacy",
+        "measurable_in_data": true,
+        "data_source": "SOC, CIE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "effect",
+        "related_construct": "age / generational cohort",
+        "measurable_in_data": true,
+        "data_source": "CIE, ENV, NIN"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "information_capital",
+    "sources": [
+      {
+        "citation": "Bourdieu, P. (1986). The forms of capital. In J. Richardson (Ed.), Handbook of theory and research for the sociology of education (pp. 241–258). Greenwood Press.",
+        "relevance": "Foundational theoretical framework for understanding cultural capital, of which household informational resources (books, technology) are key indicators.",
+        "key_finding": "Cultural capital, including objectified forms like books and institutionalized forms like educational credentials, reproduces social inequality across generations."
+      },
+      {
+        "citation": "Evans, M. D. R., Kelley, J., Sikora, J., & Treiman, D. J. (2010). Family scholarly culture and educational success: Books and schooling in 27 nations. Research in Social Stratification and Mobility, 28(2), 171–197.",
+        "relevance": "Directly measures household book ownership as a proxy for scholarly culture and demonstrates its impact on educational outcomes across countries.",
+        "key_finding": "Growing up in a household with 500 books propels a child 3.2 years further in education, on average, independent of parents' education and occupation."
+      },
+      {
+        "citation": "Warschauer, M. (2004). Technology and social inclusion: Rethinking the digital divide. MIT Press.",
+        "relevance": "Examines how computer and internet access at home constitute informational resources that shape social inclusion and knowledge access, directly relevant to items on computer ownership and internet access.",
+        "key_finding": "The digital divide is not merely about access but about the social, cultural, and informational capital that enables meaningful use of technology."
+      },
+      {
+        "citation": "Hargittai, E. (2002). Second-level digital divide: Differences in people's online skills. First Monday, 7(4).",
+        "relevance": "Extends the digital divide concept to include skills and resources beyond mere access, relevant to the construct's combination of books, computers, and internet.",
+        "key_finding": "Socioeconomic background predicts not only access to digital resources but also the ability to use them effectively for information acquisition."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "cause",
+        "related_construct": "science and technology engagement",
+        "measurable_in_data": true,
+        "data_source": "CIE"
+      },
+      {
+        "role": "cause",
+        "related_construct": "science self-efficacy",
+        "measurable_in_data": true,
+        "data_source": "CIE"
+      },
+      {
+        "role": "effect",
+        "related_construct": "household income / socioeconomic status",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "housing quality and conditions",
+        "measurable_in_data": true,
+        "data_source": "HAB"
+      },
+      {
+        "role": "cause",
+        "related_construct": "political participation and civic engagement",
+        "measurable_in_data": true,
+        "data_source": "CUL, SOC"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "indigenous identity / marginalization",
+        "measurable_in_data": true,
+        "data_source": "IND, POB"
+      },
+      {
+        "role": "cause",
+        "related_construct": "children's educational outcomes",
+        "measurable_in_data": true,
+        "data_source": "NIN, EDU"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "science_technology_policy_attitudes",
+    "sources": [
+      {
+        "citation": "Miller, J. D. (2004). Public understanding of, and attitudes toward, scientific research: What we know and what we need to know. Public Understanding of Science, 13(3), 273–294.",
+        "relevance": "Comprehensive review of how public attitudes toward science translate into policy preferences, including support for government funding of research.",
+        "key_finding": "Public support for science funding is driven by a combination of scientific literacy, trust in institutions, and perceived relevance of science to national problems."
+      },
+      {
+        "citation": "Allum, N., Sturgis, P., Tabourazi, D., & Brunton-Smith, I. (2008). Science knowledge and attitudes across cultures: A meta-analysis. Public Understanding of Science, 17(1), 35–54.",
+        "relevance": "Meta-analysis of the knowledge-attitudes relationship across cultures, relevant to understanding how Mexican publics form policy attitudes about science.",
+        "key_finding": "The positive association between scientific knowledge and favorable attitudes toward science is consistent across cultures but moderated by national context and issue domain."
+      },
+      {
+        "citation": "Kreimer, P., & Zabala, J. P. (2006). ¿Qué conocimiento y para quién? Problemas sociales, producción y uso social de conocimientos científicos sobre la enfermedad de Chagas en Argentina. REDES, 12(23), 49–78.",
+        "relevance": "Latin American perspective on the social relevance of science and the normative expectation that scientific knowledge should address national problems, directly relevant to Mexican policy attitude items.",
+        "key_finding": "In Latin American contexts, public expectations that science should address pressing social problems (health, poverty, environment) are central to legitimizing public investment in research."
+      },
+      {
+        "citation": "Dutrénit, G., & Arza, V. (2010). Channels and benefits of interactions between public research organisations and industry: Comparing four Latin American countries. Science and Public Policy, 37(7), 541–553.",
+        "relevance": "Examines public attitudes toward the relationship between science, industry, and national development in Latin America, including Mexico.",
+        "key_finding": "Latin American publics strongly favor domestic technology development and public financing of science when framed as contributing to national economic independence and social welfare."
+      },
+      {
+        "citation": "Conacyt. (2017). Encuesta sobre la Percepción Pública de la Ciencia y la Tecnología en México (ENPECYT 2017). Consejo Nacional de Ciencia y Tecnología.",
+        "relevance": "Source survey providing the specific items on science policy attitudes in the Mexican context, including views on domestic technology development and public financing.",
+        "key_finding": "A majority of Mexican respondents support increased government spending on science and technology and believe science should prioritize solving national problems."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "institutional trust in science",
+        "measurable_in_data": true,
+        "data_source": "CIE"
+      },
+      {
+        "role": "effect",
+        "related_construct": "science self-efficacy / scientific literacy",
+        "measurable_in_data": true,
+        "data_source": "CIE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "political ideology and partisanship",
+        "measurable_in_data": true,
+        "data_source": "CUL, IDE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "attitudes toward globalization and economic sovereignty",
+        "measurable_in_data": true,
+        "data_source": "GLO, ECO"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "environmental attitudes",
+        "measurable_in_data": true,
+        "data_source": "MED"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "perceptions of national economic conditions",
+        "measurable_in_data": true,
+        "data_source": "ECO"
+      },
+      {
+        "role": "effect",
+        "related_construct": "national identity and values",
+        "measurable_in_data": true,
+        "data_source": "IDE"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  }
+]

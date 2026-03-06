@@ -59,15 +59,17 @@ DEFAULT_ECO_CELL_COLS = ["escol", "edad"]
 # MRP cell_cols: same as eco by default
 DEFAULT_MRP_CELL_COLS = ["escol", "edad", "sexo"]
 
-# Simulation size for baseline + residual
+# Simulation size for baseline + residual + reference SES population.
+# 500 is sufficient for point estimates; increase for final publication runs.
 N_SIM = 500
 
-# Bootstrap draws — DR is expensive (model refits); keep low for sweep speed.
+# Bootstrap draws — reduced for sweep speed. Point estimates are stable;
+# CIs will be rougher but adequate for exploratory comparison.
 # Full-precision runs can be done on individual pairs.
-N_BOOTSTRAP_ECO = 200
-N_BOOTSTRAP_BAY = 200   # posterior draws (cheap: no model refit)
-N_BOOTSTRAP_MRP = 100
-N_BOOTSTRAP_DR  = 50    # expensive: 50 × 2 model refits per pair
+N_BOOTSTRAP_ECO = 50
+N_BOOTSTRAP_BAY = 100   # posterior draws (cheap: no model refit, Laplace stabilizes fast)
+N_BOOTSTRAP_MRP = 50
+N_BOOTSTRAP_DR  = 10    # rough CI; point estimate still valid for sweep
 
 
 # ---------------------------------------------------------------------------
@@ -130,14 +132,17 @@ def estimate_pair_all_methods(
             **{k: None for k in _AGG_KEYS},
         }
 
-    est_baseline  = CrossDatasetBivariateEstimator(n_sim=N_SIM)
-    est_residual  = ResidualBridgeEstimator(n_sim=N_SIM, n_cells=20)
+    est_baseline  = CrossDatasetBivariateEstimator(n_sim=N_SIM, max_categories=5)
+    est_residual  = ResidualBridgeEstimator(n_sim=N_SIM, n_cells=20, max_categories=5)
     est_eco       = EcologicalBridgeEstimator(
         min_cell_n=10, min_merged_cells=5, n_bootstrap=N_BOOTSTRAP_ECO)
-    est_bayesian  = BayesianBridgeEstimator(n_sim=N_SIM, n_draws=N_BOOTSTRAP_BAY)
+    est_bayesian  = BayesianBridgeEstimator(
+        n_sim=N_SIM, n_draws=N_BOOTSTRAP_BAY, max_categories=5)
     est_mrp       = MRPBridgeEstimator(
-        cell_cols=mrp_cell_cols, min_cell_n=5, n_bootstrap=N_BOOTSTRAP_MRP)
-    est_dr        = DoublyRobustBridgeEstimator(n_sim=N_SIM, n_bootstrap=N_BOOTSTRAP_DR)
+        cell_cols=mrp_cell_cols, min_cell_n=5, n_bootstrap=N_BOOTSTRAP_MRP,
+        max_categories=5)
+    est_dr        = DoublyRobustBridgeEstimator(
+        n_sim=N_SIM, n_bootstrap=N_BOOTSTRAP_DR, max_categories=5)
 
     estimates: List[Dict[str, Any]] = []
 
@@ -173,6 +178,10 @@ def estimate_pair_all_methods(
                     row["ses_fraction"] = (
                         round(r["ses_fraction"], 4)
                         if r["ses_fraction"] is not None else None
+                    )
+                    row["stratified_gamma"] = (
+                        round(r["stratified_gamma"], 4)
+                        if r.get("stratified_gamma") is not None else None
                     )
                     row["n_cells_used"] = r["n_cells_used"]
             except Exception as e:
@@ -226,10 +235,11 @@ def estimate_pair_all_methods(
                     var_id_a=va, var_id_b=vb, df_a=df_a, df_b=df_b,
                     col_a=col_a, col_b=col_b)
                 if r:
-                    row["dr_gamma"]     = round(r["gamma"], 4)
-                    row["dr_gamma_ci"]  = r["gamma_ci_95"]
-                    row["dr_v"]         = round(r["cramers_v"], 4)
-                    row["dr_ks"]        = round(r["propensity_overlap"], 4)
+                    row["dr_gamma"]      = round(r["gamma"], 4)
+                    row["dr_gamma_ci"]   = r["gamma_ci_95"]
+                    row["dr_v"]          = round(r["cramers_v"], 4)
+                    row["dr_ks"]         = round(r["propensity_overlap"], 4)
+                    row["dr_ks_warning"] = r.get("ks_warning", False)
             except Exception as e:
                 row["dr_error"] = str(e)
 
@@ -257,8 +267,11 @@ def estimate_pair_all_methods(
         "baseline_mean_v":   _mean(_extract("baseline_v")),
         "residual_mean_v":   _mean(_extract("residual_v")),
         "eco_mean_rho":      _mean(_extract("eco_rho")),
-        "mean_ses_fraction": _mean([e["ses_fraction"] for e in estimates
-                                    if e.get("ses_fraction") is not None]),
+        "mean_ses_fraction":     _mean([e["ses_fraction"] for e in estimates
+                                        if e.get("ses_fraction") is not None]),
+        "mean_stratified_gamma": _mean([e["stratified_gamma"] for e in estimates
+                                        if e.get("stratified_gamma") is not None]),
+        "n_dr_ks_warning":       sum(1 for e in estimates if e.get("dr_ks_warning")),
         "bay_mean_gamma":    _mean(_extract("bay_gamma")),
         "bay_mean_v":        _mean(_extract("bay_v")),
         "mrp_mean_gamma":    _mean(_extract("mrp_gamma")),
@@ -426,6 +439,8 @@ def main(
     output_json: Path = OUTPUT_JSON,
     output_report: Path = OUTPUT_REPORT,
     resume: bool = True,
+    var_selection: str = "naive",
+    semantic_selection_file: Optional[Path] = None,
 ) -> None:
     if eco_cell_cols is None:
         eco_cell_cols = DEFAULT_ECO_CELL_COLS
@@ -453,7 +468,27 @@ def main(
     with open(BASELINE_SWEEP, encoding="utf-8") as f:
         baseline_data = json.load(f)
 
-    selected_vars: Dict[str, List[str]] = baseline_data["selected_variables"]
+    # Load variable selection
+    if var_selection == "semantic" and semantic_selection_file is not None and semantic_selection_file.exists():
+        print(f"Loading semantic variable selection from {semantic_selection_file}...")
+        sys.path.insert(0, str(Path(__file__).resolve().parents[0]))
+        from select_bridge_variables_semantic import SemanticVariableSelector
+        selected_vars: Dict[str, List[str]] = SemanticVariableSelector.load(semantic_selection_file)
+        # Build aggregated columns in enc_dict DataFrames
+        SemanticVariableSelector.build_aggregates(
+            enc_dict, enc_nom_dict_rev,
+            selection_path=semantic_selection_file,
+        )
+        # Fall back to naive for any domains missing from semantic selection
+        naive_vars: Dict[str, List[str]] = baseline_data["selected_variables"]
+        n_semantic = len(selected_vars)
+        for key in naive_vars:
+            if key not in selected_vars:
+                selected_vars[key] = naive_vars[key]
+        print(f"  Using semantic selection for {n_semantic} domains, "
+              f"naive fallback for {len(selected_vars) - n_semantic}")
+    else:
+        selected_vars: Dict[str, List[str]] = baseline_data["selected_variables"]
     all_pair_keys = list(baseline_data["domain_pairs"].keys())
     print(f"Loaded {len(all_pair_keys)} domain pairs from baseline sweep.")
 
@@ -479,7 +514,13 @@ def main(
                     and p.get("bay_mean_gamma") is not None)
 
     pairs_todo = [k for k in all_pair_keys if _needs_run(k)]
-    print(f"Pairs remaining: {len(pairs_todo)} / {len(all_pair_keys)}", flush=True)
+    n_vars_sample = np.mean([len(selected_vars.get(k.split("::")[0], [])) *
+                             len(selected_vars.get(k.split("::")[1], []))
+                             for k in pairs_todo[:10]]) if pairs_todo else 0
+    print(f"Pairs remaining: {len(pairs_todo)} / {len(all_pair_keys)} "
+          f"(avg ~{n_vars_sample:.0f} var-pairs each)", flush=True)
+    print(f"Resume: re-run this command (without --no-resume) to continue "
+          f"from checkpoint.", flush=True)
 
     results: Dict[str, Any] = dict(existing_results)
 
@@ -497,7 +538,8 @@ def main(
     }
 
     n_done = 0
-    checkpoint_every = 5  # save more frequently (6 methods → more work per pair)
+    checkpoint_every = 1  # save after every pair for crash-safe resume
+    pair_times: List[float] = []  # track per-pair durations for ETA
 
     def _run_pair(pair_key: str):
         da, db = pair_key.split("::")
@@ -517,10 +559,21 @@ def main(
             pair_key = futures[future]
             try:
                 key, result = future.result()
+                pair_end = time.time()
                 results[key] = result
                 n_done += 1
-                elapsed = time.time() - t0
+                elapsed = pair_end - t0
                 n_so_far = len(existing_results) - (len(all_pair_keys) - len(pairs_todo)) + n_done
+
+                # Track per-pair time for ETA
+                if n_done > 1:
+                    pair_times.append(elapsed / n_done)
+                else:
+                    pair_times.append(elapsed)
+                avg_pair = elapsed / n_done
+                remaining = len(pairs_todo) - n_done
+                eta_s = avg_pair * remaining / max(max_workers, 1)
+                eta_min = eta_s / 60
 
                 bv  = result.get("baseline_mean_v")
                 rv  = result.get("residual_mean_v")
@@ -530,9 +583,9 @@ def main(
                 dk  = result.get("dr_mean_ks")
 
                 print(
-                    f"  [{n_so_far}/{total}] {elapsed:.0f}s | {key}"
+                    f"  [{n_so_far}/{total}] {elapsed:.0f}s (ETA {eta_min:.0f}m) | {key}"
                     f" | base={bv:.3f}" if bv is not None else
-                    f"  [{n_so_far}/{total}] {elapsed:.0f}s | {key} | FAIL",
+                    f"  [{n_so_far}/{total}] {elapsed:.0f}s (ETA {eta_min:.0f}m) | {key} | FAIL",
                     end="",
                     flush=True,
                 )
@@ -630,6 +683,15 @@ if __name__ == "__main__":
         "--no-resume", action="store_true",
         help="Ignore existing checkpoint and rerun from scratch"
     )
+    parser.add_argument(
+        "--var-selection", choices=["naive", "semantic"], default="naive",
+        help="Variable selection method: naive (max entropy) or semantic (LLM pipeline)"
+    )
+    parser.add_argument(
+        "--semantic-selection-file", type=Path,
+        default=Path(__file__).resolve().parents[2] / "data" / "results" / "semantic_variable_selection.json",
+        help="Path to semantic_variable_selection.json (used when --var-selection=semantic)"
+    )
     args = parser.parse_args()
 
     main(
@@ -639,4 +701,6 @@ if __name__ == "__main__":
         output_json=args.output_json,
         output_report=args.output_report,
         resume=not args.no_resume,
+        var_selection=args.var_selection,
+        semantic_selection_file=args.semantic_selection_file if args.var_selection == "semantic" else None,
     )

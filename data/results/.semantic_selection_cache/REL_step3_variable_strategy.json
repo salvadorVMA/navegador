@@ -1,0 +1,79 @@
+[
+  {
+    "construct_name": "supernatural_belief_system",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p17_2",
+      "p17_4",
+      "p17_5",
+      "p17_6",
+      "p17_7",
+      "p17_8",
+      "p17_9",
+      "p17_10",
+      "p17_11",
+      "p17_12",
+      "p17_13",
+      "p17_14",
+      "p17_15"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Supernatural belief is inherently multi-dimensional (beliefs in God, afterlife, miracles, spirits, etc.) and no single item captures the full construct; aggregation reduces measurement error across this broad domain. All 14 items share the same 6-category scale (K=6), making them combinable, and p17_1 is excluded due to its notably low entropy (H=1.04), suggesting near-uniform response and poor discriminatory power. PCA first component is preferred over a simple sum because items likely tap correlated but distinct facets of supernatural belief, and the first PC extracts the dominant shared variance while avoiding equal-weighting assumptions; the resulting score is binned to 5 quantile categories for the bridge model."
+  },
+  {
+    "construct_name": "religious_practice_and_devotion",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p10",
+      "p11",
+      "p12",
+      "p13_1",
+      "p14",
+      "p25"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Religious practice and devotion is a multi-faceted construct encompassing attendance, prayer frequency, personal piety, and ritual engagement, so no single item is sufficient; aggregation across behaviorally-oriented items substantially reduces measurement error. Items p10, p11, p12, p13_1, p14, and p25 all tap frequency or intensity of religious practice on ordinal Likert-style scales and are conceptually coherent, while p16_1 (K=4, H=1.06) is excluded for low entropy and p18 (K=13) is excluded because its 13-category scale is incompatible and would distort a sum or mean. PCA first component handles the differing number of scale points across items (K=5–7) more robustly than a raw sum, extracting the dominant devotion dimension and binning to 5 quantiles for the bridge."
+  },
+  {
+    "construct_name": "religious_socialization_and_identity",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p2",
+      "p3",
+      "p4",
+      "p5",
+      "p6",
+      "p15",
+      "p33_1"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Religious socialization and identity spans upbringing, self-identification, denominational belonging, and transmission across generations, requiring multiple items to capture its breadth; aggregation is therefore strongly preferred over any single item. Items p2–p6, p15, and p33_1 all use 5- or 7-category ordinal scales with reasonable entropy, and they collectively cover family religious background, current identity strength, and social embeddedness in religion. Item p7_1 (K=9) is excluded because its 9-category scale is incompatible with the predominantly 5-point items and would distort composite scoring; PCA first component is chosen to handle residual scale differences and extract the core identity dimension, binned to 5 quantiles."
+  },
+  {
+    "construct_name": "church_state_separation_attitudes",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p52_1",
+      "p55",
+      "p56",
+      "p57",
+      "p58",
+      "p40"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Church-state separation attitudes constitute a coherent attitudinal dimension (laicité/secularism) that is best measured by combining items tapping different policy domains (education, law, public life, political influence), as no single item covers the full construct. All six items use ordinal scales in the 5–8 category range with moderate-to-high entropy (H=1.65–2.40), and they are conceptually aligned as evaluations of institutional religion's role in public affairs, making them combinable. Mean scoring is appropriate here because the items are attitude statements on comparable Likert-type scales and averaging preserves the directional intensity of the latent secularism attitude before binning to ≤5 categories for the bridge model."
+  },
+  {
+    "construct_name": "religious_tolerance_and_pluralism",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p44_1",
+      "p46_1",
+      "p47",
+      "p48",
+      "p50_1"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Religious tolerance and pluralism is a multi-component construct covering acceptance of other faiths, willingness to coexist, and attitudes toward religious diversity, so aggregation across items is necessary to capture its full scope. Items p44_1, p46_1, p47, p48, and p50_1 all use 5–7 category ordinal scales with moderate-to-good entropy (H=1.20–2.26) and tap distinct but related tolerance/pluralism attitudes, making them suitable for averaging. Items p34 (H=0.72) and p35 (K=2, H=0.33) are excluded because their extremely low entropy and/or binary format would distort the composite and contribute little discriminatory information; mean scoring is preferred over PCA given the conceptual homogeneity of the remaining items, with the mean binned to ≤5 categories for the bridge."
+  }
+]

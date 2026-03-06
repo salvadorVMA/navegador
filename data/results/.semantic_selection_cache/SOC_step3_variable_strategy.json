@@ -1,0 +1,104 @@
+[
+  {
+    "construct_name": "digital_access_and_equipment",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p5a_1",
+      "p5a_2",
+      "p5a_3",
+      "p5a_4",
+      "p5a_5",
+      "p5a_7",
+      "p5a_8",
+      "p5a_9",
+      "p5a_10",
+      "p5a_11",
+      "p5a_12",
+      "p2"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Digital access and equipment is inherently multi-dimensional, spanning device ownership, connectivity type, and frequency of access, so no single item captures the full construct. The p5a battery items share a common response frame (device/service availability) and p2 captures overall internet access level, making them jointly informative about a latent access dimension. PCA first component is preferred over a simple sum because items have varying entropy and scale widths (K=6–9), and the first PC will weight higher-variance, more discriminating items (p5a_2, p2) more heavily while suppressing low-entropy redundant items (p5a_8, p5a_9), yielding a cleaner ordinal bridge variable binned to 5 quantiles."
+  },
+  {
+    "construct_name": "digital_literacy_and_internet_engagement",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p36",
+      "p31",
+      "p34",
+      "p37",
+      "p33_1",
+      "p33_2",
+      "p33_3",
+      "p33_4",
+      "p33_5",
+      "p33_6",
+      "p33_7",
+      "p56_1",
+      "p39_2",
+      "p39_3",
+      "p39_4",
+      "p39_5",
+      "p39_6",
+      "p39_7",
+      "p42_1",
+      "p43_2"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Digital literacy and internet engagement is a broad, multi-faceted construct encompassing skill self-assessment, frequency and breadth of online activities, and engagement depth, requiring aggregation across the full item battery. The p33 battery (skill items), p39 battery (activity types), and frequency items (p31, p36, p37, p34) all tap different facets of the same latent dimension; PCA will extract the dominant shared variance across these heterogeneous but conceptually aligned items. p57_1 is excluded due to its very low entropy (H=0.87), which would add noise rather than signal; p56_1 (H=2.10) is retained as it is the highest-entropy item and likely captures a key engagement dimension. Binning the first PC to 5 quantiles yields a well-distributed ordinal variable suitable for the bridge model."
+  },
+  {
+    "construct_name": "media_consumption_and_news_habits",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p7",
+      "p58_1",
+      "p66",
+      "p6",
+      "p8_1",
+      "p11_1",
+      "p25",
+      "p67",
+      "p44_1",
+      "p16_1",
+      "p24"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Media consumption is multi-dimensional, covering frequency, platform diversity, and news-seeking behavior, so aggregation across complementary items is necessary. Items p7 (H=2.31), p58_1 (H=2.26), and p66 (H=2.20) are the highest-entropy items and anchor the composite; p6, p8_1, p11_1, p25, p67, p44_1, p16_1, and p24 add breadth across media types and consumption patterns. Items p11_2 (H=0.41), p11_3 (H=0.87), and p11_4 (H=0.33) are excluded due to extremely low entropy indicating near-constant responses that would distort the composite; p14 is also excluded as its lower entropy (H=1.44) and likely platform-specific framing reduces its generalizability. PCA first component handles the mixed scale widths (K=4–11) and extracts the dominant consumption intensity dimension for binning to 5 quantiles."
+  },
+  {
+    "construct_name": "media_trust_and_critical_evaluation",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p55",
+      "p65",
+      "p69_1",
+      "p53_1",
+      "p54",
+      "p51",
+      "p61",
+      "p62_1",
+      "p40",
+      "p22",
+      "p60"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Media trust and critical evaluation spans institutional trust, skepticism toward misinformation, and active verification behaviors, making it genuinely multi-dimensional and requiring aggregation. All 11 items are retained because they collectively cover the trust-skepticism-verification triad and have reasonably high entropy (H=1.20–2.16), indicating adequate response variation; p55 (H=2.16) and p65 (H=2.14) are the most informative anchors. PCA first component is appropriate given the heterogeneous scale widths (K=5–13, notably p53_1 with K=13) and will down-weight the lower-entropy items (p60, p22) while capturing the dominant latent trust dimension, which is then binned to 5 quantiles for the bridge."
+  },
+  {
+    "construct_name": "digital_civic_and_political_participation",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p70",
+      "p75_1",
+      "p9",
+      "p52",
+      "p49_1",
+      "p49_5",
+      "p50_1",
+      "p45_2"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Digital civic and political participation is multi-dimensional, encompassing online political activity, civic engagement, and political interest, requiring aggregation; however, the many near-zero-entropy items in the p49 and p74 batteries (p49_2 H=0.67, p49_3 H=0.61, p49_4 H=0.33, p73 H=0.51, p74_1–p74_5 H≈0.58–0.62) are excluded as they show near-constant distributions that would dominate a sum score without adding discriminatory power. The retained items—p70 (H=2.63, the highest-entropy item and likely a broad political engagement measure), p75_1 (H=1.99), p9 (H=1.84), p52 (H=1.70), p49_1 (H=1.37), p50_1 (H=1.30), p45_2 (H=1.15), and p49_5 (H=1.11)—provide adequate entropy and cover online civic action, political interest, and participation breadth. PCA first component handles the mixed scales (K=4–8) and extracts the dominant participation intensity dimension for binning to 5 quantiles."
+  }
+]

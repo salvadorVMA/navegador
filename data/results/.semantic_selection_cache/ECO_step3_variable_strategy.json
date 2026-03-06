@@ -1,0 +1,58 @@
+[
+  {
+    "construct_name": "economic_wellbeing_perception",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p1",
+      "p2",
+      "p3",
+      "p4"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Economic wellbeing perception is inherently multi-dimensional, spanning current financial situation, retrospective and prospective assessments, and relative standing, so no single item captures the full construct. All four questions use closely compatible ordinal Likert-type scales (5–6 categories) with similar entropy levels (1.71–1.91 bits), making them combinable via mean scoring. Averaging across items reduces idiosyncratic measurement error and yields a more reliable composite that can then be binned into ≤5 ordered categories for the bridge model."
+  },
+  {
+    "construct_name": "job_quality_precariousness",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p36",
+      "p41",
+      "p42",
+      "p43"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Job quality and precariousness is a multi-faceted construct (contract stability, working conditions, income adequacy, job security) requiring multiple indicators, but the full item pool is heterogeneous in scale width and entropy—p53 (H=0.14) and p40 (H=0.90) carry very little variance and p34/p53 have extreme category distributions that would distort a simple sum. Selecting the four items with moderate-to-high entropy and compatible 5–7 category ordinal scales (p36, p41, p42, p43) and extracting the first principal component captures the dominant shared variance of precariousness while discarding item-specific noise. The first PC score is then binned into 5 quantile-based categories for the bridge regression."
+  },
+  {
+    "construct_name": "labor_market_attachment",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p25",
+      "p48",
+      "p60"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Labor market attachment spans employment status, intensity of work, and continuity of participation, requiring multiple items, but the eight available questions vary widely in scale width (3–12 categories) and entropy (0.41–2.14 bits), making a naive sum inappropriate. The three highest-entropy items (p25 H=2.14, p48 H=1.86, p60 H=1.88) use compatible 5–8 category ordinal scales and collectively cover employment status, hours/intensity, and job-search or participation dimensions. PCA on these three items extracts the dominant attachment dimension while accommodating slight scale differences, and the first component is binned into 5 quantiles for the bridge model."
+  },
+  {
+    "construct_name": "work_values_preferences",
+    "strategy": "single_max_entropy",
+    "selected_qids": [
+      "p19"
+    ],
+    "aggregation_method": null,
+    "justification": "Work values and preferences is a construct where individual items often tap distinct, non-summable value dimensions (e.g., intrinsic vs. extrinsic rewards), making aggregation likely to conflate conceptually separate orientations. p19 has the highest Shannon entropy (H=2.06 bits) among the six items, indicating it discriminates most effectively across the response distribution and captures the broadest spread of work value orientations. Given the construct's importance rating is only 3/5 and the items span heterogeneous content, a single high-entropy item is a pragmatic and defensible choice for the bridge variable."
+  },
+  {
+    "construct_name": "human_capital_labor_alignment",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p64",
+      "p65",
+      "p66",
+      "p67"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Human capital–labor alignment is inherently multi-dimensional, encompassing educational attainment, field-of-study match, skill utilization, and occupational fit, so a single item would be insufficient for a construct rated 4/5 in importance. The four highest-entropy items (p65 H=2.79, p64 H=2.35, p67 H=2.31, p66 H=2.25) have rich ordinal scales (7–14 categories) and together span the key facets of alignment, while p71 and p72 (H≈0.55–0.56) add almost no discriminating information. PCA on these four items extracts the primary alignment dimension and handles the varying scale widths gracefully, with the first component binned into 5 quantiles to satisfy the bridge model's ≤15 category constraint."
+  }
+]

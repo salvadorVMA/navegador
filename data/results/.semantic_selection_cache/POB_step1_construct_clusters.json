@@ -1,0 +1,71 @@
+[
+  {
+    "name": "subjective_social_mobility",
+    "description": "Captures respondents' perceived trajectory of economic and social standing across generations — backward-looking (own situation vs. parents), forward-looking (children vs. self), and structural beliefs about whether upward mobility is realistically achievable for young Mexicans today.",
+    "question_cluster": [
+      "p22",
+      "p23",
+      "p24",
+      "p35",
+      "p36"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "material_living_standards",
+    "description": "Measures objective household material conditions through dwelling quality and asset ownership, forming a composite index of socioeconomic deprivation or well-being consistent with multidimensional poverty measurement frameworks.",
+    "question_cluster": [
+      "p47",
+      "p48",
+      "p49",
+      "p51",
+      "p52",
+      "p53",
+      "p54",
+      "p55"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "structural_attribution_of_poverty",
+    "description": "Assesses the degree to which respondents attribute poverty and social problems to systemic, institutional, or structural forces (e.g., government, elites, discrimination) rather than individual failings, reflecting ideological orientations toward inequality.",
+    "question_cluster": [
+      "p27_1",
+      "p37",
+      "p39",
+      "p40",
+      "p32",
+      "p33"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "social_policy_preferences",
+    "description": "Captures respondents' normative preferences regarding how anti-poverty policy should be designed, funded, prioritized, and delivered, including beliefs about government effectiveness and the appropriate role of different societal actors.",
+    "question_cluster": [
+      "p29_1",
+      "p30",
+      "p31",
+      "p41",
+      "p42",
+      "p43",
+      "p44"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "subjective_economic_wellbeing",
+    "description": "Measures respondents' self-assessed economic and psychological well-being, including perceived personal control over economic outcomes, happiness, satisfaction with work and leisure, self-identified social class, and perceived resilience — capturing the subjective experience of living standards beyond objective material conditions.",
+    "question_cluster": [
+      "p10",
+      "p13",
+      "p14",
+      "p15",
+      "p16",
+      "p17_1",
+      "p18_1",
+      "p20_1"
+    ],
+    "requires_aggregation": true
+  }
+]

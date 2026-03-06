@@ -1,0 +1,390 @@
+[
+  {
+    "construct_name": "subjective_social_mobility",
+    "sources": [
+      {
+        "citation": "Campos-Vázquez, R. M., & Vélez-Grajales, R. (2014). Crisis económica y percepciones de movilidad social en México. Sobre México: Temas de Economía, 1(1), 54-78.",
+        "relevance": "Directly examines perceived social mobility in Mexico, including intergenerational comparisons and beliefs about upward mobility prospects.",
+        "key_finding": "Economic crises significantly reduce perceived upward mobility, with lower-income Mexicans reporting the sharpest declines in optimism about intergenerational progress."
+      },
+      {
+        "citation": "Torche, F. (2014). Intergenerational mobility and inequality: The Latin American case. Annual Review of Sociology, 40, 619-642.",
+        "relevance": "Provides a comprehensive framework for understanding both objective and subjective intergenerational mobility in Latin America, including Mexico.",
+        "key_finding": "Latin America exhibits moderate intergenerational mobility at the middle of the distribution but strong persistence at the extremes, and subjective perceptions often diverge from objective patterns."
+      },
+      {
+        "citation": "Kelley, S. M. C., & Kelley, C. G. E. (2009). Subjective social mobility: Data from 30 nations. In M. Haller, R. Jowell, & T. W. Smith (Eds.), The International Social Survey Programme 1984-2009 (pp. 106-124). Routledge.",
+        "relevance": "Establishes measurement approaches for subjective social mobility using retrospective and prospective intergenerational comparisons, directly paralleling the construct's question structure.",
+        "key_finding": "Subjective social mobility is shaped by both actual economic conditions and national cultural narratives about opportunity, with developing countries showing higher perceived upward mobility despite greater inequality."
+      },
+      {
+        "citation": "Vélez-Grajales, R., Campos-Vázquez, R. M., & Huerta-Wong, J. E. (2014). Report on social mobility in Mexico: Imagine your future. Centro de Estudios Espinosa Yglesias (CEEY).",
+        "relevance": "The foundational Mexican study on social mobility perceptions, combining objective and subjective measures and examining beliefs about whether effort leads to upward mobility.",
+        "key_finding": "A majority of Mexicans perceive themselves as having experienced upward mobility relative to their parents, but a significant share believe structural barriers prevent young people from achieving similar progress."
+      },
+      {
+        "citation": "Alesina, A., Stantcheva, S., & Teso, E. (2018). Intergenerational mobility and preferences for redistribution. American Economic Review, 108(2), 521-554.",
+        "relevance": "Demonstrates the causal link between perceived social mobility and policy preferences, providing theoretical grounding for connecting this construct to social policy attitudes.",
+        "key_finding": "Pessimistic perceptions of social mobility increase support for redistributive policies, and these perceptions are shaped by personal experience, media, and national narratives."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "support for redistributive social policy",
+        "measurable_in_data": true,
+        "data_source": "POB"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "subjective economic well-being",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "political trust and democratic satisfaction",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "income inequality and economic conditions",
+        "measurable_in_data": true,
+        "data_source": "ECO"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "structural attribution of poverty",
+        "measurable_in_data": true,
+        "data_source": "POB"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "youth aspirations and opportunities",
+        "measurable_in_data": true,
+        "data_source": "NIN"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "material_living_standards",
+    "sources": [
+      {
+        "citation": "CONEVAL. (2019). Metodología para la medición multidimensional de la pobreza en México (3ra edición). Consejo Nacional de Evaluación de la Política de Desarrollo Social.",
+        "relevance": "The official Mexican methodology for multidimensional poverty measurement, which includes dwelling quality and asset ownership as core dimensions, directly mirroring this construct.",
+        "key_finding": "Material deprivation indicators (housing quality, basic services, assets) are essential complements to income-based poverty measures and capture distinct dimensions of well-being in Mexico."
+      },
+      {
+        "citation": "Alkire, S., & Foster, J. (2011). Counting and multidimensional poverty measurement. Journal of Public Economics, 95(7-8), 476-487.",
+        "relevance": "Provides the foundational methodology (AF method) for constructing composite indices of material deprivation from dwelling and asset indicators, widely adopted in Mexico.",
+        "key_finding": "Multidimensional poverty indices that combine housing quality, asset ownership, and service access provide more policy-relevant poverty identification than income alone."
+      },
+      {
+        "citation": "Filmer, D., & Pritchett, L. H. (2001). Estimating wealth effects without expenditure data—or tears: An application to educational enrollments in states of India. Demography, 38(1), 115-132.",
+        "relevance": "Establishes the asset-index approach to measuring household socioeconomic status from survey data on dwelling characteristics and durable goods, a method widely used in developing-country surveys.",
+        "key_finding": "A principal-components-based asset index constructed from housing quality and ownership variables is a robust proxy for long-run household wealth."
+      },
+      {
+        "citation": "McKenzie, D. J. (2005). Measuring inequality with asset indicators. Journal of Population Economics, 18(2), 229-260.",
+        "relevance": "Evaluates the validity and limitations of asset-based measures of living standards for inequality analysis in Mexico and other developing countries.",
+        "key_finding": "Asset indices capture durable aspects of living standards well but may underestimate inequality at the top and bottom of the distribution compared to consumption measures."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "household income and employment",
+        "measurable_in_data": true,
+        "data_source": "ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "health outcomes and access",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "educational attainment of children",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "housing quality and access",
+        "measurable_in_data": true,
+        "data_source": "HAB"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "subjective economic well-being",
+        "measurable_in_data": true,
+        "data_source": "POB"
+      },
+      {
+        "role": "effect",
+        "related_construct": "migration decisions",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "digital access and information society participation",
+        "measurable_in_data": true,
+        "data_source": "SOC"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "indigenous identity and marginalization",
+        "measurable_in_data": true,
+        "data_source": "IND"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "structural_attribution_of_poverty",
+    "sources": [
+      {
+        "citation": "Feagin, J. R. (1975). Subordinating the poor: Welfare and American beliefs. Prentice-Hall.",
+        "relevance": "Foundational work establishing the tripartite framework of poverty attributions: individualistic, structural, and fatalistic, which underpins this construct's measurement approach.",
+        "key_finding": "Americans tend to favor individualistic explanations for poverty, but structural attributions are significantly more common among lower-income and minority respondents."
+      },
+      {
+        "citation": "Rojas-Méndez, R. (2008). Percepciones sobre las causas de la pobreza en México. In R. Cordera & C. J. Cabrera (Eds.), La política social en México: Tendencias y perspectivas. UNAM.",
+        "relevance": "Directly examines Mexican public attributions for poverty, distinguishing structural from individual explanations in the national context.",
+        "key_finding": "Mexican respondents who attribute poverty to structural causes (government corruption, lack of opportunities, discrimination) are significantly more likely to support expansive social programs."
+      },
+      {
+        "citation": "Oorschot, W. V., & Halman, L. (2000). The individual and structural causes of poverty: A European comparison. In W. Arts & L. Halman (Eds.), New directions in quantitative comparative sociology (pp. 169-190). Brill.",
+        "relevance": "Provides cross-national evidence on how structural vs. individual poverty attributions vary by welfare regime and cultural context, offering comparative benchmarks.",
+        "key_finding": "Structural poverty attributions are more prevalent in countries with higher inequality and weaker welfare states, consistent with the Latin American context."
+      },
+      {
+        "citation": "Merolla, D. M., Hunt, M. O., & Serpe, R. T. (2011). Concentrated disadvantage and beliefs about the causes of poverty: A multi-level analysis. Sociological Perspectives, 54(2), 205-227.",
+        "relevance": "Demonstrates how neighborhood-level deprivation shapes individual-level structural attributions, relevant to understanding Mexican spatial inequality.",
+        "key_finding": "Living in areas of concentrated poverty increases structural attributions, net of individual socioeconomic status, suggesting contextual effects on causal beliefs."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "social policy preferences and support for redistribution",
+        "measurable_in_data": true,
+        "data_source": "POB"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "political ideology (left-right orientation)",
+        "measurable_in_data": true,
+        "data_source": "CUL, IDE"
+      },
+      {
+        "role": "effect",
+        "related_construct": "personal experience of poverty and deprivation",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "perceptions of corruption",
+        "measurable_in_data": true,
+        "data_source": "COR"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "attitudes toward discrimination and human rights",
+        "measurable_in_data": true,
+        "data_source": "DER, GEN, IND"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "trust in government institutions",
+        "measurable_in_data": true,
+        "data_source": "CUL, JUS"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment and media exposure",
+        "measurable_in_data": true,
+        "data_source": "EDU, SOC"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "social_policy_preferences",
+    "sources": [
+      {
+        "citation": "Díaz-Cayeros, A., Estévez, F., & Magaloni, B. (2016). The political logic of poverty relief: Electoral strategies and social policy in Mexico. Cambridge University Press.",
+        "relevance": "Analyzes Mexican public preferences for anti-poverty programs in the context of electoral politics, examining how citizens evaluate government effectiveness and program design.",
+        "key_finding": "Mexican voters' preferences for social policy design are shaped by both programmatic evaluations of effectiveness and clientelistic political relationships, with conditional cash transfers gaining broad support."
+      },
+      {
+        "citation": "Blofield, M., & Martínez Franzoni, J. (2015). Maternalism, co-responsibility, and social equity: A typology of work–family policies. Social Politics, 22(1), 38-59.",
+        "relevance": "Provides a framework for understanding normative preferences about the role of state vs. family vs. market in social provision, applicable to Mexican policy attitudes.",
+        "key_finding": "Public preferences for social policy design reflect underlying beliefs about gender roles, state responsibility, and market adequacy, varying systematically across Latin American countries."
+      },
+      {
+        "citation": "Ardanaz, M., & Scartascini, C. (2013). Inequality and personal income tax compliance: Evidence from Latin America. IDB Working Paper No. 390.",
+        "relevance": "Examines willingness to fund social programs through taxation in Latin America, directly relevant to questions about how anti-poverty policy should be financed.",
+        "key_finding": "Higher perceived inequality increases stated willingness to pay taxes for social programs, but only when citizens trust that government will use revenues effectively."
+      },
+      {
+        "citation": "Garay, C. (2016). Social policy expansion in Latin America. Cambridge University Press.",
+        "relevance": "Analyzes the political determinants of social policy expansion in Latin America, providing context for understanding citizen preferences about policy scope and targeting.",
+        "key_finding": "Public demand for social policy expansion in Latin America is driven by both material need and normative beliefs about state responsibility, with cross-class coalitions supporting universal over targeted approaches."
+      },
+      {
+        "citation": "Zechmeister, E. J., & Corral, M. (2013). Individual and contextual constraints on ideological labels in Latin America. Comparative Political Studies, 46(6), 675-701.",
+        "relevance": "Demonstrates how ideological self-placement relates to policy preferences in Latin America, relevant to understanding the ideological structure of social policy attitudes in Mexico.",
+        "key_finding": "Ideological labels in Latin America map onto social policy preferences, but the mapping is weaker and more context-dependent than in advanced democracies."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "structural attribution of poverty",
+        "measurable_in_data": true,
+        "data_source": "POB"
+      },
+      {
+        "role": "effect",
+        "related_construct": "political ideology and partisanship",
+        "measurable_in_data": true,
+        "data_source": "CUL, IDE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "trust in government institutions",
+        "measurable_in_data": true,
+        "data_source": "CUL, COR"
+      },
+      {
+        "role": "cause",
+        "related_construct": "voter turnout and political participation",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "personal economic vulnerability",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "attitudes toward federalism and decentralization",
+        "measurable_in_data": true,
+        "data_source": "FED"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "gender role attitudes and women's economic participation",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "subjective_economic_wellbeing",
+    "sources": [
+      {
+        "citation": "Rojas, M. (2008). Experienced poverty and income poverty in Mexico: A subjective well-being approach. World Development, 36(6), 1078-1093.",
+        "relevance": "Directly examines subjective economic well-being in Mexico, demonstrating that self-assessed economic satisfaction captures dimensions of poverty missed by income measures.",
+        "key_finding": "Subjective economic well-being in Mexico is only moderately correlated with income, and factors such as social comparison, perceived control, and family relationships independently predict life satisfaction among the poor."
+      },
+      {
+        "citation": "Graham, C., & Pettinato, S. (2002). Frustrated achievers: Winners, losers, and subjective well-being in new market economies. Journal of Development Studies, 38(4), 100-140.",
+        "relevance": "Introduces the concept of 'frustrated achievers' — people whose objective conditions improve but subjective well-being declines — highly relevant to understanding the disconnect between material and subjective measures.",
+        "key_finding": "In Latin America, rapid economic change creates a gap between objective mobility and subjective satisfaction, with relative deprivation and rising aspirations undermining well-being gains."
+      },
+      {
+        "citation": "Lora, E. (Ed.). (2008). Beyond facts: Understanding quality of life. Inter-American Development Bank.",
+        "relevance": "Comprehensive IDB study of subjective well-being in Latin America covering satisfaction with work, health, leisure, and economic situation — dimensions directly measured in this construct.",
+        "key_finding": "Latin Americans report higher subjective well-being than predicted by their income levels, but domain-specific satisfaction (work, economic situation) is more closely tied to objective conditions than overall life satisfaction."
+      },
+      {
+        "citation": "Diener, E., Oishi, S., & Lucas, R. E. (2003). Personality, culture, and subjective well-being: Emotional and cognitive evaluations of life. Annual Review of Psychology, 54, 403-425.",
+        "relevance": "Provides the theoretical framework for measuring subjective well-being through multiple domains (happiness, life satisfaction, domain satisfaction, perceived control), which this construct operationalizes.",
+        "key_finding": "Subjective well-being is a multidimensional construct requiring measurement of both cognitive evaluations (life satisfaction, domain satisfaction) and affective components (happiness), as these tap distinct psychological processes."
+      },
+      {
+        "citation": "Palomar Lever, J. (2005). Percepción de las causas de la pobreza, factores psicológicos asociados y percepción de la movilidad social. In M. Székely (Ed.), Desmitificando la pobreza en México. PNUD/SEDESOL.",
+        "relevance": "Examines psychological correlates of poverty in Mexico, including locus of control, self-efficacy, and subjective class identification — dimensions captured in this construct.",
+        "key_finding": "Internal locus of control and self-efficacy are significantly associated with both subjective well-being and actual economic outcomes among poor Mexicans, suggesting psychological resources mediate the poverty-well-being link."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "material living standards and objective poverty",
+        "measurable_in_data": true,
+        "data_source": "POB, HAB"
+      },
+      {
+        "role": "cause",
+        "related_construct": "mental and physical health outcomes",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "subjective social mobility",
+        "measurable_in_data": true,
+        "data_source": "POB"
+      },
+      {
+        "role": "cause",
+        "related_construct": "political participation and democratic satisfaction",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "employment quality and labor market conditions",
+        "measurable_in_data": true,
+        "data_source": "ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "family cohesion and social support",
+        "measurable_in_data": true,
+        "data_source": "FAM"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "religiosity and spiritual well-being",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "perceived public security and victimization",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "national and cultural identity",
+        "measurable_in_data": true,
+        "data_source": "IDE"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "construct_name": "environmental_knowledge_literacy",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p8",
+      "p9",
+      "p29"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Environmental knowledge/literacy is inherently multi-dimensional, requiring aggregation to capture breadth of understanding. The three highest-entropy items (p8 H=3.16, p9 H=3.24, p29 H=3.35) are selected as they carry the most discriminating information and likely tap distinct knowledge facets; p27_1, p28_1, and p36_1 have substantially lower entropy and fewer categories, risking floor effects. PCA first component is preferred over sum/mean because the items have different scale widths (all K=13 but potentially different response distributions), and PCA extracts the shared latent variance without assuming equal item weights."
+  },
+  {
+    "construct_name": "environmental_concern_risk_perception",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p4",
+      "p5",
+      "p6",
+      "p7",
+      "p38_1"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Environmental concern and risk perception is a well-established multi-item construct where no single question captures both affective concern and cognitive risk appraisal; aggregation reduces measurement error and increases reliability. Items p4 and p5 (K=7) likely tap concern intensity, p6 and p7 (K=11) tap risk magnitude or breadth, and p38_1 (K=7, H=2.16) adds a complementary concern dimension; p30_1 (H=1.51) and p37 (H=1.49) are excluded due to low entropy indicating poor discrimination. Mean scoring is appropriate because items share broadly ordinal Likert-type structures and the mean is robust to the slight K differences (7 vs 11), with subsequent binning to ≤5 categories for the bridge model."
+  },
+  {
+    "construct_name": "pro_environmental_civic_engagement",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p34_1",
+      "p34_2",
+      "p34_3",
+      "p34_4",
+      "p34_5"
+    ],
+    "aggregation_method": "sum_score",
+    "justification": "All five items share an identical battery structure (K=4, very similar H≈0.50–0.70), strongly indicating they are a designed Likert battery measuring different civic engagement behaviors that should be summed into a total engagement score. No single item dominates in entropy or content validity since they are parallel indicators of the same behavioral domain. Sum scoring is the standard approach for behavioral checklists of this type, and the narrow entropy range confirms comparable item difficulty, making a simple sum appropriate before binning."
+  },
+  {
+    "construct_name": "environmental_governance_attitudes",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p12_1",
+      "p13",
+      "p40"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Environmental governance attitudes span trust in institutions, policy support, and regulatory preferences, requiring multiple items to cover the construct adequately. Items p12_1 (K=7, H=1.77), p13 (K=5, H=1.62), and p40 (K=6, H=1.84) provide the best entropy and likely cover distinct governance sub-dimensions; p41 is excluded due to very low entropy (H=0.97), suggesting a near-uniform or highly skewed response that would add noise rather than signal. Mean scoring accommodates the slight scale-width differences (K=5,6,7) by normalizing implicitly through averaging, and the result is binned to ≤5 ordinal categories for the bridge."
+  },
+  {
+    "construct_name": "socioeconomic_environmental_context",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p39",
+      "p42",
+      "p46_1",
+      "p47"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Socioeconomic-environmental context is a latent composite of material conditions, neighborhood environment quality, and resource access that no single item captures; aggregation is essential. Items p46_1 (H=2.40), p42 (H=2.23), p47 (H=1.79), and p39 (H=1.59) are selected as the four highest-entropy indicators, while p25_1 (H=0.83), p26_1 (H=0.92), and p44 (H=1.12) are excluded for low discrimination. PCA first component is preferred because the items span different K values (6 and 8) and likely have heterogeneous inter-correlations reflecting distinct socioeconomic dimensions, so PCA extracts the dominant shared variance without imposing equal weights."
+  }
+]

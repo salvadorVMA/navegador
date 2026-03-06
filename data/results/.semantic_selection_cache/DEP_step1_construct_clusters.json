@@ -1,0 +1,71 @@
+[
+  {
+    "name": "cultural_socialization_in_childhood",
+    "description": "Captures the degree to which respondents were exposed to cultural practices and resources during childhood through parental and household influences, reflecting early cultural capital formation.",
+    "question_cluster": [
+      "p8|DEP",
+      "p9_1|DEP",
+      "p11|DEP",
+      "p12_1|DEP",
+      "p13|DEP"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "cultural_openness_and_national_identity",
+    "description": "Measures respondents' orientations toward cultural diversity, foreign cultural influence, and the preservation of Mexican cultural heritage, reflecting tension between cosmopolitanism and cultural nationalism.",
+    "question_cluster": [
+      "p25|DEP",
+      "p26|DEP",
+      "p27|DEP",
+      "p28|DEP",
+      "p29_1|DEP",
+      "p52|DEP"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "ethnocultural_identity_and_linguistic_capital",
+    "description": "Assesses respondents' identification with indigenous or minority cultural heritage and their practical linguistic competencies in indigenous and foreign languages, capturing ethnic identity and multilingual capital.",
+    "question_cluster": [
+      "p34|DEP",
+      "p34_1a_1|DEP",
+      "p35|DEP",
+      "p35_1a_1|DEP",
+      "p37|DEP",
+      "p48|DEP",
+      "p49|DEP",
+      "p49_2a_1|DEP",
+      "p54|DEP"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "reading_engagement_and_literacy_orientation",
+    "description": "Measures the extent and ease of respondents' reading practices across different media types and their perceived purpose of reading, reflecting functional literacy and reading culture.",
+    "question_cluster": [
+      "p14|DEP",
+      "p15a_1|DEP",
+      "p15c_2|DEP",
+      "p15c_3|DEP",
+      "p15c_4|DEP",
+      "p16|DEP",
+      "p17|DEP",
+      "p18_1|DEP"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "subjective_socioeconomic_status",
+    "description": "Captures respondents' self-assessed position in the social and economic hierarchy, including perceived economic situation, self-identified social class, and overall life satisfaction, reflecting subjective stratification.",
+    "question_cluster": [
+      "p44|DEP",
+      "p45|DEP",
+      "p46|DEP",
+      "p41_g1|DEP",
+      "p42_1a|DEP",
+      "p43|DEP"
+    ],
+    "requires_aggregation": true
+  }
+]

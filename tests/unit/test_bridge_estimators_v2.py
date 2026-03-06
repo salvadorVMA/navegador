@@ -264,8 +264,16 @@ class TestMRPBridgeEstimator(unittest.TestCase):
             col_a='p_nominal', col_b='p_nominal',
         )
         self.assertIsNotNone(result)
-        self.assertIn('edad', result['cell_cols_used'])
-        self.assertIn('sexo', result['cell_cols_used'])
+        # After binning, edad may appear as 'edad_bin'; accept both forms.
+        cols_used = result['cell_cols_used']
+        self.assertTrue(
+            any('edad' in c for c in cols_used),
+            f"Expected edad (or edad_bin) in cell_cols_used, got {cols_used}"
+        )
+        self.assertTrue(
+            any('sexo' in c for c in cols_used),
+            f"Expected sexo in cell_cols_used, got {cols_used}"
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -296,7 +304,8 @@ class TestDoublyRobustBridgeEstimator(unittest.TestCase):
     def test_required_keys(self):
         result = self._run()
         for key in ('gamma', 'gamma_ci_95', 'cramers_v', 'joint_table',
-                    'propensity_overlap', 'max_weight', 'n_trimmed', 'method'):
+                    'propensity_overlap', 'ks_warning', 'propensity_features',
+                    'max_weight', 'n_trimmed', 'method'):
             self.assertIn(key, result, f"Missing key: {key}")
 
     def test_method_label(self):
@@ -331,6 +340,64 @@ class TestDoublyRobustBridgeEstimator(unittest.TestCase):
             col_a='p_nominal', col_b='nonexistent_col',
         )
         self.assertIsNone(result)
+
+    def test_ks_warning_is_boolean(self):
+        """ks_warning must be a boolean (True when overlap is poor)."""
+        result = self._run()
+        self.assertIsInstance(result['ks_warning'], bool)
+
+    def test_propensity_features_is_list(self):
+        """propensity_features reports which vars were used for propensity."""
+        result = self._run()
+        self.assertIsInstance(result['propensity_features'], list)
+        self.assertGreater(len(result['propensity_features']), 0)
+
+
+# ---------------------------------------------------------------------------
+# TestCategoryBinning
+# ---------------------------------------------------------------------------
+
+class TestCategoryBinning(unittest.TestCase):
+    """Tests for the bin_categories() helper and max_categories integration."""
+
+    def setUp(self):
+        from ses_regression import bin_categories
+        self.bin_categories = bin_categories
+
+    def test_no_binning_when_within_limit(self):
+        s = pd.Series([1, 2, 3, 2, 1, 3])
+        binned, bmap = self.bin_categories(s, max_categories=5)
+        pd.testing.assert_series_equal(binned, s)
+        self.assertEqual(set(bmap.keys()), {1, 2, 3})
+
+    def test_ordinal_binning_reduces_categories(self):
+        s = pd.Series(range(10))  # 10 unique values
+        binned, bmap = self.bin_categories(s, max_categories=4, var_type='ordinal')
+        self.assertLessEqual(binned.nunique(), 4)
+        self.assertEqual(len(bmap), 10)  # every original value mapped
+
+    def test_nominal_binning_reduces_categories(self):
+        s = pd.Series(['a', 'b', 'c', 'd', 'e', 'f', 'a', 'a', 'b'])
+        binned, bmap = self.bin_categories(s, max_categories=3, var_type='nominal')
+        self.assertLessEqual(binned.nunique(), 3)
+
+    def test_bayesian_respects_max_categories(self):
+        """BayesianBridgeEstimator with max_categories=3 should produce ≤3 cat model."""
+        rng = np.random.default_rng(99)
+        n = 400
+        # 8-category target variable
+        df_a = _make_ses_df(n=n, seed=10)
+        df_a['p_many'] = rng.choice([str(i) for i in range(8)], n)
+        df_b = _make_ses_df(n=n, seed=11)
+        df_b['p_many'] = rng.choice([str(i) for i in range(8)], n)
+
+        est = BayesianBridgeEstimator(n_sim=100, n_draws=20, max_categories=3)
+        result = est.estimate('v|A', 'v|B', df_a, df_b, 'p_many', 'p_many')
+        self.assertIsNotNone(result)
+        jt = np.array(result['joint_table'])
+        # With max_categories=3 the joint table should be 3×3 or smaller
+        self.assertLessEqual(jt.shape[0], 3)
+        self.assertLessEqual(jt.shape[1], 3)
 
 
 # ---------------------------------------------------------------------------

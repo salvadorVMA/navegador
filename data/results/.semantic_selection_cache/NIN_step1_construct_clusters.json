@@ -1,0 +1,80 @@
+[
+  {
+    "name": "perceived_situation_of_minors",
+    "description": "Captures respondents' assessments of whether the overall political, economic, and social conditions for children and adolescents in Mexico have improved, worsened, or stayed the same over time, reflecting a generalized evaluation of societal progress for younger generations.",
+    "question_cluster": [
+      "p1",
+      "p2",
+      "p5",
+      "p31",
+      "p61"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "children_rights_recognition",
+    "description": "Measures the degree to which respondents recognize, endorse, and perceive respect for the fundamental rights of children and adolescents, including rights to education, participation in trials, and overall rights respect in Mexico.",
+    "question_cluster": [
+      "p19",
+      "p21_2",
+      "p22",
+      "p73_3",
+      "p17_1",
+      "p48_1"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "child_agency_and_participation",
+    "description": "Assesses attitudes toward the voice, autonomy, and civic participation of children and adolescents in family decisions, school decisions, and public mobilizations, reflecting beliefs about the appropriate role of minors as social actors.",
+    "question_cluster": [
+      "p12",
+      "p13",
+      "p41",
+      "p16_1",
+      "p11",
+      "p20"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "education_quality_and_opportunity",
+    "description": "Measures perceptions of the quality, accessibility, and adequacy of the educational system for children and adolescents, including satisfaction with current educational arrangements and comparative opportunity judgments across generations.",
+    "question_cluster": [
+      "p6",
+      "p7_1",
+      "p8",
+      "p9_1",
+      "p10_7",
+      "p28_1",
+      "p32",
+      "p34_1"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "vulnerability_and_risk_exposure",
+    "description": "Captures beliefs about the specific risks, problems, and vulnerabilities faced by children, adolescents, and youth in Mexico, including exposure to violence, health problems, criminal responsibility, economic precarity, and family instability.",
+    "question_cluster": [
+      "p4_1a_1",
+      "p24",
+      "p25",
+      "p26_1",
+      "p27",
+      "p30_1a_1",
+      "p44",
+      "p46_1",
+      "p54",
+      "p55_1a_1",
+      "p56",
+      "p59_2a_1",
+      "p72_2",
+      "p81_2",
+      "p82",
+      "p83_1",
+      "p18_3",
+      "p75"
+    ],
+    "requires_aggregation": true
+  }
+]

@@ -1,0 +1,64 @@
+[
+  {
+    "construct_name": "cosmopolitan_identity",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p19_1",
+      "p20",
+      "p15",
+      "p18_1",
+      "p55"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Cosmopolitan identity is inherently multi-dimensional, encompassing self-identification with the world, openness to others, and sense of global belonging, so no single item fully captures it. The questions share broadly compatible Likert-style scales (6–7 categories) and collectively triangulate the construct from complementary angles. PCA on the first component is preferred over a simple mean because the items likely vary in their loading strength on the latent cosmopolitan dimension, and PCA extracts the shared variance most efficiently before binning to 5 quantiles."
+  },
+  {
+    "construct_name": "transnational_connectedness",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p6a_1",
+      "p8",
+      "p8_2"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Transnational connectedness reflects actual cross-border ties and interactions, but several items in this cluster (p2, p3, p4, p7) have very low entropy (≤1.07 bits), indicating highly skewed distributions that would contribute little discriminating information and could distort a composite. p6a_1, p8, and p8_2 have the highest entropy values and plausibly tap into frequency or intensity of transnational contact, making them the most informative and combinable subset. A mean score is appropriate because the selected items share similar 4–7 category ordinal scales and averaging preserves the ordinal metric before binning."
+  },
+  {
+    "construct_name": "cultural_openness",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p11",
+      "p24_1",
+      "p30",
+      "p11_2"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Cultural openness is a latent attitudinal construct best captured by multiple items reflecting tolerance, curiosity, and receptivity toward other cultures. p11, p24_1, p30, and p11_2 carry the highest entropy values in the cluster and span distinct facets of the construct (general openness, specific cultural attitudes, behavioral dispositions), while p22_6a_1 and p22_1 have many categories or lower entropy suggesting noisier measurement. PCA extracts the dominant shared dimension across these moderately compatible ordinal items and avoids scale-mismatch distortion before binning to 5 quantiles."
+  },
+  {
+    "construct_name": "national_cultural_pride",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p17_1",
+      "p17_2",
+      "p17_3",
+      "p17_4",
+      "p17_5",
+      "p17_6"
+    ],
+    "aggregation_method": "sum_score",
+    "justification": "The p17 battery is a classic multi-item pride scale where all six items share an identical 7-point scale, making them directly summable without rescaling. Together they cover distinct domains of national pride (e.g., culture, history, institutions), and summing them into a composite reduces item-level measurement error and yields a reliable overall pride index. p65a_1 and p66a_1 have 14–15 categories and very high entropy suggesting they measure a different or broader construct (possibly national identity salience), so they are excluded to maintain scale homogeneity; the sum is then binned to ≤5 categories for the bridge model."
+  },
+  {
+    "construct_name": "global_governance_support",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p48",
+      "p56_1",
+      "p54_1",
+      "p57"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Support for global governance is a multi-faceted attitude encompassing trust in international institutions, willingness to delegate sovereignty, and endorsement of multilateral solutions, requiring aggregation to capture its breadth. p48, p56_1, p54_1, and p57 have the highest entropy values in the cluster (≥1.66 bits) and plausibly tap into distinct but related dimensions of global governance attitudes, while p52_1, p58, p60_1, and p63_1 show lower entropy and may reflect more specific or skewed sub-questions. These four items use 5–7 category ordinal scales that are sufficiently compatible for averaging, and the mean is then binned to ≤5 categories for the ordinal bridge model."
+  }
+]

@@ -1,0 +1,432 @@
+[
+  {
+    "construct_name": "functional_health_status",
+    "sources": [
+      {
+        "citation": "Ware, J. E., & Sherbourne, C. D. (1992). The MOS 36-item short-form health survey (SF-36): I. Conceptual framework and item selection. Medical Care, 30(6), 473–483.",
+        "relevance": "The SF-36 is the foundational instrument from which the functional health items in this construct (moderate physical effort, stair climbing, activity reduction, pain interference) are directly derived.",
+        "key_finding": "The SF-36 demonstrated that physical functioning, role limitations due to physical health, and bodily pain are distinct but correlated dimensions that reliably capture functional health status across populations."
+      },
+      {
+        "citation": "Durán-Arenas, L., Gallegos-Carrillo, K., Salinas-Escudero, G., & Martínez-Salgado, H. (2004). Towards a Mexican normative standard for measurement of the short format 36 health-related quality of life instrument. Salud Pública de México, 46(4), 306–315.",
+        "relevance": "Provides Mexican population norms for the SF-36, validating the applicability of functional health status measurement in the Mexican context.",
+        "key_finding": "Mexican adults showed distinct functional health profiles by age, sex, and socioeconomic status, confirming the instrument's sensitivity to health disparities in Mexico."
+      },
+      {
+        "citation": "Verbrugge, L. M., & Jette, A. M. (1994). The disablement process. Social Science & Medicine, 38(1), 1–14.",
+        "relevance": "Provides the theoretical framework linking pathology to functional limitations and disability, which underpins the logic of measuring how health conditions restrict daily activities.",
+        "key_finding": "The disablement process model demonstrated that functional limitations mediate the pathway from disease to disability, and that personal and environmental factors modify this pathway."
+      },
+      {
+        "citation": "Salomon, J. A., Mathers, C. D., Chatterji, S., Sadana, R., Üstün, T. B., & Murray, C. J. L. (2003). Quantifying individual levels of health: Definitions, concepts, and measurement issues. In C. J. L. Murray & D. B. Evans (Eds.), Health systems performance assessment: Debates, methods and empiricism (pp. 301–318). World Health Organization.",
+        "relevance": "Discusses conceptual and measurement issues in quantifying individual health levels, including functional capacity, relevant to the operationalization of this construct.",
+        "key_finding": "Self-reported functional health measures capture meaningful variation in health states but require careful calibration across cultural and socioeconomic contexts."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "age and aging processes",
+        "measurable_in_data": true,
+        "data_source": "ENV, SAL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "labor force participation and productivity",
+        "measurable_in_data": true,
+        "data_source": "ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "healthcare utilization",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "poverty and economic vulnerability",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "subjective wellbeing and life satisfaction",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "housing quality and living conditions",
+        "measurable_in_data": true,
+        "data_source": "HAB"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "healthcare_access_and_utilization",
+    "sources": [
+      {
+        "citation": "Andersen, R. M. (1995). Revisiting the behavioral model and access to medical care: Does it matter? Journal of Health and Social Behavior, 36(1), 1–10.",
+        "relevance": "Provides the dominant theoretical framework (Behavioral Model of Health Services Use) for understanding predisposing, enabling, and need factors that determine healthcare access and utilization, directly relevant to the items on affiliation, service type, travel time, and actions taken.",
+        "key_finding": "Access to care is best understood as a multidimensional concept encompassing potential access (insurance, availability) and realized access (actual utilization), with equity achieved when need rather than social structure determines use."
+      },
+      {
+        "citation": "Gómez-Dantés, O., Sesma, S., Becerril, V. M., Knaul, F. M., Arreola, H., & Frenk, J. (2011). Sistema de salud de México. Salud Pública de México, 53(Suppl. 2), s220–s232.",
+        "relevance": "Provides a comprehensive overview of the Mexican health system, including the fragmented institutional structure (IMSS, ISSSTE, Seguro Popular) that the affiliation questions directly measure.",
+        "key_finding": "Mexico's segmented health system creates differential access patterns based on employment status and institutional affiliation, with significant gaps in coverage and quality for the uninsured population."
+      },
+      {
+        "citation": "Bautista-Arredondo, S., Serván-Mori, E., Colchero, M. A., Ramírez-Rodríguez, B., & Sosa-Rubí, S. G. (2014). Análisis del uso de servicios ambulatorios curativos en el contexto de la reforma para la protección universal en salud en México. Salud Pública de México, 56(Suppl. 1), s18–s31.",
+        "relevance": "Examines patterns of ambulatory healthcare utilization in Mexico in the context of Seguro Popular, directly relevant to questions about service type, treatment receipt, and adherence.",
+        "key_finding": "Seguro Popular affiliation increased utilization of public health services among the previously uninsured, but significant barriers including travel time and quality perceptions persisted."
+      },
+      {
+        "citation": "Penchansky, R., & Thomas, J. W. (1981). The concept of access. Medical Care, 19(2), 127–140.",
+        "relevance": "Defines access as the fit between patient needs and the health system across five dimensions (availability, accessibility, accommodation, affordability, acceptability), relevant to the travel time and service preference items.",
+        "key_finding": "Access is not a single attribute but a set of specific dimensions describing the fit between patients and the health system, each independently measurable and policy-relevant."
+      },
+      {
+        "citation": "Nigenda, G., Wirtz, V. J., González-Robledo, L. M., & Reich, M. R. (2015). Evaluating the implementation of Mexico's health reform: The case of Seguro Popular. Health Systems & Reform, 1(3), 217–228.",
+        "relevance": "Evaluates the implementation of Mexico's universal health coverage reform, providing context for understanding institutional affiliation patterns and their effects on utilization.",
+        "key_finding": "Despite expanding formal coverage, Seguro Popular faced challenges in translating affiliation into effective access due to supply-side constraints and geographic barriers."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "socioeconomic status and poverty",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "effect",
+        "related_construct": "employment status and formality",
+        "measurable_in_data": true,
+        "data_source": "ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "functional health outcomes",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "financial burden of healthcare",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "geographic location and urbanization",
+        "measurable_in_data": true,
+        "data_source": "HAB, POB"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment and health literacy",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "indigenous identity and ethnicity",
+        "measurable_in_data": true,
+        "data_source": "IND"
+      },
+      {
+        "role": "effect",
+        "related_construct": "trust in government institutions",
+        "measurable_in_data": true,
+        "data_source": "CUL, COR"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "gender",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "migration status",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "financial_burden_of_healthcare",
+    "sources": [
+      {
+        "citation": "Xu, K., Evans, D. B., Kawabata, K., Zeramdini, R., Klavus, J., & Murray, C. J. L. (2003). Household catastrophic health expenditure: A multicountry analysis. The Lancet, 362(9378), 111–117.",
+        "relevance": "Establishes the conceptual and empirical framework for measuring catastrophic health expenditure, directly relevant to the out-of-pocket payment and perceived financial impact items.",
+        "key_finding": "Approximately 150 million people globally suffer financial catastrophe annually due to health payments, with the absence of prepayment mechanisms being the primary determinant."
+      },
+      {
+        "citation": "Knaul, F. M., Wong, R., Arreola-Ornelas, H., & Méndez, O. (2011). Household catastrophic health expenditures: A comparative analysis of twelve Latin American and Caribbean countries. Salud Pública de México, 53(Suppl. 2), s85–s95.",
+        "relevance": "Provides comparative data on catastrophic health expenditure in Latin America with specific data on Mexico, validating the importance of measuring financial burden in the Mexican context.",
+        "key_finding": "Mexico had among the highest rates of catastrophic health expenditure in the region prior to Seguro Popular, with the poorest households disproportionately affected."
+      },
+      {
+        "citation": "Wagstaff, A., & van Doorslaer, E. (2003). Catastrophe and impoverishment in paying for health care: With applications to Vietnam 1993–1998. Health Economics, 12(11), 921–933.",
+        "relevance": "Provides methodology for measuring impoverishment due to health payments, relevant to understanding how out-of-pocket expenses affect family finances as captured by the perceived impact item.",
+        "key_finding": "Out-of-pocket health payments can push households below the poverty line, and the impoverishing effect is distinct from the catastrophic expenditure measure."
+      },
+      {
+        "citation": "Galárraga, O., Sosa-Rubí, S. G., Salinas-Rodríguez, A., & Sesma-Vázquez, S. (2010). Health insurance for the poor: Impact on catastrophic and out-of-pocket health expenditures in Mexico. European Journal of Health Economics, 11(5), 437–447.",
+        "relevance": "Directly evaluates the impact of Seguro Popular on out-of-pocket spending in Mexico, providing empirical context for the financial burden construct.",
+        "key_finding": "Seguro Popular reduced catastrophic health expenditure and out-of-pocket spending among affiliated households, though significant financial burden persisted for certain types of care."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "healthcare access and insurance affiliation",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "household poverty and economic vulnerability",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "treatment adherence and health-seeking behavior",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "employment formality and income level",
+        "measurable_in_data": true,
+        "data_source": "ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "subjective wellbeing and life satisfaction",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "family structure and household composition",
+        "measurable_in_data": true,
+        "data_source": "FAM"
+      },
+      {
+        "role": "effect",
+        "related_construct": "chronic disease burden",
+        "measurable_in_data": false,
+        "data_source": ""
+      },
+      {
+        "role": "cause",
+        "related_construct": "educational investment and children's schooling",
+        "measurable_in_data": true,
+        "data_source": "EDU, NIN"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "subjective_wellbeing_and_life_quality",
+    "sources": [
+      {
+        "citation": "Diener, E., Emmons, R. A., Larsen, R. J., & Griffin, S. (1985). The Satisfaction with Life Scale. Journal of Personality Assessment, 49(1), 71–75.",
+        "relevance": "Establishes the foundational measurement approach for life satisfaction, directly relevant to the life satisfaction and quality of life items in this construct.",
+        "key_finding": "Life satisfaction can be reliably measured as a cognitive-judgmental process distinct from affect, and the Satisfaction with Life Scale demonstrates strong psychometric properties across populations."
+      },
+      {
+        "citation": "Rojas, M. (2006). Life satisfaction and satisfaction in domains of life: Is it a simple relationship? Journal of Happiness Studies, 7(4), 467–497.",
+        "relevance": "Examines the relationship between domain-specific and global life satisfaction in Mexico, directly relevant to the multi-item approach combining quality of life, life satisfaction, and domain-specific satisfaction (sexual life).",
+        "key_finding": "In Mexico, the relationship between domain satisfactions and overall life satisfaction is complex and non-linear, with family and health domains being particularly important contributors."
+      },
+      {
+        "citation": "WHOQOL Group. (1998). Development of the World Health Organization WHOQOL-BREF quality of life assessment. Psychological Medicine, 28(3), 551–558.",
+        "relevance": "Provides the conceptual framework for measuring quality of life across physical, psychological, social, and environmental domains, relevant to the self-rated quality of life and enjoyment of life items.",
+        "key_finding": "Quality of life is a multidimensional construct that can be reliably measured cross-culturally, with psychological wellbeing and social relationships being key domains alongside physical health."
+      },
+      {
+        "citation": "Lora, E. (Ed.). (2008). Beyond facts: Understanding quality of life. Inter-American Development Bank.",
+        "relevance": "Provides a Latin American perspective on subjective wellbeing measurement and its determinants, including health, economic, and social factors relevant to the Mexican context.",
+        "key_finding": "Latin Americans report higher subjective wellbeing than predicted by objective conditions, but health status, employment, and social connections remain strong predictors of life satisfaction in the region."
+      },
+      {
+        "citation": "Veenhoven, R. (2012). Happiness: Also known as 'life satisfaction' and 'subjective well-being'. In K. C. Land, A. C. Michalos, & M. J. Sirgy (Eds.), Handbook of social indicators and quality of life research (pp. 63–77). Springer.",
+        "relevance": "Provides a comprehensive conceptual overview distinguishing hedonic wellbeing, life satisfaction, and quality of life—the three dimensions captured by this construct.",
+        "key_finding": "Subjective wellbeing encompasses both cognitive evaluations (life satisfaction) and affective experiences (enjoyment, calm), and both components provide unique information about quality of life."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "functional health status",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "income and economic security",
+        "measurable_in_data": true,
+        "data_source": "ECO, POB"
+      },
+      {
+        "role": "effect",
+        "related_construct": "family relationships and social support",
+        "measurable_in_data": true,
+        "data_source": "FAM"
+      },
+      {
+        "role": "cause",
+        "related_construct": "political participation and civic engagement",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "public security and victimization",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "religiosity and spiritual life",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "effect",
+        "related_construct": "housing quality and neighborhood conditions",
+        "measurable_in_data": true,
+        "data_source": "HAB"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "identity and values",
+        "measurable_in_data": true,
+        "data_source": "IDE"
+      },
+      {
+        "role": "effect",
+        "related_construct": "gender equality and gender-based discrimination",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "health_behaviors_and_lifestyle",
+    "sources": [
+      {
+        "citation": "Barquera, S., Campos-Nonato, I., Hernández-Barrera, L., Pedroza-Tobías, A., & Rivera-Dommarco, J. A. (2013). Prevalencia de obesidad en adultos mexicanos, ENSANUT 2012. Salud Pública de México, 55(Suppl. 2), s151–s160.",
+        "relevance": "Documents the prevalence of obesity and related health behaviors (diet, physical activity) in Mexico using national survey data, providing epidemiological context for the behavioral items in this construct.",
+        "key_finding": "Over 70% of Mexican adults were overweight or obese, with low vegetable consumption and physical inactivity identified as key modifiable risk factors."
+      },
+      {
+        "citation": "Reynales-Shigematsu, L. M., Guerrero-López, C. M., Lazcano-Ponce, E., Villatoro-Velázquez, J. A., Medina-Mora, M. E., Fleiz-Bautista, C., ... & Hernández-Ávila, M. (2012). Encuesta Nacional de Adicciones 2011: Reporte de tabaco. Instituto Nacional de Psiquiatría Ramón de la Fuente Muñiz.",
+        "relevance": "Provides national data on tobacco use patterns in Mexico, directly relevant to the smoking history, cigarette consumption, and dependence items in this construct.",
+        "key_finding": "Tobacco use in Mexico showed significant sociodemographic variation, with the Fagerström-type item on most difficult cigarette to quit being a valid indicator of nicotine dependence."
+      },
+      {
+        "citation": "Cockerham, W. C. (2005). Health lifestyle theory and the convergence of agency and structure. Journal of Health and Social Behavior, 46(1), 51–67.",
+        "relevance": "Provides the theoretical framework for understanding health behaviors as structured lifestyle choices shaped by social conditions, relevant to interpreting the behavioral patterns captured by this construct.",
+        "key_finding": "Health lifestyles are collective patterns of health-related behavior based on choices from options available to people according to their life chances, making them inherently linked to social structure."
+      },
+      {
+        "citation": "Medina-Mora, M. E., Borges, G., Lara, C., Benjet, C., Blanco, J., Fleiz, C., ... & Aguilar-Gaxiola, S. (2005). Prevalence, service use, and demographic correlates of 12-month DSM-IV psychiatric disorders in Mexico: Results from the Mexican National Comorbidity Survey. Psychological Medicine, 35(12), 1773–1783.",
+        "relevance": "Provides context on alcohol consumption patterns and their mental health correlates in Mexico, relevant to the alcohol use items in this construct.",
+        "key_finding": "Alcohol use disorders were among the most prevalent psychiatric conditions in Mexico, with distinct patterns by gender, age, and urbanization level."
+      },
+      {
+        "citation": "Hallal, P. C., Andersen, L. B., Bull, F. C., Guthold, R., Haskell, W., Ekelund, U., & Lancet Physical Activity Series Working Group. (2012). Global physical activity levels: Surveillance progress, pitfalls, and prospects. The Lancet, 380(9838), 247–257.",
+        "relevance": "Provides global context for measuring physical activity levels including in Latin America, relevant to the physical activity and recreational activity items.",
+        "key_finding": "Approximately 31% of adults worldwide are physically inactive, with significant variation by country and sociodemographic factors, and self-reported measures remain the primary surveillance tool."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "functional health status and chronic disease",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment and health literacy",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "effect",
+        "related_construct": "socioeconomic status and income",
+        "measurable_in_data": true,
+        "data_source": "ECO, POB"
+      },
+      {
+        "role": "cause",
+        "related_construct": "healthcare utilization and costs",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "subjective wellbeing",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "urbanization and neighborhood environment",
+        "measurable_in_data": true,
+        "data_source": "HAB, MED"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "gender norms and roles",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "effect",
+        "related_construct": "cultural values and identity",
+        "measurable_in_data": true,
+        "data_source": "IDE, CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "age and life stage",
+        "measurable_in_data": true,
+        "data_source": "ENV, NIN"
+      },
+      {
+        "role": "effect",
+        "related_construct": "media exposure and information access",
+        "measurable_in_data": true,
+        "data_source": "SOC"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  }
+]

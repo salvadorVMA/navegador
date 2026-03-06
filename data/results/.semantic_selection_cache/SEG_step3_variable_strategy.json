@@ -1,0 +1,69 @@
+[
+  {
+    "construct_name": "police_institutional_trust",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p47",
+      "p48",
+      "p52",
+      "p53",
+      "p51_1",
+      "p51_2",
+      "p51_4"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Police institutional trust is inherently multi-dimensional (confidence, performance evaluations, legitimacy perceptions) and no single item captures the full construct. The selected items (p47, p48, p52, p53, p51_1, p51_2, p51_4) share compatible 5-6 category Likert-type scales, making them combinable without distortion, while p26_1 (K=14) and p30_1 are excluded due to scale incompatibility. PCA first component is preferred over simple sum/mean because it extracts the dominant latent dimension of trust while down-weighting items with lower communality (e.g., p51_2 H=1.06, p51_4 H=1.33), and the resulting scores are binned to 5 quantiles to satisfy the ≤15 category constraint."
+  },
+  {
+    "construct_name": "victimization_exposure",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p56",
+      "p57",
+      "p58_1",
+      "p59",
+      "p60"
+    ],
+    "aggregation_method": "sum_score",
+    "justification": "Victimization exposure is best captured as a cumulative burden across multiple crime-event dimensions rather than any single incident type, justifying aggregation. The core items p56 (personal victimization screener), p57 (household victimization screener), p58_1 (number of incidents), p59 (crime type experienced), and p60 (reporting behavior) together span the breadth of exposure while having the highest entropy values in the cluster (H=0.72–1.02), indicating meaningful variance. The p58a_* sub-items are excluded because their extremely low entropy (H≤0.47, many near 0) indicates near-zero variance and they would add noise rather than signal; a sum score binned to ≤5 categories yields an ordinal severity index suitable for the bridge model."
+  },
+  {
+    "construct_name": "fear_of_crime_and_risk_perception",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p3",
+      "p4",
+      "p5",
+      "p6",
+      "p8_1",
+      "p12_1",
+      "p13_1"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Fear of crime is a well-established multi-item construct spanning affective fear and cognitive risk perception, and no single item captures both dimensions adequately. All selected items share 7-category scales (p3–p6, p8_1, p12_1, p13_1) with high and comparable entropy (H=2.14–2.49), ensuring scale compatibility and roughly equal information contribution. PCA first component is preferred to separate the dominant fear/risk latent factor from any secondary dimensions (e.g., p9_1 with H=0.81 and p10_1 are lower-entropy and may tap distinct sub-constructs), with scores binned to 5 quantiles for the bridge model."
+  },
+  {
+    "construct_name": "security_avoidance_behavior",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p22_1",
+      "p23_1",
+      "p24_1"
+    ],
+    "aggregation_method": "sum_score",
+    "justification": "Security avoidance behavior is operationally defined as the accumulation of protective behavioral adaptations, and with only three available items it is both necessary and appropriate to use all of them. The items share near-compatible 4-6 category ordinal scales and moderate entropy (H=0.70–1.62), and their face validity collectively covers avoidance frequency and type. A sum score binned to ≤5 categories produces a compact ordinal avoidance index; given the small number of items and modest scale differences, sum scoring is more transparent and robust than PCA for this low-importance (3/5) construct."
+  },
+  {
+    "construct_name": "punitive_authoritarianism",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p66",
+      "p67",
+      "p68",
+      "p71",
+      "p72"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Punitive authoritarianism is a latent attitudinal construct requiring multiple items to reliably distinguish its dimensions (support for harsh punishment, authoritarian control, punitiveness toward offenders), and all five available items are relevant. All items share 6-7 category scales with high and tightly clustered entropy (H=1.87–2.21), indicating excellent scale compatibility and comparable information content across items. PCA first component is preferred to extract the dominant punitive-authoritarian attitude dimension while accounting for any minor item-specific variance, with scores binned to 5 quantiles for the bridge model."
+  }
+]

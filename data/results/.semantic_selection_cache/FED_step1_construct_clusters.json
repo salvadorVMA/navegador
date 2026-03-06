@@ -1,0 +1,79 @@
+[
+  {
+    "name": "federalism_preference",
+    "description": "Captures citizens' normative preferences for how political and fiscal authority should be distributed across federal, state, and municipal levels of government, including preferences for centralized versus decentralized decision-making.",
+    "question_cluster": [
+      "p22",
+      "p24",
+      "p25",
+      "p36",
+      "p38",
+      "p58",
+      "p60"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "institutional_trust_and_representativeness",
+    "description": "Measures the degree to which citizens trust and feel represented by key political institutions and actors across different levels of government, including parties, legislators, executives, and the judiciary.",
+    "question_cluster": [
+      "p12_1",
+      "p12_2",
+      "p12_3",
+      "p12_4",
+      "p12_5",
+      "p12_6",
+      "p13_1",
+      "p51_1",
+      "p54",
+      "p55",
+      "p56"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "subnational_government_performance",
+    "description": "Assesses citizens' evaluations of how well municipal and state governments perform their functions, including service delivery, responsiveness, law compliance, and adequacy relative to taxes paid.",
+    "question_cluster": [
+      "p10",
+      "p11",
+      "p14_1",
+      "p15_1",
+      "p16",
+      "p17",
+      "p18_1",
+      "p37_1",
+      "p44",
+      "p47"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "security_governance_preferences",
+    "description": "Measures citizens' preferences and evaluations regarding which level of government should be responsible for public security, including police coordination, emergency response, and the perceived effectiveness of intergovernmental security cooperation.",
+    "question_cluster": [
+      "p45",
+      "p46",
+      "p48",
+      "p49",
+      "p50_1",
+      "p53_1",
+      "p53_4"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "political_interest_and_efficacy",
+    "description": "Captures respondents' subjective engagement with politics, including their interest in political affairs, perceived relevance of politics to daily life, and economic and political outlook, reflecting broader orientations toward the political system.",
+    "question_cluster": [
+      "p1",
+      "p3",
+      "p4",
+      "p5",
+      "p6",
+      "p7",
+      "p8"
+    ],
+    "requires_aggregation": true
+  }
+]

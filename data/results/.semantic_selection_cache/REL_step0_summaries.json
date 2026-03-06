@@ -1,0 +1,337 @@
+{
+  "p2|REL": {
+    "summary": "Past membership in a church or religious denomination (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3|REL": {
+    "summary": "Religious affiliation matches father's religion (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p4|REL": {
+    "summary": "Religious affiliation matches mother's religion (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5|REL": {
+    "summary": "All family members share the same religion (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6|REL": {
+    "summary": "Receipt of religious education in childhood (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7_1|REL": {
+    "summary": "Locations where religious education was received (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8_1|REL": {
+    "summary": "Belief that one's church adequately addresses moral problems and personal needs (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10|REL": {
+    "summary": "Frequency of prayer or petitions to a higher power outside of temple or religious celebrations.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11|REL": {
+    "summary": "Willingness to ask favors from the Virgin of Guadalupe or saints (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12|REL": {
+    "summary": "Finding comfort and strength in religion (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p13_1|REL": {
+    "summary": "Use of religious values to guide family behavior (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14|REL": {
+    "summary": "Reliance on priests' or religious ministers' recommendations when making important life decisions (scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15|REL": {
+    "summary": "Self-identification of religious identity regardless of church attendance.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16_1|REL": {
+    "summary": "Importance of performing religious ceremony or ritual for birth events (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_1|REL": {
+    "summary": "Belief in the existence of God (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_2|REL": {
+    "summary": "Belief in the existence of life after death (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_3|REL": {
+    "summary": "Belief in the existence of luck or fortune (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_4|REL": {
+    "summary": "Belief in the existence of hell (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_5|REL": {
+    "summary": "Belief in the existence of heaven or paradise (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_6|REL": {
+    "summary": "Belief in the existence of sin (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_7|REL": {
+    "summary": "Belief in the existence of the soul (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_8|REL": {
+    "summary": "Belief in the existence of resurrection of the dead (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_9|REL": {
+    "summary": "Belief in the existence of the devil (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_10|REL": {
+    "summary": "Belief in the existence of reincarnation (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_11|REL": {
+    "summary": "Belief in the existence of witchcraft or sorcery (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_12|REL": {
+    "summary": "Belief in the existence of karma (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_13|REL": {
+    "summary": "Belief in the existence of spiritual cleansings or limpias (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_14|REL": {
+    "summary": "Belief in the existence of destiny or fate (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_15|REL": {
+    "summary": "Belief in the existence of the power of the mind (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_16|REL": {
+    "summary": "Belief in other supernatural or spiritual phenomena (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18|REL": {
+    "summary": "Importance of God in one's life on a 0-10 scale.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19|REL": {
+    "summary": "Agreement with statements about religious belief or secular worldview.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20|REL": {
+    "summary": "Possession of an amulet or charm for good luck (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21|REL": {
+    "summary": "Frequency of consulting horoscopes.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22_1|REL": {
+    "summary": "Frequency of thinking about the meaning or purpose of life.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22_3|REL": {
+    "summary": "Frequency of thinking about death.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23|REL": {
+    "summary": "Reasons why life has meaning or purpose.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24|REL": {
+    "summary": "Beliefs about the nature or meaning of death.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25|REL": {
+    "summary": "Dedication of time to prayer, meditation, or contemplation (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26|REL": {
+    "summary": "Personal beliefs about the nature of good and evil.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27_1|REL": {
+    "summary": "Importance of friendships in one's life (scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28_1|REL": {
+    "summary": "Importance of teaching children good manners as a family value.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29_1|REL": {
+    "summary": "Approval or disapproval of abortion when the woman is unmarried.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30|REL": {
+    "summary": "Agreement with legal punishment for assisting or allowing a family member's assisted death (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p52_1|REL": {
+    "summary": "Agreement with priests or religious ministers discussing politics during religious services.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33_1|REL": {
+    "summary": "Agreement with parents on religious beliefs and practices.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34|REL": {
+    "summary": "Belief that one can freely choose their religion in Mexico (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35|REL": {
+    "summary": "Experience of school problems due to one's religion or beliefs (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35a|REL": {
+    "summary": "Description of school problems experienced due to religion or beliefs (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35_1|REL": {
+    "summary": "Agreement with scientific explanation of life's origin versus religious creation account.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36|REL": {
+    "summary": "Agreement with statements about teaching evolution or creation in schools.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37|REL": {
+    "summary": "Opinion on what should be taught to children in schools regarding life's origins.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38|REL": {
+    "summary": "Agreement with teaching multiple viewpoints on the origin of life in schools.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39|REL": {
+    "summary": "Belief about the cause of human and biological evolution.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40|REL": {
+    "summary": "Belief that religion causes divisions among people in a community (scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42_1|REL": {
+    "summary": "Willingness to disagree with parents when one believes they are right (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44_1|REL": {
+    "summary": "Perception of family tolerance toward non-Catholics (scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45_1|REL": {
+    "summary": "Trust in family on a 0-10 scale.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46_1|REL": {
+    "summary": "Willingness to allow people of another religion to live in one's home (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47|REL": {
+    "summary": "Belief in justification for expelling someone from a community based on religious minority status (scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48|REL": {
+    "summary": "Opinion on what authorities should do when a Catholic majority excludes Protestants from a community.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49_5|REL": {
+    "summary": "Perception of respect for the rights of elderly adults in society (scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p50_1|REL": {
+    "summary": "Experience of personal rights violations due to one's religion (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55|REL": {
+    "summary": "Agreement with use of public resources for religious events.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p56|REL": {
+    "summary": "Agreement with churches forming political parties to compete in elections.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p57|REL": {
+    "summary": "Opinion on whether churches should pay taxes like other organizations.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58|REL": {
+    "summary": "Agreement with media broadcasting religious content programs.",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

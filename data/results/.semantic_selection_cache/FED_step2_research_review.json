@@ -1,0 +1,368 @@
+[
+  {
+    "construct_name": "federalism_preference",
+    "sources": [
+      {
+        "citation": "Díaz-Cayeros, A. (2006). Federalism, Fiscal Authority, and Centralization in Latin America. Cambridge University Press.",
+        "relevance": "Directly addresses how citizens and political actors in Mexico perceive the distribution of fiscal and political authority across levels of government, providing the theoretical backbone for measuring federalism preferences.",
+        "key_finding": "Mexico's fiscal centralization persists despite formal decentralization reforms because subnational governments strategically cede taxing authority to the federal government in exchange for transfers, shaping citizen expectations about which level should govern."
+      },
+      {
+        "citation": "Flamand, L. (2006). El juego de la distribución de recursos en un sistema federal mexicano: La influencia del gobierno dividido verticalmente. Política y Gobierno, 13(2), 315–359.",
+        "relevance": "Examines how intergovernmental fiscal relations in Mexico shape preferences for centralized versus decentralized resource allocation.",
+        "key_finding": "Vertical divided government influences the distribution of federal transfers to states, suggesting that partisan alignment affects citizens' perceptions of fair resource distribution across levels."
+      },
+      {
+        "citation": "Hernández-Trillo, F., & Jarillo-Rabling, B. (2008). Is local beautiful? Fiscal decentralization in Mexico. World Development, 36(7), 1191–1203.",
+        "relevance": "Analyzes citizen and institutional preferences for fiscal decentralization in Mexico, directly relevant to measuring normative preferences about where taxing and spending authority should reside.",
+        "key_finding": "Fiscal decentralization in Mexico has not necessarily improved public service delivery, which may dampen citizen enthusiasm for further devolution of authority."
+      },
+      {
+        "citation": "Montero, A. P., & Samuels, D. J. (Eds.). (2004). Decentralization and Democracy in Latin America. University of Notre Dame Press.",
+        "relevance": "Provides a comparative framework for understanding how citizens in federal systems like Mexico develop preferences about centralization versus decentralization of political authority.",
+        "key_finding": "Decentralization can both enhance and undermine democratic governance depending on institutional design, party systems, and citizen engagement at subnational levels."
+      },
+      {
+        "citation": "Merino, G. (2010). Federalismo fiscal: Diagnóstico y propuestas. In Los grandes problemas de México (Vol. IX). El Colegio de México.",
+        "relevance": "Provides a comprehensive diagnostic of Mexican fiscal federalism from a policy perspective, contextualizing the normative debates that shape citizen preferences.",
+        "key_finding": "Mexico's highly centralized fiscal system creates dependency at subnational levels and limits citizen accountability mechanisms, influencing public preferences toward either more local control or continued federal oversight."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "institutional_trust_and_representativeness",
+        "measurable_in_data": true,
+        "data_source": "FED"
+      },
+      {
+        "role": "effect",
+        "related_construct": "subnational_government_performance",
+        "measurable_in_data": true,
+        "data_source": "FED"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "political_culture_and_democratic_values",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "preferences_for_fiscal_redistribution",
+        "measurable_in_data": true,
+        "data_source": "ECO, POB"
+      },
+      {
+        "role": "effect",
+        "related_construct": "regional_identity",
+        "measurable_in_data": true,
+        "data_source": "IDE"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "security_governance_preferences",
+        "measurable_in_data": true,
+        "data_source": "FED, SEG"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "institutional_trust_and_representativeness",
+    "sources": [
+      {
+        "citation": "Moreno, A. (2010). La confianza en las instituciones: México en perspectiva comparada. Centro de Estudios Sociales y de Opinión Pública, Cámara de Diputados.",
+        "relevance": "Directly measures and analyzes trust in Mexican political institutions across levels of government, providing benchmarks and validated scales for institutional trust in the Mexican context.",
+        "key_finding": "Trust in Mexican political institutions is consistently low compared to other democracies, with particularly low trust in political parties and legislatures, while the military and church receive higher trust."
+      },
+      {
+        "citation": "Cleary, M. R., & Stokes, S. C. (2006). Democracy and the Culture of Skepticism: Political Trust in Argentina and Mexico. Russell Sage Foundation.",
+        "relevance": "Provides a theoretical framework for understanding why citizens in Mexico and Argentina distrust institutions, distinguishing between cultural and rational-evaluative explanations.",
+        "key_finding": "Institutional trust in Mexico is driven more by rational evaluations of government performance than by deep cultural orientations, suggesting that trust responds to concrete governance outcomes."
+      },
+      {
+        "citation": "Mishler, W., & Rose, R. (2001). What are the origins of political trust? Testing institutional and cultural theories in post-communist societies. Comparative Political Studies, 34(1), 30–62.",
+        "relevance": "Provides the foundational theoretical debate between institutional and cultural theories of political trust that frames measurement of this construct in any national context including Mexico.",
+        "key_finding": "Institutional performance theories better explain variation in political trust than cultural theories, with trust being primarily a rational response to institutional performance."
+      },
+      {
+        "citation": "Monsiváis-Carrillo, A. (2019). La confianza institucional y el desencanto democrático en México. Perfiles Latinoamericanos, 27(54), 1–24.",
+        "relevance": "Directly examines the relationship between institutional trust and democratic disenchantment in Mexico using survey data, closely aligned with the construct's measurement goals.",
+        "key_finding": "Declining institutional trust in Mexico is associated with growing democratic disenchantment, but this does not translate into rejection of democracy as a regime type."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "perceived_corruption",
+        "measurable_in_data": true,
+        "data_source": "COR"
+      },
+      {
+        "role": "cause",
+        "related_construct": "voter_turnout_and_political_participation",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "subnational_government_performance",
+        "measurable_in_data": true,
+        "data_source": "FED"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "satisfaction_with_democracy",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "perceptions_of_public_security",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "federalism_preference",
+        "measurable_in_data": true,
+        "data_source": "FED"
+      },
+      {
+        "role": "effect",
+        "related_construct": "access_to_justice",
+        "measurable_in_data": true,
+        "data_source": "JUS, DER"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "economic_evaluations",
+        "measurable_in_data": true,
+        "data_source": "ECO"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "subnational_government_performance",
+    "sources": [
+      {
+        "citation": "Cleary, M. R. (2007). Electoral competition, participation, and government responsiveness in Mexico. American Journal of Political Science, 51(2), 283–299.",
+        "relevance": "Directly examines how electoral competition at the municipal level in Mexico affects government responsiveness and service delivery, core components of subnational performance evaluation.",
+        "key_finding": "Greater electoral competition at the municipal level in Mexico leads to improved government responsiveness and public goods provision, as measured by citizen evaluations and objective indicators."
+      },
+      {
+        "citation": "Hecock, R. D. (2006). Electoral competition, globalization, and subnational education spending in Mexico, 1999–2004. American Journal of Political Science, 50(4), 950–961.",
+        "relevance": "Analyzes subnational government spending decisions in Mexico, providing context for understanding how citizens evaluate state-level performance in service delivery areas like education.",
+        "key_finding": "Electoral competition and economic openness jointly influence subnational education spending in Mexico, with more competitive states spending more on education."
+      },
+      {
+        "citation": "Guillén López, T. (1996). Gobiernos municipales en México: Entre la modernización y la tradición política. El Colegio de la Frontera Norte.",
+        "relevance": "Provides foundational analysis of municipal governance capacity in Mexico, directly relevant to understanding citizen evaluations of local government performance.",
+        "key_finding": "Mexican municipal governments face severe capacity constraints that limit service delivery, but modernization efforts driven by opposition party governance have improved performance in some municipalities."
+      },
+      {
+        "citation": "Cabrero Mendoza, E. (2004). Capacidades institucionales en gobiernos subnacionales de México: ¿Un obstáculo para la descentralización fiscal? Gestión y Política Pública, 13(3), 753–784.",
+        "relevance": "Examines institutional capacity at subnational levels in Mexico, which directly shapes the performance outcomes that citizens evaluate.",
+        "key_finding": "Significant heterogeneity in institutional capacity across Mexican subnational governments limits the effectiveness of decentralization and creates uneven service delivery that citizens perceive."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "institutional_trust_and_representativeness",
+        "measurable_in_data": true,
+        "data_source": "FED"
+      },
+      {
+        "role": "cause",
+        "related_construct": "federalism_preference",
+        "measurable_in_data": true,
+        "data_source": "FED"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "perceived_corruption_at_local_level",
+        "measurable_in_data": true,
+        "data_source": "COR"
+      },
+      {
+        "role": "effect",
+        "related_construct": "local_fiscal_capacity",
+        "measurable_in_data": false,
+        "data_source": null
+      },
+      {
+        "role": "cause",
+        "related_construct": "quality_of_life_and_wellbeing",
+        "measurable_in_data": true,
+        "data_source": "POB, SAL, EDU, HAB"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "satisfaction_with_public_services",
+        "measurable_in_data": true,
+        "data_source": "SAL, EDU, SEG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "voter_turnout_in_local_elections",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "security_governance_preferences",
+    "sources": [
+      {
+        "citation": "Sabet, D. (2012). Police Reform in Mexico: Informal Politics and the Challenge of Institutional Change. Stanford University Press.",
+        "relevance": "Directly examines citizen preferences and institutional challenges regarding police reform across levels of government in Mexico, including debates about municipal versus state versus federal policing.",
+        "key_finding": "Mexican police reform efforts are undermined by informal political dynamics, and citizens express preferences for federal over municipal police due to perceived corruption and ineffectiveness at local levels."
+      },
+      {
+        "citation": "Shirk, D. A. (2011). The Drug War in Mexico: Confronting a Shared Threat. Council on Foreign Relations.",
+        "relevance": "Analyzes the intergovernmental dimensions of security governance in Mexico, including debates about which level of government should lead anti-crime efforts.",
+        "key_finding": "Mexico's security crisis has intensified debates about centralizing police functions, with citizens increasingly favoring federal intervention over local security governance."
+      },
+      {
+        "citation": "Moloeznik, M. P. (2006). The challenges to Mexico in times of political change. Crime, Law and Social Change, 46(4–5), 169–187.",
+        "relevance": "Examines the structural challenges of security governance in Mexico's federal system, relevant to understanding citizen preferences about intergovernmental security coordination.",
+        "key_finding": "Mexico's fragmented security apparatus across three levels of government creates coordination failures that undermine public safety and shape citizen demands for reform."
+      },
+      {
+        "citation": "Ley, S. (2018). To vote or not to vote: How criminal violence shapes electoral participation. Journal of Conflict Resolution, 62(9), 1963–1990.",
+        "relevance": "Examines how security conditions influence political behavior in Mexico, providing context for understanding why citizens develop preferences about which government level should handle security.",
+        "key_finding": "Criminal violence depresses voter turnout in Mexico, particularly at the local level, suggesting that security failures shape broader political engagement and governance preferences."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "victimization_and_insecurity_perceptions",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "institutional_trust_in_police_and_military",
+        "measurable_in_data": true,
+        "data_source": "FED, SEG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "subnational_government_performance",
+        "measurable_in_data": true,
+        "data_source": "FED"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support_for_military_involvement_in_policing",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "federalism_preference",
+        "measurable_in_data": true,
+        "data_source": "FED"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "human_rights_concerns",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      },
+      {
+        "role": "effect",
+        "related_construct": "local_corruption_perceptions",
+        "measurable_in_data": true,
+        "data_source": "COR"
+      }
+    ],
+    "gap_justification": "While there is substantial literature on security governance in Mexico, the specific construct of citizen preferences for which level of government should manage security functions—as distinct from general security perceptions—is underexplored in survey-based research. Most studies focus on objective security outcomes or general fear of crime rather than normative preferences about intergovernmental security architecture. This construct fills an important gap by linking federalism theory to the security domain, capturing how Mexico's ongoing security crisis shapes citizens' views about the appropriate vertical distribution of coercive authority. In the Mexican context, where debates about creating a single national police force versus strengthening municipal police are politically salient, measuring these preferences provides unique insight into how security concerns reshape broader attitudes toward federalism.",
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "political_interest_and_efficacy",
+    "sources": [
+      {
+        "citation": "Almond, G. A., & Verba, S. (1963). The Civic Culture: Political Attitudes and Democracy in Five Nations. Princeton University Press.",
+        "relevance": "The foundational study of political culture that included Mexico as a case, establishing the measurement of political interest, efficacy, and subjective competence as core constructs in comparative politics.",
+        "key_finding": "Mexico exhibited a pattern of 'aspirational' political culture with moderate political interest but low subjective competence, a baseline that subsequent Mexican surveys have tracked over decades."
+      },
+      {
+        "citation": "Moreno, A. (2003). El votante mexicano: Democracia, actitudes políticas y conducta electoral. Fondo de Cultura Económica.",
+        "relevance": "Directly measures political interest, efficacy, and engagement among Mexican citizens using survey data, providing validated items and benchmarks for the Mexican context.",
+        "key_finding": "Political interest in Mexico increased significantly following democratization in 2000, but efficacy remained uneven across socioeconomic groups, with education being the strongest predictor."
+      },
+      {
+        "citation": "Buendía, J., & Somuano, F. (2003). Participación electoral en nuevas democracias: La elección presidencial de 2000 en México. Política y Gobierno, 10(2), 289–323.",
+        "relevance": "Examines the relationship between political interest, efficacy, and electoral participation in Mexico's democratic transition, directly relevant to the construct's measurement.",
+        "key_finding": "Political interest and external efficacy were significant predictors of voter turnout in Mexico's 2000 election, with internal efficacy playing a smaller but still meaningful role."
+      },
+      {
+        "citation": "Craig, S. C., Niemi, R. G., & Silver, G. E. (1990). Political efficacy and trust: A report on the NES pilot study items. Political Behavior, 12(3), 289–314.",
+        "relevance": "Provides the foundational measurement framework for distinguishing internal and external political efficacy, widely used in cross-national surveys including those applied in Mexico.",
+        "key_finding": "Internal and external political efficacy are empirically distinct dimensions that relate differently to political participation and trust, necessitating separate measurement."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "political_participation_and_voter_turnout",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "institutional_trust_and_representativeness",
+        "measurable_in_data": true,
+        "data_source": "FED"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational_attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "media_consumption_and_information_access",
+        "measurable_in_data": true,
+        "data_source": "SOC"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "federalism_preference",
+        "measurable_in_data": true,
+        "data_source": "FED"
+      },
+      {
+        "role": "effect",
+        "related_construct": "socioeconomic_status",
+        "measurable_in_data": true,
+        "data_source": "ECO, POB"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "democratic_values_and_support_for_democracy",
+        "measurable_in_data": true,
+        "data_source": "CUL, IDE"
+      },
+      {
+        "role": "cause",
+        "related_construct": "civic_engagement_and_social_capital",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  }
+]

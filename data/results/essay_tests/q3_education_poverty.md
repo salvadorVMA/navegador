@@ -4,7 +4,7 @@
 **Query (EN):** What relationship do Mexicans see between education and poverty?
 **Variables:** p2|EDU, p3|EDU, p4|EDU, p5|EDU, p6|EDU, p1|POB, p2|POB, p3|POB, p4|POB
 **Status:** ✅ success
-**Time:** 60622ms | **Cross-dataset pairs:** 6
+**Time:** 50086ms | **Cross-dataset pairs:** 6
 
 ---
 
@@ -13,49 +13,80 @@
 **Query:** ¿Qué relación ven los mexicanos entre educación y pobreza?
 
 ## Summary
-Los mexicanos perciben una relación fuerte y significativa entre la educación y la pobreza, evidenciada principalmente en que quienes están estudiando tienen perfiles laborales distintos, con mayor presencia en actividades temporales y menor estabilidad laboral. Esta relación se confirma en cinco pares bivariados con asociaciones significativas, especialmente entre estar estudiando y variables laborales vinculadas a pobreza, lo que indica alta confianza en esta conclusión.
+Mexicans perceive a strong relationship between education and poverty, with those currently studying being much more likely among certain poverty-related work categories, such as students themselves (67.1%) versus retirees (2.8%). This is supported by strong and moderate associations between education status and various poverty indicators, including work status, secondary work activities, job permanence, and job tenure. The evidence is based on multiple significant bivariate associations (5 pairs) with strong confidence due to consistent p-values and moderate to strong Cramér's V values.
 
 ## Data Landscape
-Se analizaron nueve variables provenientes de encuestas sobre educación y pobreza, con cinco mostrando consenso, una polarizada, una dispersa y dos con inclinación hacia una opinión. El índice de divergencia del 44% revela un nivel moderado de variación en las percepciones públicas, reflejando tanto acuerdos como diferencias notables en la opinión sobre la relación entre educación y pobreza.
+The analysis covers 9 variables from education and poverty surveys, including current studying status, educational support, level and motivation of study, and multiple poverty-related work indicators. Among these, 5 variables show consensus, 1 is polarized, 1 is dispersed, and 2 lean toward a dominant view, yielding a divergence index of 44%, which indicates moderate variation in public opinion about the education-poverty relationship in Mexico.
 
 ## Evidence
-La relación más destacada se observa entre estar estudiando (p2|EDU) y la actividad laboral reciente (p1|POB), donde la proporción que estudia varía desde 0% entre jubilados hasta 62.9% entre estudiantes, y solo 22.9% entre quienes trabajaron, mostrando que estudiar está ligado a menor empleo formal y más actividades estudiantiles (V=0.394, p=0.000).
+The strongest relationship is between current studying status (p2|EDU) and work status last week (p1|POB), where the proportion currently studying ranges from 2.8% among retirees to 67.1% among those who are students (V=0.352, p=0.000). This shows that being a student is strongly linked to education status, while retirees rarely study.
 
-| p1|POB category | Sí estudiando % |
+| p1|POB category | Sí (studying) % |
 |---|---|
-| Está jubilado(a) o pensionado(a) | 0.0% |
-| Es estudiante | 62.9% |
-| Trabajó | 22.9% |
+| Trabajó | 27.8% |
+| No trabajó pero sí tenía trabajo | 47.6% |
+| Buscó trabajo | 58.3% |
+| Es estudiante | 67.1% |
+| Se dedica a los quehaceres de su hogar | 35.1% |
+| Está jubilado(a) o pensionado(a) | 2.8% |
+| No trabajó | 30.7% |
 
-Respecto al trabajo adicional (p2|POB), la relación con estudiar es débil pero significativa; quienes venden productos tienen mayor proporción estudiando (43.4%) frente a quienes ayudaron en negocio familiar (27.6%) (V=0.067, p=0.011).
+Education status also moderately varies with secondary work activities (p2|POB), with studying rates from 29.6% among those helping in a family business to 73.3% among those selling products (V=0.176, p=0.000).
 
-| p2|POB category | Sí estudiando % |
+| p2|POB category | Sí (studying) % |
 |---|---|
-| Vendió algunos productos: ropa, cosméticos, alimentos | 43.4% |
-| Ayudó a trabajar en un negocio familiar | 27.6% |
+| Ayudó a trabajar en un negocio familiar | 29.6% |
+| Vendió algunos productos: ropa, cosméticos, alimentos | 73.3% |
+| No trabajó | 36.0% |
 
-En cuanto a la permanencia laboral (p3|POB), quienes estudian predominan en trabajos sólo por temporadas (55.6%) frente a trabajadores permanentes (22.2%), indicando menor estabilidad laboral entre estudiantes (V=0.337, p=0.000).
+Job permanence (p3|POB) also relates moderately to studying: 29.6% studying among those with permanent jobs versus 55.8% among seasonal workers (V=0.249, p=0.000).
 
-| p3|POB category | Sí estudiando % |
+| p3|POB category | Sí (studying) % |
 |---|---|
-| Sólo por temporadas | 55.6% |
-| Permanentemente | 22.2% |
+| Permanentemente | 29.6% |
+| Sólo por temporadas | 55.8% |
 
-La relación más fuerte se da con la antigüedad en el trabajo actual (p4|POB), donde estudiar varía desde 72.3% en antigüedad corta (2 años) hasta 0% en antigüedades muy largas (22 y 40 años), evidenciando que quienes estudian tienen menor tiempo en su empleo actual (V=0.502, p=0.000).
+Years at current job (p4|POB) shows a strong association with studying status, ranging from 0% studying among those with 18 years at their job to 81.4% studying among those with 2 years tenure (V=0.519, p=0.000), indicating that newer job holders are more likely to be studying.
 
-| p4|POB category | Sí estudiando % |
+| p4|POB category | Sí (studying) % |
 |---|---|
-| 2.0 años | 72.3% |
-| 22.0 años | 0.0% |
+| 1.0 | 34.6% |
+| 2.0 | 81.4% |
+| 3.0 | 73.9% |
+| 4.0 | 50.5% |
+| 5.0 | 14.6% |
+| 6.0 | 32.0% |
+| 7.0 | 53.7% |
+| 8.0 | 51.4% |
+| 9.0 | 44.4% |
+| 10.0 | 9.1% |
+| 12.0 | 10.6% |
+| 13.0 | 7.1% |
+| 14.0 | 68.3% |
+| 15.0 | 12.9% |
+| 16.0 | 16.7% |
+| 18.0 | 0.0% |
+| 19.0 | 64.3% |
+| 20.0 | 10.6% |
+| 21.0 | 4.3% |
+| 22.0 | 5.3% |
+| 24.0 | 59.7% |
+| 40.0 | 4.7% |
+| 61.0 | 0.0% |
 
-La recepción de apoyos económicos para estudiar (p3|EDU) tiene asociación moderada con actividad laboral (p1|POB), con 57.1% recibiendo apoyo entre jubilados y solo 12.0% entre quienes buscan trabajo, mostrando que el apoyo está ligado a ciertos estados laborales (V=0.156, p=0.000).
+Receiving educational support (p3|EDU) moderately associates with work status (p1|POB), with support ranging from 26.0% among students to 70.8% among retirees (V=0.185, p=0.000), but the pattern is less clear.
 
-| p1|POB category | Sí recibiendo apoyo % |
+| p1|POB category | Sí (support) % |
 |---|---|
-| Está jubilado(a) o pensionado(a) | 57.1% |
-| Buscó trabajo | 12.0% |
+| Trabajó | 32.6% |
+| No trabajó pero sí tenía trabajo | 31.0% |
+| Buscó trabajo | 58.8% |
+| Es estudiante | 26.0% |
+| Se dedica a los quehaceres de su hogar | 28.0% |
+| Está jubilado(a) o pensionado(a) | 70.8% |
+| No trabajó | 39.8% |
 
-Demográficamente, los jóvenes de 0-18 años tienen 84% estudiando, mientras que en adultos de 35-44 años solo 3%. Las mujeres estudian menos (13%) que los hombres (21%). En empleo, los hombres trabajan más (63%) y las mujeres se dedican más a quehaceres del hogar (40%).
+Demographically, younger respondents (0-18 years) are 84% studying versus only 16% not, while older adults (35-44) are 97% not studying. Men are 21% currently studying compared to 13% of women. Educational support receipt also declines with age and is slightly higher among men.
 
 **p2|EDU** — ¿Usted estudia actualmente?:
 | Response | % |
@@ -63,47 +94,31 @@ Demográficamente, los jóvenes de 0-18 años tienen 84% estudiando, mientras qu
 | No | 83.2% |
 | Sí | 16.9% |
 
-**p3|EDU** — ¿Cuenta con beca o apoyo económico?:
+**p3|EDU** — ¿Cuenta con una beca u otro apoyo económico para realizar sus estudios?:
 | Response | % |
 |---|---|
 | No | 81.2% |
 | Sí | 18.3% |
 
-**p1|POB** — Actividad laboral la semana pasada:
+**p1|POB** — La semana pasada usted… (trabajo):
 | Response | % |
 |---|---|
 | Trabajó | 45.4% |
-| Se dedica a los quehaceres del hogar | 22.0% |
+| Se dedica a los quehaceres de su hogar | 22.0% |
 | No trabajó | 14.3% |
 | Es estudiante | 7.7% |
+| Buscó trabajo | 3.8% |
+| Está jubilado(a) o pensionado(a) | 3.1% |
+| No trabajó pero sí tenía trabajo | 2.6% |
 
-**p3|POB** — Trabajo principal permanente o temporal:
-| Response | % |
-|---|---|
-| Permanentemente | 66.4% |
-| Sólo por temporadas | 31.3% |
-
-**p4|POB** — Años en el trabajo actual:
-| Response | % |
-|---|---|
-| Menos de un año | 64.3% |
-| No sabe/No contesta | 35.7% |
 
 ## Complications
-Las diferencias demográficas son notables: la edad tiene un fuerte efecto, con jóvenes (0-18 años) mucho más propensos a estudiar (84%) que adultos mayores de 35 años (3%). El sexo también modera la relación, con hombres estudiando más (21%) que mujeres (13%) y trabajando más (63% vs 29%). Estas diferencias pueden reflejar desigualdades estructurales en acceso y permanencia educativa.
-
-Algunas variables muestran relaciones débiles o no significativas, como la relación entre recibir apoyo económico para estudiar y actividades económicas adicionales (p3|EDU × p2|POB, V=0.053, p=0.059), lo que indica que no todo tipo de pobreza o trabajo informal se vincula claramente con la educación.
-
-Además, la metodología basada en simulaciones SES-bridge puede introducir incertidumbre, y el tamaño de muestra (n=2000) limita la detección de efectos muy sutiles. El índice de divergencia del 44% indica que casi la mitad de las variables presentan opiniones variadas, mostrando que no hay consenso completo en la población.
-
-Minorías importantes, como el 22% que se dedica a los quehaceres del hogar y el 31% que trabaja sólo por temporadas, desafían la homogeneidad de la relación educación-pobreza y sugieren heterogeneidad en las experiencias laborales y educativas.
+Age is the strongest demographic moderator, with a Cramér's V of 0.68 for studying status, reflecting that youth are much more likely to be studying than older adults. Sex also moderates responses moderately (V=0.26 average), with men more likely to be studying and receiving educational support than women. Employment status strongly moderates poverty variables (V=0.56), affecting interpretation of education-poverty links. Minority views include 16.9% currently studying and 18.3% receiving educational support, indicating a significant portion of the population is engaged in education despite poverty. The weak association between educational support and secondary work activities (V=0.064) suggests some complexity in how poverty relates to educational aid. Simulation-based bivariate estimates rely on SES-bridge assumptions and a moderate sample size (n=2000), which may limit subgroup analysis and the precision of some associations. Some variables show dispersed or polarized distributions, such as level of education pursued, complicating a straightforward narrative.
 
 ## Implications
-Primero, la fuerte asociación entre estar estudiando y tener empleos temporales o menor antigüedad laboral sugiere que políticas públicas deben enfocarse en facilitar la transición de estudiantes a empleos estables, posiblemente mediante programas de vinculación laboral o prácticas profesionales que reduzcan la precariedad.
+First, the strong association between current studying and poverty-related work statuses suggests policies that support students, especially young people and those with unstable or seasonal jobs, could be effective in breaking poverty cycles. Expanding access to education and scholarships for vulnerable working populations may enhance educational attainment and economic mobility.
 
-Segundo, la presencia de apoyos económicos para estudiar, aunque moderadamente vinculada a la situación laboral, indica la necesidad de ampliar y focalizar becas y apoyos para estudiantes en situación de pobreza, especialmente para grupos vulnerables como mujeres y jóvenes, para mejorar su acceso y permanencia educativa.
-
-Finalmente, dado que la relación entre educación y pobreza es compleja y mediada por factores demográficos, las intervenciones deben ser diferenciadas, considerando las distintas realidades de edad, género y tipo de empleo, para evitar políticas homogéneas que no respondan a las necesidades específicas de cada grupo.
+Second, given the demographic disparities, particularly by age and sex, targeted interventions are necessary. For example, programs encouraging female participation in education and providing support for adult learners could address gaps. The weak link between educational support and informal work highlights the need for more nuanced policies that consider the diversity of poverty experiences and work arrangements in Mexico.
 
 ---
 
@@ -307,12 +322,12 @@ Finalmente, dado que la relación entre educación y pobreza es compleja y media
 
 | Variable Pair | Cramér's V | p-value | Key Pattern | n sim |
 |---------------|------------|---------|-------------|-------|
-| p2|EDU × p1|POB | 0.394 (strong) | 0.000 | " Sí": 0% ("Está jubilado(a) o pensionado(a)") → 63% ("Es estudiante") | 2000 |
-| p2|EDU × p2|POB | 0.067 (weak) | 0.011 | " Sí": 28% ("Ayudó a trabajar en un negocio familiar") → 43% ("Vendió algunos productos: ropa,  cosméticos, alimentos") | 2000 |
-| p2|EDU × p3|POB | 0.337 (strong) | 0.000 | " Sí": 22% ("Permanentemente") → 56% ("Sólo por temporadas") | 2000 |
-| p2|EDU × p4|POB | 0.502 (strong) | 0.000 | " Sí": 0% ("22.0") → 72% ("2.0") | 2000 |
-| p3|EDU × p1|POB | 0.156 (moderate) | 0.000 | " Sí": 12% ("Buscó trabajo") → 57% ("Está jubilado(a) o pensionado(a)") | 2000 |
-| p3|EDU × p2|POB | 0.053 (weak) | 0.059 | " Sí": 26% ("Ayudó a trabajar en un negocio familiar") → 34% ("No trabajó") | 2000 |
+| p2|EDU × p1|POB | 0.352 (strong) | 0.000 | " Sí": 3% ("Está jubilado(a) o pensionado(a)") → 67% ("Es estudiante") | 2000 |
+| p2|EDU × p2|POB | 0.176 (moderate) | 0.000 | " Sí": 30% ("Ayudó a trabajar en un negocio familiar") → 73% ("Vendió algunos productos: ropa,  cosméticos, alimentos") | 2000 |
+| p2|EDU × p3|POB | 0.249 (moderate) | 0.000 | " Sí": 30% ("Permanentemente") → 56% ("Sólo por temporadas") | 2000 |
+| p2|EDU × p4|POB | 0.519 (strong) | 0.000 | " Sí": 0% ("18.0") → 81% ("2.0") | 2000 |
+| p3|EDU × p1|POB | 0.185 (moderate) | 0.000 | " Sí": 26% ("Es estudiante") → 71% ("Está jubilado(a) o pensionado(a)") | 2000 |
+| p3|EDU × p2|POB | 0.064 (weak) | 0.017 | " Sí": 31% ("No trabajó") → 43% ("Vendió algunos productos: ropa,  cosméticos, alimentos") | 2000 |
 
 *Estimates derived from SES-bridge regression simulation.*
 
@@ -321,61 +336,61 @@ Finalmente, dado que la relación entre educación y pobreza es compleja y media
 
 | p1|POB (conditioning) | Top p2|EDU responses |
 |---|---|
-| Trabajó |  No: 77%,  Sí: 23% |
-| No trabajó pero sí tenía trabajo |  Sí: 55%,  No: 45% |
-| Buscó trabajo |  Sí: 52%,  No: 48% |
-| Es estudiante |  Sí: 63%,  No: 37% |
-| Se dedica a los quehaceres de su hogar |  No: 70%,  Sí: 30% |
-| Está jubilado(a) o pensionado(a) |  No: 100%,  Sí: 0% |
-| No trabajó |  No: 77%,  Sí: 23% |
+| Trabajó |  No: 72%,  Sí: 28% |
+| No trabajó pero sí tenía trabajo |  No: 52%,  Sí: 48% |
+| Buscó trabajo |  Sí: 58%,  No: 42% |
+| Es estudiante |  Sí: 67%,  No: 33% |
+| Se dedica a los quehaceres de su hogar |  No: 65%,  Sí: 35% |
+| Está jubilado(a) o pensionado(a) |  No: 97%,  Sí: 3% |
+| No trabajó |  No: 69%,  Sí: 31% |
 
 **p2|EDU × p2|POB** — How p2|EDU distributes given p2|POB:
 
 | p2|POB (conditioning) | Top p2|EDU responses |
 |---|---|
-| Ayudó a trabajar en un negocio familiar |  No: 72%,  Sí: 28% |
-| Vendió algunos productos: ropa,  cosméticos, alimentos |  No: 57%,  Sí: 43% |
-| No trabajó |  No: 67%,  Sí: 33% |
+| Ayudó a trabajar en un negocio familiar |  No: 70%,  Sí: 30% |
+| Vendió algunos productos: ropa,  cosméticos, alimentos |  Sí: 73%,  No: 27% |
+| No trabajó |  No: 64%,  Sí: 36% |
 
 **p2|EDU × p3|POB** — How p2|EDU distributes given p3|POB:
 
 | p3|POB (conditioning) | Top p2|EDU responses |
 |---|---|
-| Permanentemente |  No: 78%,  Sí: 22% |
+| Permanentemente |  No: 70%,  Sí: 30% |
 | Sólo por temporadas |  Sí: 56%,  No: 44% |
 
 **p2|EDU × p4|POB** — How p2|EDU distributes given p4|POB:
 
 | p4|POB (conditioning) | Top p2|EDU responses |
 |---|---|
-| 1.0 |  No: 89%,  Sí: 11% |
-| 2.0 |  Sí: 72%,  No: 28% |
-| 3.0 |  Sí: 58%,  No: 42% |
-| 4.0 |  Sí: 53%,  No: 47% |
-| 5.0 |  No: 77%,  Sí: 23% |
-| 6.0 |  No: 78%,  Sí: 22% |
-| 7.0 |  Sí: 58%,  No: 42% |
-| 8.0 |  No: 56%,  Sí: 44% |
+| 1.0 |  No: 65%,  Sí: 35% |
+| 2.0 |  Sí: 81%,  No: 19% |
+| 3.0 |  Sí: 74%,  No: 26% |
+| 4.0 |  Sí: 50%,  No: 50% |
+| 5.0 |  No: 85%,  Sí: 15% |
+| 6.0 |  No: 68%,  Sí: 32% |
+| 7.0 |  Sí: 54%,  No: 46% |
+| 8.0 |  Sí: 51%,  No: 49% |
 
 **p3|EDU × p1|POB** — How p3|EDU distributes given p1|POB:
 
 | p1|POB (conditioning) | Top p3|EDU responses |
 |---|---|
-| Trabajó |  No: 66%,  Sí: 34% |
-| No trabajó pero sí tenía trabajo |  No: 88%,  Sí: 12% |
-| Buscó trabajo |  No: 88%,  Sí: 12% |
-| Es estudiante |  No: 71%,  Sí: 29% |
-| Se dedica a los quehaceres de su hogar |  No: 71%,  Sí: 29% |
-| Está jubilado(a) o pensionado(a) |  Sí: 57%,  No: 43% |
-| No trabajó |  No: 62%,  Sí: 38% |
+| Trabajó |  No: 67%,  Sí: 33% |
+| No trabajó pero sí tenía trabajo |  No: 69%,  Sí: 31% |
+| Buscó trabajo |  Sí: 59%,  No: 41% |
+| Es estudiante |  No: 74%,  Sí: 26% |
+| Se dedica a los quehaceres de su hogar |  No: 72%,  Sí: 28% |
+| Está jubilado(a) o pensionado(a) |  Sí: 71%,  No: 29% |
+| No trabajó |  No: 60%,  Sí: 40% |
 
 **p3|EDU × p2|POB** — How p3|EDU distributes given p2|POB:
 
 | p2|POB (conditioning) | Top p3|EDU responses |
 |---|---|
-| Ayudó a trabajar en un negocio familiar |  No: 74%,  Sí: 26% |
-| Vendió algunos productos: ropa,  cosméticos, alimentos |  No: 70%,  Sí: 30% |
-| No trabajó |  No: 66%,  Sí: 34% |
+| Ayudó a trabajar en un negocio familiar |  No: 68%,  Sí: 32% |
+| Vendió algunos productos: ropa,  cosméticos, alimentos |  No: 57%,  Sí: 43% |
+| No trabajó |  No: 69%,  Sí: 31% |
 ### Bridge Model Diagnostics
 
 > For human inspection only — not passed to the LLM.
@@ -384,14 +399,14 @@ Finalmente, dado que la relación entre educación y pobreza es compleja y media
 
 | Variable | Model | Pseudo-R² | LLR p | Dominant SES | Quality |
 |----------|-------|-----------|-------|--------------|---------|
-| p1|POB | mnlogit | 0.195 | 0.000 | ? | good |
-| p2|EDU | mnlogit | 0.551 | 0.000 | edad | good |
-| p2|POB | mnlogit | 0.234 | 0.259 | ? | weak |
-| p3|EDU | mnlogit | 0.206 | 0.013 | edad | good |
-| p3|POB | mnlogit | 0.180 | 0.003 | ? | good |
-| p4|POB | mnlogit | 0.234 | 0.727 | ? | weak |
+| p1|POB | mnlogit | 0.288 | 0.000 | edad | good |
+| p2|EDU | mnlogit | 0.646 | 0.000 | edad | good |
+| p2|POB | mnlogit | 0.482 | 0.112 | region | weak |
+| p3|EDU | mnlogit | 0.331 | 0.009 | edad | good |
+| p3|POB | mnlogit | 0.274 | 0.002 | edad | good |
+| p4|POB | mnlogit | 0.461 | 0.555 | escol | weak |
 
-**Mean pseudo-R²:** 0.266 &ensp;|&ensp; **Overall dominant SES dimension:** ?
+**Mean pseudo-R²:** 0.414 &ensp;|&ensp; **Overall dominant SES dimension:** edad
 
 > ⚠ 2/6 bridge models are weak (R²<0.02 or LLR p≥0.10). Simulated Cramér's V for those variables may underestimate the true association.
 
@@ -399,49 +414,77 @@ Finalmente, dado que la relación entre educación y pobreza es compleja y media
 
 Top predictors by |t|-statistic — answers: which SES variable is doing the work?
 
-**p1|POB** (mnlogit, R²=0.195, LLR p=0.000, quality=good)
-*(coefficient table unavailable)*
-
-**p2|EDU** (mnlogit, R²=0.551, LLR p=0.000, quality=good)
+**p1|POB** (mnlogit, R²=0.288, LLR p=0.000, quality=good)
 | SES Predictor | Coef | Std Err | t-stat | p-value |
 |---------------|------|---------|--------|---------|
-| edad | 3.013 | 0.469 | 6.430 | 0.000 |
-| region_02 | -0.718 | 0.675 | -1.064 | 0.287 |
-| region_03 | 0.688 | 0.701 | 0.982 | 0.326 |
-| region_04 | -0.133 | 0.769 | -0.174 | 0.862 |
-| empleo_03 | -1.947 | 563.361 | -0.003 | 0.997 |
-| empleo_02 | -1.156 | 563.362 | -0.002 | 0.998 |
+| edad | -0.317 | 0.403 | -4.617 | 0.000 |
+| sexo | 1.007 | 0.921 | 4.053 | 0.000 |
+| escol | -0.428 | 0.427 | -2.229 | 0.026 |
+| est_civil_2.0 | -0.612 | 1.506 | 2.004 | 0.045 |
+| region_04 | -0.457 | 2.120 | -1.946 | 0.052 |
+| region_03 | -0.324 | 1.812 | -1.833 | 0.067 |
 
-**p2|POB** (mnlogit, R²=0.234, LLR p=0.259, quality=weak)
-*(coefficient table unavailable)*
-
-**p3|EDU** (mnlogit, R²=0.206, LLR p=0.013, quality=good)
+**p2|EDU** (mnlogit, R²=0.646, LLR p=0.000, quality=good)
 | SES Predictor | Coef | Std Err | t-stat | p-value |
 |---------------|------|---------|--------|---------|
-| edad | -0.710 | 0.546 | -1.301 | 0.193 |
-| region_02 | 0.994 | 0.773 | 1.286 | 0.199 |
-| region_03 | -0.451 | 0.837 | -0.539 | 0.590 |
-| empleo_03 | -6.342 | 16.119 | -0.393 | 0.694 |
-| region_04 | 13.800 | 377.412 | 0.037 | 0.971 |
-| sexo | 0.000 | 37827469.436 | 0.000 | 1.000 |
+| edad | 2.385 | 0.493 | 4.838 | 0.000 |
+| est_civil_6.0 | -2.731 | 0.697 | -3.920 | 0.000 |
+| escol | 1.408 | 0.633 | 2.224 | 0.026 |
+| est_civil_2.0 | -3.237 | 1.802 | -1.796 | 0.072 |
+| region_02 | -1.259 | 0.838 | -1.503 | 0.133 |
+| Tam_loc | 0.541 | 0.429 | 1.262 | 0.207 |
 
-**p3|POB** (mnlogit, R²=0.180, LLR p=0.003, quality=good)
-*(coefficient table unavailable)*
+**p2|POB** (mnlogit, R²=0.482, LLR p=0.112, quality=weak)
+| SES Predictor | Coef | Std Err | t-stat | p-value |
+|---------------|------|---------|--------|---------|
+| region_03 | 9.228 | 6.639 | 1.430 | 0.153 |
+| region_02 | 5.856 | 4.489 | 1.419 | 0.156 |
+| edad | -1.145 | 0.960 | -1.402 | 0.161 |
+| escol | 1.188 | 1.281 | 1.307 | 0.191 |
+| Tam_loc | -3.920 | 4.614 | -1.300 | 0.194 |
+| sexo | 0.347 | 75.734 | -1.236 | 0.216 |
 
-**p4|POB** (mnlogit, R²=0.234, LLR p=0.727, quality=weak)
-*(coefficient table unavailable)*
+**p3|EDU** (mnlogit, R²=0.331, LLR p=0.009, quality=good)
+| SES Predictor | Coef | Std Err | t-stat | p-value |
+|---------------|------|---------|--------|---------|
+| edad | -1.462 | 0.745 | -1.963 | 0.050 |
+| est_civil_2.0 | -4.634 | 2.933 | -1.580 | 0.114 |
+| region_02 | 1.405 | 0.919 | 1.529 | 0.126 |
+| empleo_03 | -5.199 | 3.444 | -1.510 | 0.131 |
+| est_civil_6.0 | -3.403 | 2.377 | -1.431 | 0.152 |
+| escol | 2.125 | 1.619 | 1.312 | 0.190 |
+
+**p3|POB** (mnlogit, R²=0.274, LLR p=0.002, quality=good)
+| SES Predictor | Coef | Std Err | t-stat | p-value |
+|---------------|------|---------|--------|---------|
+| edad | -0.894 | 0.339 | -2.638 | 0.008 |
+| sexo | 1.258 | 0.641 | 1.965 | 0.049 |
+| est_civil_2.0 | -1.943 | 1.091 | -1.780 | 0.075 |
+| escol | -0.345 | 0.326 | -1.057 | 0.291 |
+| region_03 | 0.653 | 1.160 | 0.563 | 0.574 |
+| region_04 | 0.626 | 1.287 | 0.486 | 0.627 |
+
+**p4|POB** (mnlogit, R²=0.461, LLR p=0.555, quality=weak)
+| SES Predictor | Coef | Std Err | t-stat | p-value |
+|---------------|------|---------|--------|---------|
+| escol | -1.814 | 4.702 | -2.677 | 0.007 |
+| Tam_loc | -0.201 | 9.244 | 1.922 | 0.055 |
+| edad | 0.949 | 2.181 | 1.657 | 0.098 |
+| est_civil_6.0 | -0.282 | 24.301 | 1.452 | 0.146 |
+| sexo | -0.497 | 7.152 | 1.265 | 0.206 |
+| est_civil_2.0 | 0.211 | 13.639 | 1.209 | 0.227 |
 
 *Pseudo-R² = McFadden's. Low values mean SES explains little variance in that variable — the bridge simulation still produces an estimate, but its precision is reduced.*
 
 ### Reasoning Outline
 
-**Evidence Hierarchy:** The strongest evidence comes from the cross-dataset bivariate associations with significant p-values, especially those involving p2|EDU (currently studying) and various poverty-related variables (p1|POB, p3|POB, p4|POB), showing strong and significant relationships. Moderate evidence is provided by associations involving p3|EDU (educational support) and p1|POB. Demographic fault lines provide secondary context on how education and poverty perceptions vary by age, sex, and employment. Univariate distributions offer background but do not establish relationships.
+**Evidence Hierarchy:** The strongest evidence comes from the cross-dataset bivariate associations with significant p-values, especially those involving p2|EDU (currently studying) and various poverty-related variables (p1|POB to p4|POB), which show moderate to strong associations. Next in strength are demographic fault lines that provide context on how education and poverty variables vary by age, sex, and employment. Univariate distributions offer supporting background but do not establish relationships on their own.
 
 **Key Limitations:**
-- Bivariate associations are simulation-based estimates which may have inherent uncertainty.
-- Sample size is moderate (n=2000), which is adequate but limits detection of very subtle effects.
-- Only a limited number of cross-survey variable pairs are available, restricting comprehensive analysis.
-- Some variables have weak or no significant associations, limiting conclusions about certain aspects of education-poverty relationships.
+- All bivariate associations are simulation-based estimates, which may have inherent uncertainty.
+- Sample size is moderate (n=2000), which supports significance but may limit subgroup analysis.
+- Only a limited number of cross-survey variable pairs are available, restricting the scope of relationship analysis.
+- Some variables (e.g., motivation for studying) relate only indirectly to poverty, limiting their explanatory power for the query.
 
 ### Analysis Metadata
 - **Analysis Type:** Analytical Essay (Quantitative + Qualitative)

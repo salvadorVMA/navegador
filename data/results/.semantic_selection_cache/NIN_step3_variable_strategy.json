@@ -1,0 +1,60 @@
+[
+  {
+    "construct_name": "perceived_situation_of_minors",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p1",
+      "p2",
+      "p5",
+      "p31",
+      "p61"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Perceived situation of minors is inherently multi-dimensional, spanning general assessments of children's wellbeing across different life domains, and no single question captures the full construct. All five questions share compatible ordinal Likert-style scales with 6–7 categories and exhibit high, similar entropy (1.87–2.12 bits), indicating comparable distributional spread and combinability. Averaging across items and binning to 5 quantile-based categories reduces idiosyncratic measurement error and yields a stable composite that reflects the breadth of perceived conditions for minors."
+  },
+  {
+    "construct_name": "children_rights_recognition",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p48_1",
+      "p22",
+      "p17_1",
+      "p19"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Children's rights recognition is a latent attitudinal construct best captured by multiple items tapping awareness, endorsement, and institutional recognition of rights, making aggregation preferable to any single item. However, p21_2 (H=0.46) and p73_3 (H=1.20) show markedly lower entropy, suggesting poor discriminability and potential scale incompatibility, so they are excluded to preserve measurement quality. PCA on the four retained items (all 6–7 category ordinal scales with H ≥ 1.33) extracts the dominant shared variance reflecting rights recognition, and binning the first component into 5 quantiles yields an ordinal bridge variable within the required category limit."
+  },
+  {
+    "construct_name": "child_agency_and_participation",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p11",
+      "p16_1",
+      "p12",
+      "p13"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Child agency and participation is a multi-faceted construct encompassing children's voice, autonomy, and involvement in decisions, requiring multiple items for adequate coverage. p41 (K=12) is excluded due to scale incompatibility with the remaining 7-category items, and p20 (K=6, H=1.44) is excluded as its lower entropy adds less discriminating information. The four retained items all use 7-category ordinal scales with moderate-to-good entropy (1.59–1.86 bits), making them directly combinable via mean-scoring followed by binning into 5 categories to produce a reliable composite agency measure."
+  },
+  {
+    "construct_name": "education_quality_and_opportunity",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p8",
+      "p7_1",
+      "p6",
+      "p32"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Education quality and opportunity is a broad, multi-dimensional construct spanning access, quality perceptions, and outcomes, so aggregation across items is strongly preferred over any single indicator. Items p8 (K=13, H=3.03), p7_1 (K=11, H=2.53), p6 (K=6, H=1.99), and p32 (K=6, H=1.99) are selected for their high entropy and face validity as direct education assessments; p9_1 (H=1.06), p28_1 (H=1.12), and p10_7 (K=15, near boundary) are excluded due to low entropy or scale extremity. PCA is used because the retained items have heterogeneous scale widths (6–13 categories), and the first principal component captures shared educational quality variance while binning to 5 quantiles keeps the bridge variable within model constraints."
+  },
+  {
+    "construct_name": "vulnerability_and_risk_exposure",
+    "strategy": "single_max_entropy",
+    "selected_qids": [
+      "p26_1"
+    ],
+    "aggregation_method": null,
+    "justification": "Vulnerability and risk exposure spans an extremely heterogeneous set of 18 items covering distinct risk domains (violence, poverty, health, exploitation) with widely varying scale widths (4–14 categories) and entropy values, making meaningful aggregation across incompatible scales methodologically unsound and likely to produce a construct-invalid composite. p26_1 has the highest Shannon entropy (H=2.88 bits) among all items, indicating maximum discriminability across respondents, and with K=10 categories it captures a broad range of risk gradations within the ≤15 category constraint. Selecting this single highest-entropy item provides the most information-rich bridge variable while avoiding the distortions introduced by forcing incommensurable risk indicators onto a common scale."
+  }
+]

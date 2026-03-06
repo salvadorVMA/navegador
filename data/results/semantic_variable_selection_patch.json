@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "n_constructs": 5,
+    "k_final": 5,
+    "model_summarizer": "claude-haiku-4-5-20251001",
+    "model_cluster": "claude-sonnet-4-6",
+    "model_reviewer": "claude-opus-4-6",
+    "model_strategist": "claude-sonnet-4-6",
+    "generated_at": "2026-03-04T21:11:14.413221"
+  },
+  "domains": {
+    "HAB": {
+      "survey_title": "LA_CONDICION_DE_HABITABILIDAD_DE_VIVIENDA_EN_MEXICO",
+      "fallback_used": true,
+      "construct_clusters": [],
+      "research_reviews": [],
+      "variable_strategies": [],
+      "selected_variables": [
+        "p32|HAB",
+        "p4_1|HAB",
+        "p50_1|HAB",
+        "p46_8|HAB",
+        "p43_9|HAB"
+      ]
+    },
+    "EDU": {
+      "survey_title": "EDUCACION",
+      "fallback_used": true,
+      "construct_clusters": [],
+      "research_reviews": [],
+      "variable_strategies": [],
+      "selected_variables": [
+        "p1_2|EDU",
+        "p1_4|EDU",
+        "p1_3|EDU",
+        "p1_1|EDU",
+        "p29|EDU"
+      ]
+    }
+  }
+}

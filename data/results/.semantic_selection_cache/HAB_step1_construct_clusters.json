@@ -1,0 +1,106 @@
+[
+  {
+    "name": "physical_housing_quality",
+    "description": "Measures the structural and material quality of the dwelling by assessing the composition of walls, roof, and floor, which together indicate the durability and safety of the physical shelter. This construct captures the degree to which a household's basic structure meets habitability standards.",
+    "question_cluster": [
+      "p1",
+      "p2",
+      "p3",
+      "p23",
+      "p28",
+      "p30",
+      "p32",
+      "p42_1"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "basic_services_access",
+    "description": "Captures the availability and reliability of essential infrastructure services—water, drainage, electricity, and sanitation—that are fundamental to household well-being and public health. This construct reflects the degree to which the dwelling is integrated into formal urban or rural service networks.",
+    "question_cluster": [
+      "p6",
+      "p7",
+      "p7_1",
+      "p8",
+      "p9",
+      "p10",
+      "p11",
+      "p11_1",
+      "p40_1",
+      "p36_15",
+      "p36_16",
+      "p36_17",
+      "p36_20",
+      "p36_30",
+      "p36_31"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "household_asset_endowment",
+    "description": "Measures the stock of consumer durables and household goods present in the dwelling as a proxy for socioeconomic status and material living standards. Combining ownership of appliances, vehicles, and technology items yields a composite index of household wealth.",
+    "question_cluster": [
+      "p36_1",
+      "p36_2",
+      "p36_3",
+      "p36_4",
+      "p36_5",
+      "p36_6",
+      "p36_7",
+      "p36_8",
+      "p36_9",
+      "p36_10",
+      "p36_11",
+      "p36_12",
+      "p36_13",
+      "p36_14",
+      "p36_18",
+      "p36_21",
+      "p36_22",
+      "p36_23",
+      "p36_24",
+      "p36_29",
+      "p36_32"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "housing_tenure_security",
+    "description": "Assesses the security and formality of a household's tenure arrangement, including ownership status, the entity to whom the dwelling belongs, and the mode of acquisition, which together reflect vulnerability to displacement and access to housing as an asset. This construct is relevant to understanding socioeconomic inequality and housing policy outcomes.",
+    "question_cluster": [
+      "p13",
+      "p14",
+      "p15",
+      "p15_1",
+      "p16",
+      "p17",
+      "p18",
+      "p19",
+      "p20",
+      "p21_1",
+      "p21_2",
+      "p21_3",
+      "p21_4",
+      "p21_5",
+      "p21_6",
+      "p21_7",
+      "p22"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "housing_policy_efficacy_beliefs",
+    "description": "Captures respondents' normative and evaluative beliefs about the quality of housing in Mexico, the perceived solutions to housing problems, and institutional responsibility for addressing them. This construct reflects citizens' trust in institutions and their sense of collective efficacy regarding housing as a public policy domain.",
+    "question_cluster": [
+      "p47",
+      "p50_1",
+      "p51",
+      "p46_1",
+      "p43_1",
+      "p45_1",
+      "p34",
+      "p34_1"
+    ],
+    "requires_aggregation": true
+  }
+]

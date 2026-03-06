@@ -1,0 +1,69 @@
+[
+  {
+    "construct_name": "gender_role_traditionalism",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p11_1",
+      "p26_1",
+      "p61_1",
+      "p63_1",
+      "p59_1"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Gender role traditionalism is inherently multi-dimensional, spanning attitudes about domestic roles, work, and social norms, so no single item captures it fully. The five selected questions all use 7-point Likert scales and exhibit the highest Shannon entropies in the cluster (H ≥ 2.16), ensuring maximum discriminatory power; p10_1 (H=1.18) and p9 (K=6, H=1.71) are excluded due to lower entropy and scale incompatibility. PCA on the first component is preferred over a simple sum because it extracts the dominant latent dimension of traditionalism while down-weighting items that load less coherently, and the resulting scores are binned into 5 quantiles to satisfy the ≤15 category constraint."
+  },
+  {
+    "construct_name": "intimate_partner_control_autonomy",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p19",
+      "p21",
+      "p22",
+      "p23_1",
+      "p23_5",
+      "p18",
+      "p68_1"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Intimate partner control and autonomy is a latent construct spanning multiple behavioral and attitudinal dimensions (jealousy, monitoring, decision-making, permission-seeking), so aggregation is strongly preferred over any single item. Most items use 6-point scales (p19, p21, p22, p23_1, p18, p68_1) with compatible response formats; p23_5 (K=4) is retained because it contributes unique content on autonomy and its H=1.80 is high relative to its range. p20_1 is excluded as its H=1.69 is the lowest and its 7-point scale introduces mild incompatibility; PCA is chosen to identify the dominant control-versus-autonomy axis and bin scores into 5 quantiles."
+  },
+  {
+    "construct_name": "tolerance_of_gender_based_violence",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p31",
+      "p34",
+      "p35",
+      "p38",
+      "p39"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Tolerance of gender-based violence is a high-stakes, 5/5 priority construct that is best measured by combining items tapping justification of violence across different contexts (domestic, sexual, situational). p34 (K=14, H=2.92) and p35 (K=8, H=1.47) are retained for their content richness; p31 (H=1.49), p38 (H=1.13), and p39 (H=1.08) add contextual breadth. p32 (H=0.58) is excluded due to near-zero entropy indicating a highly skewed, uninformative distribution, and p33 (H=1.09) is dropped to keep the item set parsimonious. PCA handles the heterogeneous scale sizes (K=5 to 14) better than a raw sum, extracting the shared tolerance dimension and binning into 5 quantiles."
+  },
+  {
+    "construct_name": "reproductive_autonomy_attitudes",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p43",
+      "p44",
+      "p47",
+      "p49",
+      "p51",
+      "p52"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Reproductive autonomy attitudes span contraception access, abortion views, partner decision-making, and bodily agency, making multi-item aggregation essential for construct validity. p43 (H=2.12), p44 (H=1.69), p47 (H=1.74), p49 (H=2.06), p51 (H=1.95), and p52 (H=1.65) are selected for their relatively high entropy and strong face validity across the autonomy spectrum; p48 (H=1.14) and p50 (H=1.51) are excluded as they add less discriminatory information. PCA is preferred because the items have heterogeneous scale sizes (K=5 to 13), and the first component will capture the dominant pro- versus anti-autonomy dimension, binned into 5 quantiles."
+  },
+  {
+    "construct_name": "gender_equality_awareness_exposure",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p42_1",
+      "p60_3",
+      "p55_1",
+      "p41_1"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Gender equality awareness and exposure combines knowledge of rights, media exposure, and contact with equality-promoting content, requiring multiple items to cover both cognitive and experiential dimensions. p42_1 (H=2.37) and p60_3 (H=2.32) are the highest-entropy items and use 7-point scales; p55_1 (H=1.67) and p41_1 (H=1.42) use 5-point scales and add exposure breadth. p65 (H=1.10) and p66 (H=1.25) are excluded due to low entropy and 4-point scales that would distort a composite; p54_1 (H=1.36) is also dropped for low entropy. A mean score (rather than PCA) is chosen because the items tap conceptually parallel awareness/exposure dimensions and the mean is more interpretable after binning to 5 ordered categories."
+  }
+]

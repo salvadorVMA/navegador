@@ -1,0 +1,333 @@
+[
+  {
+    "construct_name": "supernatural_belief_system",
+    "sources": [
+      {
+        "citation": "Stark, R. (2001). Gods, rituals, and the moral order. Journal for the Scientific Study of Religion, 40(4), 619–636.",
+        "relevance": "Provides a theoretical framework for understanding how belief in God, the afterlife, and supernatural agents structures moral cosmologies, directly relevant to measuring orthodox and heterodox supernatural beliefs.",
+        "key_finding": "Belief in a morally engaged God who rewards and punishes is more consequential for behavior than diffuse supernatural beliefs, suggesting the need to differentiate orthodox from folk beliefs."
+      },
+      {
+        "citation": "De la Torre, R., & Cristina Gutiérrez Zúñiga, C. (2020). Encuesta Nacional sobre Creencias y Prácticas Religiosas en México (ENCREER/RIFREM 2016). In R. De la Torre & C. Gutiérrez Zúñiga (Eds.), Mismos credos, ¿mismas prácticas? CIESAS.",
+        "relevance": "Directly measures the breadth of supernatural beliefs among Mexicans—including God, saints, the devil, witchcraft, karma, and limpias—providing the empirical basis for a syncretic cosmological worldview construct in Mexico.",
+        "key_finding": "Mexican believers hold layered cosmologies where orthodox Catholic beliefs coexist with folk and New Age beliefs such as karma, reincarnation, and spiritual cleansings (limpias)."
+      },
+      {
+        "citation": "Draper, S., & Baker, J. O. (2011). Themes in the study of paranormal beliefs: A content analysis. Journal for the Scientific Study of Religion, 50(4), 714–724.",
+        "relevance": "Reviews how paranormal and folk beliefs (witchcraft, astrology, reincarnation) relate to but are distinct from traditional religious beliefs, supporting the inclusion of both orthodox and heterodox items in a single construct.",
+        "key_finding": "Paranormal beliefs form a dimension partially independent of conventional religiosity, suggesting that a comprehensive supernatural belief measure must include both orthodox and non-orthodox items."
+      },
+      {
+        "citation": "Chesnut, R. A. (2003). Competitive spirits: Latin America's new religious economy. Oxford University Press.",
+        "relevance": "Analyzes the religious marketplace in Latin America, including Mexico, where Catholic, Pentecostal, and folk spiritual traditions compete and blend, contextualizing why syncretic belief measurement is essential.",
+        "key_finding": "Latin America's religious pluralism produces syncretic belief systems where individuals combine elements from multiple traditions, making single-tradition belief measures insufficient."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "correlate",
+        "related_construct": "religious_practice_and_devotion",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "educational_attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "cause",
+        "related_construct": "health_seeking_behavior (use of traditional medicine vs. biomedical care)",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "trust_in_science_and_technology",
+        "measurable_in_data": true,
+        "data_source": "CIE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "indigenous_cultural_identity",
+        "measurable_in_data": true,
+        "data_source": "IND, IDE"
+      },
+      {
+        "role": "effect",
+        "related_construct": "socioeconomic_status_and_poverty",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "religious_practice_and_devotion",
+    "sources": [
+      {
+        "citation": "Stark, R., & Glock, C. Y. (1968). American piety: The nature of religious commitment. University of California Press.",
+        "relevance": "Foundational work defining the dimensions of religiosity including ritualistic (practice), experiential, and devotional dimensions, directly informing the measurement of prayer, worship attendance, and devotional behavior.",
+        "key_finding": "Religious commitment is multidimensional; the ritualistic and devotional dimensions (prayer frequency, worship attendance) are empirically distinguishable from belief and knowledge dimensions."
+      },
+      {
+        "citation": "Pew Research Center. (2014). Religion in Latin America: Widespread change in a historically Catholic region. Pew Research Center.",
+        "relevance": "Provides large-scale survey data on religious practices in Mexico and Latin America, including prayer frequency, church attendance, and reliance on religious guidance, directly comparable to the items in this construct.",
+        "key_finding": "Mexico shows high levels of personal devotion (daily prayer, seeking comfort in religion) even among those with declining institutional affiliation, highlighting the importance of measuring practice independently from identity."
+      },
+      {
+        "citation": "Ellison, C. G., & Levin, J. S. (1998). The religion-health connection: Evidence, theory, and future directions. Health Education & Behavior, 25(6), 700–720.",
+        "relevance": "Reviews how religious practice (prayer, attendance) relates to health outcomes, establishing the construct's importance for cross-domain analysis with health and well-being.",
+        "key_finding": "Frequent religious practice, particularly prayer and attendance, is associated with better mental health and coping, mediated by social support and meaning-making mechanisms."
+      },
+      {
+        "citation": "Suárez, H. J. (2015). Creyentes urbanos: Sociología de la experiencia religiosa en una colonia popular de la Ciudad de México. UNAM-IIS.",
+        "relevance": "Ethnographic and survey-based study of religious practice among urban poor Mexicans, showing how devotional behaviors (prayer, limpias, pilgrimages) structure daily life and family socialization.",
+        "key_finding": "Among urban popular sectors in Mexico, religious devotion is deeply embedded in family routines and crisis coping, functioning as a primary resource for navigating poverty and insecurity."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "subjective_well_being_and_mental_health",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "family_cohesion_and_values",
+        "measurable_in_data": true,
+        "data_source": "FAM"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "attitudes_toward_gender_roles",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "cause",
+        "related_construct": "conservative_moral_attitudes (abortion, same-sex marriage)",
+        "measurable_in_data": true,
+        "data_source": "GEN, DER"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "social_capital_and_community_participation",
+        "measurable_in_data": true,
+        "data_source": "CUL, SOC"
+      },
+      {
+        "role": "effect",
+        "related_construct": "poverty_and_economic_vulnerability",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "religious_socialization_and_identity",
+    "sources": [
+      {
+        "citation": "Sherkat, D. E. (2003). Religious socialization: Sources of influence and influences of agency. In M. Dillon (Ed.), Handbook of the sociology of religion (pp. 151–163). Cambridge University Press.",
+        "relevance": "Provides a comprehensive theoretical framework for understanding how family, education, and community transmit religious identity across generations, directly relevant to items on parental religion, religious education, and identity stability.",
+        "key_finding": "Religious socialization is primarily driven by parental modeling and religious education, with family religious homogamy being the strongest predictor of intergenerational religious transmission."
+      },
+      {
+        "citation": "Voas, D., & Crockett, A. (2005). Religion in Britain: Neither believing nor belonging. Sociology, 39(1), 11–28.",
+        "relevance": "Examines intergenerational decline in religious identity and practice, providing a secularization framework applicable to measuring whether Mexican religious identity remains stable or erodes across generations.",
+        "key_finding": "Each successive generation shows roughly half the religiosity of its parents, suggesting that religious socialization weakens over time in modernizing societies."
+      },
+      {
+        "citation": "De la Torre, R., & Gutiérrez Zúñiga, C. (2007). Atlas de la diversidad religiosa en México. CIESAS/El Colegio de Jalisco.",
+        "relevance": "Maps religious diversity and identity transmission across Mexican regions, documenting how Catholic socialization varies by geography, ethnicity, and urbanization, directly contextualizing the construct for Mexico.",
+        "key_finding": "Religious identity in Mexico is strongly shaped by regional Catholic traditions and family socialization, but shows increasing diversification in urban and border areas."
+      },
+      {
+        "citation": "Hervieu-Léger, D. (2000). Religion as a chain of memory. Rutgers University Press.",
+        "relevance": "Theorizes religion as a chain of memory transmitted through socialization, where identity depends on continuity with an authoritative tradition—directly relevant to measuring intergenerational religious transmission.",
+        "key_finding": "Religious identity persists through chains of memory linking individuals to a believing community; when socialization chains break, religious identity fragments even if diffuse spirituality persists."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "religious_practice_and_devotion",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "supernatural_belief_system",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "national_and_cultural_identity",
+        "measurable_in_data": true,
+        "data_source": "IDE, IND"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "family_structure_and_intergenerational_relations",
+        "measurable_in_data": true,
+        "data_source": "FAM"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational_attainment_and_type_of_schooling",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "political_culture_and_values",
+        "measurable_in_data": true,
+        "data_source": "CUL, IDE"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "church_state_separation_attitudes",
+    "sources": [
+      {
+        "citation": "Blancarte, R. (2008). Laicidad y secularización en México. Estudios Sociológicos, 26(76), 843–855.",
+        "relevance": "Directly analyzes Mexican attitudes toward laicidad (secularism) and the historical church-state relationship, providing the essential theoretical and empirical context for this construct in the Mexican case.",
+        "key_finding": "Mexican laicidad is a distinctive historical product of liberal-conservative conflicts; public opinion shows broad support for church-state separation in principle but ambivalence about specific policy applications."
+      },
+      {
+        "citation": "Fox, J. (2015). Political secularism, religion, and the state: A time series analysis of worldwide data. Cambridge University Press.",
+        "relevance": "Provides a comparative framework for measuring government involvement with religion and citizen attitudes toward church-state boundaries, applicable to cross-national and within-country variation.",
+        "key_finding": "Even in constitutionally secular states, government support for and regulation of religion varies enormously; citizen attitudes toward separation are shaped by both institutional legacies and current religious competition."
+      },
+      {
+        "citation": "Camp, R. A. (1997). Crossing swords: Politics and religion in Mexico. Oxford University Press.",
+        "relevance": "Historical and political analysis of the Catholic Church's role in Mexican politics, directly relevant to items about clergy in politics, church taxation, and religious use of public resources.",
+        "key_finding": "Despite formal constitutional separation, the Catholic Church has maintained significant informal political influence in Mexico; public attitudes toward this influence are deeply divided along religious and ideological lines."
+      },
+      {
+        "citation": "Casanova, J. (1994). Public religions in the modern world. University of Chicago Press.",
+        "relevance": "Theorizes the deprivatization of religion and its re-entry into the public sphere, providing the conceptual basis for measuring attitudes about religion in politics, media, and public life.",
+        "key_finding": "Secularization does not necessarily mean privatization of religion; public religions can be compatible with democracy when they respect the autonomy of the state, making citizen attitudes about boundaries a key variable."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "religious_practice_and_devotion",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "democratic_values_and_political_culture",
+        "measurable_in_data": true,
+        "data_source": "CUL, DER"
+      },
+      {
+        "role": "cause",
+        "related_construct": "attitudes_toward_human_rights_policies (reproductive rights, LGBTQ+ rights)",
+        "measurable_in_data": true,
+        "data_source": "DER, GEN"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "trust_in_political_institutions",
+        "measurable_in_data": true,
+        "data_source": "CUL, COR"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "voter_behavior_and_partisan_preferences",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational_attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "religious_tolerance_and_pluralism",
+    "sources": [
+      {
+        "citation": "Eisenstein, M. A. (2008). Religion and the politics of tolerance: How Christianity builds democracy. Baylor University Press.",
+        "relevance": "Examines how religious beliefs and identities shape tolerance toward religious minorities and outgroups, directly relevant to measuring willingness to coexist with people of different faiths.",
+        "key_finding": "Higher levels of religious commitment can either increase or decrease tolerance depending on the theological content; inclusive theologies promote tolerance while exclusivist ones undermine it."
+      },
+      {
+        "citation": "Boidi, M. F., & Seligson, M. A. (2011). Cultura política de la democracia en México. LAPOP/Vanderbilt University.",
+        "relevance": "Uses AmericasBarometer data to measure political and social tolerance in Mexico, including tolerance of religious minorities, providing empirical benchmarks for the Mexican context.",
+        "key_finding": "Mexicans show moderate levels of political tolerance overall, but tolerance toward religious minorities is lower in regions with strong Catholic homogeneity and higher in religiously diverse urban areas."
+      },
+      {
+        "citation": "Masferrer Kan, E. (2009). Religión, poder y cultura: Ensayos sobre la política y la diversidad de creencias. Libros de la Araucaria.",
+        "relevance": "Analyzes religious intolerance and discrimination against Protestant and indigenous religious minorities in Mexico, directly contextualizing the tolerance items about expulsion and exclusion.",
+        "key_finding": "Religious intolerance in Mexico manifests in community-level expulsions of religious converts, particularly in indigenous communities in Chiapas and Oaxaca, making tolerance measurement essential for human rights monitoring."
+      },
+      {
+        "citation": "Norris, P., & Inglehart, R. (2004). Sacred and secular: Religion and politics worldwide. Cambridge University Press.",
+        "relevance": "Provides a cross-national framework linking secularization, existential security, and tolerance, applicable to understanding how Mexican modernization affects religious pluralism attitudes.",
+        "key_finding": "Greater existential security is associated with higher tolerance and acceptance of diversity, including religious pluralism; developing countries show more variation in tolerance linked to religiosity levels."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "religious_socialization_and_identity (exclusivist vs. pluralist)",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "human_rights_attitudes_and_support_for_minority_rights",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "attitudes_toward_indigenous_peoples_and_cultural_diversity",
+        "measurable_in_data": true,
+        "data_source": "IND, IDE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "attitudes_toward_migration_and_immigrants",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational_attainment_and_exposure_to_diversity",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "cause",
+        "related_construct": "social_cohesion_and_community_trust",
+        "measurable_in_data": true,
+        "data_source": "CUL, SEG"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "democratic_values_and_support_for_pluralism",
+        "measurable_in_data": true,
+        "data_source": "CUL, DER"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  }
+]

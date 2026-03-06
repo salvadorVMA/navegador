@@ -1,0 +1,74 @@
+[
+  {
+    "name": "gender_role_traditionalism",
+    "description": "Measures the degree to which respondents endorse traditional, patriarchal norms about gender roles in domestic, economic, and social life, including beliefs about male authority and female subordination.",
+    "question_cluster": [
+      "p11_1",
+      "p26_1",
+      "p61_1",
+      "p63_1",
+      "p10_1",
+      "p9",
+      "p59_1"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "intimate_partner_control_autonomy",
+    "description": "Captures the extent to which respondents experience or accept control dynamics within romantic partnerships, including financial control, permission-seeking, and decision-making power.",
+    "question_cluster": [
+      "p19",
+      "p20_1",
+      "p21",
+      "p22",
+      "p23_1",
+      "p23_5",
+      "p18",
+      "p68_1"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "tolerance_of_gender_based_violence",
+    "description": "Measures attitudes toward the acceptability and normalization of physical and emotional violence against women, including justifications for hitting and reactions to domestic conflict.",
+    "question_cluster": [
+      "p31",
+      "p32",
+      "p33",
+      "p34",
+      "p35",
+      "p38",
+      "p39"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "reproductive_autonomy_attitudes",
+    "description": "Assesses beliefs about reproductive decision-making, including opinions on abortion, unplanned adolescent pregnancy, ideal family size, and who holds authority over pregnancy outcomes.",
+    "question_cluster": [
+      "p43",
+      "p44",
+      "p47",
+      "p48",
+      "p49",
+      "p50",
+      "p51",
+      "p52"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "gender_equality_awareness_exposure",
+    "description": "Measures respondents' exposure to and awareness of gender equality norms and legal frameworks, including knowledge of anti-violence laws, campaigns, and willingness to support women in public roles.",
+    "question_cluster": [
+      "p41_1",
+      "p42_1",
+      "p54_1",
+      "p55_1",
+      "p65",
+      "p66",
+      "p60_3"
+    ],
+    "requires_aggregation": true
+  }
+]

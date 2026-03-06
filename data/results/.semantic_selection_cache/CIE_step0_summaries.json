@@ -1,0 +1,407 @@
+{
+  "p3_1|CIE": {
+    "summary": "Presence of self-help books in the household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_2|CIE": {
+    "summary": "Presence of scientific books in the household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_3|CIE": {
+    "summary": "Presence of technical books in the household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_4|CIE": {
+    "summary": "Presence of cooking books in the household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_5|CIE": {
+    "summary": "Presence of story books in the household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_6|CIE": {
+    "summary": "Presence of encyclopedia books in the household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_7|CIE": {
+    "summary": "Presence of guides and manuals in the household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_8|CIE": {
+    "summary": "Presence of history books in the household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_9|CIE": {
+    "summary": "Presence of children's books in the household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_10|CIE": {
+    "summary": "Presence of young adult books in the household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_11|CIE": {
+    "summary": "Presence of school textbooks in the household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_12|CIE": {
+    "summary": "Presence of novels in the household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_13|CIE": {
+    "summary": "Presence of poetry books in the household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_14|CIE": {
+    "summary": "Presence of politics books in the household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_15|CIE": {
+    "summary": "Presence of social sciences books in the household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_16|CIE": {
+    "summary": "Presence of religion books in the household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_17|CIE": {
+    "summary": "Presence of biography books in the household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_18|CIE": {
+    "summary": "Presence of manuals of all types in the household (yes/no).",
+    "duplicate_of": "p3_7|CIE",
+    "keep": false
+  },
+  "p3_19|CIE": {
+    "summary": "Presence of science fiction books in the household (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_20|CIE": {
+    "summary": "Presence of other types of books in the household (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p4|CIE": {
+    "summary": "Household ownership of a computer (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5|CIE": {
+    "summary": "Personal access to internet (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6|CIE": {
+    "summary": "Frequency of internet use (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7|CIE": {
+    "summary": "Primary purpose of internet use (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8_1|CIE": {
+    "summary": "Primary device used to connect to internet: computer (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9_1|CIE": {
+    "summary": "Primary media source for reading, watching, or listening to science news (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10_1|CIE": {
+    "summary": "Frequency of consulting the first mentioned science news media source (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11|CIE": {
+    "summary": "Level of interest in science or science-related matters (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12|CIE": {
+    "summary": "Frequency of reading, watching, or listening to science or scientific news programs (categorical scale).",
+    "duplicate_of": "p11|CIE",
+    "keep": false
+  },
+  "p13_1|CIE": {
+    "summary": "Primary source of information about science news (first mention).",
+    "duplicate_of": "p9_1|CIE",
+    "keep": false
+  },
+  "p14_1|CIE": {
+    "summary": "Primary place outside of school where respondent hears about science (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15_1a|CIE": {
+    "summary": "Primary source of support for school science tasks (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16|CIE": {
+    "summary": "Self-assessed knowledge of science on a 0-10 scale.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17|CIE": {
+    "summary": "Self-assessed knowledge of technology on a 0-10 scale.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18|CIE": {
+    "summary": "Perceived usefulness of scientific knowledge acquired in school (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19|CIE": {
+    "summary": "Whether respondent has acquired scientific information outside of school (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20_1a|CIE": {
+    "summary": "Primary source where scientific information was acquired outside of school (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21|CIE": {
+    "summary": "Perceived usefulness of scientific information acquired outside of school (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22|CIE": {
+    "summary": "Level of interest in technology (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23|CIE": {
+    "summary": "Frequency of reading, watching, or listening to technology news or programs (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24_1|CIE": {
+    "summary": "Primary source of information about technology news (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25|CIE": {
+    "summary": "Whether respondent reads books about technology (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27|CIE": {
+    "summary": "Perceived usefulness of technology knowledge acquired in school (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28|CIE": {
+    "summary": "Whether respondent has acquired technology information outside of school (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29_1a|CIE": {
+    "summary": "Primary source where technology information was acquired outside of school (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30|CIE": {
+    "summary": "Perceived usefulness of technology information acquired outside of school (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31_1|CIE": {
+    "summary": "Trust in politicians on a 0-10 scale.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32_1|CIE": {
+    "summary": "Agreement with the statement that scientists conduct research with results not useful to society (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33|CIE": {
+    "summary": "Perceived commitment of Mexican scientists to society (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34|CIE": {
+    "summary": "Perceived contribution of Mexican science to solving national problems (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35|CIE": {
+    "summary": "Interest in engaging in science-related activities (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36|CIE": {
+    "summary": "Importance of scientific knowledge to the respondent (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37_1|CIE": {
+    "summary": "Perceived ease or difficulty in understanding information about sustainable agriculture (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38_1|CIE": {
+    "summary": "Level of interest in sustainable agriculture (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38_2|CIE": {
+    "summary": "Level of interest in economic crisis (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38_3|CIE": {
+    "summary": "Level of interest in teacher training (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38_4|CIE": {
+    "summary": "Level of interest in climate change (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38_5|CIE": {
+    "summary": "Level of interest in renewable energy (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38_6|CIE": {
+    "summary": "Level of interest in transgenic crops (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39_1|CIE": {
+    "summary": "Agreement with the statement that science education in school is essential for everyone (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40_1|CIE": {
+    "summary": "Agreement with the statement that scientists follow political interests (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42_1|CIE": {
+    "summary": "Perceived quality of science education in basic education (preschool, primary, secondary) (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p43|CIE": {
+    "summary": "Interest in engaging in technology-related activities (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44_1|CIE": {
+    "summary": "Importance of technology for learning (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45_1|CIE": {
+    "summary": "Agreement with the statement that science is too specialized for the respondent to understand (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46_1|CIE": {
+    "summary": "Primary problem respondent believes science should help solve in Mexico over the next 5 years (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47_1|CIE": {
+    "summary": "Primary problem respondent believes technology should help solve in Mexico over the next 5 years (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_1|CIE": {
+    "summary": "Perceived importance of science or technology versus other factors for improving water situation (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49_1|CIE": {
+    "summary": "Agreement with the statement that universities should generate knowledge that solves societal problems (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p50_1|CIE": {
+    "summary": "Trust in research conducted in the discipline of medicine (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51_1|CIE": {
+    "summary": "Agreement with the statement that Mexico should import technology rather than develop its own (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p52|CIE": {
+    "summary": "Importance of Mexico generating its own technology (categorical scale).",
+    "duplicate_of": "p51_1|CIE",
+    "keep": false
+  },
+  "p53|CIE": {
+    "summary": "Awareness of any technology developed by Mexicans (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53aa_1|CIE": {
+    "summary": "Name of Mexican-developed technology (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54|CIE": {
+    "summary": "Interest in or past interest in developing a technology (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54a|CIE": {
+    "summary": "Purpose for which respondent wanted to develop a technology (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55|CIE": {
+    "summary": "Whether respondent was able to develop the technology (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p56|CIE": {
+    "summary": "Reason why respondent could not develop the technology (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p57|CIE": {
+    "summary": "Perceived efficiency of technology utilization in Mexico (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58|CIE": {
+    "summary": "Perceived level of support for technology development in Mexico (categorical scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p59_1|CIE": {
+    "summary": "Opinion on who should finance technology development: government (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

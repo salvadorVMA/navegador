@@ -1,0 +1,67 @@
+[
+  {
+    "name": "environmental_knowledge_literacy",
+    "description": "Measures the respondent's self-assessed and objective knowledge about environmental problems, their causes, solutions, and renewable energy, capturing environmental literacy as a latent cognitive construct.",
+    "question_cluster": [
+      "p8",
+      "p9",
+      "p27_1",
+      "p28_1",
+      "p29",
+      "p36_1"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "environmental_concern_risk_perception",
+    "description": "Captures the degree to which respondents perceive environmental problems as serious threats at national and local levels, including concern about specific issues such as climate change and fossil fuel impacts.",
+    "question_cluster": [
+      "p4",
+      "p5",
+      "p6",
+      "p7",
+      "p30_1",
+      "p37",
+      "p38_1"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "pro_environmental_civic_engagement",
+    "description": "Measures the extent to which respondents have taken collective or civic action to address environmental issues, reflecting behavioral mobilization beyond individual lifestyle choices.",
+    "question_cluster": [
+      "p34_1",
+      "p34_2",
+      "p34_3",
+      "p34_4",
+      "p34_5"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "environmental_governance_attitudes",
+    "description": "Captures respondents' beliefs about who bears responsibility for environmental protection and the appropriate role of government and companies in regulating environmental behavior.",
+    "question_cluster": [
+      "p12_1",
+      "p13",
+      "p40",
+      "p41"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "socioeconomic_environmental_context",
+    "description": "Measures the material and infrastructural conditions of respondents' households and communities that shape both environmental exposure and adaptive capacity, serving as a proxy for socio-environmental vulnerability.",
+    "question_cluster": [
+      "p25_1",
+      "p26_1",
+      "p39",
+      "p42",
+      "p44",
+      "p45",
+      "p46_1",
+      "p47"
+    ],
+    "requires_aggregation": true
+  }
+]

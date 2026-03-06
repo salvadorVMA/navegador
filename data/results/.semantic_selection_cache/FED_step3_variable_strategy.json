@@ -1,0 +1,77 @@
+[
+  {
+    "construct_name": "federalism_preference",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p24",
+      "p25",
+      "p36",
+      "p38",
+      "p58",
+      "p60"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Federalism preference is inherently multi-dimensional, spanning fiscal decentralization, competency allocation, and intergovernmental relations, so no single item captures the full construct. The selected questions share ordinal Likert-style scales (6–10 categories) and collectively span the key facets of federal preference with moderate-to-high entropy (H=1.70–2.73), making PCA appropriate to extract the dominant latent dimension while handling scale-range heterogeneity. p22 is excluded as its lower entropy (H=1.51) and 5-category scale suggest limited discriminatory power relative to the others; PCA first component binned to 5 quantiles yields a tractable ordinal bridge variable."
+  },
+  {
+    "construct_name": "institutional_trust_and_representativeness",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p12_1",
+      "p12_2",
+      "p12_3",
+      "p12_4",
+      "p12_5",
+      "p12_6",
+      "p51_1",
+      "p54",
+      "p55",
+      "p56"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Institutional trust is a latent construct best captured by multiple items spanning trust in different institutions and perceptions of representativeness; the p12 battery provides a coherent 5–6 category Likert block with near-identical entropy (H≈1.93–2.02), while p51_1, p54, p55, and p56 add representativeness and legitimacy facets with compatible ordinal scales. p13_1 is excluded because its 13 categories and high entropy (H=3.19) likely reflect a distinct multi-institution checklist format that would distort the composite. PCA first component handles the slight scale heterogeneity and is binned to 5 quantiles for the bridge model."
+  },
+  {
+    "construct_name": "subnational_government_performance",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p10",
+      "p11",
+      "p14_1",
+      "p15_1",
+      "p16",
+      "p17",
+      "p47"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Subnational government performance is a multi-faceted construct covering service delivery, fiscal management, and responsiveness, requiring aggregation across items. The selected questions predominantly use 6–8 category ordinal scales with comparable entropy (H=1.87–2.52), making mean scoring appropriate after rescaling to a common range. p18_1 (H=1.65), p37_1, and p44 (both K=5, H≈1.84–1.89) are excluded because their narrower scales and lower entropy would compress variance in the composite; the remaining seven items provide balanced coverage of performance dimensions and are binned to ≤5 categories post-averaging."
+  },
+  {
+    "construct_name": "security_governance_preferences",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p45",
+      "p46",
+      "p48",
+      "p49",
+      "p50_1"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Security governance preferences span attitudes toward policing models, intergovernmental security coordination, and public safety priorities, requiring multi-item aggregation to capture the latent dimension reliably. p45, p46, p48, p49, and p50_1 use 6–9 category ordinal scales with moderate-to-high entropy (H=1.98–2.45), providing good discriminatory coverage; PCA handles the modest scale heterogeneity and extracts the dominant preference axis. p53_1 and p53_4 are excluded because their low entropy (H=1.24–1.32) and 5-category format suggest highly skewed, low-information responses that would attenuate the first component rather than strengthen it."
+  },
+  {
+    "construct_name": "political_interest_and_efficacy",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p1",
+      "p3",
+      "p4",
+      "p5",
+      "p6",
+      "p7",
+      "p8"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Political interest and efficacy is a well-established two-dimensional construct (interest + internal/external efficacy) that requires multiple items to separate these correlated but distinct facets. All seven questions use 6–7 category ordinal scales with closely matched entropy (H=1.75–2.33), making them directly combinable via mean scoring without rescaling. The full battery is retained because each item contributes unique variance to either the interest or efficacy sub-dimension, and the mean score binned to 5 ordered categories provides a stable, low-noise bridge variable suitable for the MNLogit/OrderedModel."
+  }
+]

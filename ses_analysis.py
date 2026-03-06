@@ -193,6 +193,43 @@ class AnalysisConfig:
                 changes_made.append('est_civil_normalized')
                 mapping_stats['est_civil_normalized'] += 1
 
+            # 7. Add sd14 (income quintile, ordinal 1–5) from survey sd block.
+            # sd14 encodes personal income in 5 ordered bins; available in 23/26 surveys.
+            # Sentinel codes (-1, 8, 9, 98, 99) are remapped to NaN.
+            if 'sd14' in df.columns and 'income_quintile' not in df.columns:
+                s = pd.to_numeric(df['sd14'], errors='coerce')
+                s = s.where(s.between(1.0, 5.0), other=float('nan'))
+                df['income_quintile'] = s
+                changes_made.append('income_quintile')
+
+            # 8. Add sd11 (employment formality, ordinal 1–4) from survey sd block.
+            # sd11: 1=formal salaried, 2=self-employed, 3=informal, 4=unpaid/other.
+            # Values outside 1–4 remapped to NaN.
+            if 'sd11' in df.columns and 'empleo_formality' not in df.columns:
+                s = pd.to_numeric(df['sd11'], errors='coerce')
+                s = s.where(s.between(1.0, 4.0), other=float('nan'))
+                df['empleo_formality'] = s
+                changes_made.append('empleo_formality')
+
+            # 9. Add region_x_Tam_loc interaction (local fixed effects).
+            # Cross-classifies 4 regions × 4 locality sizes → up to 16 cells.
+            # Captures geographic-structural confounding invisible to individual SES.
+            # Only created when both region and Tam_loc are present and normalised.
+            if ('region' in df.columns and 'Tam_loc' in df.columns
+                    and 'region_x_Tam_loc' not in df.columns):
+                region_num = pd.to_numeric(
+                    df['region'].map({'01': 1, '02': 2, '03': 3, '04': 4,
+                                      '1': 1, '2': 2, '3': 3, '4': 4,
+                                      1.0: 1, 2.0: 2, 3.0: 3, 4.0: 4}),
+                    errors='coerce',
+                )
+                tam_num = pd.to_numeric(df['Tam_loc'], errors='coerce')
+                valid = region_num.notna() & tam_num.notna()
+                interaction = pd.Series(float('nan'), index=df.index)
+                interaction[valid] = (region_num[valid] - 1) * 4 + tam_num[valid]
+                df['region_x_Tam_loc'] = interaction
+                changes_made.append('region_x_Tam_loc')
+
             # Update the dataframe in the dictionary
             if changes_made:
                 los_mex_dict['enc_dict'][survey_name]['dataframe'] = df

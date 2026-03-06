@@ -1,0 +1,60 @@
+[
+  {
+    "construct_name": "corruption_perception",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p16",
+      "p17",
+      "p34"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Corruption perception is inherently multi-dimensional, spanning prevalence estimates, severity judgments, and sector-specific assessments, so no single item fully captures it. p16, p17, and p34 are selected because they carry the highest entropy (1.60, 2.14, 1.77 bits) indicating meaningful response variation, and their 7–8 category scales are sufficiently compatible for PCA. PCA first component is preferred over simple summation because the items likely tap correlated but distinct facets of perception, and the first PC extracts the shared latent signal while discarding idiosyncratic noise; the resulting score is then binned to 5 quantile categories to satisfy the ≤15 category constraint."
+  },
+  {
+    "construct_name": "civic_tolerance_of_deviance",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p10_1",
+      "p13_1",
+      "p52_1"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Civic tolerance of deviance is a latent attitudinal construct best captured by averaging across multiple behavioral scenarios rather than relying on a single item. p10_1 and p13_1 have the highest entropy (2.13 and 2.10 bits) and share an 8-category scale, while p52_1 (H=1.48, K=5) adds coverage of a distinct deviance domain; mean-scoring accommodates the slight scale difference better than summing. The mean is then binned to 5 ordered categories, preserving ordinality while keeping the target within model constraints."
+  },
+  {
+    "construct_name": "prosocial_reporting_behavior",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p23",
+      "p24",
+      "p21",
+      "p11"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Prosocial reporting behavior spans willingness to report, perceived barriers, and actual reporting actions across multiple contexts, making aggregation essential for construct validity. p23 (H=2.57), p24 (H=2.39), p21 (H=1.97), and p11 (H=1.80) are the highest-entropy items and collectively cover the behavioral and intentional dimensions of reporting; their 7–9 category scales are close enough for PCA to extract a coherent latent dimension. PCA first component is chosen over mean-scoring because scale widths differ slightly (7 vs. 8 vs. 9 categories) and PCA standardizes each item before extraction, producing a more reliable composite that is then binned to 5 quantiles."
+  },
+  {
+    "construct_name": "institutional_trust_and_efficacy",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p6_1",
+      "p36_1",
+      "p53",
+      "p25_1"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Institutional trust and efficacy is a high-importance, multi-faceted construct encompassing trust in specific institutions, perceived government effectiveness, and citizen efficacy, requiring aggregation across items. p6_1 (H=3.26), p53 (H=3.18), p36_1 (H=3.12), and p25_1 (H=2.39) are the four highest-entropy items and span trust in different institutional actors as well as efficacy beliefs; their 11–13 category scales are compatible for PCA. PCA first component is strongly preferred here because the wide and varying category counts make simple summation misleading, while PCA standardization equalizes item contributions and the first PC captures the dominant trust-efficacy axis; the score is binned to 5 quantiles."
+  },
+  {
+    "construct_name": "anticorruption_civic_engagement",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p14",
+      "p33",
+      "p31",
+      "p45"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Anticorruption civic engagement encompasses both attitudinal willingness and behavioral participation in anti-corruption activities, requiring multiple items to cover its breadth. p14 (H=2.19, K=6), p33 (H=2.52, K=11), p31 (H=1.46, K=8), and p45 (H=1.54, K=4) are selected for their higher entropy and coverage of distinct engagement dimensions (reporting intentions, participation, awareness behaviors); the scale heterogeneity (4–11 categories) is handled by normalizing each item to a 0–1 range before averaging, making mean_score appropriate. The resulting mean is binned into 5 ordered categories, balancing information retention with model compatibility."
+  }
+]

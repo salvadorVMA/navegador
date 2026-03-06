@@ -1,0 +1,355 @@
+[
+  {
+    "construct_name": "institutional_trust_and_justice_system_performance",
+    "sources": [
+      {
+        "citation": "Magaloni, B. (2006). Voting for autocracy: Hegemonic party survival and its demise in Mexico. Cambridge University Press.",
+        "relevance": "Examines how institutional trust in the justice system and state institutions shaped political behavior in Mexico's democratic transition, providing foundational theory on trust in Mexican institutions.",
+        "key_finding": "Citizens' trust in justice institutions was systematically eroded by perceptions of corruption and partisan manipulation, undermining democratic legitimacy."
+      },
+      {
+        "citation": "Ríos Cázares, A., & Shirk, D. A. (2007). Reforming the administration of justice in Mexico. In W. Cornelius & D. Shirk (Eds.), Reforming the administration of justice in Mexico (pp. 1–38). University of Notre Dame Press.",
+        "relevance": "Directly addresses public confidence in courts, prosecutors, and police in Mexico, and how justice reform efforts have attempted to rebuild institutional trust.",
+        "key_finding": "Public trust in Mexico's justice institutions remained critically low due to inefficiency, corruption, and impunity, motivating comprehensive judicial reform."
+      },
+      {
+        "citation": "Seligson, M. A. (2002). The impact of corruption on regime legitimacy: A comparative study of four Latin American countries. Journal of Politics, 64(2), 408–433.",
+        "relevance": "Provides a comparative framework for understanding how corruption perceptions erode institutional trust in Latin American democracies including Mexico.",
+        "key_finding": "Direct experience with corruption significantly reduces trust in political institutions and belief in system legitimacy."
+      },
+      {
+        "citation": "Ingram, M. C. (2016). Crafting courts in new democracies: The politics of subnational judicial reform in Brazil and Mexico. Cambridge University Press.",
+        "relevance": "Analyzes variation in judicial performance and citizen trust across Mexican states, linking institutional design to public confidence in the justice system.",
+        "key_finding": "Subnational variation in judicial reform implementation produces significant differences in citizen trust and perceived effectiveness of courts."
+      },
+      {
+        "citation": "Monsiváis-Carrillo, A. (2020). Institutional trust in Latin America: Measurement and conceptual challenges. Política y Gobierno, 27(2), 1–26.",
+        "relevance": "Discusses measurement challenges of institutional trust in Latin American survey research, directly relevant to construct operationalization.",
+        "key_finding": "Institutional trust in Latin America is multidimensional, with trust in justice institutions forming a distinct factor from trust in political or electoral institutions."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "perceived corruption levels",
+        "measurable_in_data": true,
+        "data_source": "COR"
+      },
+      {
+        "role": "cause",
+        "related_construct": "democratic legitimacy and political participation",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "public security perceptions and victimization",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment and civic knowledge",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "rule of law and justice system access",
+        "measurable_in_data": true,
+        "data_source": "JUS"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "authoritarian attitudes and punitive tolerance",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "authoritarian_attitudes_and_punitive_tolerance",
+    "sources": [
+      {
+        "citation": "Malone, M. F. T. (2010). The verdict is in: The impact of crime on public trust in Central American justice systems. Journal of Politics in Latin America, 2(3), 99–128.",
+        "relevance": "Examines how crime victimization and insecurity drive punitive attitudes and tolerance for extralegal state violence in Latin American contexts.",
+        "key_finding": "Crime victimization increases support for punitive and extralegal measures, eroding commitment to due process rights."
+      },
+      {
+        "citation": "Romero, V., Magaloni, B., & Díaz-Cayeros, A. (2016). The Mexican war on drugs: Crime and the limits of government persuasion. International Journal of Public Opinion Research, 28(2), 181–200.",
+        "relevance": "Directly analyzes Mexican public opinion on the security-rights trade-off, measuring willingness to accept state coercion and militarization.",
+        "key_finding": "Mexicans exposed to higher levels of violence were more willing to accept rights restrictions in exchange for security, but this effect was moderated by trust in government."
+      },
+      {
+        "citation": "Smulovitz, C. (2003). Citizen insecurity and fear: Public and private responses in Argentina. In H. Frühling, J. Tulchin, & H. Golding (Eds.), Crime and violence in Latin America (pp. 125–152). Woodrow Wilson Center Press.",
+        "relevance": "Provides theoretical framework for understanding how fear of crime generates authoritarian and punitive attitudes in Latin American democracies.",
+        "key_finding": "Citizen insecurity fosters demand for 'mano dura' (iron fist) policies, reflecting a broader authoritarian disposition that tolerates human rights violations."
+      },
+      {
+        "citation": "Bateson, R. (2012). Crime victimization and political participation. American Political Science Review, 106(3), 570–587.",
+        "relevance": "Examines the relationship between crime exposure and political attitudes including support for authoritarian measures in Latin America.",
+        "key_finding": "Crime victimization increases political participation but also increases support for authoritarian security measures."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "crime victimization and insecurity",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support for militarized policing and extrajudicial action",
+        "measurable_in_data": true,
+        "data_source": "SEG, JUS"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "institutional trust in justice system",
+        "measurable_in_data": true,
+        "data_source": "DER, JUS"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "political culture and democratic values",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "media consumption and information access",
+        "measurable_in_data": true,
+        "data_source": "SOC"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "perceived_discrimination_and_social_exclusion",
+    "sources": [
+      {
+        "citation": "Solís, P., Krozer, A., Arroyo Batista, C., & Güémez Graniel, B. (2019). Discriminación étnico-racial en México: Una taxonomía de las prácticas. Colegio de México, Working Paper.",
+        "relevance": "Directly measures and categorizes racial and ethnic discrimination in Mexico, including discrimination based on skin color and physical appearance.",
+        "key_finding": "Skin color is a powerful predictor of discriminatory experiences in Mexico, operating through both institutional and interpersonal mechanisms."
+      },
+      {
+        "citation": "Villarreal, A. (2010). Stratification by skin color in contemporary Mexico. American Sociological Review, 75(5), 652–678.",
+        "relevance": "Provides empirical evidence of skin-color-based stratification in Mexico, directly relevant to measuring perceived discrimination based on appearance.",
+        "key_finding": "Darker skin color is significantly associated with lower educational attainment and occupational status in Mexico, independent of socioeconomic background."
+      },
+      {
+        "citation": "CONAPRED. (2017). Encuesta Nacional sobre Discriminación 2017 (ENADIS): Principales resultados. Consejo Nacional para Prevenir la Discriminación.",
+        "relevance": "Mexico's national discrimination survey provides the primary measurement framework for perceived discrimination across multiple grounds including appearance, religion, and sexual orientation.",
+        "key_finding": "Over 20% of Mexicans reported experiencing discrimination in the past year, with physical appearance and skin color among the most frequently cited grounds."
+      },
+      {
+        "citation": "Telles, E. E. (2014). Pigmentocracies: Ethnicity, race, and color in Latin America. University of North Carolina Press.",
+        "relevance": "Comparative study of colorism and racial discrimination across Latin America, providing theoretical grounding for measuring skin-color-based discrimination in Mexico.",
+        "key_finding": "Pigmentocracy—social stratification by skin color—persists across Latin America despite national ideologies of racial mixture, with significant effects on life chances."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "socioeconomic inequality and poverty",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "mental health and well-being",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "indigenous identity and rights",
+        "measurable_in_data": true,
+        "data_source": "IND"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational access and attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "gender-based discrimination",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "cause",
+        "related_construct": "political alienation and low participation",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "religious identity and tolerance",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "gender_family_and_vulnerable_group_rights",
+    "sources": [
+      {
+        "citation": "Htun, M., & Weldon, S. L. (2012). The civic origins of progressive policy change: Combating violence against women in global perspective, 1975–2005. American Political Science Review, 106(3), 548–569.",
+        "relevance": "Examines how attitudes toward gender-based violence and women's autonomy within families shape policy outcomes, providing theoretical grounding for measuring progressive vs. traditional family norms.",
+        "key_finding": "Strong autonomous feminist movements, rather than national wealth or left-wing governments, are the primary drivers of progressive policy on violence against women."
+      },
+      {
+        "citation": "Inglehart, R., & Norris, P. (2003). Rising tide: Gender equality and cultural change around the world. Cambridge University Press.",
+        "relevance": "Provides the theoretical framework of cultural modernization and gender value change, directly applicable to measuring progressive versus traditional orientations in Mexican family norms.",
+        "key_finding": "Support for gender equality rises with economic development and generational replacement, but cultural traditions create persistent cross-national variation."
+      },
+      {
+        "citation": "Frías, S. M. (2013). Strategies and help-seeking behavior among Mexican women experiencing partner violence. Violence Against Women, 19(1), 24–49.",
+        "relevance": "Directly examines attitudes toward domestic violence intervention in Mexico, relevant to questions about tolerance for corporal punishment and domestic violence.",
+        "key_finding": "Cultural norms around family privacy and gender roles significantly inhibit help-seeking among Mexican women experiencing domestic violence."
+      },
+      {
+        "citation": "Gutiérrez, R., Díaz, K., & Román, R. (2016). El concepto de familia en México: Una revisión desde la mirada antropológica y demográfica. Ciencia Ergo Sum, 23(3), 219–228.",
+        "relevance": "Analyzes evolving family structures and norms in Mexico, providing context for understanding attitudes toward children's, elderly, and disability rights within families.",
+        "key_finding": "Mexican family norms are undergoing significant transformation, with growing tension between traditional patriarchal models and emerging egalitarian values."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "correlate",
+        "related_construct": "gender equality attitudes",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment and exposure",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "family structure and values",
+        "measurable_in_data": true,
+        "data_source": "FAM"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "religiosity and secularization",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "child welfare and youth development outcomes",
+        "measurable_in_data": true,
+        "data_source": "NIN"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "attitudes toward aging and elderly care",
+        "measurable_in_data": true,
+        "data_source": "ENV"
+      },
+      {
+        "role": "effect",
+        "related_construct": "identity and value orientations (traditional vs. modern)",
+        "measurable_in_data": true,
+        "data_source": "IDE"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "civil_liberties_and_protest_rights",
+    "sources": [
+      {
+        "citation": "Schedler, A. (2015). En la niebla de la guerra: Los ciudadanos ante la violencia criminal organizada. CIDE.",
+        "relevance": "Analyzes how Mexico's security crisis has affected citizens' attitudes toward civil liberties, freedom of expression, and the boundaries of legitimate protest.",
+        "key_finding": "Exposure to organized criminal violence generates ambivalence about civil liberties, with citizens simultaneously demanding security and fearing state overreach."
+      },
+      {
+        "citation": "Booth, J. A., & Seligson, M. A. (2009). The legitimacy puzzle in Latin America: Political support and democracy in eight nations. Cambridge University Press.",
+        "relevance": "Provides a comparative framework for measuring tolerance for dissent and support for civil liberties as components of democratic legitimacy in Latin America.",
+        "key_finding": "Support for civil liberties and tolerance for political dissent are distinct dimensions of democratic values that vary significantly across Latin American populations."
+      },
+      {
+        "citation": "Olvera, A. J. (2010). The elusive democracy: Political parties, democratic institutions, and civil society in Mexico. Latin American Research Review, 45(S), 79–107.",
+        "relevance": "Examines the role of civil society, protest movements, and freedom of expression in Mexico's democratic consolidation.",
+        "key_finding": "Mexican civil society's capacity for protest and dissent has been constrained by both state repression and the weakness of democratic institutions."
+      },
+      {
+        "citation": "Treviño-Rangel, J. (2018). Gobernando la libertad de expresión en México: Poder, medios y la construcción de la censura. Política y Gobierno, 25(2), 353–386.",
+        "relevance": "Directly addresses freedom of expression in Mexico, including public attitudes toward press freedom and protest rights.",
+        "key_finding": "Freedom of expression in Mexico is constrained by both state and non-state actors, and public opinion on its limits reflects deep ambivalence about security and order."
+      },
+      {
+        "citation": "Sullivan, M. J., & Transue, J. E. (1999). The sources of political tolerance: A multivariate analysis. American Journal of Political Science, 43(1), 284–306.",
+        "relevance": "Provides foundational theory on the determinants of political tolerance and support for civil liberties, applicable to cross-cultural measurement.",
+        "key_finding": "Education, perceived threat, and personality traits are key predictors of political tolerance and support for the civil liberties of disliked groups."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "educational attainment and civic education",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "democratic political culture and values",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "perceived insecurity and crime victimization",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "media freedom and information access",
+        "measurable_in_data": true,
+        "data_source": "SOC"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "authoritarian attitudes and punitive tolerance",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "institutional trust",
+        "measurable_in_data": true,
+        "data_source": "DER, COR"
+      },
+      {
+        "role": "effect",
+        "related_construct": "globalization exposure and cosmopolitan values",
+        "measurable_in_data": true,
+        "data_source": "GLO"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  }
+]

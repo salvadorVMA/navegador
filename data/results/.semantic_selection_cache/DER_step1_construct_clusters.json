@@ -1,0 +1,70 @@
+[
+  {
+    "name": "institutional_trust_and_justice_system_performance",
+    "description": "Measures citizens' confidence in and evaluation of key justice and rights-protection institutions, including courts, prosecutors, police, and human rights commissions. Captures the degree to which Mexicans believe formal institutions effectively uphold rights and deliver justice.",
+    "question_cluster": [
+      "p18",
+      "p19",
+      "p20",
+      "p21",
+      "p33",
+      "p34",
+      "p6"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "authoritarian_attitudes_and_punitive_tolerance",
+    "description": "Measures the extent to which individuals accept or justify state violence, torture, and coercive practices against suspects or detainees, reflecting authoritarian dispositions and willingness to trade rights for security. Includes attitudes toward the rights-security trade-off.",
+    "question_cluster": [
+      "p7",
+      "p9",
+      "p16",
+      "p17",
+      "p22",
+      "p23"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "perceived_discrimination_and_social_exclusion",
+    "description": "Captures respondents' perceptions of and attitudes toward discriminatory treatment based on physical appearance, skin color, religion, and sexual orientation, as well as direct personal experiences of rights violations linked to appearance. Reflects awareness of and tolerance for social exclusion in Mexico.",
+    "question_cluster": [
+      "p35_1",
+      "p36_1",
+      "p39",
+      "p44",
+      "p47"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "gender_family_and_vulnerable_group_rights",
+    "description": "Measures attitudes toward the rights and autonomy of vulnerable groups within domestic and family contexts, including women, children, the elderly, and people with mental disabilities, as well as tolerance for corporal punishment and domestic violence intervention. Reflects progressive versus traditional orientations in family and gender norms.",
+    "question_cluster": [
+      "p49",
+      "p52",
+      "p55",
+      "p56",
+      "p58",
+      "p59",
+      "p61"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "civil_liberties_and_protest_rights",
+    "description": "Measures attitudes toward freedom of expression, the right to public protest, and the justifiability of civil disobedience or protester violence, capturing the boundaries citizens draw around political and expressive freedoms. Relevant to understanding democratic values and tolerance for dissent in Mexico.",
+    "question_cluster": [
+      "p8",
+      "p13",
+      "p14",
+      "p15",
+      "p26",
+      "p40_1",
+      "p41",
+      "p42"
+    ],
+    "requires_aggregation": true
+  }
+]

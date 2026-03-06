@@ -1,0 +1,78 @@
+[
+  {
+    "construct_name": "physical_housing_quality",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p3",
+      "p23",
+      "p28",
+      "p30",
+      "p32",
+      "p42_1"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Physical housing quality is inherently multi-dimensional (materials, structural condition, space adequacy, deterioration), and no single item captures the full construct. The selected questions span complementary physical dimensions with moderate-to-high entropy, making PCA appropriate to extract the dominant latent quality axis while handling scale heterogeneity across items. PCA is preferred over sum/mean scoring because the items use different response scales (4-point, 8-point, 9-10 point), and the first principal component will weight items by their shared variance rather than treating all scales as equivalent."
+  },
+  {
+    "construct_name": "basic_services_access",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p6",
+      "p7",
+      "p10",
+      "p36_15",
+      "p36_16",
+      "p36_17",
+      "p36_20",
+      "p36_30",
+      "p36_31"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Basic services access is a composite construct spanning water, drainage, electricity, waste collection, and internet connectivity, requiring multiple items to cover its breadth. The binary p36_x items (yes/no service availability) are scale-compatible with each other, while p6, p7, and p10 capture service quality and frequency dimensions; PCA accommodates this mixed-scale structure by extracting the dominant access gradient. Items p8, p9, p11, p11_1, and p40_1 are excluded due to very low entropy (H ≤ 0.56), indicating near-zero variance that would contribute noise rather than signal to the composite."
+  },
+  {
+    "construct_name": "household_asset_endowment",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p36_1",
+      "p36_3",
+      "p36_5",
+      "p36_7",
+      "p36_8",
+      "p36_9",
+      "p36_10",
+      "p36_12",
+      "p36_13",
+      "p36_14",
+      "p36_18",
+      "p36_24",
+      "p36_29",
+      "p36_32"
+    ],
+    "aggregation_method": "sum_score",
+    "justification": "Household asset endowment is a classic additive construct best measured by counting owned durable goods and assets, and all selected items share an identical binary (yes/no ownership) scale, making simple summation theoretically and statistically appropriate. Items with very low entropy (p36_2 H=0.20, p36_4 H=0.50, p36_6 H=0.47, p36_11 H=0.58, p36_21 H=0.38, p36_22 H=0.23, p36_23 H=0.38) are excluded as near-constant variables that add minimal discriminatory power. The resulting sum score will be binned into ≤5 ordinal categories representing asset quintiles, consistent with standard SES asset-index methodology."
+  },
+  {
+    "construct_name": "housing_tenure_security",
+    "strategy": "single_max_entropy",
+    "selected_qids": [
+      "p14"
+    ],
+    "aggregation_method": null,
+    "justification": "Housing tenure security is most directly and parsimoniously captured by the type of tenure arrangement (ownership, rental, informal occupation, etc.), which p14 measures with the highest entropy (H=2.04) among the tenure-related items, indicating strong discriminatory power across tenure categories. While the construct has sub-dimensions (documentation, dispute risk, eviction vulnerability captured by p21_x items), these are largely downstream consequences of tenure type, making p14 the gold-standard anchor item. Aggregating across the p21_x perception items and p14's categorical tenure type would conflate objective legal status with subjective security perceptions, reducing construct validity for a bridge variable targeting SES demographics."
+  },
+  {
+    "construct_name": "housing_policy_efficacy_beliefs",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p47",
+      "p50_1",
+      "p51",
+      "p46_1",
+      "p43_1",
+      "p45_1"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Housing policy efficacy beliefs span multiple attitudinal dimensions—satisfaction with government housing programs, perceived effectiveness of interventions, trust in institutions, and willingness to engage—that collectively define the construct and cannot be reduced to a single item without substantial content loss. All six selected items use 6-to-9 point Likert-type scales with high entropy (H ≥ 1.71), indicating good distributional spread and scale near-compatibility; PCA is preferred over mean scoring because scale endpoints differ slightly across items (6 vs. 7 vs. 9 categories). Items p34 and p34_1 are excluded as lower-entropy items (H ≤ 1.36) that likely tap a narrower sub-facet, keeping the composite focused on the core efficacy belief dimension."
+  }
+]

@@ -1,0 +1,70 @@
+[
+  {
+    "construct_name": "institutional_trust_and_justice_system_performance",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p18",
+      "p19",
+      "p20",
+      "p21",
+      "p34",
+      "p6"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Institutional trust is inherently multi-dimensional, spanning trust in courts, police, government, and justice delivery, so no single item captures the full construct. The questions share broadly compatible ordinal Likert-style scales (5–7 categories) and collectively tap the same latent dimension of institutional confidence. PCA extracts the dominant shared variance across these items while handling minor scale differences, and binning the first component into 5 quantiles yields a well-distributed ordinal bridge variable; p33 is excluded due to its notably lower entropy (H=1.45), suggesting limited discriminatory power."
+  },
+  {
+    "construct_name": "authoritarian_attitudes_and_punitive_tolerance",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p7",
+      "p9",
+      "p16",
+      "p17",
+      "p22",
+      "p23"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Authoritarian attitudes and punitive tolerance form a latent attitudinal syndrome that is best captured by multiple items probing different facets such as support for strong-hand governance, tolerance of extrajudicial punishment, and deference to authority. While most items use 5-category scales, p16 (K=8) and p17 (K=7) differ slightly, making PCA preferable to a simple sum as it accommodates scale heterogeneity and extracts the shared authoritarian dimension. Retaining all six items maximizes construct coverage and reduces single-item measurement error for this high-priority construct."
+  },
+  {
+    "construct_name": "perceived_discrimination_and_social_exclusion",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p35_1",
+      "p36_1",
+      "p39",
+      "p44",
+      "p47"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Perceived discrimination is a multi-faceted construct covering personal experience of discrimination, witnessed exclusion, and group-based marginalization, so aggregation across all five items is warranted. The scales are broadly compatible (4–6 ordinal categories) and a mean score normalizes for the small differences in range before binning. Mean aggregation is preferred over PCA here given the modest number of items and the relatively low entropy values, which suggest a shared but narrow response distribution that a simple mean captures adequately."
+  },
+  {
+    "construct_name": "gender_family_and_vulnerable_group_rights",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p55",
+      "p61",
+      "p49",
+      "p52",
+      "p58",
+      "p59"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Rights attitudes toward gender, family, and vulnerable groups span multiple sub-domains (reproductive rights, LGBTQ+ rights, disability, minority protections) that together define the construct but individually are insufficient; aggregation is therefore necessary. Most items use 4–5 category scales with p49 extending to 6, so PCA handles this heterogeneity better than a raw sum. p56 is deprioritized relative to the selected items due to its lower entropy (H=1.17), but all six selected items have reasonable face validity for the construct; the first PC will capture the dominant progressive-versus-conservative rights orientation."
+  },
+  {
+    "construct_name": "civil_liberties_and_protest_rights",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p13",
+      "p14",
+      "p40_1",
+      "p41",
+      "p42"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Civil liberties and protest rights encompass attitudes toward freedom of expression, assembly, and state repression, requiring multiple items to cover the construct adequately. The five selected items have the highest entropy values in the cluster (H ranging from 1.70 to 2.37), maximizing information content, while p8, p15, and p26 are excluded due to lower entropy and narrower coverage. Scale heterogeneity (K=5, 7, 8) makes PCA the most appropriate aggregation method, as it extracts the dominant latent civil-liberties dimension without assuming equal interval spacing across differently-scaled items."
+  }
+]

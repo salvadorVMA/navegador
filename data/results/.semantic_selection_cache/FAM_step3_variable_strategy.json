@@ -1,0 +1,71 @@
+[
+  {
+    "construct_name": "family_cohesion_quality",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p25",
+      "p26",
+      "p27",
+      "p52",
+      "p49",
+      "p10"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Family cohesion is inherently multi-dimensional (emotional closeness, communication, support, solidarity) and no single item can capture its full breadth, making aggregation essential for a construct rated 5/5 in importance. The questions span varying scale widths (K=5 to K=8) and show heterogeneous entropy profiles, so PCA on the first component is preferred over simple summation as it accommodates scale differences and extracts the dominant shared variance without assuming equal item weights. Binning the first PC into 5 quantiles yields an ordinal variable within the bridge model's category limit while maximizing construct coverage."
+  },
+  {
+    "construct_name": "traditional_family_ideology",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p13",
+      "p16",
+      "p43",
+      "p28",
+      "p29",
+      "p30",
+      "p55"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Traditional family ideology is a latent attitudinal construct that typically spans multiple sub-dimensions (gender roles, marriage norms, intergenerational authority, religious framing of family), so all seven items are needed to represent it adequately given its 5/5 importance rating. Scale widths range from K=5 to K=8 and entropy varies substantially (0.95 to 2.38), indicating items tap different facets with different discriminatory power; PCA extracts the dominant ideological axis without penalizing lower-entropy items that may still load strongly on the latent factor. The first PC binned to 5 quantiles produces a compact ordinal variable suitable for the bridge regression."
+  },
+  {
+    "construct_name": "union_formation_motivations",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p19",
+      "p22",
+      "p21",
+      "p23"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Union formation motivations is rated 3/5 in importance, warranting a parsimonious operationalization; p24a (K=15) and p45 (K=13) are excluded because their large category counts reflect nominal or semi-nominal response structures incompatible with Likert-style summation, and p20 has very low entropy (H=1.12) suggesting near-zero variance. The four retained items (p19, p21, p22, p23) share 6–7 ordered categories and cover motivational dimensions (emotional, practical, social) with reasonable entropy (1.60–2.31), making a mean score appropriate; the mean is then binned to ≤5 ordinal categories for the bridge model."
+  },
+  {
+    "construct_name": "family_instability_and_conflict",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p32",
+      "p35",
+      "p38",
+      "p39",
+      "p42"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Family instability and conflict is a 5/5 priority construct encompassing distinct but correlated phenomena (economic stress, relational conflict, dissolution risk, violence), requiring multi-item coverage to avoid construct under-representation. Items p33 and p41 are excluded because their very low entropy (H=1.10 and H=0.95 respectively) and narrow K=4 scales suggest floor/ceiling effects that would distort a composite; the five retained items span K=6–8 with entropy 1.40–2.46, providing richer variance. PCA on the first component handles the mixed scale widths and identifies the primary instability/conflict axis, which is then binned to 5 quantiles."
+  },
+  {
+    "construct_name": "family_socialization_and_values_transmission",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p53",
+      "p54",
+      "p56",
+      "p57",
+      "p60_1",
+      "p61_1",
+      "p67"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Values transmission is a 5/5 construct that spans multiple socialization channels (parental practices, religious transmission, civic values, educational expectations) and cannot be reduced to a single item without severe content loss. All seven items share broadly comparable ordered scales (K=5–7) and exhibit moderate-to-high entropy (1.54–2.32), indicating they are informative and mutually complementary rather than redundant. PCA extracts the dominant socialization orientation factor across items with slightly different scale widths, and binning the first PC to 5 quantiles yields an ordinal bridge variable within the required category ceiling."
+  }
+]

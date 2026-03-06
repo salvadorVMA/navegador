@@ -1,0 +1,252 @@
+{
+  "p1|POB": {
+    "summary": "Employment status last week (open-ended follow-up on work activities).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p2|POB": {
+    "summary": "Additional work activities beyond main employment last week (follow-up to p1).",
+    "duplicate_of": "p1|POB",
+    "keep": false
+  },
+  "p3|POB": {
+    "summary": "Employment arrangement for main job (self-employed, employee, etc.).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6|POB": {
+    "summary": "Primary work activity performed last week.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8|POB": {
+    "summary": "Monthly income from primary employment.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9|POB": {
+    "summary": "Access to healthcare benefits through primary employment.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10|POB": {
+    "summary": "Respondent's self-identified social class.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11|POB": {
+    "summary": "Father's social class when respondent was 18 years old.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12|POB": {
+    "summary": "Children's current or expected social class.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p13|POB": {
+    "summary": "Self-perceived resilience in facing life's adversities (strength scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14|POB": {
+    "summary": "Perceived influence of national economic situation on personal well-being.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15|POB": {
+    "summary": "Perceived personal control over economic success this year and next.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16|POB": {
+    "summary": "Overall happiness level (self-rated).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_1|POB": {
+    "summary": "Satisfaction with available time for leisure activities (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18_1|POB": {
+    "summary": "Satisfaction with current job.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19_1|POB": {
+    "summary": "First-mentioned priority household expense when money is scarce.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20_1|POB": {
+    "summary": "First-mentioned descriptor of well-being from provided list.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21_2|POB": {
+    "summary": "Perceived ability of most Mexicans to access quality public health services.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22|POB": {
+    "summary": "Respondent's economic situation compared to parents' situation at age 18.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23|POB": {
+    "summary": "Expected future economic situation of children/grandchildren compared to respondent's current situation.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24|POB": {
+    "summary": "Perceived change in young people's opportunities to achieve upward mobility compared to their parents.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25|POB": {
+    "summary": "Respondent's definition of poverty.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26|POB": {
+    "summary": "Respondent's definition of extreme poverty.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27_1|POB": {
+    "summary": "First-mentioned reason why poverty exists.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28|POB": {
+    "summary": "Respondent's definition of dignified housing.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29_1|POB": {
+    "summary": "First-mentioned government spending priority when resources are limited.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30|POB": {
+    "summary": "Preferred partner for collaboration in poverty reduction efforts.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31|POB": {
+    "summary": "Respondent's opinion on what is needed to end poverty.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32|POB": {
+    "summary": "Belief in whether Mexico has first and second-class citizens or all are equal.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33|POB": {
+    "summary": "Respondent's perception of how society treats them (first or second-class).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34|POB": {
+    "summary": "Opinion on how citizens can best contribute to reducing social problems.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35|POB": {
+    "summary": "Agreement with statement that those born poor almost always die poor.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36|POB": {
+    "summary": "Agreement with statement that education is necessary but no longer guarantees good employment.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37|POB": {
+    "summary": "Belief in whether discrimination against poor people exists in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39|POB": {
+    "summary": "Opinion on who is the main enemy of the poor.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40|POB": {
+    "summary": "Opinion on who is primarily responsible for social problems.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p41|POB": {
+    "summary": "Most important principle for defining social policies.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42|POB": {
+    "summary": "Preferred funding mechanism for social policies.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p43|POB": {
+    "summary": "Perceived effectiveness of government social programs in helping people escape poverty.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44|POB": {
+    "summary": "Agreement with statement about social policy approach (multiple choice).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46_1|POB": {
+    "summary": "Perceived willingness of neighbors to help (community social capital).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47|POB": {
+    "summary": "Total number of rooms/bedrooms in household.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48|POB": {
+    "summary": "Number of complete bathrooms with shower and toilet in household.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49|POB": {
+    "summary": "Availability of functioning shower in household bathrooms.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51|POB": {
+    "summary": "Predominant flooring material in household (dirt, cement, or finished).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p52|POB": {
+    "summary": "Number of personal automobiles owned by household.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53|POB": {
+    "summary": "Number of functioning color televisions in household.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54|POB": {
+    "summary": "Number of functioning personal computers in household.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55|POB": {
+    "summary": "Availability of gas or electric stove in household.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p56|POB": {
+    "summary": "Highest completed education level of primary household income earner.",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

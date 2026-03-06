@@ -1,0 +1,432 @@
+{
+  "p3_2|IDE": {
+    "summary": "Sense of belonging to one's locality or town (attachment scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p4|IDE": {
+    "summary": "Agreement with one of two contrasting statements (binary choice)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5_1a|IDE": {
+    "summary": "Primary emotion felt about Mexico (open-ended first mention)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6|IDE": {
+    "summary": "Pride in being Mexican (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7|IDE": {
+    "summary": "Self-identification or personal characterization (incomplete question stem)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8|IDE": {
+    "summary": "Importance of preserving traditions from one's place of origin (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9|IDE": {
+    "summary": "Opinion on what should be done with ethnic or cultural groups in the country (open-ended)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10_1|IDE": {
+    "summary": "Experience of discrimination based on customs and culture at work (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11|IDE": {
+    "summary": "Assessment of current national economic situation compared to one year ago (better/worse)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12|IDE": {
+    "summary": "Expectation of national economic situation in the next year (scale)",
+    "duplicate_of": "p11|IDE",
+    "keep": false
+  },
+  "p13|IDE": {
+    "summary": "Word choice to describe current political situation in the country (open-ended)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14|IDE": {
+    "summary": "Expectation of national political situation in the next year (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16_1|IDE": {
+    "summary": "Primary most serious problem in respondent's family (open-ended first mention)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_1|IDE": {
+    "summary": "Primary most serious problem in respondent's locality (open-ended first mention)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18|IDE": {
+    "summary": "Comparison of respondent's economic situation to that of their parents (better/worse)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19|IDE": {
+    "summary": "Confidence in having economic security in old age (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20|IDE": {
+    "summary": "Confidence in ability to realize one's most cherished future projects (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21|IDE": {
+    "summary": "Which dream respondent would realize if given the opportunity in coming weeks (open-ended)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22|IDE": {
+    "summary": "Perception of job opportunities for most people twenty years ago compared to now (more/less)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23_1|IDE": {
+    "summary": "Expectation of job opportunities for respondent's children compared to respondent (more/less)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24|IDE": {
+    "summary": "Satisfaction with life lived to date (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25_2|IDE": {
+    "summary": "Satisfaction with educational opportunities received (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26_1a_1|IDE": {
+    "summary": "Primary meaning of success in life (open-ended first mention)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27|IDE": {
+    "summary": "Most important condition for success in life (single choice from list)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28|IDE": {
+    "summary": "Overall happiness level (categorical scale)",
+    "duplicate_of": "p29|IDE",
+    "keep": false
+  },
+  "p29|IDE": {
+    "summary": "Overall happiness level (0-10 numeric scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30_1|IDE": {
+    "summary": "Perceived control over one's economic situation (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31|IDE": {
+    "summary": "Opinion on how authorities should act in pursuit of justice (open-ended)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32|IDE": {
+    "summary": "Agreement with an unspecified statement (incomplete question stem)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33_1|IDE": {
+    "summary": "Agreement with the statement 'the end justifies the means' (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34_1|IDE": {
+    "summary": "Belief that education causes divisions among people in the same location (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35_1|IDE": {
+    "summary": "Primary source of limits on personal conduct (open-ended first mention)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_1|IDE": {
+    "summary": "Willingness to disagree with parents when believing oneself correct (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37_1|IDE": {
+    "summary": "Opinion on whether government should intervene in school curriculum decisions (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38|IDE": {
+    "summary": "Choice between freedom and security as preferred value (binary choice)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39|IDE": {
+    "summary": "Agreement with capital punishment (agree/disagree)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40|IDE": {
+    "summary": "Opinion on obligation to report information to authorities that could aid justice (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p41|IDE": {
+    "summary": "Belief in right to vigilante justice when authorities fail to punish crimes (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42|IDE": {
+    "summary": "Opinion on which is worse for society: wrongful conviction or acquitting the guilty (choice)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p43_1|IDE": {
+    "summary": "Moral judgment of buying stolen goods on 0-10 scale (0=very bad, 10=very good)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44_1|IDE": {
+    "summary": "Frequency of buying stolen goods in the past five years (frequency scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45_1|IDE": {
+    "summary": "Perceived probability of being caught and punished for buying stolen goods (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46_1|IDE": {
+    "summary": "Perceived prevalence of Mexicans buying stolen goods (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47|IDE": {
+    "summary": "Willingness to help if witnessing a street robbery (scenario introduction)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48|IDE": {
+    "summary": "Willingness to identify perpetrator of witnessed crime (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49|IDE": {
+    "summary": "Willingness to testify in court against accused perpetrator (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p50_1|IDE": {
+    "summary": "Agreement that most people are honest and trustworthy (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51_1|IDE": {
+    "summary": "Trust in neighbors on 0-10 scale (0=no trust, 10=complete trust)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p52_1|IDE": {
+    "summary": "Trust in police on 0-10 scale (0=no trust, 10=complete trust)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53_1|IDE": {
+    "summary": "Frequency of visiting one's parents (frequency scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54_1|IDE": {
+    "summary": "Number of friends with successful business or significant wealth (quantity scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54_2|IDE": {
+    "summary": "Number of friends in poverty or with much less than respondent (quantity scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54_3|IDE": {
+    "summary": "Number of friends with less education than respondent (quantity scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54_4|IDE": {
+    "summary": "Number of friends with more education than respondent (quantity scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54_5|IDE": {
+    "summary": "Number of friends of different religion (quantity scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54_6|IDE": {
+    "summary": "Number of friends with different political views (quantity scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54_8|IDE": {
+    "summary": "Number of friends who are homosexual (quantity scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55|IDE": {
+    "summary": "Opinion on whether parents should be allowed to physically punish children for discipline (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p56|IDE": {
+    "summary": "Self-identification as conservative or liberal in family and household matters (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p57|IDE": {
+    "summary": "Self-identification as conservative or liberal in politics (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58|IDE": {
+    "summary": "Approval of 18-year-old daughter living alone (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p59_2|IDE": {
+    "summary": "Agreement with parents on moral rules (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p60|IDE": {
+    "summary": "Opinion on premarital sexual relations (right/wrong)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63_1_oa_1|IDE": {
+    "summary": "Primary desired quality in a political leader (open-ended first mention)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p64_1|IDE": {
+    "summary": "Importance of fidelity for successful marriage (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p66_1|IDE": {
+    "summary": "Agreement with criminal punishment of woman who aborts pregnancy from rape (agree/disagree)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p67|IDE": {
+    "summary": "Agreement with legal punishment for assisting family member's assisted death when requested (agree/disagree)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p68|IDE": {
+    "summary": "Agreement that same-sex couples should have right to adopt children (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p69_1|IDE": {
+    "summary": "Presence of poor parent-child relationships in respondent's family home (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p71_2|IDE": {
+    "summary": "Choice between obedience and self-confidence as most important child quality (binary choice)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p72|IDE": {
+    "summary": "Perception of having received desired education (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p73_1|IDE": {
+    "summary": "Willingness to allow people of different religion to live in respondent's home (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p74|IDE": {
+    "summary": "Perceived ability to decide one's future on 0-10 scale (0=not at all, 10=very much)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p75_1|IDE": {
+    "summary": "Agreement that resolution of difficult problems depends only on God (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p77|IDE": {
+    "summary": "Choice between investing in business opportunity or daughter's quinceañera celebration (scenario choice)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p78|IDE": {
+    "summary": "Opinion on whether government should maintain Mexican Revolution ideas or change them (choice)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p79|IDE": {
+    "summary": "Religious affiliation (categorical)",
+    "duplicate_of": "p79_1|IDE",
+    "keep": true
+  },
+  "p80|IDE": {
+    "summary": "Frequency of attendance at religious services (frequency scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p81|IDE": {
+    "summary": "Self-identification of religiosity independent of church attendance (categorical)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p82|IDE": {
+    "summary": "Reliance on religious leaders' recommendations for important life decisions (scale)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p83_a|IDE": {
+    "summary": "Belief in luck (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p83_b|IDE": {
+    "summary": "Belief in hell (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p83_c|IDE": {
+    "summary": "Belief in spiritual cleansings (limpias) (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p84|IDE": {
+    "summary": "Agreement with priests discussing politics during religious services (agree/disagree)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p85|IDE": {
+    "summary": "Willingness to ask favors from Virgin of Guadalupe or saints (yes/no)",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p79_1|IDE": {
+    "summary": "Religious affiliation (categorical)",
+    "duplicate_of": null,
+    "keep": false
+  }
+}

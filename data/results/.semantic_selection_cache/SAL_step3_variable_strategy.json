@@ -1,0 +1,55 @@
+[
+  {
+    "construct_name": "functional_health_status",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p2|SAL",
+      "p3|SAL",
+      "p4|SAL",
+      "p5|SAL",
+      "p7|SAL"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Functional health status is inherently multi-dimensional, spanning physical capacity (p2, p3), activity limitation (p4, p5), and pain interference (p7), so no single item captures the full construct. PCA is preferred over a simple sum because the items use heterogeneous response scales (binary yes/no, 4-point, and 7-point), and the first principal component will weight each item by its shared variance rather than treating all scales as equivalent. Binning the first PC into 5 quantiles yields an ordinal variable with adequate spread while remaining within the ≤15 category constraint."
+  },
+  {
+    "construct_name": "healthcare_access_and_utilization",
+    "strategy": "single_max_entropy",
+    "selected_qids": [
+      "p24|SAL"
+    ],
+    "aggregation_method": null,
+    "justification": "The 13 available items span fundamentally incompatible measurement levels—binary flags, nominal categories, and ordinal scales—making meaningful aggregation inadvisable without strong theoretical justification. p24 (preferred medical service destination) has the highest Shannon entropy (H=2.41) among all items and captures a revealed-preference dimension of access that integrates both availability and utilization intent in a single 14-category variable, which is within the ≤15 limit. It also varies more across SES strata than utilization-conditional items (p13–p21), making it a stronger bridge predictor."
+  },
+  {
+    "construct_name": "financial_burden_of_healthcare",
+    "strategy": "single_max_entropy",
+    "selected_qids": [
+      "p23_1|SAL"
+    ],
+    "aggregation_method": null,
+    "justification": "With only two items available, p23_1 (perceived negative financial impact of medical expenses, H=2.49) is the clear choice because it directly measures the subjective financial burden dimension that is most comparable across surveys, whereas p22 (out-of-pocket payment, H=0.92) is a binary precondition rather than a burden measure. The ordinal 8-point scale of p23_1 already provides sufficient granularity for the bridge model within the ≤15 category constraint. Combining two items with such different conceptual roles (occurrence vs. perceived burden) would conflate distinct constructs."
+  },
+  {
+    "construct_name": "subjective_wellbeing_and_life_quality",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p37|SAL",
+      "p38|SAL",
+      "p39|SAL",
+      "p8_1|SAL",
+      "p36_1|SAL"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Subjective wellbeing is a latent construct best captured by multiple correlated indicators; using only one item would introduce substantial measurement error given the construct's importance rating of 5/5. Items p37 (quality of life), p38 (life satisfaction), p39 (enjoyment of life), p8_1 (calm/peaceful feelings), and p36_1 (excessive worries, reverse-coded) all use 6–7 point ordinal scales that are sufficiently compatible for averaging, and together they cover both hedonic and eudaimonic wellbeing facets. p40 (sexual life satisfaction) and p41 (visual figure scale) are excluded because they introduce domain-specific variance and a non-Likert format respectively; the mean of the five retained items is then binned into 5 ordered categories."
+  },
+  {
+    "construct_name": "health_behaviors_and_lifestyle",
+    "strategy": "single_max_entropy",
+    "selected_qids": [
+      "p34|SAL"
+    ],
+    "aggregation_method": null,
+    "justification": "The 12 items span entirely incompatible measurement domains—diet, smoking history, smoking intensity, and alcohol use—as well as incompatible scales (rankings, ordinal frequencies, raw counts, binary flags), making any composite score theoretically incoherent. p34 (frequency of alcohol consumption in the past 12 months) has the highest Shannon entropy (H=3.09) and its 15-category ordinal scale sits exactly at the model's upper limit, providing maximum discriminatory power across the SES distribution. Alcohol consumption frequency is also among the most socioeconomically patterned health behaviors, making it the strongest single bridge predictor for this construct."
+  }
+]

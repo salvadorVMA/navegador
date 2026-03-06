@@ -1,0 +1,66 @@
+[
+  {
+    "construct_name": "ageism_and_age_discrimination",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p14_1",
+      "p13_1",
+      "p26",
+      "p27",
+      "p15_1"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Ageism is inherently multi-dimensional, encompassing stereotypes, prejudice, and discriminatory behavior, so no single item captures the full construct. The five selected questions all exhibit moderate-to-high entropy (H≥1.82) and appear to tap attitudinal and experiential facets of age discrimination on comparable Likert-type scales, making them combinable. PCA first component is preferred over a simple sum because the items likely vary in their factor loadings and this method extracts the dominant shared variance while discarding item-specific noise, with the resulting score binned into 5 quantile categories for the bridge model."
+  },
+  {
+    "construct_name": "elder_abuse_awareness",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p20aa_1",
+      "p17_1",
+      "p20"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Elder abuse awareness spans knowledge of abuse types, recognition of warning signs, and perceived prevalence, requiring multiple items to cover the construct adequately. p20aa_1 (H=2.64, K=10) and p17_1 (H=1.66, K=6) carry the most information and likely reflect different facets (e.g., severity/frequency judgments vs. type recognition), while p20 (H=1.10) adds a complementary attitudinal or awareness dimension; however, their differing scale widths make PCA preferable to a raw sum, as it standardizes contributions before extracting the dominant axis, with the score then binned to 5 quantiles."
+  },
+  {
+    "construct_name": "state_and_family_responsibility_for_elder_care",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p30",
+      "p42_1",
+      "p43",
+      "p29_1",
+      "p31"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Responsibility attribution for elder care is a multi-dimensional construct that distinguishes state versus family obligations and varies across policy and normative dimensions, so aggregation across several items is necessary. The five selected questions have the highest entropy values in the cluster (H≥1.51) and all use ordered response scales (5–9 categories) reflecting degrees of agreement or preference, making them conceptually combinable. PCA first component is chosen because scale widths differ (5 to 9 categories), and the first PC will capture the dominant ideological axis—state vs. family responsibility—while the resulting score is binned into 5 quantiles for the bridge."
+  },
+  {
+    "construct_name": "perceived_quality_of_life_and_social_inclusion_of_older_adults",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p9",
+      "p10",
+      "p11",
+      "p36",
+      "p38",
+      "p39",
+      "p21_2"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Perceived quality of life and social inclusion is a broad, multi-faceted construct encompassing subjective wellbeing, social participation, and inclusion perceptions, which cannot be adequately captured by any single item. The seven selected questions all use 5–6 category ordered scales with moderate-to-high entropy (H≥1.65), indicating good distributional spread and conceptual alignment around life quality and social dimensions. PCA first component is appropriate because it identifies the dominant shared variance across these related but not identical facets, avoids arbitrary equal weighting in a sum, and the resulting continuous score is binned into 5 quantiles to satisfy the bridge model's categorical requirement."
+  },
+  {
+    "construct_name": "intergenerational_contact_and_family_integration",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p46_1",
+      "p45_1",
+      "p2",
+      "p12"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Intergenerational contact and family integration encompasses both frequency of contact and quality of family relationships across generations, requiring multiple items to represent both dimensions. The four selected questions span the highest-entropy items in the cluster (H≥1.53) and cover contact frequency and integration quality on ordered scales (7–11 categories), making them substantively combinable. PCA first component is preferred over a sum because the wider-scale items (p46_1 K=11, p45_1 K=8) would otherwise dominate a raw sum, and the first PC extracts the shared intergenerational contact dimension with the score binned to 5 quantiles for the bridge."
+  }
+]

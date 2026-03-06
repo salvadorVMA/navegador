@@ -1,0 +1,373 @@
+[
+  {
+    "construct_name": "gender_role_traditionalism",
+    "sources": [
+      {
+        "citation": "Inglehart, R., & Norris, P. (2003). Rising tide: Gender equality and cultural change around the world. Cambridge University Press.",
+        "relevance": "Provides a comprehensive cross-national framework for measuring traditional vs. egalitarian gender role attitudes, including items on male authority and female domestic roles.",
+        "key_finding": "Modernization processes erode traditional gender role attitudes, but cultural legacies (e.g., Catholicism, machismo) create persistent variation across and within societies."
+      },
+      {
+        "citation": "Gutmann, M. C. (1996). The meanings of macho: Being a man in Mexico City. University of California Press.",
+        "relevance": "Ethnographic study of masculinity and patriarchal norms in Mexico, directly relevant to understanding the cultural foundations of gender role traditionalism in Mexican public opinion.",
+        "key_finding": "Machismo is not monolithic; Mexican men negotiate traditional and modern gender identities in complex ways shaped by class, generation, and urban context."
+      },
+      {
+        "citation": "Rocha-Sánchez, T. E., & Díaz-Loving, R. (2005). Cultura de género: La brecha ideológica entre hombres y mujeres. Anales de Psicología, 21(1), 42–49.",
+        "relevance": "Develops and validates a scale measuring gender ideology among Mexican populations, capturing traditionalism versus egalitarianism in domestic and social roles.",
+        "key_finding": "Mexican men score significantly higher on traditional gender ideology than women, and education is a key moderator of egalitarian attitudes."
+      },
+      {
+        "citation": "Fernández, A. M., Quiroga, C., & Del Olmo, I. (2006). Is there a Latin American sexism? Cross-cultural differences in gender role attitudes. Interamerican Journal of Psychology, 40(3), 303–314.",
+        "relevance": "Examines cross-cultural variation in sexism and traditional gender attitudes across Latin American countries, contextualizing Mexican gender role norms.",
+        "key_finding": "Latin American countries show higher levels of benevolent and hostile sexism compared to European nations, with significant within-region variation linked to economic development."
+      },
+      {
+        "citation": "Glick, P., & Fiske, S. T. (1996). The Ambivalent Sexism Inventory: Differentiating hostile and benevolent sexism. Journal of Personality and Social Psychology, 70(3), 491–512.",
+        "relevance": "Foundational work on measuring sexist attitudes, distinguishing hostile sexism (male dominance beliefs) from benevolent sexism (paternalistic protection), both captured in gender role traditionalism.",
+        "key_finding": "Hostile and benevolent sexism are complementary ideologies that together sustain gender inequality by rewarding women who conform to traditional roles and punishing those who do not."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "tolerance of gender-based violence",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "religiosity and religious conservatism",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "women's labor force participation attitudes",
+        "measurable_in_data": true,
+        "data_source": "ECO, GEN"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "political culture and democratic values",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "reproductive autonomy attitudes",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "family structure and values",
+        "measurable_in_data": true,
+        "data_source": "FAM"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "indigenous identity and cultural norms",
+        "measurable_in_data": true,
+        "data_source": "IND, IDE"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "intimate_partner_control_autonomy",
+    "sources": [
+      {
+        "citation": "García-Moreno, C., Jansen, H. A., Stöckl, H., & Pallitto, C. (2013). WHO multi-country study on women's health and domestic violence against women. World Health Organization.",
+        "relevance": "Provides validated multi-country measures of controlling behaviors in intimate partnerships, including financial control, permission-seeking, and restriction of movement—core elements of this construct.",
+        "key_finding": "Controlling behaviors by intimate partners are strongly associated with physical and sexual violence and are prevalent across diverse cultural settings, including Latin America."
+      },
+      {
+        "citation": "Castro, R., & Casique, I. (2010). Violencia en el noviazgo entre los jóvenes mexicanos. UNAM/CRIM.",
+        "relevance": "Directly examines control dynamics in Mexican intimate relationships, including financial control, jealousy-based surveillance, and decision-making power imbalances.",
+        "key_finding": "Control behaviors in Mexican dating relationships are widespread and normalized, particularly among younger populations, and serve as precursors to more severe forms of intimate partner violence."
+      },
+      {
+        "citation": "Kishor, S., & Johnson, K. (2004). Profiling domestic violence: A multi-country study. ORC Macro.",
+        "relevance": "Uses DHS data to profile controlling behaviors and women's autonomy in decision-making across developing countries, including Mexico, providing measurement frameworks for this construct.",
+        "key_finding": "Women's lack of autonomy in household decision-making and partner-imposed restrictions are consistent risk factors for intimate partner violence across all countries studied."
+      },
+      {
+        "citation": "Casique, I. (2010). Factores de empoderamiento y protección de las mujeres contra la violencia. Revista Mexicana de Sociología, 72(1), 37–71.",
+        "relevance": "Analyzes empowerment and autonomy indicators among Mexican women, including economic decision-making power and freedom from partner control, directly relevant to this construct.",
+        "key_finding": "Women's economic autonomy and participation in household decision-making significantly reduce their risk of experiencing intimate partner violence in Mexico."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "gender role traditionalism",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "cause",
+        "related_construct": "women's mental health and well-being",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "economic dependence and poverty",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "intimate partner violence perpetration/victimization",
+        "measurable_in_data": true,
+        "data_source": "GEN, DER"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "family dynamics and household structure",
+        "measurable_in_data": true,
+        "data_source": "FAM"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "tolerance_of_gender_based_violence",
+    "sources": [
+      {
+        "citation": "Flood, M., & Pease, B. (2009). Factors influencing attitudes to violence against women. Trauma, Violence, & Abuse, 10(2), 125–142.",
+        "relevance": "Comprehensive review of individual, relational, and societal factors that shape attitudes toward violence against women, providing the theoretical backbone for this construct.",
+        "key_finding": "Adherence to traditional gender norms, exposure to violence in childhood, and peer group norms are the strongest predictors of attitudes condoning violence against women."
+      },
+      {
+        "citation": "Frías, S. M. (2014). Ámbitos y formas de violencia contra mujeres y niñas: Evidencias a partir de las encuestas. Acta Sociológica, 65, 11–36.",
+        "relevance": "Analyzes Mexican national survey data on attitudes toward and prevalence of violence against women, directly validating measurement approaches for this construct in the Mexican context.",
+        "key_finding": "A significant proportion of the Mexican population still considers certain forms of violence against women as justified under specific circumstances, particularly in domestic settings."
+      },
+      {
+        "citation": "Heise, L. L. (1998). Violence against women: An integrated, ecological framework. Violence Against Women, 4(3), 262–290.",
+        "relevance": "Proposes the ecological model for understanding violence against women, situating tolerance of violence within nested levels of individual beliefs, relationship dynamics, community norms, and societal structures.",
+        "key_finding": "Tolerance of gender-based violence operates at multiple ecological levels, and community-level norms of male authority and female subordination are critical enabling factors."
+      },
+      {
+        "citation": "Contreras, J. M., Bott, S., Guedes, A., & Dartnall, E. (2010). Violencia sexual en Latinoamérica y el Caribe: Análisis de datos secundarios. SVRI/OPS.",
+        "relevance": "Reviews attitudes toward sexual and domestic violence across Latin American countries, including Mexico, providing regional benchmarks for tolerance of gender-based violence.",
+        "key_finding": "Normalization of violence against women in Latin America is strongly correlated with machismo culture, low educational attainment, and rural residence."
+      },
+      {
+        "citation": "Rani, M., Bonu, S., & Diop-Sidibé, N. (2004). An empirical investigation of attitudes towards wife-beating among men and women in seven sub-Saharan African countries. African Journal of Reproductive Health, 8(3), 116–136.",
+        "relevance": "Though focused on Africa, provides validated cross-cultural measurement approaches for attitudes toward wife-beating that have been adapted in Latin American surveys including ENDIREH in Mexico.",
+        "key_finding": "Acceptance of wife-beating is strongly predicted by women's low education, rural residence, and limited media exposure, with significant gender differences in tolerance levels."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "gender role traditionalism",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "cause",
+        "related_construct": "actual perpetration of intimate partner violence",
+        "measurable_in_data": true,
+        "data_source": "GEN, SEG"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "human rights awareness",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment and media exposure",
+        "measurable_in_data": true,
+        "data_source": "EDU, SOC"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "attitudes toward public security and justice",
+        "measurable_in_data": true,
+        "data_source": "SEG, JUS"
+      },
+      {
+        "role": "effect",
+        "related_construct": "religiosity and moral conservatism",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "poverty and socioeconomic marginalization",
+        "measurable_in_data": true,
+        "data_source": "POB"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "reproductive_autonomy_attitudes",
+    "sources": [
+      {
+        "citation": "Upadhyay, U. D., Dworkin, S. L., Weitz, T. A., & Foster, D. G. (2014). Development and validation of a reproductive autonomy scale. Studies in Family Planning, 45(1), 19–41.",
+        "relevance": "Develops and validates a scale measuring reproductive autonomy, including decision-making power over contraception, pregnancy, and abortion—directly relevant to this construct's operationalization.",
+        "key_finding": "Reproductive autonomy is a multidimensional construct encompassing decision-making, communication, and freedom from coercion, and is distinct from but related to broader gender empowerment."
+      },
+      {
+        "citation": "Juárez, F., & Gayet, C. (2014). Salud sexual y reproductiva de los adolescentes en México: Un nuevo marco de análisis para la evaluación y diseño de políticas. Papeles de Población, 20(79), 7–40.",
+        "relevance": "Examines reproductive health attitudes and behaviors among Mexican adolescents, including unplanned pregnancy and abortion attitudes, directly contextualizing this construct in Mexico.",
+        "key_finding": "Mexican adolescents face significant barriers to reproductive autonomy, including limited sex education, cultural stigma around contraception, and unequal gender power dynamics in sexual decision-making."
+      },
+      {
+        "citation": "Kulczycki, A. (2007). The abortion debate in Mexico: Realities and stalled policy reform. Bulletin of Latin American Research, 26(1), 50–68.",
+        "relevance": "Analyzes the political and cultural dimensions of abortion attitudes in Mexico, including the role of the Catholic Church and feminist movements in shaping public opinion on reproductive rights.",
+        "key_finding": "Mexican public opinion on abortion is deeply polarized along religious, educational, and urban-rural lines, with gradual liberalization occurring primarily in Mexico City and among younger cohorts."
+      },
+      {
+        "citation": "Casique, I. (2003). Uso de anticonceptivos en México: ¿Qué diferencia hacen el poder de decisión y la autonomía femenina? Papeles de Población, 9(35), 209–233.",
+        "relevance": "Directly examines how women's decision-making autonomy relates to contraceptive use in Mexico, linking reproductive attitudes to actual reproductive behavior.",
+        "key_finding": "Women's autonomy in household decision-making and their ability to negotiate with partners significantly predict contraceptive use, independent of education and income."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "gender role traditionalism",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "effect",
+        "related_construct": "religiosity and religious doctrine adherence",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "fertility rates and family size",
+        "measurable_in_data": true,
+        "data_source": "FAM"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "health service access and attitudes",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "human rights awareness",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "youth and adolescent well-being",
+        "measurable_in_data": true,
+        "data_source": "NIN"
+      },
+      {
+        "role": "effect",
+        "related_construct": "poverty and economic marginalization",
+        "measurable_in_data": true,
+        "data_source": "POB"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "gender_equality_awareness_exposure",
+    "sources": [
+      {
+        "citation": "Htun, M., & Weldon, S. L. (2012). The civic origins of progressive policy change: Combating violence against women in global perspective, 1975–2005. American Political Science Review, 106(3), 548–569.",
+        "relevance": "Examines how awareness of gender equality norms and legal frameworks, driven by feminist movements and international campaigns, shapes policy adoption—directly relevant to measuring exposure to equality norms.",
+        "key_finding": "Strong autonomous feminist movements and international norm diffusion are the most consistent predictors of progressive gender violence legislation, more so than national wealth or left-party governance."
+      },
+      {
+        "citation": "Zaremberg, G. (2015). ¿Cuánto y para qué? Los derechos políticos de las mujeres desde la óptica de la representación descriptiva y sustantiva. In M. A. Tepichin (Ed.), Género en contextos de pobreza. El Colegio de México.",
+        "relevance": "Analyzes awareness and support for women's political participation in Mexico, including knowledge of gender quotas and anti-discrimination frameworks, directly relevant to this construct.",
+        "key_finding": "Awareness of legal gender equality frameworks in Mexico is unevenly distributed, with urban, educated populations showing significantly higher knowledge and support for women's political representation."
+      },
+      {
+        "citation": "Barker, G., Contreras, J. M., Heilman, B., Singh, A. K., Verma, R. K., & Nascimento, M. (2011). Evolving men: Initial results from the International Men and Gender Equality Survey (IMAGES). International Center for Research on Women (ICRW) and Instituto Promundo.",
+        "relevance": "Measures men's exposure to and awareness of gender equality campaigns and norms across multiple countries, providing validated instruments for assessing awareness-exposure dimensions.",
+        "key_finding": "Men's exposure to gender equality campaigns and education programs is significantly associated with more equitable attitudes and reduced perpetration of intimate partner violence."
+      },
+      {
+        "citation": "Frías, S. M., & Erviti, J. (2014). Gendered experiences of sexual harassment and violence in Mexico: A study of medical students. Journal of Interpersonal Violence, 29(12), 2201–2223.",
+        "relevance": "Examines awareness of anti-violence laws and institutional protections among Mexican populations, highlighting gaps between legal frameworks and public knowledge.",
+        "key_finding": "Despite Mexico's progressive legal framework on gender violence (e.g., Ley General de Acceso), awareness of specific laws and reporting mechanisms remains low, particularly among vulnerable populations."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "reduction in tolerance of gender-based violence",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support for women in political and public roles",
+        "measurable_in_data": true,
+        "data_source": "CUL, GEN"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment and media literacy",
+        "measurable_in_data": true,
+        "data_source": "EDU, SOC"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "human rights knowledge and attitudes",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      },
+      {
+        "role": "effect",
+        "related_construct": "urbanization and modernization exposure",
+        "measurable_in_data": false,
+        "data_source": ""
+      },
+      {
+        "role": "moderator",
+        "related_construct": "trust in justice and legal institutions",
+        "measurable_in_data": true,
+        "data_source": "JUS, SEG"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "globalization and exposure to international norms",
+        "measurable_in_data": true,
+        "data_source": "GLO"
+      }
+    ],
+    "gap_justification": "While individual components of this construct (e.g., knowledge of anti-violence laws, support for women in politics) have been studied, the composite measurement of awareness-exposure as a unified construct is relatively underdeveloped in the Mexican context. Most existing research treats awareness of gender equality norms as a control variable rather than a primary outcome. This construct fills an important gap by capturing the diffusion of egalitarian norms through legal knowledge, campaign exposure, and willingness to support women's public participation—a critical mediating mechanism between structural gender policies and attitudinal change. In the Mexican context, where progressive legislation has often outpaced public awareness, measuring this construct is essential for understanding the effectiveness of institutional efforts to promote gender equality.",
+    "importance_rating": 4
+  }
+]

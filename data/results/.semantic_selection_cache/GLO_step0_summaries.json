@@ -1,0 +1,422 @@
+{
+  "p2|GLO": {
+    "summary": "Number of languages spoken besides Spanish.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p2_1_1a_1|GLO": {
+    "summary": "Which languages are spoken besides Spanish (first mention).",
+    "duplicate_of": "p2|GLO",
+    "keep": false
+  },
+  "p3|GLO": {
+    "summary": "Whether respondent has lived in another country.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_1_1a_1|GLO": {
+    "summary": "Which country or countries respondent has lived in (first mention).",
+    "duplicate_of": "p3|GLO",
+    "keep": false
+  },
+  "p3_2|GLO": {
+    "summary": "Main reason for living in another country.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p4|GLO": {
+    "summary": "Approximate number of times respondent has traveled outside Mexico in their lifetime.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p4_2|GLO": {
+    "summary": "Reasons for international travel with most frequent reason indicated first.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p4_2a|GLO": {
+    "summary": "Which reason for international travel.",
+    "duplicate_of": "p4_2|GLO",
+    "keep": false
+  },
+  "p5|GLO": {
+    "summary": "Reasons why respondent has not been able to travel outside Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5a|GLO": {
+    "summary": "Other reasons why respondent has not been able to travel outside Mexico.",
+    "duplicate_of": "p5|GLO",
+    "keep": false
+  },
+  "p6a_1|GLO": {
+    "summary": "Willingness to move and live outside Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6_1a_1|GLO": {
+    "summary": "Which country respondent would move to if they could.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6_1a_2|GLO": {
+    "summary": "Which country respondent would move to if they could (regrouped categories).",
+    "duplicate_of": "p6_1a_1|GLO",
+    "keep": false
+  },
+  "p6_2a_1|GLO": {
+    "summary": "Main reason for wanting to move and live outside Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7|GLO": {
+    "summary": "Whether respondent has relationships with foreigners living in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7_1_1|GLO": {
+    "summary": "Life domain in which respondent interacts with foreigners living in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8|GLO": {
+    "summary": "Whether respondent has close people living abroad.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8_1|GLO": {
+    "summary": "Who are the close people that respondent has living abroad.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8_1a|GLO": {
+    "summary": "Other close people that respondent has living abroad.",
+    "duplicate_of": "p8_1|GLO",
+    "keep": false
+  },
+  "p8_2|GLO": {
+    "summary": "Frequency of communication with close people living abroad.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9_1|GLO": {
+    "summary": "Willingness to have a French person as a neighbor.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11|GLO": {
+    "summary": "Level of interest in the culture of other countries.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11_1|GLO": {
+    "summary": "Reason for interest in the culture of other countries.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11_1aa_1|GLO": {
+    "summary": "Other reason for interest in the culture of other countries.",
+    "duplicate_of": "p11_1|GLO",
+    "keep": false
+  },
+  "p11_2|GLO": {
+    "summary": "Whether respondent has informed themselves about other countries' cultures.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11_3|GLO": {
+    "summary": "Media sources through which respondent has informed themselves about other countries' cultures.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12_2|GLO": {
+    "summary": "Opinion on Jewish religion on a 1-5 scale from very unfavorable to very favorable.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14|GLO": {
+    "summary": "Agreement that people should have equal rights regardless of religion.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15|GLO": {
+    "summary": "Level of pride in being Mexican.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16_1|GLO": {
+    "summary": "Level of pride in Mexico regarding the functioning of democracy.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_1|GLO": {
+    "summary": "Level of pride in Mexico regarding the national soccer team.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_2|GLO": {
+    "summary": "Level of pride in Mexico regarding Mexican food.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_3|GLO": {
+    "summary": "Level of pride in Mexico regarding traditional Mexican music.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_4|GLO": {
+    "summary": "Level of pride in Mexico regarding Day of the Dead.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_5|GLO": {
+    "summary": "Level of pride in Mexico regarding the warmth of Mexican people.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_6|GLO": {
+    "summary": "Level of pride in Mexico regarding narcoculture (music and clothing).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18_1|GLO": {
+    "summary": "Importance of respecting patriotic symbols for being a nationalist.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19_1|GLO": {
+    "summary": "Agreement with the statement 'I see myself as a citizen of the world' on a 4-point scale.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20|GLO": {
+    "summary": "Agreement with statements regarding global or national identity.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21|GLO": {
+    "summary": "World region that Mexico should pay most attention to.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22_1|GLO": {
+    "summary": "Whether respondent reads books by foreign authors.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22_6a_1|GLO": {
+    "summary": "Country of origin of foreign TV series watched by respondent.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23|GLO": {
+    "summary": "Preference for music in Spanish versus other languages.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23aa_1|GLO": {
+    "summary": "Which language other than Spanish respondent prefers for music.",
+    "duplicate_of": "p23|GLO",
+    "keep": false
+  },
+  "p24_1|GLO": {
+    "summary": "Frequency of consuming American fast food.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25_1|GLO": {
+    "summary": "Quality comparison between Mexican and foreign products.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26_1|GLO": {
+    "summary": "Frequency of using internet to obtain product information online.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27_1|GLO": {
+    "summary": "Agreement that internet content should be regulated by government.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28|GLO": {
+    "summary": "Agreement with government censorship of social media as practiced in China.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29|GLO": {
+    "summary": "Agreement that internet use promotes greater international citizen participation.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30|GLO": {
+    "summary": "Whether diffusion of foreign ideas and customs in Mexico is positive or negative.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31_1|GLO": {
+    "summary": "Opinion on whether US-Mexico trade relationship is positive or negative for Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32|GLO": {
+    "summary": "Whether respondent regularly reads international news.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32_1|GLO": {
+    "summary": "Primary media source through which respondent reads international news.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33|GLO": {
+    "summary": "Whether respondent consults news media from other countries.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33_1_1a_1|GLO": {
+    "summary": "Foreign news media sources consulted by respondent (first mention).",
+    "duplicate_of": "p33|GLO",
+    "keep": false
+  },
+  "p43|GLO": {
+    "summary": "Which country respondent considers most politically influential in the world.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44|GLO": {
+    "summary": "Most serious global problem according to respondent.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45|GLO": {
+    "summary": "Which global problem respondent believes most affects Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46_1|GLO": {
+    "summary": "Opinion on whether Free Trade Agreements are positive or negative for Mexican economy.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47|GLO": {
+    "summary": "Respondent's perspective on foreign trade reflected in statement choice.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48|GLO": {
+    "summary": "Agreement with Free Trade Agreements between Mexico and other countries.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49_1|GLO": {
+    "summary": "Whether Mexican government should permit foreign investment in telecommunications.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p50_1|GLO": {
+    "summary": "Knowledge of the meaning of OAS (Organization of American States) acronym.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51|GLO": {
+    "summary": "Whether respondent has heard of NGOs.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49_1_1a_1|GLO": {
+    "summary": "International NGOs respondent has heard of (first mention).",
+    "duplicate_of": "p51|GLO",
+    "keep": false
+  },
+  "p52_1|GLO": {
+    "summary": "Whether Mexico should involve itself with international community on global warming.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53|GLO": {
+    "summary": "Most important resource for increasing Mexico's presence in the world.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54_1|GLO": {
+    "summary": "Whether maintaining international peace should be decided by national governments, regional organizations, or the United Nations.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55|GLO": {
+    "summary": "Perceived international importance of Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p56_1|GLO": {
+    "summary": "Importance of promoting democracy in other countries as a goal of Mexican foreign policy.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p57|GLO": {
+    "summary": "Whether the UN should actively promote human rights in member states.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58|GLO": {
+    "summary": "Whether respondent would appeal to an international organization like the Inter-American Commission on Human Rights to defend their rights.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58aa_1|GLO": {
+    "summary": "Other international organization respondent would appeal to for human rights defense.",
+    "duplicate_of": "p58|GLO",
+    "keep": false
+  },
+  "p59_1|GLO": {
+    "summary": "Whether Mexico will achieve the UN Millennium Development Goal of eradicating extreme poverty and hunger by 2015.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p60_1|GLO": {
+    "summary": "Whether the United Nations should have the right to use military force to defend an attacked country.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_1|GLO": {
+    "summary": "Knowledge of the disappearance and violence of migrants at the Mexico-US border.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p62_1|GLO": {
+    "summary": "Perceived impact on Mexico of disappearance and violence of migrants at the Mexico-US border.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p62_2|GLO": {
+    "summary": "Perceived impact on Mexico of conflicts in Syria.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p62_5|GLO": {
+    "summary": "Perceived impact on Mexico of the Israeli-Palestinian conflict.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63_1|GLO": {
+    "summary": "Whether Mexico should collaborate with other countries to resolve migration problems.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p64|GLO": {
+    "summary": "Whether globalization has had a positive or negative impact on respondent's daily life.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p65a_1|GLO": {
+    "summary": "Image Mexico projects internationally and how other countries perceive Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p66a_1|GLO": {
+    "summary": "Desired international image that Mexico should project.",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

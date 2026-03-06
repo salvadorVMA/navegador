@@ -1,0 +1,277 @@
+{
+  "p1|NIN": {
+    "summary": "Perception of change in the country's political situation over the past year.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p2|NIN": {
+    "summary": "Perception of change in the country's economic situation over the past year.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p4_1a_1|NIN": {
+    "summary": "First mention of the main problem facing children in Mexico today.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5|NIN": {
+    "summary": "Perception of change in the general situation of children in Mexico since 2010.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6|NIN": {
+    "summary": "Preference for maintaining or changing the current educational system for children.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7_1|NIN": {
+    "summary": "First mention of the main problems in the education children receive today.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8|NIN": {
+    "summary": "Ease of access to quality education for Mexican children on a 0-10 scale.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9_1|NIN": {
+    "summary": "Opinion on whether government should intervene in what is taught to children in school.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10_7|NIN": {
+    "summary": "Institutions believed to help children when they are expelled from school.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11|NIN": {
+    "summary": "Opinion on characteristics or status of children and adolescents.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12|NIN": {
+    "summary": "Opinion on how much children's opinions should be considered in family decisions.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p13|NIN": {
+    "summary": "Opinion on how much children's opinions should be considered in school-related decisions.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16_1|NIN": {
+    "summary": "First mention of main problems related to children's participation.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_1|NIN": {
+    "summary": "Agreement that children in one's locality do not know their rights.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18_3|NIN": {
+    "summary": "Agreement that children in Mexico today are more intelligent than before.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19|NIN": {
+    "summary": "Opinion on what rights or freedoms children should have.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20|NIN": {
+    "summary": "Opinion on how children should be considered or categorized in society.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21_2|NIN": {
+    "summary": "Belief that children have the right to attend school.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22|NIN": {
+    "summary": "Opinion on how much children's rights are respected in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p75|NIN": {
+    "summary": "Opinion on what obligations young people should have.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24|NIN": {
+    "summary": "Belief that children are more exposed to violence than other population groups.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25|NIN": {
+    "summary": "Opinion on where children experience the most violence.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26_1|NIN": {
+    "summary": "First mention of circumstances when hitting a child is justified.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27|NIN": {
+    "summary": "Opinion on main family-related problems experienced by children.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28_1|NIN": {
+    "summary": "Belief that Mexican children have more or fewer educational opportunities than current adults had.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30_1a_1|NIN": {
+    "summary": "First mention of the main problem facing adolescents in Mexico today.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31|NIN": {
+    "summary": "Perception of change in the general situation of adolescents in Mexico since 2010.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32|NIN": {
+    "summary": "Preference for maintaining or changing how education is conducted for adolescents.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34_1|NIN": {
+    "summary": "First mention of what adolescents expect to obtain from education for their future.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38|NIN": {
+    "summary": "Opinion on how much adolescents' opinions should be considered in family decisions.",
+    "duplicate_of": "p12|NIN",
+    "keep": false
+  },
+  "p39|NIN": {
+    "summary": "Opinion on how much adolescents' opinions should be considered in school-related decisions.",
+    "duplicate_of": "p13|NIN",
+    "keep": false
+  },
+  "p41|NIN": {
+    "summary": "Opinion on occasions when adolescents should participate in public marches or mobilizations.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44|NIN": {
+    "summary": "Agreement with lowering the age of criminal responsibility for adolescents who commit crimes.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46_1|NIN": {
+    "summary": "Justification of buying stolen goods as a behavior in adolescents.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47|NIN": {
+    "summary": "Opinion on what rights or freedoms adolescents should have.",
+    "duplicate_of": "p19|NIN",
+    "keep": false
+  },
+  "p48_1|NIN": {
+    "summary": "Agreement that adolescent rights diminish parental authority.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p50|NIN": {
+    "summary": "Opinion on how adolescents should be considered or categorized in society.",
+    "duplicate_of": "p20|NIN",
+    "keep": false
+  },
+  "p52|NIN": {
+    "summary": "Belief that adolescents are more exposed to violence than other population groups.",
+    "duplicate_of": "p24|NIN",
+    "keep": false
+  },
+  "p53|NIN": {
+    "summary": "Opinion on where adolescents experience the most violence.",
+    "duplicate_of": "p25|NIN",
+    "keep": false
+  },
+  "p54|NIN": {
+    "summary": "Belief that adolescents have health problems distinct from other population groups.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55_1a_1|NIN": {
+    "summary": "First mention of particular health problems adolescents have distinct from other groups.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p56|NIN": {
+    "summary": "Opinion on main problems in health care for adolescents.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p57_1|NIN": {
+    "summary": "Belief that Mexican adolescents have more or fewer educational opportunities than current adults had.",
+    "duplicate_of": "p28_1|NIN",
+    "keep": false
+  },
+  "p59_2a_1|NIN": {
+    "summary": "Second mention of the main problem facing young people in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61|NIN": {
+    "summary": "Perception of change in the economic situation of young people in Mexico since 2010.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p64_1|NIN": {
+    "summary": "First mention of what young people expect to obtain from education for their future.",
+    "duplicate_of": "p34_1|NIN",
+    "keep": false
+  },
+  "p72_2|NIN": {
+    "summary": "Agreement that young people in Mexico are interested only in their own well-being.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p73_3|NIN": {
+    "summary": "Belief that young people have the right to participate in a trial.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p76|NIN": {
+    "summary": "Belief that young people are more exposed to violence than other population groups.",
+    "duplicate_of": "p24|NIN",
+    "keep": false
+  },
+  "p77|NIN": {
+    "summary": "Opinion on where young people experience the most violence.",
+    "duplicate_of": "p25|NIN",
+    "keep": false
+  },
+  "p78|NIN": {
+    "summary": "Belief that young people have health problems distinct from other population groups.",
+    "duplicate_of": "p54|NIN",
+    "keep": false
+  },
+  "p81_1|NIN": {
+    "summary": "Belief that Mexican young people have more or fewer educational opportunities than current adults had.",
+    "duplicate_of": "p28_1|NIN",
+    "keep": false
+  },
+  "p81_2|NIN": {
+    "summary": "Belief that Mexican young people have more or fewer opportunities to form a family than current adults had.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p82|NIN": {
+    "summary": "Belief that young people today have the same job prospects as young people 30 years ago.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p83_1|NIN": {
+    "summary": "Opinion on whether young people today have better or worse quality jobs than young people 30 years ago.",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

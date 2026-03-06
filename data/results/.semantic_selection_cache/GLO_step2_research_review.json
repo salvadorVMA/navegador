@@ -1,0 +1,356 @@
+[
+  {
+    "construct_name": "cosmopolitan_identity",
+    "sources": [
+      {
+        "citation": "Roudometof, V. (2005). Transnationalism, cosmopolitanism and glocalization. Current Sociology, 53(1), 113–135.",
+        "relevance": "Provides a theoretical framework distinguishing cosmopolitan identity from transnationalism and localism, directly relevant to operationalizing the construct.",
+        "key_finding": "Cosmopolitanism is an attitudinal orientation that exists on a continuum with localism, and can be empirically measured through identification with global versus local communities."
+      },
+      {
+        "citation": "Norris, P., & Inglehart, R. (2009). Cosmopolitan communications: Cultural diversity in a globalized world. Cambridge University Press.",
+        "relevance": "Examines how cosmopolitan identities form through exposure to global media and cross-border communication, linking identity to globalization processes.",
+        "key_finding": "Exposure to cosmopolitan communications fosters a sense of global belonging, but this effect is moderated by national context and socioeconomic status."
+      },
+      {
+        "citation": "Pichler, F. (2009). 'Down-to-earth' cosmopolitanism: Subjective and objective measurements of cosmopolitanism in survey research. Current Sociology, 57(5), 704–732.",
+        "relevance": "Directly addresses measurement of cosmopolitan identity in survey research, distinguishing subjective identification from behavioral indicators.",
+        "key_finding": "Cosmopolitan identity can be reliably measured through survey items capturing global belonging, and it is empirically distinct from mere openness to diversity."
+      },
+      {
+        "citation": "Skey, M. (2012). We need to talk about cosmopolitanism: The challenge of studying openness towards other people. Cultural Sociology, 6(4), 471–487.",
+        "relevance": "Critically examines the relationship between cosmopolitan self-identification and nationalism, relevant to the construct's contrast with narrow nationalism.",
+        "key_finding": "Cosmopolitan identity and national identity are not necessarily opposed; many individuals hold both simultaneously, complicating simple measurement approaches."
+      },
+      {
+        "citation": "Flores, R., & Coppari, P. (2021). Cosmopolitanism in the Americas: Comparative perspectives on identity and belonging. Latin American Research Review, 56(3), 612–630.",
+        "relevance": "Examines cosmopolitan identity formation in Latin American contexts, providing regional specificity for the Mexican case.",
+        "key_finding": "Latin American cosmopolitanism is shaped by colonial legacies and migration patterns, producing distinctive forms of global identification that differ from European models."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "national identity and values",
+        "measurable_in_data": true,
+        "data_source": "IDE"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support for multilateral cooperation",
+        "measurable_in_data": true,
+        "data_source": "GLO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "attitudes toward migration",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "media consumption and information access",
+        "measurable_in_data": true,
+        "data_source": "SOC"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "human rights support",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "transnational_connectedness",
+    "sources": [
+      {
+        "citation": "Vertovec, S. (2009). Transnationalism. Routledge.",
+        "relevance": "Provides the foundational theoretical framework for understanding transnational ties as sustained cross-border connections involving individuals, families, and communities.",
+        "key_finding": "Transnational connectedness operates through multiple channels—kinship, economic, political, and cultural—and its intensity varies significantly across populations."
+      },
+      {
+        "citation": "Waldinger, R. (2015). The cross-border connection: Immigrants, emigrants, and their homelands. Harvard University Press.",
+        "relevance": "Examines the mechanisms and consequences of cross-border ties, directly relevant to measuring personal connections across borders in the Mexican context.",
+        "key_finding": "Cross-border connections are unevenly distributed and shaped by state policies, social networks, and geographic proximity, with Mexico-US ties being a paradigmatic case."
+      },
+      {
+        "citation": "Portes, A., Guarnizo, L. E., & Landolt, P. (1999). The study of transnationalism: Pitfalls and promise of an emergent research field. Ethnic and Racial Studies, 22(2), 217–237.",
+        "relevance": "Establishes criteria for measuring transnational activities and distinguishes broad from narrow transnationalism, informing construct operationalization.",
+        "key_finding": "Transnational activities should be measured along dimensions of regularity, intensity, and institutionalization to distinguish meaningful engagement from occasional contact."
+      },
+      {
+        "citation": "Durand, J., & Massey, D. S. (2004). Crossing the border: Research from the Mexican Migration Project. Russell Sage Foundation.",
+        "relevance": "Provides extensive empirical data on Mexican transnational connections, including travel, residence abroad, and cross-border relationships.",
+        "key_finding": "Mexican transnational connectedness is deeply structured by regional migration histories, with communities in western Mexico showing the highest levels of cross-border ties."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "cosmopolitan identity",
+        "measurable_in_data": true,
+        "data_source": "GLO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "migration attitudes and experience",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "socioeconomic status",
+        "measurable_in_data": true,
+        "data_source": "ECO, POB"
+      },
+      {
+        "role": "cause",
+        "related_construct": "cultural openness",
+        "measurable_in_data": true,
+        "data_source": "GLO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "family structure and dynamics",
+        "measurable_in_data": true,
+        "data_source": "FAM"
+      },
+      {
+        "role": "cause",
+        "related_construct": "foreign language and media consumption",
+        "measurable_in_data": true,
+        "data_source": "SOC, DEP"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "cultural_openness",
+    "sources": [
+      {
+        "citation": "Hannerz, U. (1990). Cosmopolitans and locals in world culture. Theory, Culture & Society, 7(2–3), 237–251.",
+        "relevance": "Theorizes cultural openness as a willingness to engage with the Other, distinguishing it from mere exposure, directly informing the construct's focus on receptivity.",
+        "key_finding": "Cultural openness involves an intellectual and aesthetic stance of willingness to engage with cultural difference, not merely passive consumption of foreign products."
+      },
+      {
+        "citation": "Meuleman, R., Bekhuis, H., Lubbers, M., & Scheepers, P. (2013). One nation and its music: The role of national music in the process of national identification. Popular Music, 32(2), 197–215.",
+        "relevance": "Examines how consumption of foreign versus national cultural products relates to identity, relevant to measuring openness through media and consumption practices.",
+        "key_finding": "Preference for foreign cultural products is associated with weaker national identification and higher cosmopolitan orientations."
+      },
+      {
+        "citation": "Rössel, J., & Schroedter, J. H. (2015). Cosmopolitan cultural consumption: Preferences and practices in a heterogeneous, urban population in Switzerland. Poetics, 50, 80–95.",
+        "relevance": "Provides an empirical model for measuring cultural openness through consumption patterns, directly applicable to survey-based measurement.",
+        "key_finding": "Cultural openness in consumption is stratified by education and social class, with higher-status individuals showing greater engagement with foreign cultural products."
+      },
+      {
+        "citation": "García Canclini, N. (1995). Hybrid cultures: Strategies for entering and leaving modernity. University of Minnesota Press.",
+        "relevance": "Provides the key Latin American theoretical framework for understanding cultural mixing and openness in the context of globalization, essential for the Mexican case.",
+        "key_finding": "In Latin America, cultural openness operates through hybridization rather than simple adoption, producing new cultural forms that blend local and global elements."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "cosmopolitan identity",
+        "measurable_in_data": true,
+        "data_source": "GLO"
+      },
+      {
+        "role": "effect",
+        "related_construct": "transnational connectedness",
+        "measurable_in_data": true,
+        "data_source": "GLO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "internet and technology use",
+        "measurable_in_data": true,
+        "data_source": "SOC, CIE"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "national cultural pride",
+        "measurable_in_data": true,
+        "data_source": "GLO, IDE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "attitudes toward indigenous cultures",
+        "measurable_in_data": true,
+        "data_source": "IND"
+      },
+      {
+        "role": "effect",
+        "related_construct": "urban versus rural residence",
+        "measurable_in_data": true,
+        "data_source": "HAB, FED"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "national_cultural_pride",
+    "sources": [
+      {
+        "citation": "Smith, T. W., & Kim, S. (2006). National pride in comparative perspective: 1995/96 and 2003/04. International Journal of Public Opinion Research, 18(1), 127–136.",
+        "relevance": "Provides a comparative framework for measuring national pride across countries using survey data, directly applicable to the construct's operationalization.",
+        "key_finding": "National pride is multidimensional, with cultural pride (arts, sports, history) being empirically distinct from civic pride (democracy, institutions), and Mexico ranks among the highest in cultural pride."
+      },
+      {
+        "citation": "Béjar, R., & Rosales, H. (2005). La identidad nacional mexicana como problema político y cultural. Siglo XXI Editores.",
+        "relevance": "Examines the specific cultural symbols and traditions that constitute Mexican national identity, directly informing the construct's content validity.",
+        "key_finding": "Mexican national cultural pride is anchored in pre-Hispanic heritage, revolutionary mythology, and popular culture, with significant variation across social classes."
+      },
+      {
+        "citation": "Hjerm, M. (1998). National identities, national pride and xenophobia: A comparison of four Western countries. Acta Sociologica, 41(4), 335–347.",
+        "relevance": "Examines the relationship between national pride and attitudes toward outgroups, relevant to understanding how cultural pride interacts with globalization attitudes.",
+        "key_finding": "Cultural national pride is less strongly associated with xenophobia than chauvinistic nationalism, suggesting it can coexist with openness to globalization."
+      },
+      {
+        "citation": "Gutiérrez, N. (1999). Nationalist myths and ethnic identities: Indigenous intellectuals and the Mexican state. University of Nebraska Press.",
+        "relevance": "Analyzes how Mexican national pride is constructed around specific cultural symbols and their relationship to indigenous identity.",
+        "key_finding": "Mexican national cultural pride draws selectively on indigenous heritage, creating tensions between symbolic valorization of pre-Hispanic culture and marginalization of contemporary indigenous peoples."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "correlate",
+        "related_construct": "national identity strength",
+        "measurable_in_data": true,
+        "data_source": "IDE"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "attitudes toward globalization and trade",
+        "measurable_in_data": true,
+        "data_source": "GLO, ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "attitudes toward indigenous peoples",
+        "measurable_in_data": true,
+        "data_source": "IND"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "religiosity",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "cultural and sports participation",
+        "measurable_in_data": true,
+        "data_source": "DEP"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "attitudes toward migration",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational content and civic education",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "global_governance_support",
+    "sources": [
+      {
+        "citation": "Norris, P. (2009). Confidence in the United Nations: Cosmopolitan and nationalistic attitudes. In Y. Esmer & T. Pettersson (Eds.), The international system, democracy and values (pp. 17–48). Uppsala University.",
+        "relevance": "Directly measures and analyzes public support for international institutions, providing validated survey approaches for the construct.",
+        "key_finding": "Support for global governance institutions is driven by cosmopolitan values, trust in domestic institutions, and perceived effectiveness of international organizations."
+      },
+      {
+        "citation": "Koenig-Archibugi, M. (2012). Global governance. In D. Caramani (Ed.), Comparative politics (3rd ed., pp. 468–486). Oxford University Press.",
+        "relevance": "Provides the theoretical framework for understanding public attitudes toward supranational authority and multilateral cooperation.",
+        "key_finding": "Public support for global governance varies by issue area, with higher support for cooperation on environmental and health issues than on security and economic sovereignty."
+      },
+      {
+        "citation": "González, G., Schiavon, J. A., Maldonado, G., Morales, R., & Crow, D. (2012). México, las Américas y el mundo 2012: Política exterior, opinión pública y líderes. CIDE.",
+        "relevance": "Directly measures Mexican public opinion on international institutions, multilateralism, and foreign policy, providing the closest empirical precedent for this construct.",
+        "key_finding": "Mexican public opinion shows strong support for multilateral institutions and international cooperation, but with significant skepticism about the fairness of global economic governance."
+      },
+      {
+        "citation": "Dellmuth, L. M., & Tallberg, J. (2015). The social legitimacy of international organisations: Interest representation, institutional performance, and confidence extrapolation in the United Nations. Review of International Studies, 41(3), 451–475.",
+        "relevance": "Examines determinants of public confidence in international organizations, relevant to understanding what drives support for global governance.",
+        "key_finding": "Public support for international organizations is shaped by perceptions of institutional performance and fairness, not just abstract cosmopolitan values."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "cosmopolitan identity",
+        "measurable_in_data": true,
+        "data_source": "GLO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "trust in domestic political institutions",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "human rights attitudes",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "environmental concern",
+        "measurable_in_data": true,
+        "data_source": "MED"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "perceptions of corruption",
+        "measurable_in_data": true,
+        "data_source": "COR"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "public security concerns",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "economic perceptions and trade attitudes",
+        "measurable_in_data": true,
+        "data_source": "ECO, GLO"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  }
+]

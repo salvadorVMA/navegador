@@ -1,0 +1,282 @@
+{
+  "p2|COR": {
+    "summary": "Perception of change in corruption levels compared to childhood (worse/same/better).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3|COR": {
+    "summary": "Expectation of corruption levels in 5 years (worse/same/better).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p4_1|COR": {
+    "summary": "Experience of being asked for extra money for electricity reconnection service in the past year (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5|COR": {
+    "summary": "Perception of where the first acts of corruption occur (location/institution).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6_1|COR": {
+    "summary": "Honesty rating of priests on a 0-10 scale.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9_1|COR": {
+    "summary": "Whether making personal long-distance calls from office phone is considered a corruption act (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10_1|COR": {
+    "summary": "Agreement with making prohibited turns while driving as acceptable behavior (agree/disagree).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11|COR": {
+    "summary": "Action taken when seeing someone drop their wallet (return/keep/other).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12|COR": {
+    "summary": "Whether respondent more commonly offers money or is asked for money to expedite procedures.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p13_1|COR": {
+    "summary": "Agreement with the phrase 'those who don't cheat don't get ahead' (agree/disagree scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14|COR": {
+    "summary": "Behavioral response when asked for money to expedite a procedure (pay/refuse/negotiate).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15|COR": {
+    "summary": "Perception of whether corruption exists in Mexico (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16|COR": {
+    "summary": "Perception of where corruption is most prevalent (sector/institution).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17|COR": {
+    "summary": "Perception of where corruption is greatest within government (specific government area).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18|COR": {
+    "summary": "Perception of where sanctions for lying, deception, or theft are most strictly enforced (location/institution).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19|COR": {
+    "summary": "Perceived main reason why people offer or give bribes (motivation).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20|COR": {
+    "summary": "Opinion on appropriate punishment for a student caught stealing a classmate's food (action/sanction).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21|COR": {
+    "summary": "Opinion on appropriate punishment for theft of office supplies at workplace (action/sanction).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22|COR": {
+    "summary": "Opinion on appropriate action for supermarket manager when catching someone shoplifting (action/sanction).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23|COR": {
+    "summary": "Action taken when aware that school or work peers purchased an exam (report/ignore/other).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24|COR": {
+    "summary": "Action taken when witnessing someone putting supermarket product in bag without paying (report/ignore/other).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25_1|COR": {
+    "summary": "First-mention institution where respondent can report corruption acts (institution name).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26_1a_1|COR": {
+    "summary": "First word association with the term 'corruption' (word).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27|COR": {
+    "summary": "Whether respondent was affected by a corruption act in the past year (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28|COR": {
+    "summary": "Whether respondent reported the corruption act (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29|COR": {
+    "summary": "Location or institution where corruption act was reported (location/institution).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30|COR": {
+    "summary": "Reason why respondent did not report the corruption act (reason).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31|COR": {
+    "summary": "Typical reaction to authority abuse incidents in respondent's life (reaction type).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32|COR": {
+    "summary": "Reason why respondent stays silent about authority abuse (reason).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33|COR": {
+    "summary": "Outcome when respondent has reported authority abuse (outcome).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34|COR": {
+    "summary": "Opinion on difficulty of ending corruption in Mexico (easy/difficult/impossible).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35_1|COR": {
+    "summary": "Agreement that family is responsible for ending corruption (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_1|COR": {
+    "summary": "Rating of how much government helps fight corruption on a 0-10 scale.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37|COR": {
+    "summary": "Perception of where values like honesty, transparency, and legality are most prioritized in education (location/institution).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38|COR": {
+    "summary": "Perception of whether media modifies news to benefit specific interests (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39|COR": {
+    "summary": "Trust in news from media outlets (TV, Radio) (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40|COR": {
+    "summary": "Reason for not believing news from media outlets (reason).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p41|COR": {
+    "summary": "Whether respondent read, heard, or saw corruption news in the past week (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42|COR": {
+    "summary": "Whether respondent remembers the topic of the corruption news (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p43a_1|COR": {
+    "summary": "Brief description of the corruption news topic (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44|COR": {
+    "summary": "Awareness of anticorruption campaigns by media outlets (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45|COR": {
+    "summary": "Opinion on usefulness of anticorruption campaigns by media (useful/not useful).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46|COR": {
+    "summary": "Whether respondent has implemented recommendations from media anticorruption campaigns (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47|COR": {
+    "summary": "Specific anticorruption campaign recommendations implemented by respondent (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_1a_1|COR": {
+    "summary": "Specific anticorruption campaign identified by respondent (campaign name/description).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48|COR": {
+    "summary": "Reason why respondent has not implemented anticorruption campaign recommendations (reason).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49_1|COR": {
+    "summary": "Agreement that family is responsible for preventing corruption (yes/no).",
+    "duplicate_of": "p35_1|COR",
+    "keep": false
+  },
+  "p52_1|COR": {
+    "summary": "Respect for wearing seatbelt while driving (always/sometimes/never).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53|COR": {
+    "summary": "Perception of how much laws are respected in Mexico on a 0-10 scale.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54|COR": {
+    "summary": "Self-assessed knowledge of Mexican laws on a 0-10 scale.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55|COR": {
+    "summary": "Reason why respondent respects and obeys laws (motivation).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p56|COR": {
+    "summary": "Opinion on whether current norms align with current reality (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p57_1|COR": {
+    "summary": "Reason why current norms align with current reality (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58_1a_1|COR": {
+    "summary": "Reason why current norms do not align with current reality (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p59_1|COR": {
+    "summary": "Whether respondent has attended neighborhood meetings (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p60_1|COR": {
+    "summary": "Opinion on who is responsible for disseminating laws in Mexico (institution/actor).",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

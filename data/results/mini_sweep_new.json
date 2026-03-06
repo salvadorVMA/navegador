@@ -1,0 +1,506 @@
+{
+  "ECO::GEN": [
+    {
+      "va": "agg_economic_wellbeing_perception|ECO",
+      "vb": "agg_gender_role_traditionalism|GEN",
+      "base_v": 0.1742808364438471,
+      "bay_g": -0.0095,
+      "r2a": 0.5576390173393221,
+      "r2b": 0.7880990637603169,
+      "mrp_g": 0.0019,
+      "dr_g": 0.2652
+    },
+    {
+      "va": "agg_economic_wellbeing_perception|ECO",
+      "vb": "agg_intimate_partner_control_autonomy|GEN",
+      "base_v": 0.19859693273954235,
+      "bay_g": 0.0381,
+      "r2a": 0.5576390173393221,
+      "r2b": 0.5411294069864283,
+      "mrp_g": 0.0068,
+      "dr_g": 0.0023
+    },
+    {
+      "va": "agg_economic_wellbeing_perception|ECO",
+      "vb": "agg_tolerance_of_gender_based_violence|GEN",
+      "base_v": 0.1878074154181379,
+      "bay_g": -0.0544,
+      "r2a": 0.5576390173393221,
+      "r2b": 0.6820203776225948,
+      "mrp_g": -0.0022,
+      "dr_g": -0.1919
+    },
+    {
+      "va": "agg_economic_wellbeing_perception|ECO",
+      "vb": "agg_reproductive_autonomy_attitudes|GEN",
+      "base_v": 0.19628928065649207,
+      "bay_g": 0.0616,
+      "r2a": 0.5576390173393221,
+      "r2b": 0.8593618653641031,
+      "mrp_g": 0.0062,
+      "dr_g": 0.2912
+    },
+    {
+      "va": "agg_economic_wellbeing_perception|ECO",
+      "vb": "agg_gender_equality_awareness_exposure|GEN",
+      "base_v": 0.19567534871163894,
+      "bay_g": 0.0047,
+      "r2a": 0.5576390173393221,
+      "r2b": 0.3881311248231901,
+      "mrp_g": 0.0036,
+      "dr_g": 0.0526
+    },
+    {
+      "va": "agg_job_quality_precariousness|ECO",
+      "vb": "agg_gender_role_traditionalism|GEN",
+      "base_v": 0.20974107720074772,
+      "bay_g": 0.008,
+      "r2a": 0.7108950116081582,
+      "r2b": 0.7880990637603169,
+      "mrp_g": 0.0221,
+      "dr_g": 0.1947
+    },
+    {
+      "va": "agg_job_quality_precariousness|ECO",
+      "vb": "agg_intimate_partner_control_autonomy|GEN",
+      "base_v": 0.17826372204543564,
+      "bay_g": -0.0224,
+      "r2a": 0.7108950116081582,
+      "r2b": 0.5411294069864283,
+      "mrp_g": 0.0575,
+      "dr_g": 0.044
+    },
+    {
+      "va": "agg_job_quality_precariousness|ECO",
+      "vb": "agg_tolerance_of_gender_based_violence|GEN",
+      "base_v": 0.15481970737341527,
+      "bay_g": -0.0581,
+      "r2a": 0.7108950116081582,
+      "r2b": 0.6820203776225948,
+      "mrp_g": -0.0116,
+      "dr_g": -0.2084
+    },
+    {
+      "va": "agg_job_quality_precariousness|ECO",
+      "vb": "agg_reproductive_autonomy_attitudes|GEN",
+      "base_v": 0.12978913135090114,
+      "bay_g": 0.0088,
+      "r2a": 0.7108950116081582,
+      "r2b": 0.8593618653641031,
+      "mrp_g": -0.0064,
+      "dr_g": 0.0947
+    },
+    {
+      "va": "agg_job_quality_precariousness|ECO",
+      "vb": "agg_gender_equality_awareness_exposure|GEN",
+      "base_v": 0.20660094747568772,
+      "bay_g": -0.0013,
+      "r2a": 0.7108950116081582,
+      "r2b": 0.3881311248231901,
+      "mrp_g": -0.0131,
+      "dr_g": 0.0648
+    },
+    {
+      "va": "agg_labor_market_attachment|ECO",
+      "vb": "agg_gender_role_traditionalism|GEN",
+      "base_v": 0.18049740427297187,
+      "bay_g": -0.0257,
+      "r2a": 0.6681864780154945,
+      "r2b": 0.7880990637603169,
+      "mrp_g": -0.0309,
+      "dr_g": 0.0862
+    },
+    {
+      "va": "agg_labor_market_attachment|ECO",
+      "vb": "agg_intimate_partner_control_autonomy|GEN",
+      "base_v": 0.16792602129509054,
+      "bay_g": -0.0121,
+      "r2a": 0.6681864780154945,
+      "r2b": 0.5411294069864283,
+      "mrp_g": -0.0333,
+      "dr_g": -0.0445
+    },
+    {
+      "va": "agg_labor_market_attachment|ECO",
+      "vb": "agg_tolerance_of_gender_based_violence|GEN",
+      "base_v": 0.23000262705905883,
+      "bay_g": 0.0142,
+      "r2a": 0.6681864780154945,
+      "r2b": 0.6820203776225948,
+      "mrp_g": 0.0113,
+      "dr_g": -0.0459
+    },
+    {
+      "va": "agg_labor_market_attachment|ECO",
+      "vb": "agg_reproductive_autonomy_attitudes|GEN",
+      "base_v": 0.1943761379800069,
+      "bay_g": 0.0247,
+      "r2a": 0.6681864780154945,
+      "r2b": 0.8593618653641031,
+      "mrp_g": 0.0004,
+      "dr_g": 0.0068
+    },
+    {
+      "va": "agg_labor_market_attachment|ECO",
+      "vb": "agg_gender_equality_awareness_exposure|GEN",
+      "base_v": 0.23017352942296146,
+      "bay_g": 0.0287,
+      "r2a": 0.6681864780154945,
+      "r2b": 0.3881311248231901,
+      "mrp_g": 0.0022,
+      "dr_g": 0.2029
+    },
+    {
+      "va": "p19|ECO",
+      "vb": "agg_gender_role_traditionalism|GEN",
+      "base_v": 0.1573150676373278,
+      "bay_g": -0.017,
+      "r2a": 0.4575624877595621,
+      "r2b": 0.7880990637603169,
+      "mrp_g": -0.0044,
+      "dr_g": 0.0832
+    },
+    {
+      "va": "p19|ECO",
+      "vb": "agg_intimate_partner_control_autonomy|GEN",
+      "base_v": 0.12708360300952914,
+      "bay_g": 0.0569,
+      "r2a": 0.4575624877595621,
+      "r2b": 0.5411294069864283,
+      "mrp_g": -0.0021,
+      "dr_g": 0.1872
+    },
+    {
+      "va": "p19|ECO",
+      "vb": "agg_tolerance_of_gender_based_violence|GEN",
+      "base_v": 0.17105866736361902,
+      "bay_g": -0.0494,
+      "r2a": 0.4575624877595621,
+      "r2b": 0.6820203776225948,
+      "mrp_g": 0.0039,
+      "dr_g": -0.0977
+    },
+    {
+      "va": "p19|ECO",
+      "vb": "agg_reproductive_autonomy_attitudes|GEN",
+      "base_v": 0.1908569395579942,
+      "bay_g": -0.0173,
+      "r2a": 0.4575624877595621,
+      "r2b": 0.8593618653641031,
+      "mrp_g": -0.0052,
+      "dr_g": -0.0685
+    },
+    {
+      "va": "p19|ECO",
+      "vb": "agg_gender_equality_awareness_exposure|GEN",
+      "base_v": 0.14612049091996468,
+      "bay_g": -0.0221,
+      "r2a": 0.4575624877595621,
+      "r2b": 0.3881311248231901,
+      "mrp_g": -0.0006,
+      "dr_g": -0.0916
+    },
+    {
+      "va": "agg_human_capital_labor_alignment|ECO",
+      "vb": "agg_gender_role_traditionalism|GEN",
+      "base_v": 0.2794059738503263,
+      "bay_g": 0.0103,
+      "r2a": 0.6288978647179351,
+      "r2b": 0.7880990637603169,
+      "mrp_g": -0.0081,
+      "dr_g": -0.4125
+    },
+    {
+      "va": "agg_human_capital_labor_alignment|ECO",
+      "vb": "agg_intimate_partner_control_autonomy|GEN",
+      "base_v": 0.13784049018019875,
+      "bay_g": 0.0257,
+      "r2a": 0.6288978647179351,
+      "r2b": 0.5411294069864283,
+      "mrp_g": -0.0176,
+      "dr_g": 0.1143
+    },
+    {
+      "va": "agg_human_capital_labor_alignment|ECO",
+      "vb": "agg_tolerance_of_gender_based_violence|GEN",
+      "base_v": 0.23703090117587242,
+      "bay_g": -0.0261,
+      "r2a": 0.6288978647179351,
+      "r2b": 0.6820203776225948,
+      "mrp_g": -0.0019,
+      "dr_g": -0.3752
+    },
+    {
+      "va": "agg_human_capital_labor_alignment|ECO",
+      "vb": "agg_reproductive_autonomy_attitudes|GEN",
+      "base_v": 0.18602929472134408,
+      "bay_g": 0.0125,
+      "r2a": 0.6288978647179351,
+      "r2b": 0.8593618653641031,
+      "mrp_g": 0.0064,
+      "dr_g": 0.0745
+    },
+    {
+      "va": "agg_human_capital_labor_alignment|ECO",
+      "vb": "agg_gender_equality_awareness_exposure|GEN",
+      "base_v": 0.1622816462587339,
+      "bay_g": 0.0221,
+      "r2a": 0.6288978647179351,
+      "r2b": 0.3881311248231901,
+      "mrp_g": 0.0063,
+      "dr_g": 0.1474
+    }
+  ],
+  "ECO::SEG": [
+    {
+      "va": "agg_economic_wellbeing_perception|ECO",
+      "vb": "agg_police_institutional_trust|SEG",
+      "base_v": 0.24911258746515114,
+      "bay_g": 0.0256,
+      "r2a": 0.5576390173393221,
+      "r2b": 1.0,
+      "mrp_g": -0.0017,
+      "dr_g": -0.1379
+    },
+    {
+      "va": "agg_economic_wellbeing_perception|ECO",
+      "vb": "agg_victimization_exposure|SEG",
+      "base_v": 0.2047295882854394,
+      "bay_g": 0.0361,
+      "r2a": 0.5576390173393221,
+      "r2b": 0.6500440357460316,
+      "mrp_g": -0.0074,
+      "dr_g": -0.3326
+    },
+    {
+      "va": "agg_economic_wellbeing_perception|ECO",
+      "vb": "agg_fear_of_crime_and_risk_perception|SEG",
+      "base_v": 0.2114948665760587,
+      "bay_g": 0.0694,
+      "r2a": 0.5576390173393221,
+      "r2b": 0.9997404990860861,
+      "mrp_g": 0.002,
+      "dr_g": 0.3014
+    },
+    {
+      "va": "agg_economic_wellbeing_perception|ECO",
+      "vb": "agg_security_avoidance_behavior|SEG",
+      "base_v": 0.23227195887087843,
+      "bay_g": 0.0573,
+      "r2a": 0.5576390173393221,
+      "r2b": 0.6326797004646947,
+      "mrp_g": 0.0046,
+      "dr_g": 0.0414
+    },
+    {
+      "va": "agg_economic_wellbeing_perception|ECO",
+      "vb": "agg_punitive_authoritarianism|SEG",
+      "base_v": 0.2178405179319307,
+      "bay_g": -0.0454,
+      "r2a": 0.5576390173393221,
+      "r2b": 0.7557864033147325,
+      "mrp_g": -0.0026,
+      "dr_g": 0.2841
+    },
+    {
+      "va": "agg_job_quality_precariousness|ECO",
+      "vb": "agg_police_institutional_trust|SEG",
+      "base_v": 0.16520236037817562,
+      "bay_g": 0.0026,
+      "r2a": 0.7108950116081582,
+      "r2b": 1.0,
+      "mrp_g": -0.0014,
+      "dr_g": -0.1092
+    },
+    {
+      "va": "agg_job_quality_precariousness|ECO",
+      "vb": "agg_victimization_exposure|SEG",
+      "base_v": 0.27680189675005706,
+      "bay_g": -0.0142,
+      "r2a": 0.7108950116081582,
+      "r2b": 0.6500440357460316,
+      "mrp_g": 0.0228,
+      "dr_g": -0.2974
+    },
+    {
+      "va": "agg_job_quality_precariousness|ECO",
+      "vb": "agg_fear_of_crime_and_risk_perception|SEG",
+      "base_v": 0.18170673491889447,
+      "bay_g": 0.0507,
+      "r2a": 0.7108950116081582,
+      "r2b": 0.9997404990860861,
+      "mrp_g": -0.009,
+      "dr_g": 0.6717
+    },
+    {
+      "va": "agg_job_quality_precariousness|ECO",
+      "vb": "agg_security_avoidance_behavior|SEG",
+      "base_v": 0.23526320369535317,
+      "bay_g": -0.0063,
+      "r2a": 0.7108950116081582,
+      "r2b": 0.6326797004646947,
+      "mrp_g": -0.0192,
+      "dr_g": -0.1072
+    },
+    {
+      "va": "agg_job_quality_precariousness|ECO",
+      "vb": "agg_punitive_authoritarianism|SEG",
+      "base_v": 0.20824368159461776,
+      "bay_g": -0.0546,
+      "r2a": 0.7108950116081582,
+      "r2b": 0.7557864033147325,
+      "mrp_g": 0.0207,
+      "dr_g": 0.1978
+    },
+    {
+      "va": "agg_labor_market_attachment|ECO",
+      "vb": "agg_police_institutional_trust|SEG",
+      "base_v": 0.21231911759347066,
+      "bay_g": 0.0113,
+      "r2a": 0.6681864780154945,
+      "r2b": 1.0,
+      "mrp_g": -0.0028,
+      "dr_g": 0.0793
+    },
+    {
+      "va": "agg_labor_market_attachment|ECO",
+      "vb": "agg_victimization_exposure|SEG",
+      "base_v": 0.22650089668650542,
+      "bay_g": -0.0016,
+      "r2a": 0.6681864780154945,
+      "r2b": 0.6500440357460316,
+      "mrp_g": -0.027,
+      "dr_g": 0.0186
+    },
+    {
+      "va": "agg_labor_market_attachment|ECO",
+      "vb": "agg_fear_of_crime_and_risk_perception|SEG",
+      "base_v": 0.1942745060642575,
+      "bay_g": -0.0147,
+      "r2a": 0.6681864780154945,
+      "r2b": 0.9997404990860861,
+      "mrp_g": 0.0033,
+      "dr_g": 0.0872
+    },
+    {
+      "va": "agg_labor_market_attachment|ECO",
+      "vb": "agg_security_avoidance_behavior|SEG",
+      "base_v": 0.27974541132727065,
+      "bay_g": 0.0319,
+      "r2a": 0.6681864780154945,
+      "r2b": 0.6326797004646947,
+      "mrp_g": 0.0125,
+      "dr_g": 0.0397
+    },
+    {
+      "va": "agg_labor_market_attachment|ECO",
+      "vb": "agg_punitive_authoritarianism|SEG",
+      "base_v": 0.24719700444341675,
+      "bay_g": 0.0535,
+      "r2a": 0.6681864780154945,
+      "r2b": 0.7557864033147325,
+      "mrp_g": -0.0221,
+      "dr_g": 0.3072
+    },
+    {
+      "va": "p19|ECO",
+      "vb": "agg_police_institutional_trust|SEG",
+      "base_v": 0.15969315094291106,
+      "bay_g": 0.0224,
+      "r2a": 0.4575624877595621,
+      "r2b": 1.0,
+      "mrp_g": 0.0015,
+      "dr_g": -0.0094
+    },
+    {
+      "va": "p19|ECO",
+      "vb": "agg_victimization_exposure|SEG",
+      "base_v": 0.12189085638120964,
+      "bay_g": -0.0649,
+      "r2a": 0.4575624877595621,
+      "r2b": 0.6500440357460316,
+      "mrp_g": 0.0003,
+      "dr_g": -0.058
+    },
+    {
+      "va": "p19|ECO",
+      "vb": "agg_fear_of_crime_and_risk_perception|SEG",
+      "base_v": 0.19543212017257056,
+      "bay_g": 0.0422,
+      "r2a": 0.4575624877595621,
+      "r2b": 0.9997404990860861,
+      "mrp_g": 0.0016,
+      "dr_g": -0.0872
+    },
+    {
+      "va": "p19|ECO",
+      "vb": "agg_security_avoidance_behavior|SEG",
+      "base_v": 0.1660845334454382,
+      "bay_g": -0.0523,
+      "r2a": 0.4575624877595621,
+      "r2b": 0.6326797004646947,
+      "mrp_g": -0.0057,
+      "dr_g": -0.0262
+    },
+    {
+      "va": "p19|ECO",
+      "vb": "agg_punitive_authoritarianism|SEG",
+      "base_v": 0.1997743584525291,
+      "bay_g": 0.0582,
+      "r2a": 0.4575624877595621,
+      "r2b": 0.7557864033147325,
+      "mrp_g": 0.0016,
+      "dr_g": -0.2575
+    },
+    {
+      "va": "agg_human_capital_labor_alignment|ECO",
+      "vb": "agg_police_institutional_trust|SEG",
+      "base_v": 0.2930436722310365,
+      "bay_g": -0.019,
+      "r2a": 0.6288978647179351,
+      "r2b": 1.0,
+      "mrp_g": -0.0044,
+      "dr_g": -0.2739
+    },
+    {
+      "va": "agg_human_capital_labor_alignment|ECO",
+      "vb": "agg_victimization_exposure|SEG",
+      "base_v": 0.2784384384912191,
+      "bay_g": -0.0713,
+      "r2a": 0.6288978647179351,
+      "r2b": 0.6500440357460316,
+      "mrp_g": -0.0184,
+      "dr_g": -0.4921
+    },
+    {
+      "va": "agg_human_capital_labor_alignment|ECO",
+      "vb": "agg_fear_of_crime_and_risk_perception|SEG",
+      "base_v": 0.20628982423266465,
+      "bay_g": 0.0544,
+      "r2a": 0.6288978647179351,
+      "r2b": 0.9997404990860861,
+      "mrp_g": 0.0023,
+      "dr_g": 0.308
+    },
+    {
+      "va": "agg_human_capital_labor_alignment|ECO",
+      "vb": "agg_security_avoidance_behavior|SEG",
+      "base_v": 0.2485292763489122,
+      "bay_g": -0.0128,
+      "r2a": 0.6288978647179351,
+      "r2b": 0.6326797004646947,
+      "mrp_g": 0.0205,
+      "dr_g": -0.0588
+    },
+    {
+      "va": "agg_human_capital_labor_alignment|ECO",
+      "vb": "agg_punitive_authoritarianism|SEG",
+      "base_v": 0.15267992638997976,
+      "bay_g": -0.0062,
+      "r2a": 0.6288978647179351,
+      "r2b": 0.7557864033147325,
+      "mrp_g": -0.0117,
+      "dr_g": 0.0159
+    }
+  ]
+}

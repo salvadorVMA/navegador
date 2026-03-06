@@ -1,0 +1,302 @@
+{
+  "p2|DEP": {
+    "summary": "General interest in culture (unspecified scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3_1|DEP": {
+    "summary": "Importance of watching television in respondent's life (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5_1|DEP": {
+    "summary": "Primary source where respondent has heard about culture (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6_1|DEP": {
+    "summary": "Primary media consulted by respondent to stay informed about cultural events (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7_1|DEP": {
+    "summary": "Respondent's opinion on the purpose or function of culture (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8|DEP": {
+    "summary": "Frequency with which respondent's parents discussed culture-related topics during childhood.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9_1|DEP": {
+    "summary": "Whether respondent's parents took them to visit museums during childhood.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11|DEP": {
+    "summary": "Whether respondent's parents or relatives gave books as gifts after learning to read.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12_1|DEP": {
+    "summary": "Frequency of independent reading during respondent's childhood.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p13|DEP": {
+    "summary": "Presence of books in respondent's household during childhood.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14|DEP": {
+    "summary": "Current presence of books in respondent's household.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15a_1|DEP": {
+    "summary": "Whether respondent reads local newspapers or magazines.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15b_1|DEP": {
+    "summary": "Frequency of reading local newspapers or magazines.",
+    "duplicate_of": "p15a_1|DEP",
+    "keep": false
+  },
+  "p15c_1|DEP": {
+    "summary": "Frequency of reading local newspapers or magazines (regional version).",
+    "duplicate_of": "p15a_1|DEP",
+    "keep": false
+  },
+  "p15c_2|DEP": {
+    "summary": "Frequency of reading regional newspapers or magazines (state level).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15c_3|DEP": {
+    "summary": "Frequency of reading national newspapers or magazines (country level).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15c_4|DEP": {
+    "summary": "Frequency of reading international newspapers or magazines (foreign).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16|DEP": {
+    "summary": "Respondent's perceived ease or difficulty in reading.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17|DEP": {
+    "summary": "Respondent's primary difficulty or limitation in reading.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18_1|DEP": {
+    "summary": "Respondent's opinion on the purpose or function of reading (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19|DEP": {
+    "summary": "Whether respondent currently practices any sport.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19_2a_1|DEP": {
+    "summary": "Specific sport(s) that respondent sometimes practices.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20|DEP": {
+    "summary": "Respondent's opinion on what most inspires children and youth to practice sports.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21|DEP": {
+    "summary": "Frequency of watching sports events on television in the past two weeks.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21_1|DEP": {
+    "summary": "Whether watched sports events were from national, international, or both competitions.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22_1|DEP": {
+    "summary": "Respondent's opinion on the purpose or function of sports (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24|DEP": {
+    "summary": "Whether respondent uses the internet.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24_1_1|DEP": {
+    "summary": "Whether respondent uses internet to stay informed about cultural events.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25|DEP": {
+    "summary": "Respondent's preference between discussing a single Mexican culture or multiple Mexican cultures.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26|DEP": {
+    "summary": "Respondent's perception of whether Mexico currently receives less, equal, or more foreign cultural influence than before.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27|DEP": {
+    "summary": "Respondent's opinion on the effects or implications of receiving foreign cultural influence.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28|DEP": {
+    "summary": "Respondent's opinion on what cultural approach is preferable for the country.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29_1|DEP": {
+    "summary": "Respondent's opinion on what cultural element would be most important to preserve (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31_1|DEP": {
+    "summary": "Importance of primary school teachers having the opportunity to learn about other countries' cultures (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32|DEP": {
+    "summary": "Respondent's opinion on whether indigenous languages should be taught in primary schools.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33|DEP": {
+    "summary": "Respondent's perception of whether public or private schools better prepare students for cultural participation.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34|DEP": {
+    "summary": "Whether respondent can hold a basic conversation in an indigenous language.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34_1a_1|DEP": {
+    "summary": "Specific indigenous language(s) in which respondent can hold a basic conversation.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35|DEP": {
+    "summary": "Whether respondent can read in an indigenous language.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35_1a_1|DEP": {
+    "summary": "Specific indigenous language(s) in which respondent can read.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37|DEP": {
+    "summary": "Whether respondent can read in a foreign language.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38|DEP": {
+    "summary": "Total time respondent has spent abroad.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p41_g1|DEP": {
+    "summary": "Respondent's mother's highest grade level completed in school.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42_1a|DEP": {
+    "summary": "Respondent's mother's primary occupation (grouped categories).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p43|DEP": {
+    "summary": "Type of school where respondent completed most of primary education.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44|DEP": {
+    "summary": "Respondent's self-assessment of current economic situation.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45|DEP": {
+    "summary": "Respondent's self-identified social class.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46|DEP": {
+    "summary": "Respondent's satisfaction with their life overall.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47|DEP": {
+    "summary": "Respondent's agreement with allowing television appearances by people expressing opposing viewpoints.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48|DEP": {
+    "summary": "First language respondent learned to speak.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49|DEP": {
+    "summary": "Whether respondent considers themselves to have a cultural heritage different from the majority in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49_2a_1|DEP": {
+    "summary": "Specific cultural heritage that respondent partially identifies with.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p50|DEP": {
+    "summary": "Whether respondent identifies as part of a discriminated ethnic or racial group in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51|DEP": {
+    "summary": "Whether respondent has a religion.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51_1a_1|DEP": {
+    "summary": "Respondent's specific religion.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p52|DEP": {
+    "summary": "Emotion that best reflects respondent's feelings about Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53|DEP": {
+    "summary": "Whether respondent holds any nationality in addition to Mexican.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53_1a_1|DEP": {
+    "summary": "Respondent's other nationality or nationalities.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54|DEP": {
+    "summary": "Respondent's self-identified racial or ethnic category (indigenous, mestizo, white, or other).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55|DEP": {
+    "summary": "Respondent's self-placement on left-right political spectrum (1-9 scale).",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

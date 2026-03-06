@@ -1,0 +1,302 @@
+{
+  "p1|FAM": {
+    "summary": "Type of place where respondent lived during childhood up to age 14.",
+    "duplicate_of": "p3|FAM",
+    "keep": false
+  },
+  "p2|FAM": {
+    "summary": "Whether respondent lived childhood as part of a family.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3|FAM": {
+    "summary": "Location where respondent lived during childhood.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5|FAM": {
+    "summary": "Identity of household head in respondent's childhood home.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6|FAM": {
+    "summary": "Whether both mother and father lived in respondent's childhood home.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7|FAM": {
+    "summary": "Reason why mother and/or father did not live in respondent's childhood home.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8|FAM": {
+    "summary": "Respondent's subjective assessment of happiness during childhood up to age 14.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10|FAM": {
+    "summary": "Whether family has supported or hindered respondent's life goals.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p13|FAM": {
+    "summary": "Respondent's conception of ideal family type to aspire to.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14|FAM": {
+    "summary": "Barriers preventing achievement of ideal family type in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15|FAM": {
+    "summary": "Actions needed to achieve ideal family type in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16|FAM": {
+    "summary": "Definition and types of family structures in contemporary Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17|FAM": {
+    "summary": "Main problem facing families in Mexico according to respondent.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19|FAM": {
+    "summary": "What a person seeks when deciding to form a family.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20|FAM": {
+    "summary": "Fundamental reasons beyond love for forming a family.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21|FAM": {
+    "summary": "Desired characteristics in a spouse for forming a family.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22|FAM": {
+    "summary": "Importance of family members' opinions when choosing a spouse.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23|FAM": {
+    "summary": "Respondent's reason for initiating first conjugal union.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24|FAM": {
+    "summary": "Whether other reasons existed for respondent's first conjugal union.",
+    "duplicate_of": null,
+    "keep": false
+  },
+  "p24a|FAM": {
+    "summary": "Other reasons for respondent's first conjugal union.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25|FAM": {
+    "summary": "Quality of relationships among family members living with respondent.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26|FAM": {
+    "summary": "Quality of relationships with family members not living with respondent.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27|FAM": {
+    "summary": "Factors determining good or bad relationships within families.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28|FAM": {
+    "summary": "Parental obligations toward children in a family.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29|FAM": {
+    "summary": "Children's obligations toward parents in a family.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30|FAM": {
+    "summary": "Age until which children should remain in parents' home.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31|FAM": {
+    "summary": "Reason for respondent's answer about age children should remain in parents' home.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32|FAM": {
+    "summary": "Reasons for extramarital affairs among stable couples.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33|FAM": {
+    "summary": "Whether respondent has ever had extramarital relations.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35|FAM": {
+    "summary": "Conditions under which respondent would accept spouse's infidelity.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36|FAM": {
+    "summary": "Whether respondent has ever had sexual relations with same-sex partners.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37|FAM": {
+    "summary": "Frequency of respondent's sexual relations with same-sex partners.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38|FAM": {
+    "summary": "Reasons for increasing separation and divorce rates among couples in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39|FAM": {
+    "summary": "Types of situations generating major family problems.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40|FAM": {
+    "summary": "Impact of new communication technologies on family relationships.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p41|FAM": {
+    "summary": "Whether respondent has experienced family violence at any life stage.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42|FAM": {
+    "summary": "Origins of family violence situations experienced by respondent.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p43|FAM": {
+    "summary": "Impact of mothers working outside home on family according to respondent.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44|FAM": {
+    "summary": "Ideal number of children a person should have in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45|FAM": {
+    "summary": "Reasons why a person decides to have children.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46_1|FAM": {
+    "summary": "Family members contributing economically to household expenses (father).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49|FAM": {
+    "summary": "Relationship quality with respondent's children or grandchildren generation.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51_1|FAM": {
+    "summary": "First-mentioned behavioral or condition changes that would improve respondent's family life.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p52|FAM": {
+    "summary": "What keeps a family united according to respondent.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53|FAM": {
+    "summary": "Most important value in respondent's family.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54|FAM": {
+    "summary": "Most important value learned in respondent's family and practiced in daily life.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55|FAM": {
+    "summary": "Fundamental values parents should transmit to children.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p56|FAM": {
+    "summary": "Institution with greatest influence on family life in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p57|FAM": {
+    "summary": "Influence of religion on family life in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58|FAM": {
+    "summary": "Government actions needed to improve family situation in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p59|FAM": {
+    "summary": "Respondent's priority between family and friends.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p60_1|FAM": {
+    "summary": "First-mentioned characteristics of a good father.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_1|FAM": {
+    "summary": "First-mentioned characteristics of a good mother.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p62|FAM": {
+    "summary": "Respondent's preparations for health, food, and housing needs in old age.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63|FAM": {
+    "summary": "Who would care for respondent if unable to care for self.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p64|FAM": {
+    "summary": "Whether respondent would care for family member requiring special care due to disability.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p65|FAM": {
+    "summary": "Whether respondent's family has a secret or hidden matter.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p66|FAM": {
+    "summary": "Extent to which family secret influences respondent's family relationships.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p67|FAM": {
+    "summary": "Most important difference between respondent's parents' family and current family.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p68|FAM": {
+    "summary": "Expected main changes in Mexican families over next 20 years.",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

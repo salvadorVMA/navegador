@@ -1,0 +1,467 @@
+{
+  "p1|CUL": {
+    "summary": "Perception of national economic situation compared to one year ago (better or worse).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p2|CUL": {
+    "summary": "Expectation of national economic situation in the next year.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3|CUL": {
+    "summary": "Word choice to describe the current political situation of the country.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5|CUL": {
+    "summary": "Pride in being Mexican.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7|CUL": {
+    "summary": "Assessment of whether the country needs no changes, small changes, profound changes, or radical change.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8|CUL": {
+    "summary": "Frequency of consuming news or programs about politics or public affairs.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9_1|CUL": {
+    "summary": "Primary source of information about national events (first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10|CUL": {
+    "summary": "Level of interest in politics.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11|CUL": {
+    "summary": "Perception of how much politics relates to daily life.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12|CUL": {
+    "summary": "Importance of politics to the respondent.",
+    "duplicate_of": "p10|CUL",
+    "keep": false
+  },
+  "p13_1|CUL": {
+    "summary": "Attribution of responsibility for judging criminals.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14_1|CUL": {
+    "summary": "Left-right ideological placement of the Catholic Church (1-5 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15_1|CUL": {
+    "summary": "Left-right ideological placement of the PAN party (1-5 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16|CUL": {
+    "summary": "Respondent's own left-right ideological self-placement (1-5 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17|CUL": {
+    "summary": "Choice between freedom and security as core values.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18|CUL": {
+    "summary": "Source of anxiety or fear regarding public security in the respondent's state.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19_1|CUL": {
+    "summary": "Preference between paired statements on political values (first pair).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20|CUL": {
+    "summary": "Perceived complexity of politics.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21|CUL": {
+    "summary": "Opinion on whether politics contributes to improving the standard of living for all Mexicans.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p65|CUL": {
+    "summary": "Agreement with the statement that breaking the law is sometimes necessary to act correctly.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23|CUL": {
+    "summary": "Choice between implementing a good policy that creates conflict or avoiding conflict by not implementing it.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p80_2|CUL": {
+    "summary": "Agreement with the statement that people in the community care only about their own well-being.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25|CUL": {
+    "summary": "Opinion on whether political participation is worthwhile.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26|CUL": {
+    "summary": "Opinion on whether Chamber of Deputies discussions are important to citizens or only to politicians.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27|CUL": {
+    "summary": "Agreement with selecting part of the Chamber of Deputies through lottery of non-partisan citizens.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28|CUL": {
+    "summary": "Identification of which person best represents the respondent's interests.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29|CUL": {
+    "summary": "Opinion on the purpose or function of democracy.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30|CUL": {
+    "summary": "Most important aspect for a society to be considered a democracy.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31|CUL": {
+    "summary": "Preference for how the country should be governed.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32|CUL": {
+    "summary": "Assessment of how democratic Mexico is today.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33|CUL": {
+    "summary": "Importance of Mexico being governed democratically (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34|CUL": {
+    "summary": "Rating of how democratically Mexico is currently being governed (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35|CUL": {
+    "summary": "Satisfaction with democracy in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36|CUL": {
+    "summary": "Agreement with statements about democracy and governance.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38|CUL": {
+    "summary": "Opinion on whether government should follow Mexican Revolution ideas or change them.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39|CUL": {
+    "summary": "Preference for creating a new constitution, partial changes, or keeping it as is.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40|CUL": {
+    "summary": "Belief in the extent to which the constitution is upheld in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p41|CUL": {
+    "summary": "Assessment of the quality of elections in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42|CUL": {
+    "summary": "Opinion on whether INE guarantees clean electoral processes.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p43|CUL": {
+    "summary": "Belief in whether state elections will be more or less reliable now that INE oversees them.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44_1|CUL": {
+    "summary": "Perception of the extent to which one can start any business.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45_1|CUL": {
+    "summary": "Most important quality children should have (first pair in paired-choice exercise).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46|CUL": {
+    "summary": "Belief in citizens' ability to influence government decisions.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_1|CUL": {
+    "summary": "Participation in meeting with authorities in the past year.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49|CUL": {
+    "summary": "Opinion on a specific political statement or viewpoint.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p50|CUL": {
+    "summary": "Opinion on what is more important in a political context.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51|CUL": {
+    "summary": "Satisfaction with current opportunities for political participation or desire for more forms.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51a|CUL": {
+    "summary": "Follow-up specifying desired additional forms of political participation.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p52|CUL": {
+    "summary": "Satisfaction with how much one's opinions are taken into account.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53_1|CUL": {
+    "summary": "Participation in neighborhood associations.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54_1|CUL": {
+    "summary": "Perception of what neighbors typically do when authorities fail to solve problems (first action).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55_1|CUL": {
+    "summary": "Agreement with neighbors organizing blockades and marches as a response to unresolved problems.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55_2|CUL": {
+    "summary": "Agreement with neighbors turning to media as a response to unresolved problems.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55_3|CUL": {
+    "summary": "Agreement with neighbors approaching other authorities as a response to unresolved problems.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55_4|CUL": {
+    "summary": "Agreement with neighbors approaching a political party as a response to unresolved problems.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55_5|CUL": {
+    "summary": "Agreement with neighbors organizing among themselves as a response to unresolved problems.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55_7|CUL": {
+    "summary": "Agreement with other unspecified neighbor responses to unresolved problems.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55|CUL": {
+    "summary": "Opinion on whether committing damages or harm is justified to defend a just cause.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p56_1|CUL": {
+    "summary": "Opinion on whether authorities should make exceptions in law enforcement for protests by homemakers.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p57_1|CUL": {
+    "summary": "Opinion on whether government should intervene in decisions about school curriculum.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58_1|CUL": {
+    "summary": "Opinion on whether government should make public or keep secret information about government spending.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p59|CUL": {
+    "summary": "Preference for solving community problems through community action or government intervention.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p60|CUL": {
+    "summary": "Opinion on the legitimacy of decisions made by majority vote.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61|CUL": {
+    "summary": "Truth or falsity of the statement that a strong leader can do more for the country than laws.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p62|CUL": {
+    "summary": "Primary function government should perform.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63_1|CUL": {
+    "summary": "Perception of how much government administers justice.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p64|CUL": {
+    "summary": "Opinion on how authorities should act in pursuit of justice.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p66_1|CUL": {
+    "summary": "Most important factor dividing Mexicans today.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p66_2|CUL": {
+    "summary": "Second most important factor dividing Mexicans today.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p67|CUL": {
+    "summary": "What unites people most.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p68_1|CUL": {
+    "summary": "Voting participation in the 2012 presidential election.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p69_1|CUL": {
+    "summary": "Party voted for in the 2012 presidential election.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p69_3|CUL": {
+    "summary": "Party voted for in the 2006 presidential election.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p69_4|CUL": {
+    "summary": "Party voted for in the state governor election.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p70|CUL": {
+    "summary": "Party would vote for in a hypothetical federal deputy election today.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p71|CUL": {
+    "summary": "Opinion on whether political parties buy votes.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p72|CUL": {
+    "summary": "Experience of being offered something in exchange for one's vote.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p73|CUL": {
+    "summary": "Importance of candidate versus party when deciding how to vote.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p74_1|CUL": {
+    "summary": "Agreement with the statement that political parties criticize each other but are all essentially the same.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p75|CUL": {
+    "summary": "Agreement with statements about political parties.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p76|CUL": {
+    "summary": "Main cause of conflicts after elections.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p77|CUL": {
+    "summary": "Best way for a citizen to contribute to solving Mexico's political and social problems.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p78|CUL": {
+    "summary": "Party sympathy or partisan identification.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p79|CUL": {
+    "summary": "Strength of identification with a political party (very or somewhat).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p81_1|CUL": {
+    "summary": "Trust in neighbors (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p82_1|CUL": {
+    "summary": "Trust in police (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p84_1|CUL": {
+    "summary": "Perceived influence of large businesses on Mexican politics.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p84_2|CUL": {
+    "summary": "Perceived influence of political parties on Mexican politics.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p84_3|CUL": {
+    "summary": "Perceived influence of the president on Mexican politics.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p84_4|CUL": {
+    "summary": "Perceived influence of citizens on Mexican politics.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p84_6|CUL": {
+    "summary": "Perceived influence of the Church on Mexican politics.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p84_7|CUL": {
+    "summary": "Perceived influence of labor unions on Mexican politics.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p84_8|CUL": {
+    "summary": "Perceived influence of media on Mexican politics.",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

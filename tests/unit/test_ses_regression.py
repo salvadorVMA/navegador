@@ -624,7 +624,7 @@ class TestResidualBridgeEstimator(unittest.TestCase):
     def test_required_keys(self):
         result = self._run()
         for key in ('cramers_v_residual', 'cramers_v_baseline', 'ses_fraction',
-                    'n_cells_used', 'n_simulated', 'method', 'note'):
+                    'stratified_gamma', 'n_cells_used', 'n_simulated', 'method', 'note'):
             self.assertIn(key, result, f"Missing key: {key}")
 
     def test_method_label(self):

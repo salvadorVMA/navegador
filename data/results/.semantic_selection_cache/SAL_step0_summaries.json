@@ -1,0 +1,237 @@
+{
+  "p1|SAL": {
+    "summary": "Self-rated general health status (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p2|SAL": {
+    "summary": "Health limitation in performing moderate physical efforts like 30-minute walks or household cleaning (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3|SAL": {
+    "summary": "Health limitation in climbing several flights of stairs (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p4|SAL": {
+    "summary": "Reduced activity due to physical health problems in the past 4 weeks (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5|SAL": {
+    "summary": "Work or daily activity interruption due to physical health problems (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7|SAL": {
+    "summary": "Pain-related difficulty with usual work and household tasks in the past 4 weeks (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8_1|SAL": {
+    "summary": "Frequency of feeling calm and peaceful in the past 4 weeks (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9|SAL": {
+    "summary": "Affiliation with any health institution (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10|SAL": {
+    "summary": "Name of health institution affiliation (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11|SAL": {
+    "summary": "Health problem occurrence in the past month (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p13|SAL": {
+    "summary": "Action taken to resolve health problem (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14|SAL": {
+    "summary": "Type of medical service accessed for health problem (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15|SAL": {
+    "summary": "Travel time from home to medical service accessed (minutes/hours).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17|SAL": {
+    "summary": "Receipt of medical treatment for health problem (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18|SAL": {
+    "summary": "Adherence to prescribed medical treatment (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18_1|SAL": {
+    "summary": "Reason for non-adherence to prescribed medical treatment (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19|SAL": {
+    "summary": "Hospitalization requirement for health problem (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20|SAL": {
+    "summary": "Need for medical tests or analyses for health problem (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21|SAL": {
+    "summary": "Use of non-medical activities not recommended by doctor to address health problem (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22|SAL": {
+    "summary": "Out-of-pocket payment for medical attention received (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23_1|SAL": {
+    "summary": "Agreement that medical care expenses negatively affect family finances (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24|SAL": {
+    "summary": "Preferred medical service destination if family needed medical care (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25_1|SAL": {
+    "summary": "Satisfaction with medical attention received from doctors (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26_1|SAL": {
+    "summary": "Ranking of eating vegetables as health benefit relative to 10 other activities (1-11 ranking).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27_1|SAL": {
+    "summary": "Frequency of eating vegetables (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28|SAL": {
+    "summary": "Lifetime smoking history (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30|SAL": {
+    "summary": "Lifetime cigarette consumption of at least 100 cigarettes or 5 packs (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31|SAL": {
+    "summary": "Daily cigarette consumption in the past 3 months (numeric).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32|SAL": {
+    "summary": "Most difficult cigarette to quit during the day (categorical/ordinal).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33|SAL": {
+    "summary": "Lifetime alcohol consumption history (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34|SAL": {
+    "summary": "Frequency of alcohol consumption in the past 12 months (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35|SAL": {
+    "summary": "Maximum number of drinks consumed in a single occasion in the past 12 months (numeric).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36_1|SAL": {
+    "summary": "Experience of excessive worries in the past month (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37|SAL": {
+    "summary": "Self-rated quality of life (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38|SAL": {
+    "summary": "Life satisfaction (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39|SAL": {
+    "summary": "Enjoyment of life (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40|SAL": {
+    "summary": "Satisfaction with sexual life (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p41|SAL": {
+    "summary": "Self-perception of current life situation using visual figure scale (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44|SAL": {
+    "summary": "Availability of free time during the week (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45|SAL": {
+    "summary": "Engagement in favorite recreational activity in the past week (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46|SAL": {
+    "summary": "Physical activity of 30 minutes or more in the past week (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46_2_1|SAL": {
+    "summary": "Satisfaction with cleanliness of public spaces (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47|SAL": {
+    "summary": "Need for family caregiving for dependent household members (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_3|SAL": {
+    "summary": "Impact of caregiving on family income and expenses (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49|SAL": {
+    "summary": "Presence of household member with physical or mental disability (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p50|SAL": {
+    "summary": "Timing of last Pap smear test for women 18 and older (categorical/temporal).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51|SAL": {
+    "summary": "Timing of last mammography screening for women 40 and older (categorical/temporal).",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

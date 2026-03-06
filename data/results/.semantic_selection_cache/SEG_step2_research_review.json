@@ -1,0 +1,410 @@
+[
+  {
+    "construct_name": "police_institutional_trust",
+    "sources": [
+      {
+        "citation": "Sabet, D. (2013). Corruption or insecurity? Understanding dissatisfaction with Mexico's police. Latin American Politics and Society, 55(1), 22–45.",
+        "relevance": "Directly examines the determinants of public dissatisfaction with Mexican police, distinguishing corruption perceptions from insecurity perceptions as drivers of distrust.",
+        "key_finding": "Both perceived corruption and perceived ineffectiveness independently reduce public trust in Mexican police, but corruption perceptions have a stronger effect."
+      },
+      {
+        "citation": "Morris, S. D. (2012). Corruption, drug trafficking, and violence in Mexico. The Brown Journal of World Affairs, 18(2), 29–43.",
+        "relevance": "Analyzes how endemic corruption within law enforcement institutions undermines public legitimacy and trust in the Mexican security apparatus.",
+        "key_finding": "Corruption within police forces creates a vicious cycle where distrust leads to non-cooperation, which in turn reduces police effectiveness and further erodes trust."
+      },
+      {
+        "citation": "Bergman, M. (2006). Crime and citizen security in Latin America: The challenges for new scholarship. Latin American Research Review, 41(2), 213–227.",
+        "relevance": "Provides a theoretical framework for understanding institutional trust in security institutions across Latin America, including police performance evaluations.",
+        "key_finding": "Citizen security perceptions are shaped more by institutional performance and accountability than by objective crime rates alone."
+      },
+      {
+        "citation": "Artz, S. (2003). Redefining the role of the military in public security: Mexico's dilemma. In J. Bailey & L. Dammert (Eds.), Public Security and Police Reform in the Americas (pp. 99–114). University of Pittsburgh Press.",
+        "relevance": "Discusses the legitimacy crisis of Mexican police institutions and the implications for citizen cooperation and human rights compliance.",
+        "key_finding": "Low institutional trust in police has driven public support for military involvement in policing, despite associated human rights concerns."
+      },
+      {
+        "citation": "Malone, M. F. T. (2010). The verdict is in: The impact of crime on public trust in Central American justice systems. Journal of Politics in Latin America, 2(3), 99–128.",
+        "relevance": "Examines how crime victimization and perceptions of institutional performance shape trust in justice and security institutions in Latin America.",
+        "key_finding": "Direct victimization significantly reduces trust in police and justice institutions, but perceived institutional responsiveness can partially buffer this effect."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "crime victimization experience",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "perceived corruption levels",
+        "measurable_in_data": true,
+        "data_source": "COR"
+      },
+      {
+        "role": "cause",
+        "related_construct": "willingness to report crime",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support for democratic governance",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "trust in justice system",
+        "measurable_in_data": true,
+        "data_source": "JUS"
+      },
+      {
+        "role": "effect",
+        "related_construct": "human rights perceptions",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "punitive authoritarianism",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "victimization_exposure",
+    "sources": [
+      {
+        "citation": "Vilalta, C. J. (2013). Determinant factors in the perception of crime-related insecurity in Mexico. IDB Working Paper Series No. IDB-WP-381. Inter-American Development Bank.",
+        "relevance": "Analyzes the relationship between direct victimization and insecurity perceptions in Mexico, using nationally representative survey data.",
+        "key_finding": "Direct victimization is the strongest predictor of insecurity perceptions, surpassing neighborhood characteristics and media exposure."
+      },
+      {
+        "citation": "Dammert, L., & Malone, M. F. T. (2006). Does it take a village? Policing strategies and fear of crime in Latin America. Latin American Politics and Society, 48(4), 27–51.",
+        "relevance": "Examines how victimization experiences at household and personal levels shape fear of crime and security-related behaviors across Latin American countries.",
+        "key_finding": "Personal victimization has a stronger effect on fear of crime than neighborhood-level victimization, and both are mediated by trust in police."
+      },
+      {
+        "citation": "INEGI. (2022). Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública (ENVIPE) 2022: Marco conceptual. Instituto Nacional de Estadística y Geografía.",
+        "relevance": "Provides the methodological framework for measuring victimization in Mexico, including type, frequency, and reporting behavior—directly parallel to the survey items in this construct.",
+        "key_finding": "Mexico's dark figure of crime (unreported crimes) exceeds 90%, making survey-based victimization measurement essential for understanding true crime exposure."
+      },
+      {
+        "citation": "Cantor, D. J. (2014). The new wave: Forced displacement caused by organized crime in Central America and Mexico. Refugee Survey Quarterly, 33(3), 34–68.",
+        "relevance": "Links victimization exposure to forced internal displacement and migration decisions in Mexico, connecting crime exposure to broader social outcomes.",
+        "key_finding": "Repeated victimization by organized crime is a primary driver of internal displacement in Mexico, particularly in states with high cartel activity."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "fear of crime and insecurity perceptions",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "security avoidance behavior",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "institutional trust in police",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "mental health and well-being",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "migration intentions",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "punitive attitudes",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "poverty and socioeconomic marginalization",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "gender-based vulnerability",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "housing and neighborhood conditions",
+        "measurable_in_data": true,
+        "data_source": "HAB"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "fear_of_crime_and_risk_perception",
+    "sources": [
+      {
+        "citation": "Hale, C. (1996). Fear of crime: A review of the literature. International Review of Victimology, 4(2), 79–150.",
+        "relevance": "Provides the foundational theoretical distinction between emotional fear responses and cognitive risk assessments that underpins this construct's definition.",
+        "key_finding": "Fear of crime is a multidimensional construct comprising affective (emotional worry), cognitive (perceived risk), and behavioral (avoidance) components that must be measured separately."
+      },
+      {
+        "citation": "Vilalta, C. J. (2012). Fear of crime in gated communities and apartment buildings: A comparison of housing types and a test of theories. Journal of Housing and the Built Environment, 27(1), 107–120.",
+        "relevance": "Tests fear of crime theories in the Mexican urban context, examining how neighborhood characteristics and housing types shape insecurity perceptions.",
+        "key_finding": "In Mexico, social disorder cues and neighborhood incivilities are stronger predictors of fear of crime than actual victimization rates."
+      },
+      {
+        "citation": "Pantazis, C. (2000). 'Fear of crime', vulnerability and poverty: Evidence from the British Crime Survey. British Journal of Criminology, 40(3), 414–436.",
+        "relevance": "Demonstrates how socioeconomic vulnerability amplifies fear of crime, relevant to understanding the poverty-insecurity nexus in Mexico.",
+        "key_finding": "Economically vulnerable populations report significantly higher fear of crime, even controlling for actual victimization risk."
+      },
+      {
+        "citation": "Jasso López, C. (2013). Percepción de inseguridad en México. Revista Mexicana de Opinión Pública, 15, 13–29.",
+        "relevance": "Directly analyzes insecurity perceptions in Mexico using national survey data, examining demographic and contextual determinants.",
+        "key_finding": "Insecurity perception in Mexico is driven by a combination of media exposure, indirect victimization (knowing victims), and neighborhood disorder, not just direct victimization."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "direct crime victimization",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "security avoidance behavior",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support for punitive policies",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "media consumption and information exposure",
+        "measurable_in_data": true,
+        "data_source": "SOC"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "interpersonal and social trust",
+        "measurable_in_data": true,
+        "data_source": "CUL, IDE"
+      },
+      {
+        "role": "cause",
+        "related_construct": "political attitudes and democratic satisfaction",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "gender",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "effect",
+        "related_construct": "poverty and economic vulnerability",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "quality of life and well-being",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "security_avoidance_behavior",
+    "sources": [
+      {
+        "citation": "Skogan, W. G., & Maxfield, M. G. (1981). Coping with Crime: Individual and Neighborhood Reactions. Beverly Hills, CA: Sage Publications.",
+        "relevance": "Foundational work distinguishing avoidance behaviors (spatial restriction, temporal restriction) from protective/defensive behaviors in response to crime fear.",
+        "key_finding": "Avoidance behaviors are the most common coping response to fear of crime and disproportionately restrict the mobility and social participation of vulnerable populations."
+      },
+      {
+        "citation": "Vilalta, C. J., & Muggah, R. (2016). What explains criminal violence in Mexico City? A test of two theories of crime. Stability: International Journal of Security and Development, 5(1), 1–22.",
+        "relevance": "Examines how crime-related behavioral adaptations in Mexican urban settings relate to neighborhood disorder and victimization patterns.",
+        "key_finding": "Residents in high-crime Mexican neighborhoods adopt extensive avoidance strategies that reduce social cohesion and community collective efficacy."
+      },
+      {
+        "citation": "Garofalo, J. (1981). The fear of crime: Causes and consequences. Journal of Criminal Law and Criminology, 72(2), 839–857.",
+        "relevance": "Theorizes the causal pathway from fear of crime to constrained behavior, providing the conceptual basis for measuring avoidance as a behavioral outcome of insecurity.",
+        "key_finding": "Fear-driven behavioral restriction creates a feedback loop: avoidance reduces street presence, which reduces informal social control, which increases actual crime risk."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "fear of crime and risk perception",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "direct victimization experience",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "social participation and community engagement",
+        "measurable_in_data": true,
+        "data_source": "CUL, DEP"
+      },
+      {
+        "role": "cause",
+        "related_construct": "economic activity and labor participation",
+        "measurable_in_data": true,
+        "data_source": "ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "gender-based mobility restrictions",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "housing investment and home security",
+        "measurable_in_data": true,
+        "data_source": "HAB"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "age and aging-related vulnerability",
+        "measurable_in_data": true,
+        "data_source": "ENV"
+      }
+    ],
+    "gap_justification": "While avoidance behavior is well-established in the general fear-of-crime literature, its specific measurement in the Mexican context with only three items (spatial avoidance, nighttime curtailment, home protective measures) represents a relatively narrow operationalization that has received limited dedicated psychometric attention in Mexican survey research. Most Mexican studies embed avoidance items within broader insecurity scales rather than treating them as a distinct behavioral construct. Nonetheless, this construct is critical because it captures the tangible social costs of insecurity—restricted mobility, reduced economic participation, and diminished quality of life—that aggregate-level crime statistics cannot reveal. It fills a gap by translating subjective insecurity into observable behavioral consequences, which is essential for policy evaluation in Mexico's security context.",
+    "importance_rating": 3
+  },
+  {
+    "construct_name": "punitive_authoritarianism",
+    "sources": [
+      {
+        "citation": "Godoy, A. S. (2006). Popular injustice: Violence, community, and law in Latin America. Stanford, CA: Stanford University Press.",
+        "relevance": "Analyzes the roots of vigilante justice and extrajudicial punishment in Latin America, linking them to institutional failure and citizen frustration with formal justice systems.",
+        "key_finding": "Support for vigilante justice in Latin America is driven primarily by perceptions of state failure to provide security and justice, rather than by inherent cultural authoritarianism."
+      },
+      {
+        "citation": "Bateson, R. (2012). Crime victimization and political participation. American Political Science Review, 106(3), 570–587.",
+        "relevance": "Examines how crime victimization shapes political attitudes including support for harsh punitive measures and authoritarian security policies in Latin America.",
+        "key_finding": "Crime victims are more likely to support punitive and authoritarian security measures, but this effect is moderated by institutional trust and democratic values."
+      },
+      {
+        "citation": "Magaloni, B., Díaz-Cayeros, A., & Romero, V. (2015). The Mexican war on drugs: Crime, violence, and institutional weakness. In D. Mares & A. Kacowicz (Eds.), Routledge Handbook of Latin American Security (pp. 315–328). Routledge.",
+        "relevance": "Contextualizes punitive attitudes within Mexico's drug war, examining public support for militarized and extrajudicial responses to organized crime.",
+        "key_finding": "Public support for militarized security strategies in Mexico remains high despite human rights costs, driven by desperation over institutional police failure."
+      },
+      {
+        "citation": "Cullen, F. T., Fisher, B. S., & Applegate, B. K. (2000). Public opinion about punishment and corrections. Crime and Justice, 27, 1–79.",
+        "relevance": "Provides the theoretical and empirical framework for measuring punitive public attitudes, including support for capital punishment and harsh sentencing.",
+        "key_finding": "Punitive attitudes are multidimensional and driven by fear of crime, political ideology, racial attitudes, and perceived ineffectiveness of rehabilitation."
+      },
+      {
+        "citation": "Zizumbo-Colunga, D. (2017). Community, authorities, and support for vigilantism: Experimental evidence. Political Behavior, 39(4), 989–1015.",
+        "relevance": "Directly tests support for vigilante justice in Mexico using experimental methods, examining the conditions under which citizens endorse extralegal violence.",
+        "key_finding": "Support for vigilantism in Mexico increases when citizens perceive authorities as corrupt or absent, and when community bonds are strong."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "crime victimization",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "institutional distrust in police and justice",
+        "measurable_in_data": true,
+        "data_source": "SEG, JUS"
+      },
+      {
+        "role": "effect",
+        "related_construct": "fear of crime",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support for authoritarian governance",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "human rights attitudes",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "political ideology (left-right)",
+        "measurable_in_data": true,
+        "data_source": "CUL, IDE"
+      },
+      {
+        "role": "effect",
+        "related_construct": "perceived corruption",
+        "measurable_in_data": true,
+        "data_source": "COR"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "religiosity and moral conservatism",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "indigenous identity and community justice norms",
+        "measurable_in_data": true,
+        "data_source": "IND"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  }
+]

@@ -1,0 +1,222 @@
+{
+  "p1_1a_1|ENV": {
+    "summary": "First of three words associated with the term 'older adult' (open-ended, first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p2|ENV": {
+    "summary": "Number of household members aged 60 years and older.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3|ENV": {
+    "summary": "Whether older household members are family relations.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6_1|ENV": {
+    "summary": "Agreement that a person becomes old when needing help with most daily activities.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7_1a_1|ENV": {
+    "summary": "Primary problem faced by older adults in Mexico (first mention, open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7_2a_1|ENV": {
+    "summary": "Second most important problem faced by older adults in Mexico (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8|ENV": {
+    "summary": "Primary responsibility for older adult care in Mexico (opinion on who should be responsible).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9|ENV": {
+    "summary": "Perceived change in overall situation of older adults in Mexico since 2010 (improved or worsened).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10|ENV": {
+    "summary": "Expected change in overall situation of older adults in Mexico in 10 years (better or worse).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11|ENV": {
+    "summary": "Concern about the possible increase in population aged 60+ in Mexico (worry scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12|ENV": {
+    "summary": "Opinion on how much older adults' opinions should be considered in family decisions.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p13_1|ENV": {
+    "summary": "Agreement that health of people aged 60+ is poor (agree-disagree scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14_1|ENV": {
+    "summary": "Agreement that people lose interest in things as they age (agree-disagree scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15_1|ENV": {
+    "summary": "Perception of media image of older adults on radio (positive or negative).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16_1|ENV": {
+    "summary": "Belief that negligence (failure to meet needs) is a type of abuse against older adults.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_1|ENV": {
+    "summary": "Opinion on how much abuse toward older adults depends on their age.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18_1|ENV": {
+    "summary": "Belief that older adults are discriminated against by age in the workplace.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19_1|ENV": {
+    "summary": "Knowledge of physical abuse (being hit) experienced by an older adult family member.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20|ENV": {
+    "summary": "Knowledge of measures to prevent abuse toward older adults (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20aa_1|ENV": {
+    "summary": "Specific measures to prevent abuse toward older adults (open-ended follow-up).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21_2|ENV": {
+    "summary": "Adequacy of psychological care services for older adults in Mexico (adequate-inadequate scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22|ENV": {
+    "summary": "Desire to continue working after reaching pension eligibility age (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24_1a_1|ENV": {
+    "summary": "First of three reasons why older adults continue working after obtaining pension (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25_1|ENV": {
+    "summary": "Agreement that older adults should have equal employment rights as young people (agree-disagree).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26|ENV": {
+    "summary": "Opinion on justification for denying employment to an older adult capable of doing the job.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27|ENV": {
+    "summary": "Perception of employment opportunities available to older adults in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29_1|ENV": {
+    "summary": "Opinion on older adults' contribution to childcare of grandchildren.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30|ENV": {
+    "summary": "Perception of adult children's willingness to care for their aging parents.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31|ENV": {
+    "summary": "Opinion on the quality of care adult children provide to aging parents today.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32_1|ENV": {
+    "summary": "Availability of sidewalks with handrails for older adults in respondent's neighborhood.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33|ENV": {
+    "summary": "Presence of accessibility installations for older adults in respondent's home or building.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34_1|ENV": {
+    "summary": "Perceived need for mobility structures (sidewalks, handrails, ramps) for older adults in neighborhood.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35|ENV": {
+    "summary": "Willingness to have taxes used to adapt public spaces for older adult accessibility and mobility.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36|ENV": {
+    "summary": "Opinion on whether older adults in Mexico have a dignified life (yes/no).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37_1|ENV": {
+    "summary": "Primary limitation to quality of life for older adults in Mexico (first mention, open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38|ENV": {
+    "summary": "Perception of how much people consider the problems of older adults today.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39|ENV": {
+    "summary": "Opinion on importance of older adults' problems to Mexican society.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40_1|ENV": {
+    "summary": "Importance of economic aid as a public policy to help older adults in Mexico (0-10 scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p41_1|ENV": {
+    "summary": "Opinion on whether organizations of older adults and NGOs play a positive or negative role in addressing aging challenges in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42_1|ENV": {
+    "summary": "Agreement that the State should be responsible for care and attention of older adults (agree-disagree).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p43|ENV": {
+    "summary": "Preference for type of care arrangement if an older adult family member needed help.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44|ENV": {
+    "summary": "Willingness to contribute financially if an older adult family member needed care.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45_1|ENV": {
+    "summary": "First of three most important reasons for helping older adults (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46_1|ENV": {
+    "summary": "Frequency of visiting one's parents (behavioral measure of intergenerational contact).",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

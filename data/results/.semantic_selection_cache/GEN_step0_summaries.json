@@ -1,0 +1,297 @@
+{
+  "p1|GEN": {
+    "summary": "Perception of national economic situation compared to one year ago (better or worse).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p2|GEN": {
+    "summary": "Expectation of national economic situation improvement or deterioration in the next year.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6a_1|GEN": {
+    "summary": "Open-ended response about the greatest disadvantage of being a woman.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7a_1|GEN": {
+    "summary": "Open-ended response about the greatest advantage of being a man.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9|GEN": {
+    "summary": "Opinion on whether life is more difficult for men or women.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10_1|GEN": {
+    "summary": "Agreement with the statement that boys and girls should be treated equally (agree/disagree).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11_1|GEN": {
+    "summary": "Agreement with the statement that it is logical for men to earn more than women (agree/disagree).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12|GEN": {
+    "summary": "Current marital status.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14|GEN": {
+    "summary": "Current presence of a sexual partner (whether or not cohabiting).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15|GEN": {
+    "summary": "History of infidelity to a partner.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16|GEN": {
+    "summary": "Living arrangement with current partner.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18|GEN": {
+    "summary": "Household member responsible for managing daily money.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19|GEN": {
+    "summary": "Experience of partner withholding money for activities.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20_1|GEN": {
+    "summary": "Household decision-maker regarding furniture purchases.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21|GEN": {
+    "summary": "Knowledge of partner's income.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22|GEN": {
+    "summary": "Disclosure of own income to partner.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23_1|GEN": {
+    "summary": "Frequency of asking partner's permission to go out during the day.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23_5|GEN": {
+    "summary": "Frequency of asking partner's permission to visit family members.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24|GEN": {
+    "summary": "Opinion on fairness of household task distribution.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25_1|GEN": {
+    "summary": "Frequency of making beds (always, many times, few times, never).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p26_1|GEN": {
+    "summary": "Agreement with the statement that household chores are women's responsibility (agree/disagree).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27_1|GEN": {
+    "summary": "Perceived importance of fidelity for marriage success (importance scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28|GEN": {
+    "summary": "Presence of biological children.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29|GEN": {
+    "summary": "Total number of live births.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30_1|GEN": {
+    "summary": "Infidelity as a source of serious relationship difficulties.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31|GEN": {
+    "summary": "Emotional reaction to a man yelling at his wife during a marital dispute.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32|GEN": {
+    "summary": "Opinion on whether violence exists in Mexican families.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33|GEN": {
+    "summary": "Experience of violence in respondent's own family.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34|GEN": {
+    "summary": "Intended response if partner were to physically assault respondent.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35|GEN": {
+    "summary": "Circumstances under which hitting a woman is justified.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37|GEN": {
+    "summary": "Preferred method for disciplining children.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38|GEN": {
+    "summary": "Experience of physical punishment from father during childhood.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39|GEN": {
+    "summary": "Experience of physical punishment from mother during childhood.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p41_1|GEN": {
+    "summary": "Willingness to vote for a woman as municipal council member (regidora).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42_1|GEN": {
+    "summary": "Agreement with the statement that homosexuality is normal (agree/disagree).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p43|GEN": {
+    "summary": "Opinion on the ideal number of children for couples today.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44|GEN": {
+    "summary": "Preference for sex of first child if able to choose.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45|GEN": {
+    "summary": "Opinion on whether premarital sexual relations are acceptable.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46_1|GEN": {
+    "summary": "Knowledge and use of male condoms as contraceptive method.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47|GEN": {
+    "summary": "Opinion on young women under 18 working as sex workers.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48|GEN": {
+    "summary": "Perception of unplanned adolescent pregnancy as a national problem.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49|GEN": {
+    "summary": "Opinion on the primary cause of unplanned adolescent pregnancy.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p50|GEN": {
+    "summary": "Opinion on the most appropriate option in response to unplanned adolescent pregnancy.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p52a|GEN": {
+    "summary": "Open-ended follow-up specifying the response to unplanned adolescent pregnancy.",
+    "duplicate_of": "p50|GEN",
+    "keep": false
+  },
+  "p51|GEN": {
+    "summary": "Opinion on who should decide whether to continue an unplanned pregnancy.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p52|GEN": {
+    "summary": "Knowledge of abortion legality in respondent's state.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53|GEN": {
+    "summary": "Opinion on quality of medical care for abortion services in respondent's state.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54_1|GEN": {
+    "summary": "Agreement with the statement that children need both parents to grow up happy (agree/disagree).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55_1|GEN": {
+    "summary": "Willingness to marry a divorced woman or man.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p56a_1|GEN": {
+    "summary": "Open-ended response about the greatest challenge facing women who choose to be mothers today.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58_1a_1|GEN": {
+    "summary": "First word association with the term machismo.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p59_1|GEN": {
+    "summary": "Agreement with the statement that feminism is equivalent to machismo (agree/disagree).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p60_3|GEN": {
+    "summary": "Agreement with the statement that it is important for men to have a friend to talk about problems (agree/disagree).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61_1|GEN": {
+    "summary": "Agreement with the statement that men are always willing to have sex (agree/disagree).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63_1|GEN": {
+    "summary": "Agreement with the statement that women always cry to get what they want (agree/disagree).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p65|GEN": {
+    "summary": "Awareness of the law to prevent violence against women.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p66|GEN": {
+    "summary": "Exposure to programs, advertisements, or campaigns about gender equality.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p67a_1|GEN": {
+    "summary": "Open-ended recall of a specific program, advertisement, or campaign about gender equality.",
+    "duplicate_of": "p66|GEN",
+    "keep": false
+  },
+  "p68_1|GEN": {
+    "summary": "Perceived control over personal financial situation.",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

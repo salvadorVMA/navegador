@@ -1,0 +1,337 @@
+[
+  {
+    "construct_name": "perceived_education_quality",
+    "sources": [
+      {
+        "citation": "Martínez-Chairez, G. I., Guevara-Araiza, A., & Valles-Ornelas, M. M. (2016). El desempeño docente y la calidad educativa. Ra Ximhai, 12(6), 123–134.",
+        "relevance": "Directly examines perceptions of educational quality in Mexico, linking teacher performance to overall quality assessments of the education system.",
+        "key_finding": "Perceived educational quality in Mexican schools is strongly associated with teacher performance evaluations and institutional support structures."
+      },
+      {
+        "citation": "Hanushek, E. A., & Woessmann, L. (2012). Do better schools lead to more growth? Cognitive skills, economic outcomes, and causation. Journal of Economic Growth, 17(4), 267–321.",
+        "relevance": "Establishes the theoretical link between perceived and actual education quality and labor market/economic outcomes, directly relevant to the construct's inclusion of beliefs about schooling's practical value.",
+        "key_finding": "Cognitive skills developed through quality education are causally linked to economic growth, supporting the importance of measuring perceived quality as a proxy for system effectiveness."
+      },
+      {
+        "citation": "Andere, E. (2015). Are teachers crucial for academic achievement? Finland educational success in a comparative perspective. Education Policy Analysis Archives, 23(39), 1–24.",
+        "relevance": "Provides a comparative framework for understanding how public perceptions of education quality relate to systemic factors, applicable to Mexican public opinion surveys.",
+        "key_finding": "Public perceptions of education quality are shaped by broader cultural and institutional factors beyond individual school characteristics."
+      },
+      {
+        "citation": "Santibañez, L. (2006). Why we should care if teachers get A's: Teacher test scores and student achievement in Mexico. Economics of Education Review, 25(5), 510–520.",
+        "relevance": "Examines the relationship between teacher quality indicators and student outcomes in Mexico, informing the construct's focus on perceived quality changes over time.",
+        "key_finding": "Teacher competency, as measured by standardized tests, has a modest but significant effect on student achievement in Mexican public schools."
+      },
+      {
+        "citation": "INEE. (2018). La educación obligatoria en México: Informe 2018. Instituto Nacional para la Evaluación de la Educación.",
+        "relevance": "Provides comprehensive data on Mexican education system quality indicators that contextualize public opinion about educational quality and its trajectory.",
+        "key_finding": "Despite increased investment, significant quality gaps persist across regions and socioeconomic strata in Mexico's education system."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "socioeconomic status / poverty",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "trust in government institutions",
+        "measurable_in_data": true,
+        "data_source": "CUL, COR"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "labor market outcomes / employment quality",
+        "measurable_in_data": true,
+        "data_source": "ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support for education reform policies",
+        "measurable_in_data": true,
+        "data_source": "EDU, CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "national identity and values",
+        "measurable_in_data": true,
+        "data_source": "IDE"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "school_environment_quality",
+    "sources": [
+      {
+        "citation": "Duarte, J., Gargiulo, C., & Moreno, M. (2011). School infrastructure and learning in Latin American elementary education: An analysis based on the SERCE. Inter-American Development Bank, Technical Notes No. IDB-TN-277.",
+        "relevance": "Directly examines the relationship between school infrastructure quality and learning outcomes in Latin America, including Mexico, validating the construct's infrastructure dimension.",
+        "key_finding": "Adequate school infrastructure (water, electricity, libraries, science labs) is significantly associated with higher student achievement in Latin American countries."
+      },
+      {
+        "citation": "Blanco, E. (2009). Eficacia escolar y clima organizacional: Apuntes para una investigación de procesos escolares. Estudios Sociológicos, 27(80), 671–694.",
+        "relevance": "Analyzes school climate and organizational factors in Mexican schools, directly relevant to the social conditions and teacher engagement dimensions of this construct.",
+        "key_finding": "Positive school climate, characterized by teacher engagement and prosocial peer behavior, is a significant predictor of school effectiveness in Mexico."
+      },
+      {
+        "citation": "Román, M., & Murillo, F. J. (2011). Latin America: School bullying and academic achievement. CEPAL Review, 104, 37–53.",
+        "relevance": "Examines the relationship between school safety (bullying/violence) and academic outcomes in Latin America, relevant to the safety perceptions component of the construct.",
+        "key_finding": "Students who experience violence or feel unsafe at school show significantly lower academic performance across Latin American countries."
+      },
+      {
+        "citation": "Zurita Rivera, Ú. (2012). Las escuelas mexicanas y la legislación sobre la convivencia, la seguridad y la violencia escolar. Educación y Territorio, 2(1), 19–36.",
+        "relevance": "Analyzes the legal and policy framework around school safety and coexistence in Mexico, providing context for measuring safety perceptions in Mexican schools.",
+        "key_finding": "Mexican school safety policies have evolved significantly but implementation gaps remain, making subjective perceptions of safety a critical indicator."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "academic achievement and educational persistence",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "effect",
+        "related_construct": "public investment and federalism in education",
+        "measurable_in_data": true,
+        "data_source": "FED, ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "community safety / public security",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "student wellbeing and health",
+        "measurable_in_data": true,
+        "data_source": "SAL, NIN"
+      },
+      {
+        "role": "effect",
+        "related_construct": "regional poverty and inequality",
+        "measurable_in_data": true,
+        "data_source": "POB, HAB"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "digital_and_cultural_capital",
+    "sources": [
+      {
+        "citation": "Bourdieu, P. (1986). The forms of capital. In J. Richardson (Ed.), Handbook of Theory and Research for the Sociology of Education (pp. 241–258). Greenwood Press.",
+        "relevance": "Foundational theoretical framework for cultural capital, directly underpinning the construct's conceptualization of informational, technological, and cultural resources as forms of capital relevant to educational outcomes.",
+        "key_finding": "Cultural capital, transmitted through family and institutional contexts, is a key mechanism through which social inequality is reproduced in educational systems."
+      },
+      {
+        "citation": "Warschauer, M., & Matuchniak, T. (2010). New technology and digital worlds: Analyzing evidence of equity in access, use, and outcomes. Review of Research in Education, 34(1), 179–225.",
+        "relevance": "Examines digital divides in access and use of technology, directly relevant to the technological resource dimensions (internet, computer access) of this construct.",
+        "key_finding": "Digital inequality extends beyond access to encompass differences in usage patterns and outcomes, with socioeconomic status being a primary determinant."
+      },
+      {
+        "citation": "Martínez Domínguez, M. (2020). Acceso y uso de tecnologías de la información y comunicación en México: Factores determinantes. PAAKAT: Revista de Tecnología y Sociedad, 8(14), 1–20.",
+        "relevance": "Directly examines determinants of ICT access and use in Mexico, providing empirical context for the digital dimensions of this construct.",
+        "key_finding": "Education level, income, age, and urban/rural location are the strongest predictors of ICT access and use in Mexico, reinforcing the link between digital and socioeconomic capital."
+      },
+      {
+        "citation": "De Graaf, N. D., De Graaf, P. M., & Kraaykamp, G. (2000). Parental cultural capital and educational attainment in the Netherlands: A refinement of the cultural capital perspective. Sociology of Education, 73(2), 92–111.",
+        "relevance": "Empirically tests the relationship between cultural capital (reading, cultural participation) and educational attainment, validating the inclusion of cultural resource items in this construct.",
+        "key_finding": "Parental reading behavior and cultural participation significantly predict children's educational attainment, independent of economic capital."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "educational attainment and achievement",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "effect",
+        "related_construct": "household income and socioeconomic status",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "information society participation",
+        "measurable_in_data": true,
+        "data_source": "SOC, CIE"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "political participation and civic engagement",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "cultural consumption and leisure",
+        "measurable_in_data": true,
+        "data_source": "DEP, CUL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "globalization awareness and attitudes",
+        "measurable_in_data": true,
+        "data_source": "GLO"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "educational_equity_beliefs",
+    "sources": [
+      {
+        "citation": "Parker, S. W., Rubalcava, L., & Teruel, G. (2005). Schooling inequality and language barriers. Economic Development and Cultural Change, 54(1), 71–94.",
+        "relevance": "Examines educational inequality in Mexico with attention to indigenous populations and language barriers, directly relevant to beliefs about accessibility and inclusivity in the education system.",
+        "key_finding": "Language barriers and indigenous status are major sources of educational inequality in Mexico, with indigenous children facing significantly lower enrollment and completion rates."
+      },
+      {
+        "citation": "Creighton, M. J., & Park, H. (2010). Closing the gender gap: Six decades of reform in Mexican education. Comparative Education Review, 54(4), 513–537.",
+        "relevance": "Directly examines gender equity in Mexican education over time, providing historical context for beliefs about whether schooling treats women equitably.",
+        "key_finding": "Mexico has made substantial progress in closing the gender gap in education, though disparities persist in rural areas and among indigenous populations."
+      },
+      {
+        "citation": "Fletcher, T., & Artiles, A. J. (2005). Inclusive education and equity in Latin America. In D. Mitchell (Ed.), Contextualizing Inclusive Education (pp. 202–229). Routledge.",
+        "relevance": "Examines inclusive education policies for students with disabilities in Latin America, relevant to the construct's dimension on accommodation of students with disabilities.",
+        "key_finding": "Despite policy advances, inclusive education in Latin America remains limited by resource constraints, teacher preparation gaps, and persistent attitudinal barriers."
+      },
+      {
+        "citation": "Blanco, E. (2011). Los límites de la escuela: Educación, desigualdad y aprendizajes en México. El Colegio de México.",
+        "relevance": "Comprehensive analysis of educational inequality in Mexico, examining how school-level and system-level factors contribute to or mitigate inequity.",
+        "key_finding": "Mexican schools have limited capacity to compensate for social inequalities, with school composition effects reinforcing pre-existing disparities."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "correlate",
+        "related_construct": "gender equality attitudes",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "human rights awareness and support",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      },
+      {
+        "role": "effect",
+        "related_construct": "socioeconomic status and poverty experience",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "indigenous identity and rights",
+        "measurable_in_data": true,
+        "data_source": "IND"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support for redistributive social policies",
+        "measurable_in_data": true,
+        "data_source": "CUL, POB"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "perceptions of discrimination",
+        "measurable_in_data": true,
+        "data_source": "DER, GEN, IND"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "educational_trajectory_and_continuity",
+    "sources": [
+      {
+        "citation": "De Hoyos, R., Rogers, H., & Székely, M. (2016). Out of school and out of work: Risk and opportunities for Latin America's ninis. World Bank Group.",
+        "relevance": "Directly examines dropout patterns and the 'nini' (neither in school nor working) phenomenon in Latin America including Mexico, relevant to the construct's focus on educational persistence and dropout.",
+        "key_finding": "Approximately 20% of Latin American youth aged 15–24 are out of school and out of work, with early dropout driven by poverty, low perceived returns to education, and family obligations."
+      },
+      {
+        "citation": "Giorguli Saucedo, S. E., & Serratos López, D. (2009). El impacto de la migración internacional sobre la asistencia escolar en México: ¿Paradoja de la migración? In P. Leite & S. E. Giorguli (Eds.), Las políticas públicas ante los retos de la migración mexicana a Estados Unidos (pp. 313–344). CONAPO.",
+        "relevance": "Examines how migration affects school attendance and educational trajectories in Mexico, relevant to understanding reasons for leaving school.",
+        "key_finding": "International migration has complex effects on school attendance in Mexico, with remittances potentially supporting education but migration aspirations sometimes reducing school persistence."
+      },
+      {
+        "citation": "Solís, P. (2013). Desigualdad vertical y horizontal en las transiciones educativas en México. Estudios Sociológicos, 31(número extraordinario), 63–95.",
+        "relevance": "Analyzes educational transitions and stratification in Mexico, directly relevant to the construct's focus on educational history, continuation, and aspirations.",
+        "key_finding": "Social origin strongly determines educational transitions in Mexico, with critical dropout points at the transition from lower to upper secondary education."
+      },
+      {
+        "citation": "Rumberger, R. W. (2011). Dropping out: Why students drop out of high school and what can be done about it. Harvard University Press.",
+        "relevance": "Provides a comprehensive theoretical framework for understanding dropout processes, including individual, family, and institutional factors, applicable to the Mexican context.",
+        "key_finding": "Dropping out is a process rather than an event, influenced by both push factors (school-related) and pull factors (external opportunities and obligations)."
+      },
+      {
+        "citation": "INEE. (2017). Directrices para mejorar la permanencia escolar en la educación media superior. Instituto Nacional para la Evaluación de la Educación.",
+        "relevance": "Provides Mexico-specific policy analysis of school persistence at the upper secondary level, directly relevant to measuring educational continuity and dropout reasons.",
+        "key_finding": "Economic factors, lack of relevance of curriculum, and family responsibilities are the primary drivers of dropout at the upper secondary level in Mexico."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "household poverty and economic constraints",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "labor market outcomes and employment",
+        "measurable_in_data": true,
+        "data_source": "ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "migration intentions and experience",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "family structure and obligations",
+        "measurable_in_data": true,
+        "data_source": "FAM"
+      },
+      {
+        "role": "cause",
+        "related_construct": "civic and political participation",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "youth risk behaviors and wellbeing",
+        "measurable_in_data": true,
+        "data_source": "NIN, SAL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "gender norms and expectations",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "indigenous identity and language",
+        "measurable_in_data": true,
+        "data_source": "IND"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  }
+]

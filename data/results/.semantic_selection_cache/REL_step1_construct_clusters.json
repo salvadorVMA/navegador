@@ -1,0 +1,80 @@
+[
+  {
+    "name": "supernatural_belief_system",
+    "description": "Measures the breadth and content of an individual's supernatural and metaphysical beliefs, capturing both orthodox religious doctrines (God, heaven, hell, soul) and folk or syncretic beliefs (witchcraft, karma, reincarnation, limpias), which together index the structure of a person's cosmological worldview.",
+    "question_cluster": [
+      "p17_1",
+      "p17_2",
+      "p17_4",
+      "p17_5",
+      "p17_6",
+      "p17_7",
+      "p17_8",
+      "p17_9",
+      "p17_10",
+      "p17_11",
+      "p17_12",
+      "p17_13",
+      "p17_14",
+      "p17_15"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "religious_practice_and_devotion",
+    "description": "Captures the intensity of personal religious practice and devotional behavior, including prayer frequency, seeking comfort in religion, use of religious values in family life, reliance on religious figures for guidance, and ritual observance for life events.",
+    "question_cluster": [
+      "p10",
+      "p11",
+      "p12",
+      "p13_1",
+      "p14",
+      "p16_1",
+      "p18",
+      "p25"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "religious_socialization_and_identity",
+    "description": "Measures the degree to which religious identity was transmitted through family and formal education and remains stable across generations, reflecting the strength of religious socialization as a mechanism of cultural reproduction.",
+    "question_cluster": [
+      "p2",
+      "p3",
+      "p4",
+      "p5",
+      "p6",
+      "p7_1",
+      "p15",
+      "p33_1"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "church_state_separation_attitudes",
+    "description": "Assesses citizens' normative views on the appropriate boundaries between religious institutions and the public sphere, including opinions on churches in politics, use of public resources for religious events, church taxation, media religious content, and clergy involvement in political discourse.",
+    "question_cluster": [
+      "p52_1",
+      "p55",
+      "p56",
+      "p57",
+      "p58",
+      "p40"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "religious_tolerance_and_pluralism",
+    "description": "Measures an individual's acceptance of religious diversity and willingness to coexist with people of different faiths, including perceptions of freedom of religion, tolerance within family and community, and attitudes toward exclusion or expulsion based on religious minority status.",
+    "question_cluster": [
+      "p34",
+      "p44_1",
+      "p46_1",
+      "p47",
+      "p48",
+      "p50_1",
+      "p35"
+    ],
+    "requires_aggregation": true
+  }
+]

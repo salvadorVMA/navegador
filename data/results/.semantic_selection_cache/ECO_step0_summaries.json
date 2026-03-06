@@ -1,0 +1,347 @@
+{
+  "p1|ECO": {
+    "summary": "Satisfaction with the country's current economic situation (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p2|ECO": {
+    "summary": "Personal satisfaction with one's own current economic situation (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3|ECO": {
+    "summary": "Perceived economic living standard compared to parents at respondent's current age (comparative scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p4|ECO": {
+    "summary": "Belief about children's future economic living standard compared to respondent (comparative scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5|ECO": {
+    "summary": "Attribution of responsibility for the country's economic situation (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6_1|ECO": {
+    "summary": "Perceived impact of insecurity on the country's economic advancement (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7_1|ECO": {
+    "summary": "Reasons for Mexican emigration to the United States (first mention, open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8|ECO": {
+    "summary": "Reasons for willingness to live outside Mexico (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9_1|ECO": {
+    "summary": "Government priority for the economy: preventing price increases (ranked importance, first mention).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10_1|ECO": {
+    "summary": "Perceived importance of economic situation as a cause of unemployment (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11_1|ECO": {
+    "summary": "Perceived effectiveness of education and professional guidance in creating employment (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12|ECO": {
+    "summary": "Assessment of the 2012 labor reform's impact on employment in the country (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p13|ECO": {
+    "summary": "Perceived reasons for high informal employment in Mexico (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14|ECO": {
+    "summary": "Willingness to take action if government corruption were eliminated (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p15_1|ECO": {
+    "summary": "Agreement with statement that national companies are more competitive and efficient due to NAFTA (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16_3|ECO": {
+    "summary": "Adequacy of minimum wage to cover education needs (binary scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18_2|ECO": {
+    "summary": "Importance of high income when evaluating a job (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19|ECO": {
+    "summary": "Most valued job characteristic among secondary options (ranking/selection).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20|ECO": {
+    "summary": "Most important job characteristic among final set of options (ranking/selection).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p21|ECO": {
+    "summary": "Employment preference regarding contract type and work arrangement (ordinal/categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22|ECO": {
+    "summary": "Perception of worker rights respect in Mexico (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23|ECO": {
+    "summary": "Perceived necessity of labor unions (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24|ECO": {
+    "summary": "Opinion about labor unions' role or characteristics (open-ended/ordinal).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25|ECO": {
+    "summary": "Current employment status (categorical: employed, unemployed, inactive, etc.).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p27|ECO": {
+    "summary": "Duration of unemployment in months (numeric).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p28|ECO": {
+    "summary": "Number of employees at respondent's workplace (numeric/categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30|ECO": {
+    "summary": "Current occupation or job description (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p31|ECO": {
+    "summary": "Work arrangement type (self-employed, employee, family worker, etc.).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p32|ECO": {
+    "summary": "Professional status or position in current job (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33|ECO": {
+    "summary": "Employment relationship: direct hire by employer or through intermediary company (binary).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p34|ECO": {
+    "summary": "Type of labor contract or employment relationship (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35|ECO": {
+    "summary": "Reasons for maintaining temporary employment contract (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36|ECO": {
+    "summary": "Type of work schedule (full-time, part-time, shift work, etc.).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37|ECO": {
+    "summary": "Reasons for working part-time (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40|ECO": {
+    "summary": "Payment for overtime hours worked in the past week (binary).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p41|ECO": {
+    "summary": "Number of Saturdays worked in the past month (numeric).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42|ECO": {
+    "summary": "Number of Sundays worked in the past month (numeric).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p43|ECO": {
+    "summary": "Social security coverage status (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44|ECO": {
+    "summary": "Reasons for not contributing to social security (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45_1|ECO": {
+    "summary": "Self-assessment of income compared to other workers in same sector (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46_1|ECO": {
+    "summary": "Job satisfaction regarding opportunities for advancement or promotion (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47|ECO": {
+    "summary": "Method of obtaining current job (categorical/open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48|ECO": {
+    "summary": "Perceived probability of job loss in the next twelve months (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49|ECO": {
+    "summary": "Desire to change jobs (binary/ordinal).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p50|ECO": {
+    "summary": "Active job search behavior (binary).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51_1|ECO": {
+    "summary": "Primary reason for wanting to change jobs (first mention, open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p52|ECO": {
+    "summary": "Presence of secondary paid employment or family work (binary).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53|ECO": {
+    "summary": "Weekly hours worked in secondary employment (numeric).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54|ECO": {
+    "summary": "Quality or assessment of secondary employment (ordinal/categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55|ECO": {
+    "summary": "Other economic activities performed in the past month (categorical/multiple response).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p56|ECO": {
+    "summary": "Job search activity in the past three months (binary).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p56a|ECO": {
+    "summary": "Reasons for not searching for employment (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p57|ECO": {
+    "summary": "Expected duration of job search in months (numeric).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p58|ECO": {
+    "summary": "Perceived probability of finding employment in the next twelve months (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p59_1|ECO": {
+    "summary": "Willingness to accept job requiring change of residence (binary).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p59_3|ECO": {
+    "summary": "Willingness to accept job with lower income than considered appropriate (binary).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p59_4|ECO": {
+    "summary": "Willingness to accept job with lower professional status than current (binary).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p60|ECO": {
+    "summary": "Ability to start work or self-employment within one month if offered (binary).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61|ECO": {
+    "summary": "Employment status in first job ever held (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p63|ECO": {
+    "summary": "Occupation or job description in first job ever held (open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p64|ECO": {
+    "summary": "Educational level when starting first job (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p65|ECO": {
+    "summary": "Perceived appropriate education level for current or last job (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p66|ECO": {
+    "summary": "Perceived necessity of specialized training for current or last job (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p67|ECO": {
+    "summary": "Highest level of education completed (categorical).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p68_1g|ECO": {
+    "summary": "Mother's highest grade level of education completed (numeric).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p69|ECO": {
+    "summary": "Current student status (binary).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p70|ECO": {
+    "summary": "Type of studies currently pursued (categorical/open-ended).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p71|ECO": {
+    "summary": "Participation in professional training or skills development programs (binary).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p72|ECO": {
+    "summary": "Perceived utility of professional training for labor market improvement (ordinal scale).",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

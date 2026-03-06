@@ -1,0 +1,385 @@
+[
+  {
+    "construct_name": "economic_wellbeing_perception",
+    "sources": [
+      {
+        "citation": "Dolan, P., Peasgood, T., & White, M. (2008). Do we really know what makes us happy? A review of the economic literature on the factors associated with subjective well-being. Journal of Economic Psychology, 29(1), 94-122.",
+        "relevance": "Provides a comprehensive review of subjective economic well-being measures, including how individuals assess their own economic situation relative to others and over time.",
+        "key_finding": "Subjective well-being is strongly associated with relative income comparisons and perceived economic trajectory rather than absolute income alone."
+      },
+      {
+        "citation": "Graham, C., & Pettinato, S. (2002). Frustrated achievers: Winners, losers and subjective well-being in new market economies. Journal of Development Studies, 38(4), 100-140.",
+        "relevance": "Directly examines how individuals in developing and transitional economies perceive their economic welfare, including intergenerational comparisons, which maps onto the construct's focus on situating oneself within broader economic trajectories.",
+        "key_finding": "Individuals in Latin American economies often report frustration despite objective gains, suggesting that subjective economic perceptions diverge significantly from macroeconomic indicators."
+      },
+      {
+        "citation": "Lustig, N. (2001). Life is not easy: Mexico's quest for stability and growth. Journal of Economic Perspectives, 15(1), 85-106.",
+        "relevance": "Contextualizes Mexican economic perceptions within the country's history of crises, stabilization, and inequality, providing the macro backdrop against which personal economic assessments are formed.",
+        "key_finding": "Repeated economic crises in Mexico have shaped a population that is highly sensitive to macroeconomic signals when forming personal welfare assessments."
+      },
+      {
+        "citation": "Rojas, M. (2007). Heterogeneity in the relationship between income and happiness: A conceptual-referent-theory explanation. Journal of Economic Psychology, 28(1), 1-14.",
+        "relevance": "Rojas, working with Mexican data, explores how subjective well-being relates to income and economic perceptions, directly relevant to measuring economic welfare perceptions in the Mexican context.",
+        "key_finding": "The relationship between income and happiness in Mexico is mediated by individuals' conceptual referents, meaning that personal and national economic assessments depend on the comparison framework used."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "macroeconomic conditions (inflation, GDP growth, unemployment)",
+        "measurable_in_data": false,
+        "data_source": null
+      },
+      {
+        "role": "cause",
+        "related_construct": "political trust and government approval",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "subjective poverty and material deprivation",
+        "measurable_in_data": true,
+        "data_source": "POB, HAB"
+      },
+      {
+        "role": "cause",
+        "related_construct": "life satisfaction and subjective well-being",
+        "measurable_in_data": true,
+        "data_source": "IDE, SAL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "effect",
+        "related_construct": "social mobility perceptions",
+        "measurable_in_data": true,
+        "data_source": "POB, IDE"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "voter turnout and electoral behavior",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "job_quality_precariousness",
+    "sources": [
+      {
+        "citation": "Rodgers, G. (1989). Precarious work in Western Europe: The state of the debate. In G. Rodgers & J. Rodgers (Eds.), Precarious jobs in labour market regulation: The growth of atypical employment in Western Europe (pp. 1-16). International Institute for Labour Studies.",
+        "relevance": "Foundational text defining labor precariousness through multiple dimensions including contract instability, lack of social protection, and inadequate compensation — all dimensions captured by this construct.",
+        "key_finding": "Precarious employment is best understood as a multidimensional concept encompassing insecurity of tenure, lack of regulatory protection, low income, and limited social benefits."
+      },
+      {
+        "citation": "Mora Salas, M., & de Oliveira, O. (2009). La degradación del empleo asalariado en los albores del siglo XXI: Costa Rica y México. Papeles de Población, 15(61), 195-231.",
+        "relevance": "Directly examines job quality deterioration in Mexico, measuring precariousness through contract type, social security, working hours, and secondary employment — closely matching the construct's operationalization.",
+        "key_finding": "Mexico experienced significant degradation of salaried employment quality in the early 2000s, with increasing proportions of workers lacking contracts, social security, and adequate compensation for overtime."
+      },
+      {
+        "citation": "Kalleberg, A. L. (2009). Precarious work, insecure workers: Employment relations in transition. American Sociological Review, 74(1), 1-22.",
+        "relevance": "Provides a theoretical framework for understanding how precarious work conditions — including nonstandard contracts, lack of benefits, and unpredictable schedules — affect workers and labor markets.",
+        "key_finding": "The growth of precarious work represents a fundamental shift in the employment relationship, with consequences for inequality, health, and social cohesion."
+      },
+      {
+        "citation": "García, B. (2006). La situación laboral precaria: Marcos conceptuales y ejes analíticos pertinentes. Trabajo, 2(3), 23-52.",
+        "relevance": "Offers a conceptual framework for measuring labor precariousness in the Mexican context, emphasizing the importance of social security coverage, contract formality, and working conditions.",
+        "key_finding": "In Mexico, labor precariousness must be understood through the lens of informality and the structural weakness of labor institutions, making multidimensional measurement essential."
+      },
+      {
+        "citation": "Benach, J., Vives, A., Amable, M., Vanroelen, C., Miguélez, F., & Muntaner, C. (2014). Precarious employment: Understanding an emerging social determinant of health. Annual Review of Public Health, 35, 229-253.",
+        "relevance": "Links precarious employment conditions to health outcomes, establishing the broader social significance of measuring job quality dimensions like those in this construct.",
+        "key_finding": "Precarious employment is a social determinant of health, with lack of social security, unstable contracts, and excessive working hours contributing to poorer physical and mental health outcomes."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "health outcomes and healthcare access",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "poverty and material deprivation",
+        "measurable_in_data": true,
+        "data_source": "POB"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment and skills",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "gender inequality in labor markets",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "cause",
+        "related_construct": "housing quality and tenure security",
+        "measurable_in_data": true,
+        "data_source": "HAB"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "migration intentions",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "family formation and stability",
+        "measurable_in_data": true,
+        "data_source": "FAM"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "perceptions of corruption and institutional trust",
+        "measurable_in_data": true,
+        "data_source": "COR, CUL"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "labor_market_attachment",
+    "sources": [
+      {
+        "citation": "Floro, M. S., & Messier, J. (2011). Is there a link between quality of employment and indebtedness? The case of urban low-income households in Ecuador. Cambridge Journal of Economics, 35(3), 499-526.",
+        "relevance": "Examines how labor market attachment — including employment status, job search, and willingness to accept unfavorable conditions — relates to economic vulnerability in Latin American contexts.",
+        "key_finding": "Weak labor market attachment, characterized by intermittent employment and acceptance of poor job conditions, is strongly associated with household economic vulnerability and indebtedness."
+      },
+      {
+        "citation": "Tokman, V. E. (2007). Informalidad, inseguridad y cohesión social en América Latina. Revista Internacional del Trabajo, 126(1-2), 93-120.",
+        "relevance": "Analyzes the spectrum of labor market participation in Latin America, from formal employment to informal work and unemployment, capturing the varying degrees of attachment this construct measures.",
+        "key_finding": "Labor market attachment in Latin America exists on a continuum, with informality representing a middle ground between full integration and exclusion that affects social cohesion."
+      },
+      {
+        "citation": "Samaniego, N. (2008). El crecimiento explosivo de la economía informal. Economía UNAM, 5(13), 30-41.",
+        "relevance": "Documents the expansion of informal employment in Mexico and the weakening of formal labor market attachment, providing context for understanding job search behavior and willingness to accept precarious conditions.",
+        "key_finding": "Mexico's informal economy has grown explosively, reflecting weakened labor market attachment among large segments of the population who cycle between informal work and unemployment."
+      },
+      {
+        "citation": "Addison, J. T., & Portugal, P. (2002). Job search methods and outcomes. Oxford Economic Papers, 54(3), 505-533.",
+        "relevance": "Provides theoretical and empirical grounding for measuring labor market attachment through job search behavior and perceived employment probabilities.",
+        "key_finding": "Job search methods and intensity are significant predictors of employment outcomes, and perceived probability of finding employment shapes search behavior and reservation wages."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "cause",
+        "related_construct": "economic wellbeing perception",
+        "measurable_in_data": true,
+        "data_source": "ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "migration intentions and behavior",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "age and life course stage",
+        "measurable_in_data": true,
+        "data_source": "ENV, NIN"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "gender roles and labor force participation",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "cause",
+        "related_construct": "poverty status",
+        "measurable_in_data": true,
+        "data_source": "POB"
+      },
+      {
+        "role": "cause",
+        "related_construct": "mental health and well-being",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "public security perceptions (crime victimization affecting employment)",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "work_values_preferences",
+    "sources": [
+      {
+        "citation": "Ros, M., Schwartz, S. H., & Surkiss, S. (1999). Basic individual values, work values, and the meaning of work. Applied Psychology, 48(1), 49-71.",
+        "relevance": "Provides a foundational framework linking basic human values to work values, establishing that what people prioritize in jobs (income, advancement, security) reflects deeper value orientations.",
+        "key_finding": "Work values are systematically related to basic personal values, with intrinsic work values linked to self-direction and extrinsic values linked to security and conformity orientations."
+      },
+      {
+        "citation": "Inglehart, R. (1997). Modernization and postmodernization: Cultural, economic, and political change in 43 societies. Princeton University Press.",
+        "relevance": "Theorizes how economic development shifts work values from materialist concerns (income, job security) to postmaterialist ones (self-expression, meaningful work), relevant to understanding Mexican work value orientations.",
+        "key_finding": "As societies develop economically, populations shift from prioritizing material security in work to valuing self-expression and quality of life, though this shift is uneven across social strata."
+      },
+      {
+        "citation": "Zúñiga, M. (2012). Los valores laborales en México: Un análisis desde la perspectiva generacional. In E. de la Garza Toledo (Ed.), La situación del trabajo en México, 2012. Plaza y Valdés.",
+        "relevance": "Directly examines work values in the Mexican context, analyzing how different generations prioritize income, job stability, advancement, and contract conditions.",
+        "key_finding": "Mexican workers show strong materialist work values centered on income and job security, though younger cohorts increasingly value advancement opportunities and work-life balance."
+      },
+      {
+        "citation": "Wrzesniewski, A., McCauley, C., Rozin, P., & Schwartz, B. (1997). Jobs, careers, and callings: People's relations to their work. Journal of Research in Personality, 31(1), 21-33.",
+        "relevance": "Provides conceptual grounding for understanding how work orientations (job, career, calling) shape labor market behavior and satisfaction, relevant to the construct's focus on what individuals value in employment.",
+        "key_finding": "People's orientation toward work as a job (income focus), career (advancement focus), or calling (meaning focus) significantly predicts job satisfaction and labor market behavior."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "job satisfaction and labor market behavior",
+        "measurable_in_data": true,
+        "data_source": "ECO"
+      },
+      {
+        "role": "effect",
+        "related_construct": "cultural values and identity",
+        "measurable_in_data": true,
+        "data_source": "IDE, CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "educational attainment and aspirations",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "gender and work-family balance",
+        "measurable_in_data": true,
+        "data_source": "GEN, FAM"
+      },
+      {
+        "role": "effect",
+        "related_construct": "generational cohort and age",
+        "measurable_in_data": true,
+        "data_source": "NIN, ENV"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "religiosity and secularization",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "migration intentions",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 3
+  },
+  {
+    "construct_name": "human_capital_labor_alignment",
+    "sources": [
+      {
+        "citation": "McGuinness, S. (2006). Overeducation in the labour market. Journal of Economic Surveys, 20(3), 387-418.",
+        "relevance": "Comprehensive review of education-job mismatch literature, covering measurement approaches and consequences of overeducation and undereducation — the core phenomenon this construct captures.",
+        "key_finding": "Education-job mismatch is pervasive across economies, with overeducated workers earning less than adequately matched workers with the same education, and undereducated workers earning more than their education would predict."
+      },
+      {
+        "citation": "Hernández Laos, E., Solís Rosales, R., & Stefanovich Hatchikián, A. (2013). Mercado laboral de profesionistas en México: Diagnóstico (2000-2009) y prospectiva (2010-2020). Asociación Nacional de Universidades e Instituciones de Educación Superior (ANUIES).",
+        "relevance": "Directly examines the alignment between educational credentials and labor market demands in Mexico, documenting the extent of over- and under-qualification among Mexican professionals.",
+        "key_finding": "Mexico faces significant human capital-labor misalignment, with a growing proportion of university graduates employed in positions that do not require their level of education, alongside persistent skill shortages in technical fields."
+      },
+      {
+        "citation": "Becker, G. S. (1964). Human capital: A theoretical and empirical analysis, with special reference to education. University of Chicago Press.",
+        "relevance": "Foundational human capital theory that underpins the construct's logic: education and training represent investments that should yield returns in the labor market, and misalignment represents inefficiency.",
+        "key_finding": "Investment in education and training increases worker productivity and earnings, establishing the theoretical basis for expecting alignment between human capital and job requirements."
+      },
+      {
+        "citation": "Leuven, E., & Oosterbeek, H. (2011). Overeducation and mismatch in the labor market. In E. A. Hanushek, S. Machin, & L. Woessmann (Eds.), Handbook of the Economics of Education (Vol. 4, pp. 283-326). Elsevier.",
+        "relevance": "Provides a rigorous methodological review of how to measure education-occupation mismatch, including self-assessment methods similar to those likely used in the survey questions.",
+        "key_finding": "Self-reported mismatch measures, while subjective, capture meaningful variation in job satisfaction, wages, and turnover intentions that objective measures sometimes miss."
+      },
+      {
+        "citation": "de Oliveira, O. (2006). Jóvenes y precariedad laboral en México. Papeles de Población, 12(49), 37-73.",
+        "relevance": "Examines how young Mexicans' educational investments fail to translate into quality employment, documenting the human capital-labor misalignment particularly acute among youth.",
+        "key_finding": "Young Mexicans with higher education increasingly face precarious employment conditions, indicating a structural disconnect between educational expansion and labor market absorption capacity."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "educational system quality and access",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "cause",
+        "related_construct": "job satisfaction and economic wellbeing perception",
+        "measurable_in_data": true,
+        "data_source": "ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "wage levels and income inequality",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "migration (brain drain)",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "science and technology development",
+        "measurable_in_data": true,
+        "data_source": "CIE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "globalization and economic openness",
+        "measurable_in_data": true,
+        "data_source": "GLO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "labor precariousness",
+        "measurable_in_data": true,
+        "data_source": "ECO"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "gender disparities in returns to education",
+        "measurable_in_data": true,
+        "data_source": "GEN, EDU"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  }
+]

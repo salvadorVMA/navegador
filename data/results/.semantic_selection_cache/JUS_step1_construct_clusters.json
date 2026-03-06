@@ -1,0 +1,81 @@
+[
+  {
+    "name": "institutional_justice_trust",
+    "description": "Captures the degree to which respondents trust formal justice institutions—courts, judges, police, and the public ministry—to operate fairly, independently, and effectively. Reflects confidence in the rule of law as administered by state actors.",
+    "question_cluster": [
+      "p22",
+      "p24_1",
+      "p38_1",
+      "p41",
+      "p42_1",
+      "p46",
+      "p50",
+      "p33"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "legal_cynicism_extrajudicial_tolerance",
+    "description": "Measures the extent to which respondents distrust or bypass formal legal norms, including tolerance for extrajudicial punishment, vigilante justice, and the belief that laws and institutions are ineffective or corrupt. Reflects a disposition toward informal or violent alternatives to the justice system.",
+    "question_cluster": [
+      "p17",
+      "p18",
+      "p55",
+      "p57",
+      "p25a_1",
+      "p39",
+      "p37"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "legal_knowledge_rights_awareness",
+    "description": "Assesses respondents' self-reported and objective knowledge of their legal rights, constitutional provisions, and available legal remedies such as amparo. Indicates civic legal literacy and capacity to navigate the formal justice system.",
+    "question_cluster": [
+      "p12",
+      "p29",
+      "p34",
+      "p35",
+      "p36"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "procedural_justice_expectations",
+    "description": "Captures expectations about fair and respectful treatment by justice system actors (courts, police, public ministry) and preferences regarding how justice should be administered, including the balance between strict legality and equitable outcomes.",
+    "question_cluster": [
+      "p40_1",
+      "p40_1_1",
+      "p40_2_1",
+      "p43",
+      "p44",
+      "p45",
+      "p49"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "legal_problem_resolution_efficacy",
+    "description": "Measures respondents' practical experience resolving a range of everyday legal and administrative disputes, reflecting perceived and actual efficacy of formal and informal dispute-resolution mechanisms in Mexico.",
+    "question_cluster": [
+      "p60_1",
+      "p61_2",
+      "p61_3",
+      "p61_4",
+      "p61_5",
+      "p61_6",
+      "p61_7",
+      "p61_8",
+      "p61_9",
+      "p61_10",
+      "p61_11",
+      "p61_12",
+      "p61_13",
+      "p61_14",
+      "p61_16",
+      "p61_17",
+      "p61_18"
+    ],
+    "requires_aggregation": true
+  }
+]

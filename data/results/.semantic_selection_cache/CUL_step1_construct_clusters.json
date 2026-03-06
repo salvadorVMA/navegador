@@ -1,0 +1,96 @@
+[
+  {
+    "name": "democratic_legitimacy",
+    "description": "Measures the degree to which respondents value, trust, and are satisfied with democracy as a system of government in Mexico, capturing both normative commitment to democracy and evaluations of its actual functioning.",
+    "question_cluster": [
+      "p29",
+      "p30",
+      "p31",
+      "p32",
+      "p33",
+      "p34",
+      "p35",
+      "p36",
+      "p40",
+      "p41"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "institutional_trust_and_efficacy",
+    "description": "Captures respondents' trust in key political and social institutions and their belief in citizens' capacity to influence government decisions, reflecting both external political efficacy and institutional confidence.",
+    "question_cluster": [
+      "p42",
+      "p43",
+      "p46",
+      "p61",
+      "p63_1",
+      "p81_1",
+      "p82_1",
+      "p84_1",
+      "p84_2",
+      "p84_3",
+      "p84_4",
+      "p84_6",
+      "p84_7",
+      "p84_8"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "civic_and_political_participation",
+    "description": "Measures the extent and forms of respondents' engagement in political and civic life, including voting behavior, community organizing, and attitudes toward participation as a meaningful activity.",
+    "question_cluster": [
+      "p25",
+      "p48_1",
+      "p51",
+      "p51a",
+      "p52",
+      "p53_1",
+      "p54_1",
+      "p68_1",
+      "p69_1",
+      "p69_3",
+      "p69_4",
+      "p70",
+      "p77"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "political_interest_and_engagement",
+    "description": "Assesses respondents' subjective interest in politics, frequency of political media consumption, perceived relevance of politics to daily life, and ideological self-placement, reflecting the cognitive and affective dimensions of political engagement.",
+    "question_cluster": [
+      "p8",
+      "p9_1",
+      "p10",
+      "p11",
+      "p14_1",
+      "p15_1",
+      "p16",
+      "p20",
+      "p21",
+      "p26",
+      "p78",
+      "p79"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "authoritarian_versus_democratic_values",
+    "description": "Captures respondents' underlying value orientations regarding rule of law, individual freedoms versus security, tolerance for extralegal action, and preference for strong leadership over institutional constraints, reflecting the authoritarian-democratic value dimension.",
+    "question_cluster": [
+      "p17",
+      "p19_1",
+      "p23",
+      "p50",
+      "p55",
+      "p56_1",
+      "p60",
+      "p64",
+      "p65",
+      "p7"
+    ],
+    "requires_aggregation": true
+  }
+]

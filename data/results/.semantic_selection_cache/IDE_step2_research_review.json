@@ -1,0 +1,368 @@
+[
+  {
+    "construct_name": "institutional_and_social_trust",
+    "sources": [
+      {
+        "citation": "Rothstein, B., & Stolle, D. (2008). The state and social capital: An institutional theory of generalized trust. Comparative Politics, 40(4), 441–459.",
+        "relevance": "Provides the theoretical framework linking institutional quality to generalized social trust, directly relevant to combining institutional (police) and interpersonal (neighbors, strangers) trust items.",
+        "key_finding": "Impartial and fair government institutions generate generalized social trust by signaling that most people in society can be trusted."
+      },
+      {
+        "citation": "Morris, S. D., & Klesner, J. L. (2010). Corruption and trust: Theoretical considerations and evidence from Mexico. Comparative Political Studies, 43(10), 1258–1285.",
+        "relevance": "Directly examines the relationship between corruption perceptions and both institutional and interpersonal trust in Mexico using survey data.",
+        "key_finding": "Corruption perceptions significantly erode both institutional and interpersonal trust in Mexico, and the two forms of trust are reciprocally related."
+      },
+      {
+        "citation": "Zmerli, S., & Newton, K. (2008). Social trust and attitudes toward democracy. Public Opinion Quarterly, 72(4), 706–724.",
+        "relevance": "Demonstrates the empirical distinction and interplay between social trust and institutional trust as separate but related dimensions of civic confidence.",
+        "key_finding": "Social trust and political trust are moderately correlated and both independently predict support for democratic governance."
+      },
+      {
+        "citation": "Bargsted, M., Somma, N. M., & Castillo, J. C. (2017). Political trust in Latin America. In S. Zmerli & T. W. G. van der Meer (Eds.), Handbook on Political Trust (pp. 395–417). Edward Elgar.",
+        "relevance": "Reviews the measurement and determinants of political and social trust across Latin America, providing regional context for the Mexican case.",
+        "key_finding": "Latin American countries exhibit persistently low levels of institutional trust driven by corruption, inequality, and crime victimization, while interpersonal trust varies more by community context."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "corruption_perceptions",
+        "measurable_in_data": true,
+        "data_source": "COR"
+      },
+      {
+        "role": "effect",
+        "related_construct": "crime_victimization_and_insecurity",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "civic_and_political_participation",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "subjective_wellbeing_and_life_satisfaction",
+        "measurable_in_data": true,
+        "data_source": "IDE"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support_for_democracy",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "socioeconomic_inequality",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "access_to_justice",
+        "measurable_in_data": true,
+        "data_source": "JUS"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "national_identity_and_pride",
+    "sources": [
+      {
+        "citation": "Béjar, R., & Rosales, H. (2005). La identidad nacional mexicana como problema político y cultural. Nuevos desafíos. UNAM/CRIM.",
+        "relevance": "Directly analyzes the political and cultural dimensions of Mexican national identity, including symbolic attachment and pride.",
+        "key_finding": "Mexican national identity is a multi-layered construct shaped by historical narratives, cultural traditions, and ongoing tensions between globalization and local belonging."
+      },
+      {
+        "citation": "Smith, T. W., & Kim, S. (2006). National pride in comparative perspective: 1995/96 and 2003/04. International Journal of Public Opinion Research, 18(1), 127–136.",
+        "relevance": "Provides a cross-national framework for measuring national pride, including general and domain-specific pride items similar to those in this construct.",
+        "key_finding": "National pride varies significantly across countries and is associated with nationalism, patriotism, and sociodemographic factors, with Latin American countries generally scoring high on general national pride."
+      },
+      {
+        "citation": "Gutiérrez Martínez, D. (2010). Sentimiento de pertenencia e identidad nacional en México. In D. Gutiérrez Martínez & H. Balslev Clausen (Eds.), Revisitar la etnicidad (pp. 181–208). Siglo XXI/El Colegio Mexiquense.",
+        "relevance": "Examines how feelings of belonging and cultural tradition preservation shape national identity in contemporary Mexico.",
+        "key_finding": "Sense of national belonging in Mexico is strongly tied to cultural practices, regional traditions, and collective memory rather than purely civic or political criteria."
+      },
+      {
+        "citation": "Huddy, L., & Khatib, N. (2007). American patriotism, national identity, and political involvement. American Journal of Political Science, 51(1), 63–77.",
+        "relevance": "Distinguishes between patriotism and national identity as distinct constructs with different political consequences, informing the measurement of emotional attachment to nation.",
+        "key_finding": "National identity strength predicts political engagement, while the content of that identity (patriotic vs. nationalistic) determines whether engagement is constructive or exclusionary."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "correlate",
+        "related_construct": "attitudes_toward_globalization",
+        "measurable_in_data": true,
+        "data_source": "GLO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "attitudes_toward_immigration",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "indigenous_identity_and_recognition",
+        "measurable_in_data": true,
+        "data_source": "IND"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "religiosity_and_secularization",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "political_participation_and_civic_engagement",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "moral_conservatism_and_social_values",
+        "measurable_in_data": true,
+        "data_source": "IDE"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "subjective_wellbeing_and_life_satisfaction",
+    "sources": [
+      {
+        "citation": "Diener, E., Oishi, S., & Tay, L. (2018). Advances in subjective well-being research. Nature Human Behaviour, 2(4), 253–260.",
+        "relevance": "Provides the foundational framework for measuring hedonic and evaluative wellbeing, including happiness, life satisfaction, and perceived control—all components of this construct.",
+        "key_finding": "Subjective wellbeing is a multidimensional construct where life satisfaction, positive affect, and sense of purpose are distinct but correlated components influenced by income, social relationships, and institutional quality."
+      },
+      {
+        "citation": "Rojas, M. (2007). The complexity of well-being in Latin America. In L. Bruni & P. L. Porta (Eds.), Handbook on the Economics of Happiness (pp. 253–271). Edward Elgar.",
+        "relevance": "Directly examines subjective wellbeing measurement in Latin America, including Mexico, addressing the role of family, social relations, and economic conditions.",
+        "key_finding": "In Mexico and Latin America, relational and family domains contribute more to subjective wellbeing than income alone, challenging purely economic models of life satisfaction."
+      },
+      {
+        "citation": "Helliwell, J. F., & Putnam, R. D. (2004). The social context of well-being. Philosophical Transactions of the Royal Society B, 359(1449), 1435–1446.",
+        "relevance": "Establishes the causal link between social trust, community engagement, and subjective wellbeing, connecting this construct to the trust construct in the same survey.",
+        "key_finding": "Social capital—especially trust and community belonging—is among the strongest predictors of subjective wellbeing, often exceeding the effect of income."
+      },
+      {
+        "citation": "Veenhoven, R. (2012). Happiness: Also known as 'life satisfaction' and 'subjective well-being'. In K. C. Land, A. C. Michalos, & M. J. Sirgy (Eds.), Handbook of Social Indicators and Quality of Life Research (pp. 63–77). Springer.",
+        "relevance": "Clarifies the conceptual and measurement distinctions between happiness and life satisfaction as used in survey research.",
+        "key_finding": "Life satisfaction and happiness tap into evaluative and affective dimensions respectively, and both are valid indicators of overall subjective wellbeing when combined."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "economic_conditions_and_employment",
+        "measurable_in_data": true,
+        "data_source": "ECO, POB"
+      },
+      {
+        "role": "effect",
+        "related_construct": "health_status",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational_attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "institutional_and_social_trust",
+        "measurable_in_data": true,
+        "data_source": "IDE"
+      },
+      {
+        "role": "effect",
+        "related_construct": "family_cohesion_and_support",
+        "measurable_in_data": true,
+        "data_source": "FAM"
+      },
+      {
+        "role": "effect",
+        "related_construct": "public_security_and_victimization",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "housing_quality",
+        "measurable_in_data": true,
+        "data_source": "HAB"
+      },
+      {
+        "role": "effect",
+        "related_construct": "socioeconomic_mobility_perception",
+        "measurable_in_data": true,
+        "data_source": "IDE"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "socioeconomic_mobility_and_opportunity_perception",
+    "sources": [
+      {
+        "citation": "Torche, F. (2014). Intergenerational mobility and inequality: The Latin American case. Annual Review of Sociology, 40, 619–642.",
+        "relevance": "Provides comprehensive analysis of social mobility patterns in Latin America including Mexico, directly relevant to the intergenerational progress items in this construct.",
+        "key_finding": "Latin America exhibits lower intergenerational mobility than developed countries, with Mexico showing particularly strong persistence of inequality across generations, especially at the extremes of the distribution."
+      },
+      {
+        "citation": "Alesina, A., Stantcheva, S., & Teso, E. (2018). Intergenerational mobility and preferences for redistribution. American Economic Review, 108(2), 521–554.",
+        "relevance": "Examines how perceptions of social mobility (as opposed to actual mobility) shape policy preferences, directly relevant to the subjective measurement approach of this construct.",
+        "key_finding": "Perceived social mobility diverges significantly from actual mobility and is a stronger predictor of attitudes toward redistribution and government intervention than objective mobility data."
+      },
+      {
+        "citation": "Campos-Vázquez, R. M., & Monroy-Gómez-Franco, J. A. (2016). La relación entre crecimiento económico y pobreza en México. Investigación Económica, 75(298), 77–113.",
+        "relevance": "Analyzes the relationship between economic growth, poverty, and perceived opportunity in Mexico, providing context for how Mexicans assess their economic trajectories.",
+        "key_finding": "Economic growth in Mexico has not translated proportionally into poverty reduction or perceived upward mobility, suggesting structural barriers that shape pessimistic opportunity perceptions among lower-income groups."
+      },
+      {
+        "citation": "Benabou, R., & Ok, E. A. (2001). Social mobility and the demand for redistribution: The POUM hypothesis. Quarterly Journal of Economics, 116(2), 447–487.",
+        "relevance": "Provides the theoretical foundation (Prospect of Upward Mobility hypothesis) for understanding how future mobility expectations shape current political and economic attitudes.",
+        "key_finding": "Individuals who expect upward mobility for themselves or their children are less likely to support redistribution, even when currently disadvantaged."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "educational_attainment_and_quality",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support_for_redistribution_policies",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "poverty_and_inequality_perceptions",
+        "measurable_in_data": true,
+        "data_source": "POB"
+      },
+      {
+        "role": "cause",
+        "related_construct": "subjective_wellbeing_and_life_satisfaction",
+        "measurable_in_data": true,
+        "data_source": "IDE"
+      },
+      {
+        "role": "effect",
+        "related_construct": "corruption_perceptions",
+        "measurable_in_data": true,
+        "data_source": "COR"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "attitudes_toward_globalization_and_trade",
+        "measurable_in_data": true,
+        "data_source": "GLO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "political_trust_and_system_legitimacy",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "moral_conservatism_and_social_values",
+    "sources": [
+      {
+        "citation": "Inglehart, R., & Welzel, C. (2005). Modernization, cultural change, and democracy: The human development sequence. Cambridge University Press.",
+        "relevance": "Provides the foundational theory of traditional vs. secular-rational values and survival vs. self-expression values, directly relevant to measuring conservative-liberal value orientations in Mexico.",
+        "key_finding": "Economic development drives a shift from traditional/survival values toward secular-rational/self-expression values, but cultural heritage (e.g., Catholic Latin American) creates persistent path dependencies in value change."
+      },
+      {
+        "citation": "Díez, J. (2015). The politics of gay marriage in Latin America: Argentina, Chile, and Mexico. Cambridge University Press.",
+        "relevance": "Directly examines attitudes toward same-sex relationships and adoption in Mexico, including the cultural, religious, and political factors shaping moral conservatism.",
+        "key_finding": "Support for same-sex rights in Mexico is stratified by religiosity, education, urbanization, and generational cohort, with younger, urban, and more educated Mexicans showing significantly more liberal attitudes."
+      },
+      {
+        "citation": "Moreno, A. (2005). Nuestros valores: Los mexicanos en México y en Estados Unidos al inicio del siglo XXI. Banamex.",
+        "relevance": "Directly measures and analyzes Mexican value orientations including family values, gender attitudes, and moral conservatism using nationally representative survey data.",
+        "key_finding": "Mexican society exhibits a complex coexistence of traditional family and moral values with increasing acceptance of individual autonomy, particularly among younger and more urban populations."
+      },
+      {
+        "citation": "Pew Research Center. (2014). Religion in Latin America: Widespread change in a historically Catholic region. Pew Research Center.",
+        "relevance": "Documents the relationship between religious affiliation/practice and moral attitudes across Latin America, including Mexico, on issues like abortion, homosexuality, and family structure.",
+        "key_finding": "In Mexico, evangelical Protestants hold more conservative moral views than Catholics on issues like abortion and homosexuality, while the religiously unaffiliated are substantially more liberal."
+      },
+      {
+        "citation": "Schwartz, S. H. (2012). An overview of the Schwartz theory of basic values. Online Readings in Psychology and Culture, 2(1), 11.",
+        "relevance": "Provides the theoretical basis for understanding conservation vs. openness-to-change value dimensions that underlie moral conservatism scales.",
+        "key_finding": "Conservation values (tradition, conformity, security) systematically oppose openness-to-change values (self-direction, stimulation), and this dimension is a universal axis of individual and cultural variation."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "religiosity_and_religious_practice",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "gender_role_attitudes",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "cause",
+        "related_construct": "attitudes_toward_human_rights_protections",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational_attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "family_structure_and_values",
+        "measurable_in_data": true,
+        "data_source": "FAM"
+      },
+      {
+        "role": "cause",
+        "related_construct": "political_ideology_and_partisanship",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "national_identity_and_pride",
+        "measurable_in_data": true,
+        "data_source": "IDE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "attitudes_toward_children_and_youth_autonomy",
+        "measurable_in_data": true,
+        "data_source": "NIN"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  }
+]

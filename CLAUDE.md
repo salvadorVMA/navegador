@@ -132,10 +132,11 @@ SES label maps (verified from survey metadata):
 |------|-------|---------|
 | `tests/unit/test_ses_regression.py` | 76 | `SESEncoder`, `SurveyVarModel`, `CrossDatasetBivariateEstimator`, `ResidualBridgeEstimator`, `EcologicalBridgeEstimator` |
 | `tests/unit/test_bridge_estimators_v2.py` | 36 | `goodman_kruskal_gamma`, `BayesianBridgeEstimator`, `MRPBridgeEstimator`, `DoublyRobustBridgeEstimator`, 6-way comparison |
+| `tests/unit/test_bridge_evaluation.py` | 38 | Evaluation: predictive accuracy, AIC/BIC, variable selection, gamma recovery, CI calibration, cross-survey robustness |
 
-Run all unit tests (112 total, ~22s):
+Run all unit tests (150 total, ~38s):
 ```bash
-python -m pytest tests/unit/test_ses_regression.py tests/unit/test_bridge_estimators_v2.py -v
+python -m pytest tests/unit/test_ses_regression.py tests/unit/test_bridge_estimators_v2.py tests/unit/test_bridge_evaluation.py -v
 ```
 
 ### Sweep Scripts

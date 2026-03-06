@@ -1,0 +1,367 @@
+[
+  {
+    "construct_name": "family_cohesion_quality",
+    "sources": [
+      {
+        "citation": "Olson, D. H. (2000). Circumplex model of marital and family systems. Journal of Family Therapy, 22(2), 144–167.",
+        "relevance": "Foundational model for measuring family cohesion and adaptability; directly informs the conceptualization of family solidarity and relational quality.",
+        "key_finding": "Family cohesion—defined as the emotional bonding among family members—is a core dimension predicting family functioning and well-being."
+      },
+      {
+        "citation": "Bengtson, V. L., & Roberts, R. E. L. (1991). Intergenerational solidarity in aging families: An example of formal theory construction. Journal of Marriage and the Family, 53(4), 856–870.",
+        "relevance": "Develops the intergenerational solidarity model that captures affectual, associational, and consensual dimensions of family bonds, closely aligned with this construct.",
+        "key_finding": "Family solidarity is a multidimensional construct encompassing emotional closeness, shared values, and frequency of contact across generations."
+      },
+      {
+        "citation": "Esteinou, R. (2008). La familia nuclear en México: Lecturas de su modernidad. Siglos XVI al XX. CIESAS.",
+        "relevance": "Analyzes the evolution of family cohesion and relational quality in the Mexican context, providing culturally specific insights.",
+        "key_finding": "Mexican families exhibit strong affective bonds rooted in extended kinship networks, though modernization has introduced new tensions in family cohesion."
+      },
+      {
+        "citation": "Rivera Heredia, M. E., & Andrade Palos, P. (2010). Escala de evaluación de las relaciones intrafamiliares (E.R.I.). Uaricha, Revista de Psicología, 14, 12–29.",
+        "relevance": "Develops and validates a scale for measuring intra-family relationships in Mexican populations, directly relevant to operationalizing family cohesion quality.",
+        "key_finding": "The scale identifies three factors—union and support, expression, and difficulties—that capture the quality of family relationships among Mexican respondents."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "subjective well-being and mental health",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "educational attainment and school performance",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "religiosity and religious practice",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "poverty and economic hardship",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "youth risk behaviors and delinquency",
+        "measurable_in_data": true,
+        "data_source": "NIN, SEG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "migration and family separation",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "traditional_family_ideology",
+    "sources": [
+      {
+        "citation": "Inglehart, R., & Norris, P. (2003). Rising tide: Gender equality and cultural change around the world. Cambridge University Press.",
+        "relevance": "Examines the shift from traditional to progressive values regarding family structure and gender roles across societies, including Latin America.",
+        "key_finding": "Modernization drives a cultural shift from traditional family ideologies emphasizing male breadwinner norms toward more egalitarian gender attitudes."
+      },
+      {
+        "citation": "Esteinou, R. (2004). El surgimiento de la familia nuclear en México. Estudios de Historia Novohispana, 31, 99–136.",
+        "relevance": "Traces the historical emergence and persistence of traditional family ideology in Mexico, providing essential cultural context.",
+        "key_finding": "The nuclear family ideal in Mexico is deeply intertwined with Catholic moral frameworks and colonial legacies that continue to shape contemporary attitudes."
+      },
+      {
+        "citation": "Barker, G. T. (2005). Dying to be men: Youth, masculinity and social exclusion. Routledge.",
+        "relevance": "Discusses how traditional family ideology intersects with masculinity norms in Latin American contexts, relevant to gender role items in this construct.",
+        "key_finding": "Traditional family ideologies reinforce rigid gender roles that have measurable consequences for family violence, women's labor force participation, and child-rearing practices."
+      },
+      {
+        "citation": "García, B., & de Oliveira, O. (2011). Family changes and public policies in Latin America. Annual Review of Sociology, 37, 593–611.",
+        "relevance": "Reviews how attitudes toward family structure and gender roles in Latin America are shifting and how policy responds to these changes.",
+        "key_finding": "Despite rapid demographic and social change, traditional family ideologies remain influential in shaping public policy and individual behavior in Mexico and Latin America."
+      },
+      {
+        "citation": "Rocha-Sánchez, T. E., & Díaz-Loving, R. (2005). Cultura de género: La brecha ideológica entre hombres y mujeres. Anales de Psicología, 21(1), 42–49.",
+        "relevance": "Directly measures gender ideology gaps in Mexico, closely aligned with the conservative-to-progressive dimension captured by this construct.",
+        "key_finding": "Significant ideological gaps exist between men and women in Mexico regarding traditional versus egalitarian views of family and gender roles."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "correlate",
+        "related_construct": "gender equality attitudes",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "cause",
+        "related_construct": "attitudes toward women's labor force participation",
+        "measurable_in_data": true,
+        "data_source": "ECO, GEN"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "religiosity and secularization",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "political culture and democratic values",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "acceptance of diverse family forms (same-sex unions, single parenthood)",
+        "measurable_in_data": true,
+        "data_source": "DER, IDE"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "indigenous identity and cultural values",
+        "measurable_in_data": true,
+        "data_source": "IND, IDE"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "union_formation_motivations",
+    "sources": [
+      {
+        "citation": "Oppenheimer, V. K. (1988). A theory of marriage timing. American Journal of Sociology, 94(3), 563–591.",
+        "relevance": "Provides a theoretical framework for understanding instrumental versus affective motivations in partner selection and union formation.",
+        "key_finding": "Economic considerations and career uncertainty significantly shape the timing and motivations for marriage, alongside affective factors."
+      },
+      {
+        "citation": "Quilodrán, J. (2001). Un siglo de matrimonio en México. El Colegio de México.",
+        "relevance": "Comprehensive analysis of marriage patterns in Mexico over the 20th century, directly relevant to understanding union formation motivations in the Mexican context.",
+        "key_finding": "Union formation in Mexico has diversified from predominantly religious marriage toward cohabitation and civil unions, reflecting shifting motivations from institutional to relational."
+      },
+      {
+        "citation": "Cherlin, A. J. (2004). The deinstitutionalization of American marriage. Journal of Marriage and Family, 66(4), 848–861.",
+        "relevance": "Theorizes the shift from institutional to companionate to individualized marriage, relevant to understanding the affective-instrumental dimension.",
+        "key_finding": "Marriage has shifted from an institution organized around economic production and social obligation to one centered on personal fulfillment and emotional satisfaction."
+      },
+      {
+        "citation": "Solís, P., & Ferraris, S. (2014). Nuevo siglo, ¿nuevas pautas de formación y disolución de uniones? In C. Rabell (Ed.), Los mexicanos: Un balance del cambio demográfico (pp. 269–305). Fondo de Cultura Económica.",
+        "relevance": "Examines contemporary union formation patterns in Mexico, including the rise of cohabitation and its motivations.",
+        "key_finding": "Cohabitation has increased substantially in Mexico, particularly among younger and lower-income populations, driven by both economic constraints and changing values."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "economic conditions and employment",
+        "measurable_in_data": true,
+        "data_source": "ECO, POB"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "religiosity",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "gender role attitudes",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "cause",
+        "related_construct": "family stability and divorce risk",
+        "measurable_in_data": true,
+        "data_source": "FAM"
+      },
+      {
+        "role": "effect",
+        "related_construct": "migration experience",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 3
+  },
+  {
+    "construct_name": "family_instability_and_conflict",
+    "sources": [
+      {
+        "citation": "Amato, P. R. (2000). The consequences of divorce for adults and children. Journal of Marriage and Family, 62(4), 1269–1287.",
+        "relevance": "Comprehensive review of the causes and consequences of family dissolution, directly relevant to the construct of perceived family vulnerability.",
+        "key_finding": "Divorce is associated with declines in psychological well-being, economic resources, and social support for both adults and children."
+      },
+      {
+        "citation": "Castro, R., & Casique, I. (2010). Violencia en el hogar y desigualdad de género. In R. Castro & I. Casique (Eds.), Estudios sobre cultura, género y violencia contra las mujeres (pp. 69–104). UNAM-CRIM.",
+        "relevance": "Examines domestic violence and family conflict in the Mexican context, directly aligned with items on violence and family breakdown.",
+        "key_finding": "Family violence in Mexico is strongly linked to gender inequality, economic stress, and patriarchal family structures."
+      },
+      {
+        "citation": "Ojeda, N. (2009). Matrimonio y unión libre en la percepción de adolescentes mexicanos radicados en Tijuana. Papeles de Población, 15(60), 41–63.",
+        "relevance": "Explores perceptions of family instability, divorce, and union dissolution among Mexican populations.",
+        "key_finding": "Perceptions of family instability are shaped by direct exposure to parental conflict and divorce, as well as broader socioeconomic conditions."
+      },
+      {
+        "citation": "Frías, S. M., & Angel, R. J. (2005). The risk of partner violence among low-income Hispanic subgroups. Journal of Marriage and Family, 67(3), 552–564.",
+        "relevance": "Analyzes risk factors for intimate partner violence among Hispanic populations, relevant to the conflict and violence dimensions of this construct.",
+        "key_finding": "Economic deprivation, low education, and cultural factors interact to increase the risk of partner violence in Hispanic families."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "poverty and economic stress",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "child and youth well-being",
+        "measurable_in_data": true,
+        "data_source": "NIN"
+      },
+      {
+        "role": "cause",
+        "related_construct": "mental health and subjective well-being",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "gender-based violence and gender inequality",
+        "measurable_in_data": true,
+        "data_source": "GEN, DER"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "public security perceptions and crime",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "substance abuse and addiction",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "migration and family separation",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "access to justice",
+        "measurable_in_data": true,
+        "data_source": "JUS"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "family_socialization_and_values_transmission",
+    "sources": [
+      {
+        "citation": "Grusec, J. E., & Hastings, P. D. (Eds.). (2015). Handbook of socialization: Theory and research (2nd ed.). Guilford Press.",
+        "relevance": "Comprehensive reference on family socialization processes, including the mechanisms by which parents transmit values to children.",
+        "key_finding": "Family socialization is a bidirectional process in which parental values, discipline practices, and modeling shape children's internalization of norms and moral development."
+      },
+      {
+        "citation": "Rohan, M. J., & Zanna, M. P. (1996). Value transmission in families. In C. Seligman, J. M. Olson, & M. P. Zanna (Eds.), The psychology of values: The Ontario Symposium (Vol. 8, pp. 253–276). Lawrence Erlbaum.",
+        "relevance": "Directly examines the mechanisms and effectiveness of intergenerational value transmission within families.",
+        "key_finding": "Value transmission is most effective when parents are consistent, warm, and when children perceive parental values accurately."
+      },
+      {
+        "citation": "Esteinou, R. (2015). Autonomía adolescente y apoyo y control parental en familias indígenas mexicanas. Revista Latinoamericana de Ciencias Sociales, Niñez y Juventud, 13(2), 749–766.",
+        "relevance": "Examines parental socialization practices in Mexican families, including indigenous contexts, directly relevant to values transmission in the Mexican setting.",
+        "key_finding": "Mexican families employ culturally specific socialization strategies that balance autonomy and control, with significant variation across indigenous and non-indigenous populations."
+      },
+      {
+        "citation": "Schwartz, S. H. (2012). An overview of the Schwartz theory of basic values. Online Readings in Psychology and Culture, 2(1), 1–20.",
+        "relevance": "Provides the theoretical framework for understanding which values are transmitted and how they are structured, relevant to interpreting the values items in this construct.",
+        "key_finding": "Basic human values form a circular motivational structure, and family socialization is a primary mechanism through which cultural value priorities are reproduced across generations."
+      },
+      {
+        "citation": "Alduncin, E. (2004). Los valores de los mexicanos. Banamex.",
+        "relevance": "Empirical study of Mexican values including those transmitted through family, directly relevant to the Mexican public opinion context.",
+        "key_finding": "Family remains the most important institution for value transmission in Mexico, with religion, respect, and hard work among the most frequently cited values passed from parents to children."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "civic and political participation",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "religiosity and religious affiliation",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "educational aspirations and attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "national and cultural identity",
+        "measurable_in_data": true,
+        "data_source": "IDE"
+      },
+      {
+        "role": "cause",
+        "related_construct": "attitudes toward corruption and rule of law",
+        "measurable_in_data": true,
+        "data_source": "COR, JUS"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "indigenous cultural practices and identity",
+        "measurable_in_data": true,
+        "data_source": "IND"
+      },
+      {
+        "role": "cause",
+        "related_construct": "gender role attitudes in next generation",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "youth risk behaviors and prosocial development",
+        "measurable_in_data": true,
+        "data_source": "NIN"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  }
+]

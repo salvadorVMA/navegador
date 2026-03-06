@@ -1,0 +1,462 @@
+{
+  "p1_1|EDU": {
+    "summary": "Respondent's maximum level of educational attainment.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p1_2|EDU": {
+    "summary": "Respondent's father's maximum level of educational attainment.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p2|EDU": {
+    "summary": "Whether respondent is currently studying.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p3|EDU": {
+    "summary": "Whether respondent receives a scholarship or other economic support for studies.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p4|EDU": {
+    "summary": "Source of economic support or scholarship for respondent's studies.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p5|EDU": {
+    "summary": "What respondent is currently studying.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p6|EDU": {
+    "summary": "Respondent's reasons for studying.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p7|EDU": {
+    "summary": "School shift in which respondent is currently studying.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p8|EDU": {
+    "summary": "Type of school respondent currently attends (public vs. private).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p9_1|EDU": {
+    "summary": "Primary reason influencing respondent's choice of current school.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p10|EDU": {
+    "summary": "Primary mode of transportation respondent uses to reach school.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p11|EDU": {
+    "summary": "Time required for respondent to travel to school.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p12|EDU": {
+    "summary": "Condition of school facilities and infrastructure.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p13|EDU": {
+    "summary": "Respondent's perception of school safety.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p14_4|EDU": {
+    "summary": "Respondent's assessment of adequacy of school laboratories and workshops.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p30_1|EDU": {
+    "summary": "Frequency with which teachers capture class attention and generate interest in lessons.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p16_6|EDU": {
+    "summary": "Rating of school's efforts to promote health programs on 0-10 scale.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p17_5|EDU": {
+    "summary": "Whether respondent observed classmates caring for vulnerable peers in the past year.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p18|EDU": {
+    "summary": "Level of teacher attention to problems among students in the past year.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p19|EDU": {
+    "summary": "What respondent would like to study after completing current studies.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p20|EDU": {
+    "summary": "Respondent's perception of relationship between school learning and future work.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p22|EDU": {
+    "summary": "Whether respondent was forced to leave school against their will.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p23|EDU": {
+    "summary": "School shift in which respondent studied before leaving school.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p24|EDU": {
+    "summary": "Type of school respondent attended before leaving (public vs. private).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p25|EDU": {
+    "summary": "Whether respondent received scholarship or economic support while studying.",
+    "duplicate_of": "p3|EDU",
+    "keep": false
+  },
+  "p26|EDU": {
+    "summary": "Source of economic support or scholarship respondent received while studying.",
+    "duplicate_of": "p4|EDU",
+    "keep": false
+  },
+  "p28_1|EDU": {
+    "summary": "Whether classmates helped others with schoolwork when respondent was studying.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p29|EDU": {
+    "summary": "How teachers addressed problems among students when respondent was studying.",
+    "duplicate_of": "p18|EDU",
+    "keep": false
+  },
+  "p31_1|EDU": {
+    "summary": "Primary reason influencing respondent's choice of school attended before leaving.",
+    "duplicate_of": "p9_1|EDU",
+    "keep": false
+  },
+  "p32|EDU": {
+    "summary": "Whether respondent faced difficulties finding employment after leaving school.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p33|EDU": {
+    "summary": "Respondent's perception of relationship between school learning and current work.",
+    "duplicate_of": "p20|EDU",
+    "keep": false
+  },
+  "p34|EDU": {
+    "summary": "Whether respondent would like to return to studying.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p35|EDU": {
+    "summary": "What respondent would like to study if returning to education.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p36|EDU": {
+    "summary": "Respondent's reasons for not wanting to return to studying.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p37|EDU": {
+    "summary": "Respondent's belief about whether studying is worthwhile.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p38|EDU": {
+    "summary": "Respondent's opinion on causes of youth not studying or working in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p39_1|EDU": {
+    "summary": "Respondent's belief about whether schools treat women unfavorably.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p40_1|EDU": {
+    "summary": "Ranking of physical access barriers as a difficulty for students with disabilities in school.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p41_1|EDU": {
+    "summary": "Primary educational media or method respondent has used to receive education.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42_1|EDU": {
+    "summary": "Modality in which respondent completed primary education.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42_2|EDU": {
+    "summary": "Modality in which respondent completed secondary education.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42_3|EDU": {
+    "summary": "Modality in which respondent completed upper secondary education.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42_4|EDU": {
+    "summary": "Modality in which respondent completed undergraduate degree.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42_5|EDU": {
+    "summary": "Modality in which respondent completed postgraduate education.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p42_6|EDU": {
+    "summary": "Modality in which respondent completed other specified education.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p43|EDU": {
+    "summary": "Preferred modality for respondent's future studies if planning to continue.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44_1|EDU": {
+    "summary": "Frequency with which respondent attends cinema.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44_2|EDU": {
+    "summary": "Frequency with which respondent attends theater.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44_3|EDU": {
+    "summary": "Frequency with which respondent attends concerts.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44_4|EDU": {
+    "summary": "Frequency with which respondent attends dance performances.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44_5|EDU": {
+    "summary": "Frequency with which respondent attends exhibitions and museums.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44_6|EDU": {
+    "summary": "Frequency with which respondent attends conferences.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p44_7|EDU": {
+    "summary": "Frequency with which respondent attends courses on various topics.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45_1|EDU": {
+    "summary": "Frequency with which respondent reads newspapers.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45_2|EDU": {
+    "summary": "Frequency with which respondent reads books.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p45_3|EDU": {
+    "summary": "Frequency with which respondent reads magazines.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p46|EDU": {
+    "summary": "Whether respondent belongs to any community association or group.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47_1|EDU": {
+    "summary": "Whether respondent has access to radio or radio recorder.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47_2|EDU": {
+    "summary": "Whether respondent has access to paid television service (cable or satellite).",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47_3|EDU": {
+    "summary": "Whether respondent has access to computer or tablet.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47_4|EDU": {
+    "summary": "Whether respondent has access to Internet.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47_5|EDU": {
+    "summary": "Whether respondent has access to landline telephone.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47_6|EDU": {
+    "summary": "Whether respondent has access to mobile phone.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47_7|EDU": {
+    "summary": "Whether respondent has access to encyclopedia.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47_8|EDU": {
+    "summary": "Whether respondent has access to textbooks.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p47_9|EDU": {
+    "summary": "Whether respondent has access to books on various topics.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_1|EDU": {
+    "summary": "Whether respondent uses computer to obtain information.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_2|EDU": {
+    "summary": "Whether respondent uses computer for communication.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_3|EDU": {
+    "summary": "Whether respondent uses computer to support education or training.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_4|EDU": {
+    "summary": "Whether respondent uses computer for online banking operations.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_5|EDU": {
+    "summary": "Whether respondent uses computer for entertainment.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_6|EDU": {
+    "summary": "Whether respondent uses computer to interact with government.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_7|EDU": {
+    "summary": "Whether respondent uses computer to access social media.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p48_8|EDU": {
+    "summary": "Whether respondent uses computer for other purposes.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p49|EDU": {
+    "summary": "Respondent's perception of change in quality of education in Mexico over the past ten years.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p50_4|EDU": {
+    "summary": "Importance respondent assigns to friends as a factor in personal development.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p51|EDU": {
+    "summary": "Respondent's belief about whether school teaching relates to life skills needed.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p52|EDU": {
+    "summary": "Respondent's rating of quality of education in Mexico on 0-10 scale.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p53_1|EDU": {
+    "summary": "Primary problem respondent identifies with education in Mexico.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p54_1|EDU": {
+    "summary": "Primary aspect respondent believes government should address to improve education.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55_1|EDU": {
+    "summary": "Respondent's belief about whether school is an option available to everyone.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55_2|EDU": {
+    "summary": "Respondent's belief about whether schools have capacity for all students.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55_3|EDU": {
+    "summary": "Respondent's belief about whether school prepares students for better employment.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55_4|EDU": {
+    "summary": "Respondent's belief about whether studying improves personal income.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p55_5|EDU": {
+    "summary": "Respondent's belief about whether studying contributes to a better society.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p56|EDU": {
+    "summary": "Number of household members who contribute income to household expenses.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p57|EDU": {
+    "summary": "Whether respondent speaks any language or dialect other than Spanish.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p57_1|EDU": {
+    "summary": "Specific languages or dialects other than Spanish that respondent speaks.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p59|EDU": {
+    "summary": "Number of children respondent has.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p60|EDU": {
+    "summary": "Religion practiced by respondent.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p61|EDU": {
+    "summary": "Number of rooms in respondent's dwelling including kitchen and bathroom.",
+    "duplicate_of": null,
+    "keep": true
+  },
+  "p62_1|EDU": {
+    "summary": "Whether respondent's dwelling has firm flooring (cement or other covering).",
+    "duplicate_of": null,
+    "keep": true
+  }
+}

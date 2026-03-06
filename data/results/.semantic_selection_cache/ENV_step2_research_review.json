@@ -1,0 +1,350 @@
+[
+  {
+    "construct_name": "ageism_and_age_discrimination",
+    "sources": [
+      {
+        "citation": "Palmore, E. B. (2001). The ageism survey: First findings. The Gerontologist, 41(5), 572–575.",
+        "relevance": "Developed one of the first systematic surveys measuring personal experiences of ageism across multiple domains including employment, social interactions, and media.",
+        "key_finding": "The majority of older respondents reported experiencing multiple incidents of ageism, with the most common being being told a joke that ridicules old people and being ignored or not taken seriously because of age."
+      },
+      {
+        "citation": "North, M. S., & Fiske, S. T. (2012). An inconvenienced youth? Ageism and its potential intergenerational roots. Psychological Bulletin, 138(5), 982–997.",
+        "relevance": "Provides a theoretical framework for understanding ageism as rooted in intergenerational tensions over resource allocation, relevant to the structural discrimination dimension of this construct.",
+        "key_finding": "Ageism is driven by prescriptive stereotypes that older adults should step aside from valued resources (succession), avoid consuming shared resources (consumption), and refrain from symbolic identity threats (identity)."
+      },
+      {
+        "citation": "Montes de Oca, V. (2013). La discriminación hacia la vejez en la Ciudad de México: contrastes sociopolíticos y jurídicos a nivel nacional y local. Perspectivas Sociales, 15(1), 47–80.",
+        "relevance": "Directly examines age discrimination in Mexico City, analyzing both structural and attitudinal dimensions of ageism in the Mexican context.",
+        "key_finding": "Older adults in Mexico face compounded discrimination based on age intersecting with gender, socioeconomic status, and indigenous identity, with employment discrimination being particularly pervasive."
+      },
+      {
+        "citation": "Officer, A., & de la Fuente-Núñez, V. (2018). A global campaign to combat ageism. Bulletin of the World Health Organization, 96(4), 295–296.",
+        "relevance": "Frames ageism as a global public health and human rights issue, connecting attitudinal measures to policy outcomes.",
+        "key_finding": "Ageism is pervasive worldwide and has serious consequences for the health and well-being of older people, yet remains socially accepted and largely unchallenged compared to other forms of discrimination."
+      },
+      {
+        "citation": "Chang, E. S., Kannoth, S., Levy, S., Wang, S. Y., Lee, J. E., & Levy, B. R. (2020). Global reach of ageism on older persons' health: A systematic review. PLoS ONE, 15(1), e0220857.",
+        "relevance": "Systematic review connecting ageist attitudes to health outcomes, demonstrating the measurable consequences of the attitudes captured by this construct.",
+        "key_finding": "Ageism was significantly associated with worse health outcomes across 45 countries, affecting 6.65 million cases of the 11 most costly health conditions annually."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "mental health and well-being of older adults",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "labor market exclusion of older adults",
+        "measurable_in_data": true,
+        "data_source": "ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "human rights awareness and attitudes",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment and media exposure",
+        "measurable_in_data": true,
+        "data_source": "EDU, SOC"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "gender discrimination attitudes",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "intergenerational contact and family integration",
+        "measurable_in_data": true,
+        "data_source": "ENV, FAM"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "elder_abuse_awareness",
+    "sources": [
+      {
+        "citation": "Pillemer, K., Burnes, D., Riffin, C., & Lachs, M. S. (2016). Elder abuse: Global situation, risk factors, and prevention strategies. The Gerontologist, 56(S2), S194–S205.",
+        "relevance": "Comprehensive review of elder abuse prevalence, risk factors, and prevention globally, providing the conceptual framework for measuring awareness and recognition of abuse.",
+        "key_finding": "Approximately 10% of older adults experience some form of abuse, but awareness and reporting remain extremely low, highlighting the importance of measuring public awareness as a precondition for prevention."
+      },
+      {
+        "citation": "Giraldo-Rodríguez, L., & Rosas-Carrasco, O. (2013). Development and psychometric properties of the Geriatric Mistreatment Scale. Geriatrics & Gerontology International, 13(2), 466–474.",
+        "relevance": "Developed and validated a measurement instrument for elder mistreatment specifically in the Mexican population, directly relevant to the operationalization of abuse recognition items.",
+        "key_finding": "The scale demonstrated good psychometric properties for measuring five types of elder mistreatment (physical, psychological, neglect, economic, and sexual) among Mexican older adults."
+      },
+      {
+        "citation": "Ruelas-González, M. G., & Salgado-de Snyder, V. N. (2008). Factores asociados con el auto-reporte de maltrato en adultos mayores de México. Revista de Investigación Clínica, 60(1), 24–32.",
+        "relevance": "Examines self-reported mistreatment among older adults in Mexico, identifying sociodemographic and contextual factors associated with abuse recognition.",
+        "key_finding": "Being female, having lower education, and living in rural areas were significantly associated with higher self-reported mistreatment among Mexican older adults."
+      },
+      {
+        "citation": "World Health Organization. (2022). Tackling abuse of older people: Five priorities for the United Nations Decade of Healthy Ageing (2021–2030). Geneva: WHO.",
+        "relevance": "Establishes the global policy framework for addressing elder abuse, emphasizing awareness measurement as a key indicator for monitoring progress.",
+        "key_finding": "Public awareness campaigns and improved data collection on elder abuse are identified as essential priorities, with most countries lacking baseline measures of population-level awareness."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "human rights knowledge and attitudes",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "gender-based violence awareness",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support for protective public policies",
+        "measurable_in_data": true,
+        "data_source": "DER, CUL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "media exposure and information access",
+        "measurable_in_data": true,
+        "data_source": "SOC"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "perceptions of public security",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "state_and_family_responsibility_for_elder_care",
+    "sources": [
+      {
+        "citation": "Esping-Andersen, G. (1999). Social foundations of postindustrial economies. Oxford University Press.",
+        "relevance": "Foundational work on welfare regime typologies that theorizes the division of care responsibilities between state, market, and family, providing the conceptual basis for this construct.",
+        "key_finding": "The degree to which states 'defamilialize' care responsibilities varies systematically across welfare regimes, with Latin American countries typically relying heavily on family-based care provision."
+      },
+      {
+        "citation": "Huenchuan, S. (2013). Envejecimiento, solidaridad y protección social en América Latina y el Caribe: La hora de avanzar hacia la igualdad. CEPAL.",
+        "relevance": "Directly addresses the tension between state and family responsibility for elder care in Latin America, with specific attention to Mexico's policy context.",
+        "key_finding": "Latin American countries are transitioning from familistic care models toward greater state responsibility, but public opinion and institutional capacity lag behind demographic demands."
+      },
+      {
+        "citation": "Robles-Silva, L. (2007). La invisibilidad del cuidado a los enfermos crónicos: Un estudio cualitativo en el barrio de Oblatos. Editorial Universitaria, Universidad de Guadalajara.",
+        "relevance": "Qualitative study of family caregiving in Mexico that reveals the gendered and class-based dimensions of care responsibility beliefs.",
+        "key_finding": "Family caregiving for older adults in Mexico is largely invisible, feminized, and sustained by cultural norms of filial obligation that mask the need for state intervention."
+      },
+      {
+        "citation": "Svallfors, S. (2010). Policy feedback, generational replacement, and attitudes to state intervention: Eastern and Western Germany, 1990–2006. European Political Science Review, 2(1), 119–135.",
+        "relevance": "Demonstrates how attitudes toward state versus family responsibility are shaped by policy feedback and generational change, relevant to understanding Mexican opinion dynamics.",
+        "key_finding": "Attitudes toward state responsibility are significantly shaped by existing policy arrangements through feedback mechanisms, with generational replacement playing a key moderating role."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "correlate",
+        "related_construct": "political culture and trust in government",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "socioeconomic status and poverty",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "family structure and values",
+        "measurable_in_data": true,
+        "data_source": "FAM"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "gender role attitudes",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support for social spending and welfare programs",
+        "measurable_in_data": true,
+        "data_source": "CUL, POB"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "religiosity and traditional values",
+        "measurable_in_data": true,
+        "data_source": "REL, IDE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "federalism and decentralization preferences",
+        "measurable_in_data": true,
+        "data_source": "FED"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "perceived_quality_of_life_and_social_inclusion_of_older_adults",
+    "sources": [
+      {
+        "citation": "Walker, A. (2005). A European perspective on quality of life in old age. European Journal of Ageing, 2(1), 2–12.",
+        "relevance": "Provides a multidimensional framework for understanding quality of life in old age that encompasses subjective perceptions, social inclusion, and policy adequacy.",
+        "key_finding": "Quality of life in old age is best understood as a multidimensional construct that includes both objective conditions and subjective evaluations, with social inclusion being a critical but often overlooked dimension."
+      },
+      {
+        "citation": "González, K. D., & Ham-Chande, R. (2007). Funcionalidad y salud: Una tipología del envejecimiento en México. Salud Pública de México, 49(Supl. 4), S448–S458.",
+        "relevance": "Examines functional health and quality of life among older adults in Mexico, establishing baseline conditions against which public perceptions can be compared.",
+        "key_finding": "Mexican older adults show significant heterogeneity in functional health and quality of life, with rural residence, poverty, and indigenous identity being key determinants of disadvantage."
+      },
+      {
+        "citation": "Scharf, T., Phillipson, C., & Smith, A. E. (2005). Social exclusion of older people in deprived urban communities of England. European Journal of Ageing, 2(2), 76–87.",
+        "relevance": "Develops a framework for measuring social exclusion of older adults across multiple domains (material resources, social relations, civic activities, services, neighborhood), applicable to the Mexican context.",
+        "key_finding": "Social exclusion in old age is multidimensional and cumulative, with exclusion from social relations and civic participation being as consequential as material deprivation."
+      },
+      {
+        "citation": "CONEVAL. (2019). Pobreza y personas mayores en México. Consejo Nacional de Evaluación de la Política de Desarrollo Social.",
+        "relevance": "Provides the empirical baseline for understanding objective living conditions of older adults in Mexico, against which perceived quality of life can be assessed.",
+        "key_finding": "Approximately 41% of Mexican adults aged 65 and older live in poverty, with significant disparities by gender, indigenous status, and region."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "poverty and economic inequality",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "health system access and satisfaction",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "housing quality and accessibility",
+        "measurable_in_data": true,
+        "data_source": "HAB"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "trust in institutions and government performance",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "ageism and age discrimination",
+        "measurable_in_data": true,
+        "data_source": "ENV"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "human rights fulfillment perceptions",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "access to justice",
+        "measurable_in_data": true,
+        "data_source": "JUS"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "intergenerational_contact_and_family_integration",
+    "sources": [
+      {
+        "citation": "Bengtson, V. L., & Roberts, R. E. L. (1991). Intergenerational solidarity in aging families: An example of formal theory construction. Journal of Marriage and the Family, 53(4), 856–870.",
+        "relevance": "Foundational theoretical framework for measuring intergenerational solidarity, including associational (contact frequency), structural (geographic proximity), and functional (exchange) dimensions directly relevant to this construct.",
+        "key_finding": "Intergenerational solidarity is a multidimensional construct with six distinct components, and associational solidarity (frequency of contact) is a key predictor of overall family cohesion and elder well-being."
+      },
+      {
+        "citation": "Montes de Oca, V., & Hebrero, M. (2006). Eventos cruciales y ciclos familiares avanzados: El efecto del envejecimiento en los hogares de México. Papeles de Población, 12(50), 97–116.",
+        "relevance": "Examines how aging transforms household structures and intergenerational living arrangements in Mexico, directly relevant to measuring family integration of older adults.",
+        "key_finding": "Mexican households with older adults show diverse arrangements, with co-residence remaining common but increasingly supplemented by proximity-based support networks, reflecting both cultural norms and economic necessity."
+      },
+      {
+        "citation": "Allport, G. W. (1954). The nature of prejudice. Addison-Wesley. (Applied in: Pettigrew, T. F., & Tropp, L. R. (2006). A meta-analytic test of intergroup contact theory. Journal of Personality and Social Psychology, 90(5), 751–783.)",
+        "relevance": "The intergroup contact hypothesis, as validated by Pettigrew and Tropp's meta-analysis, provides the theoretical basis for understanding how intergenerational contact reduces ageist attitudes.",
+        "key_finding": "Greater intergroup contact is reliably associated with reduced prejudice, with the effect generalizing across age-based groups; quality of contact matters more than quantity."
+      },
+      {
+        "citation": "Silverstein, M., & Giarrusso, R. (2010). Aging and family life: A decade review. Journal of Marriage and Family, 72(5), 1039–1058.",
+        "relevance": "Comprehensive review of intergenerational family dynamics in the context of aging, covering contact patterns, decision-making inclusion, and caregiving exchanges.",
+        "key_finding": "Intergenerational ambivalence coexists with solidarity in aging families, and the inclusion of older adults in family decision-making is a critical but understudied dimension of family integration."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "ageism and age discrimination (reduction)",
+        "measurable_in_data": true,
+        "data_source": "ENV"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "family values and cohesion",
+        "measurable_in_data": true,
+        "data_source": "FAM"
+      },
+      {
+        "role": "cause",
+        "related_construct": "psychological well-being of older adults",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "migration patterns (family separation)",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "cultural identity and traditional values",
+        "measurable_in_data": true,
+        "data_source": "IDE, REL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "urbanization and housing arrangements",
+        "measurable_in_data": true,
+        "data_source": "HAB"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "indigenous community structures",
+        "measurable_in_data": true,
+        "data_source": "IND"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  }
+]

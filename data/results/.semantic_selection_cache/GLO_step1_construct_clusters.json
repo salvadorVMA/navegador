@@ -1,0 +1,72 @@
+[
+  {
+    "name": "cosmopolitan_identity",
+    "description": "Measures the degree to which respondents identify as citizens of the world rather than exclusively as nationals, capturing openness to global belonging over narrow nationalism.",
+    "question_cluster": [
+      "p19_1",
+      "p20",
+      "p15",
+      "p18_1",
+      "p55"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "transnational_connectedness",
+    "description": "Captures the extent of respondents' personal ties and direct experiences crossing national borders, including travel, residence abroad, relationships with foreigners, and communication with people living abroad.",
+    "question_cluster": [
+      "p2",
+      "p3",
+      "p4",
+      "p6a_1",
+      "p7",
+      "p8",
+      "p8_2"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "cultural_openness",
+    "description": "Measures receptivity to foreign cultures, media, and consumption practices, reflecting how willing respondents are to engage with non-Mexican cultural products and ideas in everyday life.",
+    "question_cluster": [
+      "p11",
+      "p11_2",
+      "p22_1",
+      "p22_6a_1",
+      "p23",
+      "p24_1",
+      "p30"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "national_cultural_pride",
+    "description": "Assesses the strength of pride respondents feel toward specific Mexican cultural symbols, traditions, and social characteristics, distinguishing dimensions of national identity rooted in culture.",
+    "question_cluster": [
+      "p17_1",
+      "p17_2",
+      "p17_3",
+      "p17_4",
+      "p17_5",
+      "p17_6",
+      "p65a_1",
+      "p66a_1"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "global_governance_support",
+    "description": "Measures the degree to which respondents support international institutions, multilateral cooperation, and supranational authority in addressing global problems, trade, human rights, and security.",
+    "question_cluster": [
+      "p48",
+      "p52_1",
+      "p54_1",
+      "p56_1",
+      "p57",
+      "p58",
+      "p60_1",
+      "p63_1"
+    ],
+    "requires_aggregation": true
+  }
+]

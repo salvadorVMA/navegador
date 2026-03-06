@@ -1,0 +1,74 @@
+[
+  {
+    "name": "corruption_perception",
+    "description": "Captures respondents' subjective beliefs about the prevalence, trajectory, and location of corruption in Mexico, reflecting a generalized cognitive appraisal of systemic corruption as a social phenomenon.",
+    "question_cluster": [
+      "p2",
+      "p3",
+      "p15",
+      "p16",
+      "p17",
+      "p34"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "civic_tolerance_of_deviance",
+    "description": "Measures the degree to which individuals normalize, justify, or accept minor rule-breaking and corrupt behaviors in everyday life, reflecting internalized ethical thresholds for what constitutes acceptable conduct.",
+    "question_cluster": [
+      "p9_1",
+      "p10_1",
+      "p13_1",
+      "p52_1",
+      "p56"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "prosocial_reporting_behavior",
+    "description": "Assesses respondents' actual and hypothetical willingness to report or denounce corrupt, dishonest, or rule-violating behavior by others, capturing the behavioral dimension of anti-corruption engagement.",
+    "question_cluster": [
+      "p11",
+      "p20",
+      "p21",
+      "p22",
+      "p23",
+      "p24",
+      "p27",
+      "p28",
+      "p30"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "institutional_trust_and_efficacy",
+    "description": "Measures trust in and perceived effectiveness of institutions—government, media, and enforcement bodies—in combating corruption and upholding legality, reflecting confidence in formal social control mechanisms.",
+    "question_cluster": [
+      "p6_1",
+      "p18",
+      "p25_1",
+      "p36_1",
+      "p37",
+      "p38",
+      "p39",
+      "p53"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "anticorruption_civic_engagement",
+    "description": "Captures respondents' exposure to, awareness of, and participation in anticorruption efforts including media campaigns, neighborhood meetings, and personal agency in resisting bribery demands, reflecting active civic engagement against corruption.",
+    "question_cluster": [
+      "p14",
+      "p31",
+      "p33",
+      "p35_1",
+      "p41",
+      "p44",
+      "p45",
+      "p46",
+      "p59_1"
+    ],
+    "requires_aggregation": true
+  }
+]
