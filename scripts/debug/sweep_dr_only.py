@@ -106,28 +106,19 @@ def estimate_pair_dr(
                 continue
             construct_b = _extract_construct_name(vb)
 
-            # Resolve per-variable causal direction
-            if direction_map:
+            # Resolve per-construct causal direction
+            if direction_map and construct_a and construct_b:
                 src, tgt, dir_type = SemanticVariableSelector.get_pair_direction(
                     domain_a, domain_b, direction_map,
                     construct_a=construct_a, construct_b=construct_b)
             else:
-                src, tgt, dir_type = domain_a, domain_b, 'alphabetical'
+                id_a = f"{domain_a}:{construct_a}" if construct_a else domain_a
+                id_b = f"{domain_b}:{construct_b}" if construct_b else domain_b
+                src, tgt, dir_type = id_a, id_b, 'ambiguous'
 
             # Swap source/target if causal direction says B causes A
-            if dir_type == 'causal' and ':' in src:
-                # Construct-level swap
-                src_dom = src.split(':')[0]
-                if src_dom == domain_b:
-                    e_df_a, e_df_b = df_b, df_a
-                    e_col_a, e_col_b = col_b, col_a
-                    e_va, e_vb = vb, va
-                else:
-                    e_df_a, e_df_b = df_a, df_b
-                    e_col_a, e_col_b = col_a, col_b
-                    e_va, e_vb = va, vb
-            elif dir_type == 'causal' and src == domain_b:
-                # Domain-level swap
+            src_dom = src.split(':')[0] if ':' in src else src
+            if dir_type == 'causal' and src_dom == domain_b:
                 e_df_a, e_df_b = df_b, df_a
                 e_col_a, e_col_b = col_b, col_a
                 e_va, e_vb = vb, va
@@ -189,15 +180,14 @@ def main(max_workers=1, resume=True):
             selected_vars = json.load(f)['selected_variables']
         print('Using naive selection (no semantic file)')
 
-    # Load causal direction map (construct-level + domain-level)
-    from select_bridge_variables_semantic import SemanticVariableSelector
+    # Load causal direction map (construct-to-construct only)
     direction_map = SemanticVariableSelector.load_causal_direction_map()
-    dp = direction_map.get('domain_pairs', {})
-    cp = direction_map.get('construct_pairs', {})
-    n_dp_causal = sum(1 for v in dp.values() if v['direction'] == 'causal')
-    n_cp_causal = sum(1 for v in cp.values() if v['direction'] == 'causal')
-    print(f'Causal direction map: {n_cp_causal}/{len(cp)} construct pairs, '
-          f'{n_dp_causal}/{len(dp)} domain pairs')
+    n_causal = sum(1 for v in direction_map.values()
+                   if v.get('direction') == 'causal')
+    n_empirical = sum(1 for v in direction_map.values()
+                      if v.get('source') == 'empirical')
+    print(f'Causal direction map: {len(direction_map)} construct pairs '
+          f'({n_causal} causal, {n_empirical} empirical)')
 
     # Load pair list from baseline sweep
     with open(BASELINE_SWEEP) as f:

@@ -2313,11 +2313,14 @@ class DRPredictionEngine:
     ) -> 'DRPredictionEngine':
         """Fit with automatic causal direction resolution.
 
-        Uses the causal direction map (construct-level first, then
-        domain-level fallback) to determine which domain is the cause
-        (A/treatment) and which is the effect (B/outcome). If the map
-        says domain_b causes domain_a, the arguments are swapped so
-        the engine always predicts effect from cause.
+        Uses the construct-to-construct causal direction map to determine
+        which construct is the cause (A/treatment) and which is the
+        effect (B/outcome). If the map says construct_b causes
+        construct_a, the arguments are swapped so the engine always
+        predicts effect from cause.
+
+        Requires construct_a and construct_b to resolve direction.
+        Without them, uses alphabetical order (no swap).
 
         Args:
             domain_a: Domain code for first survey (e.g. 'ECO')
@@ -2326,13 +2329,12 @@ class DRPredictionEngine:
             df_b: DataFrame for domain_b's survey
             col_a: Target column in domain_a's survey
             col_b: Target column in domain_b's survey
-            direction_map: Causal direction map from
+            direction_map: Construct-level causal direction map from
                 SemanticVariableSelector.load_causal_direction_map().
-                Must have "construct_pairs" and "domain_pairs" keys.
-                If None, uses alphabetical order (no direction swap).
-            construct_a: Construct name in domain_a (for construct-level
-                lookup, e.g. 'corruption_perception')
-            construct_b: Construct name in domain_b
+                Flat dict: {pair_key: {cause, effect, direction, ...}}.
+            construct_a: Construct name in domain_a (e.g.
+                'corruption_perception'). Required for direction lookup.
+            construct_b: Construct name in domain_b.
             var_id_a: Variable identifier for A
             var_id_b: Variable identifier for B
             weight_col: Survey weight column
@@ -2340,39 +2342,28 @@ class DRPredictionEngine:
         Returns:
             self (for method chaining)
         """
-        self._causal_direction = 'alphabetical'
-        self._domain_cause = domain_a
-        self._domain_effect = domain_b
+        self._causal_direction = 'ambiguous'
+        self._construct_cause = None
+        self._construct_effect = None
 
-        if direction_map is not None:
-            # Import here to avoid circular dependency
-            import sys
-            sys.path.insert(0, str(Path(__file__).resolve().parent / 'scripts' / 'debug'))
-            try:
-                from select_bridge_variables_semantic import SemanticVariableSelector
-                src, tgt, dir_type = SemanticVariableSelector.get_pair_direction(
-                    domain_a, domain_b, direction_map,
-                    construct_a=construct_a, construct_b=construct_b)
-            except ImportError:
-                # Fallback: domain-level only
-                dp = direction_map.get('domain_pairs', direction_map)
-                pair_key = '::'.join(sorted([domain_a, domain_b]))
-                info = dp.get(pair_key)
-                if info and info.get('direction') == 'causal':
-                    src, tgt, dir_type = info['cause'], info['effect'], 'causal'
-                else:
-                    src, tgt, dir_type = domain_a, domain_b, 'ambiguous'
-
-            self._causal_direction = dir_type
-            src_dom = src.split(':')[0] if ':' in src else src
-            tgt_dom = tgt.split(':')[0] if ':' in tgt else tgt
-            self._domain_cause = src_dom
-            self._domain_effect = tgt_dom
-            # Swap if needed so A=cause, B=effect
-            if src_dom == domain_b:
-                df_a, df_b = df_b, df_a
-                col_a, col_b = col_b, col_a
-                var_id_a, var_id_b = var_id_b, var_id_a
+        if (direction_map is not None
+                and construct_a and construct_b):
+            id_a = f"{domain_a}:{construct_a}"
+            id_b = f"{domain_b}:{construct_b}"
+            pair_key = '::'.join(sorted([id_a, id_b]))
+            info = direction_map.get(pair_key)
+            if info and info.get('direction') == 'causal':
+                self._causal_direction = 'causal'
+                self._construct_cause = info['cause']
+                self._construct_effect = info['effect']
+                # Swap if cause is in domain_b
+                cause_dom = info['cause'].split(':')[0]
+                if cause_dom == domain_b:
+                    df_a, df_b = df_b, df_a
+                    col_a, col_b = col_b, col_a
+                    var_id_a, var_id_b = var_id_b, var_id_a
+            elif info and info.get('direction') == 'empirical':
+                self._causal_direction = 'empirical'
 
         return self.fit(df_a, df_b, col_a, col_b, var_id_a, var_id_b,
                         weight_col)
@@ -2396,6 +2387,6 @@ class DRPredictionEngine:
         }
         if hasattr(self, '_causal_direction'):
             result['causal_direction'] = self._causal_direction
-            result['domain_cause'] = self._domain_cause
-            result['domain_effect'] = self._domain_effect
+            result['construct_cause'] = self._construct_cause
+            result['construct_effect'] = self._construct_effect
         return result
