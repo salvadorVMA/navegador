@@ -88,13 +88,15 @@ def estimate_edge(
     if col_a not in df_a.columns or col_b not in df_b.columns:
         return None
 
-    # Resolve causal direction for cross-domain pairs
+    # Resolve causal direction for cross-domain pairs (construct-level)
     causal_dir = 'within'
     if dom_a != dom_b and direction_map:
-        src_dom, tgt_dom, dir_type = SemanticVariableSelector.get_pair_direction(
-            dom_a, dom_b, direction_map)
+        src, tgt, dir_type = SemanticVariableSelector.get_pair_direction(
+            dom_a, dom_b, direction_map,
+            construct_a=construct_a['name'], construct_b=construct_b['name'])
         causal_dir = dir_type
-        # Swap so source=cause, target=effect
+        # Determine if we need to swap: src might be "DOMAIN:construct" or "DOMAIN"
+        src_dom = src.split(':')[0] if ':' in src else src
         if src_dom == dom_b:
             df_a, df_b = df_b, df_a
             col_a, col_b = col_b, col_a

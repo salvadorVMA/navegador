@@ -2305,15 +2305,18 @@ class DRPredictionEngine:
         col_a: str,
         col_b: str,
         direction_map: Optional[Dict[str, Any]] = None,
+        construct_a: Optional[str] = None,
+        construct_b: Optional[str] = None,
         var_id_a: str = '',
         var_id_b: str = '',
         weight_col: str = 'Pondi2',
     ) -> 'DRPredictionEngine':
         """Fit with automatic causal direction resolution.
 
-        Uses the causal direction map to determine which domain is the
-        cause (A/treatment) and which is the effect (B/outcome). If the
-        map says domain_b causes domain_a, the arguments are swapped so
+        Uses the causal direction map (construct-level first, then
+        domain-level fallback) to determine which domain is the cause
+        (A/treatment) and which is the effect (B/outcome). If the map
+        says domain_b causes domain_a, the arguments are swapped so
         the engine always predicts effect from cause.
 
         Args:
@@ -2325,7 +2328,11 @@ class DRPredictionEngine:
             col_b: Target column in domain_b's survey
             direction_map: Causal direction map from
                 SemanticVariableSelector.load_causal_direction_map().
+                Must have "construct_pairs" and "domain_pairs" keys.
                 If None, uses alphabetical order (no direction swap).
+            construct_a: Construct name in domain_a (for construct-level
+                lookup, e.g. 'corruption_perception')
+            construct_b: Construct name in domain_b
             var_id_a: Variable identifier for A
             var_id_b: Variable identifier for B
             weight_col: Survey weight column
@@ -2338,22 +2345,34 @@ class DRPredictionEngine:
         self._domain_effect = domain_b
 
         if direction_map is not None:
-            pair_key = '::'.join(sorted([domain_a, domain_b]))
-            info = direction_map.get(pair_key)
-            if info and info.get('direction') == 'causal':
-                cause = info['cause']
-                effect = info['effect']
-                self._causal_direction = 'causal'
-                self._domain_cause = cause
-                self._domain_effect = effect
-                # Swap if needed so A=cause, B=effect
-                if cause == domain_b:
-                    df_a, df_b = df_b, df_a
-                    col_a, col_b = col_b, col_a
-                    var_id_a, var_id_b = var_id_b, var_id_a
-                    domain_a, domain_b = domain_b, domain_a
-            else:
-                self._causal_direction = 'ambiguous'
+            # Import here to avoid circular dependency
+            import sys
+            sys.path.insert(0, str(Path(__file__).resolve().parent / 'scripts' / 'debug'))
+            try:
+                from select_bridge_variables_semantic import SemanticVariableSelector
+                src, tgt, dir_type = SemanticVariableSelector.get_pair_direction(
+                    domain_a, domain_b, direction_map,
+                    construct_a=construct_a, construct_b=construct_b)
+            except ImportError:
+                # Fallback: domain-level only
+                dp = direction_map.get('domain_pairs', direction_map)
+                pair_key = '::'.join(sorted([domain_a, domain_b]))
+                info = dp.get(pair_key)
+                if info and info.get('direction') == 'causal':
+                    src, tgt, dir_type = info['cause'], info['effect'], 'causal'
+                else:
+                    src, tgt, dir_type = domain_a, domain_b, 'ambiguous'
+
+            self._causal_direction = dir_type
+            src_dom = src.split(':')[0] if ':' in src else src
+            tgt_dom = tgt.split(':')[0] if ':' in tgt else tgt
+            self._domain_cause = src_dom
+            self._domain_effect = tgt_dom
+            # Swap if needed so A=cause, B=effect
+            if src_dom == domain_b:
+                df_a, df_b = df_b, df_a
+                col_a, col_b = col_b, col_a
+                var_id_a, var_id_b = var_id_b, var_id_a
 
         return self.fit(df_a, df_b, col_a, col_b, var_id_a, var_id_b,
                         weight_col)

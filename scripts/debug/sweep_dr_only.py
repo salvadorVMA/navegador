@@ -64,12 +64,22 @@ def load_data():
     return enc_dict, enc_nom_dict_rev
 
 
+def _extract_construct_name(var_id: str) -> Optional[str]:
+    """Extract construct name from variable id like 'agg_corruption_perception|COR'."""
+    col = var_id.split('|')[0]
+    if col.startswith('agg_'):
+        return col[4:]  # strip 'agg_'
+    return None
+
+
 def estimate_pair_dr(
     domain_a: str, domain_b: str,
     vars_a: List[str], vars_b: List[str],
     enc_dict: dict, enc_nom_dict_rev: dict,
+    direction_map: Optional[Dict] = None,
 ) -> Dict[str, Any]:
     from ses_regression import DoublyRobustBridgeEstimator
+    from select_bridge_variables_semantic import SemanticVariableSelector
 
     survey_a = enc_nom_dict_rev.get(domain_a)
     survey_b = enc_nom_dict_rev.get(domain_b)
@@ -89,14 +99,49 @@ def estimate_pair_dr(
         col_a = va.split('|')[0]
         if col_a not in df_a.columns:
             continue
+        construct_a = _extract_construct_name(va)
         for vb in vars_b:
             col_b = vb.split('|')[0]
             if col_b not in df_b.columns:
                 continue
-            row = {'var_a': va, 'var_b': vb}
+            construct_b = _extract_construct_name(vb)
+
+            # Resolve per-variable causal direction
+            if direction_map:
+                src, tgt, dir_type = SemanticVariableSelector.get_pair_direction(
+                    domain_a, domain_b, direction_map,
+                    construct_a=construct_a, construct_b=construct_b)
+            else:
+                src, tgt, dir_type = domain_a, domain_b, 'alphabetical'
+
+            # Swap source/target if causal direction says B causes A
+            if dir_type == 'causal' and ':' in src:
+                # Construct-level swap
+                src_dom = src.split(':')[0]
+                if src_dom == domain_b:
+                    e_df_a, e_df_b = df_b, df_a
+                    e_col_a, e_col_b = col_b, col_a
+                    e_va, e_vb = vb, va
+                else:
+                    e_df_a, e_df_b = df_a, df_b
+                    e_col_a, e_col_b = col_a, col_b
+                    e_va, e_vb = va, vb
+            elif dir_type == 'causal' and src == domain_b:
+                # Domain-level swap
+                e_df_a, e_df_b = df_b, df_a
+                e_col_a, e_col_b = col_b, col_a
+                e_va, e_vb = vb, va
+            else:
+                e_df_a, e_df_b = df_a, df_b
+                e_col_a, e_col_b = col_a, col_b
+                e_va, e_vb = va, vb
+
+            row = {'var_a': e_va, 'var_b': e_vb,
+                   'causal_direction': dir_type}
             try:
-                r = est.estimate(var_id_a=va, var_id_b=vb,
-                                 df_a=df_a, df_b=df_b, col_a=col_a, col_b=col_b)
+                r = est.estimate(var_id_a=e_va, var_id_b=e_vb,
+                                 df_a=e_df_a, df_b=e_df_b,
+                                 col_a=e_col_a, col_b=e_col_b)
                 if r:
                     row['dr_gamma'] = round(r['gamma'], 4)
                     row['dr_gamma_ci'] = r['gamma_ci_95']
@@ -144,12 +189,15 @@ def main(max_workers=1, resume=True):
             selected_vars = json.load(f)['selected_variables']
         print('Using naive selection (no semantic file)')
 
-    # Load causal direction map
+    # Load causal direction map (construct-level + domain-level)
     from select_bridge_variables_semantic import SemanticVariableSelector
     direction_map = SemanticVariableSelector.load_causal_direction_map()
-    n_causal = sum(1 for v in direction_map.values() if v['direction'] == 'causal')
-    print(f'Causal direction map: {n_causal} causal, '
-          f'{len(direction_map) - n_causal} ambiguous')
+    dp = direction_map.get('domain_pairs', {})
+    cp = direction_map.get('construct_pairs', {})
+    n_dp_causal = sum(1 for v in dp.values() if v['direction'] == 'causal')
+    n_cp_causal = sum(1 for v in cp.values() if v['direction'] == 'causal')
+    print(f'Causal direction map: {n_cp_causal}/{len(cp)} construct pairs, '
+          f'{n_dp_causal}/{len(dp)} domain pairs')
 
     # Load pair list from baseline sweep
     with open(BASELINE_SWEEP) as f:
@@ -175,15 +223,10 @@ def main(max_workers=1, resume=True):
 
     def _run(pair_key):
         da, db = pair_key.split('::')
-        # Use causal direction to determine source/target
-        src, tgt, dir_type = SemanticVariableSelector.get_pair_direction(
-            da, db, direction_map)
-        va = selected_vars.get(src, [])
-        vb = selected_vars.get(tgt, [])
-        result = estimate_pair_dr(src, tgt, va, vb, enc_dict, enc_nom_dict_rev)
-        result['causal_direction'] = dir_type
-        result['causal_source'] = src
-        result['causal_target'] = tgt
+        va = selected_vars.get(da, [])
+        vb = selected_vars.get(db, [])
+        result = estimate_pair_dr(da, db, va, vb, enc_dict, enc_nom_dict_rev,
+                                  direction_map=direction_map)
         return pair_key, result
 
     n_done = 0

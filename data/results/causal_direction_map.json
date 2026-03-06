@@ -1,11 +1,4872 @@
 {
   "metadata": {
-    "generated_at": "2026-03-06T17:31:08.410590",
-    "n_pairs": 239,
-    "n_causal": 155,
-    "n_ambiguous": 84
+    "generated_at": "2026-03-06T17:56:29.355902",
+    "n_construct_pairs": 607,
+    "n_construct_causal": 292,
+    "n_construct_ambiguous": 315,
+    "n_domain_pairs": 239,
+    "n_domain_causal": 155,
+    "n_domain_ambiguous": 84
   },
-  "pairs": {
+  "construct_pairs": {
+    "CIE:science_self_efficacy::EDU:educational_equity_beliefs": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "CIE:science_self_efficacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CIE:science_self_efficacy::GEN:gender_role_traditionalism": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE:institutional_trust_in_science::CUL:institutional_trust_and_efficacy": {
+      "cause": "CUL:institutional_trust_and_efficacy",
+      "effect": "CIE:institutional_trust_in_science",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CIE:institutional_trust_in_science::COR:institutional_trust_and_efficacy": {
+      "cause": "COR:institutional_trust_and_efficacy",
+      "effect": "CIE:institutional_trust_in_science",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CIE:institutional_trust_in_science::EDU:educational_equity_beliefs": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE:institutional_trust_in_science::COR:corruption_perception": {
+      "cause": "COR:corruption_perception",
+      "effect": "CIE:institutional_trust_in_science",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CIE:institutional_trust_in_science::SAL:health_behaviors_and_lifestyle": {
+      "cause": "CIE:institutional_trust_in_science",
+      "effect": "SAL:health_behaviors_and_lifestyle",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CIE:institutional_trust_in_science::SOC:media_consumption_and_news_habits": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE:science_technology_engagement::DEP:cultural_socialization_in_childhood": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE:science_technology_engagement::CUL:civic_and_political_participation": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE:science_technology_engagement::SOC:digital_literacy_and_internet_engagement": {
+      "cause": "SOC:digital_literacy_and_internet_engagement",
+      "effect": "CIE:science_technology_engagement",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CIE:science_technology_engagement::EDU:educational_equity_beliefs": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE:information_capital::EDU:educational_equity_beliefs": {
+      "cause": "CIE:information_capital",
+      "effect": "EDU:educational_equity_beliefs",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CIE:information_capital::HAB:physical_housing_quality": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE:information_capital::CUL:civic_and_political_participation": {
+      "cause": "CIE:information_capital",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CIE:information_capital::SOC:digital_civic_and_political_participation": {
+      "cause": "CIE:information_capital",
+      "effect": "SOC:digital_civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CIE:information_capital::IND:indigenous_cultural_knowledge_and_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE:information_capital::NIN:children_rights_recognition": {
+      "cause": "CIE:information_capital",
+      "effect": "NIN:children_rights_recognition",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CIE:science_technology_policy_attitudes::CUL:civic_and_political_participation": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE:science_technology_policy_attitudes::EDU:educational_equity_beliefs": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "CIE:science_technology_policy_attitudes",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CIE:science_technology_policy_attitudes::MED:environmental_governance_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE:science_technology_policy_attitudes::ECO:economic_wellbeing_perception": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE:science_technology_policy_attitudes::IDE:national_identity_and_pride": {
+      "cause": "IDE:national_identity_and_pride",
+      "effect": "CIE:science_technology_policy_attitudes",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:corruption_perception::CUL:institutional_trust_and_efficacy": {
+      "cause": "COR:corruption_perception",
+      "effect": "CUL:institutional_trust_and_efficacy",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:corruption_perception::CUL:democratic_legitimacy": {
+      "cause": "COR:corruption_perception",
+      "effect": "CUL:democratic_legitimacy",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:corruption_perception::SOC:digital_access_and_equipment": {
+      "cause": "SOC:digital_access_and_equipment",
+      "effect": "COR:corruption_perception",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:corruption_perception::EDU:educational_equity_beliefs": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "COR:corruption_perception",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:corruption_perception::CUL:civic_and_political_participation": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:corruption_perception::SEG:security_avoidance_behavior": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:civic_tolerance_of_deviance::CUL:institutional_trust_and_efficacy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:civic_tolerance_of_deviance::IDE:institutional_and_social_trust": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:civic_tolerance_of_deviance::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "COR:civic_tolerance_of_deviance",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:civic_tolerance_of_deviance::EDU:perceived_education_quality": {
+      "cause": "EDU:perceived_education_quality",
+      "effect": "COR:civic_tolerance_of_deviance",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:civic_tolerance_of_deviance::SEG:fear_of_crime_and_risk_perception": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:civic_tolerance_of_deviance::IDE:moral_conservatism_and_social_values": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:prosocial_reporting_behavior::CUL:institutional_trust_and_efficacy": {
+      "cause": "CUL:institutional_trust_and_efficacy",
+      "effect": "COR:prosocial_reporting_behavior",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:prosocial_reporting_behavior::JUS:institutional_justice_trust": {
+      "cause": "JUS:institutional_justice_trust",
+      "effect": "COR:prosocial_reporting_behavior",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:prosocial_reporting_behavior::SEG:fear_of_crime_and_risk_perception": {
+      "cause": "SEG:fear_of_crime_and_risk_perception",
+      "effect": "COR:prosocial_reporting_behavior",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:prosocial_reporting_behavior::CUL:civic_and_political_participation": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:prosocial_reporting_behavior::EDU:educational_equity_beliefs": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "COR:prosocial_reporting_behavior",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:prosocial_reporting_behavior::JUS:legal_knowledge_rights_awareness": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:institutional_trust_and_efficacy::CUL:civic_and_political_participation": {
+      "cause": "COR:institutional_trust_and_efficacy",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:institutional_trust_and_efficacy::CUL:democratic_legitimacy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:institutional_trust_and_efficacy::ECO:economic_wellbeing_perception": {
+      "cause": "ECO:economic_wellbeing_perception",
+      "effect": "COR:institutional_trust_and_efficacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:institutional_trust_and_efficacy::SEG:security_avoidance_behavior": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:institutional_trust_and_efficacy::JUS:institutional_justice_trust": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:anticorruption_civic_engagement::CUL:institutional_trust_and_efficacy": {
+      "cause": "CUL:institutional_trust_and_efficacy",
+      "effect": "COR:anticorruption_civic_engagement",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:anticorruption_civic_engagement::EDU:perceived_education_quality": {
+      "cause": "EDU:perceived_education_quality",
+      "effect": "COR:anticorruption_civic_engagement",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:anticorruption_civic_engagement::CUL:civic_and_political_participation": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:anticorruption_civic_engagement::SOC:digital_access_and_equipment": {
+      "cause": "SOC:digital_access_and_equipment",
+      "effect": "COR:anticorruption_civic_engagement",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:anticorruption_civic_engagement::IDE:institutional_and_social_trust": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:anticorruption_civic_engagement::DER:civil_liberties_and_protest_rights": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:democratic_legitimacy::ECO:economic_wellbeing_perception": {
+      "cause": "ECO:economic_wellbeing_perception",
+      "effect": "CUL:democratic_legitimacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:democratic_legitimacy::JUS:institutional_justice_trust": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "CUL:democratic_legitimacy::EDU:educational_equity_beliefs": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "CUL:democratic_legitimacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:democratic_legitimacy::DER:civil_liberties_and_protest_rights": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:democratic_legitimacy::SEG:security_avoidance_behavior": {
+      "cause": "SEG:security_avoidance_behavior",
+      "effect": "CUL:democratic_legitimacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:institutional_trust_and_efficacy::SEG:security_avoidance_behavior": {
+      "cause": "SEG:security_avoidance_behavior",
+      "effect": "CUL:institutional_trust_and_efficacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:institutional_trust_and_efficacy::JUS:institutional_justice_trust": {
+      "cause": "JUS:institutional_justice_trust",
+      "effect": "CUL:institutional_trust_and_efficacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:institutional_trust_and_efficacy::ECO:economic_wellbeing_perception": {
+      "cause": "ECO:economic_wellbeing_perception",
+      "effect": "CUL:institutional_trust_and_efficacy",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:institutional_trust_and_efficacy::SOC:media_consumption_and_news_habits": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:institutional_trust_and_efficacy::FED:federalism_preference": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:civic_and_political_participation::EDU:educational_equity_beliefs": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:civic_and_political_participation::POB:structural_attribution_of_poverty": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:civic_and_political_participation::GEN:gender_equality_awareness_exposure": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:civic_and_political_participation::IND:indigenous_cultural_knowledge_and_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "CUL:political_interest_and_engagement::EDU:educational_equity_beliefs": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "CUL:political_interest_and_engagement",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:political_interest_and_engagement::SOC:digital_access_and_equipment": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:political_interest_and_engagement::GEN:gender_role_traditionalism": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:authoritarian_versus_democratic_values::DER:authoritarian_attitudes_and_punitive_tolerance": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "CUL:authoritarian_versus_democratic_values::SEG:security_avoidance_behavior": {
+      "cause": "SEG:security_avoidance_behavior",
+      "effect": "CUL:authoritarian_versus_democratic_values",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:authoritarian_versus_democratic_values::EDU:educational_equity_beliefs": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "CUL:authoritarian_versus_democratic_values",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:corruption_perception::CUL:authoritarian_versus_democratic_values": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:authoritarian_versus_democratic_values::GEN:gender_equality_awareness_exposure": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:authoritarian_versus_democratic_values::REL:religious_practice_and_devotion": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:authoritarian_versus_democratic_values::JUS:institutional_justice_trust": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:authoritarian_versus_democratic_values::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "CUL:authoritarian_versus_democratic_values",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:authoritarian_versus_democratic_values::IDE:national_identity_and_pride": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP:cultural_socialization_in_childhood::EDU:educational_equity_beliefs": {
+      "cause": "DEP:cultural_socialization_in_childhood",
+      "effect": "EDU:educational_equity_beliefs",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DEP:cultural_socialization_in_childhood::POB:subjective_social_mobility": {
+      "cause": "DEP:cultural_socialization_in_childhood",
+      "effect": "POB:subjective_social_mobility",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:civic_and_political_participation::DEP:cultural_socialization_in_childhood": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP:cultural_openness_and_national_identity::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP:cultural_openness_and_national_identity::EDU:educational_equity_beliefs": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "DEP:cultural_openness_and_national_identity",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DEP:cultural_openness_and_national_identity::IND:indigenous_cultural_knowledge_and_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:authoritarian_versus_democratic_values::DEP:cultural_openness_and_national_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP:cultural_openness_and_national_identity::IDE:moral_conservatism_and_social_values": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP:ethnocultural_identity_and_linguistic_capital::POB:structural_attribution_of_poverty": {
+      "cause": "DEP:ethnocultural_identity_and_linguistic_capital",
+      "effect": "POB:structural_attribution_of_poverty",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DEP:ethnocultural_identity_and_linguistic_capital::EDU:school_environment_quality": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP:ethnocultural_identity_and_linguistic_capital::IND:perceived_ethnic_discrimination": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP:ethnocultural_identity_and_linguistic_capital::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP:ethnocultural_identity_and_linguistic_capital::SAL:functional_health_status": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP:ethnocultural_identity_and_linguistic_capital::IND:indigenous_rights_and_autonomy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:civic_and_political_participation::DEP:ethnocultural_identity_and_linguistic_capital": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP:reading_engagement_and_literacy_orientation::EDU:educational_equity_beliefs": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "DEP:reading_engagement_and_literacy_orientation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:civic_and_political_participation::DEP:reading_engagement_and_literacy_orientation": {
+      "cause": "DEP:reading_engagement_and_literacy_orientation",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DEP:reading_engagement_and_literacy_orientation::SOC:digital_literacy_and_internet_engagement": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE:information_capital::DEP:reading_engagement_and_literacy_orientation": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP:reading_engagement_and_literacy_orientation::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "DEP:reading_engagement_and_literacy_orientation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DEP:subjective_socioeconomic_status::SAL:functional_health_status": {
+      "cause": "DEP:subjective_socioeconomic_status",
+      "effect": "SAL:functional_health_status",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:democratic_legitimacy::DEP:subjective_socioeconomic_status": {
+      "cause": "DEP:subjective_socioeconomic_status",
+      "effect": "CUL:democratic_legitimacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:institutional_trust_and_efficacy::DEP:subjective_socioeconomic_status": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP:subjective_socioeconomic_status::JUS:institutional_justice_trust": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP:subjective_socioeconomic_status::HAB:physical_housing_quality": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP:subjective_socioeconomic_status::SEG:security_avoidance_behavior": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:corruption_perception::DER:institutional_trust_and_justice_system_performance": {
+      "cause": "COR:corruption_perception",
+      "effect": "DER:institutional_trust_and_justice_system_performance",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:democratic_legitimacy::DER:institutional_trust_and_justice_system_performance": {
+      "cause": "DER:institutional_trust_and_justice_system_performance",
+      "effect": "CUL:democratic_legitimacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER:institutional_trust_and_justice_system_performance::SEG:victimization_exposure": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:institutional_trust_and_justice_system_performance::EDU:educational_equity_beliefs": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "DER:institutional_trust_and_justice_system_performance",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER:institutional_trust_and_justice_system_performance::JUS:institutional_justice_trust": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:authoritarian_attitudes_and_punitive_tolerance::SEG:victimization_exposure": {
+      "cause": "SEG:victimization_exposure",
+      "effect": "DER:authoritarian_attitudes_and_punitive_tolerance",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER:authoritarian_attitudes_and_punitive_tolerance::JUS:institutional_justice_trust": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:authoritarian_attitudes_and_punitive_tolerance::EDU:educational_equity_beliefs": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "DER:authoritarian_attitudes_and_punitive_tolerance",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER:authoritarian_attitudes_and_punitive_tolerance::SOC:media_consumption_and_news_habits": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:perceived_discrimination_and_social_exclusion::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "DER:perceived_discrimination_and_social_exclusion",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER:perceived_discrimination_and_social_exclusion::SAL:functional_health_status": {
+      "cause": "DER:perceived_discrimination_and_social_exclusion",
+      "effect": "SAL:functional_health_status",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER:perceived_discrimination_and_social_exclusion::IND:indigenous_rights_and_autonomy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:perceived_discrimination_and_social_exclusion::EDU:educational_equity_beliefs": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "DER:perceived_discrimination_and_social_exclusion",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "DER:perceived_discrimination_and_social_exclusion::GEN:tolerance_of_gender_based_violence": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:civic_and_political_participation::DER:perceived_discrimination_and_social_exclusion": {
+      "cause": "DER:perceived_discrimination_and_social_exclusion",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER:perceived_discrimination_and_social_exclusion::REL:religious_socialization_and_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:gender_family_and_vulnerable_group_rights::GEN:gender_equality_awareness_exposure": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:gender_family_and_vulnerable_group_rights::EDU:educational_equity_beliefs": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "DER:gender_family_and_vulnerable_group_rights",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER:gender_family_and_vulnerable_group_rights::FAM:family_socialization_and_values_transmission": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:civil_liberties_and_protest_rights::EDU:perceived_education_quality": {
+      "cause": "EDU:perceived_education_quality",
+      "effect": "DER:civil_liberties_and_protest_rights",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:authoritarian_versus_democratic_values::DER:civil_liberties_and_protest_rights": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:civil_liberties_and_protest_rights::SEG:victimization_exposure": {
+      "cause": "SEG:victimization_exposure",
+      "effect": "DER:civil_liberties_and_protest_rights",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER:civil_liberties_and_protest_rights::SOC:digital_access_and_equipment": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:institutional_trust_and_efficacy::DER:civil_liberties_and_protest_rights": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:civil_liberties_and_protest_rights::GLO:cosmopolitan_identity": {
+      "cause": "GLO:cosmopolitan_identity",
+      "effect": "DER:civil_liberties_and_protest_rights",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "ECO:economic_wellbeing_perception::POB:subjective_social_mobility": {
+      "cause": null,
+      "effect": null,
+      "fwd": 1,
+      "rev": 1,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "ECO:economic_wellbeing_perception::IDE:subjective_wellbeing_and_life_satisfaction": {
+      "cause": "ECO:economic_wellbeing_perception",
+      "effect": "IDE:subjective_wellbeing_and_life_satisfaction",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:economic_wellbeing_perception::SAL:subjective_wellbeing_and_life_quality": {
+      "cause": "ECO:economic_wellbeing_perception",
+      "effect": "SAL:subjective_wellbeing_and_life_quality",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:economic_wellbeing_perception::EDU:educational_equity_beliefs": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:economic_wellbeing_perception::IDE:institutional_and_social_trust": {
+      "cause": "IDE:institutional_and_social_trust",
+      "effect": "ECO:economic_wellbeing_perception",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:job_quality_precariousness::SAL:healthcare_access_and_utilization": {
+      "cause": "ECO:job_quality_precariousness",
+      "effect": "SAL:healthcare_access_and_utilization",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:job_quality_precariousness::POB:material_living_standards": {
+      "cause": "ECO:job_quality_precariousness",
+      "effect": "POB:material_living_standards",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:job_quality_precariousness::EDU:educational_equity_beliefs": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "ECO:job_quality_precariousness",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:job_quality_precariousness::GEN:gender_role_traditionalism": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:job_quality_precariousness::HAB:housing_tenure_security": {
+      "cause": "ECO:job_quality_precariousness",
+      "effect": "HAB:housing_tenure_security",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:job_quality_precariousness::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:job_quality_precariousness::FAM:family_cohesion_quality": {
+      "cause": "ECO:job_quality_precariousness",
+      "effect": "FAM:family_cohesion_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:institutional_trust_and_efficacy::ECO:job_quality_precariousness": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:institutional_trust_and_efficacy::ECO:job_quality_precariousness": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:labor_market_attachment::EDU:educational_equity_beliefs": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "ECO:labor_market_attachment",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:labor_market_attachment::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:labor_market_attachment::POB:structural_attribution_of_poverty": {
+      "cause": "ECO:labor_market_attachment",
+      "effect": "POB:structural_attribution_of_poverty",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:labor_market_attachment::SAL:functional_health_status": {
+      "cause": null,
+      "effect": null,
+      "fwd": 1,
+      "rev": 1,
+      "corr": 0,
+      "direction": "ambiguous"
+    },
+    "ECO:work_values_preferences::IDE:national_identity_and_pride": {
+      "cause": "IDE:national_identity_and_pride",
+      "effect": "ECO:work_values_preferences",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:authoritarian_versus_democratic_values::ECO:work_values_preferences": {
+      "cause": "CUL:authoritarian_versus_democratic_values",
+      "effect": "ECO:work_values_preferences",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:work_values_preferences::EDU:educational_equity_beliefs": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:work_values_preferences::GEN:gender_role_traditionalism": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:work_values_preferences::FAM:family_cohesion_quality": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:work_values_preferences::MIG:migration_policy_attitudes": {
+      "cause": "ECO:work_values_preferences",
+      "effect": "MIG:migration_policy_attitudes",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:human_capital_labor_alignment::EDU:perceived_education_quality": {
+      "cause": "EDU:perceived_education_quality",
+      "effect": "ECO:human_capital_labor_alignment",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "ECO:human_capital_labor_alignment::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE:science_technology_engagement::ECO:human_capital_labor_alignment": {
+      "cause": "CIE:science_technology_engagement",
+      "effect": "ECO:human_capital_labor_alignment",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:human_capital_labor_alignment::GLO:cultural_openness": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:human_capital_labor_alignment::GEN:gender_role_traditionalism": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:perceived_education_quality::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "EDU:perceived_education_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:institutional_trust_and_efficacy::EDU:perceived_education_quality": {
+      "cause": "EDU:perceived_education_quality",
+      "effect": "CUL:institutional_trust_and_efficacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:institutional_trust_and_efficacy::EDU:perceived_education_quality": {
+      "cause": "EDU:perceived_education_quality",
+      "effect": "COR:institutional_trust_and_efficacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:labor_market_attachment::EDU:perceived_education_quality": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:perceived_education_quality::IDE:national_identity_and_pride": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:school_environment_quality::FED:federalism_preference": {
+      "cause": "FED:federalism_preference",
+      "effect": "EDU:school_environment_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:school_environment_quality::SEG:security_avoidance_behavior": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:school_environment_quality::SAL:functional_health_status": {
+      "cause": "EDU:school_environment_quality",
+      "effect": "SAL:functional_health_status",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:school_environment_quality::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "EDU:school_environment_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:digital_and_cultural_capital::SOC:digital_civic_and_political_participation": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE:information_capital::EDU:digital_and_cultural_capital": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:civic_and_political_participation::EDU:digital_and_cultural_capital": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP:cultural_socialization_in_childhood::EDU:digital_and_cultural_capital": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::GEN:gender_equality_awareness_exposure": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "GEN:gender_equality_awareness_exposure",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::POB:structural_attribution_of_poverty": {
+      "cause": null,
+      "effect": null,
+      "fwd": 1,
+      "rev": 1,
+      "corr": 0,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::IND:indigenous_rights_and_autonomy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::POB:subjective_social_mobility": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "POB:subjective_social_mobility",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::IND:perceived_ethnic_discrimination": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_trajectory_and_continuity::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "EDU:educational_trajectory_and_continuity",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:economic_wellbeing_perception::EDU:educational_trajectory_and_continuity": {
+      "cause": "ECO:economic_wellbeing_perception",
+      "effect": "EDU:educational_trajectory_and_continuity",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:labor_market_attachment::EDU:educational_trajectory_and_continuity": {
+      "cause": "EDU:educational_trajectory_and_continuity",
+      "effect": "ECO:labor_market_attachment",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_trajectory_and_continuity::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_trajectory_and_continuity::FAM:family_cohesion_quality": {
+      "cause": "FAM:family_cohesion_quality",
+      "effect": "EDU:educational_trajectory_and_continuity",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:civic_and_political_participation::EDU:educational_trajectory_and_continuity": {
+      "cause": "EDU:educational_trajectory_and_continuity",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_trajectory_and_continuity::NIN:vulnerability_and_risk_exposure": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_trajectory_and_continuity::SAL:health_behaviors_and_lifestyle": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_trajectory_and_continuity::GEN:gender_role_traditionalism": {
+      "cause": "GEN:gender_role_traditionalism",
+      "effect": "EDU:educational_trajectory_and_continuity",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_trajectory_and_continuity::IND:indigenous_cultural_knowledge_and_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:labor_market_attachment::ENV:ageism_and_age_discrimination": {
+      "cause": "ENV:ageism_and_age_discrimination",
+      "effect": "ECO:labor_market_attachment",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::ENV:ageism_and_age_discrimination": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "ENV:ageism_and_age_discrimination",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ENV:ageism_and_age_discrimination::GEN:gender_role_traditionalism": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ENV:ageism_and_age_discrimination::FAM:family_cohesion_quality": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::ENV:elder_abuse_awareness": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "ENV:elder_abuse_awareness",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ENV:elder_abuse_awareness::GEN:tolerance_of_gender_based_violence": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ENV:elder_abuse_awareness::SOC:digital_access_and_equipment": {
+      "cause": "SOC:digital_access_and_equipment",
+      "effect": "ENV:elder_abuse_awareness",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ENV:elder_abuse_awareness::SEG:security_avoidance_behavior": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:institutional_trust_and_efficacy::ENV:state_and_family_responsibility_for_elder_care": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ENV:state_and_family_responsibility_for_elder_care::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "ENV:state_and_family_responsibility_for_elder_care",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ENV:state_and_family_responsibility_for_elder_care::FAM:family_socialization_and_values_transmission": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ENV:state_and_family_responsibility_for_elder_care::GEN:gender_role_traditionalism": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ENV:state_and_family_responsibility_for_elder_care::IDE:moral_conservatism_and_social_values": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ENV:state_and_family_responsibility_for_elder_care::FED:federalism_preference": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ENV:perceived_quality_of_life_and_social_inclusion_of_older_adults::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "ENV:perceived_quality_of_life_and_social_inclusion_of_older_adults",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:economic_wellbeing_perception::ENV:perceived_quality_of_life_and_social_inclusion_of_older_adults": {
+      "cause": "ECO:economic_wellbeing_perception",
+      "effect": "ENV:perceived_quality_of_life_and_social_inclusion_of_older_adults",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ENV:perceived_quality_of_life_and_social_inclusion_of_older_adults::SAL:functional_health_status": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ENV:perceived_quality_of_life_and_social_inclusion_of_older_adults::HAB:physical_housing_quality": {
+      "cause": "HAB:physical_housing_quality",
+      "effect": "ENV:perceived_quality_of_life_and_social_inclusion_of_older_adults",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:institutional_trust_and_efficacy::ENV:perceived_quality_of_life_and_social_inclusion_of_older_adults": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ENV:perceived_quality_of_life_and_social_inclusion_of_older_adults::JUS:institutional_justice_trust": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ENV:intergenerational_contact_and_family_integration::FAM:family_cohesion_quality": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ENV:intergenerational_contact_and_family_integration::MIG:migration_policy_attitudes": {
+      "cause": "MIG:migration_policy_attitudes",
+      "effect": "ENV:intergenerational_contact_and_family_integration",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ENV:intergenerational_contact_and_family_integration::IDE:national_identity_and_pride": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ENV:intergenerational_contact_and_family_integration::REL:religious_socialization_and_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ENV:intergenerational_contact_and_family_integration::HAB:physical_housing_quality": {
+      "cause": "HAB:physical_housing_quality",
+      "effect": "ENV:intergenerational_contact_and_family_integration",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ENV:intergenerational_contact_and_family_integration::IND:indigenous_rights_and_autonomy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:school_environment_quality::FAM:family_cohesion_quality": {
+      "cause": "FAM:family_cohesion_quality",
+      "effect": "EDU:school_environment_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:family_cohesion_quality::REL:religious_practice_and_devotion": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "FAM:family_cohesion_quality::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "FAM:family_cohesion_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:economic_wellbeing_perception::FAM:family_cohesion_quality": {
+      "cause": "ECO:economic_wellbeing_perception",
+      "effect": "FAM:family_cohesion_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:family_cohesion_quality::NIN:vulnerability_and_risk_exposure": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "FAM:family_cohesion_quality::MIG:migration_policy_attitudes": {
+      "cause": "MIG:migration_policy_attitudes",
+      "effect": "FAM:family_cohesion_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:traditional_family_ideology::GEN:gender_equality_awareness_exposure": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:authoritarian_versus_democratic_values::FAM:traditional_family_ideology": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::FAM:traditional_family_ideology": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "FAM:traditional_family_ideology",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:traditional_family_ideology::IND:indigenous_cultural_knowledge_and_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FAM:traditional_family_ideology::IDE:national_identity_and_pride": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:economic_wellbeing_perception::FAM:union_formation_motivations": {
+      "cause": "ECO:economic_wellbeing_perception",
+      "effect": "FAM:union_formation_motivations",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:union_formation_motivations::POB:subjective_economic_wellbeing": {
+      "cause": "POB:subjective_economic_wellbeing",
+      "effect": "FAM:union_formation_motivations",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::FAM:union_formation_motivations": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "FAM:union_formation_motivations",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:union_formation_motivations::GEN:gender_role_traditionalism": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FAM:union_formation_motivations::MIG:migration_policy_attitudes": {
+      "cause": "MIG:migration_policy_attitudes",
+      "effect": "FAM:union_formation_motivations",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:family_instability_and_conflict::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "FAM:family_instability_and_conflict",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:economic_wellbeing_perception::FAM:family_instability_and_conflict": {
+      "cause": "ECO:economic_wellbeing_perception",
+      "effect": "FAM:family_instability_and_conflict",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:family_instability_and_conflict::NIN:child_agency_and_participation": {
+      "cause": "FAM:family_instability_and_conflict",
+      "effect": "NIN:child_agency_and_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:family_instability_and_conflict::GEN:tolerance_of_gender_based_violence": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FAM:family_instability_and_conflict::SEG:security_avoidance_behavior": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FAM:family_instability_and_conflict::MIG:migration_policy_attitudes": {
+      "cause": "MIG:migration_policy_attitudes",
+      "effect": "FAM:family_instability_and_conflict",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:family_instability_and_conflict::JUS:institutional_justice_trust": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:civic_and_political_participation::FAM:family_socialization_and_values_transmission": {
+      "cause": "FAM:family_socialization_and_values_transmission",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:family_socialization_and_values_transmission::REL:religious_practice_and_devotion": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::FAM:family_socialization_and_values_transmission": {
+      "cause": "FAM:family_socialization_and_values_transmission",
+      "effect": "EDU:educational_equity_beliefs",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:family_socialization_and_values_transmission::IDE:national_identity_and_pride": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:corruption_perception::FAM:family_socialization_and_values_transmission": {
+      "cause": "FAM:family_socialization_and_values_transmission",
+      "effect": "COR:corruption_perception",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:family_socialization_and_values_transmission::IND:indigenous_cultural_knowledge_and_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FAM:family_socialization_and_values_transmission::GEN:gender_role_traditionalism": {
+      "cause": "FAM:family_socialization_and_values_transmission",
+      "effect": "GEN:gender_role_traditionalism",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "CUL:authoritarian_versus_democratic_values::FED:federalism_preference": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:work_values_preferences::FED:federalism_preference": {
+      "cause": "FED:federalism_preference",
+      "effect": "ECO:work_values_preferences",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FED:federalism_preference::POB:social_policy_preferences": {
+      "cause": "FED:federalism_preference",
+      "effect": "POB:social_policy_preferences",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "FED:federalism_preference::IDE:national_identity_and_pride": {
+      "cause": "IDE:national_identity_and_pride",
+      "effect": "FED:federalism_preference",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FED:federalism_preference::SEG:security_avoidance_behavior": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:corruption_perception::FED:institutional_trust_and_representativeness": {
+      "cause": "COR:corruption_perception",
+      "effect": "FED:institutional_trust_and_representativeness",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:civic_and_political_participation::FED:institutional_trust_and_representativeness": {
+      "cause": "FED:institutional_trust_and_representativeness",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FED:institutional_trust_and_representativeness::SEG:security_avoidance_behavior": {
+      "cause": "SEG:security_avoidance_behavior",
+      "effect": "FED:institutional_trust_and_representativeness",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FED:institutional_trust_and_representativeness::JUS:institutional_justice_trust": {
+      "cause": "JUS:institutional_justice_trust",
+      "effect": "FED:institutional_trust_and_representativeness",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER:institutional_trust_and_justice_system_performance::FED:institutional_trust_and_representativeness": {
+      "cause": "DER:institutional_trust_and_justice_system_performance",
+      "effect": "FED:institutional_trust_and_representativeness",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:economic_wellbeing_perception::FED:institutional_trust_and_representativeness": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:corruption_perception::FED:subnational_government_performance": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FED:subnational_government_performance::POB:subjective_economic_wellbeing": {
+      "cause": "FED:subnational_government_performance",
+      "effect": "POB:subjective_economic_wellbeing",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FED:subnational_government_performance::SAL:subjective_wellbeing_and_life_quality": {
+      "cause": "FED:subnational_government_performance",
+      "effect": "SAL:subjective_wellbeing_and_life_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:perceived_education_quality::FED:subnational_government_performance": {
+      "cause": "FED:subnational_government_performance",
+      "effect": "EDU:perceived_education_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FED:subnational_government_performance::HAB:physical_housing_quality": {
+      "cause": "FED:subnational_government_performance",
+      "effect": "HAB:physical_housing_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FED:security_governance_preferences::SEG:victimization_exposure": {
+      "cause": "SEG:victimization_exposure",
+      "effect": "FED:security_governance_preferences",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FED:security_governance_preferences::SEG:police_institutional_trust": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:civil_liberties_and_protest_rights::FED:security_governance_preferences": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:corruption_perception::FED:security_governance_preferences": {
+      "cause": "COR:corruption_perception",
+      "effect": "FED:security_governance_preferences",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:civic_and_political_participation::FED:political_interest_and_efficacy": {
+      "cause": "FED:political_interest_and_efficacy",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::FED:political_interest_and_efficacy": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "FED:political_interest_and_efficacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FED:political_interest_and_efficacy::SOC:media_consumption_and_news_habits": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:authoritarian_versus_democratic_values::FED:political_interest_and_efficacy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::GEN:gender_role_traditionalism": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "GEN:gender_role_traditionalism",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GEN:gender_role_traditionalism::REL:religious_practice_and_devotion": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "CUL:authoritarian_versus_democratic_values::GEN:gender_role_traditionalism": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GEN:gender_role_traditionalism::IND:indigenous_cultural_knowledge_and_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GEN:gender_role_traditionalism::IDE:national_identity_and_pride": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GEN:intimate_partner_control_autonomy::POB:structural_attribution_of_poverty": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:economic_wellbeing_perception::GEN:intimate_partner_control_autonomy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::GEN:intimate_partner_control_autonomy": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "GEN:intimate_partner_control_autonomy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:family_cohesion_quality::GEN:intimate_partner_control_autonomy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:civil_liberties_and_protest_rights::GEN:tolerance_of_gender_based_violence": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::GEN:tolerance_of_gender_based_violence": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "GEN:tolerance_of_gender_based_violence",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GEN:tolerance_of_gender_based_violence::POB:structural_attribution_of_poverty": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GEN:reproductive_autonomy_attitudes::REL:religious_practice_and_devotion": {
+      "cause": "REL:religious_practice_and_devotion",
+      "effect": "GEN:reproductive_autonomy_attitudes",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:family_cohesion_quality::GEN:reproductive_autonomy_attitudes": {
+      "cause": "GEN:reproductive_autonomy_attitudes",
+      "effect": "FAM:family_cohesion_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::GEN:reproductive_autonomy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GEN:reproductive_autonomy_attitudes::SAL:functional_health_status": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:civil_liberties_and_protest_rights::GEN:reproductive_autonomy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GEN:reproductive_autonomy_attitudes::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "GEN:reproductive_autonomy_attitudes",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GEN:gender_equality_awareness_exposure::JUS:institutional_justice_trust": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GEN:gender_equality_awareness_exposure::SEG:police_institutional_trust": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::GLO:cosmopolitan_identity": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "GLO:cosmopolitan_identity",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GLO:cosmopolitan_identity::IDE:national_identity_and_pride": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GLO:cosmopolitan_identity::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GLO:cosmopolitan_identity::SOC:media_consumption_and_news_habits": {
+      "cause": "SOC:media_consumption_and_news_habits",
+      "effect": "GLO:cosmopolitan_identity",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GLO:transnational_connectedness::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FAM:family_cohesion_quality::GLO:transnational_connectedness": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GLO:transnational_connectedness::SOC:media_consumption_and_news_habits": {
+      "cause": "GLO:transnational_connectedness",
+      "effect": "SOC:media_consumption_and_news_habits",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::GLO:cultural_openness": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "GLO:cultural_openness",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GLO:cultural_openness::SOC:digital_literacy_and_internet_engagement": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE:science_technology_engagement::GLO:cultural_openness": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GLO:cultural_openness::IDE:national_identity_and_pride": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GLO:cultural_openness::IND:social_distance_toward_indigenous_people": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GLO:national_cultural_pride::IDE:national_identity_and_pride": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GLO:national_cultural_pride::IND:social_distance_toward_indigenous_people": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP:cultural_socialization_in_childhood::GLO:national_cultural_pride": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GLO:national_cultural_pride::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:perceived_education_quality::GLO:national_cultural_pride": {
+      "cause": "EDU:perceived_education_quality",
+      "effect": "GLO:national_cultural_pride",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:institutional_trust_and_efficacy::GLO:global_governance_support": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:authoritarian_attitudes_and_punitive_tolerance::GLO:global_governance_support": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::GLO:global_governance_support": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "GLO:global_governance_support",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GLO:global_governance_support::MED:environmental_concern_risk_perception": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:corruption_perception::GLO:global_governance_support": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GLO:global_governance_support::SEG:security_avoidance_behavior": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:economic_wellbeing_perception::GLO:global_governance_support": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "HAB:physical_housing_quality::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "HAB:physical_housing_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "HAB:physical_housing_quality::SAL:functional_health_status": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::HAB:physical_housing_quality": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "HAB:physical_housing_quality::IND:indigenous_cultural_knowledge_and_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "HAB:physical_housing_quality::MIG:migration_policy_attitudes": {
+      "cause": "MIG:migration_policy_attitudes",
+      "effect": "HAB:physical_housing_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "HAB:basic_services_access::SAL:functional_health_status": {
+      "cause": "HAB:basic_services_access",
+      "effect": "SAL:functional_health_status",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "HAB:basic_services_access::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "HAB:basic_services_access",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "HAB:basic_services_access::MED:environmental_knowledge_literacy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FED:federalism_preference::HAB:basic_services_access": {
+      "cause": "FED:federalism_preference",
+      "effect": "HAB:basic_services_access",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "HAB:basic_services_access::IND:indigenous_rights_and_autonomy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "HAB:basic_services_access::NIN:child_agency_and_participation": {
+      "cause": "HAB:basic_services_access",
+      "effect": "NIN:child_agency_and_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::HAB:household_asset_endowment": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "HAB:household_asset_endowment::SOC:digital_access_and_equipment": {
+      "cause": "HAB:household_asset_endowment",
+      "effect": "SOC:digital_access_and_equipment",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CIE:information_capital::HAB:household_asset_endowment": {
+      "cause": "HAB:household_asset_endowment",
+      "effect": "CIE:information_capital",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GEN:gender_role_traditionalism::HAB:household_asset_endowment": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FAM:family_cohesion_quality::HAB:household_asset_endowment": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "HAB:housing_tenure_security::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GEN:gender_role_traditionalism::HAB:housing_tenure_security": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:gender_family_and_vulnerable_group_rights::HAB:housing_tenure_security": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:institutional_trust_and_efficacy::HAB:housing_tenure_security": {
+      "cause": "CUL:institutional_trust_and_efficacy",
+      "effect": "HAB:housing_tenure_security",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "HAB:housing_tenure_security::IND:indigenous_rights_and_autonomy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FAM:family_cohesion_quality::HAB:housing_tenure_security": {
+      "cause": "HAB:housing_tenure_security",
+      "effect": "FAM:family_cohesion_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:institutional_trust_and_efficacy::HAB:housing_policy_efficacy_beliefs": {
+      "cause": "CUL:institutional_trust_and_efficacy",
+      "effect": "HAB:housing_policy_efficacy_beliefs",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:institutional_trust_and_efficacy::HAB:housing_policy_efficacy_beliefs": {
+      "cause": "COR:institutional_trust_and_efficacy",
+      "effect": "HAB:housing_policy_efficacy_beliefs",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:corruption_perception::HAB:housing_policy_efficacy_beliefs": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "HAB:housing_policy_efficacy_beliefs::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "HAB:housing_policy_efficacy_beliefs",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER:civil_liberties_and_protest_rights::HAB:housing_policy_efficacy_beliefs": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FED:federalism_preference::HAB:housing_policy_efficacy_beliefs": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "HAB:housing_policy_efficacy_beliefs::SEG:security_avoidance_behavior": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:corruption_perception::IDE:institutional_and_social_trust": {
+      "cause": "COR:corruption_perception",
+      "effect": "IDE:institutional_and_social_trust",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IDE:institutional_and_social_trust::SEG:victimization_exposure": {
+      "cause": "SEG:victimization_exposure",
+      "effect": "IDE:institutional_and_social_trust",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:civic_and_political_participation::IDE:institutional_and_social_trust": {
+      "cause": "IDE:institutional_and_social_trust",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IDE:institutional_and_social_trust::JUS:institutional_justice_trust": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "IDE:national_identity_and_pride::MIG:migration_policy_attitudes": {
+      "cause": "IDE:national_identity_and_pride",
+      "effect": "MIG:migration_policy_attitudes",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IDE:national_identity_and_pride::IND:indigenous_cultural_knowledge_and_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "CUL:civic_and_political_participation::IDE:national_identity_and_pride": {
+      "cause": "IDE:national_identity_and_pride",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IDE:subjective_wellbeing_and_life_satisfaction::POB:subjective_economic_wellbeing": {
+      "cause": "POB:subjective_economic_wellbeing",
+      "effect": "IDE:subjective_wellbeing_and_life_satisfaction",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IDE:subjective_wellbeing_and_life_satisfaction::SAL:functional_health_status": {
+      "cause": "SAL:functional_health_status",
+      "effect": "IDE:subjective_wellbeing_and_life_satisfaction",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::IDE:subjective_wellbeing_and_life_satisfaction": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "IDE:subjective_wellbeing_and_life_satisfaction",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:family_cohesion_quality::IDE:subjective_wellbeing_and_life_satisfaction": {
+      "cause": "FAM:family_cohesion_quality",
+      "effect": "IDE:subjective_wellbeing_and_life_satisfaction",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IDE:subjective_wellbeing_and_life_satisfaction::SEG:victimization_exposure": {
+      "cause": "SEG:victimization_exposure",
+      "effect": "IDE:subjective_wellbeing_and_life_satisfaction",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "HAB:physical_housing_quality::IDE:subjective_wellbeing_and_life_satisfaction": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:perceived_education_quality::IDE:socioeconomic_mobility_and_opportunity_perception": {
+      "cause": "EDU:perceived_education_quality",
+      "effect": "IDE:socioeconomic_mobility_and_opportunity_perception",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IDE:socioeconomic_mobility_and_opportunity_perception::POB:structural_attribution_of_poverty": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:corruption_perception::IDE:socioeconomic_mobility_and_opportunity_perception": {
+      "cause": "COR:corruption_perception",
+      "effect": "IDE:socioeconomic_mobility_and_opportunity_perception",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:democratic_legitimacy::IDE:socioeconomic_mobility_and_opportunity_perception": {
+      "cause": "IDE:socioeconomic_mobility_and_opportunity_perception",
+      "effect": "CUL:democratic_legitimacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IDE:moral_conservatism_and_social_values::REL:religious_practice_and_devotion": {
+      "cause": "REL:religious_practice_and_devotion",
+      "effect": "IDE:moral_conservatism_and_social_values",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GEN:gender_role_traditionalism::IDE:moral_conservatism_and_social_values": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::IDE:moral_conservatism_and_social_values": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "IDE:moral_conservatism_and_social_values",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:family_socialization_and_values_transmission::IDE:moral_conservatism_and_social_values": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:civic_and_political_participation::IDE:moral_conservatism_and_social_values": {
+      "cause": "IDE:moral_conservatism_and_social_values",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:institutional_trust_and_efficacy::IND:perceived_ethnic_discrimination": {
+      "cause": "IND:perceived_ethnic_discrimination",
+      "effect": "CUL:institutional_trust_and_efficacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IND:perceived_ethnic_discrimination::POB:structural_attribution_of_poverty": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:economic_wellbeing_perception::IND:perceived_ethnic_discrimination": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:school_environment_quality::IND:perceived_ethnic_discrimination": {
+      "cause": "EDU:school_environment_quality",
+      "effect": "IND:perceived_ethnic_discrimination",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IND:perceived_ethnic_discrimination::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FED:federalism_preference::IND:indigenous_rights_and_autonomy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:authoritarian_attitudes_and_punitive_tolerance::IND:indigenous_rights_and_autonomy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:authoritarian_versus_democratic_values::IND:indigenous_rights_and_autonomy": {
+      "cause": "CUL:authoritarian_versus_democratic_values",
+      "effect": "IND:indigenous_rights_and_autonomy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IDE:national_identity_and_pride::IND:indigenous_rights_and_autonomy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GLO:cultural_openness::IND:indigenous_rights_and_autonomy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "HAB:physical_housing_quality::IND:social_distance_toward_indigenous_people": {
+      "cause": "IND:social_distance_toward_indigenous_people",
+      "effect": "HAB:physical_housing_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IND:social_distance_toward_indigenous_people::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GEN:gender_role_traditionalism::IND:social_distance_toward_indigenous_people": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FAM:family_cohesion_quality::IND:social_distance_toward_indigenous_people": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:labor_market_attachment::IND:social_distance_toward_indigenous_people": {
+      "cause": "IND:social_distance_toward_indigenous_people",
+      "effect": "ECO:labor_market_attachment",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::IND:attributions_for_indigenous_disadvantage": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "IND:attributions_for_indigenous_disadvantage",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:corruption_perception::IND:attributions_for_indigenous_disadvantage": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:digital_and_cultural_capital::IND:indigenous_cultural_knowledge_and_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "IND:indigenous_cultural_knowledge_and_identity::REL:religious_practice_and_devotion": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP:cultural_socialization_in_childhood::IND:indigenous_cultural_knowledge_and_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:corruption_perception::JUS:institutional_justice_trust": {
+      "cause": "COR:corruption_perception",
+      "effect": "JUS:institutional_justice_trust",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "JUS:institutional_justice_trust::SEG:victimization_exposure": {
+      "cause": "SEG:victimization_exposure",
+      "effect": "JUS:institutional_justice_trust",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER:civil_liberties_and_protest_rights::JUS:institutional_justice_trust": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::JUS:institutional_justice_trust": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "JUS:institutional_justice_trust",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "JUS:legal_cynicism_extrajudicial_tolerance::SEG:victimization_exposure": {
+      "cause": "SEG:victimization_exposure",
+      "effect": "JUS:legal_cynicism_extrajudicial_tolerance",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:corruption_perception::JUS:legal_cynicism_extrajudicial_tolerance": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "JUS:legal_cynicism_extrajudicial_tolerance::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "JUS:legal_cynicism_extrajudicial_tolerance",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IND:indigenous_cultural_knowledge_and_identity::JUS:legal_cynicism_extrajudicial_tolerance": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::JUS:legal_knowledge_rights_awareness": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "JUS:legal_knowledge_rights_awareness",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER:civil_liberties_and_protest_rights::JUS:legal_knowledge_rights_awareness": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "JUS:legal_knowledge_rights_awareness::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "JUS:legal_knowledge_rights_awareness",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IND:indigenous_cultural_knowledge_and_identity::JUS:legal_knowledge_rights_awareness": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "JUS:legal_knowledge_rights_awareness::SOC:digital_access_and_equipment": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:corruption_perception::JUS:procedural_justice_expectations": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:authoritarian_versus_democratic_values::JUS:procedural_justice_expectations": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GEN:gender_role_traditionalism::JUS:procedural_justice_expectations": {
+      "cause": "GEN:gender_role_traditionalism",
+      "effect": "JUS:procedural_justice_expectations",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER:perceived_discrimination_and_social_exclusion::JUS:procedural_justice_expectations": {
+      "cause": "DER:perceived_discrimination_and_social_exclusion",
+      "effect": "JUS:procedural_justice_expectations",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "JUS:legal_problem_resolution_efficacy::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "JUS:legal_problem_resolution_efficacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::JUS:legal_problem_resolution_efficacy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GEN:gender_role_traditionalism::JUS:legal_problem_resolution_efficacy": {
+      "cause": "GEN:gender_role_traditionalism",
+      "effect": "JUS:legal_problem_resolution_efficacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "HAB:physical_housing_quality::JUS:legal_problem_resolution_efficacy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:labor_market_attachment::JUS:legal_problem_resolution_efficacy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FAM:family_cohesion_quality::JUS:legal_problem_resolution_efficacy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "IND:indigenous_cultural_knowledge_and_identity::JUS:legal_problem_resolution_efficacy": {
+      "cause": "IND:indigenous_cultural_knowledge_and_identity",
+      "effect": "JUS:legal_problem_resolution_efficacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::MED:environmental_knowledge_literacy": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "MED:environmental_knowledge_literacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CIE:science_technology_engagement::MED:environmental_knowledge_literacy": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "MED:environmental_knowledge_literacy::SOC:digital_access_and_equipment": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:institutional_trust_and_efficacy::MED:environmental_concern_risk_perception": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:institutional_trust_and_efficacy::MED:environmental_concern_risk_perception": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "MED:environmental_concern_risk_perception::SAL:functional_health_status": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "MED:environmental_concern_risk_perception::POB:material_living_standards": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:civic_and_political_participation::MED:pro_environmental_civic_engagement": {
+      "cause": "CUL:civic_and_political_participation",
+      "effect": "MED:pro_environmental_civic_engagement",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:institutional_trust_and_efficacy::MED:pro_environmental_civic_engagement": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:institutional_trust_and_efficacy::MED:pro_environmental_civic_engagement": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::MED:pro_environmental_civic_engagement": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "MED:pro_environmental_civic_engagement",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:corruption_perception::MED:environmental_governance_attitudes": {
+      "cause": "COR:corruption_perception",
+      "effect": "MED:environmental_governance_attitudes",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:institutional_trust_and_efficacy::MED:environmental_governance_attitudes": {
+      "cause": "CUL:institutional_trust_and_efficacy",
+      "effect": "MED:environmental_governance_attitudes",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:civic_and_political_participation::MED:environmental_governance_attitudes": {
+      "cause": "CUL:civic_and_political_participation",
+      "effect": "MED:environmental_governance_attitudes",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IDE:moral_conservatism_and_social_values::MED:environmental_governance_attitudes": {
+      "cause": "IDE:moral_conservatism_and_social_values",
+      "effect": "MED:environmental_governance_attitudes",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FED:federalism_preference::MED:environmental_governance_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "MED:socioeconomic_environmental_context::SAL:functional_health_status": {
+      "cause": "MED:socioeconomic_environmental_context",
+      "effect": "SAL:functional_health_status",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "MED:socioeconomic_environmental_context::POB:material_living_standards": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "HAB:physical_housing_quality::MED:socioeconomic_environmental_context": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:digital_and_cultural_capital::MED:socioeconomic_environmental_context": {
+      "cause": "EDU:digital_and_cultural_capital",
+      "effect": "MED:socioeconomic_environmental_context",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IND:indigenous_rights_and_autonomy::MED:socioeconomic_environmental_context": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "MED:socioeconomic_environmental_context::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:economic_wellbeing_perception::MED:socioeconomic_environmental_context": {
+      "cause": "ECO:economic_wellbeing_perception",
+      "effect": "MED:socioeconomic_environmental_context",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:economic_wellbeing_perception::MIG:emigration_intention": {
+      "cause": "ECO:economic_wellbeing_perception",
+      "effect": "MIG:emigration_intention",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "MIG:emigration_intention::POB:subjective_economic_wellbeing": {
+      "cause": "POB:subjective_economic_wellbeing",
+      "effect": "MIG:emigration_intention",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "MIG:emigration_intention::SEG:victimization_exposure": {
+      "cause": "SEG:victimization_exposure",
+      "effect": "MIG:emigration_intention",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::MIG:emigration_intention": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:institutional_trust_and_efficacy::MIG:emigration_intention": {
+      "cause": "CUL:institutional_trust_and_efficacy",
+      "effect": "MIG:emigration_intention",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:institutional_trust_and_efficacy::MIG:emigration_intention": {
+      "cause": "COR:institutional_trust_and_efficacy",
+      "effect": "MIG:emigration_intention",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "MIG:perceived_opportunity_deprivation::POB:material_living_standards": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:corruption_perception::MIG:perceived_opportunity_deprivation": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::MIG:perceived_opportunity_deprivation": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:democratic_legitimacy::MIG:perceived_opportunity_deprivation": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FAM:family_cohesion_quality::MIG:transnational_social_ties": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::MIG:xenophilia_tolerance": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "MIG:xenophilia_tolerance",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GLO:cosmopolitan_identity::MIG:xenophilia_tolerance": {
+      "cause": "GLO:cosmopolitan_identity",
+      "effect": "MIG:xenophilia_tolerance",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER:civil_liberties_and_protest_rights::MIG:xenophilia_tolerance": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "IDE:national_identity_and_pride::MIG:xenophilia_tolerance": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GEN:gender_role_traditionalism::MIG:xenophilia_tolerance": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "IND:indigenous_rights_and_autonomy::MIG:xenophilia_tolerance": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:civil_liberties_and_protest_rights::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:civic_and_political_participation::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:institutional_trust_and_efficacy::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:institutional_trust_and_efficacy::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "JUS:institutional_justice_trust::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FED:federalism_preference::MIG:migration_policy_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:economic_wellbeing_perception::NIN:perceived_situation_of_minors": {
+      "cause": "ECO:economic_wellbeing_perception",
+      "effect": "NIN:perceived_situation_of_minors",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "NIN:perceived_situation_of_minors::POB:subjective_economic_wellbeing": {
+      "cause": "POB:subjective_economic_wellbeing",
+      "effect": "NIN:perceived_situation_of_minors",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "NIN:perceived_situation_of_minors::SEG:security_avoidance_behavior": {
+      "cause": "SEG:security_avoidance_behavior",
+      "effect": "NIN:perceived_situation_of_minors",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:institutional_trust_and_efficacy::NIN:perceived_situation_of_minors": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:institutional_trust_and_efficacy::NIN:perceived_situation_of_minors": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:perceived_education_quality::NIN:perceived_situation_of_minors": {
+      "cause": "EDU:perceived_education_quality",
+      "effect": "NIN:perceived_situation_of_minors",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER:civil_liberties_and_protest_rights::NIN:perceived_situation_of_minors": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:authoritarian_attitudes_and_punitive_tolerance::NIN:children_rights_recognition": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:perceived_education_quality::NIN:children_rights_recognition": {
+      "cause": "EDU:perceived_education_quality",
+      "effect": "NIN:children_rights_recognition",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:authoritarian_versus_democratic_values::NIN:children_rights_recognition": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GEN:gender_role_traditionalism::NIN:children_rights_recognition": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:democratic_legitimacy::NIN:child_agency_and_participation": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FAM:family_socialization_and_values_transmission::NIN:child_agency_and_participation": {
+      "cause": "FAM:family_socialization_and_values_transmission",
+      "effect": "NIN:child_agency_and_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:civic_and_political_participation::NIN:child_agency_and_participation": {
+      "cause": "NIN:child_agency_and_participation",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GEN:gender_equality_awareness_exposure::NIN:child_agency_and_participation": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:perceived_education_quality::NIN:child_agency_and_participation": {
+      "cause": "EDU:perceived_education_quality",
+      "effect": "NIN:child_agency_and_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:economic_wellbeing_perception::NIN:education_quality_and_opportunity": {
+      "cause": "NIN:education_quality_and_opportunity",
+      "effect": "ECO:economic_wellbeing_perception",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "NIN:education_quality_and_opportunity::POB:subjective_social_mobility": {
+      "cause": "NIN:education_quality_and_opportunity",
+      "effect": "POB:subjective_social_mobility",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "NIN:education_quality_and_opportunity::POB:structural_attribution_of_poverty": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "IDE:institutional_and_social_trust::NIN:education_quality_and_opportunity": {
+      "cause": "NIN:education_quality_and_opportunity",
+      "effect": "IDE:institutional_and_social_trust",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CIE:science_technology_policy_attitudes::NIN:education_quality_and_opportunity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FED:subnational_government_performance::NIN:education_quality_and_opportunity": {
+      "cause": "FED:subnational_government_performance",
+      "effect": "NIN:education_quality_and_opportunity",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IND:indigenous_rights_and_autonomy::NIN:education_quality_and_opportunity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::NIN:education_quality_and_opportunity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "NIN:vulnerability_and_risk_exposure::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "NIN:vulnerability_and_risk_exposure",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:economic_wellbeing_perception::NIN:vulnerability_and_risk_exposure": {
+      "cause": "ECO:economic_wellbeing_perception",
+      "effect": "NIN:vulnerability_and_risk_exposure",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "MIG:migration_policy_attitudes::NIN:vulnerability_and_risk_exposure": {
+      "cause": "NIN:vulnerability_and_risk_exposure",
+      "effect": "MIG:migration_policy_attitudes",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "NIN:vulnerability_and_risk_exposure::SAL:functional_health_status": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:corruption_perception::NIN:vulnerability_and_risk_exposure": {
+      "cause": "COR:corruption_perception",
+      "effect": "NIN:vulnerability_and_risk_exposure",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "JUS:institutional_justice_trust::NIN:vulnerability_and_risk_exposure": {
+      "cause": "JUS:institutional_justice_trust",
+      "effect": "NIN:vulnerability_and_risk_exposure",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER:civil_liberties_and_protest_rights::NIN:vulnerability_and_risk_exposure": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::NIN:vulnerability_and_risk_exposure": {
+      "cause": "NIN:vulnerability_and_risk_exposure",
+      "effect": "EDU:educational_equity_beliefs",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IND:indigenous_rights_and_autonomy::NIN:vulnerability_and_risk_exposure": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:democratic_legitimacy::POB:subjective_social_mobility": {
+      "cause": "POB:subjective_social_mobility",
+      "effect": "CUL:democratic_legitimacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "POB:material_living_standards::SAL:functional_health_status": {
+      "cause": "POB:material_living_standards",
+      "effect": "SAL:functional_health_status",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::POB:material_living_standards": {
+      "cause": "POB:material_living_standards",
+      "effect": "EDU:educational_equity_beliefs",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "HAB:physical_housing_quality::POB:material_living_standards": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "MIG:migration_policy_attitudes::POB:material_living_standards": {
+      "cause": "MIG:migration_policy_attitudes",
+      "effect": "POB:material_living_standards",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "POB:material_living_standards::SOC:digital_access_and_equipment": {
+      "cause": "POB:material_living_standards",
+      "effect": "SOC:digital_access_and_equipment",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IND:indigenous_cultural_knowledge_and_identity::POB:material_living_standards": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:corruption_perception::POB:structural_attribution_of_poverty": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "COR:corruption_perception",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:institutional_trust_and_efficacy::POB:structural_attribution_of_poverty": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "JUS:institutional_justice_trust::POB:structural_attribution_of_poverty": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:civic_and_political_participation::POB:social_policy_preferences": {
+      "cause": null,
+      "effect": null,
+      "fwd": 1,
+      "rev": 1,
+      "corr": 0,
+      "direction": "ambiguous"
+    },
+    "CUL:institutional_trust_and_efficacy::POB:social_policy_preferences": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:institutional_trust_and_efficacy::POB:social_policy_preferences": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:economic_wellbeing_perception::POB:social_policy_preferences": {
+      "cause": "ECO:economic_wellbeing_perception",
+      "effect": "POB:social_policy_preferences",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GEN:gender_role_traditionalism::POB:social_policy_preferences": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "POB:subjective_economic_wellbeing::SAL:functional_health_status": {
+      "cause": "POB:subjective_economic_wellbeing",
+      "effect": "SAL:functional_health_status",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:civic_and_political_participation::POB:subjective_economic_wellbeing": {
+      "cause": "POB:subjective_economic_wellbeing",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:labor_market_attachment::POB:subjective_economic_wellbeing": {
+      "cause": "ECO:labor_market_attachment",
+      "effect": "POB:subjective_economic_wellbeing",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:family_cohesion_quality::POB:subjective_economic_wellbeing": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "POB:subjective_economic_wellbeing::SEG:victimization_exposure": {
+      "cause": "SEG:victimization_exposure",
+      "effect": "POB:subjective_economic_wellbeing",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IDE:national_identity_and_pride::POB:subjective_economic_wellbeing": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::REL:supernatural_belief_system": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE:institutional_trust_in_science::REL:supernatural_belief_system": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "IND:indigenous_cultural_knowledge_and_identity::REL:supernatural_belief_system": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "IDE:national_identity_and_pride::REL:supernatural_belief_system": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "POB:structural_attribution_of_poverty::REL:supernatural_belief_system": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "REL:supernatural_belief_system",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:civic_and_political_participation::REL:religious_practice_and_devotion": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "POB:structural_attribution_of_poverty::REL:religious_practice_and_devotion": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "REL:religious_practice_and_devotion",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:economic_wellbeing_perception::REL:religious_practice_and_devotion": {
+      "cause": "ECO:economic_wellbeing_perception",
+      "effect": "REL:religious_practice_and_devotion",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IDE:national_identity_and_pride::REL:religious_socialization_and_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "IND:indigenous_cultural_knowledge_and_identity::REL:religious_socialization_and_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FAM:family_cohesion_quality::REL:religious_socialization_and_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::REL:religious_socialization_and_identity": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "REL:religious_socialization_and_identity",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:civic_and_political_participation::REL:religious_socialization_and_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "IDE:moral_conservatism_and_social_values::REL:religious_socialization_and_identity": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:authoritarian_versus_democratic_values::REL:church_state_separation_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GEN:reproductive_autonomy_attitudes::REL:church_state_separation_attitudes": {
+      "cause": "REL:church_state_separation_attitudes",
+      "effect": "GEN:reproductive_autonomy_attitudes",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:institutional_trust_and_efficacy::REL:church_state_separation_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:institutional_trust_and_efficacy::REL:church_state_separation_attitudes": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::REL:church_state_separation_attitudes": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "REL:church_state_separation_attitudes",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IND:indigenous_cultural_knowledge_and_identity::REL:religious_tolerance_and_pluralism": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "MIG:migration_policy_attitudes::REL:religious_tolerance_and_pluralism": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::REL:religious_tolerance_and_pluralism": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "REL:religious_tolerance_and_pluralism",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:institutional_trust_and_efficacy::REL:religious_tolerance_and_pluralism": {
+      "cause": "REL:religious_tolerance_and_pluralism",
+      "effect": "CUL:institutional_trust_and_efficacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "REL:religious_tolerance_and_pluralism::SEG:police_institutional_trust": {
+      "cause": "REL:religious_tolerance_and_pluralism",
+      "effect": "SEG:police_institutional_trust",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:authoritarian_versus_democratic_values::REL:religious_tolerance_and_pluralism": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "POB:structural_attribution_of_poverty::SAL:functional_health_status": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO:economic_wellbeing_perception::SAL:functional_health_status": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::SAL:functional_health_status": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "SAL:functional_health_status",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "POB:structural_attribution_of_poverty::SAL:healthcare_access_and_utilization": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "SAL:healthcare_access_and_utilization",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::SAL:healthcare_access_and_utilization": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "SAL:healthcare_access_and_utilization",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IND:indigenous_cultural_knowledge_and_identity::SAL:healthcare_access_and_utilization": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:institutional_trust_and_efficacy::SAL:healthcare_access_and_utilization": {
+      "cause": "CUL:institutional_trust_and_efficacy",
+      "effect": "SAL:healthcare_access_and_utilization",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:institutional_trust_and_efficacy::SAL:healthcare_access_and_utilization": {
+      "cause": "COR:institutional_trust_and_efficacy",
+      "effect": "SAL:healthcare_access_and_utilization",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GEN:gender_role_traditionalism::SAL:healthcare_access_and_utilization": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "MIG:migration_policy_attitudes::SAL:healthcare_access_and_utilization": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "POB:structural_attribution_of_poverty::SAL:financial_burden_of_healthcare": {
+      "cause": "SAL:financial_burden_of_healthcare",
+      "effect": "POB:structural_attribution_of_poverty",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:economic_wellbeing_perception::SAL:financial_burden_of_healthcare": {
+      "cause": "SAL:financial_burden_of_healthcare",
+      "effect": "ECO:economic_wellbeing_perception",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:family_cohesion_quality::SAL:financial_burden_of_healthcare": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::SAL:financial_burden_of_healthcare": {
+      "cause": "SAL:financial_burden_of_healthcare",
+      "effect": "EDU:educational_equity_beliefs",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "NIN:children_rights_recognition::SAL:financial_burden_of_healthcare": {
+      "cause": "SAL:financial_burden_of_healthcare",
+      "effect": "NIN:children_rights_recognition",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "POB:subjective_economic_wellbeing::SAL:subjective_wellbeing_and_life_quality": {
+      "cause": "POB:subjective_economic_wellbeing",
+      "effect": "SAL:subjective_wellbeing_and_life_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM:family_cohesion_quality::SAL:subjective_wellbeing_and_life_quality": {
+      "cause": "FAM:family_cohesion_quality",
+      "effect": "SAL:subjective_wellbeing_and_life_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:civic_and_political_participation::SAL:subjective_wellbeing_and_life_quality": {
+      "cause": "SAL:subjective_wellbeing_and_life_quality",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "SAL:subjective_wellbeing_and_life_quality::SEG:victimization_exposure": {
+      "cause": "SEG:victimization_exposure",
+      "effect": "SAL:subjective_wellbeing_and_life_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::SAL:subjective_wellbeing_and_life_quality": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "SAL:subjective_wellbeing_and_life_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "HAB:physical_housing_quality::SAL:subjective_wellbeing_and_life_quality": {
+      "cause": "HAB:physical_housing_quality",
+      "effect": "SAL:subjective_wellbeing_and_life_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IDE:national_identity_and_pride::SAL:subjective_wellbeing_and_life_quality": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GEN:tolerance_of_gender_based_violence::SAL:subjective_wellbeing_and_life_quality": {
+      "cause": "GEN:tolerance_of_gender_based_violence",
+      "effect": "SAL:subjective_wellbeing_and_life_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::SAL:health_behaviors_and_lifestyle": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "SAL:health_behaviors_and_lifestyle",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GEN:gender_role_traditionalism::SAL:health_behaviors_and_lifestyle": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "IDE:national_identity_and_pride::SAL:health_behaviors_and_lifestyle": {
+      "cause": "IDE:national_identity_and_pride",
+      "effect": "SAL:health_behaviors_and_lifestyle",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:authoritarian_versus_democratic_values::SAL:health_behaviors_and_lifestyle": {
+      "cause": "CUL:authoritarian_versus_democratic_values",
+      "effect": "SAL:health_behaviors_and_lifestyle",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "SAL:health_behaviors_and_lifestyle::SOC:digital_access_and_equipment": {
+      "cause": "SOC:digital_access_and_equipment",
+      "effect": "SAL:health_behaviors_and_lifestyle",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:corruption_perception::SEG:police_institutional_trust": {
+      "cause": "COR:corruption_perception",
+      "effect": "SEG:police_institutional_trust",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:democratic_legitimacy::SEG:police_institutional_trust": {
+      "cause": "SEG:police_institutional_trust",
+      "effect": "CUL:democratic_legitimacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "JUS:institutional_justice_trust::SEG:police_institutional_trust": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DER:civil_liberties_and_protest_rights::SEG:police_institutional_trust": {
+      "cause": "DER:civil_liberties_and_protest_rights",
+      "effect": "SEG:police_institutional_trust",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::SEG:police_institutional_trust": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "SAL:functional_health_status::SEG:victimization_exposure": {
+      "cause": "SEG:victimization_exposure",
+      "effect": "SAL:functional_health_status",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "MIG:migration_policy_attitudes::SEG:victimization_exposure": {
+      "cause": "SEG:victimization_exposure",
+      "effect": "MIG:migration_policy_attitudes",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "POB:structural_attribution_of_poverty::SEG:victimization_exposure": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "SEG:victimization_exposure",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GEN:tolerance_of_gender_based_violence::SEG:victimization_exposure": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "HAB:physical_housing_quality::SEG:victimization_exposure": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "SEG:fear_of_crime_and_risk_perception::SOC:media_consumption_and_news_habits": {
+      "cause": "SOC:media_consumption_and_news_habits",
+      "effect": "SEG:fear_of_crime_and_risk_perception",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:institutional_trust_and_efficacy::SEG:fear_of_crime_and_risk_perception": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "IDE:institutional_and_social_trust::SEG:fear_of_crime_and_risk_perception": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:democratic_legitimacy::SEG:fear_of_crime_and_risk_perception": {
+      "cause": "SEG:fear_of_crime_and_risk_perception",
+      "effect": "CUL:democratic_legitimacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GEN:gender_role_traditionalism::SEG:fear_of_crime_and_risk_perception": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "POB:structural_attribution_of_poverty::SEG:fear_of_crime_and_risk_perception": {
+      "cause": "POB:structural_attribution_of_poverty",
+      "effect": "SEG:fear_of_crime_and_risk_perception",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:economic_wellbeing_perception::SEG:fear_of_crime_and_risk_perception": {
+      "cause": "ECO:economic_wellbeing_perception",
+      "effect": "SEG:fear_of_crime_and_risk_perception",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "SAL:subjective_wellbeing_and_life_quality::SEG:fear_of_crime_and_risk_perception": {
+      "cause": "SEG:fear_of_crime_and_risk_perception",
+      "effect": "SAL:subjective_wellbeing_and_life_quality",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:civic_and_political_participation::SEG:security_avoidance_behavior": {
+      "cause": "SEG:security_avoidance_behavior",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:economic_wellbeing_perception::SEG:security_avoidance_behavior": {
+      "cause": "SEG:security_avoidance_behavior",
+      "effect": "ECO:economic_wellbeing_perception",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GEN:tolerance_of_gender_based_violence::SEG:security_avoidance_behavior": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "HAB:housing_tenure_security::SEG:security_avoidance_behavior": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "JUS:institutional_justice_trust::SEG:punitive_authoritarianism": {
+      "cause": "JUS:institutional_justice_trust",
+      "effect": "SEG:punitive_authoritarianism",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:authoritarian_versus_democratic_values::SEG:punitive_authoritarianism": {
+      "cause": "SEG:punitive_authoritarianism",
+      "effect": "CUL:authoritarian_versus_democratic_values",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER:authoritarian_attitudes_and_punitive_tolerance::SEG:punitive_authoritarianism": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:civic_and_political_participation::SEG:punitive_authoritarianism": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:corruption_perception::SEG:punitive_authoritarianism": {
+      "cause": "COR:corruption_perception",
+      "effect": "SEG:punitive_authoritarianism",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::SEG:punitive_authoritarianism": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "IND:indigenous_cultural_knowledge_and_identity::SEG:punitive_authoritarianism": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::SOC:digital_access_and_equipment": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "SOC:digital_access_and_equipment",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:civic_and_political_participation::SOC:digital_access_and_equipment": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::SOC:digital_literacy_and_internet_engagement": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "SOC:digital_literacy_and_internet_engagement",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:civic_and_political_participation::SOC:digital_literacy_and_internet_engagement": {
+      "cause": "SOC:digital_literacy_and_internet_engagement",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO:labor_market_attachment::SOC:digital_literacy_and_internet_engagement": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE:science_technology_policy_attitudes::SOC:digital_literacy_and_internet_engagement": {
+      "cause": "SOC:digital_literacy_and_internet_engagement",
+      "effect": "CIE:science_technology_policy_attitudes",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:civic_and_political_participation::SOC:media_consumption_and_news_habits": {
+      "cause": "SOC:media_consumption_and_news_habits",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "EDU:educational_equity_beliefs::SOC:media_consumption_and_news_habits": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "SOC:media_consumption_and_news_habits",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:corruption_perception::SOC:media_consumption_and_news_habits": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "SEG:security_avoidance_behavior::SOC:media_consumption_and_news_habits": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:institutional_trust_and_efficacy::SOC:media_trust_and_critical_evaluation": {
+      "cause": "SOC:media_trust_and_critical_evaluation",
+      "effect": "CUL:institutional_trust_and_efficacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:institutional_trust_and_efficacy::SOC:media_trust_and_critical_evaluation": {
+      "cause": "SOC:media_trust_and_critical_evaluation",
+      "effect": "COR:institutional_trust_and_efficacy",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR:corruption_perception::SOC:media_trust_and_critical_evaluation": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:authoritarian_versus_democratic_values::SOC:media_trust_and_critical_evaluation": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:civic_and_political_participation::SOC:media_trust_and_critical_evaluation": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU:educational_equity_beliefs::SOC:media_trust_and_critical_evaluation": {
+      "cause": "EDU:educational_equity_beliefs",
+      "effect": "SOC:media_trust_and_critical_evaluation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL:civic_and_political_participation::SOC:digital_civic_and_political_participation": {
+      "cause": "SOC:digital_civic_and_political_participation",
+      "effect": "CUL:civic_and_political_participation",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "CUL:political_interest_and_engagement::SOC:digital_civic_and_political_participation": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR:corruption_perception::SOC:digital_civic_and_political_participation": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL:democratic_legitimacy::SOC:digital_civic_and_political_participation": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    }
+  },
+  "domain_pairs": {
     "CIE::EDU": {
       "cause": null,
       "effect": null,
