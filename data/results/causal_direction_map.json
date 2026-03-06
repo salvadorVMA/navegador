@@ -1,0 +1,1922 @@
+{
+  "metadata": {
+    "generated_at": "2026-03-06T17:31:08.410590",
+    "n_pairs": 239,
+    "n_causal": 155,
+    "n_ambiguous": 84
+  },
+  "pairs": {
+    "CIE::EDU": {
+      "cause": null,
+      "effect": null,
+      "fwd": 2,
+      "rev": 2,
+      "corr": 3,
+      "direction": "ambiguous"
+    },
+    "CIE::POB": {
+      "cause": "POB",
+      "effect": "CIE",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "CIE::ECO": {
+      "cause": null,
+      "effect": null,
+      "fwd": 1,
+      "rev": 1,
+      "corr": 3,
+      "direction": "ambiguous"
+    },
+    "CIE::GEN": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE::CUL": {
+      "cause": null,
+      "effect": null,
+      "fwd": 1,
+      "rev": 1,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "CIE::COR": {
+      "cause": "COR",
+      "effect": "CIE",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CIE::SAL": {
+      "cause": "CIE",
+      "effect": "SAL",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CIE::SOC": {
+      "cause": "SOC",
+      "effect": "CIE",
+      "fwd": 2,
+      "rev": 1,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "CIE::DEP": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "CIE::ENV": {
+      "cause": "ENV",
+      "effect": "CIE",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CIE::NIN": {
+      "cause": null,
+      "effect": null,
+      "fwd": 1,
+      "rev": 1,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE::HAB": {
+      "cause": "HAB",
+      "effect": "CIE",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "CIE::IND": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CIE::IDE": {
+      "cause": "IDE",
+      "effect": "CIE",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "CIE::GLO": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "CIE::MED": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "COR::CUL": {
+      "cause": "COR",
+      "effect": "CUL",
+      "fwd": 7,
+      "rev": 2,
+      "corr": 7,
+      "direction": "causal"
+    },
+    "COR::SOC": {
+      "cause": "SOC",
+      "effect": "COR",
+      "fwd": 3,
+      "rev": 0,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "COR::EDU": {
+      "cause": "EDU",
+      "effect": "COR",
+      "fwd": 5,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR::ECO": {
+      "cause": "ECO",
+      "effect": "COR",
+      "fwd": 3,
+      "rev": 2,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "COR::SEG": {
+      "cause": "COR",
+      "effect": "SEG",
+      "fwd": 2,
+      "rev": 1,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "COR::IDE": {
+      "cause": "COR",
+      "effect": "IDE",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "COR::POB": {
+      "cause": "POB",
+      "effect": "COR",
+      "fwd": 3,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "COR::REL": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "COR::JUS": {
+      "cause": null,
+      "effect": null,
+      "fwd": 1,
+      "rev": 1,
+      "corr": 4,
+      "direction": "ambiguous"
+    },
+    "COR::DER": {
+      "cause": "COR",
+      "effect": "DER",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "CUL::ECO": {
+      "cause": "ECO",
+      "effect": "CUL",
+      "fwd": 5,
+      "rev": 1,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "CUL::JUS": {
+      "cause": "JUS",
+      "effect": "CUL",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 4,
+      "direction": "causal"
+    },
+    "CUL::SEG": {
+      "cause": "SEG",
+      "effect": "CUL",
+      "fwd": 7,
+      "rev": 0,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "CUL::EDU": {
+      "cause": "EDU",
+      "effect": "CUL",
+      "fwd": 8,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "CUL::DER": {
+      "cause": "DER",
+      "effect": "CUL",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 4,
+      "direction": "causal"
+    },
+    "CUL::SOC": {
+      "cause": "SOC",
+      "effect": "CUL",
+      "fwd": 4,
+      "rev": 0,
+      "corr": 9,
+      "direction": "causal"
+    },
+    "CUL::FED": {
+      "cause": "FED",
+      "effect": "CUL",
+      "fwd": 4,
+      "rev": 0,
+      "corr": 4,
+      "direction": "causal"
+    },
+    "CUL::POB": {
+      "cause": "POB",
+      "effect": "CUL",
+      "fwd": 5,
+      "rev": 1,
+      "corr": 4,
+      "direction": "causal"
+    },
+    "CUL::FAM": {
+      "cause": "FAM",
+      "effect": "CUL",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "CUL::GEN": {
+      "cause": "GEN",
+      "effect": "CUL",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 4,
+      "direction": "causal"
+    },
+    "CUL::IND": {
+      "cause": null,
+      "effect": null,
+      "fwd": 1,
+      "rev": 1,
+      "corr": 3,
+      "direction": "ambiguous"
+    },
+    "CUL::NIN": {
+      "cause": null,
+      "effect": null,
+      "fwd": 1,
+      "rev": 1,
+      "corr": 5,
+      "direction": "ambiguous"
+    },
+    "CUL::ENV": {
+      "cause": "ENV",
+      "effect": "CUL",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "CUL::REL": {
+      "cause": "REL",
+      "effect": "CUL",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 7,
+      "direction": "causal"
+    },
+    "CUL::IDE": {
+      "cause": "IDE",
+      "effect": "CUL",
+      "fwd": 5,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "DEP::EDU": {
+      "cause": "EDU",
+      "effect": "DEP",
+      "fwd": 4,
+      "rev": 1,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "DEP::POB": {
+      "cause": "POB",
+      "effect": "DEP",
+      "fwd": 3,
+      "rev": 2,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL::DEP": {
+      "cause": "DEP",
+      "effect": "CUL",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "DEP::IDE": {
+      "cause": "DEP",
+      "effect": "IDE",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "DEP::GLO": {
+      "cause": "GLO",
+      "effect": "DEP",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "DEP::MIG": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "DEP::SOC": {
+      "cause": "SOC",
+      "effect": "DEP",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "DEP::IND": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 5,
+      "direction": "ambiguous"
+    },
+    "DEP::REL": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP::ECO": {
+      "cause": "ECO",
+      "effect": "DEP",
+      "fwd": 2,
+      "rev": 1,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DEP::DER": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP::SAL": {
+      "cause": "DEP",
+      "effect": "SAL",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "COR::DEP": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP::JUS": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP::HAB": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "DEP::SEG": {
+      "cause": "SEG",
+      "effect": "DEP",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "DER::SEG": {
+      "cause": null,
+      "effect": null,
+      "fwd": 2,
+      "rev": 2,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "DER::EDU": {
+      "cause": "EDU",
+      "effect": "DER",
+      "fwd": 5,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "DER::JUS": {
+      "cause": "DER",
+      "effect": "JUS",
+      "fwd": 2,
+      "rev": 1,
+      "corr": 4,
+      "direction": "causal"
+    },
+    "DER::SOC": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 4,
+      "direction": "ambiguous"
+    },
+    "DER::POB": {
+      "cause": "POB",
+      "effect": "DER",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "DER::ECO": {
+      "cause": "ECO",
+      "effect": "DER",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER::SAL": {
+      "cause": "DER",
+      "effect": "SAL",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER::IND": {
+      "cause": "IND",
+      "effect": "DER",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "DER::GEN": {
+      "cause": "GEN",
+      "effect": "DER",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 5,
+      "direction": "causal"
+    },
+    "DER::REL": {
+      "cause": "REL",
+      "effect": "DER",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 5,
+      "direction": "causal"
+    },
+    "DER::FAM": {
+      "cause": "FAM",
+      "effect": "DER",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "DER::NIN": {
+      "cause": "DER",
+      "effect": "NIN",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "DER::ENV": {
+      "cause": "ENV",
+      "effect": "DER",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 4,
+      "direction": "causal"
+    },
+    "DER::IDE": {
+      "cause": "IDE",
+      "effect": "DER",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER::GLO": {
+      "cause": "GLO",
+      "effect": "DER",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "ECO::POB": {
+      "cause": "ECO",
+      "effect": "POB",
+      "fwd": 8,
+      "rev": 1,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "ECO::HAB": {
+      "cause": "ECO",
+      "effect": "HAB",
+      "fwd": 6,
+      "rev": 1,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "ECO::IDE": {
+      "cause": null,
+      "effect": null,
+      "fwd": 3,
+      "rev": 3,
+      "corr": 0,
+      "direction": "ambiguous"
+    },
+    "ECO::SAL": {
+      "cause": "ECO",
+      "effect": "SAL",
+      "fwd": 8,
+      "rev": 2,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "ECO::EDU": {
+      "cause": "ECO",
+      "effect": "EDU",
+      "fwd": 5,
+      "rev": 4,
+      "corr": 4,
+      "direction": "causal"
+    },
+    "ECO::GEN": {
+      "cause": "GEN",
+      "effect": "ECO",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 5,
+      "direction": "causal"
+    },
+    "ECO::MIG": {
+      "cause": "ECO",
+      "effect": "MIG",
+      "fwd": 4,
+      "rev": 0,
+      "corr": 5,
+      "direction": "causal"
+    },
+    "ECO::FAM": {
+      "cause": "ECO",
+      "effect": "FAM",
+      "fwd": 4,
+      "rev": 1,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "ECO::ENV": {
+      "cause": "ENV",
+      "effect": "ECO",
+      "fwd": 3,
+      "rev": 2,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO::NIN": {
+      "cause": "NIN",
+      "effect": "ECO",
+      "fwd": 3,
+      "rev": 2,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO::SEG": {
+      "cause": "ECO",
+      "effect": "SEG",
+      "fwd": 2,
+      "rev": 1,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "ECO::REL": {
+      "cause": "ECO",
+      "effect": "REL",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "ECO::GLO": {
+      "cause": "ECO",
+      "effect": "GLO",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "EDU::POB": {
+      "cause": "POB",
+      "effect": "EDU",
+      "fwd": 6,
+      "rev": 3,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU::IDE": {
+      "cause": "EDU",
+      "effect": "IDE",
+      "fwd": 3,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "EDU::FED": {
+      "cause": "FED",
+      "effect": "EDU",
+      "fwd": 2,
+      "rev": 1,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "EDU::SEG": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 3,
+      "direction": "ambiguous"
+    },
+    "EDU::SAL": {
+      "cause": "EDU",
+      "effect": "SAL",
+      "fwd": 5,
+      "rev": 1,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "EDU::NIN": {
+      "cause": "EDU",
+      "effect": "NIN",
+      "fwd": 4,
+      "rev": 1,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "EDU::HAB": {
+      "cause": "HAB",
+      "effect": "EDU",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "EDU::SOC": {
+      "cause": "EDU",
+      "effect": "SOC",
+      "fwd": 4,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "EDU::GLO": {
+      "cause": "EDU",
+      "effect": "GLO",
+      "fwd": 5,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU::GEN": {
+      "cause": "EDU",
+      "effect": "GEN",
+      "fwd": 4,
+      "rev": 1,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "EDU::IND": {
+      "cause": "EDU",
+      "effect": "IND",
+      "fwd": 2,
+      "rev": 1,
+      "corr": 4,
+      "direction": "causal"
+    },
+    "EDU::MIG": {
+      "cause": "EDU",
+      "effect": "MIG",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "EDU::FAM": {
+      "cause": "FAM",
+      "effect": "EDU",
+      "fwd": 3,
+      "rev": 2,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ENV::SAL": {
+      "cause": "ENV",
+      "effect": "SAL",
+      "fwd": 3,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "EDU::ENV": {
+      "cause": "EDU",
+      "effect": "ENV",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ENV::SOC": {
+      "cause": "SOC",
+      "effect": "ENV",
+      "fwd": 2,
+      "rev": 1,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "ENV::GEN": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 3,
+      "direction": "ambiguous"
+    },
+    "ENV::FAM": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 3,
+      "direction": "ambiguous"
+    },
+    "ENV::SEG": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "ENV::POB": {
+      "cause": "POB",
+      "effect": "ENV",
+      "fwd": 2,
+      "rev": 1,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ENV::REL": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "ENV::IDE": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "ENV::FED": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ENV::HAB": {
+      "cause": "HAB",
+      "effect": "ENV",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ENV::JUS": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ENV::MIG": {
+      "cause": "MIG",
+      "effect": "ENV",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "ENV::IND": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FAM::SAL": {
+      "cause": "FAM",
+      "effect": "SAL",
+      "fwd": 3,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "FAM::REL": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 6,
+      "direction": "ambiguous"
+    },
+    "FAM::POB": {
+      "cause": "POB",
+      "effect": "FAM",
+      "fwd": 3,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "FAM::NIN": {
+      "cause": "FAM",
+      "effect": "NIN",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "FAM::SEG": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "FAM::MIG": {
+      "cause": "MIG",
+      "effect": "FAM",
+      "fwd": 3,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "FAM::GEN": {
+      "cause": "FAM",
+      "effect": "GEN",
+      "fwd": 2,
+      "rev": 1,
+      "corr": 5,
+      "direction": "causal"
+    },
+    "FAM::IDE": {
+      "cause": "FAM",
+      "effect": "IDE",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "FAM::IND": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 3,
+      "direction": "ambiguous"
+    },
+    "FAM::JUS": {
+      "cause": "FAM",
+      "effect": "JUS",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "COR::FAM": {
+      "cause": "FAM",
+      "effect": "COR",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "ECO::FED": {
+      "cause": null,
+      "effect": null,
+      "fwd": 1,
+      "rev": 1,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FED::POB": {
+      "cause": "FED",
+      "effect": "POB",
+      "fwd": 2,
+      "rev": 1,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "FED::IDE": {
+      "cause": "IDE",
+      "effect": "FED",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "FED::SEG": {
+      "cause": "SEG",
+      "effect": "FED",
+      "fwd": 2,
+      "rev": 1,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "COR::FED": {
+      "cause": "COR",
+      "effect": "FED",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "FED::JUS": {
+      "cause": "JUS",
+      "effect": "FED",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "DER::FED": {
+      "cause": "DER",
+      "effect": "FED",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "FED::SAL": {
+      "cause": "FED",
+      "effect": "SAL",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "FED::HAB": {
+      "cause": "FED",
+      "effect": "HAB",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "FED::SOC": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GEN::REL": {
+      "cause": "REL",
+      "effect": "GEN",
+      "fwd": 4,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "GEN::IND": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "GEN::IDE": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "GEN::SAL": {
+      "cause": "GEN",
+      "effect": "SAL",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "GEN::POB": {
+      "cause": "POB",
+      "effect": "GEN",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 4,
+      "direction": "causal"
+    },
+    "GEN::SEG": {
+      "cause": "GEN",
+      "effect": "SEG",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 5,
+      "direction": "causal"
+    },
+    "GEN::SOC": {
+      "cause": "SOC",
+      "effect": "GEN",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GEN::JUS": {
+      "cause": "GEN",
+      "effect": "JUS",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "GEN::NIN": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 3,
+      "direction": "ambiguous"
+    },
+    "GEN::GLO": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GLO::IDE": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 5,
+      "direction": "ambiguous"
+    },
+    "GLO::MIG": {
+      "cause": "GLO",
+      "effect": "MIG",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 5,
+      "direction": "causal"
+    },
+    "GLO::SOC": {
+      "cause": null,
+      "effect": null,
+      "fwd": 1,
+      "rev": 1,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GLO::POB": {
+      "cause": "POB",
+      "effect": "GLO",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FAM::GLO": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GLO::IND": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 3,
+      "direction": "ambiguous"
+    },
+    "GLO::HAB": {
+      "cause": "HAB",
+      "effect": "GLO",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "FED::GLO": {
+      "cause": "FED",
+      "effect": "GLO",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "GLO::REL": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL::GLO": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GLO::MED": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "COR::GLO": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "GLO::SEG": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "HAB::POB": {
+      "cause": "POB",
+      "effect": "HAB",
+      "fwd": 4,
+      "rev": 2,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "HAB::SAL": {
+      "cause": "HAB",
+      "effect": "SAL",
+      "fwd": 4,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "HAB::IND": {
+      "cause": "IND",
+      "effect": "HAB",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "HAB::MIG": {
+      "cause": "MIG",
+      "effect": "HAB",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "HAB::MED": {
+      "cause": "HAB",
+      "effect": "MED",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "HAB::NIN": {
+      "cause": "HAB",
+      "effect": "NIN",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "HAB::SOC": {
+      "cause": "HAB",
+      "effect": "SOC",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "GEN::HAB": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "FAM::HAB": {
+      "cause": "HAB",
+      "effect": "FAM",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "DER::HAB": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "CUL::HAB": {
+      "cause": "CUL",
+      "effect": "HAB",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR::HAB": {
+      "cause": "COR",
+      "effect": "HAB",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "HAB::SEG": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 3,
+      "direction": "ambiguous"
+    },
+    "IDE::SEG": {
+      "cause": "SEG",
+      "effect": "IDE",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "IDE::POB": {
+      "cause": null,
+      "effect": null,
+      "fwd": 2,
+      "rev": 2,
+      "corr": 3,
+      "direction": "ambiguous"
+    },
+    "IDE::JUS": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "IDE::MIG": {
+      "cause": "IDE",
+      "effect": "MIG",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "IDE::IND": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 4,
+      "direction": "ambiguous"
+    },
+    "IDE::REL": {
+      "cause": "REL",
+      "effect": "IDE",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 5,
+      "direction": "causal"
+    },
+    "IDE::SAL": {
+      "cause": null,
+      "effect": null,
+      "fwd": 1,
+      "rev": 1,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "HAB::IDE": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "IDE::NIN": {
+      "cause": null,
+      "effect": null,
+      "fwd": 1,
+      "rev": 1,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "IND::SAL": {
+      "cause": "IND",
+      "effect": "SAL",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "IND::POB": {
+      "cause": "IND",
+      "effect": "POB",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "ECO::IND": {
+      "cause": "IND",
+      "effect": "ECO",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "IND::MIG": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 3,
+      "direction": "ambiguous"
+    },
+    "FED::IND": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "COR::IND": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "IND::JUS": {
+      "cause": "IND",
+      "effect": "JUS",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "IND::REL": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 4,
+      "direction": "ambiguous"
+    },
+    "JUS::SEG": {
+      "cause": null,
+      "effect": null,
+      "fwd": 3,
+      "rev": 3,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU::JUS": {
+      "cause": "EDU",
+      "effect": "JUS",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "JUS::POB": {
+      "cause": "POB",
+      "effect": "JUS",
+      "fwd": 3,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "ECO::JUS": {
+      "cause": "ECO",
+      "effect": "JUS",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "JUS::SOC": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "HAB::JUS": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "EDU::MED": {
+      "cause": "EDU",
+      "effect": "MED",
+      "fwd": 3,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "MED::SOC": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "CUL::MED": {
+      "cause": "CUL",
+      "effect": "MED",
+      "fwd": 3,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "COR::MED": {
+      "cause": "COR",
+      "effect": "MED",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "MED::SAL": {
+      "cause": "MED",
+      "effect": "SAL",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "MED::POB": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "ECO::MED": {
+      "cause": "ECO",
+      "effect": "MED",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "DER::MED": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "IND::MED": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "IDE::MED": {
+      "cause": "IDE",
+      "effect": "MED",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "FED::MED": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "MED::MIG": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "MIG::POB": {
+      "cause": "POB",
+      "effect": "MIG",
+      "fwd": 2,
+      "rev": 1,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "MIG::SEG": {
+      "cause": "SEG",
+      "effect": "MIG",
+      "fwd": 3,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "CUL::MIG": {
+      "cause": "CUL",
+      "effect": "MIG",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 3,
+      "direction": "causal"
+    },
+    "COR::MIG": {
+      "cause": "COR",
+      "effect": "MIG",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "DER::MIG": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "GEN::MIG": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "JUS::MIG": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "FED::MIG": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "NIN::POB": {
+      "cause": null,
+      "effect": null,
+      "fwd": 2,
+      "rev": 2,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "NIN::SEG": {
+      "cause": "SEG",
+      "effect": "NIN",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR::NIN": {
+      "cause": "COR",
+      "effect": "NIN",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "JUS::NIN": {
+      "cause": null,
+      "effect": null,
+      "fwd": 1,
+      "rev": 1,
+      "corr": 0,
+      "direction": "ambiguous"
+    },
+    "FED::NIN": {
+      "cause": "FED",
+      "effect": "NIN",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "IND::NIN": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 2,
+      "direction": "ambiguous"
+    },
+    "MIG::NIN": {
+      "cause": "NIN",
+      "effect": "MIG",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "NIN::SAL": {
+      "cause": "SAL",
+      "effect": "NIN",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 2,
+      "direction": "causal"
+    },
+    "POB::SAL": {
+      "cause": "POB",
+      "effect": "SAL",
+      "fwd": 6,
+      "rev": 1,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "POB::SOC": {
+      "cause": "POB",
+      "effect": "SOC",
+      "fwd": 2,
+      "rev": 1,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "POB::REL": {
+      "cause": "POB",
+      "effect": "REL",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "POB::SEG": {
+      "cause": "POB",
+      "effect": "SEG",
+      "fwd": 2,
+      "rev": 1,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "EDU::REL": {
+      "cause": "EDU",
+      "effect": "REL",
+      "fwd": 3,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "REL::SAL": {
+      "cause": "REL",
+      "effect": "SAL",
+      "fwd": 2,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "CIE::REL": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "REL::SOC": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "MIG::REL": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "REL::SEG": {
+      "cause": "REL",
+      "effect": "SEG",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "CUL::SAL": {
+      "cause": "CUL",
+      "effect": "SAL",
+      "fwd": 2,
+      "rev": 1,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "COR::SAL": {
+      "cause": "COR",
+      "effect": "SAL",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "MIG::SAL": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "SAL::SEG": {
+      "cause": "SEG",
+      "effect": "SAL",
+      "fwd": 3,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "SAL::SOC": {
+      "cause": "SOC",
+      "effect": "SAL",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 0,
+      "direction": "causal"
+    },
+    "SEG::SOC": {
+      "cause": "SOC",
+      "effect": "SEG",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "IND::SEG": {
+      "cause": null,
+      "effect": null,
+      "fwd": 0,
+      "rev": 0,
+      "corr": 1,
+      "direction": "ambiguous"
+    },
+    "ECO::SOC": {
+      "cause": "ECO",
+      "effect": "SOC",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    },
+    "NIN::SOC": {
+      "cause": "NIN",
+      "effect": "SOC",
+      "fwd": 1,
+      "rev": 0,
+      "corr": 1,
+      "direction": "causal"
+    }
+  }
+}

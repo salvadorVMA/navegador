@@ -1000,6 +1000,181 @@ class SemanticVariableSelector:
               f"across {len(selection_data.get('domains', {}))} domains")
         return enc_dict
 
+    @staticmethod
+    def build_causal_direction_map(
+        cache_dir: Path | str = CACHE_DIR,
+    ) -> Dict[str, Dict[str, Any]]:
+        """Build a causal direction lookup from Step 2 research review cache.
+
+        Reads all {DOMAIN}_step2_*.json files and extracts causal_relationships
+        to determine which domain causes which in each pair.
+
+        Returns
+        -------
+        dict
+            {pair_key: {"cause": domain_code, "effect": domain_code,
+                        "fwd": int, "rev": int, "corr": int,
+                        "direction": "causal" | "ambiguous"}}
+            where pair_key is "A::B" (alphabetically sorted).
+            For ambiguous pairs, cause/effect are None.
+        """
+        from collections import Counter, defaultdict
+
+        cache_dir = Path(cache_dir)
+        if not cache_dir.exists():
+            return {}
+
+        # Collect all cross-domain causal edges
+        pair_votes = defaultdict(Counter)  # (src, tgt) -> Counter(role)
+
+        for f in sorted(os.listdir(cache_dir)):
+            if "step2" not in f:
+                continue
+            fpath = cache_dir / f
+            with open(fpath) as fh:
+                data = json.load(fh)
+            domain = f.split("_step2")[0]
+            items = data if isinstance(data, list) else data.get("constructs", [])
+            for construct in items:
+                for rel in construct.get("causal_relationships", []):
+                    role = rel.get("role", "correlate")
+                    sources = rel.get("data_source", "")
+                    measurable = rel.get("measurable_in_data", False)
+                    if not measurable or not sources:
+                        continue
+                    targets = [s.strip() for s in str(sources).split(",")]
+                    for tgt in targets:
+                        if tgt != domain and len(tgt) <= 4:
+                            pair_votes[(domain, tgt)][role] += 1
+
+        # Aggregate into pair-level direction
+        result = {}
+        seen = set()
+        for (a, b), counts in pair_votes.items():
+            pair_key = "::".join(sorted([a, b]))
+            if pair_key in seen:
+                continue
+
+            rev = pair_votes.get((b, a), Counter())
+            # "cause" from a toward b; "effect" from a = b causes a
+            a_causes_b = counts["cause"] + rev["effect"]
+            b_causes_a = counts["effect"] + rev["cause"]
+            corr = (counts["correlate"] + rev["correlate"]
+                    + counts["moderator"] + rev["moderator"])
+
+            if a_causes_b > b_causes_a:
+                result[pair_key] = {
+                    "cause": a, "effect": b,
+                    "fwd": a_causes_b, "rev": b_causes_a, "corr": corr,
+                    "direction": "causal",
+                }
+            elif b_causes_a > a_causes_b:
+                result[pair_key] = {
+                    "cause": b, "effect": a,
+                    "fwd": b_causes_a, "rev": a_causes_b, "corr": corr,
+                    "direction": "causal",
+                }
+            else:
+                result[pair_key] = {
+                    "cause": None, "effect": None,
+                    "fwd": a_causes_b, "rev": b_causes_a, "corr": corr,
+                    "direction": "ambiguous",
+                }
+            seen.add(pair_key)
+
+        return result
+
+    @staticmethod
+    def save_causal_direction_map(
+        cache_dir: Path | str = CACHE_DIR,
+        output_path: Path | str | None = None,
+    ) -> Dict[str, Dict[str, Any]]:
+        """Build and save causal direction map to JSON.
+
+        Returns the map dict. Saves to
+        data/results/causal_direction_map.json by default.
+        """
+        if output_path is None:
+            output_path = Path(cache_dir).parent / "causal_direction_map.json"
+        output_path = Path(output_path)
+
+        direction_map = SemanticVariableSelector.build_causal_direction_map(
+            cache_dir=cache_dir
+        )
+
+        n_causal = sum(1 for v in direction_map.values()
+                       if v["direction"] == "causal")
+        n_ambig = sum(1 for v in direction_map.values()
+                      if v["direction"] == "ambiguous")
+
+        out = {
+            "metadata": {
+                "generated_at": datetime.now().isoformat(),
+                "n_pairs": len(direction_map),
+                "n_causal": n_causal,
+                "n_ambiguous": n_ambig,
+            },
+            "pairs": direction_map,
+        }
+        with open(output_path, "w") as f:
+            json.dump(out, f, indent=2, ensure_ascii=False)
+        print(f"  Causal direction map: {n_causal} causal, "
+              f"{n_ambig} ambiguous → {output_path}")
+        return direction_map
+
+    @staticmethod
+    def load_causal_direction_map(
+        path: Path | str | None = None,
+        cache_dir: Path | str = CACHE_DIR,
+    ) -> Dict[str, Dict[str, Any]]:
+        """Load causal direction map from JSON, or build from cache.
+
+        Parameters
+        ----------
+        path : Path, optional
+            Path to causal_direction_map.json. If None, looks next to cache_dir.
+        cache_dir : Path
+            Fallback: build from Step 2 cache if JSON doesn't exist.
+
+        Returns
+        -------
+        dict
+            {pair_key: {"cause", "effect", "direction", ...}}
+        """
+        if path is None:
+            path = Path(cache_dir).parent / "causal_direction_map.json"
+        path = Path(path)
+        if path.exists():
+            with open(path) as f:
+                data = json.load(f)
+            return data.get("pairs", data)
+        # Fallback: build from cache
+        return SemanticVariableSelector.build_causal_direction_map(
+            cache_dir=cache_dir
+        )
+
+    @staticmethod
+    def get_pair_direction(
+        domain_a: str, domain_b: str,
+        direction_map: Dict[str, Dict[str, Any]],
+    ) -> Tuple[str, str, str]:
+        """Get the causal direction for a domain pair.
+
+        Returns
+        -------
+        (source_domain, target_domain, direction_type)
+            source is the cause domain, target is the effect domain.
+            direction_type is "causal" or "ambiguous".
+            For ambiguous pairs, returns alphabetical order.
+        """
+        pair_key = "::".join(sorted([domain_a, domain_b]))
+        info = direction_map.get(pair_key)
+        if info and info["direction"] == "causal":
+            return info["cause"], info["effect"], "causal"
+        # Ambiguous or missing: use alphabetical order
+        a, b = sorted([domain_a, domain_b])
+        return a, b, "ambiguous"
+
 
 # ---------------------------------------------------------------------------
 # CLI

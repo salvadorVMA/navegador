@@ -2045,3 +2045,338 @@ class DoublyRobustBridgeEstimator:
         except Exception as e:
             print(f"[doubly-robust-bridge] Failed for {var_id_a} × {var_id_b}: {e}")
             return None
+
+
+# ---------------------------------------------------------------------------
+# DR Prediction Engine — individual-level cross-survey prediction
+# ---------------------------------------------------------------------------
+
+class DRPredictionEngine:
+    """Predict answers to survey B questions given a person's SES and answer to survey A.
+
+    Uses the DR bridge infrastructure: fits outcome models P(Y|SES) for both
+    variables, computes a DR-corrected joint table, then combines them via
+    ratio adjustment to produce individual-level conditional predictions.
+
+    Given SES profile x and observed A=i:
+        P(B=j | A=i, SES=x) ∝ P(B=j | SES=x) × lift(A=i → B=j)
+
+    where lift = P(B=j|A=i) / P(B=j) comes from the DR joint table.
+    This captures association that SES alone doesn't explain.
+
+    Usage:
+        engine = DRPredictionEngine()
+        engine.fit(df_a, df_b, col_a, col_b)
+        pred = engine.predict(ses_profile, a_value=3)
+        # pred = {'categories': [1,2,3,4,5], 'probabilities': [...],
+        #         'most_likely': 2, 'lift_factors': [...]}
+    """
+
+    def __init__(
+        self,
+        n_sim: int = 2000,
+        n_bootstrap: int = 50,
+        max_categories: Optional[int] = 5,
+        ses_vars: Optional[List[str]] = None,
+    ) -> None:
+        self.n_sim = n_sim
+        self.n_bootstrap = n_bootstrap
+        self.max_categories = max_categories
+        self.ses_vars = ses_vars or SES_REGRESSION_VARS
+
+        # Populated by fit()
+        self._model_a: Optional[SurveyVarModel] = None
+        self._model_b: Optional[SurveyVarModel] = None
+        self._joint_table: Optional[np.ndarray] = None
+        self._cats_a: Optional[list] = None
+        self._cats_b: Optional[list] = None
+        self._available_ses: Optional[List[str]] = None
+        self._marginal_b: Optional[np.ndarray] = None
+        self._dr_result: Optional[Dict[str, Any]] = None
+        self._fitted = False
+
+    def fit(
+        self,
+        df_a: pd.DataFrame,
+        df_b: pd.DataFrame,
+        col_a: str,
+        col_b: str,
+        var_id_a: str = '',
+        var_id_b: str = '',
+        weight_col: str = 'Pondi2',
+    ) -> 'DRPredictionEngine':
+        """Fit outcome models and compute DR joint table.
+
+        Args:
+            df_a: Survey A dataframe
+            df_b: Survey B dataframe
+            col_a: Target column in survey A
+            col_b: Target column in survey B (what we want to predict)
+            var_id_a: Variable identifier for A (for logging)
+            var_id_b: Variable identifier for B (for logging)
+            weight_col: Survey weight column
+
+        Returns:
+            self (for method chaining)
+        """
+        available = [v for v in self.ses_vars
+                     if v in df_a.columns and v in df_b.columns]
+        if len(available) < 2:
+            raise ValueError(f"Need >= 2 shared SES vars, found {len(available)}")
+        self._available_ses = available
+
+        # Fit outcome models
+        self._model_a = SurveyVarModel()
+        self._model_a.fit(df_a, col_a, available, weight_col,
+                          max_categories=self.max_categories)
+        self._model_b = SurveyVarModel()
+        self._model_b.fit(df_b, col_b, available, weight_col,
+                          max_categories=self.max_categories)
+
+        self._cats_a = self._model_a._categories
+        self._cats_b = self._model_b._categories
+
+        # Run DR estimator to get the joint table
+        dr = DoublyRobustBridgeEstimator(
+            n_sim=self.n_sim,
+            n_bootstrap=self.n_bootstrap,
+            max_categories=self.max_categories,
+        )
+        vid_a = var_id_a or col_a
+        vid_b = var_id_b or col_b
+        result = dr.estimate(vid_a, vid_b, df_a, df_b, col_a, col_b,
+                             ses_vars=self.ses_vars)
+        if result is None:
+            raise RuntimeError(f"DR estimation failed for {col_a} × {col_b}")
+
+        self._dr_result = result
+        self._joint_table = np.array(result['joint_table'])
+        # Marginal of B from the joint table (sum over A dimension)
+        self._marginal_b = self._joint_table.sum(axis=0)
+        self._marginal_b = np.clip(self._marginal_b, 1e-8, None)
+        self._marginal_b /= self._marginal_b.sum()
+        self._fitted = True
+        return self
+
+    def predict(
+        self,
+        ses_profile: Dict[str, Any],
+        a_value: Any,
+    ) -> Dict[str, Any]:
+        """Predict P(B=j | A=a_value, SES=ses_profile).
+
+        Args:
+            ses_profile: Dict of SES variable values, e.g.
+                {'sexo': 1, 'edad': 35, 'escol': 3, 'region': 2, ...}
+            a_value: Observed value of variable A (will be binned if needed)
+
+        Returns:
+            Dict with keys:
+                categories    — list of B category labels
+                probabilities — list of P(B=j | A=i, SES) for each category
+                most_likely   — category with highest probability
+                baseline      — P(B=j | SES) without knowing A (for comparison)
+                lift_factors  — multiplicative lift from knowing A
+                gamma         — DR gamma (overall association strength)
+                ks_overlap    — propensity overlap diagnostic
+        """
+        if not self._fitted:
+            raise RuntimeError("Call fit() before predict()")
+
+        import statsmodels.api as sm
+
+        # Build SES feature row
+        ses_df = pd.DataFrame([ses_profile])
+        for col in self._available_ses:
+            if col not in ses_df.columns:
+                ses_df[col] = np.nan
+
+        # Encode using model_b's encoder (for baseline prediction)
+        X_b = self._model_b._encoder.transform(ses_df[self._available_ses]).fillna(0.0)
+        baseline_proba = self._model_b.predict_proba(X_b).values[0]  # (K_b,)
+        baseline_proba = np.clip(baseline_proba, 1e-8, None)
+        baseline_proba /= baseline_proba.sum()
+
+        # Map a_value to category index
+        a_idx = self._map_to_category(a_value, self._cats_a, self._model_a)
+        if a_idx is None:
+            # Can't map A value — return baseline
+            return self._build_result(baseline_proba, baseline_proba,
+                                      np.ones(len(self._cats_b)))
+
+        # Compute lift from DR joint table
+        # P(B=j | A=i) = joint[i, j] / sum_j(joint[i, j])
+        row_a = self._joint_table[a_idx]
+        cond_b_given_a = np.clip(row_a, 1e-8, None)
+        cond_b_given_a /= cond_b_given_a.sum()
+
+        # Lift = P(B=j|A=i) / P(B=j)
+        lift = cond_b_given_a / self._marginal_b
+
+        # Adjusted prediction: P(B=j|A=i,SES) ∝ P(B=j|SES) × lift(A=i→B=j)
+        adjusted = baseline_proba * lift
+        adjusted = np.clip(adjusted, 1e-8, None)
+        adjusted /= adjusted.sum()
+
+        return self._build_result(adjusted, baseline_proba, lift)
+
+    def predict_batch(
+        self,
+        ses_profiles: pd.DataFrame,
+        a_values: pd.Series,
+    ) -> pd.DataFrame:
+        """Predict for multiple individuals at once.
+
+        Args:
+            ses_profiles: DataFrame with SES columns for each individual
+            a_values: Series of observed A values (one per row)
+
+        Returns:
+            DataFrame with columns for each B category probability,
+            plus 'most_likely' and 'baseline_entropy' columns.
+        """
+        if not self._fitted:
+            raise RuntimeError("Call fit() before predict_batch()")
+
+        results = []
+        for i in range(len(ses_profiles)):
+            ses = ses_profiles.iloc[i].to_dict()
+            a_val = a_values.iloc[i]
+            pred = self.predict(ses, a_val)
+            row = {f'p_{cat}': p for cat, p in
+                   zip(pred['categories'], pred['probabilities'])}
+            row['most_likely'] = pred['most_likely']
+            row['max_prob'] = max(pred['probabilities'])
+            results.append(row)
+
+        return pd.DataFrame(results)
+
+    def _map_to_category(self, value: Any, categories: list,
+                         model: SurveyVarModel) -> Optional[int]:
+        """Map a raw value to its category index, handling binning."""
+        # Direct match
+        for i, cat in enumerate(categories):
+            if value == cat:
+                return i
+            try:
+                if float(value) == float(cat):
+                    return i
+            except (ValueError, TypeError):
+                pass
+
+        # If the model used binning (max_categories), the categories are bin
+        # labels like '(1.0, 2.0]'. Try to find which bin the value falls into.
+        for i, cat in enumerate(categories):
+            cat_str = str(cat)
+            if '(' in cat_str and ']' in cat_str:
+                try:
+                    # Parse interval like '(1.0, 3.0]'
+                    inner = cat_str.strip('(').strip(']')
+                    lo, hi = [float(x) for x in inner.split(',')]
+                    fval = float(value)
+                    if lo < fval <= hi:
+                        return i
+                except (ValueError, TypeError):
+                    pass
+
+        return None
+
+    def _build_result(self, adjusted: np.ndarray, baseline: np.ndarray,
+                      lift: np.ndarray) -> Dict[str, Any]:
+        """Package prediction into result dict."""
+        cats = self._cats_b
+        most_likely_idx = int(np.argmax(adjusted))
+        return {
+            'categories': list(cats),
+            'probabilities': [round(float(p), 4) for p in adjusted],
+            'most_likely': cats[most_likely_idx],
+            'baseline': [round(float(p), 4) for p in baseline],
+            'lift_factors': [round(float(l), 4) for l in lift],
+            'gamma': self._dr_result.get('gamma') if self._dr_result else None,
+            'ks_overlap': self._dr_result.get('propensity_overlap') if self._dr_result else None,
+        }
+
+    def fit_directed(
+        self,
+        domain_a: str,
+        domain_b: str,
+        df_a: pd.DataFrame,
+        df_b: pd.DataFrame,
+        col_a: str,
+        col_b: str,
+        direction_map: Optional[Dict[str, Any]] = None,
+        var_id_a: str = '',
+        var_id_b: str = '',
+        weight_col: str = 'Pondi2',
+    ) -> 'DRPredictionEngine':
+        """Fit with automatic causal direction resolution.
+
+        Uses the causal direction map to determine which domain is the
+        cause (A/treatment) and which is the effect (B/outcome). If the
+        map says domain_b causes domain_a, the arguments are swapped so
+        the engine always predicts effect from cause.
+
+        Args:
+            domain_a: Domain code for first survey (e.g. 'ECO')
+            domain_b: Domain code for second survey (e.g. 'GEN')
+            df_a: DataFrame for domain_a's survey
+            df_b: DataFrame for domain_b's survey
+            col_a: Target column in domain_a's survey
+            col_b: Target column in domain_b's survey
+            direction_map: Causal direction map from
+                SemanticVariableSelector.load_causal_direction_map().
+                If None, uses alphabetical order (no direction swap).
+            var_id_a: Variable identifier for A
+            var_id_b: Variable identifier for B
+            weight_col: Survey weight column
+
+        Returns:
+            self (for method chaining)
+        """
+        self._causal_direction = 'alphabetical'
+        self._domain_cause = domain_a
+        self._domain_effect = domain_b
+
+        if direction_map is not None:
+            pair_key = '::'.join(sorted([domain_a, domain_b]))
+            info = direction_map.get(pair_key)
+            if info and info.get('direction') == 'causal':
+                cause = info['cause']
+                effect = info['effect']
+                self._causal_direction = 'causal'
+                self._domain_cause = cause
+                self._domain_effect = effect
+                # Swap if needed so A=cause, B=effect
+                if cause == domain_b:
+                    df_a, df_b = df_b, df_a
+                    col_a, col_b = col_b, col_a
+                    var_id_a, var_id_b = var_id_b, var_id_a
+                    domain_a, domain_b = domain_b, domain_a
+            else:
+                self._causal_direction = 'ambiguous'
+
+        return self.fit(df_a, df_b, col_a, col_b, var_id_a, var_id_b,
+                        weight_col)
+
+    @property
+    def summary(self) -> Dict[str, Any]:
+        """Summary of fitted engine for inspection."""
+        if not self._fitted:
+            return {'fitted': False}
+        result = {
+            'fitted': True,
+            'categories_a': list(self._cats_a),
+            'categories_b': list(self._cats_b),
+            'gamma': self._dr_result.get('gamma'),
+            'cramers_v': self._dr_result.get('cramers_v'),
+            'ks_overlap': self._dr_result.get('propensity_overlap'),
+            'n_ses_vars': len(self._available_ses),
+            'ses_vars_used': self._available_ses,
+            'joint_table': self._joint_table.tolist() if self._joint_table is not None else None,
+            'marginal_b': [round(float(p), 4) for p in self._marginal_b] if self._marginal_b is not None else None,
+        }
+        if hasattr(self, '_causal_direction'):
+            result['causal_direction'] = self._causal_direction
+            result['domain_cause'] = self._domain_cause
+            result['domain_effect'] = self._domain_effect
+        return result
