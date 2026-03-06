@@ -1637,7 +1637,7 @@ class BayesianBridgeEstimator:
                     # which shrank posterior draws to near-zero variance.
                     try:
                         underlying = res.model
-                        H = np.asarray(underlying.hessian(res.params), dtype=float)
+                        H = np.asarray(underlying.hessian(params_mle), dtype=float)
                         info = np.nan_to_num(-H, nan=0.0)   # Fisher information
                         info = (info + info.T) / 2.0
                         # Ridge: 1% of median diagonal element
