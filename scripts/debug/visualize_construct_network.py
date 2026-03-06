@@ -1,29 +1,29 @@
 """Construct network visualization — within-domain and cross-domain associations.
 
-Runs DRPredictionEngine on selected domain pairs to build a network of
-construct-level associations. Outputs:
-  - data/results/construct_network.json  — edge list with DR gamma
+Builds the network from pre-computed data:
+  - Within-domain edges: data/results/construct_network.json (from previous run)
+  - Cross-domain edges: data/results/dr_sweep_results.json (full 276-pair sweep)
+  - Causal direction: data/results/causal_direction_map.json (1361 construct pairs)
+
+Outputs:
+  - data/results/construct_network.json  — updated edge list with causal info
   - data/results/construct_network.html  — interactive Plotly network
 
 Usage:
-    python scripts/debug/visualize_construct_network.py [--pairs N] [--fast]
+    python scripts/debug/visualize_construct_network.py [--gamma-threshold 0.05] [--recompute-within]
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import math
 import sys
 import time
-import warnings
-from itertools import combinations
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
-import pandas as pd
-
-warnings.filterwarnings('ignore')
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
@@ -31,105 +31,157 @@ sys.path.insert(0, str(ROOT / 'scripts' / 'debug'))
 
 OUTPUT_JSON = ROOT / 'data' / 'results' / 'construct_network.json'
 OUTPUT_HTML = ROOT / 'data' / 'results' / 'construct_network.html'
+DR_SWEEP_PATH = ROOT / 'data' / 'results' / 'dr_sweep_results.json'
+CAUSAL_MAP_PATH = ROOT / 'data' / 'results' / 'causal_direction_map.json'
+EXISTING_NETWORK_PATH = ROOT / 'data' / 'results' / 'construct_network.json'
 
 
-def load_data():
-    from dataset_knowledge import los_mex_dict, enc_nom_dict
-    from ses_analysis import AnalysisConfig
-    from select_bridge_variables_semantic import SemanticVariableSelector
-
-    preprocessed = AnalysisConfig.preprocess_survey_data(los_mex_dict)
-    enc_dict = preprocessed.get('enc_dict', los_mex_dict.get('enc_dict', {}))
-    enc_nom_dict_rev = {v: k for k, v in enc_nom_dict.items()}
-    SemanticVariableSelector.build_aggregates(enc_dict, enc_nom_dict_rev)
-    sel = SemanticVariableSelector.load()
-
-    with open(ROOT / 'data' / 'results' / 'semantic_variable_selection.json') as f:
-        sel_data = json.load(f)
-
-    return enc_dict, enc_nom_dict_rev, sel, sel_data
+def _parse_var_id(var_id: str) -> Tuple[str, str]:
+    """Parse 'agg_corruption_perception|COR' -> ('COR', 'corruption_perception')."""
+    name, domain = var_id.split('|')
+    return domain, name.replace('agg_', '')
 
 
-def get_df(enc_dict, sel_data, domain_code):
-    title = sel_data['domains'].get(domain_code, {}).get('survey_title', '')
-    v = enc_dict.get(title)
-    return v['dataframe'] if v else None
+def _pair_key(dom_a: str, name_a: str, dom_b: str, name_b: str) -> str:
+    """Canonical key for a construct pair."""
+    a = f'{dom_a}:{name_a}'
+    b = f'{dom_b}:{name_b}'
+    return '::'.join(sorted([a, b]))
 
 
-def get_constructs(sel_data, domain_code) -> List[Dict[str, str]]:
-    """Get construct names and their agg column names for a domain."""
-    strats = sel_data['domains'].get(domain_code, {}).get('variable_strategies', [])
-    constructs = []
-    for s in strats:
-        if s.get('action') == 'skip':
+def load_causal_direction_map() -> Dict[str, Dict]:
+    """Load the causal direction map."""
+    if not CAUSAL_MAP_PATH.exists():
+        return {}
+    with open(CAUSAL_MAP_PATH) as f:
+        data = json.load(f)
+    return data.get('pairs', {})
+
+
+def load_cross_domain_edges(direction_map: Dict) -> List[Dict[str, Any]]:
+    """Load cross-domain edges from the full DR sweep results."""
+    if not DR_SWEEP_PATH.exists():
+        print(f'  WARNING: {DR_SWEEP_PATH} not found')
+        return []
+
+    with open(DR_SWEEP_PATH) as f:
+        sweep = json.load(f)
+
+    edges = []
+    for pair_key_str, pair_data in sweep.get('domain_pairs', {}).items():
+        for est in pair_data.get('estimates', []):
+            gamma = est.get('dr_gamma')
+            if gamma is None:
+                continue
+            dom_a, name_a = _parse_var_id(est['var_a'])
+            dom_b, name_b = _parse_var_id(est['var_b'])
+
+            # Look up causal direction
+            ck = _pair_key(dom_a, name_a, dom_b, name_b)
+            cm_entry = direction_map.get(ck, {})
+            direction = cm_entry.get('direction', 'ambiguous')
+            dir_source = cm_entry.get('source', 'none')
+
+            # Determine source/target based on causal direction
+            source_dom, source_name = dom_a, name_a
+            target_dom, target_name = dom_b, name_b
+            if direction == 'causal' and cm_entry.get('cause'):
+                cause_str = cm_entry['cause']  # e.g. "COR:corruption_perception"
+                cause_dom = cause_str.split(':')[0] if ':' in cause_str else ''
+                cause_name = cause_str.split(':')[1] if ':' in cause_str else ''
+                if cause_dom == dom_b and cause_name == name_b:
+                    source_dom, source_name = dom_b, name_b
+                    target_dom, target_name = dom_a, name_a
+                    gamma = -gamma  # flip sign when swapping
+
+            edges.append({
+                'source': f'{source_dom}:{source_name}',
+                'target': f'{target_dom}:{target_name}',
+                'source_domain': source_dom,
+                'target_domain': target_dom,
+                'gamma': round(gamma, 4),
+                'cramers_v': round(est.get('dr_v', 0), 4),
+                'ks_overlap': round(est.get('dr_ks', 0), 4),
+                'cross_domain': True,
+                'causal_direction': direction,
+                'direction_source': dir_source,
+            })
+
+    return edges
+
+
+def load_within_domain_edges(direction_map: Dict) -> List[Dict[str, Any]]:
+    """Load within-domain edges from the existing construct network."""
+    if not EXISTING_NETWORK_PATH.exists():
+        print(f'  WARNING: {EXISTING_NETWORK_PATH} not found')
+        return []
+
+    with open(EXISTING_NETWORK_PATH) as f:
+        network = json.load(f)
+
+    edges = []
+    for e in network.get('edges', []):
+        if e.get('cross_domain', False):
             continue
-        name = s.get('construct_name', '')
-        col = f'agg_{name}'
-        constructs.append({'name': name, 'col': col, 'domain': domain_code})
-    return constructs
+
+        source = e['source']  # e.g. "CIE:science_self_efficacy"
+        target = e['target']
+        source_dom = source.split(':')[0]
+        source_name = source.split(':')[1]
+        target_dom = target.split(':')[0]
+        target_name = target.split(':')[1]
+
+        # Look up causal direction for intra-domain pairs
+        ck = _pair_key(source_dom, source_name, target_dom, target_name)
+        cm_entry = direction_map.get(ck, {})
+        direction = cm_entry.get('direction', 'ambiguous')
+        dir_source = cm_entry.get('source', 'none')
+
+        # Orient by causal direction if available
+        if direction == 'causal' and cm_entry.get('cause'):
+            cause_str = cm_entry['cause']
+            if cause_str == target:
+                # Swap: target is actually the cause
+                source, target = target, source
+                source_dom, target_dom = target_dom, source_dom
+                source_name, target_name = target_name, source_name
+                e_gamma = -e.get('gamma', 0)
+            else:
+                e_gamma = e.get('gamma', 0)
+        else:
+            e_gamma = e.get('gamma', 0)
+
+        edges.append({
+            'source': source,
+            'target': target,
+            'source_domain': source_dom,
+            'target_domain': target_dom,
+            'gamma': round(e_gamma, 4),
+            'cramers_v': round(e.get('cramers_v', 0), 4),
+            'ks_overlap': round(e.get('ks_overlap', 0), 4),
+            'cross_domain': False,
+            'causal_direction': direction,
+            'direction_source': dir_source,
+        })
+
+    return edges
 
 
-def estimate_edge(
-    df_a, df_b, construct_a, construct_b, n_sim=500, n_bootstrap=5, max_categories=5,
-    direction_map=None,
-) -> Optional[Dict[str, Any]]:
-    """Estimate DR gamma between two constructs.
-
-    If direction_map is provided and indicates a causal direction, the source/target
-    in the returned edge reflect cause→effect ordering.
-    """
-    from ses_regression import DoublyRobustBridgeEstimator
-    from select_bridge_variables_semantic import SemanticVariableSelector
-
-    col_a = construct_a['col']
-    col_b = construct_b['col']
-    dom_a = construct_a['domain']
-    dom_b = construct_b['domain']
-    if col_a not in df_a.columns or col_b not in df_b.columns:
-        return None
-
-    # Resolve causal direction for cross-domain pairs (construct-level)
-    causal_dir = 'within'
-    if dom_a != dom_b and direction_map:
-        src, tgt, dir_type = SemanticVariableSelector.get_pair_direction(
-            dom_a, dom_b, direction_map,
-            construct_a=construct_a['name'], construct_b=construct_b['name'])
-        causal_dir = dir_type
-        # Determine if we need to swap: src might be "DOMAIN:construct" or "DOMAIN"
-        src_dom = src.split(':')[0] if ':' in src else src
-        if src_dom == dom_b:
-            df_a, df_b = df_b, df_a
-            col_a, col_b = col_b, col_a
-            construct_a, construct_b = construct_b, construct_a
-            dom_a, dom_b = dom_b, dom_a
-
-    est = DoublyRobustBridgeEstimator(
-        n_sim=n_sim, n_bootstrap=n_bootstrap, max_categories=max_categories)
-    try:
-        r = est.estimate(
-            var_id_a=f"{col_a}|{dom_a}",
-            var_id_b=f"{col_b}|{dom_b}",
-            df_a=df_a, df_b=df_b, col_a=col_a, col_b=col_b)
-        if r:
-            return {
-                'source': f"{dom_a}:{construct_a['name']}",
-                'target': f"{dom_b}:{construct_b['name']}",
-                'source_domain': dom_a,
-                'target_domain': dom_b,
-                'gamma': r['gamma'],
-                'cramers_v': r['cramers_v'],
-                'ks_overlap': r['propensity_overlap'],
-                'cross_domain': dom_a != dom_b,
-                'causal_direction': causal_dir,
-            }
-    except Exception:
-        pass
-    return None
+def deduplicate_edges(edges: List[Dict]) -> List[Dict]:
+    """Keep strongest edge per construct pair."""
+    best = {}
+    for e in edges:
+        ck = _pair_key(
+            e['source'].split(':')[0], e['source'].split(':')[1],
+            e['target'].split(':')[0], e['target'].split(':')[1],
+        )
+        if ck not in best or abs(e['gamma']) > abs(best[ck]['gamma']):
+            best[ck] = e
+    return list(best.values())
 
 
-def build_network(edges: List[Dict], sel_data: dict) -> Dict[str, Any]:
+def build_network(edges: List[Dict]) -> Dict[str, Any]:
     """Build network JSON from edges."""
-    # Nodes: all unique constructs
     node_set = set()
     for e in edges:
         node_set.add(e['source'])
@@ -144,7 +196,6 @@ def build_network(edges: List[Dict], sel_data: dict) -> Dict[str, Any]:
             'domain': domain,
         })
 
-    # Domain colors
     domains = sorted(set(n['domain'] for n in nodes))
     colors = [
         '#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231',
@@ -164,8 +215,8 @@ def build_network(edges: List[Dict], sel_data: dict) -> Dict[str, Any]:
     }
 
 
-def render_plotly_html(network: Dict, output_path: Path) -> None:
-    """Render interactive network with Plotly."""
+def render_plotly_html(network: Dict, output_path: Path, gamma_threshold: float = 0.05) -> None:
+    """Render interactive network with Plotly, including directional arrows."""
     import plotly.graph_objects as go
 
     nodes = network['nodes']
@@ -176,83 +227,147 @@ def render_plotly_html(network: Dict, output_path: Path) -> None:
     domains = sorted(set(n['domain'] for n in nodes))
     domain_idx = {d: i for i, d in enumerate(domains)}
 
-    # Position nodes: domains around a circle, constructs within each domain
     node_pos = {}
     n_domains = len(domains)
     for d in domains:
         d_nodes = [n for n in nodes if n['domain'] == d]
-        angle_center = 2 * np.pi * domain_idx[d] / n_domains
-        r_domain = 3.0  # radius for domain centers
-        cx = r_domain * np.cos(angle_center)
-        cy = r_domain * np.sin(angle_center)
-        # Spread constructs around domain center
+        angle_center = 2 * math.pi * domain_idx[d] / n_domains
+        r_domain = 4.0
+        cx = r_domain * math.cos(angle_center)
+        cy = r_domain * math.sin(angle_center)
         n_c = len(d_nodes)
         for j, n in enumerate(d_nodes):
-            a = angle_center + (j - n_c/2) * 0.15
-            r = r_domain + 0.3 * (j % 2) - 0.15
+            offset_angle = (j - n_c / 2) * 0.25
+            r_offset = 0.4 * (j % 2) - 0.2
             node_pos[n['id']] = (
-                cx + 0.6 * np.cos(a + np.pi/2 * (j % 2)),
-                cy + 0.6 * np.sin(a + np.pi/2 * (j % 2)),
+                cx + (0.8 + r_offset) * math.cos(angle_center + offset_angle),
+                cy + (0.8 + r_offset) * math.sin(angle_center + offset_angle),
             )
 
-    # Filter edges by |gamma| threshold
-    sig_edges = [e for e in edges if abs(e['gamma']) > 0.05]
+    # Filter edges by threshold
+    sig_edges = [e for e in edges if abs(e['gamma']) > gamma_threshold]
     strong_edges = [e for e in edges if abs(e['gamma']) > 0.15]
+    causal_edges = [e for e in sig_edges if e.get('causal_direction') == 'causal']
 
-    # Edge traces (weak and strong)
-    edge_traces = []
-    for edge_set, width, opacity, name in [
-        (sig_edges, 1.0, 0.3, 'Weak (|g|>0.05)'),
-        (strong_edges, 2.5, 0.7, 'Strong (|g|>0.15)'),
-    ]:
-        x_edges, y_edges = [], []
-        for e in edge_set:
-            if e['source'] in node_pos and e['target'] in node_pos:
-                x0, y0 = node_pos[e['source']]
-                x1, y1 = node_pos[e['target']]
-                x_edges += [x0, x1, None]
-                y_edges += [y0, y1, None]
-        color = 'rgba(200,50,50,{})'.format(opacity) if name.startswith('Strong') else 'rgba(150,150,150,{})'.format(opacity)
-        edge_traces.append(go.Scatter(
-            x=x_edges, y=y_edges, mode='lines',
-            line=dict(width=width, color=color),
-            name=name, hoverinfo='none',
-        ))
+    # --- Edge traces ---
+    traces = []
 
-    # Cross-domain strong edges highlighted
-    cross_strong = [e for e in strong_edges if e['cross_domain']]
-    x_cross, y_cross = [], []
-    for e in cross_strong:
+    # Weak edges (grey)
+    weak = [e for e in sig_edges if abs(e['gamma']) <= 0.15]
+    x_w, y_w = [], []
+    for e in weak:
         if e['source'] in node_pos and e['target'] in node_pos:
             x0, y0 = node_pos[e['source']]
             x1, y1 = node_pos[e['target']]
-            x_cross += [x0, x1, None]
-            y_cross += [y0, y1, None]
-    edge_traces.append(go.Scatter(
-        x=x_cross, y=y_cross, mode='lines',
-        line=dict(width=3, color='rgba(255,0,0,0.6)'),
-        name='Cross-domain strong', hoverinfo='none',
+            x_w += [x0, x1, None]
+            y_w += [y0, y1, None]
+    traces.append(go.Scatter(
+        x=x_w, y=y_w, mode='lines',
+        line=dict(width=0.8, color='rgba(180,180,180,0.3)'),
+        name=f'Weak (|g|>{gamma_threshold:.2f})', hoverinfo='none',
     ))
 
-    # Node trace
-    node_x = [node_pos[n['id']][0] for n in nodes if n['id'] in node_pos]
-    node_y = [node_pos[n['id']][1] for n in nodes if n['id'] in node_pos]
-    node_colors = [n['color'] for n in nodes if n['id'] in node_pos]
-    node_labels = [n['label'] for n in nodes if n['id'] in node_pos]
-    node_domains = [n['domain'] for n in nodes if n['id'] in node_pos]
+    # Strong within-domain edges (blue)
+    strong_within = [e for e in strong_edges if not e['cross_domain']]
+    x_sw, y_sw = [], []
+    for e in strong_within:
+        if e['source'] in node_pos and e['target'] in node_pos:
+            x0, y0 = node_pos[e['source']]
+            x1, y1 = node_pos[e['target']]
+            x_sw += [x0, x1, None]
+            y_sw += [y0, y1, None]
+    traces.append(go.Scatter(
+        x=x_sw, y=y_sw, mode='lines',
+        line=dict(width=2.0, color='rgba(66,133,244,0.6)'),
+        name='Strong within-domain (|g|>0.15)', hoverinfo='none',
+    ))
 
-    # Count edges per node for sizing
+    # Strong cross-domain edges (red)
+    strong_cross = [e for e in strong_edges if e['cross_domain']]
+    x_sc, y_sc = [], []
+    for e in strong_cross:
+        if e['source'] in node_pos and e['target'] in node_pos:
+            x0, y0 = node_pos[e['source']]
+            x1, y1 = node_pos[e['target']]
+            x_sc += [x0, x1, None]
+            y_sc += [y0, y1, None]
+    traces.append(go.Scatter(
+        x=x_sc, y=y_sc, mode='lines',
+        line=dict(width=2.5, color='rgba(220,50,50,0.6)'),
+        name='Strong cross-domain (|g|>0.15)', hoverinfo='none',
+    ))
+
+    # Causal arrows (dark green) — draw arrowhead annotations
+    annotations = []
+    for e in causal_edges:
+        if e['source'] not in node_pos or e['target'] not in node_pos:
+            continue
+        if abs(e['gamma']) < gamma_threshold:
+            continue
+        x0, y0 = node_pos[e['source']]
+        x1, y1 = node_pos[e['target']]
+        # Shorten arrow to not overlap node
+        dx, dy = x1 - x0, y1 - y0
+        dist = math.sqrt(dx**2 + dy**2)
+        if dist < 0.01:
+            continue
+        shrink = 0.15
+        ax1 = x0 + dx * shrink
+        ay1 = y0 + dy * shrink
+        ax2 = x1 - dx * shrink
+        ay2 = y1 - dy * shrink
+        width = min(3.0, 1.0 + abs(e['gamma']) * 8)
+        color = 'rgba(34,139,34,0.7)' if not e['cross_domain'] else 'rgba(178,34,34,0.8)'
+        annotations.append(dict(
+            x=ax2, y=ay2, ax=ax1, ay=ay1,
+            xref='x', yref='y', axref='x', ayref='y',
+            showarrow=True,
+            arrowhead=2, arrowsize=1.2, arrowwidth=width,
+            arrowcolor=color,
+        ))
+
+    # Domain label annotations
+    for d in domains:
+        d_nodes_in = [n for n in nodes if n['domain'] == d and n['id'] in node_pos]
+        if d_nodes_in:
+            cx = np.mean([node_pos[n['id']][0] for n in d_nodes_in])
+            cy = np.mean([node_pos[n['id']][1] for n in d_nodes_in])
+            annotations.append(dict(
+                x=cx, y=cy + 1.0, text=f'<b>{d}</b>',
+                showarrow=False, font=dict(size=11, color=domain_colors[d]),
+            ))
+
+    # Node trace
+    positioned = [n for n in nodes if n['id'] in node_pos]
+    node_x = [node_pos[n['id']][0] for n in positioned]
+    node_y = [node_pos[n['id']][1] for n in positioned]
+    node_colors = [n['color'] for n in positioned]
+    node_labels = [n['label'] for n in positioned]
+    node_domains = [n['domain'] for n in positioned]
+
     edge_count = {}
     for e in sig_edges:
         edge_count[e['source']] = edge_count.get(e['source'], 0) + 1
         edge_count[e['target']] = edge_count.get(e['target'], 0) + 1
-    node_sizes = [8 + 3 * edge_count.get(n['id'], 0) for n in nodes if n['id'] in node_pos]
+    node_sizes = [8 + 2 * edge_count.get(n['id'], 0) for n in positioned]
 
-    hover_text = [
-        f"<b>{label}</b><br>Domain: {dom}<br>Connections: {edge_count.get(nodes[i]['id'], 0)}"
-        for i, (label, dom) in enumerate(zip(node_labels, node_domains))
-        if nodes[i]['id'] in node_pos
-    ]
+    # Causal role info
+    causal_out = {}
+    causal_in = {}
+    for e in causal_edges:
+        causal_out[e['source']] = causal_out.get(e['source'], 0) + 1
+        causal_in[e['target']] = causal_in.get(e['target'], 0) + 1
+
+    hover_text = []
+    for n in positioned:
+        nid = n['id']
+        c_out = causal_out.get(nid, 0)
+        c_in = causal_in.get(nid, 0)
+        causal_str = f'<br>Causes: {c_out} | Effects: {c_in}' if (c_out + c_in) > 0 else ''
+        hover_text.append(
+            f"<b>{n['label']}</b><br>Domain: {n['domain']}"
+            f"<br>Connections: {edge_count.get(nid, 0)}{causal_str}"
+        )
 
     node_trace = go.Scatter(
         x=node_x, y=node_y, mode='markers+text',
@@ -264,31 +379,27 @@ def render_plotly_html(network: Dict, output_path: Path) -> None:
         name='Constructs',
     )
 
-    # Domain legend annotations
-    annotations = []
-    for d in domains:
-        d_nodes_in = [n for n in nodes if n['domain'] == d and n['id'] in node_pos]
-        if d_nodes_in:
-            cx = np.mean([node_pos[n['id']][0] for n in d_nodes_in])
-            cy = np.mean([node_pos[n['id']][1] for n in d_nodes_in])
-            annotations.append(dict(
-                x=cx, y=cy + 0.8, text=f'<b>{d}</b>',
-                showarrow=False, font=dict(size=11, color=domain_colors[d]),
-            ))
+    # Summary stats for title
+    n_within_edges = len([e for e in edges if not e['cross_domain']])
+    n_cross_edges = len([e for e in edges if e['cross_domain']])
+    n_causal_total = len(causal_edges)
 
     fig = go.Figure(
-        data=edge_traces + [node_trace],
+        data=traces + [node_trace],
         layout=go.Layout(
             title=dict(
-                text='Construct Association Network (DR gamma)',
-                font=dict(size=16),
+                text=(f'Construct Association Network — {len(nodes)} nodes, '
+                      f'{len(edges)} edges ({n_within_edges} within + {n_cross_edges} cross), '
+                      f'{n_causal_total} causal arrows'),
+                font=dict(size=14),
             ),
             showlegend=True,
             hovermode='closest',
             annotations=annotations,
             xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-            yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-            width=1400, height=1000,
+            yaxis=dict(showgrid=False, zeroline=False, showticklabels=False,
+                       scaleanchor='x', scaleratio=1),
+            width=1600, height=1200,
             plot_bgcolor='white',
         ),
     )
@@ -297,174 +408,203 @@ def render_plotly_html(network: Dict, output_path: Path) -> None:
     print(f'  HTML saved -> {output_path}')
 
 
-def main(max_cross_pairs: int = 30, max_within_pairs: int = 24, fast: bool = True):
+def main(gamma_threshold: float = 0.05, recompute_within: bool = False):
     t0 = time.time()
-    print('Loading data...', flush=True)
-    enc_dict, enc_nom_dict_rev, sel, sel_data = load_data()
 
     # Load causal direction map
-    from select_bridge_variables_semantic import SemanticVariableSelector
-    direction_map = SemanticVariableSelector.load_causal_direction_map()
-    n_causal = sum(1 for v in direction_map.values() if v['direction'] == 'causal')
-    print(f'Causal direction map: {n_causal} causal, '
-          f'{len(direction_map) - n_causal} ambiguous')
+    print('Loading causal direction map...', flush=True)
+    direction_map = load_causal_direction_map()
+    n_causal = sum(1 for v in direction_map.values() if v.get('direction') == 'causal')
+    n_intra = sum(1 for k in direction_map
+                  if k.split('::')[0].split(':')[0] == k.split('::')[1].split(':')[0])
+    print(f'  {len(direction_map)} pairs: {n_causal} causal, '
+          f'{len(direction_map) - n_causal} ambiguous/empirical, {n_intra} intra-domain')
 
-    # Build construct list
-    all_constructs = {}  # domain -> list of construct dicts
-    for code in sorted(sel_data['domains'].keys()):
-        cs = get_constructs(sel_data, code)
-        df = get_df(enc_dict, sel_data, code)
-        # Only keep constructs that have the column in the dataframe
-        if df is not None:
-            cs = [c for c in cs if c['col'] in df.columns]
-        all_constructs[code] = cs
+    # Load within-domain edges (from existing network or recompute)
+    if recompute_within:
+        print('\nRecomputing within-domain edges...', flush=True)
+        within_edges = _recompute_within_domain_edges(direction_map)
+    else:
+        print('\nLoading within-domain edges from existing network...', flush=True)
+        within_edges = load_within_domain_edges(direction_map)
+    print(f'  {len(within_edges)} within-domain edges')
 
-    n_total = sum(len(v) for v in all_constructs.values())
-    print(f'Constructs: {n_total} across {len(all_constructs)} domains')
+    # Load cross-domain edges from DR sweep
+    print('\nLoading cross-domain edges from DR sweep...', flush=True)
+    cross_edges = load_cross_domain_edges(direction_map)
+    print(f'  {len(cross_edges)} cross-domain edges (raw)')
 
-    n_sim = 300 if fast else 500
-    n_boot = 3 if fast else 10
-    edges = []
+    # Combine and deduplicate
+    all_edges = within_edges + cross_edges
+    all_edges = deduplicate_edges(all_edges)
+    print(f'\nAfter deduplication: {len(all_edges)} edges')
 
-    # --- Within-domain edges (all 5C2 = 10 pairs per domain) ---
-    print(f'\n--- Within-domain edges ---', flush=True)
-    n_within = 0
-    for code, cs in all_constructs.items():
-        df = get_df(enc_dict, sel_data, code)
-        if df is None or len(cs) < 2:
-            continue
-        for ca, cb in combinations(cs, 2):
-            edge = estimate_edge(df, df, ca, cb, n_sim=n_sim, n_bootstrap=n_boot)
-            if edge:
-                edges.append(edge)
-                g = edge['gamma']
-                marker = '*' if abs(g) > 0.15 else ' '
-                n_within += 1
-                print(f'  {marker} {code}: {ca["name"][:30]:30} x {cb["name"][:30]:30} g={g:+.3f}',
-                      flush=True)
+    # Stats
+    within_final = [e for e in all_edges if not e['cross_domain']]
+    cross_final = [e for e in all_edges if e['cross_domain']]
+    causal_final = [e for e in all_edges if e.get('causal_direction') == 'causal']
+    strong = [e for e in all_edges if abs(e['gamma']) > 0.15]
+    gammas = [abs(e['gamma']) for e in all_edges]
 
-    print(f'  Within-domain: {n_within} edges', flush=True)
+    print(f'  Within-domain: {len(within_final)} edges'
+          f' (mean |g|={np.mean([abs(e["gamma"]) for e in within_final]):.3f})')
+    print(f'  Cross-domain:  {len(cross_final)} edges'
+          f' (mean |g|={np.mean([abs(e["gamma"]) for e in cross_final]):.3f})')
+    print(f'  Causal arrows: {len(causal_final)}')
+    print(f'  Strong (|g|>0.15): {len(strong)}')
+    print(f'  Gamma distribution: mean={np.mean(gammas):.3f}, '
+          f'median={np.median(gammas):.3f}, P90={np.percentile(gammas, 90):.3f}')
 
-    # --- Cross-domain edges (top pairs by construct similarity) ---
-    print(f'\n--- Cross-domain edges (sampling {max_cross_pairs} pairs) ---', flush=True)
-    domain_codes = sorted(all_constructs.keys())
-    cross_pairs = list(combinations(domain_codes, 2))
-    # Prioritize pairs with clear causal direction, then by construct count
-    def pair_priority(p):
-        pk = '::'.join(sorted(p))
-        info = direction_map.get(pk, {})
-        has_dir = 1 if info.get('direction') == 'causal' else 0
-        n_constructs = len(all_constructs[p[0]]) * len(all_constructs[p[1]])
-        return (-has_dir, -n_constructs)
-    cross_pairs.sort(key=pair_priority)
-
-    n_cross = 0
-    for da, db in cross_pairs:
-        if n_cross >= max_cross_pairs:
-            break
-        df_a = get_df(enc_dict, sel_data, da)
-        df_b = get_df(enc_dict, sel_data, db)
-        if df_a is None or df_b is None:
-            continue
-        cs_a = all_constructs[da]
-        cs_b = all_constructs[db]
-        if not cs_a or not cs_b:
-            continue
-
-        # Pick first construct from each domain (strongest/most representative)
-        ca = cs_a[0]
-        cb = cs_b[0]
-        edge = estimate_edge(df_a, df_b, ca, cb, n_sim=n_sim, n_bootstrap=n_boot,
-                             direction_map=direction_map)
-        if edge:
-            edges.append(edge)
-            g = edge['gamma']
-            arrow = '→' if edge.get('causal_direction') == 'causal' else '~'
-            marker = '*' if abs(g) > 0.15 else ' '
-            n_cross += 1
-            src_d = edge['source_domain']
-            tgt_d = edge['target_domain']
-            print(f'  {marker} {src_d}{arrow}{tgt_d}: '
-                  f'{edge["source"].split(":")[1][:28]:28} {arrow} '
-                  f'{edge["target"].split(":")[1][:28]:28} g={g:+.3f}',
-                  flush=True)
-
-    # Also run a few more cross-domain pairs for domains with strong signal
-    strong_cross = [e for e in edges if e['cross_domain'] and abs(e['gamma']) > 0.10]
-    print(f'\n--- Expanding {len(strong_cross)} strong cross-domain pairs ---', flush=True)
-    for se in strong_cross[:10]:
-        da = se['source_domain']
-        db = se['target_domain']
-        df_a = get_df(enc_dict, sel_data, da)
-        df_b = get_df(enc_dict, sel_data, db)
-        if df_a is None or df_b is None:
-            continue
-        cs_a = all_constructs[da]
-        cs_b = all_constructs[db]
-        existing = {(e['source'], e['target']) for e in edges}
-        for ca in cs_a[1:3]:
-            for cb in cs_b[1:3]:
-                key = (f"{ca['domain']}:{ca['name']}", f"{cb['domain']}:{cb['name']}")
-                if key in existing:
-                    continue
-                edge = estimate_edge(df_a, df_b, ca, cb, n_sim=n_sim, n_bootstrap=n_boot,
-                                     direction_map=direction_map)
-                if edge:
-                    edges.append(edge)
-                    g = edge['gamma']
-                    arrow = '→' if edge.get('causal_direction') == 'causal' else '~'
-                    print(f'    {da}{arrow}{db}: {ca["name"][:28]:28} {arrow} {cb["name"][:28]:28} g={g:+.3f}',
-                          flush=True)
-
+    # Build network
+    network = build_network(all_edges)
     elapsed = time.time() - t0
-    print(f'\nTotal edges: {len(edges)} ({elapsed:.0f}s)')
-
-    # Summary stats
-    gammas = [abs(e['gamma']) for e in edges]
-    cross_gammas = [abs(e['gamma']) for e in edges if e['cross_domain']]
-    within_gammas = [abs(e['gamma']) for e in edges if not e['cross_domain']]
-    print(f'  Within-domain: {len(within_gammas)} edges, mean |g|={np.mean(within_gammas):.3f}' if within_gammas else '')
-    print(f'  Cross-domain:  {len(cross_gammas)} edges, mean |g|={np.mean(cross_gammas):.3f}' if cross_gammas else '')
-    print(f'  Strong (|g|>0.15): {sum(1 for g in gammas if g > 0.15)}')
+    network['metadata'] = {
+        'n_nodes': len(network['nodes']),
+        'n_edges': len(all_edges),
+        'n_within': len(within_final),
+        'n_cross': len(cross_final),
+        'n_causal_arrows': len(causal_final),
+        'n_strong': len(strong),
+        'gamma_threshold': gamma_threshold,
+        'elapsed_seconds': round(elapsed, 1),
+        'sources': {
+            'within_domain': str(EXISTING_NETWORK_PATH),
+            'cross_domain': str(DR_SWEEP_PATH),
+            'causal_direction': str(CAUSAL_MAP_PATH),
+        },
+    }
 
     # Save JSON
-    network = build_network(edges, sel_data)
-    network['metadata'] = {
-        'n_edges': len(edges),
-        'n_nodes': len(network['nodes']),
-        'n_strong': sum(1 for g in gammas if g > 0.15),
-        'elapsed_seconds': round(elapsed, 1),
-        'n_sim': n_sim,
-        'n_bootstrap': n_boot,
-    }
     OUTPUT_JSON.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_JSON, 'w') as f:
         json.dump(network, f, indent=2)
-    print(f'  JSON saved -> {OUTPUT_JSON}')
+    print(f'\n  JSON saved -> {OUTPUT_JSON}')
 
     # Render HTML
     try:
-        render_plotly_html(network, OUTPUT_HTML)
+        render_plotly_html(network, OUTPUT_HTML, gamma_threshold=gamma_threshold)
     except ImportError:
-        print('  Plotly not available — skipping HTML render')
+        print('  Plotly not available -- skipping HTML render')
 
-    # Print top edges
-    edges_sorted = sorted(edges, key=lambda e: -abs(e['gamma']))
-    print(f'\n=== TOP 20 STRONGEST EDGES ===')
-    print(f'{"source":40} {"target":40} {"gamma":>7} {"type":>6}')
-    print('-' * 95)
-    for e in edges_sorted[:20]:
-        s = e['source'].split(':')[1].replace('_',' ')[:38]
-        t = e['target'].split(':')[1].replace('_',' ')[:38]
+    # Top edges table
+    edges_sorted = sorted(all_edges, key=lambda e: -abs(e['gamma']))
+    print(f'\n=== TOP 30 STRONGEST EDGES ===')
+    print(f'{"Source":40} {"Dir":>3} {"Target":40} {"gamma":>7} {"Type":>6} {"Causal":>8}')
+    print('-' * 105)
+    for e in edges_sorted[:30]:
+        s = e['source'].split(':')[1].replace('_', ' ')[:38]
+        t = e['target'].split(':')[1].replace('_', ' ')[:38]
         typ = 'CROSS' if e['cross_domain'] else 'within'
-        print(f'{s:40} {t:40} {e["gamma"]:+.3f} {typ:>6}')
+        arrow = ' -> ' if e.get('causal_direction') == 'causal' else ' ~  '
+        cdir = e.get('causal_direction', '?')
+        print(f'{s:40}{arrow}{t:40} {e["gamma"]:+.3f} {typ:>6} {cdir:>8}')
+
+    # Causal chains (intra-domain)
+    print(f'\n=== INTRA-DOMAIN CAUSAL CHAINS ===')
+    intra_causal = [e for e in all_edges
+                    if not e['cross_domain'] and e.get('causal_direction') == 'causal']
+    by_domain = {}
+    for e in intra_causal:
+        d = e['source_domain']
+        by_domain.setdefault(d, []).append(e)
+    for d in sorted(by_domain):
+        print(f'\n  {d}:')
+        for e in sorted(by_domain[d], key=lambda x: -abs(x['gamma'])):
+            s = e['source'].split(':')[1].replace('_', ' ')
+            t = e['target'].split(':')[1].replace('_', ' ')
+            print(f'    {s} -> {t}  (g={e["gamma"]:+.3f})')
+
+    print(f'\nDone in {elapsed:.1f}s')
+
+
+def _recompute_within_domain_edges(direction_map: Dict) -> List[Dict]:
+    """Recompute within-domain edges live using DR estimator."""
+    import warnings
+    warnings.filterwarnings('ignore')
+
+    from dataset_knowledge import los_mex_dict, enc_nom_dict
+    from ses_analysis import AnalysisConfig
+    from select_bridge_variables_semantic import SemanticVariableSelector
+    from ses_regression import DoublyRobustBridgeEstimator
+
+    preprocessed = AnalysisConfig.preprocess_survey_data(los_mex_dict)
+    enc_dict = preprocessed.get('enc_dict', los_mex_dict.get('enc_dict', {}))
+    enc_nom_dict_rev = {v: k for k, v in enc_nom_dict.items()}
+    SemanticVariableSelector.build_aggregates(enc_dict, enc_nom_dict_rev)
+
+    with open(ROOT / 'data' / 'results' / 'semantic_variable_selection.json') as f:
+        sel_data = json.load(f)
+
+    edges = []
+    from itertools import combinations
+    for code, domain_data in sorted(sel_data['domains'].items()):
+        title = domain_data.get('survey_title', '')
+        v = enc_dict.get(title)
+        if not v:
+            continue
+        df = v['dataframe']
+
+        strats = domain_data.get('variable_strategies', [])
+        constructs = []
+        for s in strats:
+            if s.get('action') == 'skip':
+                continue
+            name = s.get('construct_name', '')
+            col = f'agg_{name}'
+            if col in df.columns:
+                constructs.append({'name': name, 'col': col, 'domain': code})
+
+        if len(constructs) < 2:
+            continue
+
+        for ca, cb in combinations(constructs, 2):
+            est = DoublyRobustBridgeEstimator(n_sim=300, n_bootstrap=3, max_categories=5)
+            try:
+                r = est.estimate(
+                    var_id_a=f'{ca["col"]}|{code}',
+                    var_id_b=f'{cb["col"]}|{code}',
+                    df_a=df, df_b=df, col_a=ca['col'], col_b=cb['col'])
+                if not r:
+                    continue
+            except Exception:
+                continue
+
+            ck = _pair_key(code, ca['name'], code, cb['name'])
+            cm_entry = direction_map.get(ck, {})
+            direction = cm_entry.get('direction', 'ambiguous')
+            dir_source = cm_entry.get('source', 'none')
+
+            source, target = f'{code}:{ca["name"]}', f'{code}:{cb["name"]}'
+            gamma = r['gamma']
+            if direction == 'causal' and cm_entry.get('cause') == target:
+                source, target = target, source
+                gamma = -gamma
+
+            edges.append({
+                'source': source,
+                'target': target,
+                'source_domain': code,
+                'target_domain': code,
+                'gamma': round(gamma, 4),
+                'cramers_v': round(r.get('cramers_v', 0), 4),
+                'ks_overlap': round(r.get('propensity_overlap', 0), 4),
+                'cross_domain': False,
+                'causal_direction': direction,
+                'direction_source': dir_source,
+            })
+            s = ca['name'][:30]
+            t = cb['name'][:30]
+            arrow = '->' if direction == 'causal' else '~ '
+            print(f'    {code}: {s:30} {arrow} {t:30} g={gamma:+.3f}', flush=True)
+
+    return edges
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--pairs', type=int, default=30,
-                        help='Max cross-domain pairs to test')
-    parser.add_argument('--fast', action='store_true', default=True,
-                        help='Fast mode (n_sim=300, n_boot=3)')
+    parser.add_argument('--gamma-threshold', type=float, default=0.05,
+                        help='Minimum |gamma| to display an edge')
+    parser.add_argument('--recompute-within', action='store_true',
+                        help='Recompute within-domain edges (slow)')
     args = parser.parse_args()
-    main(max_cross_pairs=args.pairs, fast=args.fast)
+    main(gamma_threshold=args.gamma_threshold, recompute_within=args.recompute_within)
