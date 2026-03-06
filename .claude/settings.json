@@ -3,7 +3,10 @@
     "allow": [
       "Bash(find:*)",
       "Read(//workspaces/navegador/.claude/worktrees/knowledge-graph/**)",
-      "Bash(NAVEGADOR_ENCUESTAS_PATH=/workspaces/navegador/data/encuestas python -:*)"
+      "Bash(NAVEGADOR_ENCUESTAS_PATH=/workspaces/navegador/data/encuestas python -:*)",
+      "Bash(tail -20 /tmp/bridge_comparison*.log)",
+      "Read(//workspaces/navegador/**)",
+      "Bash(NAVEGADOR_LOS_MEX_DICT_PATH=/workspaces/navegador/data/encuestas/los_mex_dict.json python -c \":*)"
     ],
     "additionalDirectories": [
       "/workspaces/navegador/.claude/worktrees/knowledge-graph"
