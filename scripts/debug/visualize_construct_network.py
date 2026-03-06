@@ -223,48 +223,85 @@ def render_plotly_html(network: Dict, output_path: Path, gamma_threshold: float 
     edges = network['edges']
     domain_colors = network['domain_colors']
 
-    # Layout: group by domain using a circular arrangement
+    # --- Compute edge weights first ---
     domains = sorted(set(n['domain'] for n in nodes))
-    domain_idx = {d: i for i, d in enumerate(domains)}
+    cross_all = [e for e in edges if e['cross_domain']]
+    within_all = [e for e in edges if not e['cross_domain']]
+    cross_gammas = sorted([abs(e['gamma']) for e in cross_all])
+    cross_strong_thresh = np.percentile(cross_gammas, 99) if cross_gammas else 0.5
+    cross_strong_thresh = max(cross_strong_thresh, 0.80)
+
+    sig_edges = ([e for e in within_all if abs(e['gamma']) > gamma_threshold]
+                 + [e for e in cross_all if abs(e['gamma']) > gamma_threshold])
+    strong_edges = ([e for e in within_all if abs(e['gamma']) > 0.15]
+                    + [e for e in cross_all if abs(e['gamma']) > cross_strong_thresh])
+    causal_edges = [e for e in sig_edges if e.get('causal_direction') == 'causal'
+                    and (not e['cross_domain'] or abs(e['gamma']) > cross_strong_thresh)]
+
+    # Node connectivity weights (from strong edges)
+    edge_count = {}
+    edge_weight = {}
+    for e in strong_edges:
+        for nid in (e['source'], e['target']):
+            edge_count[nid] = edge_count.get(nid, 0) + 1
+            edge_weight[nid] = edge_weight.get(nid, 0.0) + abs(e['gamma'])
+    max_weight = max(edge_weight.values()) if edge_weight else 1.0
+
+    # --- Layout: 3 concentric rings by connectivity weight ---
+    all_node_ids = [n['id'] for n in nodes]
+    weights_list = [edge_weight.get(nid, 0) for nid in all_node_ids]
+    nonzero_weights = [w for w in weights_list if w > 0]
+    p95 = np.percentile(nonzero_weights, 89) if nonzero_weights else 1.0
+    p40 = np.percentile(nonzero_weights, 40) if nonzero_weights else 0.5
+
+    inner_ids = set()   # high: top 5% (P95+)
+    middle_ids = set()  # medium: 40th-95th percentile
+    outer_ids = set()   # low: below 40th or zero weight
+    for nid in all_node_ids:
+        w = edge_weight.get(nid, 0)
+        if w >= p95:
+            inner_ids.add(nid)
+        elif w >= p40:
+            middle_ids.add(nid)
+        else:
+            outer_ids.add(nid)
+
+    r_inner_ring = 3.0
+    r_middle_ring = 6.0
+    r_outer_ring = 9.0
 
     node_pos = {}
-    n_domains = len(domains)
-    for d in domains:
-        d_nodes = [n for n in nodes if n['domain'] == d]
-        angle_center = 2 * math.pi * domain_idx[d] / n_domains
-        r_domain = 4.0
-        cx = r_domain * math.cos(angle_center)
-        cy = r_domain * math.sin(angle_center)
-        n_c = len(d_nodes)
-        for j, n in enumerate(d_nodes):
-            offset_angle = (j - n_c / 2) * 0.25
-            r_offset = 0.4 * (j % 2) - 0.2
-            node_pos[n['id']] = (
-                cx + (0.8 + r_offset) * math.cos(angle_center + offset_angle),
-                cy + (0.8 + r_offset) * math.sin(angle_center + offset_angle),
-            )
+    for tier_ids, radius in [(inner_ids, r_inner_ring),
+                             (middle_ids, r_middle_ring),
+                             (outer_ids, r_outer_ring)]:
+        tier_list = sorted(tier_ids, key=lambda nid: -edge_weight.get(nid, 0))
+        n_tier = len(tier_list)
+        for j, nid in enumerate(tier_list):
+            angle = 2 * math.pi * j / max(n_tier, 1)
+            # Small jitter to avoid perfect overlap
+            r = radius + 0.3 * (j % 3 - 1)
+            node_pos[nid] = (r * math.cos(angle), r * math.sin(angle))
 
-    # Filter edges by threshold
-    sig_edges = [e for e in edges if abs(e['gamma']) > gamma_threshold]
-    strong_edges = [e for e in edges if abs(e['gamma']) > 0.15]
-    causal_edges = [e for e in sig_edges if e.get('causal_direction') == 'causal']
+    def _xy(nid):
+        return node_pos[nid]
 
     # --- Edge traces ---
     traces = []
 
-    # Weak edges (grey)
-    weak = [e for e in sig_edges if abs(e['gamma']) <= 0.15]
+    # Weak within-domain edges (grey)
+    weak_within = [e for e in sig_edges
+                   if abs(e['gamma']) <= 0.15 and not e['cross_domain']]
     x_w, y_w = [], []
-    for e in weak:
+    for e in weak_within:
         if e['source'] in node_pos and e['target'] in node_pos:
-            x0, y0 = node_pos[e['source']]
-            x1, y1 = node_pos[e['target']]
+            x0, y0 = _xy(e['source'])
+            x1, y1 = _xy(e['target'])
             x_w += [x0, x1, None]
             y_w += [y0, y1, None]
     traces.append(go.Scatter(
         x=x_w, y=y_w, mode='lines',
-        line=dict(width=0.8, color='rgba(180,180,180,0.3)'),
-        name=f'Weak (|g|>{gamma_threshold:.2f})', hoverinfo='none',
+        line=dict(width=0.5, color='rgba(180,180,180,0.25)'),
+        name=f'Weak within (|g|>{gamma_threshold:.2f})', hoverinfo='none',
     ))
 
     # Strong within-domain edges (blue)
@@ -272,8 +309,8 @@ def render_plotly_html(network: Dict, output_path: Path, gamma_threshold: float 
     x_sw, y_sw = [], []
     for e in strong_within:
         if e['source'] in node_pos and e['target'] in node_pos:
-            x0, y0 = node_pos[e['source']]
-            x1, y1 = node_pos[e['target']]
+            x0, y0 = _xy(e['source'])
+            x1, y1 = _xy(e['target'])
             x_sw += [x0, x1, None]
             y_sw += [y0, y1, None]
     traces.append(go.Scatter(
@@ -287,71 +324,51 @@ def render_plotly_html(network: Dict, output_path: Path, gamma_threshold: float 
     x_sc, y_sc = [], []
     for e in strong_cross:
         if e['source'] in node_pos and e['target'] in node_pos:
-            x0, y0 = node_pos[e['source']]
-            x1, y1 = node_pos[e['target']]
+            x0, y0 = _xy(e['source'])
+            x1, y1 = _xy(e['target'])
             x_sc += [x0, x1, None]
             y_sc += [y0, y1, None]
     traces.append(go.Scatter(
         x=x_sc, y=y_sc, mode='lines',
-        line=dict(width=2.5, color='rgba(220,50,50,0.6)'),
-        name='Strong cross-domain (|g|>0.15)', hoverinfo='none',
+        line=dict(width=1.5, color='rgba(220,50,50,0.5)'),
+        name=f'Strong cross-domain (|g|>{cross_strong_thresh:.2f})', hoverinfo='none',
     ))
 
-    # Causal arrows (dark green) — draw arrowhead annotations
+    # Ring guide annotations
     annotations = []
-    for e in causal_edges:
-        if e['source'] not in node_pos or e['target'] not in node_pos:
-            continue
-        if abs(e['gamma']) < gamma_threshold:
-            continue
-        x0, y0 = node_pos[e['source']]
-        x1, y1 = node_pos[e['target']]
-        # Shorten arrow to not overlap node
-        dx, dy = x1 - x0, y1 - y0
-        dist = math.sqrt(dx**2 + dy**2)
-        if dist < 0.01:
-            continue
-        shrink = 0.15
-        ax1 = x0 + dx * shrink
-        ay1 = y0 + dy * shrink
-        ax2 = x1 - dx * shrink
-        ay2 = y1 - dy * shrink
-        width = min(3.0, 1.0 + abs(e['gamma']) * 8)
-        color = 'rgba(34,139,34,0.7)' if not e['cross_domain'] else 'rgba(178,34,34,0.8)'
+    for label, r in [('High connectivity', r_inner_ring),
+                     ('Medium', r_middle_ring),
+                     ('Low', r_outer_ring)]:
         annotations.append(dict(
-            x=ax2, y=ay2, ax=ax1, ay=ay1,
-            xref='x', yref='y', axref='x', ayref='y',
-            showarrow=True,
-            arrowhead=2, arrowsize=1.2, arrowwidth=width,
-            arrowcolor=color,
+            x=r + 0.3, y=0, text=f'<i>{label}</i>',
+            showarrow=False, font=dict(size=10, color='rgba(120,120,120,0.6)'),
         ))
 
-    # Domain label annotations
-    for d in domains:
-        d_nodes_in = [n for n in nodes if n['domain'] == d and n['id'] in node_pos]
-        if d_nodes_in:
-            cx = np.mean([node_pos[n['id']][0] for n in d_nodes_in])
-            cy = np.mean([node_pos[n['id']][1] for n in d_nodes_in])
-            annotations.append(dict(
-                x=cx, y=cy + 1.0, text=f'<b>{d}</b>',
-                showarrow=False, font=dict(size=11, color=domain_colors[d]),
-            ))
+    # Ring circles as background traces
+    for r in [r_inner_ring, r_middle_ring, r_outer_ring]:
+        theta = np.linspace(0, 2 * np.pi, 100)
+        traces.append(go.Scatter(
+            x=(r * np.cos(theta)).tolist(),
+            y=(r * np.sin(theta)).tolist(),
+            mode='lines', line=dict(width=0.5, color='rgba(200,200,200,0.3)'),
+            hoverinfo='none', showlegend=False,
+        ))
 
     # Node trace
     positioned = [n for n in nodes if n['id'] in node_pos]
-    node_x = [node_pos[n['id']][0] for n in positioned]
-    node_y = [node_pos[n['id']][1] for n in positioned]
+    node_x = [_xy(n['id'])[0] for n in positioned]
+    node_y = [_xy(n['id'])[1] for n in positioned]
     node_colors = [n['color'] for n in positioned]
-    node_labels = [n['label'] for n in positioned]
-    node_domains = [n['domain'] for n in positioned]
+    # Labels include domain prefix for identification
+    node_labels = [f"{n['domain']}:{n['label'][:25]}" for n in positioned]
 
-    edge_count = {}
-    for e in sig_edges:
-        edge_count[e['source']] = edge_count.get(e['source'], 0) + 1
-        edge_count[e['target']] = edge_count.get(e['target'], 0) + 1
-    node_sizes = [8 + 2 * edge_count.get(n['id'], 0) for n in positioned]
+    # Node sizes: min 10px (outer), max ~45px (inner hub)
+    node_sizes = [
+        10 + 35 * (edge_weight.get(n['id'], 0) / max_weight)
+        for n in positioned
+    ]
 
-    # Causal role info
+    # Hover text
     causal_out = {}
     causal_in = {}
     for e in causal_edges:
@@ -363,34 +380,60 @@ def render_plotly_html(network: Dict, output_path: Path, gamma_threshold: float 
         nid = n['id']
         c_out = causal_out.get(nid, 0)
         c_in = causal_in.get(nid, 0)
+        n_strong = edge_count.get(nid, 0)
+        w = edge_weight.get(nid, 0)
+        tier = 'Inner' if nid in inner_ids else ('Middle' if nid in middle_ids else 'Outer')
         causal_str = f'<br>Causes: {c_out} | Effects: {c_in}' if (c_out + c_in) > 0 else ''
         hover_text.append(
-            f"<b>{n['label']}</b><br>Domain: {n['domain']}"
-            f"<br>Connections: {edge_count.get(nid, 0)}{causal_str}"
+            f"<b>{n['label']}</b><br>Domain: {n['domain']} | Ring: {tier}"
+            f"<br>Strong connections: {n_strong} (sum |g|={w:.2f}){causal_str}"
         )
 
-    node_trace = go.Scatter(
-        x=node_x, y=node_y, mode='markers+text',
-        marker=dict(size=node_sizes, color=node_colors,
-                    line=dict(width=1, color='white')),
-        text=node_labels, textposition='top center',
-        textfont=dict(size=7),
-        hovertext=hover_text, hoverinfo='text',
-        name='Constructs',
-    )
+    # Plotly Scatter textfont.size doesn't support per-point arrays,
+    # so we create separate traces per tier
+    base_font = 8
+    node_traces_by_tier = []
+    for tier_name, tier_set, font_size in [
+        ('inner', inner_ids, base_font * 2),
+        ('middle', middle_ids, int(base_font * 1.5)),
+        ('outer', outer_ids, base_font),
+    ]:
+        tier_indices = [i for i, n in enumerate(positioned) if n['id'] in tier_set]
+        if not tier_indices:
+            continue
+        node_traces_by_tier.append(go.Scatter(
+            x=[node_x[i] for i in tier_indices],
+            y=[node_y[i] for i in tier_indices],
+            mode='markers+text',
+            marker=dict(
+                size=[node_sizes[i] for i in tier_indices],
+                color=[node_colors[i] for i in tier_indices],
+                line=dict(width=1, color='white'),
+            ),
+            text=[node_labels[i] for i in tier_indices],
+            textposition='top center',
+            textfont=dict(size=font_size),
+            hovertext=[hover_text[i] for i in tier_indices],
+            hoverinfo='text',
+            name=f'Constructs ({tier_name})', showlegend=False,
+        ))
 
-    # Summary stats for title
-    n_within_edges = len([e for e in edges if not e['cross_domain']])
-    n_cross_edges = len([e for e in edges if e['cross_domain']])
-    n_causal_total = len(causal_edges)
+    # Domain color legend — one invisible trace per domain
+    domain_legend_traces = []
+    for domain in sorted(domain_colors):
+        domain_legend_traces.append(go.Scatter(
+            x=[None], y=[None], mode='markers',
+            marker=dict(size=10, color=domain_colors[domain]),
+            name=domain, legendgroup='domains',
+        ))
 
     fig = go.Figure(
-        data=traces + [node_trace],
+        data=traces + node_traces_by_tier + domain_legend_traces,
         layout=go.Layout(
             title=dict(
-                text=(f'Construct Association Network — {len(nodes)} nodes, '
-                      f'{len(edges)} edges ({n_within_edges} within + {n_cross_edges} cross), '
-                      f'{n_causal_total} causal arrows'),
+                text=(f'Construct Association Network — {len(nodes)} constructs, '
+                      f'{len(strong_edges)} strong edges '
+                      f'(inner={len(inner_ids)}, mid={len(middle_ids)}, outer={len(outer_ids)})'),
                 font=dict(size=14),
             ),
             showlegend=True,

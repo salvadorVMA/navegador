@@ -1,0 +1,2075 @@
+{
+  "resolutions": {
+    "0.5": {
+      "resolution": 0.5,
+      "n_communities": 1,
+      "modularity": -0.0,
+      "communities": [
+        {
+          "community_id": 0,
+          "n_constructs": 120,
+          "n_domains": 24,
+          "domains": [
+            "CIE",
+            "COR",
+            "CUL",
+            "DEP",
+            "DER",
+            "ECO",
+            "EDU",
+            "ENV",
+            "FAM",
+            "FED",
+            "GEN",
+            "GLO",
+            "HAB",
+            "IDE",
+            "IND",
+            "JUS",
+            "MED",
+            "MIG",
+            "NIN",
+            "POB",
+            "REL",
+            "SAL",
+            "SEG",
+            "SOC"
+          ],
+          "constructs": [
+            "CIE:information_capital",
+            "CIE:institutional_trust_in_science",
+            "CIE:science_self_efficacy",
+            "CIE:science_technology_engagement",
+            "CIE:science_technology_policy_attitudes",
+            "COR:anticorruption_civic_engagement",
+            "COR:civic_tolerance_of_deviance",
+            "COR:corruption_perception",
+            "COR:institutional_trust_and_efficacy",
+            "COR:prosocial_reporting_behavior",
+            "CUL:authoritarian_versus_democratic_values",
+            "CUL:civic_and_political_participation",
+            "CUL:democratic_legitimacy",
+            "CUL:institutional_trust_and_efficacy",
+            "CUL:political_interest_and_engagement",
+            "DEP:cultural_socialization_in_childhood",
+            "DEP:ethnocultural_identity_and_linguistic_capital",
+            "DEP:p18_1",
+            "DEP:p52",
+            "DEP:subjective_socioeconomic_status",
+            "DER:authoritarian_attitudes_and_punitive_tolerance",
+            "DER:civil_liberties_and_protest_rights",
+            "DER:gender_family_and_vulnerable_group_rights",
+            "DER:institutional_trust_and_justice_system_performance",
+            "DER:perceived_discrimination_and_social_exclusion",
+            "ECO:economic_wellbeing_perception",
+            "ECO:human_capital_labor_alignment",
+            "ECO:job_quality_precariousness",
+            "ECO:labor_market_attachment",
+            "ECO:p19",
+            "EDU:digital_and_cultural_capital",
+            "EDU:educational_equity_beliefs",
+            "EDU:p1_2",
+            "EDU:perceived_education_quality",
+            "EDU:school_environment_quality",
+            "ENV:ageism_and_age_discrimination",
+            "ENV:elder_abuse_awareness",
+            "ENV:intergenerational_contact_and_family_integration",
+            "ENV:perceived_quality_of_life_and_social_inclusion_of_older_adults",
+            "ENV:state_and_family_responsibility_for_elder_care",
+            "FAM:family_cohesion_quality",
+            "FAM:family_instability_and_conflict",
+            "FAM:family_socialization_and_values_transmission",
+            "FAM:traditional_family_ideology",
+            "FAM:union_formation_motivations",
+            "FED:federalism_preference",
+            "FED:institutional_trust_and_representativeness",
+            "FED:political_interest_and_efficacy",
+            "FED:security_governance_preferences",
+            "FED:subnational_government_performance",
+            "GEN:gender_equality_awareness_exposure",
+            "GEN:gender_role_traditionalism",
+            "GEN:intimate_partner_control_autonomy",
+            "GEN:reproductive_autonomy_attitudes",
+            "GEN:tolerance_of_gender_based_violence",
+            "GLO:cosmopolitan_identity",
+            "GLO:cultural_openness",
+            "GLO:global_governance_support",
+            "GLO:national_cultural_pride",
+            "GLO:transnational_connectedness",
+            "HAB:basic_services_access",
+            "HAB:household_asset_endowment",
+            "HAB:housing_policy_efficacy_beliefs",
+            "HAB:p14",
+            "HAB:physical_housing_quality",
+            "IDE:institutional_and_social_trust",
+            "IDE:moral_conservatism_and_social_values",
+            "IDE:national_identity_and_pride",
+            "IDE:socioeconomic_mobility_and_opportunity_perception",
+            "IDE:subjective_wellbeing_and_life_satisfaction",
+            "IND:attributions_for_indigenous_disadvantage",
+            "IND:indigenous_rights_and_autonomy",
+            "IND:p18_1a_1",
+            "IND:perceived_ethnic_discrimination",
+            "IND:social_distance_toward_indigenous_people",
+            "JUS:institutional_justice_trust",
+            "JUS:legal_cynicism_extrajudicial_tolerance",
+            "JUS:legal_knowledge_rights_awareness",
+            "JUS:legal_problem_resolution_efficacy",
+            "JUS:procedural_justice_expectations",
+            "MED:environmental_concern_risk_perception",
+            "MED:environmental_governance_attitudes",
+            "MED:environmental_knowledge_literacy",
+            "MED:pro_environmental_civic_engagement",
+            "MED:socioeconomic_environmental_context",
+            "MIG:emigration_intention",
+            "MIG:migration_policy_attitudes",
+            "MIG:perceived_opportunity_deprivation",
+            "MIG:transnational_social_ties",
+            "MIG:xenophilia_tolerance",
+            "NIN:child_agency_and_participation",
+            "NIN:children_rights_recognition",
+            "NIN:education_quality_and_opportunity",
+            "NIN:p26_1",
+            "NIN:perceived_situation_of_minors",
+            "POB:material_living_standards",
+            "POB:social_policy_preferences",
+            "POB:structural_attribution_of_poverty",
+            "POB:subjective_economic_wellbeing",
+            "POB:subjective_social_mobility",
+            "REL:church_state_separation_attitudes",
+            "REL:religious_practice_and_devotion",
+            "REL:religious_socialization_and_identity",
+            "REL:religious_tolerance_and_pluralism",
+            "REL:supernatural_belief_system",
+            "SAL:functional_health_status",
+            "SAL:p23_1",
+            "SAL:p24",
+            "SAL:p34",
+            "SAL:subjective_wellbeing_and_life_quality",
+            "SEG:fear_of_crime_and_risk_perception",
+            "SEG:police_institutional_trust",
+            "SEG:punitive_authoritarianism",
+            "SEG:security_avoidance_behavior",
+            "SEG:victimization_exposure",
+            "SOC:digital_access_and_equipment",
+            "SOC:digital_civic_and_political_participation",
+            "SOC:digital_literacy_and_internet_engagement",
+            "SOC:media_consumption_and_news_habits",
+            "SOC:media_trust_and_critical_evaluation"
+          ],
+          "n_internal_edges": 6989,
+          "n_cross_domain_internal": 6789,
+          "mean_gamma": 0.174,
+          "max_gamma": 1.0,
+          "bridge_node": "FAM:union_formation_motivations",
+          "bridge_betweenness": 0.321
+        }
+      ]
+    },
+    "0.75": {
+      "resolution": 0.75,
+      "n_communities": 1,
+      "modularity": -0.0,
+      "communities": [
+        {
+          "community_id": 0,
+          "n_constructs": 120,
+          "n_domains": 24,
+          "domains": [
+            "CIE",
+            "COR",
+            "CUL",
+            "DEP",
+            "DER",
+            "ECO",
+            "EDU",
+            "ENV",
+            "FAM",
+            "FED",
+            "GEN",
+            "GLO",
+            "HAB",
+            "IDE",
+            "IND",
+            "JUS",
+            "MED",
+            "MIG",
+            "NIN",
+            "POB",
+            "REL",
+            "SAL",
+            "SEG",
+            "SOC"
+          ],
+          "constructs": [
+            "CIE:information_capital",
+            "CIE:institutional_trust_in_science",
+            "CIE:science_self_efficacy",
+            "CIE:science_technology_engagement",
+            "CIE:science_technology_policy_attitudes",
+            "COR:anticorruption_civic_engagement",
+            "COR:civic_tolerance_of_deviance",
+            "COR:corruption_perception",
+            "COR:institutional_trust_and_efficacy",
+            "COR:prosocial_reporting_behavior",
+            "CUL:authoritarian_versus_democratic_values",
+            "CUL:civic_and_political_participation",
+            "CUL:democratic_legitimacy",
+            "CUL:institutional_trust_and_efficacy",
+            "CUL:political_interest_and_engagement",
+            "DEP:cultural_socialization_in_childhood",
+            "DEP:ethnocultural_identity_and_linguistic_capital",
+            "DEP:p18_1",
+            "DEP:p52",
+            "DEP:subjective_socioeconomic_status",
+            "DER:authoritarian_attitudes_and_punitive_tolerance",
+            "DER:civil_liberties_and_protest_rights",
+            "DER:gender_family_and_vulnerable_group_rights",
+            "DER:institutional_trust_and_justice_system_performance",
+            "DER:perceived_discrimination_and_social_exclusion",
+            "ECO:economic_wellbeing_perception",
+            "ECO:human_capital_labor_alignment",
+            "ECO:job_quality_precariousness",
+            "ECO:labor_market_attachment",
+            "ECO:p19",
+            "EDU:digital_and_cultural_capital",
+            "EDU:educational_equity_beliefs",
+            "EDU:p1_2",
+            "EDU:perceived_education_quality",
+            "EDU:school_environment_quality",
+            "ENV:ageism_and_age_discrimination",
+            "ENV:elder_abuse_awareness",
+            "ENV:intergenerational_contact_and_family_integration",
+            "ENV:perceived_quality_of_life_and_social_inclusion_of_older_adults",
+            "ENV:state_and_family_responsibility_for_elder_care",
+            "FAM:family_cohesion_quality",
+            "FAM:family_instability_and_conflict",
+            "FAM:family_socialization_and_values_transmission",
+            "FAM:traditional_family_ideology",
+            "FAM:union_formation_motivations",
+            "FED:federalism_preference",
+            "FED:institutional_trust_and_representativeness",
+            "FED:political_interest_and_efficacy",
+            "FED:security_governance_preferences",
+            "FED:subnational_government_performance",
+            "GEN:gender_equality_awareness_exposure",
+            "GEN:gender_role_traditionalism",
+            "GEN:intimate_partner_control_autonomy",
+            "GEN:reproductive_autonomy_attitudes",
+            "GEN:tolerance_of_gender_based_violence",
+            "GLO:cosmopolitan_identity",
+            "GLO:cultural_openness",
+            "GLO:global_governance_support",
+            "GLO:national_cultural_pride",
+            "GLO:transnational_connectedness",
+            "HAB:basic_services_access",
+            "HAB:household_asset_endowment",
+            "HAB:housing_policy_efficacy_beliefs",
+            "HAB:p14",
+            "HAB:physical_housing_quality",
+            "IDE:institutional_and_social_trust",
+            "IDE:moral_conservatism_and_social_values",
+            "IDE:national_identity_and_pride",
+            "IDE:socioeconomic_mobility_and_opportunity_perception",
+            "IDE:subjective_wellbeing_and_life_satisfaction",
+            "IND:attributions_for_indigenous_disadvantage",
+            "IND:indigenous_rights_and_autonomy",
+            "IND:p18_1a_1",
+            "IND:perceived_ethnic_discrimination",
+            "IND:social_distance_toward_indigenous_people",
+            "JUS:institutional_justice_trust",
+            "JUS:legal_cynicism_extrajudicial_tolerance",
+            "JUS:legal_knowledge_rights_awareness",
+            "JUS:legal_problem_resolution_efficacy",
+            "JUS:procedural_justice_expectations",
+            "MED:environmental_concern_risk_perception",
+            "MED:environmental_governance_attitudes",
+            "MED:environmental_knowledge_literacy",
+            "MED:pro_environmental_civic_engagement",
+            "MED:socioeconomic_environmental_context",
+            "MIG:emigration_intention",
+            "MIG:migration_policy_attitudes",
+            "MIG:perceived_opportunity_deprivation",
+            "MIG:transnational_social_ties",
+            "MIG:xenophilia_tolerance",
+            "NIN:child_agency_and_participation",
+            "NIN:children_rights_recognition",
+            "NIN:education_quality_and_opportunity",
+            "NIN:p26_1",
+            "NIN:perceived_situation_of_minors",
+            "POB:material_living_standards",
+            "POB:social_policy_preferences",
+            "POB:structural_attribution_of_poverty",
+            "POB:subjective_economic_wellbeing",
+            "POB:subjective_social_mobility",
+            "REL:church_state_separation_attitudes",
+            "REL:religious_practice_and_devotion",
+            "REL:religious_socialization_and_identity",
+            "REL:religious_tolerance_and_pluralism",
+            "REL:supernatural_belief_system",
+            "SAL:functional_health_status",
+            "SAL:p23_1",
+            "SAL:p24",
+            "SAL:p34",
+            "SAL:subjective_wellbeing_and_life_quality",
+            "SEG:fear_of_crime_and_risk_perception",
+            "SEG:police_institutional_trust",
+            "SEG:punitive_authoritarianism",
+            "SEG:security_avoidance_behavior",
+            "SEG:victimization_exposure",
+            "SOC:digital_access_and_equipment",
+            "SOC:digital_civic_and_political_participation",
+            "SOC:digital_literacy_and_internet_engagement",
+            "SOC:media_consumption_and_news_habits",
+            "SOC:media_trust_and_critical_evaluation"
+          ],
+          "n_internal_edges": 6989,
+          "n_cross_domain_internal": 6789,
+          "mean_gamma": 0.174,
+          "max_gamma": 1.0,
+          "bridge_node": "FAM:union_formation_motivations",
+          "bridge_betweenness": 0.321
+        }
+      ]
+    },
+    "1.0": {
+      "resolution": 1.0,
+      "n_communities": 5,
+      "modularity": 0.0635,
+      "communities": [
+        {
+          "community_id": 0,
+          "n_constructs": 37,
+          "n_domains": 18,
+          "domains": [
+            "CIE",
+            "COR",
+            "DEP",
+            "DER",
+            "ECO",
+            "EDU",
+            "ENV",
+            "GLO",
+            "HAB",
+            "IDE",
+            "IND",
+            "JUS",
+            "MIG",
+            "NIN",
+            "POB",
+            "REL",
+            "SAL",
+            "SOC"
+          ],
+          "constructs": [
+            "CIE:information_capital",
+            "CIE:science_self_efficacy",
+            "COR:anticorruption_civic_engagement",
+            "COR:civic_tolerance_of_deviance",
+            "COR:corruption_perception",
+            "COR:institutional_trust_and_efficacy",
+            "COR:prosocial_reporting_behavior",
+            "DEP:cultural_socialization_in_childhood",
+            "DEP:p18_1",
+            "DER:authoritarian_attitudes_and_punitive_tolerance",
+            "DER:civil_liberties_and_protest_rights",
+            "DER:institutional_trust_and_justice_system_performance",
+            "ECO:p19",
+            "EDU:perceived_education_quality",
+            "ENV:perceived_quality_of_life_and_social_inclusion_of_older_adults",
+            "GLO:cultural_openness",
+            "GLO:transnational_connectedness",
+            "HAB:basic_services_access",
+            "HAB:p14",
+            "IDE:institutional_and_social_trust",
+            "IND:indigenous_rights_and_autonomy",
+            "IND:p18_1a_1",
+            "JUS:legal_problem_resolution_efficacy",
+            "MIG:emigration_intention",
+            "MIG:xenophilia_tolerance",
+            "NIN:perceived_situation_of_minors",
+            "POB:material_living_standards",
+            "POB:social_policy_preferences",
+            "POB:subjective_economic_wellbeing",
+            "REL:religious_socialization_and_identity",
+            "REL:religious_tolerance_and_pluralism",
+            "SAL:functional_health_status",
+            "SAL:p23_1",
+            "SOC:digital_access_and_equipment",
+            "SOC:digital_literacy_and_internet_engagement",
+            "SOC:media_consumption_and_news_habits",
+            "SOC:media_trust_and_critical_evaluation"
+          ],
+          "n_internal_edges": 662,
+          "n_cross_domain_internal": 636,
+          "mean_gamma": 0.216,
+          "max_gamma": 1.0,
+          "bridge_node": "GLO:transnational_connectedness",
+          "bridge_betweenness": 0.217
+        },
+        {
+          "community_id": 1,
+          "n_constructs": 36,
+          "n_domains": 18,
+          "domains": [
+            "CIE",
+            "CUL",
+            "DEP",
+            "DER",
+            "ECO",
+            "EDU",
+            "FAM",
+            "FED",
+            "GEN",
+            "GLO",
+            "IDE",
+            "JUS",
+            "MED",
+            "MIG",
+            "NIN",
+            "REL",
+            "SAL",
+            "SEG"
+          ],
+          "constructs": [
+            "CIE:institutional_trust_in_science",
+            "CIE:science_technology_engagement",
+            "CIE:science_technology_policy_attitudes",
+            "CUL:authoritarian_versus_democratic_values",
+            "CUL:democratic_legitimacy",
+            "CUL:institutional_trust_and_efficacy",
+            "CUL:political_interest_and_engagement",
+            "DEP:subjective_socioeconomic_status",
+            "DER:perceived_discrimination_and_social_exclusion",
+            "ECO:human_capital_labor_alignment",
+            "ECO:job_quality_precariousness",
+            "EDU:p1_2",
+            "FAM:family_instability_and_conflict",
+            "FED:political_interest_and_efficacy",
+            "GEN:gender_equality_awareness_exposure",
+            "GEN:gender_role_traditionalism",
+            "GEN:intimate_partner_control_autonomy",
+            "GEN:tolerance_of_gender_based_violence",
+            "GLO:global_governance_support",
+            "IDE:moral_conservatism_and_social_values",
+            "IDE:national_identity_and_pride",
+            "IDE:subjective_wellbeing_and_life_satisfaction",
+            "JUS:institutional_justice_trust",
+            "JUS:legal_cynicism_extrajudicial_tolerance",
+            "JUS:procedural_justice_expectations",
+            "MED:environmental_concern_risk_perception",
+            "MED:environmental_knowledge_literacy",
+            "MIG:perceived_opportunity_deprivation",
+            "NIN:child_agency_and_participation",
+            "NIN:children_rights_recognition",
+            "NIN:education_quality_and_opportunity",
+            "REL:church_state_separation_attitudes",
+            "SAL:p24",
+            "SEG:fear_of_crime_and_risk_perception",
+            "SEG:police_institutional_trust",
+            "SEG:victimization_exposure"
+          ],
+          "n_internal_edges": 630,
+          "n_cross_domain_internal": 601,
+          "mean_gamma": 0.265,
+          "max_gamma": 1.0,
+          "bridge_node": "FAM:family_instability_and_conflict",
+          "bridge_betweenness": 0.447
+        },
+        {
+          "community_id": 2,
+          "n_constructs": 26,
+          "n_domains": 15,
+          "domains": [
+            "ECO",
+            "ENV",
+            "FED",
+            "GEN",
+            "GLO",
+            "HAB",
+            "IDE",
+            "IND",
+            "MED",
+            "MIG",
+            "NIN",
+            "REL",
+            "SAL",
+            "SEG",
+            "SOC"
+          ],
+          "constructs": [
+            "ECO:labor_market_attachment",
+            "ENV:ageism_and_age_discrimination",
+            "ENV:intergenerational_contact_and_family_integration",
+            "ENV:state_and_family_responsibility_for_elder_care",
+            "FED:federalism_preference",
+            "FED:institutional_trust_and_representativeness",
+            "FED:subnational_government_performance",
+            "GEN:reproductive_autonomy_attitudes",
+            "GLO:national_cultural_pride",
+            "HAB:housing_policy_efficacy_beliefs",
+            "HAB:physical_housing_quality",
+            "IDE:socioeconomic_mobility_and_opportunity_perception",
+            "IND:social_distance_toward_indigenous_people",
+            "MED:environmental_governance_attitudes",
+            "MED:pro_environmental_civic_engagement",
+            "MED:socioeconomic_environmental_context",
+            "MIG:migration_policy_attitudes",
+            "MIG:transnational_social_ties",
+            "NIN:p26_1",
+            "REL:religious_practice_and_devotion",
+            "REL:supernatural_belief_system",
+            "SAL:p34",
+            "SAL:subjective_wellbeing_and_life_quality",
+            "SEG:punitive_authoritarianism",
+            "SEG:security_avoidance_behavior",
+            "SOC:digital_civic_and_political_participation"
+          ],
+          "n_internal_edges": 324,
+          "n_cross_domain_internal": 311,
+          "mean_gamma": 0.232,
+          "max_gamma": 1.0,
+          "bridge_node": "MIG:transnational_social_ties",
+          "bridge_betweenness": 0.307
+        },
+        {
+          "community_id": 3,
+          "n_constructs": 16,
+          "n_domains": 10,
+          "domains": [
+            "ECO",
+            "EDU",
+            "ENV",
+            "FAM",
+            "FED",
+            "GLO",
+            "HAB",
+            "IND",
+            "JUS",
+            "POB"
+          ],
+          "constructs": [
+            "ECO:economic_wellbeing_perception",
+            "EDU:digital_and_cultural_capital",
+            "EDU:educational_equity_beliefs",
+            "EDU:school_environment_quality",
+            "ENV:elder_abuse_awareness",
+            "FAM:family_cohesion_quality",
+            "FAM:family_socialization_and_values_transmission",
+            "FAM:traditional_family_ideology",
+            "FAM:union_formation_motivations",
+            "FED:security_governance_preferences",
+            "GLO:cosmopolitan_identity",
+            "HAB:household_asset_endowment",
+            "IND:attributions_for_indigenous_disadvantage",
+            "JUS:legal_knowledge_rights_awareness",
+            "POB:structural_attribution_of_poverty",
+            "POB:subjective_social_mobility"
+          ],
+          "n_internal_edges": 109,
+          "n_cross_domain_internal": 99,
+          "mean_gamma": 0.145,
+          "max_gamma": 0.656,
+          "bridge_node": "FAM:union_formation_motivations",
+          "bridge_betweenness": 0.533
+        },
+        {
+          "community_id": 4,
+          "n_constructs": 5,
+          "n_domains": 4,
+          "domains": [
+            "CUL",
+            "DEP",
+            "DER",
+            "IND"
+          ],
+          "constructs": [
+            "CUL:civic_and_political_participation",
+            "DEP:ethnocultural_identity_and_linguistic_capital",
+            "DEP:p52",
+            "DER:gender_family_and_vulnerable_group_rights",
+            "IND:perceived_ethnic_discrimination"
+          ],
+          "n_internal_edges": 9,
+          "n_cross_domain_internal": 9,
+          "mean_gamma": 0.406,
+          "max_gamma": 0.692,
+          "bridge_node": "DEP:ethnocultural_identity_and_linguistic_capital",
+          "bridge_betweenness": 0.5
+        }
+      ]
+    },
+    "1.5": {
+      "resolution": 1.5,
+      "n_communities": 25,
+      "modularity": 0.0373,
+      "communities": [
+        {
+          "community_id": 0,
+          "n_constructs": 9,
+          "n_domains": 8,
+          "domains": [
+            "DER",
+            "ECO",
+            "EDU",
+            "IDE",
+            "JUS",
+            "MED",
+            "SAL",
+            "SEG"
+          ],
+          "constructs": [
+            "DER:perceived_discrimination_and_social_exclusion",
+            "ECO:job_quality_precariousness",
+            "EDU:p1_2",
+            "IDE:subjective_wellbeing_and_life_satisfaction",
+            "JUS:procedural_justice_expectations",
+            "MED:environmental_concern_risk_perception",
+            "SAL:p24",
+            "SEG:fear_of_crime_and_risk_perception",
+            "SEG:victimization_exposure"
+          ],
+          "n_internal_edges": 36,
+          "n_cross_domain_internal": 35,
+          "mean_gamma": 0.289,
+          "max_gamma": 0.679,
+          "bridge_node": "EDU:p1_2",
+          "bridge_betweenness": 0.643
+        },
+        {
+          "community_id": 1,
+          "n_constructs": 8,
+          "n_domains": 6,
+          "domains": [
+            "CUL",
+            "GEN",
+            "IDE",
+            "JUS",
+            "NIN",
+            "SEG"
+          ],
+          "constructs": [
+            "CUL:democratic_legitimacy",
+            "CUL:institutional_trust_and_efficacy",
+            "CUL:political_interest_and_engagement",
+            "GEN:intimate_partner_control_autonomy",
+            "IDE:moral_conservatism_and_social_values",
+            "JUS:legal_cynicism_extrajudicial_tolerance",
+            "NIN:children_rights_recognition",
+            "SEG:police_institutional_trust"
+          ],
+          "n_internal_edges": 28,
+          "n_cross_domain_internal": 25,
+          "mean_gamma": 0.645,
+          "max_gamma": 0.999,
+          "bridge_node": "GEN:intimate_partner_control_autonomy",
+          "bridge_betweenness": 0.619
+        },
+        {
+          "community_id": 2,
+          "n_constructs": 7,
+          "n_domains": 6,
+          "domains": [
+            "COR",
+            "ECO",
+            "IDE",
+            "IND",
+            "JUS",
+            "POB"
+          ],
+          "constructs": [
+            "COR:anticorruption_civic_engagement",
+            "ECO:economic_wellbeing_perception",
+            "IDE:national_identity_and_pride",
+            "IND:indigenous_rights_and_autonomy",
+            "JUS:legal_knowledge_rights_awareness",
+            "POB:structural_attribution_of_poverty",
+            "POB:subjective_social_mobility"
+          ],
+          "n_internal_edges": 21,
+          "n_cross_domain_internal": 20,
+          "mean_gamma": 0.253,
+          "max_gamma": 0.656,
+          "bridge_node": "IDE:national_identity_and_pride",
+          "bridge_betweenness": 0.333
+        },
+        {
+          "community_id": 3,
+          "n_constructs": 7,
+          "n_domains": 5,
+          "domains": [
+            "CUL",
+            "ENV",
+            "GLO",
+            "MED",
+            "REL"
+          ],
+          "constructs": [
+            "CUL:authoritarian_versus_democratic_values",
+            "ENV:ageism_and_age_discrimination",
+            "ENV:state_and_family_responsibility_for_elder_care",
+            "GLO:national_cultural_pride",
+            "MED:pro_environmental_civic_engagement",
+            "MED:socioeconomic_environmental_context",
+            "REL:religious_tolerance_and_pluralism"
+          ],
+          "n_internal_edges": 21,
+          "n_cross_domain_internal": 19,
+          "mean_gamma": 0.37,
+          "max_gamma": 0.895,
+          "bridge_node": "REL:religious_tolerance_and_pluralism",
+          "bridge_betweenness": 0.333
+        },
+        {
+          "community_id": 4,
+          "n_constructs": 7,
+          "n_domains": 6,
+          "domains": [
+            "CIE",
+            "COR",
+            "FED",
+            "GLO",
+            "NIN",
+            "SAL"
+          ],
+          "constructs": [
+            "CIE:institutional_trust_in_science",
+            "COR:prosocial_reporting_behavior",
+            "FED:political_interest_and_efficacy",
+            "GLO:global_governance_support",
+            "NIN:child_agency_and_participation",
+            "NIN:education_quality_and_opportunity",
+            "SAL:functional_health_status"
+          ],
+          "n_internal_edges": 21,
+          "n_cross_domain_internal": 20,
+          "mean_gamma": 0.332,
+          "max_gamma": 0.953,
+          "bridge_node": "SAL:functional_health_status",
+          "bridge_betweenness": 0.6
+        },
+        {
+          "community_id": 5,
+          "n_constructs": 6,
+          "n_domains": 6,
+          "domains": [
+            "CIE",
+            "EDU",
+            "HAB",
+            "IDE",
+            "MIG",
+            "REL"
+          ],
+          "constructs": [
+            "CIE:science_self_efficacy",
+            "EDU:digital_and_cultural_capital",
+            "HAB:physical_housing_quality",
+            "IDE:socioeconomic_mobility_and_opportunity_perception",
+            "MIG:xenophilia_tolerance",
+            "REL:supernatural_belief_system"
+          ],
+          "n_internal_edges": 15,
+          "n_cross_domain_internal": 15,
+          "mean_gamma": 0.423,
+          "max_gamma": 0.95,
+          "bridge_node": "IDE:socioeconomic_mobility_and_opportunity_perception",
+          "bridge_betweenness": 0.3
+        },
+        {
+          "community_id": 6,
+          "n_constructs": 6,
+          "n_domains": 4,
+          "domains": [
+            "COR",
+            "IND",
+            "MIG",
+            "SOC"
+          ],
+          "constructs": [
+            "COR:civic_tolerance_of_deviance",
+            "IND:attributions_for_indigenous_disadvantage",
+            "MIG:transnational_social_ties",
+            "SOC:digital_access_and_equipment",
+            "SOC:media_consumption_and_news_habits",
+            "SOC:media_trust_and_critical_evaluation"
+          ],
+          "n_internal_edges": 15,
+          "n_cross_domain_internal": 12,
+          "mean_gamma": 0.458,
+          "max_gamma": 0.977,
+          "bridge_node": "MIG:transnational_social_ties",
+          "bridge_betweenness": 0.7
+        },
+        {
+          "community_id": 7,
+          "n_constructs": 5,
+          "n_domains": 4,
+          "domains": [
+            "CIE",
+            "CUL",
+            "DEP",
+            "FAM"
+          ],
+          "constructs": [
+            "CIE:information_capital",
+            "CUL:civic_and_political_participation",
+            "DEP:p52",
+            "FAM:family_instability_and_conflict",
+            "FAM:traditional_family_ideology"
+          ],
+          "n_internal_edges": 10,
+          "n_cross_domain_internal": 9,
+          "mean_gamma": 0.204,
+          "max_gamma": 0.439,
+          "bridge_node": "FAM:family_instability_and_conflict",
+          "bridge_betweenness": 0.833
+        },
+        {
+          "community_id": 8,
+          "n_constructs": 5,
+          "n_domains": 5,
+          "domains": [
+            "FED",
+            "HAB",
+            "IND",
+            "REL",
+            "SAL"
+          ],
+          "constructs": [
+            "FED:institutional_trust_and_representativeness",
+            "HAB:housing_policy_efficacy_beliefs",
+            "IND:social_distance_toward_indigenous_people",
+            "REL:religious_practice_and_devotion",
+            "SAL:p34"
+          ],
+          "n_internal_edges": 10,
+          "n_cross_domain_internal": 10,
+          "mean_gamma": 0.396,
+          "max_gamma": 1.0,
+          "bridge_node": "SAL:p34",
+          "bridge_betweenness": 0.833
+        },
+        {
+          "community_id": 9,
+          "n_constructs": 5,
+          "n_domains": 4,
+          "domains": [
+            "HAB",
+            "IDE",
+            "NIN",
+            "POB"
+          ],
+          "constructs": [
+            "HAB:p14",
+            "IDE:institutional_and_social_trust",
+            "NIN:perceived_situation_of_minors",
+            "POB:material_living_standards",
+            "POB:subjective_economic_wellbeing"
+          ],
+          "n_internal_edges": 10,
+          "n_cross_domain_internal": 9,
+          "mean_gamma": 0.497,
+          "max_gamma": 1.0,
+          "bridge_node": "IDE:institutional_and_social_trust",
+          "bridge_betweenness": 0.5
+        },
+        {
+          "community_id": 10,
+          "n_constructs": 5,
+          "n_domains": 5,
+          "domains": [
+            "CIE",
+            "DEP",
+            "GEN",
+            "MED",
+            "MIG"
+          ],
+          "constructs": [
+            "CIE:science_technology_engagement",
+            "DEP:subjective_socioeconomic_status",
+            "GEN:gender_equality_awareness_exposure",
+            "MED:environmental_knowledge_literacy",
+            "MIG:perceived_opportunity_deprivation"
+          ],
+          "n_internal_edges": 10,
+          "n_cross_domain_internal": 10,
+          "mean_gamma": 0.619,
+          "max_gamma": 0.985,
+          "bridge_node": "GEN:gender_equality_awareness_exposure",
+          "bridge_betweenness": 0.333
+        },
+        {
+          "community_id": 11,
+          "n_constructs": 5,
+          "n_domains": 4,
+          "domains": [
+            "DEP",
+            "DER",
+            "ECO",
+            "SOC"
+          ],
+          "constructs": [
+            "DEP:cultural_socialization_in_childhood",
+            "DER:authoritarian_attitudes_and_punitive_tolerance",
+            "DER:institutional_trust_and_justice_system_performance",
+            "ECO:p19",
+            "SOC:digital_literacy_and_internet_engagement"
+          ],
+          "n_internal_edges": 10,
+          "n_cross_domain_internal": 9,
+          "mean_gamma": 0.388,
+          "max_gamma": 0.89,
+          "bridge_node": "ECO:p19",
+          "bridge_betweenness": 0.667
+        },
+        {
+          "community_id": 12,
+          "n_constructs": 4,
+          "n_domains": 4,
+          "domains": [
+            "CIE",
+            "ECO",
+            "GEN",
+            "HAB"
+          ],
+          "constructs": [
+            "CIE:science_technology_policy_attitudes",
+            "ECO:human_capital_labor_alignment",
+            "GEN:tolerance_of_gender_based_violence",
+            "HAB:basic_services_access"
+          ],
+          "n_internal_edges": 6,
+          "n_cross_domain_internal": 6,
+          "mean_gamma": 0.587,
+          "max_gamma": 0.989,
+          "bridge_node": "CIE:science_technology_policy_attitudes",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 13,
+          "n_constructs": 4,
+          "n_domains": 3,
+          "domains": [
+            "FAM",
+            "FED",
+            "GEN"
+          ],
+          "constructs": [
+            "FAM:family_cohesion_quality",
+            "FED:federalism_preference",
+            "GEN:gender_role_traditionalism",
+            "GEN:reproductive_autonomy_attitudes"
+          ],
+          "n_internal_edges": 6,
+          "n_cross_domain_internal": 5,
+          "mean_gamma": 0.388,
+          "max_gamma": 0.666,
+          "bridge_node": "FAM:family_cohesion_quality",
+          "bridge_betweenness": 1.0
+        },
+        {
+          "community_id": 14,
+          "n_constructs": 4,
+          "n_domains": 3,
+          "domains": [
+            "COR",
+            "EDU",
+            "JUS"
+          ],
+          "constructs": [
+            "COR:corruption_perception",
+            "COR:institutional_trust_and_efficacy",
+            "EDU:school_environment_quality",
+            "JUS:institutional_justice_trust"
+          ],
+          "n_internal_edges": 6,
+          "n_cross_domain_internal": 5,
+          "mean_gamma": 0.427,
+          "max_gamma": 0.99,
+          "bridge_node": "EDU:school_environment_quality",
+          "bridge_betweenness": 0.667
+        },
+        {
+          "community_id": 15,
+          "n_constructs": 4,
+          "n_domains": 4,
+          "domains": [
+            "DER",
+            "EDU",
+            "IND",
+            "MIG"
+          ],
+          "constructs": [
+            "DER:civil_liberties_and_protest_rights",
+            "EDU:educational_equity_beliefs",
+            "IND:p18_1a_1",
+            "MIG:emigration_intention"
+          ],
+          "n_internal_edges": 6,
+          "n_cross_domain_internal": 6,
+          "mean_gamma": 0.275,
+          "max_gamma": 0.539,
+          "bridge_node": "EDU:educational_equity_beliefs",
+          "bridge_betweenness": 0.333
+        },
+        {
+          "community_id": 16,
+          "n_constructs": 4,
+          "n_domains": 3,
+          "domains": [
+            "GLO",
+            "MIG",
+            "SAL"
+          ],
+          "constructs": [
+            "GLO:transnational_connectedness",
+            "MIG:migration_policy_attitudes",
+            "SAL:p23_1",
+            "SAL:subjective_wellbeing_and_life_quality"
+          ],
+          "n_internal_edges": 5,
+          "n_cross_domain_internal": 5,
+          "mean_gamma": 0.254,
+          "max_gamma": 0.368,
+          "bridge_node": "GLO:transnational_connectedness",
+          "bridge_betweenness": 0.333
+        },
+        {
+          "community_id": 17,
+          "n_constructs": 4,
+          "n_domains": 4,
+          "domains": [
+            "GLO",
+            "HAB",
+            "POB",
+            "REL"
+          ],
+          "constructs": [
+            "GLO:cultural_openness",
+            "HAB:household_asset_endowment",
+            "POB:social_policy_preferences",
+            "REL:religious_socialization_and_identity"
+          ],
+          "n_internal_edges": 6,
+          "n_cross_domain_internal": 6,
+          "mean_gamma": 0.429,
+          "max_gamma": 0.886,
+          "bridge_node": "REL:religious_socialization_and_identity",
+          "bridge_betweenness": 0.667
+        },
+        {
+          "community_id": 18,
+          "n_constructs": 4,
+          "n_domains": 4,
+          "domains": [
+            "MED",
+            "NIN",
+            "SEG",
+            "SOC"
+          ],
+          "constructs": [
+            "MED:environmental_governance_attitudes",
+            "NIN:p26_1",
+            "SEG:security_avoidance_behavior",
+            "SOC:digital_civic_and_political_participation"
+          ],
+          "n_internal_edges": 6,
+          "n_cross_domain_internal": 6,
+          "mean_gamma": 0.323,
+          "max_gamma": 0.708,
+          "bridge_node": "NIN:p26_1",
+          "bridge_betweenness": 0.333
+        },
+        {
+          "community_id": 19,
+          "n_constructs": 3,
+          "n_domains": 3,
+          "domains": [
+            "DEP",
+            "ENV",
+            "JUS"
+          ],
+          "constructs": [
+            "DEP:p18_1",
+            "ENV:perceived_quality_of_life_and_social_inclusion_of_older_adults",
+            "JUS:legal_problem_resolution_efficacy"
+          ],
+          "n_internal_edges": 3,
+          "n_cross_domain_internal": 3,
+          "mean_gamma": 0.409,
+          "max_gamma": 0.595,
+          "bridge_node": "DEP:p18_1",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 20,
+          "n_constructs": 3,
+          "n_domains": 2,
+          "domains": [
+            "ENV",
+            "FAM"
+          ],
+          "constructs": [
+            "ENV:elder_abuse_awareness",
+            "FAM:family_socialization_and_values_transmission",
+            "FAM:union_formation_motivations"
+          ],
+          "n_internal_edges": 3,
+          "n_cross_domain_internal": 2,
+          "mean_gamma": 0.128,
+          "max_gamma": 0.202,
+          "bridge_node": "FAM:union_formation_motivations",
+          "bridge_betweenness": 1.0
+        },
+        {
+          "community_id": 21,
+          "n_constructs": 3,
+          "n_domains": 3,
+          "domains": [
+            "DER",
+            "ENV",
+            "SEG"
+          ],
+          "constructs": [
+            "DER:gender_family_and_vulnerable_group_rights",
+            "ENV:intergenerational_contact_and_family_integration",
+            "SEG:punitive_authoritarianism"
+          ],
+          "n_internal_edges": 3,
+          "n_cross_domain_internal": 3,
+          "mean_gamma": 0.588,
+          "max_gamma": 0.807,
+          "bridge_node": "DER:gender_family_and_vulnerable_group_rights",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 22,
+          "n_constructs": 3,
+          "n_domains": 3,
+          "domains": [
+            "FED",
+            "GLO",
+            "REL"
+          ],
+          "constructs": [
+            "FED:security_governance_preferences",
+            "GLO:cosmopolitan_identity",
+            "REL:church_state_separation_attitudes"
+          ],
+          "n_internal_edges": 3,
+          "n_cross_domain_internal": 3,
+          "mean_gamma": 0.39,
+          "max_gamma": 0.554,
+          "bridge_node": "GLO:cosmopolitan_identity",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 23,
+          "n_constructs": 3,
+          "n_domains": 3,
+          "domains": [
+            "ECO",
+            "EDU",
+            "IND"
+          ],
+          "constructs": [
+            "ECO:labor_market_attachment",
+            "EDU:perceived_education_quality",
+            "IND:perceived_ethnic_discrimination"
+          ],
+          "n_internal_edges": 3,
+          "n_cross_domain_internal": 3,
+          "mean_gamma": 0.313,
+          "max_gamma": 0.414,
+          "bridge_node": "EDU:perceived_education_quality",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 24,
+          "n_constructs": 2,
+          "n_domains": 2,
+          "domains": [
+            "DEP",
+            "FED"
+          ],
+          "constructs": [
+            "DEP:ethnocultural_identity_and_linguistic_capital",
+            "FED:subnational_government_performance"
+          ],
+          "n_internal_edges": 1,
+          "n_cross_domain_internal": 1,
+          "mean_gamma": 0.221,
+          "max_gamma": 0.221,
+          "bridge_node": "DEP:ethnocultural_identity_and_linguistic_capital",
+          "bridge_betweenness": 0.0
+        }
+      ]
+    },
+    "2.0": {
+      "resolution": 2.0,
+      "n_communities": 42,
+      "modularity": 0.0232,
+      "communities": [
+        {
+          "community_id": 0,
+          "n_constructs": 6,
+          "n_domains": 4,
+          "domains": [
+            "DER",
+            "ECO",
+            "ENV",
+            "FAM"
+          ],
+          "constructs": [
+            "DER:authoritarian_attitudes_and_punitive_tolerance",
+            "ECO:economic_wellbeing_perception",
+            "ENV:elder_abuse_awareness",
+            "FAM:family_cohesion_quality",
+            "FAM:family_socialization_and_values_transmission",
+            "FAM:union_formation_motivations"
+          ],
+          "n_internal_edges": 13,
+          "n_cross_domain_internal": 10,
+          "mean_gamma": 0.134,
+          "max_gamma": 0.387,
+          "bridge_node": "FAM:union_formation_motivations",
+          "bridge_betweenness": 0.5
+        },
+        {
+          "community_id": 1,
+          "n_constructs": 5,
+          "n_domains": 3,
+          "domains": [
+            "CUL",
+            "IDE",
+            "NIN"
+          ],
+          "constructs": [
+            "CUL:democratic_legitimacy",
+            "CUL:institutional_trust_and_efficacy",
+            "CUL:political_interest_and_engagement",
+            "IDE:moral_conservatism_and_social_values",
+            "NIN:children_rights_recognition"
+          ],
+          "n_internal_edges": 10,
+          "n_cross_domain_internal": 7,
+          "mean_gamma": 0.78,
+          "max_gamma": 0.986,
+          "bridge_node": "IDE:moral_conservatism_and_social_values",
+          "bridge_betweenness": 0.5
+        },
+        {
+          "community_id": 2,
+          "n_constructs": 5,
+          "n_domains": 4,
+          "domains": [
+            "ECO",
+            "EDU",
+            "JUS",
+            "SEG"
+          ],
+          "constructs": [
+            "ECO:job_quality_precariousness",
+            "EDU:p1_2",
+            "JUS:procedural_justice_expectations",
+            "SEG:fear_of_crime_and_risk_perception",
+            "SEG:victimization_exposure"
+          ],
+          "n_internal_edges": 10,
+          "n_cross_domain_internal": 9,
+          "mean_gamma": 0.471,
+          "max_gamma": 0.679,
+          "bridge_node": "EDU:p1_2",
+          "bridge_betweenness": 0.167
+        },
+        {
+          "community_id": 3,
+          "n_constructs": 5,
+          "n_domains": 4,
+          "domains": [
+            "FED",
+            "GLO",
+            "NIN",
+            "SAL"
+          ],
+          "constructs": [
+            "FED:political_interest_and_efficacy",
+            "GLO:global_governance_support",
+            "NIN:child_agency_and_participation",
+            "NIN:education_quality_and_opportunity",
+            "SAL:functional_health_status"
+          ],
+          "n_internal_edges": 10,
+          "n_cross_domain_internal": 9,
+          "mean_gamma": 0.296,
+          "max_gamma": 0.56,
+          "bridge_node": "SAL:functional_health_status",
+          "bridge_betweenness": 0.5
+        },
+        {
+          "community_id": 4,
+          "n_constructs": 5,
+          "n_domains": 4,
+          "domains": [
+            "HAB",
+            "IDE",
+            "NIN",
+            "POB"
+          ],
+          "constructs": [
+            "HAB:p14",
+            "IDE:institutional_and_social_trust",
+            "NIN:perceived_situation_of_minors",
+            "POB:material_living_standards",
+            "POB:subjective_economic_wellbeing"
+          ],
+          "n_internal_edges": 10,
+          "n_cross_domain_internal": 9,
+          "mean_gamma": 0.497,
+          "max_gamma": 1.0,
+          "bridge_node": "IDE:institutional_and_social_trust",
+          "bridge_betweenness": 0.5
+        },
+        {
+          "community_id": 5,
+          "n_constructs": 5,
+          "n_domains": 4,
+          "domains": [
+            "COR",
+            "POB",
+            "REL",
+            "SOC"
+          ],
+          "constructs": [
+            "COR:civic_tolerance_of_deviance",
+            "POB:subjective_social_mobility",
+            "REL:religious_tolerance_and_pluralism",
+            "SOC:digital_access_and_equipment",
+            "SOC:media_trust_and_critical_evaluation"
+          ],
+          "n_internal_edges": 10,
+          "n_cross_domain_internal": 9,
+          "mean_gamma": 0.489,
+          "max_gamma": 0.977,
+          "bridge_node": "COR:civic_tolerance_of_deviance",
+          "bridge_betweenness": 0.833
+        },
+        {
+          "community_id": 6,
+          "n_constructs": 4,
+          "n_domains": 4,
+          "domains": [
+            "CUL",
+            "DEP",
+            "DER",
+            "IND"
+          ],
+          "constructs": [
+            "CUL:civic_and_political_participation",
+            "DEP:p52",
+            "DER:gender_family_and_vulnerable_group_rights",
+            "IND:perceived_ethnic_discrimination"
+          ],
+          "n_internal_edges": 6,
+          "n_cross_domain_internal": 6,
+          "mean_gamma": 0.489,
+          "max_gamma": 0.692,
+          "bridge_node": "DER:gender_family_and_vulnerable_group_rights",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 7,
+          "n_constructs": 4,
+          "n_domains": 3,
+          "domains": [
+            "ENV",
+            "GLO",
+            "MED"
+          ],
+          "constructs": [
+            "ENV:ageism_and_age_discrimination",
+            "ENV:state_and_family_responsibility_for_elder_care",
+            "GLO:national_cultural_pride",
+            "MED:socioeconomic_environmental_context"
+          ],
+          "n_internal_edges": 6,
+          "n_cross_domain_internal": 5,
+          "mean_gamma": 0.509,
+          "max_gamma": 0.67,
+          "bridge_node": "ENV:state_and_family_responsibility_for_elder_care",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 8,
+          "n_constructs": 4,
+          "n_domains": 4,
+          "domains": [
+            "CIE",
+            "GEN",
+            "MIG",
+            "SEG"
+          ],
+          "constructs": [
+            "CIE:science_self_efficacy",
+            "GEN:intimate_partner_control_autonomy",
+            "MIG:xenophilia_tolerance",
+            "SEG:police_institutional_trust"
+          ],
+          "n_internal_edges": 6,
+          "n_cross_domain_internal": 6,
+          "mean_gamma": 0.609,
+          "max_gamma": 0.886,
+          "bridge_node": "SEG:police_institutional_trust",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 9,
+          "n_constructs": 4,
+          "n_domains": 4,
+          "domains": [
+            "MED",
+            "NIN",
+            "SAL",
+            "SOC"
+          ],
+          "constructs": [
+            "MED:environmental_governance_attitudes",
+            "NIN:p26_1",
+            "SAL:p34",
+            "SOC:digital_civic_and_political_participation"
+          ],
+          "n_internal_edges": 6,
+          "n_cross_domain_internal": 6,
+          "mean_gamma": 0.315,
+          "max_gamma": 0.708,
+          "bridge_node": "SAL:p34",
+          "bridge_betweenness": 0.667
+        },
+        {
+          "community_id": 10,
+          "n_constructs": 3,
+          "n_domains": 3,
+          "domains": [
+            "COR",
+            "IND",
+            "POB"
+          ],
+          "constructs": [
+            "COR:anticorruption_civic_engagement",
+            "IND:indigenous_rights_and_autonomy",
+            "POB:structural_attribution_of_poverty"
+          ],
+          "n_internal_edges": 3,
+          "n_cross_domain_internal": 3,
+          "mean_gamma": 0.333,
+          "max_gamma": 0.52,
+          "bridge_node": "IND:indigenous_rights_and_autonomy",
+          "bridge_betweenness": 1.0
+        },
+        {
+          "community_id": 11,
+          "n_constructs": 3,
+          "n_domains": 3,
+          "domains": [
+            "DEP",
+            "ENV",
+            "JUS"
+          ],
+          "constructs": [
+            "DEP:p18_1",
+            "ENV:perceived_quality_of_life_and_social_inclusion_of_older_adults",
+            "JUS:legal_problem_resolution_efficacy"
+          ],
+          "n_internal_edges": 3,
+          "n_cross_domain_internal": 3,
+          "mean_gamma": 0.409,
+          "max_gamma": 0.595,
+          "bridge_node": "DEP:p18_1",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 12,
+          "n_constructs": 3,
+          "n_domains": 3,
+          "domains": [
+            "DEP",
+            "ECO",
+            "SAL"
+          ],
+          "constructs": [
+            "DEP:ethnocultural_identity_and_linguistic_capital",
+            "ECO:p19",
+            "SAL:p23_1"
+          ],
+          "n_internal_edges": 3,
+          "n_cross_domain_internal": 3,
+          "mean_gamma": 0.158,
+          "max_gamma": 0.179,
+          "bridge_node": "ECO:p19",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 13,
+          "n_constructs": 3,
+          "n_domains": 3,
+          "domains": [
+            "CUL",
+            "ECO",
+            "FED"
+          ],
+          "constructs": [
+            "CUL:authoritarian_versus_democratic_values",
+            "ECO:human_capital_labor_alignment",
+            "FED:federalism_preference"
+          ],
+          "n_internal_edges": 3,
+          "n_cross_domain_internal": 3,
+          "mean_gamma": 0.667,
+          "max_gamma": 0.915,
+          "bridge_node": "CUL:authoritarian_versus_democratic_values",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 14,
+          "n_constructs": 3,
+          "n_domains": 3,
+          "domains": [
+            "FED",
+            "GEN",
+            "HAB"
+          ],
+          "constructs": [
+            "FED:institutional_trust_and_representativeness",
+            "GEN:tolerance_of_gender_based_violence",
+            "HAB:housing_policy_efficacy_beliefs"
+          ],
+          "n_internal_edges": 3,
+          "n_cross_domain_internal": 3,
+          "mean_gamma": 0.827,
+          "max_gamma": 1.0,
+          "bridge_node": "GEN:tolerance_of_gender_based_violence",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 15,
+          "n_constructs": 3,
+          "n_domains": 3,
+          "domains": [
+            "IDE",
+            "IND",
+            "SOC"
+          ],
+          "constructs": [
+            "IDE:subjective_wellbeing_and_life_satisfaction",
+            "IND:social_distance_toward_indigenous_people",
+            "SOC:media_consumption_and_news_habits"
+          ],
+          "n_internal_edges": 3,
+          "n_cross_domain_internal": 3,
+          "mean_gamma": 0.545,
+          "max_gamma": 0.752,
+          "bridge_node": "IND:social_distance_toward_indigenous_people",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 16,
+          "n_constructs": 3,
+          "n_domains": 3,
+          "domains": [
+            "COR",
+            "IDE",
+            "JUS"
+          ],
+          "constructs": [
+            "COR:corruption_perception",
+            "IDE:national_identity_and_pride",
+            "JUS:institutional_justice_trust"
+          ],
+          "n_internal_edges": 3,
+          "n_cross_domain_internal": 3,
+          "mean_gamma": 0.282,
+          "max_gamma": 0.341,
+          "bridge_node": "JUS:institutional_justice_trust",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 17,
+          "n_constructs": 3,
+          "n_domains": 2,
+          "domains": [
+            "FAM",
+            "JUS"
+          ],
+          "constructs": [
+            "FAM:family_instability_and_conflict",
+            "FAM:traditional_family_ideology",
+            "JUS:legal_knowledge_rights_awareness"
+          ],
+          "n_internal_edges": 3,
+          "n_cross_domain_internal": 2,
+          "mean_gamma": 0.151,
+          "max_gamma": 0.292,
+          "bridge_node": "FAM:family_instability_and_conflict",
+          "bridge_betweenness": 1.0
+        },
+        {
+          "community_id": 18,
+          "n_constructs": 3,
+          "n_domains": 3,
+          "domains": [
+            "DEP",
+            "GEN",
+            "MIG"
+          ],
+          "constructs": [
+            "DEP:subjective_socioeconomic_status",
+            "GEN:gender_equality_awareness_exposure",
+            "MIG:perceived_opportunity_deprivation"
+          ],
+          "n_internal_edges": 3,
+          "n_cross_domain_internal": 3,
+          "mean_gamma": 0.705,
+          "max_gamma": 0.937,
+          "bridge_node": "DEP:subjective_socioeconomic_status",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 19,
+          "n_constructs": 3,
+          "n_domains": 3,
+          "domains": [
+            "GLO",
+            "MIG",
+            "SAL"
+          ],
+          "constructs": [
+            "GLO:transnational_connectedness",
+            "MIG:migration_policy_attitudes",
+            "SAL:subjective_wellbeing_and_life_quality"
+          ],
+          "n_internal_edges": 3,
+          "n_cross_domain_internal": 3,
+          "mean_gamma": 0.268,
+          "max_gamma": 0.368,
+          "bridge_node": "MIG:migration_policy_attitudes",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 20,
+          "n_constructs": 3,
+          "n_domains": 3,
+          "domains": [
+            "GLO",
+            "POB",
+            "REL"
+          ],
+          "constructs": [
+            "GLO:cultural_openness",
+            "POB:social_policy_preferences",
+            "REL:religious_socialization_and_identity"
+          ],
+          "n_internal_edges": 3,
+          "n_cross_domain_internal": 3,
+          "mean_gamma": 0.599,
+          "max_gamma": 0.886,
+          "bridge_node": "GLO:cultural_openness",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 21,
+          "n_constructs": 3,
+          "n_domains": 3,
+          "domains": [
+            "EDU",
+            "IDE",
+            "SAL"
+          ],
+          "constructs": [
+            "EDU:digital_and_cultural_capital",
+            "IDE:socioeconomic_mobility_and_opportunity_perception",
+            "SAL:p24"
+          ],
+          "n_internal_edges": 3,
+          "n_cross_domain_internal": 3,
+          "mean_gamma": 0.248,
+          "max_gamma": 0.267,
+          "bridge_node": "EDU:digital_and_cultural_capital",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 22,
+          "n_constructs": 3,
+          "n_domains": 3,
+          "domains": [
+            "DER",
+            "EDU",
+            "MIG"
+          ],
+          "constructs": [
+            "DER:civil_liberties_and_protest_rights",
+            "EDU:educational_equity_beliefs",
+            "MIG:emigration_intention"
+          ],
+          "n_internal_edges": 3,
+          "n_cross_domain_internal": 3,
+          "mean_gamma": 0.324,
+          "max_gamma": 0.539,
+          "bridge_node": "EDU:educational_equity_beliefs",
+          "bridge_betweenness": 1.0
+        },
+        {
+          "community_id": 23,
+          "n_constructs": 2,
+          "n_domains": 2,
+          "domains": [
+            "CIE",
+            "MED"
+          ],
+          "constructs": [
+            "CIE:science_technology_engagement",
+            "MED:environmental_knowledge_literacy"
+          ],
+          "n_internal_edges": 1,
+          "n_cross_domain_internal": 1,
+          "mean_gamma": 0.943,
+          "max_gamma": 0.943,
+          "bridge_node": "CIE:science_technology_engagement",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 24,
+          "n_constructs": 2,
+          "n_domains": 2,
+          "domains": [
+            "CIE",
+            "HAB"
+          ],
+          "constructs": [
+            "CIE:science_technology_policy_attitudes",
+            "HAB:basic_services_access"
+          ],
+          "n_internal_edges": 1,
+          "n_cross_domain_internal": 1,
+          "mean_gamma": 0.751,
+          "max_gamma": 0.751,
+          "bridge_node": "CIE:science_technology_policy_attitudes",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 25,
+          "n_constructs": 2,
+          "n_domains": 2,
+          "domains": [
+            "ECO",
+            "EDU"
+          ],
+          "constructs": [
+            "ECO:labor_market_attachment",
+            "EDU:perceived_education_quality"
+          ],
+          "n_internal_edges": 1,
+          "n_cross_domain_internal": 1,
+          "mean_gamma": 0.217,
+          "max_gamma": 0.217,
+          "bridge_node": "EDU:perceived_education_quality",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 26,
+          "n_constructs": 2,
+          "n_domains": 1,
+          "domains": [
+            "REL"
+          ],
+          "constructs": [
+            "REL:church_state_separation_attitudes",
+            "REL:religious_practice_and_devotion"
+          ],
+          "n_internal_edges": 1,
+          "n_cross_domain_internal": 0,
+          "mean_gamma": 0.218,
+          "max_gamma": 0.218,
+          "bridge_node": "REL:church_state_separation_attitudes",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 27,
+          "n_constructs": 2,
+          "n_domains": 2,
+          "domains": [
+            "COR",
+            "EDU"
+          ],
+          "constructs": [
+            "COR:institutional_trust_and_efficacy",
+            "EDU:school_environment_quality"
+          ],
+          "n_internal_edges": 1,
+          "n_cross_domain_internal": 1,
+          "mean_gamma": 0.576,
+          "max_gamma": 0.576,
+          "bridge_node": "COR:institutional_trust_and_efficacy",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 28,
+          "n_constructs": 2,
+          "n_domains": 2,
+          "domains": [
+            "ENV",
+            "SEG"
+          ],
+          "constructs": [
+            "ENV:intergenerational_contact_and_family_integration",
+            "SEG:punitive_authoritarianism"
+          ],
+          "n_internal_edges": 1,
+          "n_cross_domain_internal": 1,
+          "mean_gamma": 0.637,
+          "max_gamma": 0.637,
+          "bridge_node": "SEG:punitive_authoritarianism",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 29,
+          "n_constructs": 2,
+          "n_domains": 2,
+          "domains": [
+            "DEP",
+            "FED"
+          ],
+          "constructs": [
+            "DEP:cultural_socialization_in_childhood",
+            "FED:security_governance_preferences"
+          ],
+          "n_internal_edges": 1,
+          "n_cross_domain_internal": 1,
+          "mean_gamma": 0.557,
+          "max_gamma": 0.557,
+          "bridge_node": "DEP:cultural_socialization_in_childhood",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 30,
+          "n_constructs": 2,
+          "n_domains": 2,
+          "domains": [
+            "GEN",
+            "MIG"
+          ],
+          "constructs": [
+            "GEN:reproductive_autonomy_attitudes",
+            "MIG:transnational_social_ties"
+          ],
+          "n_internal_edges": 1,
+          "n_cross_domain_internal": 1,
+          "mean_gamma": 0.339,
+          "max_gamma": 0.339,
+          "bridge_node": "MIG:transnational_social_ties",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 31,
+          "n_constructs": 2,
+          "n_domains": 2,
+          "domains": [
+            "GLO",
+            "JUS"
+          ],
+          "constructs": [
+            "GLO:cosmopolitan_identity",
+            "JUS:legal_cynicism_extrajudicial_tolerance"
+          ],
+          "n_internal_edges": 1,
+          "n_cross_domain_internal": 1,
+          "mean_gamma": 0.935,
+          "max_gamma": 0.935,
+          "bridge_node": "GLO:cosmopolitan_identity",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 32,
+          "n_constructs": 2,
+          "n_domains": 2,
+          "domains": [
+            "HAB",
+            "REL"
+          ],
+          "constructs": [
+            "HAB:physical_housing_quality",
+            "REL:supernatural_belief_system"
+          ],
+          "n_internal_edges": 1,
+          "n_cross_domain_internal": 1,
+          "mean_gamma": 0.95,
+          "max_gamma": 0.95,
+          "bridge_node": "REL:supernatural_belief_system",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 33,
+          "n_constructs": 2,
+          "n_domains": 2,
+          "domains": [
+            "GEN",
+            "MED"
+          ],
+          "constructs": [
+            "GEN:gender_role_traditionalism",
+            "MED:environmental_concern_risk_perception"
+          ],
+          "n_internal_edges": 1,
+          "n_cross_domain_internal": 1,
+          "mean_gamma": 0.496,
+          "max_gamma": 0.496,
+          "bridge_node": "GEN:gender_role_traditionalism",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 34,
+          "n_constructs": 2,
+          "n_domains": 2,
+          "domains": [
+            "COR",
+            "FED"
+          ],
+          "constructs": [
+            "COR:prosocial_reporting_behavior",
+            "FED:subnational_government_performance"
+          ],
+          "n_internal_edges": 1,
+          "n_cross_domain_internal": 1,
+          "mean_gamma": 0.251,
+          "max_gamma": 0.251,
+          "bridge_node": "FED:subnational_government_performance",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 35,
+          "n_constructs": 2,
+          "n_domains": 2,
+          "domains": [
+            "IND",
+            "MED"
+          ],
+          "constructs": [
+            "IND:p18_1a_1",
+            "MED:pro_environmental_civic_engagement"
+          ],
+          "n_internal_edges": 1,
+          "n_cross_domain_internal": 1,
+          "mean_gamma": 0.312,
+          "max_gamma": 0.312,
+          "bridge_node": "MED:pro_environmental_civic_engagement",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 36,
+          "n_constructs": 2,
+          "n_domains": 2,
+          "domains": [
+            "DER",
+            "SOC"
+          ],
+          "constructs": [
+            "DER:institutional_trust_and_justice_system_performance",
+            "SOC:digital_literacy_and_internet_engagement"
+          ],
+          "n_internal_edges": 1,
+          "n_cross_domain_internal": 1,
+          "mean_gamma": 0.89,
+          "max_gamma": 0.89,
+          "bridge_node": "DER:institutional_trust_and_justice_system_performance",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 37,
+          "n_constructs": 2,
+          "n_domains": 2,
+          "domains": [
+            "IND",
+            "SEG"
+          ],
+          "constructs": [
+            "IND:attributions_for_indigenous_disadvantage",
+            "SEG:security_avoidance_behavior"
+          ],
+          "n_internal_edges": 1,
+          "n_cross_domain_internal": 1,
+          "mean_gamma": 0.322,
+          "max_gamma": 0.322,
+          "bridge_node": "SEG:security_avoidance_behavior",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 38,
+          "n_constructs": 1,
+          "n_domains": 1,
+          "domains": [
+            "CIE"
+          ],
+          "constructs": [
+            "CIE:information_capital"
+          ],
+          "n_internal_edges": 0,
+          "n_cross_domain_internal": 0,
+          "mean_gamma": 0,
+          "max_gamma": 0,
+          "bridge_node": "CIE:information_capital",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 39,
+          "n_constructs": 1,
+          "n_domains": 1,
+          "domains": [
+            "CIE"
+          ],
+          "constructs": [
+            "CIE:institutional_trust_in_science"
+          ],
+          "n_internal_edges": 0,
+          "n_cross_domain_internal": 0,
+          "mean_gamma": 0,
+          "max_gamma": 0,
+          "bridge_node": "CIE:institutional_trust_in_science",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 40,
+          "n_constructs": 1,
+          "n_domains": 1,
+          "domains": [
+            "HAB"
+          ],
+          "constructs": [
+            "HAB:household_asset_endowment"
+          ],
+          "n_internal_edges": 0,
+          "n_cross_domain_internal": 0,
+          "mean_gamma": 0,
+          "max_gamma": 0,
+          "bridge_node": "HAB:household_asset_endowment",
+          "bridge_betweenness": 0.0
+        },
+        {
+          "community_id": 41,
+          "n_constructs": 1,
+          "n_domains": 1,
+          "domains": [
+            "DER"
+          ],
+          "constructs": [
+            "DER:perceived_discrimination_and_social_exclusion"
+          ],
+          "n_internal_edges": 0,
+          "n_cross_domain_internal": 0,
+          "mean_gamma": 0,
+          "max_gamma": 0,
+          "bridge_node": "DER:perceived_discrimination_and_social_exclusion",
+          "bridge_betweenness": 0.0
+        }
+      ]
+    }
+  }
+}
