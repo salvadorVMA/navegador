@@ -1,7 +1,6 @@
 """
 Unit tests for the v2 bridge estimators: BayesianBridgeEstimator,
-MRPBridgeEstimator, DoublyRobustBridgeEstimator, and the
-goodman_kruskal_gamma() helper.
+DoublyRobustBridgeEstimator, and the goodman_kruskal_gamma() helper.
 
 All tests use synthetic data so the 191 MB los_mex_dict.json is not required.
 """
@@ -16,7 +15,6 @@ sys.path.insert(0, '/workspaces/navegador')
 from ses_regression import (
     goodman_kruskal_gamma,
     BayesianBridgeEstimator,
-    MRPBridgeEstimator,
     DoublyRobustBridgeEstimator,
     CrossDatasetBivariateEstimator,
     ResidualBridgeEstimator,
@@ -185,97 +183,6 @@ class TestBayesianBridgeEstimator(unittest.TestCase):
 
 
 # ---------------------------------------------------------------------------
-# TestMRPBridgeEstimator
-# ---------------------------------------------------------------------------
-
-class TestMRPBridgeEstimator(unittest.TestCase):
-    """Tests for MRPBridgeEstimator."""
-
-    def setUp(self):
-        self.df_a = _make_ses_df(n=500, seed=200)
-        self.df_b = _make_ses_df(n=500, seed=201)
-        self.estimator = MRPBridgeEstimator(
-            cell_cols=['escol', 'edad', 'sexo'],
-            shrinkage_kappa=10.0,
-            min_cell_n=3,
-            n_bootstrap=20,
-        )
-
-    def _run(self):
-        return self.estimator.estimate(
-            var_id_a='p1|AAA', var_id_b='p1|BBB',
-            df_a=self.df_a, df_b=self.df_b,
-            col_a='p_nominal', col_b='p_nominal',
-        )
-
-    def test_returns_dict(self):
-        result = self._run()
-        self.assertIsNotNone(result)
-        self.assertIsInstance(result, dict)
-
-    def test_required_keys(self):
-        result = self._run()
-        for key in ('gamma', 'gamma_ci_95', 'cramers_v', 'joint_table',
-                    'n_cells_used', 'mean_cell_n', 'method'):
-            self.assertIn(key, result, f"Missing key: {key}")
-
-    def test_method_label(self):
-        self.assertEqual(self._run()['method'], 'mrp_bridge')
-
-    def test_gamma_in_range(self):
-        g = self._run()['gamma']
-        self.assertGreaterEqual(g, -1.0)
-        self.assertLessEqual(g, 1.0)
-
-    def test_gamma_ci_ordered_pair(self):
-        ci = self._run()['gamma_ci_95']
-        self.assertIsInstance(ci, tuple)
-        self.assertEqual(len(ci), 2)
-        lo, hi = ci
-        self.assertLessEqual(lo, hi)
-
-    def test_joint_table_sums_to_one(self):
-        jt = np.array(self._run()['joint_table'])
-        self.assertAlmostEqual(jt.sum(), 1.0, places=2)
-
-    def test_n_cells_used_positive(self):
-        result = self._run()
-        self.assertGreater(result['n_cells_used'], 0)
-
-    def test_missing_column_returns_none(self):
-        result = self.estimator.estimate(
-            var_id_a='p1|AAA', var_id_b='p1|BBB',
-            df_a=self.df_a, df_b=self.df_b,
-            col_a='p_nominal', col_b='nonexistent_col',
-        )
-        self.assertIsNone(result)
-
-    def test_demographic_cell_cols(self):
-        """cell_cols with edad and sexo should work on the SES fixture."""
-        est = MRPBridgeEstimator(
-            cell_cols=['edad', 'sexo'],
-            shrinkage_kappa=10.0,
-            min_cell_n=3,
-            n_bootstrap=10,
-        )
-        result = est.estimate(
-            var_id_a='p1|AAA', var_id_b='p1|BBB',
-            df_a=self.df_a, df_b=self.df_b,
-            col_a='p_nominal', col_b='p_nominal',
-        )
-        self.assertIsNotNone(result)
-        # After binning, edad may appear as 'edad_bin'; accept both forms.
-        cols_used = result['cell_cols_used']
-        self.assertTrue(
-            any('edad' in c for c in cols_used),
-            f"Expected edad (or edad_bin) in cell_cols_used, got {cols_used}"
-        )
-        self.assertTrue(
-            any('sexo' in c for c in cols_used),
-            f"Expected sexo in cell_cols_used, got {cols_used}"
-        )
-
-
 # ---------------------------------------------------------------------------
 # TestDoublyRobustBridgeEstimator
 # ---------------------------------------------------------------------------
@@ -401,20 +308,20 @@ class TestCategoryBinning(unittest.TestCase):
 
 
 # ---------------------------------------------------------------------------
-# TestAllSixEstimatorsComparison
+# TestAllFiveEstimatorsComparison
 # ---------------------------------------------------------------------------
 
-class TestAllSixEstimatorsComparison(unittest.TestCase):
+class TestAllFiveEstimatorsComparison(unittest.TestCase):
     """
-    Integration tests: all 6 estimators on the same variable pair.
+    Integration tests: all 5 estimators on the same variable pair.
 
     Verifies structural consistency across the old (baseline, residual,
-    ecological) and new (bayesian, mrp, doubly_robust) estimators.
+    ecological) and new (bayesian, doubly_robust) estimators.
     """
 
     @classmethod
     def setUpClass(cls):
-        """Run all 6 estimators once and cache results."""
+        """Run all 5 estimators once and cache results."""
         cls.df_a     = _make_ses_df(n=500, seed=400)
         cls.df_b     = _make_ses_df(n=500, seed=401)
         cls.df_geo_a = _make_geo_df(n=800, seed=402)
@@ -441,33 +348,27 @@ class TestAllSixEstimatorsComparison(unittest.TestCase):
             cell_cols=['edo', 'Tam_loc'], **args)
         cls.results['ecological'] = r
 
-        # New three
+        # New two
         r = BayesianBridgeEstimator(n_sim=200, n_draws=15).estimate(
             df_a=cls.df_a, df_b=cls.df_b, **args)
         cls.results['bayesian'] = r
-
-        r = MRPBridgeEstimator(
-            cell_cols=['escol', 'edad', 'sexo'],
-            min_cell_n=3, n_bootstrap=15,
-        ).estimate(df_a=cls.df_a, df_b=cls.df_b, **args)
-        cls.results['mrp'] = r
 
         r = DoublyRobustBridgeEstimator(n_sim=200, n_bootstrap=10).estimate(
             df_a=cls.df_a, df_b=cls.df_b, **args)
         cls.results['doubly_robust'] = r
 
-    def test_all_six_return_non_none(self):
+    def test_all_five_return_non_none(self):
         for name, result in self.results.items():
             self.assertIsNotNone(result, f"{name} returned None")
 
     def test_method_labels_distinct(self):
         labels = {r['method'] for r in self.results.values() if r is not None}
-        self.assertEqual(len(labels), 6,
-                         f"Expected 6 distinct method labels, got {labels}")
+        self.assertEqual(len(labels), 5,
+                         f"Expected 5 distinct method labels, got {labels}")
 
     def test_new_estimators_report_gamma(self):
-        """All three new estimators should report 'gamma' in [-1, 1]."""
-        for name in ('bayesian', 'mrp', 'doubly_robust'):
+        """Both new estimators should report 'gamma' in [-1, 1]."""
+        for name in ('bayesian', 'doubly_robust'):
             r = self.results[name]
             self.assertIn('gamma', r, f"{name} missing gamma")
             g = r['gamma']
@@ -475,8 +376,8 @@ class TestAllSixEstimatorsComparison(unittest.TestCase):
             self.assertLessEqual(g, 1.0, f"{name} gamma > 1")
 
     def test_new_estimators_report_ci(self):
-        """All three new estimators should include gamma_ci_95 as ordered pair."""
-        for name in ('bayesian', 'mrp', 'doubly_robust'):
+        """Both new estimators should include gamma_ci_95 as ordered pair."""
+        for name in ('bayesian', 'doubly_robust'):
             r = self.results[name]
             ci = r['gamma_ci_95']
             self.assertIsInstance(ci, tuple, f"{name} CI not a tuple")
@@ -485,8 +386,8 @@ class TestAllSixEstimatorsComparison(unittest.TestCase):
             self.assertLessEqual(lo, hi, f"{name} CI not ordered: {ci}")
 
     def test_new_estimators_include_joint_table(self):
-        """All three new estimators should include a joint_table that sums ≈1."""
-        for name in ('bayesian', 'mrp', 'doubly_robust'):
+        """Both new estimators should include a joint_table that sums ≈1."""
+        for name in ('bayesian', 'doubly_robust'):
             r = self.results[name]
             self.assertIn('joint_table', r, f"{name} missing joint_table")
             jt = np.array(r['joint_table'])

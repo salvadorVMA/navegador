@@ -20,6 +20,8 @@ Classes:
   CrossDatasetBivariateEstimator — Baseline: pooled simulation over shared SES pop
   ResidualBridgeEstimator       — Within-SES-cell V (Mantel-Haenszel style)
   EcologicalBridgeEstimator     — Geographic cell-level Spearman ρ (edo × Tam_loc)
+  BayesianBridgeEstimator       — Laplace-approximate posterior joint table
+  DoublyRobustBridgeEstimator   — AIPW + propensity reweighting
 """
 
 from __future__ import annotations
@@ -1628,11 +1630,29 @@ class BayesianBridgeEstimator:
                         scale[scale_mask] = bse_cap / bse_draw[scale_mask]
                         cov = cov * np.outer(scale, scale)
                 except Exception:
+                    # cov_params() failed (near-singular Hessian from quasi-
+                    # separation).  Compute covariance from the Hessian directly
+                    # with ridge regularisation (Firth 1993; Heinze & Schemper
+                    # 2002).  This is far better than the old 0.01·I fallback
+                    # which shrank posterior draws to near-zero variance.
                     try:
-                        cov = np.diag(np.asarray(res.bse, dtype=float).ravel() ** 2)
+                        underlying = res.model
+                        H = np.asarray(underlying.hessian(res.params), dtype=float)
+                        info = np.nan_to_num(-H, nan=0.0)   # Fisher information
+                        info = (info + info.T) / 2.0
+                        # Ridge: 1% of median diagonal element
+                        diag_info = np.diag(info)
+                        ridge = max(np.median(diag_info[diag_info > 0]) * 0.01,
+                                    1e-4) if (diag_info > 0).any() else 1e-4
+                        info_reg = info + ridge * np.eye(len(params_mle))
+                        cov = np.linalg.inv(info_reg)
+                        # Symmetrise and ensure PSD
+                        cov = (cov + cov.T) / 2.0
+                        min_eig = np.linalg.eigvalsh(cov).min()
+                        if min_eig < 0:
+                            cov += (-min_eig + 1e-6) * np.eye(len(params_mle))
                     except Exception:
-                        # bse also calls cov_params() internally; fall back to
-                        # a small isotropic covariance so draws stay near MLE.
+                        # Last resort: isotropic fallback
                         p = len(params_mle)
                         cov = np.eye(p) * 0.01
 
@@ -1758,240 +1778,10 @@ class BayesianBridgeEstimator:
 
 
 # ---------------------------------------------------------------------------
-# MRPBridgeEstimator
+# (MRPBridgeEstimator removed — James-Stein shrinkage on coarse cells
+#  produces near-zero γ; MRP is designed for geographic poststratification,
+#  not SES-mediated cross-domain estimation. See commit history for code.)
 # ---------------------------------------------------------------------------
-
-class MRPBridgeEstimator:
-    """
-    MRP Bridge: cell-level empirical distributions with partial pooling.
-
-    Defines SES cells from categorical variables (default: escol × edad × sexo),
-    computes the empirical P(Y_A|cell) and P(Y_B|cell) within each cell, applies
-    shrinkage toward the global marginal, and poststratifies to produce the
-    population joint table.
-
-    This implements v3 §5.4: MRP for joint distribution at cell level.
-    Shrinkage (James-Stein style) replaces full multilevel modeling — at n≈1000
-    with ~70 cells, this gives comparable results without requiring PyMC.
-
-    Output dict keys:
-      gamma            — Goodman-Kruskal γ from poststratified joint table
-      gamma_ci_95      — 95% bootstrap CI
-      cramers_v        — Cramér's V (for comparison)
-      joint_table      — K_a × K_b poststratified joint probability table
-      n_cells_used     — number of cells with data in both surveys
-      mean_cell_n      — average cell size across used cells
-      method           — 'mrp_bridge'
-    """
-
-    def __init__(
-        self,
-        cell_cols: Optional[List[str]] = None,
-        shrinkage_kappa: float = 10.0,
-        min_cell_n: int = 3,
-        n_bootstrap: int = 200,
-        bin_cell_vars: Optional[Dict[str, int]] = None,
-        max_categories: Optional[int] = 5,
-    ) -> None:
-        self.cell_cols = cell_cols or ['escol', 'edad', 'sexo']
-        self.shrinkage_kappa = shrinkage_kappa
-        self.min_cell_n = min_cell_n
-        self.n_bootstrap = n_bootstrap
-        # Default: bin edad (7→3) and escol (5→3) to reduce cell count.
-        # With sexo binary: 3×3×2 = 18 cells (vs ~70 without binning).
-        self.bin_cell_vars = (bin_cell_vars if bin_cell_vars is not None
-                              else {'edad': 3, 'escol': 3})
-        self.max_categories = max_categories
-
-    def estimate(
-        self,
-        var_id_a: str,
-        var_id_b: str,
-        df_a: pd.DataFrame,
-        df_b: pd.DataFrame,
-        col_a: str,
-        col_b: str,
-        ses_vars: Optional[List[str]] = None,
-        weight_col: str = 'Pondi2',
-    ) -> Optional[Dict[str, Any]]:
-        if col_a not in df_a.columns or col_b not in df_b.columns:
-            return None
-
-        try:
-            _MAX_CARD = 20
-
-            # --- Bin cell columns to reduce cell count ---
-            def _bin_col(series: pd.Series, n_bins: int) -> pd.Series:
-                """Bin a cell column into n_bins groups via equal-width."""
-                vals = pd.to_numeric(series, errors='coerce')
-                if vals.notna().sum() < 2:
-                    return series
-                lo, hi = vals.min(), vals.max()
-                if lo == hi:
-                    return series.fillna(0).astype(int).astype(str)
-                edges = np.linspace(lo - 0.5, hi + 0.5, n_bins + 1)
-                return pd.cut(vals, bins=edges, labels=[str(i) for i in range(n_bins)],
-                              include_lowest=True).astype(str)
-
-            # Apply binning to working copies
-            df_a_work = df_a.copy()
-            df_b_work = df_b.copy()
-            binned_cols_map: Dict[str, str] = {}
-            for col_name, n_bins in self.bin_cell_vars.items():
-                if col_name in df_a_work.columns and col_name in df_b_work.columns:
-                    new_name = f'{col_name}_bin'
-                    df_a_work[new_name] = _bin_col(df_a_work[col_name], n_bins)
-                    df_b_work[new_name] = _bin_col(df_b_work[col_name], n_bins)
-                    binned_cols_map[col_name] = new_name
-
-            # Resolve cell_cols: use binned version if available
-            resolved_cols = [binned_cols_map.get(c, c) for c in self.cell_cols]
-
-            available_cols = [
-                c for c in resolved_cols
-                if c in df_a_work.columns and c in df_b_work.columns
-                and df_a_work[c].dropna().nunique() <= _MAX_CARD
-                and df_b_work[c].dropna().nunique() <= _MAX_CARD
-            ]
-            if not available_cols:
-                return None
-
-            # --- Build cell keys ---
-            def _cell_key(df: pd.DataFrame) -> pd.Series:
-                parts = [df[c].astype(str).str.strip() for c in available_cols]
-                return parts[0].str.cat(parts[1:], sep='_') if len(parts) > 1 else parts[0]
-
-            # --- Cell-level empirical distributions with shrinkage ---
-            def _cell_distributions(
-                df: pd.DataFrame, col: str, wt: str,
-            ) -> Tuple[Dict[str, np.ndarray], np.ndarray, list, Dict[str, float]]:
-                """
-                Returns:
-                  cell_dists: {cell_key: probability vector} with shrinkage
-                  global_dist: global marginal distribution
-                  categories: sorted list of non-sentinel category values
-                  cell_weights: {cell_key: total weight in cell}
-                """
-                work = df[[col] + available_cols].copy()
-                work['_cell'] = _cell_key(df)
-                work['_w'] = df[wt].astype(float) if wt in df.columns else 1.0
-                work = work.dropna(subset=[col, '_cell'])
-                # Filter sentinels from target
-                mask = work[col].apply(lambda v: not _is_sentinel(v))
-                work = work[mask]
-
-                cats = sorted(work[col].dropna().unique().tolist(), key=str)
-                if len(cats) < 2:
-                    return {}, np.array([]), cats, {}
-                K = len(cats)
-                cat_idx = {c: i for i, c in enumerate(cats)}
-
-                # Global marginal
-                global_dist = np.zeros(K)
-                for c, i in cat_idx.items():
-                    m = work[col] == c
-                    global_dist[i] = work.loc[m, '_w'].sum()
-                total = global_dist.sum()
-                if total > 0:
-                    global_dist /= total
-
-                # Per-cell distributions with shrinkage
-                cell_dists: Dict[str, np.ndarray] = {}
-                cell_weights: Dict[str, float] = {}
-                for cell_key, grp in work.groupby('_cell'):
-                    n_cell = len(grp)
-                    if n_cell < self.min_cell_n:
-                        continue
-                    emp = np.zeros(K)
-                    for c, i in cat_idx.items():
-                        m = grp[col] == c
-                        emp[i] = grp.loc[m, '_w'].sum()
-                    emp_total = emp.sum()
-                    if emp_total > 0:
-                        emp /= emp_total
-                    # Shrinkage: λ = n / (n + κ)
-                    lam = n_cell / (n_cell + self.shrinkage_kappa)
-                    pooled = lam * emp + (1 - lam) * global_dist
-                    pooled_total = pooled.sum()
-                    if pooled_total > 0:
-                        pooled /= pooled_total
-                    cell_dists[cell_key] = pooled
-                    cell_weights[cell_key] = emp_total
-
-                return cell_dists, global_dist, cats, cell_weights
-
-            dist_a, global_a, cats_a, wt_a = _cell_distributions(df_a_work, col_a, weight_col)
-            dist_b, global_b, cats_b, wt_b = _cell_distributions(df_b_work, col_b, weight_col)
-
-            if len(cats_a) < 2 or len(cats_b) < 2:
-                return None
-
-            # --- Overlapping cells ---
-            shared_cells = sorted(set(dist_a.keys()) & set(dist_b.keys()))
-            if len(shared_cells) < 3:
-                return None
-
-            K_a, K_b = len(cats_a), len(cats_b)
-
-            # --- Poststratified joint table ---
-            def _compute_joint(cell_list, d_a, d_b, w_a, w_b):
-                joint = np.zeros((K_a, K_b))
-                total_w = 0.0
-                for cell in cell_list:
-                    # Cell weight = geometric mean of survey weights
-                    cw = np.sqrt(w_a.get(cell, 1.0) * w_b.get(cell, 1.0))
-                    joint += cw * np.outer(d_a[cell], d_b[cell])
-                    total_w += cw
-                if total_w > 0:
-                    joint /= total_w
-                return joint
-
-            joint_table = _compute_joint(shared_cells, dist_a, dist_b, wt_a, wt_b)
-            gamma_point = goodman_kruskal_gamma(joint_table)
-
-            # Convert to integer counts for Cramér's V
-            counts = (joint_table * 1000).astype(int).clip(1)
-            v_point = float(association(counts, method='cramer'))
-
-            # --- Bootstrap CI ---
-            rng = np.random.default_rng(seed=42)
-            boot_gammas = []
-            for _ in range(self.n_bootstrap):
-                boot_cells = rng.choice(shared_cells, size=len(shared_cells), replace=True).tolist()
-                jt_b = _compute_joint(boot_cells, dist_a, dist_b, wt_a, wt_b)
-                boot_gammas.append(goodman_kruskal_gamma(jt_b))
-
-            boot_gammas = np.array(boot_gammas)
-            gamma_ci = (
-                round(float(np.percentile(boot_gammas, 2.5)), 4),
-                round(float(np.percentile(boot_gammas, 97.5)), 4),
-            )
-
-            cell_sizes = [len(df_a_work[_cell_key(df_a_work) == c]) + len(df_b_work[_cell_key(df_b_work) == c])
-                          for c in shared_cells]
-            mean_cell_n = float(np.mean(cell_sizes)) if cell_sizes else 0.0
-
-            return {
-                'var_a': var_id_a,
-                'var_b': var_id_b,
-                'method': 'mrp_bridge',
-                'gamma': round(gamma_point, 4),
-                'gamma_ci_95': gamma_ci,
-                'cramers_v': round(v_point, 4),
-                'joint_table': joint_table.tolist(),
-                'n_cells_used': len(shared_cells),
-                'mean_cell_n': round(mean_cell_n, 1),
-                'cell_cols_used': available_cols,
-                'note': (
-                    f'MRP with shrinkage (κ={self.shrinkage_kappa}) '
-                    f'over {len(shared_cells)} cells ({", ".join(available_cols)})'
-                ),
-            }
-
-        except Exception as e:
-            print(f"[mrp-bridge] Failed for {var_id_a} × {var_id_b}: {e}")
-            return None
-
 
 # ---------------------------------------------------------------------------
 # DoublyRobustBridgeEstimator

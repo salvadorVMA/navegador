@@ -25,7 +25,6 @@ from ses_regression import (
     ResidualBridgeEstimator,
     EcologicalBridgeEstimator,
     BayesianBridgeEstimator,
-    MRPBridgeEstimator,
     DoublyRobustBridgeEstimator,
     goodman_kruskal_gamma,
     SES_REGRESSION_VARS,
@@ -365,7 +364,6 @@ class TestEstimatorAccuracy(unittest.TestCase):
             'baseline': CrossDatasetBivariateEstimator(n_sim=300),
             'residual': ResidualBridgeEstimator(n_sim=300, n_cells=10),
             'bayesian': BayesianBridgeEstimator(n_sim=300, n_draws=50),
-            'mrp': MRPBridgeEstimator(cell_cols=['sexo', 'edad'], n_bootstrap=20),
             'dr': DoublyRobustBridgeEstimator(n_sim=300, n_bootstrap=10),
         }
 
@@ -397,18 +395,13 @@ class TestEstimatorAccuracy(unittest.TestCase):
         if r is not None:
             self.assertAlmostEqual(r['gamma'], self.TRUE_GAMMA, delta=0.35)
 
-    def test_mrp_gamma_near_true(self):
-        r = self.RESULTS_SIGNAL.get('mrp')
-        if r is not None:
-            self.assertAlmostEqual(r['gamma'], self.TRUE_GAMMA, delta=0.35)
-
     def test_dr_gamma_near_true(self):
         r = self.RESULTS_SIGNAL.get('dr')
         if r is not None:
             self.assertAlmostEqual(r['gamma'], self.TRUE_GAMMA, delta=0.35)
 
     def test_independent_pair_gamma_near_zero(self):
-        for name in ('bayesian', 'mrp', 'dr'):
+        for name in ('bayesian', 'dr'):
             r = self.RESULTS_INDEP.get(name)
             if r is not None:
                 self.assertAlmostEqual(
@@ -421,9 +414,9 @@ class TestEstimatorAccuracy(unittest.TestCase):
         if r is not None:
             self.assertLess(r.get('cramers_v', 1.0), 0.20)
 
-    def test_at_least_four_estimators_succeed(self):
+    def test_at_least_three_estimators_succeed(self):
         n_ok = sum(1 for r in self.RESULTS_SIGNAL.values() if r is not None)
-        self.assertGreaterEqual(n_ok, 4,
+        self.assertGreaterEqual(n_ok, 3,
                                 f"Only {n_ok}/5 estimators succeeded on signal data")
 
 
@@ -454,10 +447,6 @@ class TestUncertaintyCalibration(unittest.TestCase):
 
         bay = BayesianBridgeEstimator(n_sim=300, n_draws=50)
         cls.bay_result = bay.estimate('va', 'vb', cls.df_a, cls.df_b,
-                                      'col_a', 'col_b', ses_vars=ses)
-
-        mrp = MRPBridgeEstimator(cell_cols=['sexo', 'edad'], n_bootstrap=20)
-        cls.mrp_result = mrp.estimate('va', 'vb', cls.df_a, cls.df_b,
                                       'col_a', 'col_b', ses_vars=ses)
 
         dr = DoublyRobustBridgeEstimator(n_sim=300, n_bootstrap=10)
@@ -493,16 +482,6 @@ class TestUncertaintyCalibration(unittest.TestCase):
             self.assertLessEqual(lo, self.TRUE_GAMMA + 0.05)
             self.assertGreaterEqual(hi, self.TRUE_GAMMA - 0.05)
 
-    def test_mrp_ci_positive_association(self):
-        # MRP has systematic downward bias from James-Stein shrinkage:
-        # the CI captures sampling uncertainty but not attenuation bias.
-        # So we test that the CI indicates a positive association rather
-        # than exact coverage of the analytical true gamma.
-        if self.mrp_result is not None:
-            lo, hi = self.mrp_result['gamma_ci_95']
-            self.assertGreater(hi, 0.05, "MRP CI should indicate positive γ")
-            self.assertGreater(hi - lo, 0.0, "MRP CI should have positive width")
-
     def test_dr_ci_covers_true(self):
         if self.dr_result is not None:
             lo, hi = self.dr_result['gamma_ci_95']
@@ -518,7 +497,7 @@ class TestUncertaintyCalibration(unittest.TestCase):
         )
 
     def test_ci_width_positive(self):
-        for name, r in [('bay', self.bay_result), ('mrp', self.mrp_result),
+        for name, r in [('bay', self.bay_result),
                         ('dr', self.dr_result)]:
             if r is not None:
                 lo, hi = r['gamma_ci_95']
@@ -702,15 +681,6 @@ class TestCrossEstimatorConsistency(unittest.TestCase):
             except Exception:
                 pass
             try:
-                r = MRPBridgeEstimator(
-                    cell_cols=['sexo', 'edad'], min_cell_n=5, n_bootstrap=30,
-                ).estimate('va', 'vb', df_a, df_b, 'col_a', 'col_b', ses_vars=ses)
-                if r:
-                    row['mrp_gamma'] = r['gamma']
-                    row['mrp_ci'] = r['gamma_ci_95']
-            except Exception:
-                pass
-            try:
                 r = DoublyRobustBridgeEstimator(n_sim=300, n_bootstrap=10).estimate(
                     'va', 'vb', df_a, df_b, 'col_a', 'col_b', ses_vars=ses)
                 if r:
@@ -736,35 +706,7 @@ class TestCrossEstimatorConsistency(unittest.TestCase):
             f"Bayesian sign concordance: {concordant}/{len(signs)} positive"
         )
 
-    def test_mrp_sign_concordance_with_true(self):
-        """MRP γ sign should match true positive γ in ≥4 of 6 replications."""
-        signs = self._signs('mrp_gamma')
-        if len(signs) < 3:
-            self.skipTest("Not enough MRP results")
-        concordant = sum(1 for s in signs if s > 0)
-        self.assertGreaterEqual(
-            concordant, len(signs) // 2 + 1,
-            f"MRP sign concordance: {concordant}/{len(signs)} positive"
-        )
-
-    # --- Inter-method gamma agreement (Datta & Satten 2005) ---
-
-    def test_bayesian_mrp_gamma_agreement(self):
-        """Bayesian and MRP γ should agree within 0.4 on correlated pairs."""
-        pairs = [
-            (r['bay_gamma'], r['mrp_gamma'])
-            for r in self._replicas
-            if 'bay_gamma' in r and 'mrp_gamma' in r
-        ]
-        if len(pairs) < 2:
-            self.skipTest("Not enough paired results")
-        diffs = [abs(b - m) for b, m in pairs]
-        # Bland-Altman LOA: mean difference ± 1.96 SD should not exceed 0.6
-        mean_diff = np.mean(diffs)
-        self.assertLess(
-            mean_diff, 0.4,
-            f"Mean |Bayesian - MRP| = {mean_diff:.3f} exceeds 0.4"
-        )
+    # --- Inter-method gamma agreement ---
 
     def test_gamma_rank_order_consistent_across_estimators(self):
         """Bayesian and DR γ should have same rank ordering across replications.
@@ -836,12 +778,9 @@ class TestCrossEstimatorConsistency(unittest.TestCase):
         """All 3 new estimators should return finite gamma on ≥ 3 of 6 replicas."""
         bay_ok = sum(1 for r in self._replicas
                      if 'bay_gamma' in r and math.isfinite(r['bay_gamma']))
-        mrp_ok = sum(1 for r in self._replicas
-                     if 'mrp_gamma' in r and math.isfinite(r['mrp_gamma']))
         dr_ok  = sum(1 for r in self._replicas
                      if 'dr_gamma'  in r and math.isfinite(r['dr_gamma']))
         self.assertGreaterEqual(bay_ok, 3, f"Bayesian succeeded {bay_ok}/6")
-        self.assertGreaterEqual(mrp_ok, 3, f"MRP succeeded {mrp_ok}/6")
         self.assertGreaterEqual(dr_ok,  3, f"DR succeeded {dr_ok}/6")
 
 

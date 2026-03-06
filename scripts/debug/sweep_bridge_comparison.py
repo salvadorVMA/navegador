@@ -1,12 +1,11 @@
 """
-sweep_bridge_comparison.py — Compare all six bridge estimators across 276 domain pairs.
+sweep_bridge_comparison.py — Compare all five bridge estimators across 276 domain pairs.
 
 Estimators:
   Baseline   — CrossDatasetBivariateEstimator  (Cramér's V via SES simulation)
   Residual   — ResidualBridgeEstimator          (within-cell Mantel-Haenszel V)
   Ecological — EcologicalBridgeEstimator        (geographic cell Spearman ρ)
   Bayesian   — BayesianBridgeEstimator          (Laplace posterior γ + V with CI)
-  MRP        — MRPBridgeEstimator               (cell shrinkage + poststratification γ)
   DR         — DoublyRobustBridgeEstimator      (AIPW-corrected γ + KS overlap)
 
 Results are saved incrementally after each domain pair (crash-safe).
@@ -22,7 +21,7 @@ Usage:
         --workers 4 > /tmp/bridge_comparison.log 2>&1 &
 
 Output:
-    data/results/bridge_comparison_results.json   — per-pair estimates (all 6 methods)
+    data/results/bridge_comparison_results.json   — per-pair estimates (all 5 methods)
     data/results/bridge_comparison_report.md      — human-readable comparison table
 """
 
@@ -56,8 +55,6 @@ OUTPUT_REPORT = ROOT / "data" / "results" / "bridge_comparison_report.md"
 # Ecological cell_cols: escol(1-5) × edad(7 groups) = 35 demographic cells
 DEFAULT_ECO_CELL_COLS = ["escol", "edad"]
 
-# MRP cell_cols: same as eco by default
-DEFAULT_MRP_CELL_COLS = ["escol", "edad", "sexo"]
 
 # Simulation size for baseline + residual + reference SES population.
 # 500 is sufficient for point estimates; increase for final publication runs.
@@ -68,7 +65,6 @@ N_SIM = 500
 # Full-precision runs can be done on individual pairs.
 N_BOOTSTRAP_ECO = 50
 N_BOOTSTRAP_BAY = 100   # posterior draws (cheap: no model refit, Laplace stabilizes fast)
-N_BOOTSTRAP_MRP = 50
 N_BOOTSTRAP_DR  = 10    # rough CI; point estimate still valid for sweep
 
 
@@ -91,7 +87,7 @@ def load_data() -> Tuple[dict, dict]:
 
 
 # ---------------------------------------------------------------------------
-# Single domain-pair estimation (all 6 methods)
+# Single domain-pair estimation (all 5 methods)
 # ---------------------------------------------------------------------------
 
 def estimate_pair_all_methods(
@@ -102,10 +98,9 @@ def estimate_pair_all_methods(
     enc_dict: dict,
     enc_nom_dict_rev: dict,
     eco_cell_cols: List[str],
-    mrp_cell_cols: List[str],
 ) -> Dict[str, Any]:
     """
-    Run all 6 bridge methods on every (var_a, var_b) cross-combination.
+    Run all 5 bridge methods on every (var_a, var_b) cross-combination.
 
     Returns a result dict with top-level aggregates for each method and the
     full per-variable-pair estimates list.
@@ -115,7 +110,6 @@ def estimate_pair_all_methods(
         ResidualBridgeEstimator,
         EcologicalBridgeEstimator,
         BayesianBridgeEstimator,
-        MRPBridgeEstimator,
         DoublyRobustBridgeEstimator,
     )
 
@@ -138,9 +132,6 @@ def estimate_pair_all_methods(
         min_cell_n=10, min_merged_cells=5, n_bootstrap=N_BOOTSTRAP_ECO)
     est_bayesian  = BayesianBridgeEstimator(
         n_sim=N_SIM, n_draws=N_BOOTSTRAP_BAY, max_categories=5)
-    est_mrp       = MRPBridgeEstimator(
-        cell_cols=mrp_cell_cols, min_cell_n=5, n_bootstrap=N_BOOTSTRAP_MRP,
-        max_categories=5)
     est_dr        = DoublyRobustBridgeEstimator(
         n_sim=N_SIM, n_bootstrap=N_BOOTSTRAP_DR, max_categories=5)
 
@@ -216,19 +207,6 @@ def estimate_pair_all_methods(
             except Exception as e:
                 row["bay_error"] = str(e)
 
-            # --- MRP ---
-            try:
-                r = est_mrp.estimate(
-                    var_id_a=va, var_id_b=vb, df_a=df_a, df_b=df_b,
-                    col_a=col_a, col_b=col_b)
-                if r:
-                    row["mrp_gamma"]    = round(r["gamma"], 4)
-                    row["mrp_gamma_ci"] = r["gamma_ci_95"]
-                    row["mrp_v"]        = round(r["cramers_v"], 4)
-                    row["mrp_cells"]    = r["n_cells_used"]
-            except Exception as e:
-                row["mrp_error"] = str(e)
-
             # --- Doubly Robust ---
             try:
                 r = est_dr.estimate(
@@ -261,7 +239,6 @@ def estimate_pair_all_methods(
         "n_residual_ok":  len(_extract("residual_v")),
         "n_eco_ok":       len(_extract("eco_rho")),
         "n_bayesian_ok":  len(_extract("bay_gamma")),
-        "n_mrp_ok":       len(_extract("mrp_gamma")),
         "n_dr_ok":        len(_extract("dr_gamma")),
         # Aggregates
         "baseline_mean_v":   _mean(_extract("baseline_v")),
@@ -274,8 +251,6 @@ def estimate_pair_all_methods(
         "n_dr_ks_warning":       sum(1 for e in estimates if e.get("dr_ks_warning")),
         "bay_mean_gamma":    _mean(_extract("bay_gamma")),
         "bay_mean_v":        _mean(_extract("bay_v")),
-        "mrp_mean_gamma":    _mean(_extract("mrp_gamma")),
-        "mrp_mean_v":        _mean(_extract("mrp_v")),
         "dr_mean_gamma":     _mean(_extract("dr_gamma")),
         "dr_mean_v":         _mean(_extract("dr_v")),
         "dr_mean_ks":        _mean(_extract("dr_ks")),
@@ -285,10 +260,10 @@ def estimate_pair_all_methods(
 # Keys used for the "no-data" fallback
 _AGG_KEYS = [
     "baseline_mean_v", "residual_mean_v", "eco_mean_rho", "mean_ses_fraction",
-    "bay_mean_gamma", "bay_mean_v", "mrp_mean_gamma", "mrp_mean_v",
+    "bay_mean_gamma", "bay_mean_v",
     "dr_mean_gamma", "dr_mean_v", "dr_mean_ks",
     "n_baseline_ok", "n_residual_ok", "n_eco_ok",
-    "n_bayesian_ok", "n_mrp_ok", "n_dr_ok",
+    "n_bayesian_ok", "n_dr_ok",
 ]
 
 
@@ -314,7 +289,7 @@ def _save_checkpoint(results: Dict[str, Any], output_path: Path, metadata: dict)
 # ---------------------------------------------------------------------------
 
 def generate_report(results: Dict[str, Any], output_path: Path, meta: dict) -> None:
-    """Write a human-readable 6-method comparison markdown report."""
+    """Write a human-readable 5-method comparison markdown report."""
     pairs  = list(results.values())
     valid  = [p for p in pairs if p.get("baseline_mean_v") is not None]
     valid.sort(key=lambda p: -(p["baseline_mean_v"] or 0))
@@ -338,24 +313,22 @@ def generate_report(results: Dict[str, Any], output_path: Path, meta: dict) -> N
     rvs  = [p["residual_mean_v"]  for p in valid if p.get("residual_mean_v") is not None]
     evs  = [p["eco_mean_rho"]     for p in valid if p.get("eco_mean_rho") is not None]
     bays = [p["bay_mean_gamma"]   for p in valid if p.get("bay_mean_gamma") is not None]
-    mrps = [p["mrp_mean_gamma"]   for p in valid if p.get("mrp_mean_gamma") is not None]
     drs  = [p["dr_mean_gamma"]    for p in valid if p.get("dr_mean_gamma") is not None]
     dks  = [p["dr_mean_ks"]       for p in valid if p.get("dr_mean_ks") is not None]
     sfs  = [p["mean_ses_fraction"] for p in valid if p.get("mean_ses_fraction") is not None]
 
     lines: List[str] = [
-        "# Bridge Comparison Report — All Six Methods",
+        "# Bridge Comparison Report — All Five Methods",
         "",
         f"*Generated {datetime.now().strftime('%Y-%m-%d %H:%M')}*",
         "",
         "## Run Parameters",
         "",
         f"- `n_sim` (baseline / residual / bayesian): {meta.get('n_sim', N_SIM)}",
-        f"- `n_bootstrap` eco / bayesian draws / mrp / DR: "
-        f"{N_BOOTSTRAP_ECO} / {N_BOOTSTRAP_BAY} / {N_BOOTSTRAP_MRP} / {N_BOOTSTRAP_DR}",
+        f"- `n_bootstrap` eco / bayesian draws / DR: "
+        f"{N_BOOTSTRAP_ECO} / {N_BOOTSTRAP_BAY} / {N_BOOTSTRAP_DR}",
         f"- `n_cells` (residual):      {meta.get('n_cells', 20)}",
         f"- Ecological `cell_cols`:    {meta.get('eco_cell_cols', DEFAULT_ECO_CELL_COLS)}",
-        f"- MRP `cell_cols`:           {meta.get('mrp_cell_cols', DEFAULT_MRP_CELL_COLS)}",
         f"- Domain pairs attempted:    {meta.get('n_pairs_attempted', len(results))}",
         f"- Domain pairs with results: {len(valid)}",
         f"- Elapsed:                   {meta.get('elapsed_seconds', '?'):.0f}s",
@@ -368,15 +341,14 @@ def generate_report(results: Dict[str, Any], output_path: Path, meta: dict) -> N
         _row("Residual V (within-cell)",   rvs),
         _row("Eco |ρ| (geographic)",       [abs(v) for v in evs]),
         _row("Bayesian γ (Laplace post.)", bays),
-        _row("MRP γ (shrinkage cells)",    mrps),
         _row("DR γ (AIPW)",               drs),
         _row("DR KS overlap",              dks),
         _row("SES fraction (resid/base)",  sfs),
         "",
         "## Top 20 Domain Pairs by Baseline V",
         "",
-        "| Domain pair | Base V | Resid V | Bay γ | MRP γ | DR γ | DR KS |",
-        "|-------------|--------|---------|-------|-------|------|-------|",
+        "| Domain pair | Base V | Resid V | Bay γ | DR γ | DR KS |",
+        "|-------------|--------|---------|-------|------|-------|",
     ]
 
     for p in valid[:20]:
@@ -384,26 +356,24 @@ def generate_report(results: Dict[str, Any], output_path: Path, meta: dict) -> N
         bv   = f"{p['baseline_mean_v']:.3f}"    if p.get("baseline_mean_v") is not None else "—"
         rv   = f"{p['residual_mean_v']:.3f}"    if p.get("residual_mean_v") is not None else "—"
         bg   = f"{p['bay_mean_gamma']:+.3f}"    if p.get("bay_mean_gamma")  is not None else "—"
-        mg   = f"{p['mrp_mean_gamma']:+.3f}"    if p.get("mrp_mean_gamma")  is not None else "—"
         dg   = f"{p['dr_mean_gamma']:+.3f}"     if p.get("dr_mean_gamma")   is not None else "—"
         dk   = f"{p['dr_mean_ks']:.3f}"         if p.get("dr_mean_ks")      is not None else "—"
-        lines.append(f"| {key} | {bv} | {rv} | {bg} | {mg} | {dg} | {dk} |")
+        lines.append(f"| {key} | {bv} | {rv} | {bg} | {dg} | {dk} |")
 
     lines += [
         "",
         "## Weakest 10 Domain Pairs (Baseline V)",
         "",
-        "| Domain pair | Base V | Resid V | Bay γ | MRP γ | DR γ |",
-        "|-------------|--------|---------|-------|-------|------|",
+        "| Domain pair | Base V | Resid V | Bay γ | DR γ |",
+        "|-------------|--------|---------|-------|------|",
     ]
     for p in valid[-10:]:
         key  = f"{p['domain_a']}×{p['domain_b']}"
         bv   = f"{p['baseline_mean_v']:.3f}"    if p.get("baseline_mean_v") is not None else "—"
         rv   = f"{p['residual_mean_v']:.3f}"    if p.get("residual_mean_v") is not None else "—"
         bg   = f"{p['bay_mean_gamma']:+.3f}"    if p.get("bay_mean_gamma")  is not None else "—"
-        mg   = f"{p['mrp_mean_gamma']:+.3f}"    if p.get("mrp_mean_gamma")  is not None else "—"
         dg   = f"{p['dr_mean_gamma']:+.3f}"     if p.get("dr_mean_gamma")   is not None else "—"
-        lines.append(f"| {key} | {bv} | {rv} | {bg} | {mg} | {dg} |")
+        lines.append(f"| {key} | {bv} | {rv} | {bg} | {dg} |")
 
     lines += [
         "",
@@ -415,7 +385,6 @@ def generate_report(results: Dict[str, Any], output_path: Path, meta: dict) -> N
         "| High baseline V + low residual V  | Association is SES-mediated (pure confounding) |",
         "| High |Eco ρ| + low baseline V     | Geographic pattern not captured by individual SES |",
         "| Bayesian CI excludes 0            | Robust association under parameter uncertainty |",
-        "| MRP γ ≈ baseline V                | Cell-level pattern consistent with simulation |",
         "| DR KS > 0.3                       | Poor SES overlap: DR weights less reliable |",
         "| DR γ differs from baseline V      | Outcome model may be misspecified (one is wrong) |",
         "",
@@ -435,7 +404,6 @@ def generate_report(results: Dict[str, Any], output_path: Path, meta: dict) -> N
 def main(
     max_workers: int = 1,
     eco_cell_cols: List[str] = None,
-    mrp_cell_cols: List[str] = None,
     output_json: Path = OUTPUT_JSON,
     output_report: Path = OUTPUT_REPORT,
     resume: bool = True,
@@ -444,16 +412,14 @@ def main(
 ) -> None:
     if eco_cell_cols is None:
         eco_cell_cols = DEFAULT_ECO_CELL_COLS
-    if mrp_cell_cols is None:
-        mrp_cell_cols = DEFAULT_MRP_CELL_COLS
 
     t0 = time.time()
     print("=" * 70)
-    print("Bridge Comparison Sweep — All Six Methods")
+    print("Bridge Comparison Sweep — All Five Methods")
     print("=" * 70)
-    print(f"  n_sim={N_SIM}  eco_cell_cols={eco_cell_cols}  mrp_cell_cols={mrp_cell_cols}")
+    print(f"  n_sim={N_SIM}  eco_cell_cols={eco_cell_cols}")
     print(f"  n_bootstrap: eco={N_BOOTSTRAP_ECO}  bay={N_BOOTSTRAP_BAY}  "
-          f"mrp={N_BOOTSTRAP_MRP}  dr={N_BOOTSTRAP_DR}")
+          f"dr={N_BOOTSTRAP_DR}")
     print(f"  workers={max_workers}")
     print()
 
@@ -500,11 +466,11 @@ def main(
                 prev = json.load(f)
             existing_results = prev.get("domain_pairs", {})
             # Only skip if ALL new methods are present
-            def _has_all_six(p):
+            def _has_all_five(p):
                 return (p.get("baseline_mean_v") is not None
                         and p.get("bay_mean_gamma") is not None)
-            n_existing = sum(1 for v in existing_results.values() if _has_all_six(v))
-            print(f"Resuming: {n_existing} pairs already have all 6 methods.")
+            n_existing = sum(1 for v in existing_results.values() if _has_all_five(v))
+            print(f"Resuming: {n_existing} pairs already have all 5 methods.")
         except Exception as e:
             print(f"Warning: could not load checkpoint ({e}); starting fresh.")
 
@@ -528,10 +494,8 @@ def main(
         "n_sim": N_SIM,
         "n_cells": 20,
         "eco_cell_cols": eco_cell_cols,
-        "mrp_cell_cols": mrp_cell_cols,
         "n_bootstrap_eco": N_BOOTSTRAP_ECO,
         "n_bootstrap_bay": N_BOOTSTRAP_BAY,
-        "n_bootstrap_mrp": N_BOOTSTRAP_MRP,
         "n_bootstrap_dr":  N_BOOTSTRAP_DR,
         "n_pairs_attempted": len(all_pair_keys),
         "workers": max_workers,
@@ -547,7 +511,7 @@ def main(
         vars_b = selected_vars.get(db, [])
         return pair_key, estimate_pair_all_methods(
             da, db, vars_a, vars_b, enc_dict, enc_nom_dict_rev,
-            eco_cell_cols, mrp_cell_cols,
+            eco_cell_cols,
         )
 
     print(f"\nRunning sweep (workers={max_workers})...\n", flush=True)
@@ -578,7 +542,6 @@ def main(
                 bv  = result.get("baseline_mean_v")
                 rv  = result.get("residual_mean_v")
                 bg  = result.get("bay_mean_gamma")
-                mg  = result.get("mrp_mean_gamma")
                 dg  = result.get("dr_mean_gamma")
                 dk  = result.get("dr_mean_ks")
 
@@ -593,7 +556,6 @@ def main(
                     print(
                         f" resid={rv:.3f}" if rv is not None else " resid=—",
                         f" bay_γ={bg:+.3f}" if bg is not None else " bay=—",
-                        f" mrp_γ={mg:+.3f}" if mg is not None else " mrp=—",
                         f" dr_γ={dg:+.3f}" if dg is not None else " dr=—",
                         f" ks={dk:.2f}" if dk is not None else "",
                         flush=True,
@@ -625,7 +587,6 @@ def main(
     bvs  = [p["baseline_mean_v"]  for p in all_pairs if p.get("baseline_mean_v") is not None]
     rvs  = [p["residual_mean_v"]  for p in all_pairs if p.get("residual_mean_v") is not None]
     bays = [p["bay_mean_gamma"]   for p in all_pairs if p.get("bay_mean_gamma") is not None]
-    mrps = [p["mrp_mean_gamma"]   for p in all_pairs if p.get("mrp_mean_gamma") is not None]
     drs  = [p["dr_mean_gamma"]    for p in all_pairs if p.get("dr_mean_gamma") is not None]
 
     print()
@@ -640,8 +601,6 @@ def main(
         print(f"  Residual V:   mean={np.mean(rvs):.3f}  IQR=[{np.percentile(rvs,25):.3f}, {np.percentile(rvs,75):.3f}]")
     if bays:
         print(f"  Bayesian γ:   mean={np.mean(bays):.3f}  IQR=[{np.percentile(bays,25):.3f}, {np.percentile(bays,75):.3f}]")
-    if mrps:
-        print(f"  MRP γ:        mean={np.mean(mrps):.3f}  IQR=[{np.percentile(mrps,25):.3f}, {np.percentile(mrps,75):.3f}]")
     if drs:
         print(f"  DR γ:         mean={np.mean(drs):.3f}  IQR=[{np.percentile(drs,25):.3f}, {np.percentile(drs,75):.3f}]")
 
@@ -657,7 +616,7 @@ def main(
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Six-method bridge comparison sweep across all 276 domain pairs"
+        description="Five-method bridge comparison sweep across all 276 domain pairs"
     )
     parser.add_argument(
         "--workers", type=int, default=1,
@@ -666,10 +625,6 @@ if __name__ == "__main__":
     parser.add_argument(
         "--eco-cell-cols", nargs="+", default=DEFAULT_ECO_CELL_COLS, metavar="COL",
         help=f"Ecological cell columns (default: {DEFAULT_ECO_CELL_COLS})"
-    )
-    parser.add_argument(
-        "--mrp-cell-cols", nargs="+", default=DEFAULT_MRP_CELL_COLS, metavar="COL",
-        help=f"MRP cell columns (default: {DEFAULT_MRP_CELL_COLS})"
     )
     parser.add_argument(
         "--output-json", type=Path, default=OUTPUT_JSON,
@@ -697,7 +652,6 @@ if __name__ == "__main__":
     main(
         max_workers=args.workers,
         eco_cell_cols=args.eco_cell_cols,
-        mrp_cell_cols=args.mrp_cell_cols,
         output_json=args.output_json,
         output_report=args.output_report,
         resume=not args.no_resume,
