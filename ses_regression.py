@@ -1477,6 +1477,35 @@ def goodman_kruskal_gamma(joint_table: np.ndarray) -> float:
     return float((concordant - discordant) / denom) if denom > 0 else 0.0
 
 
+def normalized_mutual_information(joint_table: np.ndarray) -> float:
+    """Normalized mutual information from a joint probability table.
+
+    MI = sum P(a,b) * log(P(a,b) / (P(a)*P(b)))
+    Normalized: NMI = MI / min(H(A), H(B))  ->  [0, 1]
+
+    Captures any statistical dependence (monotonic, U-shaped, complex).
+    Complements gamma which only detects monotonic association.
+    """
+    p = joint_table / joint_table.sum()  # ensure normalized
+    p_a = p.sum(axis=1)  # marginal of A
+    p_b = p.sum(axis=0)  # marginal of B
+
+    # Entropy H(A) and H(B)
+    h_a = -float((p_a[p_a > 0] * np.log(p_a[p_a > 0])).sum())
+    h_b = -float((p_b[p_b > 0] * np.log(p_b[p_b > 0])).sum())
+    if min(h_a, h_b) < 1e-12:
+        return 0.0
+
+    # Mutual information
+    mi = 0.0
+    for i in range(p.shape[0]):
+        for j in range(p.shape[1]):
+            if p[i, j] > 0 and p_a[i] > 0 and p_b[j] > 0:
+                mi += p[i, j] * np.log(p[i, j] / (p_a[i] * p_b[j]))
+
+    return float(max(0.0, mi) / min(h_a, h_b))
+
+
 def bias_corrected_cramers_v(contingency_table: np.ndarray) -> float:
     """Bergsma (2013) bias-corrected Cramér's V.
 
@@ -1987,6 +2016,7 @@ class DoublyRobustBridgeEstimator:
             joint_table /= joint_table.sum()
 
             gamma_point = goodman_kruskal_gamma(joint_table)
+            nmi_point = normalized_mutual_information(joint_table)
             counts = (joint_table * 1000).astype(int).clip(1)
             v_point = float(association(counts, method='cramer'))
 
@@ -2037,6 +2067,7 @@ class DoublyRobustBridgeEstimator:
                 'method': 'doubly_robust_bridge',
                 'gamma': round(gamma_point, 4),
                 'gamma_ci_95': gamma_ci,
+                'normalized_mi': round(nmi_point, 4),
                 'cramers_v': round(v_point, 4),
                 'joint_table': joint_table.tolist(),
                 'propensity_overlap': round(ks_stat, 4),

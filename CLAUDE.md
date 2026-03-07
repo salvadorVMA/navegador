@@ -117,9 +117,11 @@ The `worktree-knowledge-graph` worktree has been **merged** into this branch (co
 | `EcologicalBridgeEstimator` | `ecological_bridge` | `spearman_rho`, `ci_95` | Geographic cell Spearman ρ |
 | `BayesianBridgeEstimator` | `bayesian_bridge` | `gamma`, `gamma_ci_95`, `cramers_v_ci_95` | Laplace posterior, no PyMC |
 | `MRPBridgeEstimator` | `mrp_bridge` | `gamma`, `gamma_ci_95`, `n_cells_used` | James-Stein shrinkage cells |
-| `DoublyRobustBridgeEstimator` | `doubly_robust_bridge` | `gamma`, `gamma_ci_95`, `propensity_overlap` | AIPW + propensity weights |
+| `DoublyRobustBridgeEstimator` | `doubly_robust_bridge` | `gamma`, `gamma_ci_95`, `normalized_mi`, `propensity_overlap` | AIPW + propensity weights |
 
-Module-level helper: `goodman_kruskal_gamma(joint_table)` — ordinal γ ∈ [-1,1].
+Module-level helpers:
+- `goodman_kruskal_gamma(joint_table)` — ordinal γ ∈ [-1,1], detects monotonic association only
+- `normalized_mutual_information(joint_table)` — NMI ∈ [0,1], detects any dependence (monotonic, U-shaped, complex). Pairs with |γ| ≈ 0 but NMI >> 0 indicate non-monotonic SES structuring.
 
 SES label maps (verified from survey metadata):
 - `_REGION_LABEL_MAP`: `{1:'Centro', 2:'CDMX_Edo', 3:'Norte', 4:'Sur'}`
@@ -153,6 +155,7 @@ python -m pytest tests/unit/test_ses_regression.py tests/unit/test_bridge_estima
   3. **Sampling noise** (n ≈ 1200 per survey): irreducible floor at ~0.2-0.3 CI width. This is the dominant wall.
 - **Causal interpretation**: γ measures "how much shared SES drives monotonic co-variation between attitudes across survey domains." Under CIA (conditional independence given SES), γ captures only SES-mediated association. Pairs with γ ≈ 0 indicate SES-independent or orthogonally-SES-driven attitudes.
 - **γ detects monotonic relationships only**: Goodman-Kruskal γ = (C−D)/(C+D) based on concordant/discordant pairs. Cannot detect U-shaped or other non-monotonic SES-attitude relationships.
+- **Normalized MI added**: `normalized_mutual_information(joint_table)` computes NMI ∈ [0,1] from the same joint table γ uses — zero additional model fitting. Detects any statistical dependence regardless of shape. Pairs with |γ| ≈ 0 but NMI >> 0 reveal non-monotonic SES structuring (U-shaped, crossover patterns). Sweep log flags these with `NM!`.
 
 ### Sweep Scripts
 

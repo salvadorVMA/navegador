@@ -146,6 +146,7 @@ def estimate_single_pair(
         "dr_gamma": round(r["gamma"], 4),
         "dr_gamma_ci": [round(r["gamma_ci_95"][0], 4),
                         round(r["gamma_ci_95"][1], 4)],
+        "dr_nmi": round(r.get("normalized_mi", 0), 4),
         "dr_v": round(r["cramers_v"], 4),
         "dr_ks": round(r["propensity_overlap"], 4),
         "dr_ks_warning": r.get("ks_warning", False),
@@ -283,10 +284,12 @@ def main():
             if gamma is not None:
                 ci_str = f"[{ci[0]:+.3f},{ci[1]:+.3f}]" if ci else "—"
                 sig = " ***" if ci_excl_zero else ""
+                nmi = result.get("dr_nmi", 0)
+                nmi_flag = " NM!" if nmi > 0.02 and abs(gamma) < 0.05 else ""
                 print(
                     f"  [{n_done}/{n_total}] {total_elapsed:.0f}s "
                     f"(ETA {eta_min:.0f}m) "
-                    f"| γ={gamma:+.3f} CI={ci_str} w={ci_width:.3f}{sig} "
+                    f"| γ={gamma:+.3f} NMI={nmi:.3f} CI={ci_str} w={ci_width:.3f}{sig}{nmi_flag} "
                     f"| v1={p['v1_gamma']:+.3f} "
                     f"| {p['var_a'][:30]} × {p['var_b'][:30]} "
                     f"({pair_elapsed:.1f}s)",

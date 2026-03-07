@@ -1,0 +1,933 @@
+{
+  "metadata": {
+    "gamma_threshold": 0.25,
+    "n_bootstrap": 200,
+    "n_sim": 2000,
+    "n_total_pairs": 1531,
+    "pair_timeout_s": 120,
+    "v1_source": "/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/data/results/dr_sweep_results.json",
+    "elapsed_seconds": 982.6,
+    "n_completed": 54,
+    "timestamp": "2026-03-07T13:17:47.931257"
+  },
+  "estimates": {
+    "agg_science_technology_policy_attitudes|CIE::agg_fear_of_crime_and_risk_perception|SEG": {
+      "dr_gamma": -0.0173,
+      "dr_gamma_ci": [
+        -0.2977,
+        0.1429
+      ],
+      "dr_nmi": 0.0003,
+      "dr_v": 0.226,
+      "dr_ks": 0.0465,
+      "dr_ks_warning": false,
+      "n_trimmed": 51,
+      "v1_gamma": 1.0,
+      "v1_ci": [
+        -0.5374,
+        1.0
+      ]
+    },
+    "agg_institutional_trust_in_science|CIE::agg_digital_access_and_equipment|SOC": {
+      "dr_gamma": -0.0937,
+      "dr_gamma_ci": [
+        -0.2537,
+        0.3121
+      ],
+      "dr_nmi": 0.0013,
+      "dr_v": 0.1225,
+      "dr_ks": 0.0942,
+      "dr_ks_warning": false,
+      "n_trimmed": 55,
+      "v1_gamma": 1.0,
+      "v1_ci": [
+        -0.6643,
+        0.8931
+      ]
+    },
+    "agg_institutional_trust_and_efficacy|COR::agg_democratic_legitimacy|CUL": {
+      "dr_gamma": 0.0102,
+      "dr_gamma_ci": [
+        -0.1365,
+        0.1686
+      ],
+      "dr_nmi": 0.0002,
+      "dr_v": 0.1884,
+      "dr_ks": 0.0591,
+      "dr_ks_warning": false,
+      "n_trimmed": 42,
+      "v1_gamma": -1.0,
+      "v1_ci": [
+        -0.0413,
+        0.5714
+      ]
+    },
+    "agg_institutional_trust_and_efficacy|COR::agg_political_interest_and_engagement|CUL": {
+      "dr_gamma": 0.0081,
+      "dr_gamma_ci": [
+        -0.2101,
+        0.188
+      ],
+      "dr_nmi": 0.0007,
+      "dr_v": 0.2042,
+      "dr_ks": 0.0591,
+      "dr_ks_warning": false,
+      "n_trimmed": 42,
+      "v1_gamma": -1.0,
+      "v1_ci": [
+        -0.1715,
+        0.5992
+      ]
+    },
+    "agg_institutional_trust_and_efficacy|COR::agg_perceived_opportunity_deprivation|MIG": {
+      "dr_gamma": -0.0019,
+      "dr_gamma_ci": [
+        -0.1398,
+        0.0748
+      ],
+      "dr_nmi": 0.0004,
+      "dr_v": 0.1099,
+      "dr_ks": 0.0352,
+      "dr_ks_warning": false,
+      "n_trimmed": 46,
+      "v1_gamma": 1.0,
+      "v1_ci": [
+        -0.5596,
+        1.0
+      ]
+    },
+    "agg_institutional_trust_and_efficacy|COR::agg_subjective_economic_wellbeing|POB": {
+      "dr_gamma": 0.0602,
+      "dr_gamma_ci": [
+        -0.1421,
+        0.3219
+      ],
+      "dr_nmi": 0.0013,
+      "dr_v": 0.2193,
+      "dr_ks": 0.0504,
+      "dr_ks_warning": false,
+      "n_trimmed": 56,
+      "v1_gamma": -1.0,
+      "v1_ci": [
+        -0.7958,
+        0.6391
+      ]
+    },
+    "agg_institutional_trust_and_efficacy|COR::agg_fear_of_crime_and_risk_perception|SEG": {
+      "dr_gamma": -0.0048,
+      "dr_gamma_ci": [
+        -0.1532,
+        0.1212
+      ],
+      "dr_nmi": 0.0004,
+      "dr_v": 0.1809,
+      "dr_ks": 0.0508,
+      "dr_ks_warning": false,
+      "n_trimmed": 60,
+      "v1_gamma": 1.0,
+      "v1_ci": [
+        -0.5408,
+        0.7065
+      ]
+    },
+    "agg_institutional_trust_and_efficacy|CUL::agg_supernatural_belief_system|REL": {
+      "dr_gamma": 0.0049,
+      "dr_gamma_ci": [
+        -0.079,
+        0.1055
+      ],
+      "dr_nmi": 0.0011,
+      "dr_v": 0.1213,
+      "dr_ks": 0.0284,
+      "dr_ks_warning": false,
+      "n_trimmed": 47,
+      "v1_gamma": -1.0,
+      "v1_ci": [
+        -1.0,
+        0.6695
+      ]
+    },
+    "agg_institutional_trust_and_justice_system_performance|DER::agg_ageism_and_age_discrimination|ENV": {
+      "dr_gamma": 0.0074,
+      "dr_gamma_ci": [
+        -0.101,
+        0.0512
+      ],
+      "dr_nmi": 0.0001,
+      "dr_v": 0.1034,
+      "dr_ks": 0.0646,
+      "dr_ks_warning": false,
+      "n_trimmed": 55,
+      "v1_gamma": 1.0,
+      "v1_ci": [
+        -0.5336,
+        0.9093
+      ]
+    },
+    "agg_institutional_trust_and_justice_system_performance|DER::agg_housing_policy_efficacy_beliefs|HAB": {
+      "dr_gamma": 0.0251,
+      "dr_gamma_ci": [
+        -0.051,
+        0.1167
+      ],
+      "dr_nmi": 0.0001,
+      "dr_v": 0.1324,
+      "dr_ks": 0.0634,
+      "dr_ks_warning": false,
+      "n_trimmed": 50,
+      "v1_gamma": -1.0,
+      "v1_ci": [
+        -1.0,
+        0.497
+      ]
+    },
+    "agg_institutional_trust_and_justice_system_performance|DER::agg_digital_access_and_equipment|SOC": {
+      "dr_gamma": 0.0229,
+      "dr_gamma_ci": [
+        -0.0759,
+        0.1375
+      ],
+      "dr_nmi": 0.0003,
+      "dr_v": 0.0648,
+      "dr_ks": 0.1181,
+      "dr_ks_warning": false,
+      "n_trimmed": 55,
+      "v1_gamma": 1.0,
+      "v1_ci": [
+        -0.5881,
+        1.0
+      ]
+    },
+    "agg_institutional_trust_and_justice_system_performance|DER::agg_media_trust_and_critical_evaluation|SOC": {
+      "dr_gamma": 0.0117,
+      "dr_gamma_ci": [
+        -0.1549,
+        0.1527
+      ],
+      "dr_nmi": 0.0004,
+      "dr_v": 0.1773,
+      "dr_ks": 0.1181,
+      "dr_ks_warning": false,
+      "n_trimmed": 55,
+      "v1_gamma": 1.0,
+      "v1_ci": [
+        -0.4994,
+        1.0
+      ]
+    },
+    "agg_ageism_and_age_discrimination|ENV::agg_subjective_economic_wellbeing|POB": {
+      "dr_gamma": -0.0495,
+      "dr_gamma_ci": [
+        -0.2529,
+        0.1476
+      ],
+      "dr_nmi": 0.0008,
+      "dr_v": 0.1948,
+      "dr_ks": 0.0922,
+      "dr_ks_warning": false,
+      "n_trimmed": 42,
+      "v1_gamma": 1.0,
+      "v1_ci": [
+        -0.4966,
+        0.2804
+      ]
+    },
+    "agg_institutional_trust_and_representativeness|FED::agg_subjective_economic_wellbeing|POB": {
+      "dr_gamma": -0.0147,
+      "dr_gamma_ci": [
+        -0.1682,
+        0.1308
+      ],
+      "dr_nmi": 0.0011,
+      "dr_v": 0.1476,
+      "dr_ks": 0.0618,
+      "dr_ks_warning": false,
+      "n_trimmed": 48,
+      "v1_gamma": -1.0,
+      "v1_ci": [
+        -0.0302,
+        0.5788
+      ]
+    },
+    "agg_children_rights_recognition|NIN::agg_social_policy_preferences|POB": {
+      "dr_gamma": -0.019,
+      "dr_gamma_ci": [
+        -0.1125,
+        0.0547
+      ],
+      "dr_nmi": 0.0002,
+      "dr_v": 0.107,
+      "dr_ks": 0.0808,
+      "dr_ks_warning": false,
+      "n_trimmed": 58,
+      "v1_gamma": 1.0,
+      "v1_ci": [
+        -0.6555,
+        0.884
+      ]
+    },
+    "agg_children_rights_recognition|NIN::agg_subjective_economic_wellbeing|POB": {
+      "dr_gamma": 0.0155,
+      "dr_gamma_ci": [
+        -0.116,
+        0.1488
+      ],
+      "dr_nmi": 0.0006,
+      "dr_v": 0.1143,
+      "dr_ks": 0.0808,
+      "dr_ks_warning": false,
+      "n_trimmed": 58,
+      "v1_gamma": -1.0,
+      "v1_ci": [
+        -0.976,
+        0.63
+      ]
+    },
+    "agg_supernatural_belief_system|REL::agg_fear_of_crime_and_risk_perception|SEG": {
+      "dr_gamma": -0.0024,
+      "dr_gamma_ci": [
+        -0.0645,
+        0.0506
+      ],
+      "dr_nmi": 0.0005,
+      "dr_v": 0.0984,
+      "dr_ks": 0.0511,
+      "dr_ks_warning": false,
+      "n_trimmed": 56,
+      "v1_gamma": 1.0,
+      "v1_ci": [
+        -0.7452,
+        0.8279
+      ]
+    },
+    "agg_institutional_trust_and_representativeness|FED::agg_housing_policy_efficacy_beliefs|HAB": {
+      "dr_gamma": -0.031,
+      "dr_gamma_ci": [
+        -0.08,
+        0.0453
+      ],
+      "dr_nmi": 0.0001,
+      "dr_v": 0.1018,
+      "dr_ks": 0.0522,
+      "dr_ks_warning": false,
+      "n_trimmed": 52,
+      "v1_gamma": -0.9999,
+      "v1_ci": [
+        -0.9044,
+        0.779
+      ]
+    },
+    "agg_perceived_quality_of_life_and_social_inclusion_of_older_adults|ENV::agg_legal_cynicism_extrajudicial_tolerance|JUS": {
+      "dr_gamma": 0.0838,
+      "dr_gamma_ci": [
+        -0.0847,
+        0.1958
+      ],
+      "dr_nmi": 0.0006,
+      "dr_v": 0.161,
+      "dr_ks": 0.0533,
+      "dr_ks_warning": false,
+      "n_trimmed": 49,
+      "v1_gamma": -0.9996,
+      "v1_ci": [
+        -1.0,
+        0.4275
+      ]
+    },
+    "agg_science_technology_policy_attitudes|CIE::agg_ageism_and_age_discrimination|ENV": {
+      "dr_gamma": 0.019,
+      "dr_gamma_ci": [
+        -0.1762,
+        0.1097
+      ],
+      "dr_nmi": 0.0004,
+      "dr_v": 0.1781,
+      "dr_ks": 0.071,
+      "dr_ks_warning": false,
+      "n_trimmed": 54,
+      "v1_gamma": 0.999,
+      "v1_ci": [
+        -0.5463,
+        1.0
+      ]
+    },
+    "agg_political_interest_and_engagement|CUL::agg_police_institutional_trust|SEG": {
+      "dr_gamma": 0.0106,
+      "dr_gamma_ci": [
+        -0.2306,
+        0.1706
+      ],
+      "dr_nmi": 0.0003,
+      "dr_v": 0.1942,
+      "dr_ks": 0.0356,
+      "dr_ks_warning": false,
+      "n_trimmed": 58,
+      "v1_gamma": 0.9989,
+      "v1_ci": [
+        -0.7346,
+        0.6361
+      ]
+    },
+    "agg_science_technology_policy_attitudes|CIE::agg_institutional_trust_and_efficacy|CUL": {
+      "dr_gamma": -0.0226,
+      "dr_gamma_ci": [
+        -0.171,
+        0.4395
+      ],
+      "dr_nmi": 0.0001,
+      "dr_v": 0.2524,
+      "dr_ks": 0.0425,
+      "dr_ks_warning": false,
+      "n_trimmed": 48,
+      "v1_gamma": -0.9985,
+      "v1_ci": [
+        -1.0,
+        0.4818
+      ]
+    },
+    "agg_science_technology_policy_attitudes|CIE::agg_democratic_legitimacy|CUL": {
+      "dr_gamma": 0.008,
+      "dr_gamma_ci": [
+        -0.1505,
+        0.2646
+      ],
+      "dr_nmi": 0.0003,
+      "dr_v": 0.2358,
+      "dr_ks": 0.0425,
+      "dr_ks_warning": false,
+      "n_trimmed": 48,
+      "v1_gamma": -0.998,
+      "v1_ci": [
+        -0.9999,
+        0.4247
+      ]
+    },
+    "agg_democratic_legitimacy|CUL::agg_legal_cynicism_extrajudicial_tolerance|JUS": {
+      "dr_gamma": -0.034,
+      "dr_gamma_ci": [
+        -0.141,
+        0.1409
+      ],
+      "dr_nmi": 0.0002,
+      "dr_v": 0.158,
+      "dr_ks": 0.0481,
+      "dr_ks_warning": false,
+      "n_trimmed": 59,
+      "v1_gamma": 0.9979,
+      "v1_ci": [
+        -0.5511,
+        0.2314
+      ]
+    },
+    "agg_political_interest_and_engagement|CUL::agg_legal_cynicism_extrajudicial_tolerance|JUS": {
+      "dr_gamma": -0.0447,
+      "dr_gamma_ci": [
+        -0.2194,
+        0.1208
+      ],
+      "dr_nmi": 0.0008,
+      "dr_v": 0.1788,
+      "dr_ks": 0.0481,
+      "dr_ks_warning": false,
+      "n_trimmed": 59,
+      "v1_gamma": 0.9977,
+      "v1_ci": [
+        -0.3427,
+        0.8314
+      ]
+    },
+    "agg_science_technology_engagement|CIE::agg_fear_of_crime_and_risk_perception|SEG": {
+      "dr_gamma": 0.0766,
+      "dr_gamma_ci": [
+        -0.188,
+        0.197
+      ],
+      "dr_nmi": 0.0006,
+      "dr_v": 0.1324,
+      "dr_ks": 0.1093,
+      "dr_ks_warning": false,
+      "n_trimmed": 48,
+      "v1_gamma": -0.9976,
+      "v1_ci": [
+        -0.9943,
+        0.2412
+      ]
+    },
+    "agg_institutional_trust_and_efficacy|CUL::agg_legal_cynicism_extrajudicial_tolerance|JUS": {
+      "dr_gamma": -0.0007,
+      "dr_gamma_ci": [
+        -0.2389,
+        0.1814
+      ],
+      "dr_nmi": 0.0006,
+      "dr_v": 0.1741,
+      "dr_ks": 0.0481,
+      "dr_ks_warning": false,
+      "n_trimmed": 59,
+      "v1_gamma": 0.9975,
+      "v1_ci": [
+        -0.3988,
+        0.6921
+      ]
+    },
+    "agg_ageism_and_age_discrimination|ENV::agg_fear_of_crime_and_risk_perception|SEG": {
+      "dr_gamma": -0.0361,
+      "dr_gamma_ci": [
+        -0.1122,
+        0.12
+      ],
+      "dr_nmi": 0.0002,
+      "dr_v": 0.1547,
+      "dr_ks": 0.0364,
+      "dr_ks_warning": false,
+      "n_trimmed": 32,
+      "v1_gamma": -0.9957,
+      "v1_ci": [
+        -0.9107,
+        0.447
+      ]
+    },
+    "agg_institutional_trust_and_efficacy|COR::agg_perceived_quality_of_life_and_social_inclusion_of_older_adults|ENV": {
+      "dr_gamma": -0.0877,
+      "dr_gamma_ci": [
+        -0.1897,
+        0.102
+      ],
+      "dr_nmi": 0.0003,
+      "dr_v": 0.1888,
+      "dr_ks": 0.0406,
+      "dr_ks_warning": false,
+      "n_trimmed": 54,
+      "v1_gamma": 0.9954,
+      "v1_ci": [
+        -0.4431,
+        0.9854
+      ]
+    },
+    "agg_science_technology_policy_attitudes|CIE::agg_political_interest_and_engagement|CUL": {
+      "dr_gamma": 0.0165,
+      "dr_gamma_ci": [
+        -0.2555,
+        0.2992
+      ],
+      "dr_nmi": 0.0003,
+      "dr_v": 0.2476,
+      "dr_ks": 0.0425,
+      "dr_ks_warning": false,
+      "n_trimmed": 48,
+      "v1_gamma": -0.9937,
+      "v1_ci": [
+        -0.9999,
+        0.5235
+      ]
+    },
+    "agg_institutional_trust_and_efficacy|COR::agg_social_policy_preferences|POB": {
+      "dr_gamma": -0.0409,
+      "dr_gamma_ci": [
+        -0.2161,
+        0.1142
+      ],
+      "dr_nmi": 0.0004,
+      "dr_v": 0.2029,
+      "dr_ks": 0.0504,
+      "dr_ks_warning": false,
+      "n_trimmed": 56,
+      "v1_gamma": 0.9917,
+      "v1_ci": [
+        -0.6456,
+        0.4386
+      ]
+    },
+    "agg_institutional_trust_in_science|CIE::agg_media_trust_and_critical_evaluation|SOC": {
+      "dr_gamma": -0.1199,
+      "dr_gamma_ci": [
+        -0.4139,
+        0.2226
+      ],
+      "dr_nmi": 0.0004,
+      "dr_v": 0.2873,
+      "dr_ks": 0.0942,
+      "dr_ks_warning": false,
+      "n_trimmed": 55,
+      "v1_gamma": 0.9913,
+      "v1_ci": [
+        -0.6007,
+        0.8931
+      ]
+    },
+    "agg_institutional_trust_and_efficacy|COR::agg_institutional_trust_and_efficacy|CUL": {
+      "dr_gamma": 0.0184,
+      "dr_gamma_ci": [
+        -0.1297,
+        0.2724
+      ],
+      "dr_nmi": 0.0003,
+      "dr_v": 0.2029,
+      "dr_ks": 0.0591,
+      "dr_ks_warning": false,
+      "n_trimmed": 42,
+      "v1_gamma": -0.9913,
+      "v1_ci": [
+        -0.2027,
+        0.5905
+      ]
+    },
+    "agg_institutional_trust_and_efficacy|COR::agg_institutional_justice_trust|JUS": {
+      "dr_gamma": -0.0114,
+      "dr_gamma_ci": [
+        -0.0744,
+        0.0682
+      ],
+      "dr_nmi": 0.0002,
+      "dr_v": 0.1207,
+      "dr_ks": 0.072,
+      "dr_ks_warning": false,
+      "n_trimmed": 47,
+      "v1_gamma": 0.9901,
+      "v1_ci": [
+        -0.5503,
+        0.9327
+      ]
+    },
+    "agg_science_technology_policy_attitudes|CIE::agg_tolerance_of_gender_based_violence|GEN": {
+      "dr_gamma": 0.0065,
+      "dr_gamma_ci": [
+        -0.0871,
+        0.1202
+      ],
+      "dr_nmi": 0.0007,
+      "dr_v": 0.0814,
+      "dr_ks": 0.1161,
+      "dr_ks_warning": false,
+      "n_trimmed": 27,
+      "v1_gamma": -0.9892,
+      "v1_ci": [
+        -0.8958,
+        0.4419
+      ]
+    },
+    "agg_democratic_legitimacy|CUL::agg_children_rights_recognition|NIN": {
+      "dr_gamma": 0.0092,
+      "dr_gamma_ci": [
+        -0.0692,
+        0.0873
+      ],
+      "dr_nmi": 0.0002,
+      "dr_v": 0.0929,
+      "dr_ks": 0.067,
+      "dr_ks_warning": false,
+      "n_trimmed": 45,
+      "v1_gamma": -0.9864,
+      "v1_ci": [
+        -0.5856,
+        0.0997
+      ]
+    },
+    "agg_environmental_knowledge_literacy|MED::agg_perceived_opportunity_deprivation|MIG": {
+      "dr_gamma": -0.0049,
+      "dr_gamma_ci": [
+        -0.0497,
+        0.0444
+      ],
+      "dr_nmi": 0.0005,
+      "dr_v": 0.0503,
+      "dr_ks": 0.055,
+      "dr_ks_warning": false,
+      "n_trimmed": 51,
+      "v1_gamma": 0.9848,
+      "v1_ci": [
+        -0.3444,
+        0.9989
+      ]
+    },
+    "agg_political_interest_and_engagement|CUL::agg_children_rights_recognition|NIN": {
+      "dr_gamma": -0.0024,
+      "dr_gamma_ci": [
+        -0.0929,
+        0.0647
+      ],
+      "dr_nmi": 0.0006,
+      "dr_v": 0.105,
+      "dr_ks": 0.067,
+      "dr_ks_warning": false,
+      "n_trimmed": 45,
+      "v1_gamma": -0.9846,
+      "v1_ci": [
+        -0.7644,
+        0.113
+      ]
+    },
+    "agg_housing_policy_efficacy_beliefs|HAB::agg_punitive_authoritarianism|SEG": {
+      "dr_gamma": 0.0044,
+      "dr_gamma_ci": [
+        -0.1153,
+        0.0968
+      ],
+      "dr_nmi": 0.0001,
+      "dr_v": 0.1394,
+      "dr_ks": 0.0304,
+      "dr_ks_warning": false,
+      "n_trimmed": 60,
+      "v1_gamma": 0.9833,
+      "v1_ci": [
+        -0.6098,
+        0.6255
+      ]
+    },
+    "agg_institutional_trust_and_efficacy|CUL::agg_children_rights_recognition|NIN": {
+      "dr_gamma": 0.0057,
+      "dr_gamma_ci": [
+        -0.0721,
+        0.1317
+      ],
+      "dr_nmi": 0.0003,
+      "dr_v": 0.1129,
+      "dr_ks": 0.067,
+      "dr_ks_warning": false,
+      "n_trimmed": 45,
+      "v1_gamma": -0.9788,
+      "v1_ci": [
+        -0.6296,
+        0.1221
+      ]
+    },
+    "agg_institutional_and_social_trust|IDE::agg_subjective_economic_wellbeing|POB": {
+      "dr_gamma": 0.0144,
+      "dr_gamma_ci": [
+        -0.0942,
+        0.1147
+      ],
+      "dr_nmi": 0.0013,
+      "dr_v": 0.046,
+      "dr_ks": 0.0623,
+      "dr_ks_warning": false,
+      "n_trimmed": 60,
+      "v1_gamma": 0.9672,
+      "v1_ci": [
+        -0.5907,
+        0.4657
+      ]
+    },
+    "agg_institutional_trust_and_efficacy|COR::agg_punitive_authoritarianism|SEG": {
+      "dr_gamma": 0.0087,
+      "dr_gamma_ci": [
+        -0.109,
+        0.0867
+      ],
+      "dr_nmi": 0.0001,
+      "dr_v": 0.1342,
+      "dr_ks": 0.0508,
+      "dr_ks_warning": false,
+      "n_trimmed": 60,
+      "v1_gamma": 0.9659,
+      "v1_ci": [
+        -0.2121,
+        0.733
+      ]
+    },
+    "agg_perceived_opportunity_deprivation|MIG::agg_punitive_authoritarianism|SEG": {
+      "dr_gamma": 0.0179,
+      "dr_gamma_ci": [
+        -0.06,
+        0.0826
+      ],
+      "dr_nmi": 0.0001,
+      "dr_v": 0.0933,
+      "dr_ks": 0.0564,
+      "dr_ks_warning": false,
+      "n_trimmed": 53,
+      "v1_gamma": -0.962,
+      "v1_ci": [
+        -0.91,
+        0.6224
+      ]
+    },
+    "agg_tolerance_of_gender_based_violence|GEN::agg_housing_policy_efficacy_beliefs|HAB": {
+      "dr_gamma": -0.0005,
+      "dr_gamma_ci": [
+        -0.0534,
+        0.0532
+      ],
+      "dr_nmi": 0.0001,
+      "dr_v": 0.0643,
+      "dr_ks": 0.1596,
+      "dr_ks_warning": false,
+      "n_trimmed": 59,
+      "v1_gamma": -0.9565,
+      "v1_ci": [
+        -0.4022,
+        0.5953
+      ]
+    },
+    "agg_science_technology_policy_attitudes|CIE::agg_institutional_justice_trust|JUS": {
+      "dr_gamma": 0.0198,
+      "dr_gamma_ci": [
+        -0.1747,
+        0.1122
+      ],
+      "dr_nmi": 0.0003,
+      "dr_v": 0.1619,
+      "dr_ks": 0.0914,
+      "dr_ks_warning": false,
+      "n_trimmed": 50,
+      "v1_gamma": 0.9542,
+      "v1_ci": [
+        -0.5057,
+        1.0
+      ]
+    },
+    "agg_institutional_trust_in_science|CIE::agg_education_quality_and_opportunity|NIN": {
+      "dr_gamma": -0.0308,
+      "dr_gamma_ci": [
+        -0.1688,
+        0.1538
+      ],
+      "dr_nmi": 0.0005,
+      "dr_v": 0.1305,
+      "dr_ks": 0.0415,
+      "dr_ks_warning": false,
+      "n_trimmed": 58,
+      "v1_gamma": -0.9528,
+      "v1_ci": [
+        -0.9004,
+        0.4992
+      ]
+    },
+    "agg_physical_housing_quality|HAB::agg_supernatural_belief_system|REL": {
+      "dr_gamma": 0.0032,
+      "dr_gamma_ci": [
+        -0.0267,
+        0.054
+      ],
+      "dr_nmi": 0.0005,
+      "dr_v": 0.0403,
+      "dr_ks": 0.039,
+      "dr_ks_warning": false,
+      "n_trimmed": 44,
+      "v1_gamma": -0.95,
+      "v1_ci": [
+        -1.0,
+        0.4507
+      ]
+    },
+    "agg_institutional_trust_and_efficacy|COR::agg_institutional_trust_and_justice_system_performance|DER": {
+      "dr_gamma": 0.0144,
+      "dr_gamma_ci": [
+        -0.0468,
+        0.107
+      ],
+      "dr_nmi": 0.0001,
+      "dr_v": 0.1224,
+      "dr_ks": 0.0596,
+      "dr_ks_warning": false,
+      "n_trimmed": 55,
+      "v1_gamma": -0.9494,
+      "v1_ci": [
+        -1.0,
+        0.3412
+      ]
+    },
+    "agg_security_governance_preferences|FED::agg_housing_policy_efficacy_beliefs|HAB": {
+      "dr_gamma": -0.0603,
+      "dr_gamma_ci": [
+        -0.1186,
+        0.068
+      ],
+      "dr_nmi": 0.0001,
+      "dr_v": 0.1538,
+      "dr_ks": 0.0522,
+      "dr_ks_warning": false,
+      "n_trimmed": 52,
+      "v1_gamma": 0.9494,
+      "v1_ci": [
+        -0.858,
+        1.0
+      ]
+    },
+    "agg_science_technology_engagement|CIE::agg_legal_cynicism_extrajudicial_tolerance|JUS": {
+      "dr_gamma": -0.0133,
+      "dr_gamma_ci": [
+        -0.126,
+        0.0954
+      ],
+      "dr_nmi": 0.0003,
+      "dr_v": 0.0923,
+      "dr_ks": 0.1481,
+      "dr_ks_warning": false,
+      "n_trimmed": 39,
+      "v1_gamma": -0.9479,
+      "v1_ci": [
+        -0.9093,
+        0.7767
+      ]
+    },
+    "agg_perceived_situation_of_minors|NIN::agg_subjective_economic_wellbeing|POB": {
+      "dr_gamma": -0.0265,
+      "dr_gamma_ci": [
+        -0.0893,
+        0.0774
+      ],
+      "dr_nmi": 0.001,
+      "dr_v": 0.0497,
+      "dr_ks": 0.0808,
+      "dr_ks_warning": false,
+      "n_trimmed": 58,
+      "v1_gamma": -0.9472,
+      "v1_ci": [
+        -0.4484,
+        0.4944
+      ]
+    },
+    "p14|HAB::agg_subjective_economic_wellbeing|POB": {
+      "dr_gamma": -0.0604,
+      "dr_gamma_ci": [
+        -0.2515,
+        0.1627
+      ],
+      "dr_nmi": 0.0156,
+      "dr_v": 0.078,
+      "dr_ks": 0.0542,
+      "dr_ks_warning": false,
+      "n_trimmed": 60,
+      "v1_gamma": 0.947,
+      "v1_ci": [
+        -0.438,
+        0.5219
+      ]
+    },
+    "agg_institutional_trust_and_efficacy|COR::agg_institutional_trust_and_representativeness|FED": {
+      "dr_gamma": 0.0056,
+      "dr_gamma_ci": [
+        -0.0458,
+        0.0773
+      ],
+      "dr_nmi": 0.0002,
+      "dr_v": 0.0972,
+      "dr_ks": 0.0468,
+      "dr_ks_warning": false,
+      "n_trimmed": 55,
+      "v1_gamma": -0.9461,
+      "v1_ci": [
+        -1.0,
+        0.2895
+      ]
+    },
+    "agg_migration_policy_attitudes|MIG::agg_supernatural_belief_system|REL": {
+      "dr_gamma": 0.0038,
+      "dr_gamma_ci": [
+        -0.0329,
+        0.0328
+      ],
+      "dr_nmi": 0.0005,
+      "dr_v": 0.0413,
+      "dr_ks": 0.0686,
+      "dr_ks_warning": false,
+      "n_trimmed": 45,
+      "v1_gamma": -0.9454,
+      "v1_ci": [
+        -0.8032,
+        0.4303
+      ]
+    }
+  }
+}
