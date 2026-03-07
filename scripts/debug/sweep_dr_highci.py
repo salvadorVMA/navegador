@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import signal
 import sys
 import time
 import warnings
@@ -42,12 +43,25 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts" / "debug"))
 
 V1_SWEEP_PATH = ROOT / "data" / "results" / "dr_sweep_results.json"
-OUTPUT_JSON = ROOT / "data" / "results" / "dr_sweep_results_v2.json"
+OUTPUT_JSON = ROOT / "data" / "results" / "dr_sweep_results_v3.json"
 
 # Defaults
 DEFAULT_GAMMA_THRESHOLD = 0.15   # re-run pairs with |γ| > this from v1
 DEFAULT_N_BOOTSTRAP = 200        # 20x more than v1's 10
-DEFAULT_N_SIM = 500
+DEFAULT_N_SIM = 2000             # v3: 4x more for tighter CIs
+DEFAULT_PAIR_TIMEOUT = 120       # seconds per pair before giving up
+
+
+class PairTimeout(Exception):
+    """Raised when a single pair exceeds the time limit."""
+
+
+def _alarm_handler(signum, frame):
+    raise PairTimeout()
+
+
+# Install once; each pair will call signal.alarm() to arm/disarm.
+signal.signal(signal.SIGALRM, _alarm_handler)
 
 
 def load_v1_pairs(gamma_threshold: float) -> List[Dict[str, Any]]:
@@ -163,6 +177,8 @@ def main():
                         help=f"Simulation size (default: {DEFAULT_N_SIM})")
     parser.add_argument("--workers", type=int, default=1,
                         help="Parallel workers")
+    parser.add_argument("--pair-timeout", type=int, default=DEFAULT_PAIR_TIMEOUT,
+                        help=f"Max seconds per pair (default: {DEFAULT_PAIR_TIMEOUT})")
     parser.add_argument("--no-resume", action="store_true",
                         help="Start fresh, ignore existing checkpoint")
     parser.add_argument("--output", type=Path, default=OUTPUT_JSON,
@@ -177,6 +193,7 @@ def main():
     print(f"  n_bootstrap: {args.n_bootstrap}")
     print(f"  n_sim: {args.n_sim}")
     print(f"  workers: {args.workers}")
+    print(f"  pair_timeout: {args.pair_timeout}s")
     print(f"  output: {args.output}")
     print()
 
@@ -215,6 +232,7 @@ def main():
         "n_bootstrap": args.n_bootstrap,
         "n_sim": args.n_sim,
         "n_total_pairs": len(pairs),
+        "pair_timeout_s": args.pair_timeout,
         "v1_source": str(V1_SWEEP_PATH),
     }
 
@@ -229,6 +247,7 @@ def main():
         for p in pairs_todo:
             pid = _pair_id(p)
             pair_t0 = time.time()
+            signal.alarm(args.pair_timeout)
             try:
                 result = estimate_single_pair(
                     p["var_a"], p["var_b"],
@@ -236,8 +255,13 @@ def main():
                     args.n_sim, args.n_bootstrap)
                 result["v1_gamma"] = p["v1_gamma"]
                 result["v1_ci"] = p["v1_ci"]
+            except PairTimeout:
+                result = {"error": f"TIMEOUT>{args.pair_timeout}s",
+                          "v1_gamma": p["v1_gamma"]}
             except Exception as e:
                 result = {"error": str(e), "v1_gamma": p["v1_gamma"]}
+            finally:
+                signal.alarm(0)
 
             results[pid] = result
             n_done += 1

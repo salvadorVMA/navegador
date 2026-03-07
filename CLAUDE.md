@@ -103,7 +103,7 @@ The `worktree-knowledge-graph` worktree has been **merged** into this branch (co
 |--------|--------|---------|
 | `analytical_essay.py` | Active | Two-step LLM pipeline: reasoning outline → analytical essay. Entry point: `generate_analytical_essay()` |
 | `quantitative_engine.py` | Active | Pure-computation report builder. Handles sentinel/NaN filtering, label resolution for cross-tab profiles and bivariate leaders, SES bridge cross-dataset estimation |
-| `ses_regression.py` | Active | All 6 bridge estimators (see table below). `OrderedModel`/`MNLogit` backbone. |
+| `ses_regression.py` | Active | All 6 bridge estimators (see table below). `OrderedModel`/`MNLogit` backbone. SES vars: `['sexo', 'edad', 'escol', 'Tam_loc']` |
 | `ses_analysis.py` | Active | SES preprocessing: create region/edad/empleo from raw vars, normalise escol/Tam_loc/est_civil |
 | `survey_kg.py` | Active | Knowledge graph ontology for survey domains (merged from worktree-knowledge-graph) |
 | `tool_enhanced_analysis.py` | Updated | Migrated from deprecated `AgentExecutor` to `langgraph.prebuilt.create_react_agent` |
@@ -139,40 +139,46 @@ Run all unit tests (150 total, ~38s):
 python -m pytest tests/unit/test_ses_regression.py tests/unit/test_bridge_estimators_v2.py tests/unit/test_bridge_evaluation.py -v
 ```
 
+### Recent Work (as of 2026-03-07)
+
+- **DR estimator v3 optimization**: Systematic optimization of `DoublyRobustBridgeEstimator` for tighter bootstrap CIs.
+  - **SES variable pruning**: `SES_REGRESSION_VARS` reduced from 10 → 4 vars: `['sexo', 'edad', 'escol', 'Tam_loc']`. Dropped `empleo` (9-20% coverage), `income_quintile` (30-40%), `est_civil`, `empleo_formality`, `region_x_Tam_loc`. Replaced `region` (3 one-hot dummies, causes sparsity) with `Tam_loc` (single ordinal, missing in only 2/26 surveys). Row retention: 4.8% → 99.2%.
+  - **Tam_loc vs region**: Empirically tested — Tam_loc produces 28% tighter CIs (median 0.234 vs 0.324) with same row retention and faster runtime.
+  - **n_sim increased**: 500 → 2000. Monte Carlo noise now negligible (∝ 1/√n_sim).
+  - **maxiter cap**: `SurveyVarModel.fit()` accepts `maxiter` parameter. Bootstrap fits capped at `maxiter=100` to prevent BFGS hangs on ill-conditioned resamples.
+  - **Per-pair timeout**: `sweep_dr_highci.py` uses `signal.alarm()` / `SIGALRM` with 120s timeout per pair. Prevents hung BFGS from blocking the sweep.
+- **Uncertainty walls identified**: Three noise sources in DR bootstrap CIs:
+  1. **Monte Carlo** (n_sim): ∝ 1/√n_sim, negligible at n_sim=2000
+  2. **Bootstrap resampling** (n_bootstrap): stabilizes CI endpoints, diminishing returns beyond ~200
+  3. **Sampling noise** (n ≈ 1200 per survey): irreducible floor at ~0.2-0.3 CI width. This is the dominant wall.
+- **Causal interpretation**: γ measures "how much shared SES drives monotonic co-variation between attitudes across survey domains." Under CIA (conditional independence given SES), γ captures only SES-mediated association. Pairs with γ ≈ 0 indicate SES-independent or orthogonally-SES-driven attitudes.
+- **γ detects monotonic relationships only**: Goodman-Kruskal γ = (C−D)/(C+D) based on concordant/discordant pairs. Cannot detect U-shaped or other non-monotonic SES-attitude relationships.
+
 ### Sweep Scripts
 
 | Script | Purpose |
 |--------|---------|
 | `scripts/debug/sweep_cross_domain.py` | Original 276-pair baseline sweep |
-| `scripts/debug/sweep_bridge_comparison.py` | All 6 methods on 276 pairs. `N_BOOTSTRAP_DR=50` for speed. Output: `data/results/bridge_comparison_results.json` + `bridge_comparison_report.md` |
-| `scripts/debug/visualize_cross_domain.py` | Visualise baseline sweep |
-| `scripts/debug/visualize_kg.py` | Visualise knowledge graph |
+| `scripts/debug/sweep_bridge_comparison.py` | All 6 methods on 276 pairs |
+| `scripts/debug/sweep_dr_highci.py` | v3 DR re-sweep with high bootstrap CIs, per-pair timeout, atomic checkpointing |
+| `scripts/debug/test_dr_diagnostic.py` | Per-step SIGALRM diagnostic for DR hang isolation |
 
-Run 6-method comparison sweep:
-```bash
-nohup python scripts/debug/sweep_bridge_comparison.py --workers 1 > /tmp/bridge_comparison.log 2>&1 &
-tail -f /tmp/bridge_comparison.log
-```
+### Sweep Results
 
-### Recent Work (as of 2026-03-02)
+| Version | SES vars | n_sim | n_bootstrap | Median CI_w | % excl zero | Notes |
+|---------|----------|-------|-------------|-------------|-------------|-------|
+| v1 | 7 vars | 500 | 10 | ~0.5 | — | Baseline |
+| v2 | 10 vars | 500 | 200 | 1.351 | 0% | Row retention crisis (4.8%) |
+| v3 (running) | 4 vars (sexo,edad,escol,Tam_loc) | 2000 | 200 | ~0.23 expected | TBD | Optimal config |
+
+### Earlier Work (2026-02-26 to 2026-03-02)
 
 - **6-method bridge suite**: Added `BayesianBridgeEstimator` (Laplace posterior), `MRPBridgeEstimator` (James-Stein shrinkage), `DoublyRobustBridgeEstimator` (AIPW) to `ses_regression.py`. No PyMC/sklearn — uses only scipy/statsmodels/numpy.
 - **`goodman_kruskal_gamma()`**: Module-level helper for ordinal association γ ∈ [-1,1].
-- **Test suite v2**: `tests/unit/test_bridge_estimators_v2.py` — 36 tests (5 + 8 + 9 + 8 + 6 across 5 test classes).
-- **Sweep script updated**: `sweep_bridge_comparison.py` now runs all 6 methods per pair.
-- **SES labels**: `SESEncoder` column names now human-readable (`region_Norte`, `empleo_Desempleado`, etc). Wrong region comments fixed in `ses_analysis.py`.
-- **Bug fixes**: Bayesian `_draw_proba` avoids monkey-patching (MNLogit params is 2D DataFrame); DR propensity cast to numpy; SESEncoder `sorted(..., key=str)` prevents mixed-type errors; Ecological cardinality guard added.
-- **Essay prompt fix** (2026-02-27): tables restricted to bivariate cross-tabs only; univariate distributions → inline prose.
+- **Bug fixes**: BFGS hangs, Bayesian `_draw_proba`, DR propensity cast, SESEncoder mixed-type sort, Ecological cardinality guard.
 - **Worktree merge** (2026-02-26): `worktree-knowledge-graph` merged → `survey_kg.py`, expanded SES bridge.
-
-### Recent Work (as of 2026-02-26)
-
-- **Worktree merge**: `worktree-knowledge-graph` merged into `feature/bivariate-analysis`. Brought in `survey_kg.py`, `docs/SES_BRIDGE_IMPROVEMENT_PLAN.md`, 276-pair sweep results, and 7-var SES bridge.
-- **SES bridge predictor expansion**: `SES_REGRESSION_VARS` now 7 variables: `sexo`, `edad`, `region`, `empleo`, `escol`, `Tam_loc`, `est_civil`. `SESEncoder` handles ordinal (`Tam_loc`) and one-hot (`est_civil`). Absent columns degrade gracefully.
-- **Regression diagnostics**: `SurveyVarModel.diagnostics()` returns pseudo-R² (McFadden), LLR p-value, per-coefficient table sorted by |t|, `top_predictor`, and `dominant_ses_group`.
-- **Label resolution**: `_get_var_labels` + `_apply_labels_to_estimate` in `quantitative_engine.py` resolve raw numeric codes to human-readable labels before the LLM sees them.
-- **Sentinel filtering**: `_is_sentinel()` in `ses_regression.py` excludes codes like 99 (no-answer) and NaN (not-applicable).
-- **Test runner**: `scripts/run_tests.sh [unit|essays|all]` — essays run via nohup in background.
+- **Label resolution**: `_get_var_labels` + `_apply_labels_to_estimate` in `quantitative_engine.py`.
+- **Sentinel filtering**: `_is_sentinel()` in `ses_regression.py`.
 
 ### Known Data Quality Rules
 

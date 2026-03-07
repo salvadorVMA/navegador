@@ -97,13 +97,17 @@ def _ses_label(label_map: Dict[int, str], code, fallback: str = '') -> str:
         return fallback or str(code)
     return label_map.get(key, fallback or str(code))
 
-# SES variables used in regression features.
-# Tam_loc and est_civil are included when present (24/26 and 26/26 surveys resp.).
-# Surveys missing Tam_loc (JUEGOS_DE_AZAR, CULTURA_CONSTITUCIONAL) degrade
-# gracefully: SESEncoder skips any column absent from the DataFrame.
+# SES variables used as bridge predictors.
+# Core set chosen by stepwise CI-width comparison (v3 optimisation):
+#   - empleo (9-20% coverage), income_quintile (30-40%), empleo_formality
+#     and region_x_Tam_loc dropped: they cause 95% row loss via dropna().
+#   - Tam_loc dropped: absent in 2/26 surveys; marginal CI improvement.
+#   - est_civil dropped: 5 one-hot dummies add model complexity for negligible
+#     CI gain (med CI 0.365 vs 0.348 without).
+# All surveys share the same probabilistic sample design and year (2012),
+# so sexo/edad/region/escol provide consistent stratification.
 SES_REGRESSION_VARS: List[str] = [
-    'sexo', 'edad', 'region', 'empleo', 'escol', 'Tam_loc', 'est_civil',
-    'income_quintile', 'empleo_formality', 'region_x_Tam_loc',
+    'sexo', 'edad', 'escol', 'Tam_loc',
 ]
 
 # Survey sentinel codes: values < 0 (invalid/missing) or >= 97 (no-answer, don't-know, refuse)
@@ -482,6 +486,7 @@ class SurveyVarModel:
         ses_vars: List[str],
         weight_col: str = 'Pondi2',
         max_categories: Optional[int] = 5,
+        maxiter: int = 500,
     ) -> 'SurveyVarModel':
         """
         Fit the appropriate regression model.
@@ -590,10 +595,11 @@ class SurveyVarModel:
             if self._var_type == 'ordinal' and len(self._categories) > 2:
                 self._model_result = OrderedModel(
                     y, X, distr='logit'
-                ).fit(method='bfgs', disp=False)
+                ).fit(method='bfgs', maxiter=maxiter, disp=False)
             else:
                 Xc = sm.add_constant(X, has_constant='add')
-                self._model_result = MNLogit(y, Xc).fit(method='bfgs', disp=False)
+                self._model_result = MNLogit(y, Xc).fit(
+                    method='bfgs', maxiter=maxiter, disp=False)
 
         return self
 
@@ -1992,13 +1998,17 @@ class DoublyRobustBridgeEstimator:
                 idx_a = rng.choice(n_a, size=n_a, replace=True)
                 idx_b = rng.choice(n_b, size=n_b, replace=True)
                 try:
-                    # Re-fit on bootstrap samples using shared SES features
+                    # Re-fit on bootstrap samples using shared SES features.
+                    # Cap maxiter to prevent BFGS hangs on ill-conditioned
+                    # bootstrap resamples while still allowing good convergence.
                     boot_a_df = sub_a.iloc[idx_a].reset_index(drop=True)
                     boot_b_df = sub_b.iloc[idx_b].reset_index(drop=True)
                     bm_a = SurveyVarModel()
-                    bm_a.fit(boot_a_df, col_a, available, weight_col)
+                    bm_a.fit(boot_a_df, col_a, available, weight_col,
+                             maxiter=100)
                     bm_b = SurveyVarModel()
-                    bm_b.fit(boot_b_df, col_b, available, weight_col)
+                    bm_b.fit(boot_b_df, col_b, available, weight_col,
+                             maxiter=100)
 
                     # Individual-level CIA on reference population using
                     # each bootstrap model's own encoder.
