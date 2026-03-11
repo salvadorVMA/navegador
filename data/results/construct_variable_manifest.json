@@ -1,0 +1,1041 @@
+[
+  {
+    "key": "IDE|national_identity_pride",
+    "column": "agg_national_identity_pride",
+    "var_id": "agg_national_identity_pride|IDE",
+    "type": "single_item_tier2",
+    "alpha": 0.376,
+    "selected_item": "p6",
+    "item_total_r": 0.36,
+    "n_valid": 1200
+  },
+  {
+    "key": "IDE|tolerance_social_diversity",
+    "column": "agg_tolerance_social_diversity",
+    "var_id": "agg_tolerance_social_diversity|IDE",
+    "type": "questionable",
+    "alpha": 0.5883,
+    "n_items": 6,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "IDE|personal_optimism_efficacy",
+    "column": "agg_personal_optimism_efficacy",
+    "var_id": "agg_personal_optimism_efficacy|IDE",
+    "type": "tier3_caveat",
+    "alpha": 0.4045,
+    "n_items": 4,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "IDE|moral_normative_conservatism",
+    "column": "agg_moral_normative_conservatism",
+    "var_id": "agg_moral_normative_conservatism|IDE",
+    "type": "questionable",
+    "alpha": 0.5072,
+    "n_items": 5,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "MED|environmental_problem_salience",
+    "column": "agg_environmental_problem_salience",
+    "var_id": "agg_environmental_problem_salience|MED",
+    "type": "tier3_caveat",
+    "alpha": 0.4666,
+    "n_items": 3,
+    "n_valid": 1161,
+    "reverse_coded": null
+  },
+  {
+    "key": "MED|environmental_knowledge_self_efficacy",
+    "column": "agg_environmental_knowledge_self_efficacy",
+    "var_id": "agg_environmental_knowledge_self_efficacy|MED",
+    "type": "questionable",
+    "alpha": 0.5405,
+    "n_items": 5,
+    "n_valid": 1057,
+    "reverse_coded": null
+  },
+  {
+    "key": "MED|pro_environmental_civic_engagement",
+    "column": "agg_pro_environmental_civic_engagement",
+    "var_id": "agg_pro_environmental_civic_engagement|MED",
+    "type": "good",
+    "alpha": 0.796,
+    "n_items": 5,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "MED|climate_change_risk_perception",
+    "column": "agg_climate_change_risk_perception",
+    "var_id": "agg_climate_change_risk_perception|MED",
+    "type": "single_item_tier2",
+    "alpha": 0.3624,
+    "selected_item": "p37",
+    "item_total_r": 0.242,
+    "n_valid": 1200
+  },
+  {
+    "key": "POB|intergenerational_mobility_perception",
+    "column": "agg_intergenerational_mobility_perception",
+    "var_id": "agg_intergenerational_mobility_perception|POB",
+    "type": "questionable",
+    "alpha": 0.537,
+    "n_items": 4,
+    "n_valid": 1075,
+    "reverse_coded": null
+  },
+  {
+    "key": "POB|social_policy_preferences",
+    "column": "agg_social_policy_preferences",
+    "var_id": "agg_social_policy_preferences|POB",
+    "type": "single_item_tier2",
+    "alpha": 0.3313,
+    "selected_item": "p44",
+    "item_total_r": 0.322,
+    "n_valid": 1125
+  },
+  {
+    "key": "POB|subjective_economic_wellbeing_and_agency",
+    "column": "agg_subjective_economic_wellbeing_and_agency",
+    "var_id": "agg_subjective_economic_wellbeing_and_agency|POB",
+    "type": "questionable",
+    "alpha": 0.6228,
+    "n_items": 5,
+    "n_valid": 1122,
+    "reverse_coded": [
+      "p10"
+    ]
+  },
+  {
+    "key": "CUL|democratic_legitimacy_support",
+    "column": "agg_democratic_legitimacy_support",
+    "var_id": "agg_democratic_legitimacy_support|CUL",
+    "type": "questionable",
+    "alpha": 0.5821,
+    "n_items": 5,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "CUL|institutional_trust_and_electoral_confidence",
+    "column": "agg_institutional_trust_and_electoral_confidence",
+    "var_id": "agg_institutional_trust_and_electoral_confidence|CUL",
+    "type": "tier3_caveat",
+    "alpha": 0.4858,
+    "n_items": 5,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "CUL|political_efficacy_and_engagement",
+    "column": "agg_political_efficacy_and_engagement",
+    "var_id": "agg_political_efficacy_and_engagement|CUL",
+    "type": "questionable",
+    "alpha": 0.5935,
+    "n_items": 8,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "CUL|authoritarian_predisposition",
+    "column": "agg_authoritarian_predisposition",
+    "var_id": "agg_authoritarian_predisposition|CUL",
+    "type": "tier3_caveat",
+    "alpha": 0.4947,
+    "n_items": 6,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "CUL|perceived_political_influence_of_actors",
+    "column": "agg_perceived_political_influence_of_actors",
+    "var_id": "agg_perceived_political_influence_of_actors|CUL",
+    "type": "good",
+    "alpha": 0.8701,
+    "n_items": 7,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "REL|supernatural_beliefs",
+    "column": "agg_supernatural_beliefs",
+    "var_id": "agg_supernatural_beliefs|REL",
+    "type": "good",
+    "alpha": 0.9003,
+    "n_items": 14,
+    "n_valid": 1023,
+    "reverse_coded": null
+  },
+  {
+    "key": "REL|personal_religiosity",
+    "column": "agg_personal_religiosity",
+    "var_id": "agg_personal_religiosity|REL",
+    "type": "good",
+    "alpha": 0.7318,
+    "n_items": 6,
+    "n_valid": 961,
+    "reverse_coded": null
+  },
+  {
+    "key": "REL|religious_socialization",
+    "column": "agg_religious_socialization",
+    "var_id": "agg_religious_socialization|REL",
+    "type": "questionable",
+    "alpha": 0.5548,
+    "n_items": 6,
+    "n_valid": 847,
+    "reverse_coded": null
+  },
+  {
+    "key": "REL|church_state_separation",
+    "column": "agg_church_state_separation",
+    "var_id": "agg_church_state_separation|REL",
+    "type": "questionable",
+    "alpha": 0.568,
+    "n_items": 5,
+    "n_valid": 1030,
+    "reverse_coded": null
+  },
+  {
+    "key": "REL|religious_tolerance",
+    "column": "agg_religious_tolerance",
+    "var_id": "agg_religious_tolerance|REL",
+    "type": "single_item_tier2",
+    "alpha": 0.3931,
+    "selected_item": "p48",
+    "item_total_r": 0.386,
+    "n_valid": 1077
+  },
+  {
+    "key": "SEG|perceived_security_trajectory",
+    "column": "agg_perceived_security_trajectory",
+    "var_id": "agg_perceived_security_trajectory|SEG",
+    "type": "good",
+    "alpha": 0.8018,
+    "n_items": 4,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "SEG|police_institutional_legitimacy",
+    "column": "agg_police_institutional_legitimacy",
+    "var_id": "agg_police_institutional_legitimacy|SEG",
+    "type": "tier3_caveat",
+    "alpha": 0.4812,
+    "n_items": 3,
+    "n_valid": 1008,
+    "reverse_coded": null
+  },
+  {
+    "key": "SEG|crime_victimization_exposure",
+    "column": "agg_crime_victimization_exposure",
+    "var_id": "agg_crime_victimization_exposure|SEG",
+    "type": "formative_index",
+    "alpha": 0.6092,
+    "n_items": 2,
+    "n_valid": 1200,
+    "gateway_items": [
+      "p56",
+      "p57"
+    ]
+  },
+  {
+    "key": "SEG|fear_and_risk_avoidance",
+    "column": "agg_fear_and_risk_avoidance",
+    "var_id": "agg_fear_and_risk_avoidance|SEG",
+    "type": "questionable",
+    "alpha": 0.5676,
+    "n_items": 5,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "SEG|punitive_and_vigilante_attitudes",
+    "column": "agg_punitive_and_vigilante_attitudes",
+    "var_id": "agg_punitive_and_vigilante_attitudes|SEG",
+    "type": "questionable",
+    "alpha": 0.528,
+    "n_items": 5,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "SAL|functional_health_status",
+    "column": "agg_functional_health_status",
+    "var_id": "agg_functional_health_status|SAL",
+    "type": "good",
+    "alpha": 0.7226,
+    "n_items": 4,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "SAL|subjective_wellbeing",
+    "column": "agg_subjective_wellbeing",
+    "var_id": "agg_subjective_wellbeing|SAL",
+    "type": "questionable",
+    "alpha": 0.5876,
+    "n_items": 5,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "SAL|healthcare_access_and_utilization",
+    "column": "agg_healthcare_access_and_utilization",
+    "var_id": "agg_healthcare_access_and_utilization|SAL",
+    "type": "questionable",
+    "alpha": 0.5117,
+    "n_items": 6,
+    "n_valid": 177,
+    "reverse_coded": null
+  },
+  {
+    "key": "SAL|health_risk_behaviors",
+    "column": "agg_health_risk_behaviors",
+    "var_id": "agg_health_risk_behaviors|SAL",
+    "type": "questionable",
+    "alpha": 0.539,
+    "n_items": 3,
+    "n_valid": 689,
+    "reverse_coded": null
+  },
+  {
+    "key": "IND|perceived_indigenous_discrimination",
+    "column": "agg_perceived_indigenous_discrimination",
+    "var_id": "agg_perceived_indigenous_discrimination|IND",
+    "type": "tier3_caveat",
+    "alpha": 0.4011,
+    "n_items": 4,
+    "n_valid": 1166,
+    "reverse_coded": null
+  },
+  {
+    "key": "IND|social_distance_toward_indigenous_people",
+    "column": "agg_social_distance_toward_indigenous_people",
+    "var_id": "agg_social_distance_toward_indigenous_people|IND",
+    "type": "questionable",
+    "alpha": 0.5097,
+    "n_items": 3,
+    "n_valid": 1102,
+    "reverse_coded": null
+  },
+  {
+    "key": "IND|national_economic_outlook",
+    "column": "agg_national_economic_outlook",
+    "var_id": "agg_national_economic_outlook|IND",
+    "type": "good",
+    "alpha": 0.7166,
+    "n_items": 2,
+    "n_valid": 1111,
+    "reverse_coded": null
+  },
+  {
+    "key": "SOC|digital_technology_access_and_ownership",
+    "column": "agg_digital_technology_access_and_ownership",
+    "var_id": "agg_digital_technology_access_and_ownership|SOC",
+    "type": "good",
+    "alpha": 0.7857,
+    "n_items": 2,
+    "n_valid": 255,
+    "reverse_coded": null
+  },
+  {
+    "key": "SOC|media_consumption_breadth",
+    "column": "agg_media_consumption_breadth",
+    "var_id": "agg_media_consumption_breadth|SOC",
+    "type": "tier3_caveat",
+    "alpha": 0.4742,
+    "n_items": 5,
+    "n_valid": 338,
+    "reverse_coded": null
+  },
+  {
+    "key": "SOC|internet_engagement_and_digital_literacy",
+    "column": "agg_internet_engagement_and_digital_literacy",
+    "var_id": "agg_internet_engagement_and_digital_literacy|SOC",
+    "type": "tier3_caveat",
+    "alpha": 0.4825,
+    "n_items": 3,
+    "n_valid": 364,
+    "reverse_coded": null
+  },
+  {
+    "key": "SOC|media_trust_and_quality_evaluation",
+    "column": "agg_media_trust_and_quality_evaluation",
+    "var_id": "agg_media_trust_and_quality_evaluation|SOC",
+    "type": "questionable",
+    "alpha": 0.587,
+    "n_items": 6,
+    "n_valid": 1186,
+    "reverse_coded": [
+      "p53_1"
+    ]
+  },
+  {
+    "key": "SOC|perceived_media_social_impact",
+    "column": "agg_perceived_media_social_impact",
+    "var_id": "agg_perceived_media_social_impact|SOC",
+    "type": "questionable",
+    "alpha": 0.5866,
+    "n_items": 7,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "ENV|ageism_and_negative_stereotypes",
+    "column": "agg_ageism_and_negative_stereotypes",
+    "var_id": "agg_ageism_and_negative_stereotypes|ENV",
+    "type": "questionable",
+    "alpha": 0.5177,
+    "n_items": 4,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "ENV|state_and_family_responsibility_for_elder_care",
+    "column": "agg_state_and_family_responsibility_for_elder_care",
+    "var_id": "agg_state_and_family_responsibility_for_elder_care|ENV",
+    "type": "tier3_caveat",
+    "alpha": 0.4516,
+    "n_items": 4,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "ENV|assessment_of_older_adult_wellbeing_and_social_conditions",
+    "column": "agg_assessment_of_older_adult_wellbeing_and_social_conditions",
+    "var_id": "agg_assessment_of_older_adult_wellbeing_and_social_conditions|ENV",
+    "type": "questionable",
+    "alpha": 0.5319,
+    "n_items": 3,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "DER|institutional_trust_justice",
+    "column": "agg_institutional_trust_justice",
+    "var_id": "agg_institutional_trust_justice|DER",
+    "type": "good",
+    "alpha": 0.7127,
+    "n_items": 6,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "DER|authoritarian_security_tradeoff",
+    "column": "agg_authoritarian_security_tradeoff",
+    "var_id": "agg_authoritarian_security_tradeoff|DER",
+    "type": "questionable",
+    "alpha": 0.5404,
+    "n_items": 3,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "DER|perceived_discrimination_social_exclusion",
+    "column": "agg_perceived_discrimination_social_exclusion",
+    "var_id": "agg_perceived_discrimination_social_exclusion|DER",
+    "type": "questionable",
+    "alpha": 0.5814,
+    "n_items": 6,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "DER|rights_awareness_personal_experience",
+    "column": "agg_rights_awareness_personal_experience",
+    "var_id": "agg_rights_awareness_personal_experience|DER",
+    "type": "questionable",
+    "alpha": 0.5536,
+    "n_items": 3,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "DER|social_rights_service_quality",
+    "column": "agg_social_rights_service_quality",
+    "var_id": "agg_social_rights_service_quality|DER",
+    "type": "questionable",
+    "alpha": 0.6284,
+    "n_items": 3,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "COR|corruption_perception",
+    "column": "agg_corruption_perception",
+    "var_id": "agg_corruption_perception|COR",
+    "type": "tier3_caveat",
+    "alpha": 0.4867,
+    "n_items": 5,
+    "n_valid": 1111,
+    "reverse_coded": null
+  },
+  {
+    "key": "COR|tolerance_of_corrupt_behavior",
+    "column": "agg_tolerance_of_corrupt_behavior",
+    "var_id": "agg_tolerance_of_corrupt_behavior|COR",
+    "type": "single_item_tier2",
+    "alpha": 0.3815,
+    "selected_item": "p13_1",
+    "item_total_r": 0.379,
+    "n_valid": 1200
+  },
+  {
+    "key": "COR|civic_enforcement_norms",
+    "column": "agg_civic_enforcement_norms",
+    "var_id": "agg_civic_enforcement_norms|COR",
+    "type": "questionable",
+    "alpha": 0.5246,
+    "n_items": 5,
+    "n_valid": 1139,
+    "reverse_coded": null
+  },
+  {
+    "key": "COR|reporting_behavior_and_barriers",
+    "column": "agg_reporting_behavior_and_barriers",
+    "var_id": "agg_reporting_behavior_and_barriers|COR",
+    "type": "formative_index",
+    "alpha": 0.0518,
+    "n_items": 2,
+    "n_valid": 1200,
+    "gateway_items": [
+      "p27",
+      "p31"
+    ]
+  },
+  {
+    "key": "HAB|structural_housing_quality",
+    "column": "agg_structural_housing_quality",
+    "var_id": "agg_structural_housing_quality|HAB",
+    "type": "questionable",
+    "alpha": 0.5109,
+    "n_items": 3,
+    "n_valid": 1197,
+    "reverse_coded": null
+  },
+  {
+    "key": "HAB|basic_services_access",
+    "column": "agg_basic_services_access",
+    "var_id": "agg_basic_services_access|HAB",
+    "type": "questionable",
+    "alpha": 0.5301,
+    "n_items": 6,
+    "n_valid": 1126,
+    "reverse_coded": null
+  },
+  {
+    "key": "HAB|household_asset_endowment",
+    "column": "agg_household_asset_endowment",
+    "var_id": "agg_household_asset_endowment|HAB",
+    "type": "good",
+    "alpha": 0.7254,
+    "n_items": 12,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "HAB|housing_tenure_security",
+    "column": "agg_housing_tenure_security",
+    "var_id": "agg_housing_tenure_security|HAB",
+    "type": "formative_index",
+    "alpha": -0.136,
+    "n_items": 4,
+    "n_valid": 1200,
+    "gateway_items": [
+      "p13",
+      "p14",
+      "p15",
+      "p16"
+    ]
+  },
+  {
+    "key": "GLO|transnational_exposure",
+    "column": "agg_transnational_exposure",
+    "var_id": "agg_transnational_exposure|GLO",
+    "type": "single_item_tier2",
+    "alpha": 0.3336,
+    "selected_item": "p3",
+    "item_total_r": 0.381,
+    "n_valid": 1200
+  },
+  {
+    "key": "GLO|economic_globalization_attitudes",
+    "column": "agg_economic_globalization_attitudes",
+    "var_id": "agg_economic_globalization_attitudes|GLO",
+    "type": "questionable",
+    "alpha": 0.6936,
+    "n_items": 5,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "GLO|international_institutional_engagement",
+    "column": "agg_international_institutional_engagement",
+    "var_id": "agg_international_institutional_engagement|GLO",
+    "type": "questionable",
+    "alpha": 0.5448,
+    "n_items": 6,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "JUS|judicial_institutional_trust",
+    "column": "agg_judicial_institutional_trust",
+    "var_id": "agg_judicial_institutional_trust|JUS",
+    "type": "questionable",
+    "alpha": 0.6491,
+    "n_items": 7,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "JUS|legal_cynicism_extrajudicial_justice",
+    "column": "agg_legal_cynicism_extrajudicial_justice",
+    "var_id": "agg_legal_cynicism_extrajudicial_justice|JUS",
+    "type": "questionable",
+    "alpha": 0.519,
+    "n_items": 5,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "JUS|police_trust_and_legitimacy",
+    "column": "agg_police_trust_and_legitimacy",
+    "var_id": "agg_police_trust_and_legitimacy|JUS",
+    "type": "single_item_tier2",
+    "alpha": 0.3536,
+    "selected_item": "p24_1",
+    "item_total_r": 0.112,
+    "n_valid": 1200
+  },
+  {
+    "key": "JUS|legal_self_efficacy_and_access",
+    "column": "agg_legal_self_efficacy_and_access",
+    "var_id": "agg_legal_self_efficacy_and_access|JUS",
+    "type": "tier3_caveat",
+    "alpha": 0.4386,
+    "n_items": 5,
+    "n_valid": 635,
+    "reverse_coded": null
+  },
+  {
+    "key": "JUS|law_compliance_motivation",
+    "column": "agg_law_compliance_motivation",
+    "var_id": "agg_law_compliance_motivation|JUS",
+    "type": "questionable",
+    "alpha": 0.516,
+    "n_items": 4,
+    "n_valid": 1155,
+    "reverse_coded": null
+  },
+  {
+    "key": "MIG|emigration_intention_likelihood",
+    "column": "agg_emigration_intention_likelihood",
+    "var_id": "agg_emigration_intention_likelihood|MIG",
+    "type": "tier3_caveat",
+    "alpha": 0.4663,
+    "n_items": 3,
+    "n_valid": 1199,
+    "reverse_coded": null
+  },
+  {
+    "key": "MIG|perceived_opportunity_structure",
+    "column": "agg_perceived_opportunity_structure",
+    "var_id": "agg_perceived_opportunity_structure|MIG",
+    "type": "good",
+    "alpha": 0.8444,
+    "n_items": 5,
+    "n_valid": 1199,
+    "reverse_coded": null
+  },
+  {
+    "key": "MIG|transnational_social_ties",
+    "column": "agg_transnational_social_ties",
+    "var_id": "agg_transnational_social_ties|MIG",
+    "type": "questionable",
+    "alpha": 0.601,
+    "n_items": 5,
+    "n_valid": 360,
+    "reverse_coded": null
+  },
+  {
+    "key": "MIG|attitudes_toward_foreigners_in_mexico",
+    "column": "agg_attitudes_toward_foreigners_in_mexico",
+    "var_id": "agg_attitudes_toward_foreigners_in_mexico|MIG",
+    "type": "questionable",
+    "alpha": 0.5688,
+    "n_items": 8,
+    "n_valid": 1199,
+    "reverse_coded": null
+  },
+  {
+    "key": "FED|perceived_representativeness",
+    "column": "agg_perceived_representativeness",
+    "var_id": "agg_perceived_representativeness|FED",
+    "type": "good",
+    "alpha": 0.9157,
+    "n_items": 6,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "FED|fiscal_and_service_federalism_preferences",
+    "column": "agg_fiscal_and_service_federalism_preferences",
+    "var_id": "agg_fiscal_and_service_federalism_preferences|FED",
+    "type": "questionable",
+    "alpha": 0.6026,
+    "n_items": 8,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "FED|legal_uniformity_preference",
+    "column": "agg_legal_uniformity_preference",
+    "var_id": "agg_legal_uniformity_preference|FED",
+    "type": "good",
+    "alpha": 0.9482,
+    "n_items": 6,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "FED|security_governance_preferences",
+    "column": "agg_security_governance_preferences",
+    "var_id": "agg_security_governance_preferences|FED",
+    "type": "questionable",
+    "alpha": 0.6933,
+    "n_items": 5,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "FED|political_interest_and_engagement",
+    "column": "agg_political_interest_and_engagement",
+    "var_id": "agg_political_interest_and_engagement|FED",
+    "type": "questionable",
+    "alpha": 0.6342,
+    "n_items": 3,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "GEN|traditional_gender_role_attitudes",
+    "column": "agg_traditional_gender_role_attitudes",
+    "var_id": "agg_traditional_gender_role_attitudes|GEN",
+    "type": "questionable",
+    "alpha": 0.5063,
+    "n_items": 5,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "GEN|intimate_partner_power_dynamics",
+    "column": "agg_intimate_partner_power_dynamics",
+    "var_id": "agg_intimate_partner_power_dynamics|GEN",
+    "type": "tier3_caveat",
+    "alpha": 0.4071,
+    "n_items": 3,
+    "n_valid": 637,
+    "reverse_coded": null
+  },
+  {
+    "key": "GEN|tolerance_of_gender_based_violence",
+    "column": "agg_tolerance_of_gender_based_violence",
+    "var_id": "agg_tolerance_of_gender_based_violence|GEN",
+    "type": "single_item_tier2",
+    "alpha": 0.3359,
+    "selected_item": "p32",
+    "item_total_r": 0.198,
+    "n_valid": 1200
+  },
+  {
+    "key": "GEN|sexual_and_reproductive_attitudes",
+    "column": "agg_sexual_and_reproductive_attitudes",
+    "var_id": "agg_sexual_and_reproductive_attitudes|GEN",
+    "type": "single_item_tier2",
+    "alpha": 0.353,
+    "selected_item": "p50",
+    "item_total_r": 0.161,
+    "n_valid": 1200
+  },
+  {
+    "key": "DEP|cultural_socialization_in_childhood",
+    "column": "agg_cultural_socialization_in_childhood",
+    "var_id": "agg_cultural_socialization_in_childhood|DEP",
+    "type": "tier3_caveat",
+    "alpha": 0.4802,
+    "n_items": 3,
+    "n_valid": 1188,
+    "reverse_coded": null
+  },
+  {
+    "key": "DEP|reading_engagement_and_literacy",
+    "column": "agg_reading_engagement_and_literacy",
+    "var_id": "agg_reading_engagement_and_literacy|DEP",
+    "type": "single_item_tier2",
+    "alpha": 0.3654,
+    "selected_item": "p15c_2",
+    "item_total_r": 0.36,
+    "n_valid": 483
+  },
+  {
+    "key": "DEP|cultural_identity_and_heritage",
+    "column": "agg_cultural_identity_and_heritage",
+    "var_id": "agg_cultural_identity_and_heritage|DEP",
+    "type": "tier3_caveat",
+    "alpha": 0.4154,
+    "n_items": 6,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "DEP|attitudes_toward_cultural_openness_and_foreign_influence",
+    "column": "agg_attitudes_toward_cultural_openness_and_foreign_influence",
+    "var_id": "agg_attitudes_toward_cultural_openness_and_foreign_influence|DEP",
+    "type": "questionable",
+    "alpha": 0.5163,
+    "n_items": 7,
+    "n_valid": 1174,
+    "reverse_coded": null
+  },
+  {
+    "key": "ECO|economic_wellbeing_perception",
+    "column": "agg_economic_wellbeing_perception",
+    "var_id": "agg_economic_wellbeing_perception|ECO",
+    "type": "tier3_caveat",
+    "alpha": 0.4895,
+    "n_items": 3,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "ECO|job_quality_and_labor_conditions",
+    "column": "agg_job_quality_and_labor_conditions",
+    "var_id": "agg_job_quality_and_labor_conditions|ECO",
+    "type": "questionable",
+    "alpha": 0.505,
+    "n_items": 5,
+    "n_valid": 231,
+    "reverse_coded": null
+  },
+  {
+    "key": "ECO|job_search_and_employment_precarity",
+    "column": "agg_job_search_and_employment_precarity",
+    "var_id": "agg_job_search_and_employment_precarity|ECO",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 1,
+    "n_valid": 709,
+    "gateway_items": [
+      "p56"
+    ]
+  },
+  {
+    "key": "ECO|labor_union_attitudes",
+    "column": "agg_labor_union_attitudes",
+    "var_id": "agg_labor_union_attitudes|ECO",
+    "type": "questionable",
+    "alpha": 0.607,
+    "n_items": 3,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "ECO|human_capital_and_employment_preparation",
+    "column": "agg_human_capital_and_employment_preparation",
+    "var_id": "agg_human_capital_and_employment_preparation|ECO",
+    "type": "questionable",
+    "alpha": 0.6581,
+    "n_items": 4,
+    "n_valid": 657,
+    "reverse_coded": null
+  },
+  {
+    "key": "NIN|perceived_situation_of_children_and_youth",
+    "column": "agg_perceived_situation_of_children_and_youth",
+    "var_id": "agg_perceived_situation_of_children_and_youth|NIN",
+    "type": "questionable",
+    "alpha": 0.5463,
+    "n_items": 3,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "NIN|children_rights_recognition_and_respect",
+    "column": "agg_children_rights_recognition_and_respect",
+    "var_id": "agg_children_rights_recognition_and_respect|NIN",
+    "type": "single_item_tier2",
+    "alpha": 0.3759,
+    "selected_item": "p20",
+    "item_total_r": 0.174,
+    "n_valid": 1200
+  },
+  {
+    "key": "NIN|youth_participation_and_voice",
+    "column": "agg_youth_participation_and_voice",
+    "var_id": "agg_youth_participation_and_voice|NIN",
+    "type": "questionable",
+    "alpha": 0.5462,
+    "n_items": 6,
+    "n_valid": 1181,
+    "reverse_coded": null
+  },
+  {
+    "key": "NIN|youth_educational_opportunity_and_labor_prospects",
+    "column": "agg_youth_educational_opportunity_and_labor_prospects",
+    "var_id": "agg_youth_educational_opportunity_and_labor_prospects|NIN",
+    "type": "single_item_tier2",
+    "alpha": 0.3997,
+    "selected_item": "p81_2",
+    "item_total_r": 0.365,
+    "n_valid": 1200
+  },
+  {
+    "key": "FAM|family_cohesion_quality",
+    "column": "agg_family_cohesion_quality",
+    "var_id": "agg_family_cohesion_quality|FAM",
+    "type": "questionable",
+    "alpha": 0.5218,
+    "n_items": 5,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "FAM|ideal_family_normativity",
+    "column": "agg_ideal_family_normativity",
+    "var_id": "agg_ideal_family_normativity|FAM",
+    "type": "tier3_caveat",
+    "alpha": 0.4506,
+    "n_items": 6,
+    "n_valid": 972,
+    "reverse_coded": null
+  },
+  {
+    "key": "FAM|intergenerational_obligations",
+    "column": "agg_intergenerational_obligations",
+    "var_id": "agg_intergenerational_obligations|FAM",
+    "type": "tier3_caveat",
+    "alpha": 0.4891,
+    "n_items": 5,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "FAM|conjugal_union_attitudes",
+    "column": "agg_conjugal_union_attitudes",
+    "var_id": "agg_conjugal_union_attitudes|FAM",
+    "type": "questionable",
+    "alpha": 0.5042,
+    "n_items": 7,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "FAM|family_value_transmission",
+    "column": "agg_family_value_transmission",
+    "var_id": "agg_family_value_transmission|FAM",
+    "type": "tier3_caveat",
+    "alpha": 0.4569,
+    "n_items": 3,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "CIE|science_technology_self_efficacy",
+    "column": "agg_science_technology_self_efficacy",
+    "var_id": "agg_science_technology_self_efficacy|CIE",
+    "type": "questionable",
+    "alpha": 0.6992,
+    "n_items": 3,
+    "n_valid": 1104,
+    "reverse_coded": null
+  },
+  {
+    "key": "CIE|science_technology_interest_engagement",
+    "column": "agg_science_technology_interest_engagement",
+    "var_id": "agg_science_technology_interest_engagement|CIE",
+    "type": "good",
+    "alpha": 0.8265,
+    "n_items": 8,
+    "n_valid": 1194,
+    "reverse_coded": null
+  },
+  {
+    "key": "CIE|institutional_trust_in_science",
+    "column": "agg_institutional_trust_in_science",
+    "var_id": "agg_institutional_trust_in_science|CIE",
+    "type": "questionable",
+    "alpha": 0.6367,
+    "n_items": 5,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "CIE|perceived_societal_value_of_science_technology",
+    "column": "agg_perceived_societal_value_of_science_technology",
+    "var_id": "agg_perceived_societal_value_of_science_technology|CIE",
+    "type": "questionable",
+    "alpha": 0.5085,
+    "n_items": 8,
+    "n_valid": 1110,
+    "reverse_coded": null
+  },
+  {
+    "key": "CIE|household_science_cultural_capital",
+    "column": "agg_household_science_cultural_capital",
+    "var_id": "agg_household_science_cultural_capital|CIE",
+    "type": "good",
+    "alpha": 0.8043,
+    "n_items": 7,
+    "n_valid": 1200,
+    "reverse_coded": null
+  },
+  {
+    "key": "EDU|perceived_education_quality",
+    "column": "agg_perceived_education_quality",
+    "var_id": "agg_perceived_education_quality|EDU",
+    "type": "tier3_caveat",
+    "alpha": 0.4697,
+    "n_items": 2,
+    "n_valid": 1199,
+    "reverse_coded": null
+  },
+  {
+    "key": "EDU|educational_returns_belief",
+    "column": "agg_educational_returns_belief",
+    "var_id": "agg_educational_returns_belief|EDU",
+    "type": "questionable",
+    "alpha": 0.6073,
+    "n_items": 4,
+    "n_valid": 1199,
+    "reverse_coded": null
+  },
+  {
+    "key": "EDU|school_environment_quality",
+    "column": "agg_school_environment_quality",
+    "var_id": "agg_school_environment_quality|EDU",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 1,
+    "n_valid": 997,
+    "gateway_items": [
+      "p30_1"
+    ]
+  },
+  {
+    "key": "EDU|digital_and_cultural_capital",
+    "column": "agg_digital_and_cultural_capital",
+    "var_id": "agg_digital_and_cultural_capital|EDU",
+    "type": "good",
+    "alpha": 0.745,
+    "n_items": 8,
+    "n_valid": 1199,
+    "reverse_coded": null
+  }
+]
