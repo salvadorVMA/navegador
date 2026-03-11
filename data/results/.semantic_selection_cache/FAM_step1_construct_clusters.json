@@ -1,70 +1,66 @@
 [
   {
     "name": "family_cohesion_quality",
-    "description": "Measures the perceived quality and strength of relationships within and outside the household, as well as the values and behaviors that keep families united. Captures the latent construct of family solidarity and relational well-being.",
+    "description": "Measures the perceived quality of interpersonal relationships and sense of unity within the family, capturing both co-resident and non-resident family bonds and the factors respondents believe sustain or fracture them.",
     "question_cluster": [
-      "p25",
-      "p26",
-      "p27",
-      "p52",
-      "p49",
-      "p10"
+      "p25|FAM",
+      "p26|FAM",
+      "p27|FAM",
+      "p52|FAM",
+      "p53|FAM"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "traditional_family_ideology",
-    "description": "Captures the degree to which respondents hold traditional versus pluralistic views of family structure, ideal family type, and gender roles within the family, including attitudes toward mothers working outside the home. Reflects an underlying conservative-to-progressive ideological dimension on family norms.",
+    "name": "ideal_family_normativity",
+    "description": "Captures respondents' normative beliefs about what constitutes an ideal family structure, what prevents its achievement in Mexico, and what actions could bring it about — reflecting underlying traditionalism versus pluralism in family ideology.",
     "question_cluster": [
-      "p13",
-      "p16",
-      "p43",
-      "p28",
-      "p29",
-      "p30",
-      "p55"
+      "p13|FAM",
+      "p14|FAM",
+      "p15|FAM",
+      "p16|FAM",
+      "p67|FAM",
+      "p68|FAM"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "union_formation_motivations",
-    "description": "Measures the motivations, values, and criteria that drive individuals to form conjugal unions and choose a spouse, tapping into instrumental versus affective orientations toward partnership and family formation.",
+    "name": "intergenerational_obligations",
+    "description": "Measures beliefs about reciprocal duties between parents and children, including how long children should remain in the parental home and who bears responsibility for elder care, reflecting attitudes toward familial solidarity across generations.",
     "question_cluster": [
-      "p19",
-      "p20",
-      "p21",
-      "p22",
-      "p23",
-      "p24a",
-      "p45"
+      "p28|FAM",
+      "p29|FAM",
+      "p30|FAM",
+      "p31|FAM",
+      "p62|FAM",
+      "p63|FAM",
+      "p64|FAM"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "family_instability_and_conflict",
-    "description": "Assesses respondents' perceptions of the sources and consequences of family breakdown, including infidelity, divorce, violence, and conflict, reflecting a latent construct of perceived family vulnerability and social disorganization.",
+    "name": "conjugal_union_attitudes",
+    "description": "Measures attitudes and behaviors related to forming, maintaining, and dissolving conjugal unions, including motivations for partnering, tolerance of infidelity, and perceived causes of divorce — reflecting normative orientations toward marriage and partnership stability.",
     "question_cluster": [
-      "p32",
-      "p33",
-      "p35",
-      "p38",
-      "p39",
-      "p41",
-      "p42"
+      "p21|FAM",
+      "p22|FAM",
+      "p23|FAM",
+      "p32|FAM",
+      "p33|FAM",
+      "p35|FAM",
+      "p38|FAM"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "family_socialization_and_values_transmission",
-    "description": "Measures the role of the family as an agent of socialization, capturing the values parents transmit to children, the influence of religion and institutions on family life, and the most important values learned and practiced. Reflects the latent construct of intergenerational normative transmission.",
+    "name": "family_value_transmission",
+    "description": "Captures the values respondents consider most important within the family, what they learned from their family of origin and practice daily, and what fundamental values parents should pass on to children — reflecting the perceived role of the family as a moral socialization institution.",
     "question_cluster": [
-      "p53",
-      "p54",
-      "p56",
-      "p57",
-      "p60_1",
-      "p61_1",
-      "p67"
+      "p54|FAM",
+      "p55|FAM",
+      "p56|FAM",
+      "p57|FAM",
+      "p10|FAM"
     ],
     "requires_aggregation": true
   }

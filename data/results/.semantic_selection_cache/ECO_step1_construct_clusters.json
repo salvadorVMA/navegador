@@ -1,68 +1,65 @@
 [
   {
     "name": "economic_wellbeing_perception",
-    "description": "Captures respondents' subjective assessment of economic welfare at both the national and personal level, including intergenerational comparisons of living standards. Reflects how individuals situate themselves and their families within broader economic trajectories.",
+    "description": "Measures how individuals evaluate their own and the country's economic situation, including intergenerational comparisons of living standards. Captures both personal and societal economic satisfaction as well as perceived upward or downward mobility across generations.",
     "question_cluster": [
-      "p1",
-      "p2",
-      "p3",
-      "p4"
+      "p1|ECO",
+      "p2|ECO",
+      "p3|ECO",
+      "p4|ECO"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "job_quality_precariousness",
-    "description": "Measures the objective conditions of employment quality, including contract type, social security coverage, work schedule, overtime compensation, and secondary employment, capturing the degree of labor precariousness experienced by workers.",
+    "name": "job_quality_and_labor_conditions",
+    "description": "Measures the objective and subjective quality of current employment, including contract type, working hours, overtime compensation, social security coverage, income relative to peers, and satisfaction with advancement opportunities. Captures the multidimensional nature of decent work.",
     "question_cluster": [
-      "p34",
-      "p36",
-      "p40",
-      "p41",
-      "p42",
-      "p43",
-      "p52",
-      "p53"
+      "p33|ECO",
+      "p34|ECO",
+      "p36|ECO",
+      "p40|ECO",
+      "p43|ECO",
+      "p45_1|ECO",
+      "p46_1|ECO"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "labor_market_attachment",
-    "description": "Assesses the strength and nature of individuals' connection to the labor market, including employment status, job search behavior, willingness to accept unfavorable job conditions, and perceived probability of finding or losing employment.",
+    "name": "job_search_and_employment_precarity",
+    "description": "Measures the experience of unemployment and job insecurity, including active job-seeking behavior, perceived probability of finding or losing work, duration of unemployment, and willingness to accept unfavorable job conditions. Reflects labor market vulnerability and precariousness.",
     "question_cluster": [
-      "p25",
-      "p27",
-      "p48",
-      "p49",
-      "p50",
-      "p56",
-      "p58",
-      "p60"
+      "p48|ECO",
+      "p49|ECO",
+      "p50|ECO",
+      "p56|ECO",
+      "p57|ECO",
+      "p58|ECO",
+      "p59_1|ECO",
+      "p59_3|ECO",
+      "p59_4|ECO"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "work_values_preferences",
-    "description": "Captures what individuals value most in a job — such as income, advancement opportunities, and contract arrangements — reflecting underlying orientations toward work that shape labor market behavior and satisfaction.",
+    "name": "labor_union_attitudes",
+    "description": "Measures respondents' normative and evaluative orientations toward labor unions, including perceived necessity and overall opinion of unions' role. Captures the latent dimension of collective labor representation legitimacy.",
     "question_cluster": [
-      "p18_2",
-      "p19",
-      "p20",
-      "p21",
-      "p45_1",
-      "p46_1"
+      "p23|ECO",
+      "p24|ECO",
+      "p22|ECO"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "human_capital_labor_alignment",
-    "description": "Measures the relationship between respondents' educational attainment, training participation, and the skill requirements of their jobs, capturing the degree of match or mismatch between human capital and labor market demands.",
+    "name": "human_capital_and_employment_preparation",
+    "description": "Measures the relationship between education, training, and labor market readiness, including highest education attained, perceived educational adequacy for one's job, participation in professional development, and perceived utility of that training. Captures the latent construct of human capital investment and its labor market relevance.",
     "question_cluster": [
-      "p64",
-      "p65",
-      "p66",
-      "p67",
-      "p71",
-      "p72"
+      "p64|ECO",
+      "p65|ECO",
+      "p66|ECO",
+      "p67|ECO",
+      "p71|ECO",
+      "p72|ECO"
     ],
     "requires_aggregation": true
   }

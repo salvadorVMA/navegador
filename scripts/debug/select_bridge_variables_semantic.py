@@ -42,6 +42,9 @@ warnings.filterwarnings("ignore")
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
+from dotenv import load_dotenv
+load_dotenv(ROOT / ".env")
+
 OUTPUT_PATH = ROOT / "data" / "results" / "semantic_variable_selection.json"
 CACHE_DIR = ROOT / "data" / "results" / ".semantic_selection_cache"
 
@@ -257,23 +260,40 @@ def _step1_construct_clusters(
     domain: str, survey_title: str, domain_label: str,
     summaries: Dict[str, str], n_constructs: int,
     model: str, cache_path: Path,
+    pregs_dict: Optional[dict] = None,
 ) -> List[Dict]:
     """
     Propose n≥5 construct clusters. Each cluster is a group of questions
     that together or separately measure a meaningful construct.
+
+    v2: includes original Spanish text alongside English summaries to prevent
+    information loss from Step 0 summarisation.
     """
     if cache_path.exists():
         print(f"  [{domain}] Step 1: cached ({cache_path.name})")
         return _load_cache(cache_path)
 
-    q_lines = "\n".join(f'  {qid}: {s}' for qid, s in summaries.items())
+    # Build question lines: include both Spanish original and English summary
+    q_parts = []
+    for qid, eng_summary in summaries.items():
+        spanish = ""
+        if pregs_dict:
+            raw = pregs_dict.get(qid, "")
+            spanish = raw.split("|", 1)[1].strip() if "|" in raw else raw
+        if spanish:
+            q_parts.append(f"  {qid}:\n    [ES] {spanish}\n    [EN] {eng_summary}")
+        else:
+            q_parts.append(f"  {qid}: {eng_summary}")
+    q_lines = "\n".join(q_parts)
 
     prompt = f"""You are a social science researcher with expertise in Mexican public opinion surveys.
 
 Survey: {survey_title}
 Domain: {domain_label}
 
-Below are the available questions (deduplicated, summarized in English):
+Below are the available questions (deduplicated). Each shows the ORIGINAL Spanish text and an
+English summary. Use the ORIGINAL SPANISH to understand what each question truly asks — the
+English summary may lose nuance.
 
 {q_lines}
 
@@ -284,12 +304,16 @@ Guidelines:
 - A construct is a latent variable (e.g., "institutional trust", "perceived discrimination",
   "political efficacy") — not a survey topic or section header.
 - Each cluster should contain 2-8 questions that jointly measure the construct.
+- Questions within a cluster must be CONCEPTUALLY related — they should measure the SAME
+  underlying dimension. Do not group questions just because they share a topic.
 - Some constructs may be measurable by a single question; others require aggregating several.
 - Questions should NOT appear in multiple clusters (assign each to its best fit).
 - Choose constructs that are important for understanding Mexican public opinion AND that can
   potentially relate to other survey domains (cross-domain relevance).
 - Avoid creating clusters around response format (e.g., "all 0-10 scale questions") — cluster
   by substantive content.
+- The construct name and description must accurately reflect what the QUESTIONS measure,
+  not an aspirational label.
 
 For each construct provide:
   - name: short snake_case label (e.g., "institutional_trust", "civic_participation")
@@ -319,6 +343,72 @@ Return ONLY a JSON array:
     _save_cache(result, cache_path)
     print(f"  [{domain}] Step 1: {len(result)} clusters, saved {cache_path.name}")
     return result
+
+
+# ---------------------------------------------------------------------------
+# Step 1b: Statistical validation of clusters (Cronbach α gate)
+# ---------------------------------------------------------------------------
+
+def _is_sentinel_val(val: float) -> bool:
+    """Filter sentinel codes (>= 97 or < 0)."""
+    return val >= 97 or val < 0
+
+
+def _cronbach_alpha_quick(df_items: pd.DataFrame) -> Optional[float]:
+    """Cronbach's alpha for a set of items. Returns None if < 2 items."""
+    df_clean = df_items.dropna()
+    k = df_clean.shape[1]
+    if k < 2 or len(df_clean) < 10:
+        return None
+    item_vars = df_clean.var(axis=0, ddof=1)
+    if item_vars.sum() == 0:
+        return None
+    total_var = df_clean.sum(axis=1).var(ddof=1)
+    if total_var == 0:
+        return None
+    return float((k / (k - 1)) * (1 - item_vars.sum() / total_var))
+
+
+def _validate_clusters_statistically(
+    domain: str, clusters: List[Dict], df: pd.DataFrame,
+) -> List[Dict]:
+    """
+    Compute Cronbach α for each cluster and annotate the result.
+    Clusters with α < 0.3 and ≥ 3 items get a warning flag.
+    This is informational — does not reject clusters (the LLM may have
+    valid reasons for grouping conceptually related but low-α items).
+    """
+    for cluster in clusters:
+        qids = cluster.get("question_cluster", [])
+        cols = [q.split("|")[0] if "|" in q else q for q in qids]
+        found = [c for c in cols if c in df.columns]
+        if len(found) < 2:
+            cluster["cronbach_alpha"] = None
+            cluster["stat_flag"] = "too_few"
+            continue
+        sub = df[found].copy()
+        for col in found:
+            sub[col] = pd.to_numeric(sub[col], errors="coerce")
+            sub.loc[sub[col].apply(
+                lambda v: _is_sentinel_val(v) if pd.notna(v) else False
+            ), col] = np.nan
+        sub = sub.dropna()
+        alpha = _cronbach_alpha_quick(sub)
+        cluster["cronbach_alpha"] = round(alpha, 4) if alpha is not None else None
+        if alpha is not None and alpha < 0.3 and len(found) >= 3:
+            cluster["stat_flag"] = "low_alpha"
+        elif alpha is not None and alpha >= 0.6:
+            cluster["stat_flag"] = "good"
+        else:
+            cluster["stat_flag"] = "ok"
+
+    n_good = sum(1 for c in clusters if c.get("stat_flag") == "good")
+    n_low = sum(1 for c in clusters if c.get("stat_flag") == "low_alpha")
+    alphas = [c["cronbach_alpha"] for c in clusters if c.get("cronbach_alpha") is not None]
+    mean_a = np.mean(alphas) if alphas else 0
+    print(f"  [{domain}] Step 1b stats: mean α={mean_a:.3f}, "
+          f"{n_good} good, {n_low} low_alpha")
+    return clusters
 
 
 # ---------------------------------------------------------------------------
@@ -702,6 +792,12 @@ class SemanticVariableSelector:
                 domain, survey_title, domain_label, summaries,
                 self.n_constructs, self.model_cluster,
                 self.cache_dir / f"{domain}_step1_construct_clusters.json",
+                pregs_dict=pregs_dict,
+            )
+
+            # --- Step 1b: Statistical validation ---
+            clusters_raw = _validate_clusters_statistically(
+                domain, clusters_raw, df,
             )
 
             # --- Step 2: Research review ---

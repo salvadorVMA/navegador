@@ -1,62 +1,59 @@
 [
   {
-    "construct_name": "environmental_knowledge_literacy",
+    "construct_name": "environmental_problem_salience",
     "strategy": "aggregate",
     "selected_qids": [
-      "p8",
-      "p9",
-      "p29"
-    ],
-    "aggregation_method": "pca_first_component",
-    "justification": "Environmental knowledge/literacy is inherently multi-dimensional, requiring aggregation to capture breadth of understanding. The three highest-entropy items (p8 H=3.16, p9 H=3.24, p29 H=3.35) are selected as they carry the most discriminating information and likely tap distinct knowledge facets; p27_1, p28_1, and p36_1 have substantially lower entropy and fewer categories, risking floor effects. PCA first component is preferred over sum/mean because the items have different scale widths (all K=13 but potentially different response distributions), and PCA extracts the shared latent variance without assuming equal item weights."
-  },
-  {
-    "construct_name": "environmental_concern_risk_perception",
-    "strategy": "aggregate",
-    "selected_qids": [
-      "p4",
-      "p5",
-      "p6",
-      "p7",
-      "p38_1"
+      "p4|MED",
+      "p5|MED",
+      "p30_1|MED"
     ],
     "aggregation_method": "mean_score",
-    "justification": "Environmental concern and risk perception is a well-established multi-item construct where no single question captures both affective concern and cognitive risk appraisal; aggregation reduces measurement error and increases reliability. Items p4 and p5 (K=7) likely tap concern intensity, p6 and p7 (K=11) tap risk magnitude or breadth, and p38_1 (K=7, H=2.16) adds a complementary concern dimension; p30_1 (H=1.51) and p37 (H=1.49) are excluded due to low entropy indicating poor discrimination. Mean scoring is appropriate because items share broadly ordinal Likert-type structures and the mean is robust to the slight K differences (7 vs 11), with subsequent binning to ≤5 categories for the bridge model."
+    "justification": "Environmental problem salience is inherently multi-dimensional, spanning national-level perception, local-level perception, and concern about specific fossil fuel impacts; no single item captures the full construct. p4, p5, and p30_1 share compatible ordinal Likert-style scales (6–7 categories) reflecting intensity of concern, making them combinable via mean score. p6 and p7 are excluded because they are nominal 'most important problem' categorical items whose numeric codes carry no ordinal meaning and cannot be meaningfully averaged with perception scales."
+  },
+  {
+    "construct_name": "environmental_knowledge_self_efficacy",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p8|MED",
+      "p9|MED",
+      "p29|MED"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Self-efficacy and knowledge are best captured by the three self-assessed 0–10 scale items (causes knowledge, solutions knowledge, renewable energy knowledge), which share identical numeric scales and directly operationalize the construct's core meaning. p27_1, p28_1, and p36_1 use incompatible categorical or binary formats and tap factual beliefs rather than self-efficacy, making them unsuitable for aggregation with the 0–10 items. Averaging the three compatible items reduces individual measurement error and produces a reliable composite of perceived environmental knowledge and competence."
   },
   {
     "construct_name": "pro_environmental_civic_engagement",
     "strategy": "aggregate",
     "selected_qids": [
-      "p34_1",
-      "p34_2",
-      "p34_3",
-      "p34_4",
-      "p34_5"
+      "p34_1|MED",
+      "p34_2|MED",
+      "p34_3|MED",
+      "p34_4|MED",
+      "p34_5|MED"
     ],
     "aggregation_method": "sum_score",
-    "justification": "All five items share an identical battery structure (K=4, very similar H≈0.50–0.70), strongly indicating they are a designed Likert battery measuring different civic engagement behaviors that should be summed into a total engagement score. No single item dominates in entropy or content validity since they are parallel indicators of the same behavioral domain. Sum scoring is the standard approach for behavioral checklists of this type, and the narrow entropy range confirms comparable item difficulty, making a simple sum appropriate before binning."
+    "justification": "Civic engagement is a behavioral count construct best measured by summing across distinct action types; all five p34 items share an identical 4-category participation frequency scale, making them directly combinable. A sum score is theoretically appropriate here because each item represents an independent behavioral act, and the total reflects cumulative engagement breadth. The summed score (range 5–20) can be binned into ≤5 ordinal categories representing low-to-high engagement, maximizing construct coverage while satisfying the bridge model's category constraint."
   },
   {
     "construct_name": "environmental_governance_attitudes",
     "strategy": "aggregate",
     "selected_qids": [
-      "p12_1",
-      "p13",
-      "p40"
+      "p12_1|MED",
+      "p40|MED",
+      "p41|MED"
     ],
     "aggregation_method": "mean_score",
-    "justification": "Environmental governance attitudes span trust in institutions, policy support, and regulatory preferences, requiring multiple items to cover the construct adequately. Items p12_1 (K=7, H=1.77), p13 (K=5, H=1.62), and p40 (K=6, H=1.84) provide the best entropy and likely cover distinct governance sub-dimensions; p41 is excluded due to very low entropy (H=0.97), suggesting a near-uniform or highly skewed response that would add noise rather than signal. Mean scoring accommodates the slight scale-width differences (K=5,6,7) by normalizing implicitly through averaging, and the result is binned to ≤5 ordinal categories for the bridge."
+    "justification": "Environmental governance attitudes reflect beliefs about regulatory responsibility and authority, best captured by combining the government resource-control agreement item (p12_1), the responsibility attribution item (p40), and the decision-making authority item (p41), all of which use ordinal agreement or preference scales with 5–7 categories that are conceptually compatible. p13 and p14 are excluded because they ask about best measures for companies and individuals respectively, tapping policy preference rather than governance attitude, and their nominal structure makes them less compatible for ordinal aggregation. Mean-scoring the three retained items yields a coherent latent dimension of pro-regulatory governance orientation."
   },
   {
-    "construct_name": "socioeconomic_environmental_context",
+    "construct_name": "climate_change_risk_perception",
     "strategy": "aggregate",
     "selected_qids": [
-      "p39",
-      "p42",
-      "p46_1",
-      "p47"
+      "p37|MED",
+      "p38_1|MED",
+      "p39|MED"
     ],
-    "aggregation_method": "pca_first_component",
-    "justification": "Socioeconomic-environmental context is a latent composite of material conditions, neighborhood environment quality, and resource access that no single item captures; aggregation is essential. Items p46_1 (H=2.40), p42 (H=2.23), p47 (H=1.79), and p39 (H=1.59) are selected as the four highest-entropy indicators, while p25_1 (H=0.83), p26_1 (H=0.92), and p44 (H=1.12) are excluded for low discrimination. PCA first component is preferred because the items span different K values (6 and 8) and likely have heterogeneous inter-correlations reflecting distinct socioeconomic dimensions, so PCA extracts the dominant shared variance without imposing equal weights."
+    "aggregation_method": "mean_score",
+    "justification": "Climate change risk perception is multi-dimensional, encompassing personal impact experience (p37), perceived differential vulnerability of the poor (p38_1), and behavioral risk response willingness (p39); no single item captures all facets. These three items use ordinal scales with 5–7 categories reflecting intensity of risk-related attitudes and are conceptually coherent as a risk perception battery. p10_1 is excluded because it measures perceived harmfulness of car pollution specifically rather than climate change risk, reducing construct validity of the composite."
   }
 ]

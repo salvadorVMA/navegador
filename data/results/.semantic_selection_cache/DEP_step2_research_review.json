@@ -4,23 +4,28 @@
     "sources": [
       {
         "citation": "Bourdieu, P. (1984). Distinction: A social critique of the judgement of taste. Harvard University Press.",
-        "relevance": "Foundational theory of cultural capital formation through family socialization, directly relevant to how parental cultural practices shape children's dispositions toward culture.",
-        "key_finding": "Cultural capital is primarily transmitted through early family socialization, creating durable dispositions that reproduce social stratification across generations."
+        "relevance": "Foundational theory on cultural capital transmission from parents to children, directly underpinning the concept of early cultural socialization through parental practices such as museum visits, book gifting, and cultural discussions.",
+        "key_finding": "Cultural capital is primarily transmitted through the family during childhood, reproducing social inequalities across generations."
       },
       {
         "citation": "De Graaf, N. D., De Graaf, P. M., & Kraaykamp, G. (2000). Parental cultural capital and educational attainment in the Netherlands: A refinement of the cultural capital perspective. Sociology of Education, 73(2), 92–111.",
-        "relevance": "Empirically tests how parental reading behavior and cultural participation in childhood predict educational outcomes, directly paralleling the construct's items on parental book-giving and childhood reading.",
-        "key_finding": "Parental reading climate (books in the home, reading habits) is a stronger predictor of children's educational attainment than parental participation in highbrow cultural activities."
+        "relevance": "Empirically tests how parental reading behavior and cultural participation during childhood predict children's educational outcomes, closely matching the construct's indicators (parental book gifting, reading frequency, cultural discussions).",
+        "key_finding": "Parental reading climate in the home is a stronger predictor of children's educational attainment than parents' participation in highbrow cultural activities."
+      },
+      {
+        "citation": "Lareau, A. (2003). Unequal childhoods: Class, race, and family life. University of California Press.",
+        "relevance": "Documents how middle-class parents engage in 'concerted cultivation' including cultural exposure activities, directly relevant to measuring childhood cultural socialization practices.",
+        "key_finding": "Social class fundamentally shapes parenting strategies regarding cultural exposure, with middle-class families actively fostering children's cultural development through organized activities and enrichment."
+      },
+      {
+        "citation": "Sullivan, A. (2001). Cultural capital and educational attainment. Sociology, 35(4), 893–912.",
+        "relevance": "Operationalizes and measures cultural capital transmission in childhood, including reading habits and cultural knowledge acquired through family, aligning with the construct's question items.",
+        "key_finding": "Cultural capital, measured through reading and cultural activities in the home, has a significant independent effect on educational performance even after controlling for social class."
       },
       {
         "citation": "Kraaykamp, G., & van Eijck, K. (2010). The intergenerational reproduction of cultural capital: A threefold perspective. Social Forces, 89(1), 209–231.",
-        "relevance": "Examines multiple pathways of intergenerational cultural capital transmission including parental example, stimulation, and resource provision—matching the construct's items on parental discussion, museum visits, and book availability.",
-        "key_finding": "Parental cultural socialization operates through distinct mechanisms (modeling, active stimulation, and resource provision), each independently contributing to children's cultural participation in adulthood."
-      },
-      {
-        "citation": "Evans, M. D. R., Kelley, J., Sikora, J., & Treiman, D. J. (2010). Family scholarly culture and educational success: Books and schooling in 27 nations. Research in Social Stratification and Mobility, 28(2), 171–197.",
-        "relevance": "Cross-national study on the effect of books in the household during childhood on educational outcomes, directly relevant to the p13 item on childhood book presence.",
-        "key_finding": "Growing up in a household with 500 books propels a child 3.2 years further in education, on average, across 27 nations, independent of parents' education and occupation."
+        "relevance": "Examines multiple pathways of intergenerational cultural capital transmission including parental example, parental stimulation, and resource provision—all captured by this construct's indicators.",
+        "key_finding": "Parental cultural socialization operates through distinct mechanisms (modeling, stimulation, and resource provision), each independently contributing to children's cultural participation in adulthood."
       }
     ],
     "causal_relationships": [
@@ -28,154 +33,172 @@
         "role": "cause",
         "related_construct": "educational attainment",
         "measurable_in_data": true,
-        "data_source": "EDU, DEP"
+        "data_source": "EDU"
       },
       {
         "role": "cause",
-        "related_construct": "adult cultural participation and reading habits",
+        "related_construct": "adult reading habits and literacy",
         "measurable_in_data": true,
         "data_source": "DEP"
       },
       {
         "role": "effect",
-        "related_construct": "parental socioeconomic status",
+        "related_construct": "socioeconomic status of family of origin",
         "measurable_in_data": true,
-        "data_source": "DEP, POB, EDU"
+        "data_source": "POB, ECO"
       },
       {
         "role": "cause",
-        "related_construct": "subjective socioeconomic status",
+        "related_construct": "cultural participation in adulthood",
         "measurable_in_data": true,
-        "data_source": "DEP, POB"
+        "data_source": "DEP"
       },
       {
         "role": "correlate",
-        "related_construct": "civic and political engagement",
+        "related_construct": "political culture and civic engagement",
         "measurable_in_data": true,
-        "data_source": "CUL, IDE"
+        "data_source": "CUL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "attitudes toward cultural openness",
+        "measurable_in_data": true,
+        "data_source": "DEP"
       }
     ],
     "gap_justification": null,
     "importance_rating": 4
   },
   {
-    "construct_name": "cultural_openness_and_national_identity",
+    "construct_name": "reading_engagement_and_literacy",
     "sources": [
       {
-        "citation": "Roudometof, V. (2005). Transnationalism, cosmopolitanism and glocalization. Current Sociology, 53(1), 113–135.",
-        "relevance": "Theorizes the tension between cosmopolitan openness and local/national cultural identity, directly relevant to the construct's measurement of attitudes toward foreign cultural influence versus Mexican heritage preservation.",
-        "key_finding": "Cosmopolitanism and local identity are not mutually exclusive but exist on a continuum, with individuals negotiating multiple cultural attachments simultaneously."
+        "citation": "OECD. (2019). PISA 2018 results (Volume I): What students know and can do. OECD Publishing.",
+        "relevance": "Provides international benchmarks for reading literacy and engagement, including Mexico-specific data on reading habits, self-perceived reading difficulty, and access to reading materials.",
+        "key_finding": "Mexican students score significantly below the OECD average in reading, with socioeconomic status and access to books at home being strong predictors of reading performance."
       },
       {
-        "citation": "Béjar, R., & Rosales, H. (2005). La identidad nacional mexicana como problema político y cultural. Nuevas miradas. UNAM-CRIM.",
-        "relevance": "Directly addresses Mexican national identity as a contested cultural and political construct, relevant to items on singular vs. plural Mexican culture and national sentiment.",
-        "key_finding": "Mexican national identity is increasingly fragmented and contested, with tensions between official nationalist narratives and the lived experiences of diverse cultural groups."
+        "citation": "Módulo sobre Lectura (MOLEC), INEGI. (2023). Resultados del Módulo sobre Lectura 2023. Instituto Nacional de Estadística y Geografía.",
+        "relevance": "Directly measures reading habits in Mexico including book access, newspaper/magazine reading, and perceived barriers to reading—closely matching the construct's question items.",
+        "key_finding": "The proportion of the Mexican literate population that reads has declined over the past decade, with lack of time and lack of interest cited as primary barriers."
       },
       {
-        "citation": "Inglehart, R., & Baker, W. E. (2000). Modernization, cultural change, and the persistence of traditional values. American Sociological Review, 65(1), 19–51.",
-        "relevance": "Examines how globalization and modernization affect cultural values and national identity orientations, relevant to perceptions of foreign cultural influence (p26, p27).",
-        "key_finding": "Economic development drives predictable cultural changes toward secular-rational and self-expression values, but traditional values persist due to the enduring influence of cultural heritage."
+        "citation": "Krashen, S. D. (2004). The power of reading: Insights from the research (2nd ed.). Libraries Unlimited.",
+        "relevance": "Synthesizes research on free voluntary reading and its relationship to literacy development, relevant to understanding self-reported reading habits and perceived reading difficulty.",
+        "key_finding": "Access to books and free voluntary reading are among the most powerful predictors of literacy development, reading comprehension, vocabulary, and writing ability."
       },
       {
-        "citation": "Gutiérrez Martínez, D. (2010). Diversidad cultural en México. In D. Gutiérrez Martínez & H. Balslev Clausen (Eds.), Revisitar la etnicidad: Miradas cruzadas en torno a la diversidad. Siglo XXI/El Colegio Mexiquense.",
-        "relevance": "Analyzes cultural diversity and pluralism in Mexico, directly relevant to the item on discussing one vs. multiple Mexican cultures (p25).",
-        "key_finding": "Mexico's cultural diversity requires moving beyond homogenizing mestizo nationalism toward recognition of multiple coexisting cultural traditions and identities."
+        "citation": "Clark, C., & Rumbold, K. (2006). Reading for pleasure: A research overview. National Literacy Trust.",
+        "relevance": "Reviews the relationship between reading engagement, access to reading materials, and perceived barriers—all core components of this construct.",
+        "key_finding": "Reading for pleasure is strongly associated with reading attainment, and barriers such as perceived difficulty and lack of access significantly reduce engagement."
       }
     ],
     "causal_relationships": [
       {
-        "role": "correlate",
-        "related_construct": "attitudes toward globalization",
-        "measurable_in_data": true,
-        "data_source": "GLO"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "attitudes toward migration and immigrants",
-        "measurable_in_data": true,
-        "data_source": "MIG"
-      },
-      {
         "role": "effect",
-        "related_construct": "educational attainment and media exposure",
+        "related_construct": "cultural socialization in childhood",
         "measurable_in_data": true,
-        "data_source": "EDU, SOC"
+        "data_source": "DEP"
       },
       {
         "role": "correlate",
-        "related_construct": "indigenous identity and recognition",
+        "related_construct": "educational attainment",
         "measurable_in_data": true,
-        "data_source": "IND, DEP"
+        "data_source": "EDU"
       },
       {
-        "role": "moderator",
-        "related_construct": "political culture and democratic values",
+        "role": "cause",
+        "related_construct": "political knowledge and civic participation",
         "measurable_in_data": true,
-        "data_source": "CUL, IDE"
+        "data_source": "CUL"
       },
       {
         "role": "correlate",
-        "related_construct": "religiosity and traditional values",
+        "related_construct": "socioeconomic status and poverty",
         "measurable_in_data": true,
-        "data_source": "REL, IDE"
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "information society participation and digital literacy",
+        "measurable_in_data": true,
+        "data_source": "SOC"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "science and technology awareness",
+        "measurable_in_data": true,
+        "data_source": "CIE"
       }
     ],
     "gap_justification": null,
-    "importance_rating": 5
+    "importance_rating": 4
   },
   {
-    "construct_name": "ethnocultural_identity_and_linguistic_capital",
+    "construct_name": "cultural_identity_and_heritage",
     "sources": [
       {
-        "citation": "Stavenhagen, R. (2001). La cuestión étnica. El Colegio de México.",
-        "relevance": "Comprehensive analysis of ethnic identity and indigenous rights in Mexico, directly relevant to self-identification with indigenous heritage and minority cultural identities.",
-        "key_finding": "Ethnic identity in Mexico is shaped by structural inequalities, and indigenous self-identification is influenced by both cultural practices (language, customs) and socioeconomic marginalization."
-      },
-      {
-        "citation": "Terborg, R., & García Landa, L. (2011). Las presiones que causan el desplazamiento-Loss of indigenous languages in Mexico. In J. Fishman & O. García (Eds.), Handbook of language and ethnic identity (2nd ed., Vol. 2). Oxford University Press.",
-        "relevance": "Examines indigenous language vitality and shift in Mexico, directly relevant to items on indigenous language speaking and reading ability (p34, p35).",
-        "key_finding": "Indigenous language loss in Mexico is driven by urbanization, educational policies favoring Spanish, and social stigma, with younger generations showing significantly lower proficiency."
+        "citation": "Bonfil Batalla, G. (1996). México profundo: Reclaiming a civilization. University of Texas Press.",
+        "relevance": "Seminal work on the tension between indigenous and mestizo identities in Mexico, directly relevant to the construct's questions on ethnic self-categorization, indigenous language ability, and heritage recognition.",
+        "key_finding": "Mexico's dominant mestizo national identity has systematically marginalized indigenous cultural identities, creating a 'deep Mexico' of unrecognized cultural heritage."
       },
       {
         "citation": "Villarreal, A. (2010). Stratification by skin color in contemporary Mexico. American Sociological Review, 75(5), 652–678.",
-        "relevance": "Analyzes racial/ethnic self-classification and its socioeconomic consequences in Mexico, directly relevant to the racial/ethnic self-identification item (p54).",
-        "key_finding": "Skin color and racial self-identification significantly predict socioeconomic outcomes in Mexico, with lighter-skinned and mestizo-identified individuals enjoying substantial advantages over indigenous-identified individuals."
+        "relevance": "Examines racial/ethnic self-identification in Mexico and its relationship to social stratification, directly relevant to the construct's racial self-categorization item (p54).",
+        "key_finding": "Skin color is a significant predictor of socioeconomic outcomes in Mexico, independent of education and other factors, revealing persistent racial stratification."
       },
       {
-        "citation": "Bourdieu, P. (1991). Language and symbolic power. Harvard University Press.",
-        "relevance": "Theorizes linguistic capital as a form of cultural capital that confers social advantages, relevant to the construct's measurement of multilingual competencies in indigenous and foreign languages.",
-        "key_finding": "Linguistic competencies function as forms of capital whose value depends on the linguistic market, with dominant languages conferring symbolic power and minority languages being devalued."
+        "citation": "Martínez Casas, R., Saldívar, E., Flores, R. D., & Sue, C. A. (2015). The different faces of mestizaje: Ethnicity and race in Mexico. In E. Telles (Ed.), Pigmentocracies: Ethnicity, race, and color in Latin America (pp. 36–80). University of North Carolina Press.",
+        "relevance": "Analyzes how Mexicans self-identify racially and ethnically, including the complexity of indigenous identity recognition and mestizo categorization—core elements of this construct.",
+        "key_finding": "Ethnic and racial self-identification in Mexico is fluid and context-dependent, with many individuals of indigenous heritage not self-identifying as indigenous due to social stigma."
       },
       {
-        "citation": "INEGI. (2020). Censo de Población y Vivienda 2020: Perfil sociodemográfico de la población indígena. Instituto Nacional de Estadística y Geografía.",
-        "relevance": "Provides the official measurement framework for indigenous identity in Mexico using language and self-identification criteria, directly paralleling the construct's operationalization.",
-        "key_finding": "Approximately 6.1% of Mexico's population speaks an indigenous language, while 23.2% self-identify as indigenous, revealing a significant gap between linguistic and identity-based measures of indigeneity."
+        "citation": "INALI (Instituto Nacional de Lenguas Indígenas). (2012). México: Lenguas indígenas nacionales en riesgo de desaparición. INALI.",
+        "relevance": "Documents the status of indigenous languages in Mexico, directly relevant to the construct's items on first language learned and ability to converse/read in indigenous languages.",
+        "key_finding": "Many of Mexico's 68 indigenous languages are at risk of disappearing, with intergenerational transmission declining as speakers shift to Spanish."
+      },
+      {
+        "citation": "Telles, E., & Garcia, D. (2013). 'Mestizaje' and public opinion in Latin America. Latin American Research Review, 48(3), 130–152.",
+        "relevance": "Examines how racial/ethnic self-identification relates to attitudes and public opinion across Latin America, including Mexico, connecting identity to broader social attitudes.",
+        "key_finding": "Racial self-identification significantly predicts attitudes toward discrimination and social policy preferences in Latin America, even after controlling for socioeconomic status."
       }
     ],
     "causal_relationships": [
       {
+        "role": "correlate",
+        "related_construct": "experiences of discrimination",
+        "measurable_in_data": true,
+        "data_source": "DER, IND"
+      },
+      {
         "role": "cause",
-        "related_construct": "socioeconomic stratification and poverty",
+        "related_construct": "attitudes toward cultural openness and foreign influence",
+        "measurable_in_data": true,
+        "data_source": "DEP"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "socioeconomic status and poverty",
         "measurable_in_data": true,
         "data_source": "POB, ECO"
       },
       {
         "role": "correlate",
-        "related_construct": "educational attainment and school type",
+        "related_construct": "educational attainment",
         "measurable_in_data": true,
-        "data_source": "EDU, DEP"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "experiences of discrimination and human rights",
-        "measurable_in_data": true,
-        "data_source": "DER, IND"
+        "data_source": "EDU"
       },
       {
         "role": "moderator",
-        "related_construct": "cultural openness and national identity",
+        "related_construct": "political participation and representation",
         "measurable_in_data": true,
-        "data_source": "DEP"
+        "data_source": "CUL, IND"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "indigenous rights and autonomy attitudes",
+        "measurable_in_data": true,
+        "data_source": "IND, DER"
       },
       {
         "role": "correlate",
@@ -185,45 +208,51 @@
       },
       {
         "role": "correlate",
-        "related_construct": "health access and outcomes",
+        "related_construct": "religious beliefs and practices",
         "measurable_in_data": true,
-        "data_source": "SAL"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "indigenous rights and political participation",
-        "measurable_in_data": true,
-        "data_source": "IND, CUL"
+        "data_source": "REL"
       }
     ],
     "gap_justification": null,
     "importance_rating": 5
   },
   {
-    "construct_name": "reading_engagement_and_literacy_orientation",
+    "construct_name": "attitudes_toward_cultural_openness_and_foreign_influence",
     "sources": [
       {
-        "citation": "INEGI, CONACULTA, & SEP. (2015). Encuesta Nacional de Lectura y Escritura 2015. Consejo Nacional para la Cultura y las Artes.",
-        "relevance": "National survey measuring reading practices in Mexico, directly paralleling the construct's items on reading frequency, media types, perceived difficulty, and purpose of reading.",
-        "key_finding": "Mexican adults read an average of 3.8 books per year, with significant disparities by education level, socioeconomic status, and region, and the majority report reading primarily for school or work rather than pleasure."
+        "citation": "Inglehart, R., & Baker, W. E. (2000). Modernization, cultural change, and the persistence of traditional values. American Sociological Review, 65(1), 19–51.",
+        "relevance": "Examines how globalization and modernization shape cultural values and openness to foreign influence, providing theoretical grounding for attitudes toward cultural pluralism versus homogeneity.",
+        "key_finding": "Economic development drives predictable cultural changes toward greater openness and tolerance, but traditional values persist and cultural heritage continues to shape societies' value systems."
       },
       {
-        "citation": "Barton, D., & Hamilton, M. (2000). Literacy practices. In D. Barton, M. Hamilton, & R. Ivanič (Eds.), Situated literacies: Reading and writing in context (pp. 7–15). Routledge.",
-        "relevance": "Provides the theoretical framework of literacy as social practice, relevant to understanding reading engagement as culturally situated rather than merely a cognitive skill.",
-        "key_finding": "Literacy is best understood as a set of social practices mediated by written texts, embedded in broader social goals and cultural practices rather than as a decontextualized skill."
+        "citation": "Tomlinson, J. (1999). Globalization and culture. University of Chicago Press.",
+        "relevance": "Theorizes the relationship between globalization and cultural identity, directly relevant to questions about foreign cultural influence and preferences for cultural preservation versus openness.",
+        "key_finding": "Globalization does not simply homogenize cultures but creates complex interactions between local and global cultural forces, generating both resistance and hybridization."
       },
       {
-        "citation": "OECD. (2019). PISA 2018 results (Volume I): What students know and can do. OECD Publishing.",
-        "relevance": "International assessment of reading literacy including Mexico, relevant to understanding reading ease/difficulty and functional literacy orientation items.",
-        "key_finding": "Mexican 15-year-olds scored significantly below the OECD average in reading (420 vs. 487), with 35% not reaching minimum proficiency levels, indicating persistent challenges in functional literacy."
+        "citation": "García Canclini, N. (1995). Hybrid cultures: Strategies for entering and leaving modernity. University of Minnesota Press.",
+        "relevance": "Analyzes cultural hybridization in Latin America and Mexico specifically, directly relevant to attitudes about whether Mexico should preserve its culture, adopt foreign elements, or embrace pluralism.",
+        "key_finding": "Latin American cultures are inherently hybrid, and attempts to preserve 'pure' national cultures ignore the productive cultural mixing that characterizes the region's modernity."
       },
       {
-        "citation": "Ramírez Leyva, E. M. (2016). De la promoción de la lectura por placer a la formación integral de lectores. Investigación Bibliotecológica, 30(69), 95–120.",
-        "relevance": "Examines reading promotion and the purposes of reading in the Mexican context, directly relevant to the item on perceived function of reading (p18_1).",
-        "key_finding": "Reading promotion in Mexico has shifted from emphasizing pleasure reading to a more comprehensive approach that includes informational, critical, and civic literacy dimensions."
+        "citation": "Lizama Quijano, J. (2012). La educación intercultural bilingüe en México: Discursos y prácticas. Desacatos, 38, 9–14.",
+        "relevance": "Discusses intercultural education policy in Mexico, directly relevant to the construct's items on teaching indigenous languages and multicultural education in primary schools.",
+        "key_finding": "Intercultural bilingual education in Mexico faces significant implementation gaps between policy discourse promoting cultural diversity and actual classroom practices."
       }
     ],
     "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "cultural identity and heritage",
+        "measurable_in_data": true,
+        "data_source": "DEP, IND"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "attitudes toward globalization",
+        "measurable_in_data": true,
+        "data_source": "GLO"
+      },
       {
         "role": "effect",
         "related_construct": "educational attainment",
@@ -231,114 +260,102 @@
         "data_source": "EDU"
       },
       {
-        "role": "effect",
-        "related_construct": "cultural socialization in childhood",
+        "role": "correlate",
+        "related_construct": "national identity and values",
         "measurable_in_data": true,
-        "data_source": "DEP"
-      },
-      {
-        "role": "cause",
-        "related_construct": "civic knowledge and political participation",
-        "measurable_in_data": true,
-        "data_source": "CUL, IDE"
+        "data_source": "IDE"
       },
       {
         "role": "correlate",
-        "related_construct": "information society participation and digital literacy",
+        "related_construct": "attitudes toward migration",
         "measurable_in_data": true,
-        "data_source": "SOC, CIE"
-      },
-      {
-        "role": "effect",
-        "related_construct": "socioeconomic status and poverty",
-        "measurable_in_data": true,
-        "data_source": "POB, ECO"
+        "data_source": "MIG"
       },
       {
         "role": "correlate",
-        "related_construct": "subjective socioeconomic status",
+        "related_construct": "attitudes toward indigenous rights",
         "measurable_in_data": true,
-        "data_source": "DEP"
-      }
-    ],
-    "gap_justification": null,
-    "importance_rating": 3
-  },
-  {
-    "construct_name": "subjective_socioeconomic_status",
-    "sources": [
-      {
-        "citation": "Adler, N. E., Epel, E. S., Castellazzo, G., & Ickovics, J. R. (2000). Relationship of subjective and objective social status with psychological and physiological functioning: Preliminary data in healthy, White women. Health Psychology, 19(6), 586–592.",
-        "relevance": "Foundational study establishing that subjective social status predicts health and well-being outcomes independently of objective SES measures, validating the importance of self-assessed economic situation and social class.",
-        "key_finding": "Subjective social status predicted health outcomes (psychological functioning, heart rate, cortisol) above and beyond objective measures of income, education, and occupation."
-      },
-      {
-        "citation": "Operario, D., Adler, N. E., & Williams, D. R. (2004). Subjective social status: Reliability and predictive utility for global health. Psychology & Health, 19(2), 237–246.",
-        "relevance": "Validates subjective social status as a reliable and cross-culturally applicable measure, relevant to the construct's use of self-assessed economic situation and social class in the Mexican context.",
-        "key_finding": "Subjective social status demonstrates good test-retest reliability and predicts global health status across diverse racial/ethnic groups, even after controlling for objective SES indicators."
-      },
-      {
-        "citation": "Campos-Vázquez, R. M., & Monroy-Gómez-Franco, J. A. (2016). La relación entre percepción de clase social y movilidad social en México. El Trimestre Económico, 83(330), 377–413.",
-        "relevance": "Directly examines self-identified social class in Mexico and its relationship to perceived social mobility, closely matching the p45 item on self-identified social class.",
-        "key_finding": "Most Mexicans identify as lower-middle or working class regardless of objective income, and perceived social class is strongly associated with expectations of intergenerational mobility."
-      },
-      {
-        "citation": "Rojas, M. (2007). The complexity of well-being: A life-satisfaction conception and a domains-of-life approach. In I. Gough & J. A. McGregor (Eds.), Wellbeing in developing countries (pp. 259–280). Cambridge University Press.",
-        "relevance": "Examines life satisfaction measurement in Mexico and developing countries, directly relevant to the p46 item on overall life satisfaction as a component of subjective status.",
-        "key_finding": "Life satisfaction in Mexico is shaped by multiple life domains including economic, family, and social dimensions, and cannot be reduced to income alone."
-      }
-    ],
-    "causal_relationships": [
-      {
-        "role": "effect",
-        "related_construct": "objective socioeconomic indicators (income, education, occupation)",
-        "measurable_in_data": true,
-        "data_source": "ECO, EDU, POB"
-      },
-      {
-        "role": "cause",
-        "related_construct": "health outcomes and health-seeking behavior",
-        "measurable_in_data": true,
-        "data_source": "SAL"
-      },
-      {
-        "role": "cause",
-        "related_construct": "political attitudes and democratic satisfaction",
-        "measurable_in_data": true,
-        "data_source": "CUL, IDE"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "perceptions of corruption and institutional trust",
-        "measurable_in_data": true,
-        "data_source": "COR, JUS"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "housing quality and neighborhood conditions",
-        "measurable_in_data": true,
-        "data_source": "HAB"
-      },
-      {
-        "role": "effect",
-        "related_construct": "cultural socialization in childhood",
-        "measurable_in_data": true,
-        "data_source": "DEP"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "perceptions of public security",
-        "measurable_in_data": true,
-        "data_source": "SEG"
+        "data_source": "IND"
       },
       {
         "role": "moderator",
-        "related_construct": "ethnocultural identity and racial self-classification",
+        "related_construct": "media consumption and information access",
         "measurable_in_data": true,
-        "data_source": "DEP, IND"
+        "data_source": "SOC, DEP"
       }
     ],
     "gap_justification": null,
     "importance_rating": 5
+  },
+  {
+    "construct_name": "sports_engagement_and_media_consumption",
+    "sources": [
+      {
+        "citation": "Coakley, J. (2015). Sports in society: Issues and controversies (11th ed.). McGraw-Hill.",
+        "relevance": "Comprehensive sociological analysis of sports participation, media consumption of sports, and beliefs about the social functions of sport—all core components of this construct.",
+        "key_finding": "Sports participation and media consumption are shaped by social class, gender, and cultural context, and beliefs about sport's social functions (character building, health, national unity) vary systematically across populations."
+      },
+      {
+        "citation": "INEGI. (2022). Módulo de Práctica Deportiva y Ejercicio Físico (MOPRADEF). Instituto Nacional de Estadística y Geografía.",
+        "relevance": "Directly measures sports participation patterns in Mexico, including types of sports practiced and frequency, closely matching the construct's indicators.",
+        "key_finding": "Approximately 39% of the Mexican population aged 18 and over reported practicing sport or physical exercise, with significant variation by age, gender, and socioeconomic status."
+      },
+      {
+        "citation": "Wann, D. L., Melnick, M. J., Russell, G. W., & Pease, D. G. (2001). Sport fans: The psychology and social impact of spectators. Routledge.",
+        "relevance": "Examines the psychology of sports media consumption and spectatorship, relevant to the construct's items on watching sports on television and preferences for national versus international competitions.",
+        "key_finding": "Sports media consumption serves multiple psychological and social functions including entertainment, group affiliation, and national identity expression."
+      },
+      {
+        "citation": "Ramírez Rodríguez, J. C. (2014). Deporte, cultura y sociedad en México: Una mirada sociológica. Revista Mexicana de Sociología, 76(especial), 115–140.",
+        "relevance": "Analyzes the social and cultural dimensions of sport in Mexico, including beliefs about sport's role in youth development and national identity—directly relevant to the construct's attitudinal items.",
+        "key_finding": "Sport in Mexico functions as a site of social reproduction where class, gender, and regional identities are both expressed and contested."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "correlate",
+        "related_construct": "health outcomes and physical wellbeing",
+        "measurable_in_data": true,
+        "data_source": "SAL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "socioeconomic status",
+        "measurable_in_data": true,
+        "data_source": "ECO, POB"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "gender roles and attitudes",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "youth development and wellbeing",
+        "measurable_in_data": true,
+        "data_source": "NIN"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "national identity and patriotism",
+        "measurable_in_data": true,
+        "data_source": "IDE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "media consumption and information society",
+        "measurable_in_data": true,
+        "data_source": "SOC"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      }
+    ],
+    "gap_justification": "While sports participation and media consumption are well-studied independently, the combination of active sports engagement, sports media consumption, and beliefs about sport's social function as a unified construct is less commonly operationalized in Mexican public opinion research. This construct fills an important gap by linking behavioral engagement (practicing sport) with media behavior (watching sports) and normative beliefs (what sport is for, what motivates youth), enabling analysis of how sports culture intersects with broader social attitudes. In the Mexican context, where fútbol and other sports carry significant national identity implications and where public investment in sports infrastructure is a policy issue, understanding the full spectrum of sports engagement is essential for cross-domain analysis connecting health, education, youth policy, and national identity.",
+    "importance_rating": 3
   }
 ]

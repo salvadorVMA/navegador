@@ -1,29 +1,27 @@
 [
   {
-    "construct_name": "emigration_intention",
+    "construct_name": "emigration_intention_likelihood",
     "strategy": "aggregate",
     "selected_qids": [
+      "p15_1",
       "p17",
-      "p18",
-      "p24",
-      "p25"
+      "p18"
     ],
-    "aggregation_method": "pca_first_component",
-    "justification": "Emigration intention is inherently multi-dimensional, spanning desire, planning, and timeline, so no single item fully captures it. p17, p18, p24, and p25 have the highest entropies (1.59–2.09) and likely tap complementary facets of intention (e.g., wish to emigrate, concrete plans, destination, timeframe), making them the most informative items for a composite. PCA first component is preferred over a simple sum because the items likely use different scale lengths (5–7 categories), and PCA extracts the shared latent variance without assuming equal weighting across incompatible response formats. p15_1 is excluded due to its notably lower entropy (1.36), suggesting limited discriminative power."
+    "aggregation_method": "mean_score",
+    "justification": "Emigration intention is inherently multi-dimensional, spanning willingness, desire, and perceived likelihood of moving—no single item captures the full motivational spectrum. All three questions tap the same latent disposition toward emigration and, while their response formats differ slightly (binary-leaning vs. probability scale), they share an ordinal structure that makes mean-scoring defensible after rescaling to a common range before binning. Averaging reduces item-specific measurement error and produces a more reliable composite that is then binned into ≤5 ordered categories for the bridge model."
   },
   {
-    "construct_name": "perceived_opportunity_deprivation",
+    "construct_name": "perceived_opportunity_structure",
     "strategy": "aggregate",
     "selected_qids": [
       "p3_1",
       "p3_2",
       "p3_3",
       "p3_4",
-      "p3_9",
-      "p60_1"
+      "p3_9"
     ],
-    "aggregation_method": "pca_first_component",
-    "justification": "Perceived opportunity deprivation is a latent construct reflecting subjective assessments across multiple life domains (employment, education, security, etc.), so aggregation across all available items is theoretically justified and reduces single-item measurement error. The p3_x items share a common 6-category scale and are face-valid indicators of domain-specific deprivation, while p60_1 (7 categories, H=2.41) adds the highest discriminative information and likely captures a broader or comparative deprivation judgment. PCA first component is chosen over mean_score because p60_1's different scale length would distort a simple mean, whereas PCA handles the slight scale mismatch by extracting the dominant shared variance across all six items."
+    "aggregation_method": "mean_score",
+    "justification": "Perceived opportunity structure is a classic multi-faceted construct encompassing education, employment, entrepreneurship, credit access, and international mobility; no single domain adequately represents the broader structural perception. All five items share an identical 6-point Likert scale, making them directly combinable without rescaling, and their near-uniform high entropies (1.90–2.00 bits) indicate each contributes meaningful variance. A mean score averaged across all five items and binned into 5 ordered categories yields a parsimonious, high-reliability composite well-suited for the bridge regression."
   },
   {
     "construct_name": "transnational_social_ties",
@@ -31,34 +29,34 @@
     "selected_qids": [
       "p21",
       "p22",
-      "p23"
+      "p23",
+      "p24"
     ],
-    "aggregation_method": "mean_score",
-    "justification": "Transnational social ties require aggregation because the construct spans multiple dimensions: having relatives/friends abroad, contact frequency, and remittance or support flows. p21 (has family/friends abroad, K=4, H=0.91), p22 (contact frequency, K=4, H=0.93), and p23 (nature/intensity of ties, K=8, H=1.91) are the most content-valid items and together cover the breadth of the construct. The highly skewed, low-entropy items p16 (H=0.41), p16_1 (H=0.45), p21_1 (H=1.26), p21_2 (H=1.18), and p21_3 (H=0.56) are excluded because their near-degenerate distributions would add noise rather than signal; mean_score is appropriate given that p21 and p22 share the same 4-category scale and p23 can be rescaled, keeping the composite interpretable."
+    "aggregation_method": "pca_first_component",
+    "justification": "Transnational social ties span distinct but correlated dimensions—having family abroad, having friends abroad, frequency of contact, and perceived support from abroad—that together define network embeddedness in the migration system. Items p21_1, p21_2, and p21_3 are excluded because they are follow-up filters (country destination, remittance receipt, remittance share) with low entropy and high missingness conditional on p21, which would distort a composite. The four retained items use heterogeneous but ordinal scales, so PCA on the first component is preferred over simple summation as it optimally weights each indicator by its shared variance and the resulting scores are binned into 5 quantile-based categories."
   },
   {
-    "construct_name": "xenophilia_tolerance",
+    "construct_name": "attitudes_toward_foreigners_in_mexico",
     "strategy": "aggregate",
     "selected_qids": [
-      "p5_1",
+      "p42",
       "p43_1",
       "p45",
       "p47",
       "p51"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Xenophilia and tolerance toward immigrants is a multi-faceted attitudinal construct (social distance, cultural openness, rights support, perceived threat) that no single item can capture adequately, justifying aggregation. p5_1, p43_1, p45, p47, and p51 are selected as the five highest-entropy items (H ≥ 1.93) with strong face validity for attitudinal openness toward foreigners, while p48 (H=1.07) and p7_1 (H=1.53) are excluded for lower discriminative power and potential content overlap with policy attitudes. PCA first component is preferred because the items span 5–7 response categories and likely differ in polarity and scale anchoring, so PCA extracts the dominant pro/anti-tolerance dimension without imposing arbitrary equal weights."
+    "justification": "Attitudes toward foreigners are multi-dimensional, covering affective evaluations, economic attributions, perceived discrimination, and preferred policy stance; a single item would miss critical facets. Items p44 (behavioral contact, very low entropy 0.85) and p48 (rights opinions, low entropy 1.07 and more policy-preference than attitudinal) are excluded as weaker indicators, while the five retained items all have high entropy (1.77–2.04 bits) and span the evaluative, normative, and perceptual dimensions of the construct. Because the items use varying scale widths (4–7 categories), PCA on the first component is the most appropriate aggregation method, extracting the dominant attitudinal factor and binning it into 5 quantile categories for the bridge model."
   },
   {
-    "construct_name": "migration_policy_attitudes",
+    "construct_name": "perceived_costs_benefits_mexican_emigration",
     "strategy": "aggregate",
     "selected_qids": [
-      "p55",
-      "p59",
-      "p65",
-      "p67_1"
+      "p31",
+      "p36",
+      "p38"
     ],
-    "aggregation_method": "pca_first_component",
-    "justification": "Migration policy attitudes encompass preferences across distinct policy domains (border control, regularization, integration, rights), requiring aggregation to represent the full construct. p55 (H=1.76), p59 (H=2.27), p65 (H=1.91), and p67_1 (H=1.72) are selected as the highest-entropy items with clear policy-preference content, while p34 (H=0.93) and p35_1 (H=1.27) are excluded for low entropy indicating skewed, less informative distributions, and p58 (H=1.11) is excluded for similar reasons. PCA first component handles the mixed scale lengths (5–8 categories) and extracts the primary restrictive-versus-permissive policy attitude dimension that underlies the item cluster."
+    "aggregation_method": "mean_score",
+    "justification": "The open-ended items p29a and p30aa_1, while high in entropy, are nominally coded categorical responses to free-text questions whose categories are not inherently ordered, making them unsuitable for ordinal aggregation or mean-scoring; p32_1 has low entropy (1.16 bits) and captures only job quality. The three retained items—perceived discrimination against Mexicans in the US, opinions on outcomes of emigrants, and perceived return migration since 2008—are all ordinally scaled, cover the evaluative cost-benefit perception space, and have adequate entropy (1.38–2.04 bits). Mean-scoring these three items and binning into ≤5 ordered categories provides a tractable, ordinal composite that balances content coverage with scale compatibility for the bridge regression."
   }
 ]

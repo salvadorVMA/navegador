@@ -1,129 +1,140 @@
 [
   {
-    "construct_name": "physical_housing_quality",
+    "construct_name": "structural_housing_quality",
     "sources": [
       {
-        "citation": "Mier y Terán, A., Vázquez, I., & Ziccardi, A. (2012). Pobreza urbana, segregación residencial y mejoramiento del espacio público en la Ciudad de México. Sociologias, 14(30), 118–155.",
-        "relevance": "Discusses the material conditions of housing in Mexican urban contexts, including wall, roof, and floor quality as indicators of poverty and segregation.",
-        "key_finding": "Physical housing quality, measured through construction materials, is a key dimension of urban poverty and spatial inequality in Mexico."
+        "citation": "CONEVAL. (2018). Metodología para la medición multidimensional de la pobreza en México (3ra ed.). Consejo Nacional de Evaluación de la Política de Desarrollo Social.",
+        "relevance": "CONEVAL's multidimensional poverty methodology explicitly uses wall, roof, and floor materials as indicators of the 'quality and spaces of the dwelling' dimension of social deprivation, directly paralleling this construct.",
+        "key_finding": "Dwellings with precarious materials (dirt floors, cardboard/waste roofing, makeshift walls) are classified as deprived in the housing quality indicator, affecting roughly 12% of the Mexican population."
       },
       {
-        "citation": "CONEVAL. (2018). Metodología para la medición multidimensional de la pobreza en México (3a ed.). Consejo Nacional de Evaluación de la Política de Desarrollo Social.",
-        "relevance": "Defines housing quality and spaces as one of the six social deprivation indicators in Mexico's official multidimensional poverty measurement, operationalized through floor, wall, and roof materials.",
-        "key_finding": "Deficient construction materials in floors, walls, or roofs constitute a formal social deprivation indicator affecting millions of Mexican households."
+        "citation": "UN-Habitat. (2003). The challenge of slums: Global report on human settlements 2003. United Nations Human Settlements Programme, Earthscan Publications.",
+        "relevance": "Establishes the international framework for measuring housing adequacy, including structural durability of construction materials as a core dimension of slum/non-slum classification.",
+        "key_finding": "Structural durability of housing materials is one of five deprivation indicators used to define slum households globally, and composite material indices predict health and well-being outcomes."
+      },
+      {
+        "citation": "Mier y Terán, A., Vázquez, I., & Ziccardi, A. (2012). Pobreza urbana, segregación residencial y mejoramiento del espacio público en la Ciudad de México. Sociologias, 14(30), 118–155.",
+        "relevance": "Examines how structural housing quality in Mexican urban areas relates to spatial segregation and poverty, using material composition as a key indicator of habitability.",
+        "key_finding": "Precarious construction materials cluster spatially in peripheral urban zones, reinforcing socio-spatial segregation and limiting access to public services."
       },
       {
         "citation": "Garza, G., & Schteingart, M. (2010). Los grandes problemas de México, Vol. II: Desarrollo urbano y regional. El Colegio de México.",
-        "relevance": "Provides a comprehensive analysis of housing conditions across Mexican regions, including structural quality indicators.",
-        "key_finding": "Regional disparities in physical housing quality reflect deep structural inequalities between northern and southern Mexico."
+        "relevance": "Provides a comprehensive analysis of housing conditions in Mexico, including material quality indices as central measures of the housing deficit.",
+        "key_finding": "Mexico's qualitative housing deficit—dwellings with inadequate materials but existing structures—far exceeds the quantitative deficit, highlighting the importance of material-based quality measurement."
       },
       {
-        "citation": "UN-Habitat. (2003). The challenge of slums: Global report on human settlements. United Nations Human Settlements Programme.",
-        "relevance": "Establishes international benchmarks for adequate housing, including durability of structure (walls, roof, floor) as a core dimension of habitability.",
-        "key_finding": "Durable construction materials are one of five core indicators used globally to identify slum conditions and inadequate housing."
+        "citation": "Cattaneo, M. D., Galiani, S., Gertler, P. J., Martinez, S., & Titiunik, R. (2009). Housing, health, and happiness. American Economic Journal: Economic Policy, 1(1), 75–105.",
+        "relevance": "Evaluates Mexico's Piso Firme program replacing dirt floors with cement, directly measuring the health and well-being impacts of one structural housing material indicator.",
+        "key_finding": "Replacing dirt floors with cement floors significantly reduced parasitic infestations, diarrhea, and anemia in children, and improved adult mental health and life satisfaction."
       }
     ],
     "causal_relationships": [
       {
-        "role": "effect",
-        "related_construct": "household_income_and_poverty",
-        "measurable_in_data": true,
-        "data_source": "POB, ECO"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "health_outcomes",
+        "role": "cause",
+        "related_construct": "health outcomes (respiratory illness, parasitic infection)",
         "measurable_in_data": true,
         "data_source": "SAL"
       },
       {
         "role": "effect",
-        "related_construct": "housing_policy_and_government_programs",
+        "related_construct": "household income and poverty status",
         "measurable_in_data": true,
-        "data_source": "HAB"
+        "data_source": "POB, ECO"
       },
       {
         "role": "correlate",
-        "related_construct": "educational_attainment",
+        "related_construct": "educational attainment",
         "measurable_in_data": true,
         "data_source": "EDU"
       },
       {
-        "role": "correlate",
-        "related_construct": "indigenous_identity",
+        "role": "effect",
+        "related_construct": "indigenous identity and ethnicity",
         "measurable_in_data": true,
         "data_source": "IND"
       },
       {
-        "role": "effect",
-        "related_construct": "rural_urban_migration",
+        "role": "correlate",
+        "related_construct": "rural-urban migration patterns",
         "measurable_in_data": true,
         "data_source": "MIG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "subjective well-being and life satisfaction",
+        "measurable_in_data": true,
+        "data_source": "IDE, FAM"
       }
     ],
     "gap_justification": null,
-    "importance_rating": 4
+    "importance_rating": 5
   },
   {
     "construct_name": "basic_services_access",
     "sources": [
       {
-        "citation": "CONEVAL. (2018). Metodología para la medición multidimensional de la pobreza en México (3a ed.). Consejo Nacional de Evaluación de la Política de Desarrollo Social.",
-        "relevance": "Access to basic services (water, drainage, electricity) is one of the six social deprivation indicators in Mexico's official poverty measurement framework.",
-        "key_finding": "Lack of access to basic services in the dwelling is a formally recognized dimension of social deprivation affecting approximately 19% of the Mexican population."
+        "citation": "CONEVAL. (2018). Metodología para la medición multidimensional de la pobreza en México (3ra ed.). Consejo Nacional de Evaluación de la Política de Desarrollo Social.",
+        "relevance": "Access to basic services in the dwelling (water, drainage, electricity) constitutes one of the six social deprivation indicators in Mexico's official multidimensional poverty measurement.",
+        "key_finding": "Approximately 19.8% of the Mexican population was deprived in access to basic housing services as of 2018, with drainage and piped water being the most common deficiencies."
       },
       {
-        "citation": "Satterthwaite, D. (2003). The links between poverty and the environment in urban areas of Africa, Asia, and Latin America. The Annals of the American Academy of Political and Social Science, 590(1), 73–92.",
-        "relevance": "Examines how access to water, sanitation, and drainage in developing countries relates to health, poverty, and environmental sustainability.",
-        "key_finding": "Inadequate access to water and sanitation services is both a cause and consequence of urban poverty, with disproportionate health impacts on the poorest households."
+        "citation": "Jiménez, A., Cortobius, M., & Kjellén, M. (2014). Water, sanitation and hygiene and indigenous peoples: A review of the literature. Water International, 39(3), 277–293.",
+        "relevance": "Reviews the relationship between basic water and sanitation service access and indigenous populations, relevant to Mexico's significant indigenous housing service gaps.",
+        "key_finding": "Indigenous communities consistently face disproportionate lack of access to water and sanitation services, driven by geographic isolation, discrimination, and institutional neglect."
       },
       {
-        "citation": "Sobrino, J. (2014). Housing prices and submarkets in Mexico City: A hedonic assessment. Estudios Económicos, 29(1), 57–84.",
-        "relevance": "Analyzes how infrastructure service availability (water, electricity, drainage) affects housing values and residential sorting in Mexican cities.",
-        "key_finding": "Access to piped water and formal drainage significantly increases housing values, reflecting the capitalization of basic services into property markets."
+        "citation": "Soares, D. (2007). Acceso, abasto y control del agua en una comunidad indígena chamula en Chiapas. Un análisis a través de la perspectiva de género, ambiente y desarrollo. Región y Sociedad, 19(38), 25–50.",
+        "relevance": "Examines water access patterns in marginalized Mexican communities, showing how service delivery frequency and method shape daily life and gender dynamics.",
+        "key_finding": "Intermittent water supply forces women to dedicate significant time to water collection, reinforcing gender inequalities and limiting economic participation."
       },
       {
-        "citation": "Jiménez, A., & Pérez-Foguet, A. (2010). Challenges for water and sanitation in developing countries: The case of Mexico. Water Policy, 12(2), 270–288.",
-        "relevance": "Directly examines water and sanitation service coverage in Mexico, including disparities by region and socioeconomic status.",
-        "key_finding": "Despite significant national progress, access to water and sanitation in Mexico remains highly unequal, with rural and indigenous communities facing the greatest deficits."
+        "citation": "Boltvinik, J. (2003). Tipología de los métodos de medición de la pobreza. Los métodos combinados. Comercio Exterior, 53(5), 453–463.",
+        "relevance": "Discusses combined poverty measurement methods in Latin America that integrate basic service access indicators (water, drainage, electricity) as core components of unsatisfied basic needs (NBI).",
+        "key_finding": "The NBI approach using service access indicators captures structural poverty dimensions that income-based measures miss, making it essential for comprehensive poverty assessment in Mexico."
       }
     ],
     "causal_relationships": [
       {
         "role": "cause",
-        "related_construct": "health_outcomes_and_disease_burden",
+        "related_construct": "waterborne disease and child health outcomes",
         "measurable_in_data": true,
-        "data_source": "SAL"
+        "data_source": "SAL, NIN"
       },
       {
         "role": "effect",
-        "related_construct": "poverty_and_socioeconomic_status",
-        "measurable_in_data": true,
-        "data_source": "POB, ECO"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "environmental_quality_perceptions",
-        "measurable_in_data": true,
-        "data_source": "MED"
-      },
-      {
-        "role": "effect",
-        "related_construct": "federalism_and_municipal_governance",
+        "related_construct": "municipal governance and federalism (public investment allocation)",
         "measurable_in_data": true,
         "data_source": "FED"
       },
       {
         "role": "correlate",
-        "related_construct": "indigenous_community_marginalization",
+        "related_construct": "poverty and economic marginalization",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "effect",
+        "related_construct": "rural-urban location and migration",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "indigenous community membership",
         "measurable_in_data": true,
         "data_source": "IND"
       },
       {
         "role": "cause",
-        "related_construct": "child_development_outcomes",
+        "related_construct": "gender equity (time burden on women)",
         "measurable_in_data": true,
-        "data_source": "NIN, EDU"
+        "data_source": "GEN"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "environmental sustainability perceptions",
+        "measurable_in_data": true,
+        "data_source": "MED"
       }
     ],
     "gap_justification": null,
@@ -134,195 +145,207 @@
     "sources": [
       {
         "citation": "Filmer, D., & Pritchett, L. H. (2001). Estimating wealth effects without expenditure data—or tears: An application to educational enrollments in states of India. Demography, 38(1), 115–132.",
-        "relevance": "Pioneered the use of household asset indices as proxies for wealth in the absence of income/expenditure data, a methodology widely adopted in developing country surveys.",
-        "key_finding": "A principal-components-based asset index constructed from consumer durables is a robust proxy for long-run household wealth and predicts educational outcomes comparably to expenditure measures."
+        "relevance": "Foundational paper establishing the asset index methodology using durable goods ownership as a proxy for household wealth, widely adopted in developing country surveys including Mexico.",
+        "key_finding": "A principal-components-based asset index using household durable goods produces wealth rankings highly correlated with consumption expenditure and predicts educational enrollment as well as direct expenditure measures."
       },
       {
         "citation": "McKenzie, D. J. (2005). Measuring inequality with asset indicators. Journal of Population Economics, 18(2), 229–260.",
-        "relevance": "Evaluates the validity of asset-based wealth measures in Mexico specifically, comparing them to consumption-based measures.",
-        "key_finding": "Asset indices perform well in capturing inequality in Mexico but may underestimate inequality at the tails of the distribution compared to consumption measures."
+        "relevance": "Critically evaluates asset-based wealth indices in developing countries, including Mexico, discussing which durable goods best discriminate across the wealth distribution.",
+        "key_finding": "Asset indices perform well at distinguishing the poorest households but compress differences at the top of the distribution; combining diverse asset types (appliances, vehicles, electronics) improves discriminatory power."
+      },
+      {
+        "citation": "AMAI (Asociación Mexicana de Agencias de Inteligencia de Mercado y Opinión). (2018). Nivel Socio Económico AMAI 2018: Nota metodológica. AMAI.",
+        "relevance": "The AMAI socioeconomic classification system used extensively in Mexican market research and public opinion surveys relies heavily on household asset ownership to classify households into socioeconomic strata.",
+        "key_finding": "Ownership of specific assets (automobile, computer, internet access, number of bathrooms) are among the strongest predictors of socioeconomic level in Mexico's AMAI classification."
       },
       {
         "citation": "Vyas, S., & Kumaranayake, L. (2006). Constructing socio-economic status indices: How to use principal components analysis. Health Policy and Planning, 21(6), 459–468.",
-        "relevance": "Provides methodological guidance on constructing asset-based socioeconomic indices from survey data on household durables and technology.",
-        "key_finding": "PCA-based asset indices are reliable and valid measures of socioeconomic status when income data are unavailable, though item selection significantly affects results."
-      },
-      {
-        "citation": "INEGI. (2020). Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2020: Descripción de la base de datos. Instituto Nacional de Estadística y Geografía.",
-        "relevance": "The ENIGH includes detailed household asset inventories used as standard measures of material living standards in Mexico.",
-        "key_finding": "Ownership of appliances, vehicles, and ICT equipment varies dramatically across Mexican income deciles, making asset inventories effective stratifiers of socioeconomic position."
+        "relevance": "Provides methodological guidance on constructing asset-based socioeconomic indices from binary durable goods indicators, directly applicable to the items in this construct.",
+        "key_finding": "PCA-based asset indices are robust proxies for socioeconomic status when consumption data are unavailable, though item selection and urban-rural context significantly affect index validity."
       }
     ],
     "causal_relationships": [
       {
         "role": "effect",
-        "related_construct": "household_income_and_employment",
+        "related_construct": "household income and employment status",
         "measurable_in_data": true,
         "data_source": "ECO, POB"
       },
       {
         "role": "correlate",
-        "related_construct": "educational_attainment",
+        "related_construct": "educational attainment",
         "measurable_in_data": true,
         "data_source": "EDU"
       },
       {
         "role": "cause",
-        "related_construct": "digital_inclusion_and_information_access",
+        "related_construct": "access to information and digital inclusion",
         "measurable_in_data": true,
         "data_source": "SOC, CIE"
       },
       {
-        "role": "correlate",
-        "related_construct": "gender_inequality_in_household_resources",
-        "measurable_in_data": true,
-        "data_source": "GEN"
-      },
-      {
         "role": "moderator",
-        "related_construct": "globalization_attitudes",
+        "related_construct": "political participation and democratic engagement",
         "measurable_in_data": true,
-        "data_source": "GLO"
+        "data_source": "CUL"
       },
       {
         "role": "correlate",
-        "related_construct": "family_structure_and_size",
+        "related_construct": "health service utilization",
         "measurable_in_data": true,
-        "data_source": "FAM"
+        "data_source": "SAL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "children's educational outcomes",
+        "measurable_in_data": true,
+        "data_source": "NIN, EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "energy consumption and environmental impact",
+        "measurable_in_data": true,
+        "data_source": "MED"
       }
     ],
     "gap_justification": null,
-    "importance_rating": 4
+    "importance_rating": 5
   },
   {
     "construct_name": "housing_tenure_security",
     "sources": [
       {
-        "citation": "Durand-Lasserve, A., & Royston, L. (2002). Holding their ground: Secure land tenure for the urban poor in developing countries. Earthscan Publications.",
-        "relevance": "Provides a comprehensive framework for understanding tenure security in developing countries, including formal ownership, informal arrangements, and vulnerability to eviction.",
-        "key_finding": "Secure tenure is a precondition for household investment in housing improvement and a critical determinant of poverty reduction in urban areas of developing countries."
+        "citation": "Durand-Lasserve, A., & Selod, H. (2009). The formalization of urban land tenure in developing countries. In S. V. Lall, M. Freire, B. Yuen, R. Rajack, & J.-J. Helluin (Eds.), Urban land markets: Improving land management for successful urbanization (pp. 101–132). Springer.",
+        "relevance": "Analyzes the relationship between formal tenure security and housing investment in developing countries, directly relevant to Mexico's mix of formal and informal tenure arrangements.",
+        "key_finding": "Formal tenure security significantly increases household investment in housing improvements, but the magnitude depends on the credibility of enforcement and local institutional context."
       },
       {
         "citation": "Monkkonen, P. (2011). The housing transition in Mexico: Expanding access to housing finance. Urban Affairs Review, 47(5), 672–695.",
-        "relevance": "Analyzes Mexico's housing finance system, including INFONAVIT and FOVISSSTE, and how tenure formalization through mortgage access has shaped housing markets.",
-        "key_finding": "Mexico's expansion of formal housing finance dramatically increased homeownership but created new problems of peripheral, poorly located housing developments."
+        "relevance": "Examines Mexico's housing finance system (INFONAVIT, FOVISSSTE) and how institutional acquisition channels shape tenure patterns, directly relevant to the financing institution question (p18).",
+        "key_finding": "Mexico's expansion of formal housing finance through INFONAVIT dramatically increased homeownership rates but produced peripheral, low-quality developments disconnected from employment centers."
       },
       {
-        "citation": "Salazar Cruz, C. E. (2012). Los ejidatarios en la periferia urbana: Tierra, vivienda y derechos de propiedad. Estudios Demográficos y Urbanos, 27(3), 517–551.",
-        "relevance": "Examines the intersection of ejidal land tenure and urban housing in Mexico, highlighting how informal tenure arrangements affect housing security.",
-        "key_finding": "Informal land tenure on former ejidal lands creates persistent insecurity for millions of Mexican households despite decades of regularization programs."
+        "citation": "Salazar Cruz, C. E. (2012). Los ejidatarios en el control de la regularización. In A. Azuela (Ed.), La ciudad y sus reglas: Sobre la huella del derecho en el orden urbano. UNAM/PAOT.",
+        "relevance": "Examines informal land tenure and regularization processes in Mexican ejidal (communal) lands, relevant to understanding the spectrum of tenure security captured by this construct.",
+        "key_finding": "Informal tenure on ejidal land creates a continuum of security rather than a binary formal/informal distinction, with perceived security often mattering more than legal title for housing investment decisions."
       },
       {
         "citation": "De Soto, H. (2000). The mystery of capital: Why capitalism triumphs in the West and fails everywhere else. Basic Books.",
-        "relevance": "Influential theoretical framework arguing that formal property rights transform housing from mere shelter into productive capital, directly relevant to tenure formalization debates in Mexico.",
-        "key_finding": "Formalization of property rights enables the poor to leverage their housing assets for credit and economic advancement, though empirical evidence in Mexico has been mixed."
+        "relevance": "Influential theoretical framework arguing that formal property rights (tenure security) unlock capital for the poor, widely debated in the Mexican housing policy context.",
+        "key_finding": "Formalization of property rights transforms 'dead capital' in informal housing into assets that can be leveraged for credit, though empirical evidence in Mexico has been mixed."
       }
     ],
     "causal_relationships": [
       {
         "role": "cause",
-        "related_construct": "household_investment_and_wealth_accumulation",
+        "related_construct": "housing investment and structural improvement",
+        "measurable_in_data": true,
+        "data_source": "HAB"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "access to formal credit and financial inclusion",
         "measurable_in_data": true,
         "data_source": "ECO, POB"
       },
       {
         "role": "effect",
-        "related_construct": "employment_formality_and_social_security",
+        "related_construct": "employment sector (formal vs. informal)",
         "measurable_in_data": true,
         "data_source": "ECO"
       },
       {
+        "role": "cause",
+        "related_construct": "subjective well-being and psychological security",
+        "measurable_in_data": true,
+        "data_source": "IDE, FAM"
+      },
+      {
         "role": "correlate",
-        "related_construct": "migration_patterns",
+        "related_construct": "gender (female-headed household tenure gaps)",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "effect",
+        "related_construct": "migration status and settlement patterns",
         "measurable_in_data": true,
         "data_source": "MIG"
       },
       {
-        "role": "correlate",
-        "related_construct": "gender_and_property_rights",
+        "role": "moderator",
+        "related_construct": "trust in government institutions",
         "measurable_in_data": true,
-        "data_source": "GEN, DER"
-      },
-      {
-        "role": "effect",
-        "related_construct": "housing_policy_and_institutional_trust",
-        "measurable_in_data": true,
-        "data_source": "HAB, CUL"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "indigenous_land_rights",
-        "measurable_in_data": true,
-        "data_source": "IND"
-      },
-      {
-        "role": "cause",
-        "related_construct": "family_stability_and_intergenerational_transfers",
-        "measurable_in_data": true,
-        "data_source": "FAM"
+        "data_source": "CUL, FED"
       }
     ],
     "gap_justification": null,
     "importance_rating": 4
   },
   {
-    "construct_name": "housing_policy_efficacy_beliefs",
+    "construct_name": "housing_problem_perception",
     "sources": [
       {
-        "citation": "Ziccardi, A. (2015). Cómo viven los mexicanos: Análisis regional de las condiciones de habitabilidad de la vivienda. Instituto de Investigaciones Jurídicas, UNAM.",
-        "relevance": "Directly examines Mexican citizens' perceptions of housing conditions and evaluations of housing policy, providing a framework for understanding subjective assessments of habitability.",
-        "key_finding": "Citizens' evaluations of housing quality and policy effectiveness vary significantly by region and socioeconomic status, revealing a gap between objective conditions and subjective assessments."
+        "citation": "Ziccardi, A. (2015). Cómo viven los mexicanos: Análisis regional de las condiciones de habitabilidad de la vivienda. UNAM, Instituto de Investigaciones Jurídicas.",
+        "relevance": "Directly analyzes Mexican perceptions of housing conditions and habitability, including subjective evaluations of dwelling quality and satisfaction, closely matching this construct's items.",
+        "key_finding": "Subjective housing satisfaction in Mexico diverges significantly from objective indicators, with many residents of objectively precarious dwellings reporting acceptable satisfaction levels, suggesting adaptation effects."
       },
       {
-        "citation": "Coulomb, R., & Schteingart, M. (2006). Entre el Estado y el mercado: La vivienda en el México de hoy. Universidad Autónoma Metropolitana / Miguel Ángel Porrúa.",
-        "relevance": "Analyzes the evolution of Mexican housing policy and public perceptions of state versus market roles in housing provision.",
-        "key_finding": "The shift from state-led to market-oriented housing policy in Mexico generated widespread dissatisfaction, particularly among lower-income households who perceived declining institutional responsiveness."
+        "citation": "Adriaanse, C. C. M. (2007). Measuring residential satisfaction: A residential environmental satisfaction scale (RESS). Journal of Housing and the Built Environment, 22(3), 287–304.",
+        "relevance": "Develops a validated scale for measuring residential satisfaction that includes both dwelling-specific and neighborhood-level items, providing theoretical grounding for combining satisfaction and societal-level perception items.",
+        "key_finding": "Residential satisfaction is a multidimensional construct where dwelling characteristics, neighborhood social environment, and perceived institutional responsiveness form distinct but correlated factors."
       },
       {
-        "citation": "Moreno, A. (2009). La decisión electoral: Votantes, partidos y democracia en México. Miguel Ángel Porrúa.",
-        "relevance": "Provides a broader framework for understanding how Mexican citizens form evaluative beliefs about public policy, including the role of institutional trust and political culture.",
-        "key_finding": "Mexican citizens' policy efficacy beliefs are shaped by partisan identification, media exposure, and direct experience with government programs, with housing being a salient policy domain."
+        "citation": "Ibarra Salazar, J., & Sotres Cervantes, L. (2009). Determinantes de la satisfacción con la vivienda en México. Estudios Económicos, 24(1), 51–78.",
+        "relevance": "Empirically models determinants of housing satisfaction in Mexico using survey data, examining how objective conditions translate into subjective evaluations.",
+        "key_finding": "Housing satisfaction in Mexico is significantly predicted by dwelling size, construction materials, and service access, but sociodemographic characteristics (age, education) moderate these relationships."
       }
     ],
     "causal_relationships": [
       {
         "role": "effect",
-        "related_construct": "institutional_trust_and_political_culture",
+        "related_construct": "objective housing quality (structural materials, services)",
         "measurable_in_data": true,
-        "data_source": "CUL, COR"
+        "data_source": "HAB"
       },
       {
         "role": "correlate",
-        "related_construct": "perceived_corruption",
+        "related_construct": "trust in government and institutional performance evaluation",
         "measurable_in_data": true,
-        "data_source": "COR"
-      },
-      {
-        "role": "effect",
-        "related_construct": "socioeconomic_status_and_poverty",
-        "measurable_in_data": true,
-        "data_source": "POB, ECO"
+        "data_source": "CUL, FED, COR"
       },
       {
         "role": "correlate",
-        "related_construct": "human_rights_perceptions",
+        "related_construct": "perception of poverty and inequality",
         "measurable_in_data": true,
-        "data_source": "DER"
+        "data_source": "POB"
+      },
+      {
+        "role": "cause",
+        "related_construct": "demand for government housing policy intervention",
+        "measurable_in_data": true,
+        "data_source": "CUL, FED"
       },
       {
         "role": "moderator",
-        "related_construct": "federalism_and_decentralization_attitudes",
+        "related_construct": "political ideology and party identification",
         "measurable_in_data": true,
-        "data_source": "FED"
+        "data_source": "CUL"
       },
       {
         "role": "correlate",
-        "related_construct": "public_security_perceptions",
+        "related_construct": "perception of public security in neighborhood",
         "measurable_in_data": true,
         "data_source": "SEG"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "human rights perceptions (right to adequate housing)",
+        "measurable_in_data": true,
+        "data_source": "DER"
       }
     ],
-    "gap_justification": "While there is substantial literature on housing policy in Mexico from an institutional or economic perspective, the specific construct of citizens' normative and evaluative beliefs about housing policy efficacy—combining perceptions of housing quality, preferred solutions, and institutional responsibility—is underexplored as a measurable attitudinal construct. Most studies treat housing satisfaction or policy evaluation as dependent variables rather than as a coherent belief system. This construct fills an important gap by capturing the demand side of housing policy: how citizens perceive the adequacy of responses to housing problems and who they hold responsible. In the Mexican context, where housing policy has undergone dramatic shifts from state provision to market-based models, understanding these beliefs is essential for evaluating democratic accountability and policy legitimacy. Furthermore, this construct enables cross-domain analysis linking housing perceptions to broader patterns of institutional trust, corruption perceptions, and political participation.",
-    "importance_rating": 5
+    "gap_justification": "While objective housing measurement is well-established in Mexico, the subjective perception of housing problems at a societal level—including attribution of responsibility and preferred solutions—is understudied in the academic literature. Most studies focus on individual residential satisfaction rather than societal-level problem framing. This construct fills an important gap by capturing how Mexican citizens conceptualize housing as a public policy issue, who they hold accountable, and what solutions they prioritize. Understanding these perceptions is critical for analyzing the demand side of housing policy and how housing concerns interact with broader political attitudes, institutional trust, and social policy preferences. The inclusion of both personal satisfaction (p46_1) and societal evaluation (p47) items allows researchers to examine the gap between private experience and public opinion, a distinction central to understanding Mexican political behavior around housing.",
+    "importance_rating": 4
   }
 ]

@@ -1,78 +1,65 @@
 [
   {
-    "name": "federalism_preference",
-    "description": "Captures citizens' normative preferences for how political and fiscal authority should be distributed across federal, state, and municipal levels of government, including preferences for centralized versus decentralized decision-making.",
+    "name": "perceived_representativeness",
+    "description": "Measures the degree to which citizens feel that various levels and types of elected officials (municipal, state, federal) represent the interests of people like themselves. Captures a multi-level assessment of political representation.",
     "question_cluster": [
-      "p22",
-      "p24",
-      "p25",
-      "p36",
-      "p38",
-      "p58",
-      "p60"
+      "p12_1|FED",
+      "p12_2|FED",
+      "p12_3|FED",
+      "p12_4|FED",
+      "p12_5|FED",
+      "p12_6|FED"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "institutional_trust_and_representativeness",
-    "description": "Measures the degree to which citizens trust and feel represented by key political institutions and actors across different levels of government, including parties, legislators, executives, and the judiciary.",
+    "name": "fiscal_and_service_federalism_preferences",
+    "description": "Measures citizens' preferences regarding the distribution of fiscal resources, administrative responsibilities, and service delivery across government levels, reflecting attitudes toward decentralization versus centralization of governance functions.",
     "question_cluster": [
-      "p12_1",
-      "p12_2",
-      "p12_3",
-      "p12_4",
-      "p12_5",
-      "p12_6",
-      "p13_1",
-      "p51_1",
-      "p54",
-      "p55",
-      "p56"
+      "p31_1|FED",
+      "p32_1|FED",
+      "p33|FED",
+      "p34_1|FED",
+      "p36|FED",
+      "p37_1|FED",
+      "p38|FED",
+      "p60|FED"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "subnational_government_performance",
-    "description": "Assesses citizens' evaluations of how well municipal and state governments perform their functions, including service delivery, responsiveness, law compliance, and adequacy relative to taxes paid.",
+    "name": "legal_uniformity_preference",
+    "description": "Measures citizens' preference for a single national law versus state-specific laws across multiple policy domains (crime, corruption, information access, security, environment, taxation), capturing the normative dimension of legal centralization.",
     "question_cluster": [
-      "p10",
-      "p11",
-      "p14_1",
-      "p15_1",
-      "p16",
-      "p17",
-      "p18_1",
-      "p37_1",
-      "p44",
-      "p47"
+      "p53_1|FED",
+      "p53_2|FED",
+      "p53_3|FED",
+      "p53_4|FED",
+      "p53_5|FED",
+      "p53_6|FED"
     ],
     "requires_aggregation": true
   },
   {
     "name": "security_governance_preferences",
-    "description": "Measures citizens' preferences and evaluations regarding which level of government should be responsible for public security, including police coordination, emergency response, and the perceived effectiveness of intergovernmental security cooperation.",
+    "description": "Measures citizens' preferences and evaluations regarding which government level should be responsible for public security, including assessments of intergovernmental coordination, police organization, and emergency response authority.",
     "question_cluster": [
-      "p45",
-      "p46",
-      "p48",
-      "p49",
-      "p50_1",
-      "p53_1",
-      "p53_4"
+      "p45|FED",
+      "p46|FED",
+      "p47|FED",
+      "p48|FED",
+      "p49|FED"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "political_interest_and_efficacy",
-    "description": "Captures respondents' subjective engagement with politics, including their interest in political affairs, perceived relevance of politics to daily life, and economic and political outlook, reflecting broader orientations toward the political system.",
+    "name": "political_interest_and_engagement",
+    "description": "Measures the extent to which citizens are attentive to and engaged with politics, including frequency of news consumption, self-reported interest in politics, perceived relevance of politics to daily life, and the tendency to disengage when personal circumstances are satisfactory.",
     "question_cluster": [
-      "p1",
-      "p3",
-      "p4",
-      "p5",
-      "p6",
-      "p7",
-      "p8"
+      "p5|FED",
+      "p6|FED",
+      "p7|FED",
+      "p8|FED"
     ],
     "requires_aggregation": true
   }

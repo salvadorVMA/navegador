@@ -10,16 +10,32 @@
       "p7|SAL"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Functional health status is inherently multi-dimensional, spanning physical capacity (p2, p3), activity limitation (p4, p5), and pain interference (p7), so no single item captures the full construct. PCA is preferred over a simple sum because the items use heterogeneous response scales (binary yes/no, 4-point, and 7-point), and the first principal component will weight each item by its shared variance rather than treating all scales as equivalent. Binning the first PC into 5 quantiles yields an ordinal variable with adequate spread while remaining within the ≤15 category constraint."
+    "justification": "Functional health status is inherently multi-dimensional, spanning physical capacity (p2, p3), activity limitation (p4, p5), and pain interference (p7), so no single item captures the full construct. Although scales are not perfectly uniform (yes/no vs. 0-10), PCA on the first component accommodates mixed ordinal inputs and extracts the dominant shared variance reflecting overall functional impairment. Binning the first PC into 5 quantiles yields an ordinal variable with adequate spread and preserves the composite nature required for a valid bridge variable."
+  },
+  {
+    "construct_name": "subjective_wellbeing",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p37|SAL",
+      "p38|SAL",
+      "p39|SAL",
+      "p8_1|SAL"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "Subjective wellbeing is a multi-faceted construct best captured by combining quality of life (p37), life satisfaction (p38), enjoyment of life (p39), and emotional calm (p8_1), all of which use comparable ordinal Likert-style scales and tap complementary hedonic and eudaimonic dimensions. p40 (sexual life satisfaction) and p41 (visual figure scale) are excluded because p40 has high missingness risk in older adult surveys and p41 uses a categorically different visual/pictorial format that would distort a mean score. Averaging the four compatible items and binning to 5 categories reduces item-specific noise and produces a reliable, content-valid wellbeing index."
   },
   {
     "construct_name": "healthcare_access_and_utilization",
-    "strategy": "single_max_entropy",
+    "strategy": "aggregate",
     "selected_qids": [
-      "p24|SAL"
+      "p9|SAL",
+      "p13|SAL",
+      "p15|SAL",
+      "p17|SAL",
+      "p19|SAL"
     ],
-    "aggregation_method": null,
-    "justification": "The 13 available items span fundamentally incompatible measurement levels—binary flags, nominal categories, and ordinal scales—making meaningful aggregation inadvisable without strong theoretical justification. p24 (preferred medical service destination) has the highest Shannon entropy (H=2.41) among all items and captures a revealed-preference dimension of access that integrates both availability and utilization intent in a single 14-category variable, which is within the ≤15 limit. It also varies more across SES strata than utilization-conditional items (p13–p21), making it a stronger bridge predictor."
+    "aggregation_method": "pca_first_component",
+    "justification": "Healthcare access and utilization is a composite construct spanning insurance coverage (p9), help-seeking behavior (p13), geographic accessibility (p15), treatment receipt (p17), and hospitalization (p19); no single item captures both access and utilization simultaneously. The scales are heterogeneous (binary, categorical, ordinal), making PCA the appropriate aggregation method as it extracts the dominant latent dimension—overall engagement with the healthcare system—without assuming scale equivalence. Items p10 and p24 are excluded because they capture institution type/preference rather than access or utilization intensity, and p14 is redundant with p13 in this reduced set; the five selected items span the access-to-utilization continuum most directly."
   },
   {
     "construct_name": "financial_burden_of_healthcare",
@@ -28,28 +44,18 @@
       "p23_1|SAL"
     ],
     "aggregation_method": null,
-    "justification": "With only two items available, p23_1 (perceived negative financial impact of medical expenses, H=2.49) is the clear choice because it directly measures the subjective financial burden dimension that is most comparable across surveys, whereas p22 (out-of-pocket payment, H=0.92) is a binary precondition rather than a burden measure. The ordinal 8-point scale of p23_1 already provides sufficient granularity for the bridge model within the ≤15 category constraint. Combining two items with such different conceptual roles (occurrence vs. perceived burden) would conflate distinct constructs."
+    "justification": "p23_1 has the highest Shannon entropy (H=2.49) among the three items and directly measures the subjective financial strain of medical expenses on family finances via an ordinal agreement scale, which is the gold-standard operationalization of financial burden in health economics research. p22 (binary out-of-pocket payment) captures only whether a payment occurred rather than its burden, and p48_3 (caregiving impact) is a narrower, context-specific item with very low entropy (H=0.82) suggesting limited variance. A single high-entropy, face-valid item is sufficient here given the scales are incompatible for meaningful aggregation and p23_1 alone captures the core construct."
   },
   {
-    "construct_name": "subjective_wellbeing_and_life_quality",
+    "construct_name": "health_risk_behaviors",
     "strategy": "aggregate",
     "selected_qids": [
-      "p37|SAL",
-      "p38|SAL",
-      "p39|SAL",
-      "p8_1|SAL",
-      "p36_1|SAL"
+      "p28|SAL",
+      "p33|SAL",
+      "p34|SAL",
+      "p35|SAL"
     ],
-    "aggregation_method": "mean_score",
-    "justification": "Subjective wellbeing is a latent construct best captured by multiple correlated indicators; using only one item would introduce substantial measurement error given the construct's importance rating of 5/5. Items p37 (quality of life), p38 (life satisfaction), p39 (enjoyment of life), p8_1 (calm/peaceful feelings), and p36_1 (excessive worries, reverse-coded) all use 6–7 point ordinal scales that are sufficiently compatible for averaging, and together they cover both hedonic and eudaimonic wellbeing facets. p40 (sexual life satisfaction) and p41 (visual figure scale) are excluded because they introduce domain-specific variance and a non-Likert format respectively; the mean of the five retained items is then binned into 5 ordered categories."
-  },
-  {
-    "construct_name": "health_behaviors_and_lifestyle",
-    "strategy": "single_max_entropy",
-    "selected_qids": [
-      "p34|SAL"
-    ],
-    "aggregation_method": null,
-    "justification": "The 12 items span entirely incompatible measurement domains—diet, smoking history, smoking intensity, and alcohol use—as well as incompatible scales (rankings, ordinal frequencies, raw counts, binary flags), making any composite score theoretically incoherent. p34 (frequency of alcohol consumption in the past 12 months) has the highest Shannon entropy (H=3.09) and its 15-category ordinal scale sits exactly at the model's upper limit, providing maximum discriminatory power across the SES distribution. Alcohol consumption frequency is also among the most socioeconomically patterned health behaviors, making it the strongest single bridge predictor for this construct."
+    "aggregation_method": "pca_first_component",
+    "justification": "Health risk behaviors span two distinct behavioral domains—tobacco use and alcohol consumption—and a composite score across both domains better reflects overall risk behavior burden than any single item. Items p30, p31, and p32 are excluded because they are conditional on active smoking (creating structural missingness for non-smokers) and would bias aggregation; instead, lifetime smoking history (p28) serves as the tobacco indicator alongside the three alcohol items (p33, p34, p35) which together capture initiation, frequency, and intensity. PCA is preferred over sum/mean scoring because the items have heterogeneous scales (binary, ordinal, numeric) and the first component will capture the shared variance in risk behavior propensity without requiring scale equivalence."
   }
 ]

@@ -91,11 +91,24 @@ Data Layer (ChromaDB embeddings, JSON files)
 - **Format**: JSON dictionary mapping questions to aggregated responses
 - **Processing**: ChromaDB embeddings for semantic search
 
-## Current Branch
+## Active Branches
 
-`feature/bivariate-analysis` (branched from `Claude1`) — active development branch.
+### `feature/bivariate-analysis` (branched from `Claude1`)
+
+Primary development branch for los_mex SES bridge work, construct-level analysis, and all core modules.
 
 The `worktree-knowledge-graph` worktree has been **merged** into this branch (commit `0f1fb30`). All knowledge-graph and expanded SES-bridge work now lives in the main workspace.
+
+### `wvs` (branched from `feature/bivariate-analysis`)
+
+World Values Survey integration branch. Extends the SES bridge to WVS data, adding time (7 waves, 1981-2022) and geography (66 countries, 8 cultural zones) dimensions. Key additions:
+- `data/wvs/` — WVS metadata files (variable equivalences, country codes, questionnaires)
+- `docs/WVS_INTEGRATION_PLAN.md` — Full integration plan with γ-surface formulation
+- WVS data zips (Wave 7 + Time Series) stored locally but gitignored (138MB)
+- **γ-surface concept**: γ(variable_pair, country, wave, SES_reference) — the bridge "travels" across contexts
+- **Anchor questions**: Shared questions between WVS and los_mex for bridge validation
+- **SES harmonization**: WVS Q260/Q262/Q275/G_TOWNSIZE → los_mex sexo/edad/escol/Tam_loc
+- **Mexico in all 7 WVS waves**: 11,714 total respondents (1,741 in Wave 7, fielded 2018)
 
 ### Key Modules Added / Significantly Changed
 
@@ -157,6 +170,13 @@ python -m pytest tests/unit/test_ses_regression.py tests/unit/test_bridge_estima
 - **γ detects monotonic relationships only**: Goodman-Kruskal γ = (C−D)/(C+D) based on concordant/discordant pairs. Cannot detect U-shaped or other non-monotonic SES-attitude relationships.
 - **Normalized MI added**: `normalized_mutual_information(joint_table)` computes NMI ∈ [0,1] from the same joint table γ uses — zero additional model fitting. Detects any statistical dependence regardless of shape. Pairs with |γ| ≈ 0 but NMI >> 0 reveal non-monotonic SES structuring (U-shaped, crossover patterns). Sweep log flags these with `NM!`.
 
+### Construct-Level Analysis Pipeline (as of 2026-03-10)
+
+- **Semantic Variable Selection v4**: LLM-assisted 3-step pipeline (construct clusters → research review → variable strategy) for all 24 domains. Outputs `semantic_variable_selection_v4.json` with construct clusters, reverse-coded items, formative indices, gateway items.
+- **Construct Variable Builder** (`scripts/debug/build_construct_variables.py`): Reads v4 SVS and creates `agg_{construct_name}` columns in each survey DataFrame, scaled to [1,10]. Handles: reflective scales (mean of items with reverse coding), tier 2 constructs (single best item by item-total correlation), formative indices (additive count of gateway items). Sentinel filtering before aggregation.
+- **102 constructs built** across 24 domains: 16 good (α≥0.7), 49 questionable (α 0.5-0.7), 20 tier3_caveat (α<0.5), 12 single_item_tier2, 5 formative_index.
+- **Construct Validation** (`scripts/debug/validate_constructs.py`, `optimize_constructs.py`): Structural audit, alpha fixes, optimization log.
+
 ### Sweep Scripts
 
 | Script | Purpose |
@@ -164,17 +184,19 @@ python -m pytest tests/unit/test_ses_regression.py tests/unit/test_bridge_estima
 | `scripts/debug/sweep_cross_domain.py` | Original 276-pair baseline sweep |
 | `scripts/debug/sweep_bridge_comparison.py` | All 6 methods on 276 pairs |
 | `scripts/debug/sweep_dr_highci.py` | v3 DR re-sweep with high bootstrap CIs, per-pair timeout, atomic checkpointing |
+| `scripts/debug/sweep_construct_dr.py` | **Construct-level DR sweep**: 4979 cross-domain construct pairs, atomic checkpointing, resume-friendly |
 | `scripts/debug/test_dr_diagnostic.py` | Per-step SIGALRM diagnostic for DR hang isolation |
 
 ### Sweep Results
 
-| Version | SES vars | n_sim | n_bootstrap | Median CI_w | % excl zero | Notes |
-|---------|----------|-------|-------------|-------------|-------------|-------|
-| v1 | 7 vars | 500 | 10 | ~0.5 | — | Baseline |
-| v2 | 10 vars | 500 | 200 | 1.351 | 0% | Row retention crisis (4.8%) |
-| v3 | 4 vars (sexo,edad,escol,Tam_loc) | 2000 | 200 | 0.121 | 2.5% (38/1531) | Optimal config, NMI added |
+| Version | Level | SES vars | n_sim | n_bootstrap | Median CI_w | % excl zero | Notes |
+|---------|-------|----------|-------|-------------|-------------|-------------|-------|
+| v1 | variable | 7 vars | 500 | 10 | ~0.5 | — | Baseline |
+| v2 | variable | 10 vars | 500 | 200 | 1.351 | 0% | Row retention crisis (4.8%) |
+| v3 | variable | 4 vars (sexo,edad,escol,Tam_loc) | 2000 | 200 | 0.121 | 2.5% (38/1531) | Optimal config, NMI added |
+| v4 | **construct** | 4 vars (sexo,edad,escol,Tam_loc) | 2000 | 200 | 0.024 | 7.2% (360/4979) | Construct-level aggregation |
 
-### V3 Sweep Findings (2026-03-08)
+### V3 Sweep Findings (2026-03-08, variable-level)
 
 - **1531 pairs completed** in 6.6h, 100% success rate
 - **Median CI width 0.121** — 91% narrower than v2 (1.351). Mean 0.167, P10=0.048, P90=0.348.
@@ -183,6 +205,17 @@ python -m pytest tests/unit/test_ses_regression.py tests/unit/test_bridge_estima
 - **NMI universally low** (max 0.037, median 0.0003): no hidden non-monotonic SES patterns. Where SES creates dependence, it's monotonic. Only 1 pair flagged as non-monotonic (|γ| < 0.05 but NMI > 0.02).
 - **Top pair**: digital/cultural capital (EDU) × media consumption (γ = +0.576) — higher SES pushes both up.
 - **Conclusion**: The SES bridge is well-calibrated. It detects signal where it genuinely exists, and the signal is overwhelmingly monotonic. The estimator is optimal given n ≈ 1200 sampling constraints.
+
+### V4 Construct Sweep Findings (2026-03-10, construct-level)
+
+- **4979 pairs completed** in 11.1h, 0 errors (100% success rate).
+- **Median CI width 0.024** — 5x narrower than v3 variable-level (0.121). Construct aggregation dramatically reduces noise.
+- **360 pairs (7.2%) have CIs excluding zero** — 3x more discoveries than variable-level sweep.
+- **Median |γ| = 0.004**, mean |γ| = 0.008, max |γ| = 0.133.
+- **Top hubs**: HAB (housing quality/services) and REL (religiosity) are the most SES-stratified domains.
+- **Top pair**: HAB|structural_housing_quality × REL|personal_religiosity (γ=+0.133) — higher SES → better housing AND more religious.
+- **Sign patterns**: HAB × REL positive (housing+religiosity co-vary), HAB × SEG negative (better housing → less crime exposure), ECO × REL negative (employment precarity → less religiosity).
+- **Network visualization**: 60 constructs with significant links, 140 strongly significant + 220 significant + 125 near-significant edges. Saved as `data/results/construct_network.png`.
 
 ### Earlier Work (2026-02-26 to 2026-03-02)
 
@@ -238,3 +271,4 @@ See `docs/` folder for detailed guides:
 - `META_PROMPTING_GUIDE.md` - Prompt optimization
 - `SANDBOX_README.md` - Docker sandbox usage
 - `SECURITY_TOOLS.md` - Security tools and scanning procedures
+- `WVS_INTEGRATION_PLAN.md` - World Values Survey integration plan (branch `wvs`)

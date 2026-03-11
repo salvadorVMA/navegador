@@ -1,71 +1,62 @@
 [
   {
     "name": "cosmopolitan_identity",
-    "description": "Measures the degree to which respondents identify as citizens of the world rather than exclusively as nationals, capturing openness to global belonging over narrow nationalism.",
+    "description": "Measures the degree to which respondents identify as global citizens rather than exclusively as nationals, capturing openness to a supranational self-concept versus a Mexico-first orientation.",
     "question_cluster": [
-      "p19_1",
-      "p20",
-      "p15",
-      "p18_1",
-      "p55"
+      "p19_1|GLO",
+      "p20|GLO",
+      "p15|GLO",
+      "p11|GLO"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "transnational_connectedness",
-    "description": "Captures the extent of respondents' personal ties and direct experiences crossing national borders, including travel, residence abroad, relationships with foreigners, and communication with people living abroad.",
+    "name": "transnational_exposure",
+    "description": "Measures the extent of respondents' direct personal experience with the world beyond Mexico, including international travel, residence abroad, language skills, and close ties to people living in other countries.",
     "question_cluster": [
-      "p2",
-      "p3",
-      "p4",
-      "p6a_1",
-      "p7",
-      "p8",
-      "p8_2"
+      "p2|GLO",
+      "p3|GLO",
+      "p4|GLO",
+      "p8|GLO",
+      "p8_2|GLO",
+      "p7|GLO"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "cultural_openness",
-    "description": "Measures receptivity to foreign cultures, media, and consumption practices, reflecting how willing respondents are to engage with non-Mexican cultural products and ideas in everyday life.",
+    "name": "cultural_openness_to_foreign_influence",
+    "description": "Measures receptivity to foreign cultural content and practices in daily life, including consumption of foreign media, music, food, and attitudes toward the diffusion of foreign ideas and customs in Mexico.",
     "question_cluster": [
-      "p11",
-      "p11_2",
-      "p22_1",
-      "p22_6a_1",
-      "p23",
-      "p24_1",
-      "p30"
+      "p22_1|GLO",
+      "p23|GLO",
+      "p24_1|GLO",
+      "p30|GLO",
+      "p22_6a_1|GLO"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "national_cultural_pride",
-    "description": "Assesses the strength of pride respondents feel toward specific Mexican cultural symbols, traditions, and social characteristics, distinguishing dimensions of national identity rooted in culture.",
+    "name": "economic_globalization_attitudes",
+    "description": "Measures respondents' evaluations of economic integration with the world, including opinions on free trade agreements, foreign investment, and the US-Mexico trade relationship.",
     "question_cluster": [
-      "p17_1",
-      "p17_2",
-      "p17_3",
-      "p17_4",
-      "p17_5",
-      "p17_6",
-      "p65a_1",
-      "p66a_1"
+      "p46_1|GLO",
+      "p47|GLO",
+      "p48|GLO",
+      "p49_1|GLO",
+      "p31_1|GLO"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "global_governance_support",
-    "description": "Measures the degree to which respondents support international institutions, multilateral cooperation, and supranational authority in addressing global problems, trade, human rights, and security.",
+    "name": "international_institutional_engagement",
+    "description": "Measures the degree to which respondents support Mexico's participation in and deference to international institutions and multilateral governance, including the UN, NGOs, and international human rights bodies.",
     "question_cluster": [
-      "p48",
-      "p52_1",
-      "p54_1",
-      "p56_1",
-      "p57",
-      "p58",
-      "p60_1",
-      "p63_1"
+      "p52_1|GLO",
+      "p54_1|GLO",
+      "p57|GLO",
+      "p58|GLO",
+      "p60_1|GLO",
+      "p63_1|GLO"
     ],
     "requires_aggregation": true
   }

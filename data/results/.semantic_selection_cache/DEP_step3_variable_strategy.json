@@ -10,52 +10,54 @@
       "p13|DEP"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Cultural socialization in childhood is inherently multi-dimensional, spanning parental discussion habits, museum visits, book gifting, independent reading frequency, and household book presence — no single item captures the full construct. The questions use broadly compatible ordinal scales (4- and 6-point frequency/presence scales) and all load conceptually onto a latent 'culturally enriched home environment' factor, making PCA appropriate to extract the dominant shared variance. Binning the first principal component into 5 quantiles yields an ordinal variable with adequate spread while respecting the ≤15 category constraint."
+    "justification": "Cultural socialization in childhood is inherently multi-dimensional, spanning parental discussion habits, museum visits, book gifting, independent reading, and household book availability, so no single item captures the full construct. The questions use broadly compatible ordinal scales (4- and 6-category frequency/presence items) that reflect a common latent dimension of culturally enriched home environments. PCA on the first component is preferred over a simple sum because the items have slightly different scale widths (K=4 vs K=6) and the first PC will weight each item by its actual covariance with the latent trait, reducing noise from scale heterogeneity before binning to 5 quantiles."
   },
   {
-    "construct_name": "cultural_openness_and_national_identity",
-    "strategy": "single_max_entropy",
-    "selected_qids": [
-      "p52|DEP"
-    ],
-    "aggregation_method": null,
-    "justification": "The six items in this cluster span conceptually distinct sub-dimensions (cultural pluralism preferences, foreign influence perceptions, preservation priorities, and national affect), making aggregation into a single coherent score theoretically incoherent and scale-incompatible. p52 — the emotion respondent feels about Mexico — has the highest entropy (H=2.46) among all items and serves as a holistic affective summary of national identity orientation, which is the core of this construct. Its 9 categories are within the ≤15 limit and provide maximum discriminatory power for the bridge regression."
-  },
-  {
-    "construct_name": "ethnocultural_identity_and_linguistic_capital",
+    "construct_name": "reading_engagement_and_literacy",
     "strategy": "aggregate",
     "selected_qids": [
-      "p34|DEP",
-      "p35|DEP",
-      "p37|DEP",
-      "p48|DEP",
-      "p49|DEP",
-      "p54|DEP"
-    ],
-    "aggregation_method": "sum_score",
-    "justification": "The construct captures a latent dimension of ethnocultural embeddedness and linguistic repertoire; the binary/ordinal capability and identity items (p34, p35, p37, p48, p49, p54) all contribute additive evidence of indigenous or minority cultural capital, making a sum score conceptually appropriate. The language-specific detail variables (p34_1a_1, p35_1a_1, p49_2a_1) are excluded because they are nominal identifiers of language/heritage type rather than ordinal indicators of degree, and their very low entropy (H≤0.33) reflects near-zero variance that would distort the composite. Summing the six ordinal capability and identity items and binning to ≤5 categories produces a parsimonious ordinal index of ethnocultural capital suitable for the bridge model."
-  },
-  {
-    "construct_name": "reading_engagement_and_literacy_orientation",
-    "strategy": "single_max_entropy",
-    "selected_qids": [
-      "p18_1|DEP"
-    ],
-    "aggregation_method": null,
-    "justification": "The items in this cluster mix fundamentally incompatible scales — binary presence (p15a_1), 3-point frequency (p15c_2–4), 4-point presence (p14), 7-point ease (p16), and 11-category barrier (p17) — making a meaningful composite score unreliable without extensive rescaling. p18_1, asking about the perceived purpose or function of reading, has the highest entropy (H=2.46) and best captures the respondent's literacy orientation as a dispositional attitude rather than a behavioral frequency, which is the theoretically richer dimension for cross-survey bridging. Its 8 categories fall within the ≤15 limit and provide strong discriminatory signal."
-  },
-  {
-    "construct_name": "subjective_socioeconomic_status",
-    "strategy": "aggregate",
-    "selected_qids": [
-      "p44|DEP",
-      "p45|DEP",
-      "p46|DEP",
-      "p41_g1|DEP",
-      "p42_1a|DEP",
-      "p43|DEP"
+      "p14|DEP",
+      "p15a_1|DEP",
+      "p15c_2|DEP",
+      "p15c_3|DEP",
+      "p15c_4|DEP",
+      "p16|DEP"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Subjective SES is a well-established multi-component construct combining self-assessed economic situation, social class identification, life satisfaction, parental education, parental occupation, and school type — each tapping a distinct facet of socioeconomic position that no single item fully represents. The scales are heterogeneous in range (5–15 categories) and conceptual type (subjective perception vs. objective background), so PCA is preferred over a raw sum to extract the dominant latent SES gradient while down-weighting idiosyncratic item variance. Binning the first principal component into 5 quantiles produces a well-distributed ordinal SES variable that maximizes bridging utility across surveys sharing demographic anchors."
+    "justification": "Reading engagement is multi-dimensional, covering current book ownership, newspaper/magazine consumption across geographic scopes, and self-assessed reading ease, so aggregation is necessary to capture the full construct. The item p17|DEP is excluded because it measures a specific barrier type among non-readers (a conditional, branching question with low effective coverage) rather than a continuous engagement dimension, making it incompatible for aggregation. PCA is preferred over a sum score because the remaining items span K=2 to K=7 with varying entropy, and the first principal component will extract the shared variance in reading engagement while down-weighting scale-width differences."
+  },
+  {
+    "construct_name": "cultural_identity_and_heritage",
+    "strategy": "single_best_match",
+    "selected_qids": [
+      "p54|DEP"
+    ],
+    "aggregation_method": null,
+    "justification": "p54|DEP is the gold-standard single-item measure of cultural identity, directly capturing self-identified racial/ethnic category (indigenous, mestizo, white, other) with the highest entropy in the cluster (H=1.71), making it both content-valid and maximally informative. The other items are either highly skewed and low-entropy proxies (p48, p34, p35 on indigenous language ability with H≤0.40) or conditional sub-questions (p49_2a_1) that apply only to a subset of respondents, making aggregation inappropriate due to missing data structure. Since requires_aggregation=False and a single well-validated item exists, using p54|DEP alone avoids the distortion that would arise from combining a near-constant language item with a more variable ethnicity item."
+  },
+  {
+    "construct_name": "attitudes_toward_cultural_openness_and_foreign_influence",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p25|DEP",
+      "p26|DEP",
+      "p27|DEP",
+      "p28|DEP",
+      "p31_1|DEP",
+      "p32|DEP"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Attitudes toward cultural openness are inherently multi-dimensional, spanning preferences for cultural plurality, perceptions of foreign influence, normative opinions on cultural policy, and support for cross-cultural education, so aggregation across the attitudinal items is warranted. p29_1|DEP is excluded because it is a free-first-mention item about cultural preservation priorities (K=9, largely nominal) that does not share a common ordinal direction with the other Likert-style opinion items, making it incompatible for summation. PCA on the first component is chosen because the remaining items have varying scale widths (K=4 to K=6) and the first PC will capture the dominant pro- vs. anti-openness attitudinal dimension while accommodating scale heterogeneity before binning to 5 quantiles."
+  },
+  {
+    "construct_name": "sports_engagement_and_media_consumption",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p19|DEP",
+      "p21|DEP",
+      "p21_1|DEP"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Sports engagement and media consumption is best captured by combining active participation (p19|DEP), frequency of watching sports on TV (p21|DEP), and breadth of sports viewing scope (p21_1|DEP), which together span both behavioral dimensions of the construct. p19_2a_1|DEP is excluded because it is a near-degenerate nominal item (H=0.19, K=12 sport types) applicable only to active practitioners, and p20|DEP and p22_1|DEP are opinion/attitude items about sports motivation and purpose rather than behavioral engagement measures, making them conceptually misaligned with the engagement construct. PCA is preferred because the three retained items have different scale widths (K=4–6) and the first component will extract the shared engagement variance before binning to 5 quantiles."
   }
 ]

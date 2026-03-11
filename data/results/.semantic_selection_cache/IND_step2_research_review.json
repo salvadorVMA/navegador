@@ -1,134 +1,69 @@
 [
   {
-    "construct_name": "perceived_ethnic_discrimination",
+    "construct_name": "perceived_indigenous_discrimination",
     "sources": [
       {
         "citation": "Castellanos Guerrero, A. (2003). Imágenes del racismo en México. Plaza y Valdés / UAM.",
-        "relevance": "Provides a comprehensive framework for understanding how racial and ethnic discrimination against indigenous peoples is perceived and reproduced in Mexican society.",
-        "key_finding": "Discrimination against indigenous people in Mexico is deeply embedded in institutional practices and everyday social interactions, manifesting in employment exclusion, denial of rights, and social stigma."
-      },
-      {
-        "citation": "Solís, P., Krozer, A., Arenas, E., & Batista, L. E. (2019). Racial discrimination and racial inequalities in health and health care in Mexico. In R. Sáenz & D. G. Embrick (Eds.), The International Handbook of the Demography of Race and Ethnicity. Springer.",
-        "relevance": "Documents how perceived ethnic discrimination intersects with health and socioeconomic outcomes among indigenous Mexicans.",
-        "key_finding": "Indigenous Mexicans who report higher levels of perceived discrimination show worse health outcomes and reduced access to healthcare services."
+        "relevance": "Provides a foundational analysis of how racism and discrimination against indigenous peoples are perceived and reproduced in Mexican society, directly informing the measurement of perceived discrimination.",
+        "key_finding": "Discrimination against indigenous peoples in Mexico is deeply embedded in institutional practices and everyday social interactions, with widespread public awareness of unequal treatment coexisting alongside denial of personal prejudice."
       },
       {
         "citation": "CONAPRED. (2011). Encuesta Nacional sobre Discriminación en México (ENADIS 2010): Resultados sobre diversidad cultural. Consejo Nacional para Prevenir la Discriminación.",
-        "relevance": "Directly measures perceived discrimination against indigenous peoples using nationally representative survey data in Mexico.",
-        "key_finding": "Nearly 45% of indigenous respondents reported having experienced discrimination due to their ethnic identity, with employment and public services being the most common domains."
+        "relevance": "The ENADIS survey is the primary national instrument measuring perceived discrimination against indigenous peoples in Mexico, providing validated items and benchmarks for this construct.",
+        "key_finding": "Over 40% of indigenous respondents reported experiencing discrimination due to their ethnicity, and a majority of the general population acknowledged that indigenous peoples' rights are not fully respected."
       },
       {
-        "citation": "Trejo, G., & Altamirano, M. (2016). The Mexican color hierarchy: How race and skin tone still define life chances 200 years after independence. In E. Telles (Ed.), Pigmentocracies: Ethnicity, Race, and Color in Latin America. University of North Carolina Press.",
-        "relevance": "Examines how skin tone and indigenous identity shape perceptions of discrimination and access to opportunities in Mexico.",
-        "key_finding": "Darker-skinned and indigenous-identified Mexicans perceive significantly higher levels of discrimination and face measurably worse socioeconomic outcomes."
+        "citation": "Moreno Figueroa, M. G., & Saldívar, E. (2016). 'We are not racists, we are Mexicans': Privilege, nationalism, and post-race ideology in Mexico. Critical Sociology, 42(4-5), 515–533.",
+        "relevance": "Examines the paradox of widespread recognition of indigenous discrimination alongside denial of personal racism, which is central to understanding what perceived discrimination scales capture.",
+        "key_finding": "Mexican national identity narratives of mestizaje function to obscure racial hierarchies while simultaneously perpetuating systemic discrimination against indigenous peoples."
       },
       {
-        "citation": "Flores, R., & Telles, E. (2012). Social stratification in Mexico: Disentangling color, ethnicity, and class. American Sociological Review, 77(3), 486–514.",
-        "relevance": "Provides empirical evidence on how ethnic discrimination perceptions relate to stratification outcomes in Mexico.",
-        "key_finding": "Ethnicity and skin color independently predict social stratification outcomes, with indigenous identity carrying a distinct discrimination penalty beyond skin tone."
+        "citation": "Trejo, G. (2012). Popular Movements in Autocracies: Religion, Repression, and Indigenous Collective Action in Mexico. Cambridge University Press.",
+        "relevance": "Documents how perceived discrimination and denial of rights have historically mobilized indigenous collective action, linking perception of discrimination to political behavior.",
+        "key_finding": "Perceptions of systematic discrimination and rights denial served as key catalysts for indigenous mobilization, particularly when combined with organizational resources from religious networks."
+      },
+      {
+        "citation": "Solís, P., Krozer, A., Arenas, E., & Batista, L. E. (2019). Racial discrimination and socioeconomic inequalities in Mexico. Ethnic and Racial Studies, 42(4), 643–662.",
+        "relevance": "Provides empirical evidence of racial discrimination's effects on socioeconomic outcomes, validating the importance of measuring perceived discrimination as a reflection of real structural inequalities.",
+        "key_finding": "Indigenous and darker-skinned Mexicans face significant penalties in educational attainment and occupational status, confirming that perceived discrimination reflects measurable structural inequalities."
       }
     ],
     "causal_relationships": [
       {
-        "role": "cause",
-        "related_construct": "psychological well-being and mental health",
-        "measurable_in_data": true,
-        "data_source": "SAL"
-      },
-      {
-        "role": "cause",
-        "related_construct": "political distrust and institutional alienation",
-        "measurable_in_data": true,
-        "data_source": "CUL, DER"
-      },
-      {
         "role": "correlate",
-        "related_construct": "poverty and economic marginalization",
+        "related_construct": "support for affirmative action / indigenous rights policies",
         "measurable_in_data": true,
-        "data_source": "POB, ECO"
+        "data_source": "IND, DER"
       },
       {
         "role": "effect",
-        "related_construct": "educational attainment and school exclusion",
+        "related_construct": "educational attainment and socioeconomic status",
         "measurable_in_data": true,
-        "data_source": "EDU"
+        "data_source": "EDU, POB, ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support for indigenous autonomy and self-governance",
+        "measurable_in_data": true,
+        "data_source": "IND"
       },
       {
         "role": "correlate",
-        "related_construct": "human rights violations perception",
+        "related_construct": "perceptions of human rights violations",
         "measurable_in_data": true,
         "data_source": "DER"
       },
       {
         "role": "moderator",
-        "related_construct": "migration intentions and internal displacement",
+        "related_construct": "political trust and democratic satisfaction",
         "measurable_in_data": true,
-        "data_source": "MIG"
-      }
-    ],
-    "gap_justification": null,
-    "importance_rating": 5
-  },
-  {
-    "construct_name": "indigenous_rights_and_autonomy",
-    "sources": [
-      {
-        "citation": "Díaz-Polanco, H. (1997). La rebelión zapatista y la autonomía. Siglo XXI Editores.",
-        "relevance": "Foundational work on indigenous autonomy demands in Mexico, directly relevant to understanding public attitudes toward indigenous self-determination.",
-        "key_finding": "Indigenous autonomy movements in Mexico articulate demands for territorial self-governance, cultural preservation, and political representation that challenge the nation-state's assimilationist framework."
-      },
-      {
-        "citation": "Eisenstadt, T. A. (2011). Politics, Identity, and Mexico's Indigenous Rights Movements. Cambridge University Press.",
-        "relevance": "Systematically analyzes the evolution of indigenous rights claims and their reception in Mexican public opinion and policy.",
-        "key_finding": "Public support for indigenous rights in Mexico varies significantly by the specific right in question, with linguistic and cultural rights receiving broader support than territorial autonomy."
-      },
-      {
-        "citation": "Hernández Navarro, L., & Vera Herrera, R. (Eds.). (1998). Acuerdos de San Andrés. Ediciones Era.",
-        "relevance": "Documents the San Andrés Accords which defined the key dimensions of indigenous rights and autonomy that remain central to Mexican political debate.",
-        "key_finding": "The San Andrés Accords established a comprehensive framework for indigenous autonomy encompassing land rights, linguistic access, political self-determination, and cultural preservation."
-      },
-      {
-        "citation": "Sieder, R. (Ed.). (2002). Multiculturalism in Latin America: Indigenous Rights, Diversity and Democracy. Palgrave Macmillan.",
-        "relevance": "Comparative analysis of indigenous rights frameworks across Latin America, contextualizing Mexican attitudes within regional trends.",
-        "key_finding": "Constitutional recognition of indigenous rights in Latin America has advanced significantly but implementation gaps persist, shaped by majority-population attitudes toward indigenous autonomy."
-      }
-    ],
-    "causal_relationships": [
-      {
-        "role": "correlate",
-        "related_construct": "support for federalism and decentralization",
-        "measurable_in_data": true,
-        "data_source": "FED"
+        "data_source": "CUL, JUS"
       },
       {
         "role": "correlate",
-        "related_construct": "human rights attitudes",
+        "related_construct": "perceived gender discrimination",
         "measurable_in_data": true,
-        "data_source": "DER"
-      },
-      {
-        "role": "effect",
-        "related_construct": "political culture and democratic values",
-        "measurable_in_data": true,
-        "data_source": "CUL"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "national identity and pluralism",
-        "measurable_in_data": true,
-        "data_source": "IDE"
-      },
-      {
-        "role": "cause",
-        "related_construct": "educational policy preferences (bilingual education)",
-        "measurable_in_data": true,
-        "data_source": "EDU"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "attitudes toward globalization and cultural preservation",
-        "measurable_in_data": true,
-        "data_source": "GLO"
+        "data_source": "GEN"
       }
     ],
     "gap_justification": null,
@@ -139,31 +74,31 @@
     "sources": [
       {
         "citation": "Bogardus, E. S. (1933). A social distance scale. Sociology & Social Research, 17, 265–271.",
-        "relevance": "Foundational reference for the social distance measurement approach that underpins this construct's operationalization.",
-        "key_finding": "Social distance scales reliably capture affective prejudice through willingness to engage in progressively intimate social relationships with outgroup members."
+        "relevance": "Foundational work establishing the social distance scale methodology, which is the conceptual basis for measuring willingness to engage in close relationships with outgroup members, including indigenous peoples.",
+        "key_finding": "Social distance scales reliably capture hierarchical preferences for intergroup contact across domains (neighbor, coworker, family member), forming a Guttman-like scale of increasing intimacy."
       },
       {
-        "citation": "Castellanos Guerrero, A., & Sandoval, J. M. (Eds.). (1998). Racismo e identidades: Sudáfrica y afrodescendientes en las Américas. UAM / Plaza y Valdés.",
-        "relevance": "Examines racial prejudice and social distance in Latin American contexts, including toward indigenous peoples in Mexico.",
-        "key_finding": "Social distance toward indigenous people in Mexico reflects a racial hierarchy rooted in colonial legacies, with mestizo identity serving as the normative reference point."
+        "citation": "Castellanos Guerrero, A., & Sandoval, J. M. (1998). Racismo e identidades: Sudáfrica y afrodescendientes en las Américas. Plaza y Valdés / UNAM.",
+        "relevance": "Discusses racial attitudes and social distance in Latin American contexts, including Mexico, providing theoretical grounding for measuring affective prejudice toward indigenous peoples.",
+        "key_finding": "Social distance toward indigenous and Afro-descendant populations in Mexico reflects deeply rooted colonial racial hierarchies that persist despite official mestizaje ideology."
       },
       {
-        "citation": "Paris Pombo, M. D. (2002). Estudios sobre el racismo en América Latina. Política y Cultura, 17, 289–310.",
-        "relevance": "Reviews literature on racism in Latin America including social distance as a key indicator of racial prejudice toward indigenous populations.",
-        "key_finding": "Social distance measures reveal that despite official discourses of mestizaje and racial harmony, significant affective prejudice toward indigenous people persists across Latin American societies."
+        "citation": "Paredes, V. (2006). Prejuicio y discriminación racial en México. In E. Gutiérrez Chong (Ed.), Racismo y discriminación en México (pp. 77–98). CONAPRED.",
+        "relevance": "Directly measures prejudice and social distance toward indigenous peoples in the Mexican context using survey-based approaches similar to the construct's operationalization.",
+        "key_finding": "Significant proportions of urban non-indigenous Mexicans express reluctance to have indigenous neighbors or family members, with social distance increasing as relationship intimacy increases."
       },
       {
-        "citation": "Saldívar, E. (2014). 'It's not race, it's culture': Untangling racial politics in Mexico. Latin American and Caribbean Ethnic Studies, 9(1), 89–108.",
-        "relevance": "Analyzes how Mexicans frame social exclusion of indigenous people in cultural rather than racial terms, directly relevant to interpreting social distance measures.",
-        "key_finding": "Mexicans tend to express social distance toward indigenous people through culturalist rather than explicitly racial language, masking the racial dimensions of prejudice."
+        "citation": "Pettigrew, T. F., & Tropp, L. R. (2006). A meta-analytic test of intergroup contact theory. Journal of Personality and Social Psychology, 90(5), 751–783.",
+        "relevance": "Provides the theoretical framework (contact hypothesis) explaining how social distance relates to intergroup contact, prejudice reduction, and behavioral outcomes.",
+        "key_finding": "Intergroup contact typically reduces prejudice, with effects generalizing beyond the immediate contact situation; the effect is stronger when contact conditions include equal status and cooperation."
       }
     ],
     "causal_relationships": [
       {
-        "role": "cause",
-        "related_construct": "residential segregation and housing exclusion",
+        "role": "effect",
+        "related_construct": "perceived indigenous discrimination",
         "measurable_in_data": true,
-        "data_source": "HAB"
+        "data_source": "IND"
       },
       {
         "role": "correlate",
@@ -172,128 +107,69 @@
         "data_source": "MIG"
       },
       {
-        "role": "effect",
-        "related_construct": "perceived ethnic discrimination",
-        "measurable_in_data": true,
-        "data_source": "IND"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "gender role attitudes and intersectional prejudice",
-        "measurable_in_data": true,
-        "data_source": "GEN"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "family composition preferences",
-        "measurable_in_data": true,
-        "data_source": "FAM"
-      },
-      {
         "role": "cause",
-        "related_construct": "labor market exclusion and employment discrimination",
+        "related_construct": "residential and occupational segregation",
+        "measurable_in_data": false,
+        "data_source": ""
+      },
+      {
+        "role": "correlate",
+        "related_construct": "educational level and urban/rural residence",
         "measurable_in_data": true,
-        "data_source": "ECO"
+        "data_source": "EDU, HAB"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "national identity and mestizaje ideology",
+        "measurable_in_data": true,
+        "data_source": "IDE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "social distance toward other outgroups (e.g., migrants, religious minorities)",
+        "measurable_in_data": true,
+        "data_source": "MIG, REL"
       }
     ],
     "gap_justification": null,
     "importance_rating": 4
   },
   {
-    "construct_name": "attributions_for_indigenous_disadvantage",
+    "construct_name": "indigenous_cultural_integration_vs_autonomy",
     "sources": [
       {
-        "citation": "Kluegel, J. R., & Smith, E. R. (1986). Beliefs About Inequality: Americans' Views of What Is and What Ought to Be. Aldine de Gruyter.",
-        "relevance": "Foundational work on structural versus individualistic attributions for group inequality, providing the theoretical framework for this construct.",
-        "key_finding": "Individuals who endorse meritocratic beliefs are more likely to attribute group disadvantage to individual failings rather than structural barriers, which in turn reduces support for redistributive policies."
+        "citation": "Díaz-Polanco, H. (1997). Indigenous Peoples in Latin America: The Quest for Self-Determination. Westview Press.",
+        "relevance": "Provides the foundational theoretical framework for understanding the integration-versus-autonomy debate in Latin American indigenous politics, directly mapping onto this construct's dimensions of self-governance and cultural preservation.",
+        "key_finding": "The tension between assimilationist state policies and indigenous demands for autonomy is a central axis of indigenous politics in Latin America, with autonomy encompassing territorial, political, and cultural self-determination."
       },
       {
-        "citation": "Telles, E., & Bailey, S. (2013). Understanding Latin American beliefs about racial inequality. American Journal of Sociology, 118(6), 1559–1595.",
-        "relevance": "Directly examines how Latin Americans explain racial and ethnic inequality, comparing structural and individualistic attribution patterns.",
-        "key_finding": "Latin Americans show significant variation in attributions for racial inequality, with education and personal contact with disadvantaged groups predicting more structural attributions."
+        "citation": "Hernández Navarro, L., & Vera Herrera, R. (Eds.). (1998). Acuerdos de San Andrés. Ediciones Era.",
+        "relevance": "Documents the San Andrés Accords, the landmark negotiation between the Mexican government and the EZLN on indigenous rights and autonomy, which shaped public discourse on the integration-autonomy dimension.",
+        "key_finding": "The San Andrés Accords established a framework for indigenous autonomy including self-governance, control over natural resources, and bilingual education, but their incomplete implementation remains a source of political contention."
       },
       {
-        "citation": "Moreno Figueroa, M. G. (2010). Distributed intensities: Whiteness, mestizaje and the logics of Mexican racism. Ethnicities, 10(3), 387–401.",
-        "relevance": "Analyzes how Mexican racial ideologies shape attributions for indigenous disadvantage, emphasizing how mestizaje discourse obscures structural racism.",
-        "key_finding": "The ideology of mestizaje in Mexico functions to individualize indigenous disadvantage by framing it as a failure to assimilate rather than as a product of systemic exclusion."
+        "citation": "Stavenhagen, R. (2002). Indigenous peoples and the state in Latin America: An ongoing debate. In R. Sieder (Ed.), Multiculturalism in Latin America: Indigenous Rights, Diversity and Democracy (pp. 24–44). Palgrave Macmillan.",
+        "relevance": "Analyzes public opinion and policy debates around indigenous autonomy versus integration across Latin America, providing comparative context for measuring these attitudes in Mexico.",
+        "key_finding": "Public attitudes toward indigenous autonomy are shaped by competing visions of national unity and multicultural recognition, with significant variation by education, region, and ethnic identity."
       },
       {
-        "citation": "Htun, M. (2004). From 'racial democracy' to affirmative action: Changing state policy on race in Brazil. Latin American Research Review, 39(1), 60–89.",
-        "relevance": "Comparative Latin American perspective on how attributions for racial disadvantage shape policy preferences, applicable to the Mexican indigenous context.",
-        "key_finding": "Shifts from individualistic to structural attributions for racial disadvantage are necessary preconditions for public support of affirmative action and targeted social policies."
+        "citation": "Eisenstadt, T. A. (2011). Politics, Identity, and Mexico's Indigenous Rights Movements. Cambridge University Press.",
+        "relevance": "Examines how Mexican citizens' attitudes toward indigenous autonomy, land rights, and cultural preservation relate to broader political identities and institutional trust.",
+        "key_finding": "Support for indigenous autonomy in Mexico is moderated by respondents' political ideology, with left-leaning citizens more supportive of autonomy and right-leaning citizens favoring integration."
       }
     ],
     "causal_relationships": [
       {
-        "role": "cause",
-        "related_construct": "support for anti-poverty and redistributive policies",
-        "measurable_in_data": true,
-        "data_source": "POB, ECO"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "political ideology (left-right orientation)",
+        "role": "effect",
+        "related_construct": "political ideology (left-right spectrum)",
         "measurable_in_data": true,
         "data_source": "CUL, IDE"
       },
       {
-        "role": "cause",
-        "related_construct": "support for indigenous rights and autonomy",
-        "measurable_in_data": true,
-        "data_source": "IND"
-      },
-      {
-        "role": "effect",
-        "related_construct": "educational attainment and exposure to diversity",
-        "measurable_in_data": true,
-        "data_source": "EDU"
-      },
-      {
         "role": "correlate",
-        "related_construct": "perceptions of corruption as cause of inequality",
+        "related_construct": "views on federalism and decentralization",
         "measurable_in_data": true,
-        "data_source": "COR"
-      },
-      {
-        "role": "moderator",
-        "related_construct": "attitudes toward justice system fairness",
-        "measurable_in_data": true,
-        "data_source": "JUS"
-      }
-    ],
-    "gap_justification": null,
-    "importance_rating": 4
-  },
-  {
-    "construct_name": "indigenous_cultural_knowledge_and_identity",
-    "sources": [
-      {
-        "citation": "Martínez Casas, R., Saldívar, E., Flores, R., & Sue, C. A. (2014). The different faces of mestizaje: Ethnicity and race in Mexico. In E. Telles (Ed.), Pigmentocracies: Ethnicity, Race, and Color in Latin America (pp. 36–80). University of North Carolina Press.",
-        "relevance": "Directly examines ethnic self-identification patterns in Mexico and how knowledge of indigenous heritage shapes identity claims.",
-        "key_finding": "Ethnic self-identification in Mexico is fluid and context-dependent, with many Mexicans possessing indigenous heritage but not identifying as indigenous due to social stigma and assimilation pressures."
-      },
-      {
-        "citation": "INALI. (2009). Catálogo de las lenguas indígenas nacionales: Variantes lingüísticas de México con sus autodenominaciones y referencias geoestadísticas. Instituto Nacional de Lenguas Indígenas.",
-        "relevance": "Provides the factual baseline for measuring knowledge about indigenous linguistic diversity in Mexico.",
-        "key_finding": "Mexico has 68 indigenous language groupings with 364 linguistic variants, making it one of the most linguistically diverse countries in the Americas, yet public awareness of this diversity remains limited."
-      },
-      {
-        "citation": "Villarreal, A. (2010). Stratification by skin color in contemporary Mexico. American Sociological Review, 75(5), 652–678.",
-        "relevance": "Examines how ethnic identity and knowledge of indigenous heritage intersect with social stratification in Mexico.",
-        "key_finding": "Self-identification as indigenous and knowledge of indigenous ancestry are significantly associated with lower socioeconomic status, even after controlling for education and occupation."
-      },
-      {
-        "citation": "Navarrete Linares, F. (2004). Las relaciones interétnicas en México. UNAM.",
-        "relevance": "Comprehensive overview of interethnic relations in Mexico, including how knowledge and ignorance about indigenous cultures shapes public attitudes.",
-        "key_finding": "Limited factual knowledge about indigenous peoples among the general Mexican population contributes to stereotyping and reinforces discriminatory attitudes."
-      }
-    ],
-    "causal_relationships": [
-      {
-        "role": "cause",
-        "related_construct": "perceived ethnic discrimination (as moderator of perception)",
-        "measurable_in_data": true,
-        "data_source": "IND"
+        "data_source": "FED"
       },
       {
         "role": "correlate",
@@ -303,30 +179,155 @@
       },
       {
         "role": "correlate",
-        "related_construct": "educational attainment and cultural literacy",
+        "related_construct": "attitudes toward bilingual education and educational policy",
         "measurable_in_data": true,
         "data_source": "EDU"
       },
       {
-        "role": "moderator",
-        "related_construct": "social distance toward indigenous people",
+        "role": "effect",
+        "related_construct": "perceived indigenous discrimination",
         "measurable_in_data": true,
         "data_source": "IND"
       },
       {
         "role": "correlate",
-        "related_construct": "religious practices and syncretism",
+        "related_construct": "views on globalization and cultural homogenization",
         "measurable_in_data": true,
-        "data_source": "REL"
+        "data_source": "GLO"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "stereotyping_and_social_image_of_indigenous_people",
+    "sources": [
+      {
+        "citation": "Fiske, S. T., Cuddy, A. J. C., Glick, P., & Xu, J. (2002). A model of (often mixed) stereotype content: Competence and warmth respectively follow from perceived status and competition. Journal of Personality and Social Psychology, 82(6), 878–902.",
+        "relevance": "The Stereotype Content Model provides the theoretical framework for understanding how indigenous peoples are stereotyped along warmth and competence dimensions, directly relevant to measuring the content and valence of stereotypes.",
+        "key_finding": "Low-status, non-competitive groups (a profile often assigned to indigenous peoples) tend to be stereotyped as warm but incompetent, eliciting paternalistic prejudice."
+      },
+      {
+        "citation": "Gutiérrez Chong, N. (2001). Mitos nacionalistas e identidades étnicas: Los intelectuales indígenas y el Estado mexicano. CONACULTA / Plaza y Valdés.",
+        "relevance": "Analyzes how national myths and intellectual discourse have shaped the social image of indigenous peoples in Mexico, from romanticized pre-Hispanic heritage to contemporary stereotypes of backwardness.",
+        "key_finding": "The Mexican state has historically constructed a dual image of indigenous peoples—glorified ancestors but marginalized contemporaries—which continues to shape public stereotypes."
+      },
+      {
+        "citation": "Navarrete Linares, F. (2004). Las relaciones interétnicas en México. UNAM.",
+        "relevance": "Provides a comprehensive analysis of interethnic relations and stereotyping in Mexico, including occupational and cultural stereotypes of indigenous peoples.",
+        "key_finding": "Stereotypes of indigenous peoples in Mexico cluster around poverty, rurality, and manual labor, functioning to naturalize socioeconomic inequality as cultural difference."
+      },
+      {
+        "citation": "Sue, C. A. (2013). Land of the Cosmic Race: Race Mixture, Racism, and Blackness in Mexico. Oxford University Press.",
+        "relevance": "Examines racial stereotyping in Mexico including stereotypes about indigenous peoples, analyzing how these mental representations are transmitted and maintained in everyday discourse.",
+        "key_finding": "Racial stereotypes in Mexico operate through a system of 'racial common sense' that associates indigenous phenotype with low social status and limited capabilities, despite official color-blind ideology."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "social distance toward indigenous people",
+        "measurable_in_data": true,
+        "data_source": "IND"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support for or opposition to indigenous rights policies",
+        "measurable_in_data": true,
+        "data_source": "IND, DER"
+      },
+      {
+        "role": "effect",
+        "related_construct": "media exposure and media framing",
+        "measurable_in_data": true,
+        "data_source": "SOC"
       },
       {
         "role": "correlate",
-        "related_construct": "cultural participation and heritage engagement",
+        "related_construct": "educational attainment",
         "measurable_in_data": true,
-        "data_source": "DEP, CUL"
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "stereotyping of other marginalized groups (gender, migrants)",
+        "measurable_in_data": true,
+        "data_source": "GEN, MIG"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "intergroup contact frequency",
+        "measurable_in_data": false,
+        "data_source": ""
       }
     ],
-    "gap_justification": "While ethnic self-identification and indigenous language data are collected in Mexican censuses, the combination of factual cultural knowledge, self-identification, and family linguistic heritage into a single construct is relatively novel in survey research. Most studies treat these as separate variables rather than as a unified construct capturing the respondent's overall positioning vis-à-vis indigenous culture. This construct is important because it allows researchers to distinguish between respondents who have personal connections to indigenous identity and those who lack basic knowledge, which likely moderates all other attitudes in the survey. Understanding this knowledge-identity nexus fills a gap in Mexican public opinion research where attitudes are often analyzed without accounting for the respondent's baseline familiarity with indigenous realities. It contributes to understanding how information deficits and identity denial interact to shape the broader landscape of interethnic attitudes in Mexico.",
-    "importance_rating": 3
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "national_economic_outlook",
+    "sources": [
+      {
+        "citation": "Lewis-Beck, M. S., & Stegmaier, M. (2000). Economic determinants of electoral outcomes. Annual Review of Political Science, 3(1), 183–219.",
+        "relevance": "Provides the foundational framework for sociotropic economic evaluations (national economic outlook) and their political consequences, directly relevant to the retrospective and prospective economic assessments captured by this construct.",
+        "key_finding": "Sociotropic economic perceptions—evaluations of the national economy rather than personal finances—are the strongest economic predictor of vote choice and government approval across democracies."
+      },
+      {
+        "citation": "Magaloni, B. (2006). Voting for Autocracy: Hegemonic Party Survival and its Demise in Mexico. Cambridge University Press.",
+        "relevance": "Examines how economic evaluations shaped electoral behavior in Mexico during and after the PRI hegemonic era, providing Mexico-specific validation of the national economic outlook construct.",
+        "key_finding": "Negative national economic evaluations were a key driver of opposition voting in Mexico, with economic crises eroding the PRI's electoral support base."
+      },
+      {
+        "citation": "Moreno, A. (2009). La decisión electoral: Votantes, partidos y democracia en México. Miguel Ángel Porrúa.",
+        "relevance": "Directly measures and analyzes retrospective and prospective economic evaluations in Mexican public opinion surveys, providing validated question formats and benchmarks.",
+        "key_finding": "Mexican voters' retrospective economic evaluations are strongly correlated with presidential approval and vote intention, with prospective evaluations adding independent predictive power."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "presidential approval and political trust",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "cause",
+        "related_construct": "vote choice and electoral behavior",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "perceived poverty and inequality",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "attitudes toward immigration and globalization",
+        "measurable_in_data": true,
+        "data_source": "MIG, GLO"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "attitudes toward indigenous rights spending and redistribution",
+        "measurable_in_data": true,
+        "data_source": "IND, ECO"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "perceptions of corruption",
+        "measurable_in_data": true,
+        "data_source": "COR"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "public security perceptions",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      }
+    ],
+    "gap_justification": "While national economic outlook is extensively studied in political science, its inclusion in an indigenous-focused survey is less common and fills an important gap. Economic evaluations may moderate attitudes toward indigenous rights and redistribution: in times of perceived economic scarcity, zero-sum thinking may increase opposition to indigenous-targeted programs. Additionally, indigenous respondents' economic evaluations may systematically differ from non-indigenous respondents, reflecting structural inequality. Measuring this construct alongside indigenous-specific attitudes allows researchers to test whether economic anxiety drives exclusionary attitudes toward indigenous peoples, a hypothesis with significant policy implications for Mexico's social cohesion.",
+    "importance_rating": 5
   }
 ]

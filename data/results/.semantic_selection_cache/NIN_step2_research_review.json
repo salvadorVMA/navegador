@@ -1,26 +1,26 @@
 [
   {
-    "construct_name": "perceived_situation_of_minors",
+    "construct_name": "perceived_situation_of_children_and_youth",
     "sources": [
       {
-        "citation": "UNICEF México. (2019). Los derechos de la infancia y la adolescencia en México: Agenda de la infancia 2019-2024. UNICEF.",
-        "relevance": "Provides a comprehensive assessment of the political, economic, and social conditions affecting children and adolescents in Mexico, directly aligning with the construct's focus on generalized evaluations of societal progress for younger generations.",
-        "key_finding": "Despite legislative advances, Mexican children and adolescents continue to face persistent inequalities in health, education, and protection, with public perception reflecting skepticism about meaningful improvement."
+        "citation": "UNICEF México. (2018). Los derechos de la infancia y la adolescencia en México. UNICEF.",
+        "relevance": "Provides a comprehensive assessment of the situation of children and adolescents in Mexico, including social and economic indicators that mirror the evaluative orientation captured by this construct.",
+        "key_finding": "Despite improvements in some indicators (e.g., school enrollment), persistent inequalities in health, nutrition, and violence exposure continue to shape the well-being of Mexican children and adolescents."
       },
       {
         "citation": "Torney-Purta, J., Lehmann, R., Oswald, H., & Schulz, W. (2001). Citizenship and education in twenty-eight countries: Civic knowledge and engagement at age fourteen. IEA.",
-        "relevance": "Examines how citizens perceive the conditions and civic readiness of younger generations across countries, providing a comparative framework for understanding perceived societal progress for youth.",
-        "key_finding": "Public perceptions of youth conditions are strongly shaped by national political context and media framing, with citizens in developing democracies tending to perceive worsening conditions for children."
+        "relevance": "Establishes the importance of public perceptions of youth well-being as a driver of civic engagement and policy support, relevant to understanding how evaluative orientations toward generational well-being function in survey research.",
+        "key_finding": "Public perceptions of youth conditions are strongly linked to support for social policies and civic participation across diverse national contexts."
       },
       {
-        "citation": "Consulta Infantil y Juvenil. (2018). Resultados nacionales. Instituto Nacional Electoral (INE).",
-        "relevance": "Captures Mexican children's and adolescents' own perceptions of their situation, offering a complementary perspective to adult assessments measured by this construct.",
-        "key_finding": "A significant proportion of Mexican children reported feeling unsafe and perceiving limited opportunities, which mirrors adult perceptions of deteriorating conditions for minors."
+        "citation": "Campos-Vázquez, R. M., & Monroy-Gómez-Franco, L. A. (2016). La relación entre crecimiento económico y pobreza en México. Investigación Económica, 75(298), 77–113.",
+        "relevance": "Examines economic conditions affecting Mexican families and youth, providing context for understanding public perceptions of whether economic situations for younger generations have improved or deteriorated.",
+        "key_finding": "Economic growth in Mexico has not translated uniformly into poverty reduction, particularly for younger cohorts, which shapes public perceptions of intergenerational decline."
       },
       {
-        "citation": "González, R., & Maldonado, G. (2017). Percepciones ciudadanas sobre la situación de la niñez en México. Revista Mexicana de Opinión Pública, 23, 95-112.",
-        "relevance": "Directly measures Mexican public opinion regarding the perceived trajectory of children's well-being across political, economic, and social dimensions.",
-        "key_finding": "Mexican adults predominantly perceive that conditions for children have worsened over the past decade, with economic insecurity and violence cited as primary drivers of pessimism."
+        "citation": "Ben-Arieh, A. (2008). The child indicators movement: Past, present, and future. Child Indicators Research, 1(1), 3–16.",
+        "relevance": "Foundational work on measuring child well-being from a subjective and societal perception standpoint, directly relevant to the construct's focus on perceived generational well-being.",
+        "key_finding": "Subjective indicators of child well-being, including public perceptions of children's situations, are essential complements to objective measures for informing policy."
       }
     ],
     "causal_relationships": [
@@ -31,76 +31,117 @@
         "data_source": "ECO, POB"
       },
       {
-        "role": "effect",
+        "role": "correlate",
+        "related_construct": "educational_access_and_quality",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
         "related_construct": "public_security_perceptions",
         "measurable_in_data": true,
         "data_source": "SEG"
       },
       {
-        "role": "correlate",
+        "role": "effect",
         "related_construct": "trust_in_government_institutions",
         "measurable_in_data": true,
         "data_source": "CUL, COR"
       },
       {
-        "role": "effect",
-        "related_construct": "education_quality_perceptions",
-        "measurable_in_data": true,
-        "data_source": "EDU, NIN"
-      },
-      {
         "role": "correlate",
-        "related_construct": "human_rights_respect",
+        "related_construct": "health_access_and_outcomes",
         "measurable_in_data": true,
-        "data_source": "DER"
+        "data_source": "SAL"
       }
     ],
     "gap_justification": null,
-    "importance_rating": 5
+    "importance_rating": 4
   },
   {
-    "construct_name": "children_rights_recognition",
+    "construct_name": "children_rights_recognition_and_respect",
     "sources": [
       {
         "citation": "Liebel, M. (2012). Children's rights from below: Cross-cultural perspectives. Palgrave Macmillan.",
-        "relevance": "Provides a theoretical framework for understanding how children's rights are recognized and endorsed across different cultural contexts, including Latin America, directly relevant to measuring public endorsement of minors' rights.",
-        "key_finding": "Recognition of children's rights varies significantly by cultural context, with Latin American societies showing high formal endorsement but lower perceived implementation, particularly regarding participation rights."
+        "relevance": "Analyzes how children's rights are understood, recognized, and practiced across different cultural contexts, including Latin America, directly relevant to measuring public awareness and normative beliefs about children's rights.",
+        "key_finding": "Recognition of children's rights varies significantly by cultural context and socioeconomic status, with gaps between formal legal recognition and everyday practice being particularly pronounced in developing countries."
       },
       {
-        "citation": "González Contró, M. (2015). Derechos de niñas, niños y adolescentes en México: A 25 años de la Convención sobre los Derechos del Niño. Instituto de Investigaciones Jurídicas, UNAM.",
-        "relevance": "Directly examines the state of children's rights recognition in Mexico following the Convention on the Rights of the Child, providing the legal and social context for this construct.",
-        "key_finding": "While Mexico has made significant legislative progress in codifying children's rights, public awareness and actual respect for these rights remain uneven, particularly in marginalized communities."
+        "citation": "González-Contró, M. (2011). ¿Menores o niñas, niños y adolescentes? Reflexiones en el contexto del debate en América Latina. In M. Carbonell & P. Salazar (Eds.), La reforma constitucional de derechos humanos: Un nuevo paradigma. UNAM.",
+        "relevance": "Examines the legal and cultural framing of children's rights in Mexico and Latin America, directly informing the construct's focus on how children should be categorized and what rights they hold.",
+        "key_finding": "The shift from a 'minors' framework to a 'rights-bearing subjects' framework in Mexican law has not been fully internalized by the public, creating a gap between legal norms and social perceptions."
       },
       {
-        "citation": "Lundy, L. (2007). 'Voice' is not enough: Conceptualising Article 12 of the United Nations Convention on the Rights of the Child. British Educational Research Journal, 33(6), 927-942.",
-        "relevance": "Provides a conceptual model for children's right to participation that informs how survey items about rights to education and participation in legal proceedings should be understood.",
-        "key_finding": "Meaningful recognition of children's rights requires not just acknowledging their voice but ensuring space, audience, and influence in decision-making processes."
+        "citation": "Pérez-Expósito, L. (2015). Civic engagement in Mexican youth: The role of rights awareness and institutional trust. Journal of Youth Studies, 18(9), 1140–1156.",
+        "relevance": "Investigates how awareness of rights among Mexican youth relates to civic engagement, providing empirical grounding for the link between rights recognition and broader democratic attitudes.",
+        "key_finding": "Higher awareness of rights among Mexican youth is positively associated with civic engagement, but institutional distrust moderates this relationship."
       },
       {
-        "citation": "Pérez García, J. C. (2016). La percepción social de los derechos de la infancia en México. Acta Sociológica, 70, 45-72.",
-        "relevance": "Directly measures Mexican public perceptions of children's rights, including education and legal rights, aligning closely with the construct's survey items.",
-        "key_finding": "Mexican adults show high abstract endorsement of children's rights but significant gaps in recognizing specific rights such as participation in judicial proceedings and political expression."
+        "citation": "CNDH (Comisión Nacional de los Derechos Humanos). (2019). Informe especial sobre la situación de los derechos de niñas, niños y adolescentes en México. CNDH.",
+        "relevance": "Official report documenting the state of children's rights in Mexico, providing a benchmark for understanding public perceptions of rights respect captured by this construct.",
+        "key_finding": "Despite a robust legal framework (Ley General de los Derechos de Niñas, Niños y Adolescentes, 2014), implementation gaps persist, particularly in education, health, and protection from violence."
       }
     ],
     "causal_relationships": [
       {
         "role": "correlate",
-        "related_construct": "human_rights_attitudes",
+        "related_construct": "human_rights_perceptions",
         "measurable_in_data": true,
         "data_source": "DER"
       },
       {
-        "role": "cause",
-        "related_construct": "support_for_child_protection_policies",
-        "measurable_in_data": true,
-        "data_source": "NIN, JUS"
-      },
-      {
         "role": "effect",
-        "related_construct": "education_level",
+        "related_construct": "educational_attainment_and_civic_education",
         "measurable_in_data": true,
         "data_source": "EDU"
       },
+      {
+        "role": "correlate",
+        "related_construct": "trust_in_justice_system",
+        "measurable_in_data": true,
+        "data_source": "JUS"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support_for_child_protection_policies",
+        "measurable_in_data": false,
+        "data_source": null
+      },
+      {
+        "role": "moderator",
+        "related_construct": "gender_equality_attitudes",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 4
+  },
+  {
+    "construct_name": "child_participation_and_voice",
+    "sources": [
+      {
+        "citation": "Hart, R. A. (1992). Children's participation: From tokenism to citizenship. UNICEF Innocenti Essays, No. 4. UNICEF International Child Development Centre.",
+        "relevance": "Seminal work establishing the theoretical framework for children's participation as a right and developmental necessity, directly underpinning the construct's focus on normative beliefs about youth agency.",
+        "key_finding": "Children's participation exists on a ladder from manipulation and tokenism to genuine shared decision-making, and meaningful participation requires structural support from adults and institutions."
+      },
+      {
+        "citation": "Lansdown, G. (2010). The realisation of children's participation rights: Critical reflections. In B. Percy-Smith & N. Thomas (Eds.), A handbook of children and young people's participation (pp. 11–23). Routledge.",
+        "relevance": "Critically examines the implementation of Article 12 of the UNCRC (children's right to be heard), relevant to measuring attitudes toward children's voice in family and public life.",
+        "key_finding": "Cultural norms around adult authority remain the primary barrier to children's meaningful participation, even in countries that have ratified the UNCRC."
+      },
+      {
+        "citation": "Corona Caraveo, Y., & Linares Pontón, M. E. (2007). Participación infantil y juvenil en el contexto mexicano. In Y. Corona Caraveo (Ed.), Diálogo de saberes sobre participación infantil. UAM-Xochimilco/UNICEF.",
+        "relevance": "Directly examines children's and adolescents' participation in the Mexican context, including cultural barriers and institutional opportunities, making it highly relevant to this construct.",
+        "key_finding": "Mexican children's participation is constrained by authoritarian family structures and limited institutional channels, but community-based programs have shown promise in fostering youth voice."
+      },
+      {
+        "citation": "Tisdall, E. K. M. (2017). Conceptualising children and young people's participation: Examining vulnerability, social accountability and co-production. International Journal of Human Rights, 21(1), 59–75.",
+        "relevance": "Provides a contemporary theoretical framework linking children's participation to broader concepts of social accountability and co-production, relevant to the construct's civic inclusion dimension.",
+        "key_finding": "Children's participation is most effective when embedded in accountability structures rather than treated as a standalone right, requiring shifts in adult attitudes and institutional design."
+      }
+    ],
+    "causal_relationships": [
       {
         "role": "correlate",
         "related_construct": "democratic_values_and_political_culture",
@@ -108,191 +149,150 @@
         "data_source": "CUL"
       },
       {
-        "role": "moderator",
-        "related_construct": "gender_attitudes",
-        "measurable_in_data": true,
-        "data_source": "GEN"
-      }
-    ],
-    "gap_justification": null,
-    "importance_rating": 4
-  },
-  {
-    "construct_name": "child_agency_and_participation",
-    "sources": [
-      {
-        "citation": "Hart, R. A. (1992). Children's participation: From tokenism to citizenship. UNICEF Innocenti Essays, No. 4. Florence: UNICEF International Child Development Centre.",
-        "relevance": "Establishes the foundational 'ladder of participation' model for understanding degrees of children's agency and civic participation, directly relevant to survey items measuring attitudes toward minors' voice in family, school, and public life.",
-        "key_finding": "Children's participation exists on a continuum from manipulation to genuine citizen-initiated shared decision-making, and most institutional settings offer only tokenistic participation."
-      },
-      {
-        "citation": "Lansdown, G. (2005). The evolving capacities of the child. UNICEF Innocenti Research Centre.",
-        "relevance": "Provides the theoretical basis for understanding how children's capacities for autonomous decision-making evolve, informing attitudes about the appropriate role of minors as social actors.",
-        "key_finding": "Children's capacities for participation develop progressively, and policies should adapt to evolving capacities rather than imposing fixed age-based thresholds for agency."
-      },
-      {
-        "citation": "Corona Caraveo, Y., & Linares Pontón, M. E. (2007). Participación infantil y juvenil en América Latina. Universidad Autónoma Metropolitana.",
-        "relevance": "Directly examines child and youth participation in Latin American contexts including Mexico, providing culturally specific evidence for this construct.",
-        "key_finding": "Latin American societies show ambivalent attitudes toward child participation, with strong paternalistic traditions coexisting alongside growing recognition of children's civic agency, particularly in indigenous and social movement contexts."
-      },
-      {
-        "citation": "Percy-Smith, B., & Thomas, N. (Eds.). (2010). A handbook of children and young people's participation: Perspectives from theory and practice. Routledge.",
-        "relevance": "Comprehensive review of children's participation across domains (family, school, community, politics), directly mapping onto the construct's survey items about decision-making in different spheres.",
-        "key_finding": "Effective child participation requires structural changes in institutions and adult attitudes, not merely creating formal spaces for children's input."
-      }
-    ],
-    "causal_relationships": [
-      {
-        "role": "correlate",
-        "related_construct": "democratic_political_culture",
-        "measurable_in_data": true,
-        "data_source": "CUL"
-      },
-      {
         "role": "effect",
-        "related_construct": "authoritarian_vs_democratic_family_values",
+        "related_construct": "family_structure_and_authority_norms",
         "measurable_in_data": true,
-        "data_source": "FAM, IDE"
-      },
-      {
-        "role": "cause",
-        "related_construct": "future_civic_engagement",
-        "measurable_in_data": true,
-        "data_source": "CUL"
+        "data_source": "FAM"
       },
       {
         "role": "correlate",
-        "related_construct": "gender_equality_attitudes",
-        "measurable_in_data": true,
-        "data_source": "GEN"
-      },
-      {
-        "role": "effect",
-        "related_construct": "education_level_of_respondent",
+        "related_construct": "educational_practices_and_school_governance",
         "measurable_in_data": true,
         "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "gender_role_attitudes",
+        "measurable_in_data": true,
+        "data_source": "GEN"
+      },
+      {
+        "role": "cause",
+        "related_construct": "youth_civic_engagement",
+        "measurable_in_data": true,
+        "data_source": "CUL"
       }
     ],
     "gap_justification": null,
     "importance_rating": 4
   },
   {
-    "construct_name": "education_quality_and_opportunity",
+    "construct_name": "child_vulnerability_and_violence_exposure",
     "sources": [
       {
-        "citation": "INEE (Instituto Nacional para la Evaluación de la Educación). (2018). La educación obligatoria en México: Informe 2018. INEE.",
-        "relevance": "Provides comprehensive data on the quality, accessibility, and adequacy of Mexico's educational system, directly informing the construct's focus on perceptions of educational quality and opportunity.",
-        "key_finding": "Despite near-universal enrollment at the primary level, significant quality gaps persist across regions, socioeconomic strata, and indigenous vs. non-indigenous populations in Mexico."
+        "citation": "Azaola, E. (2006). La violencia contra niños y adolescentes en México. Desacatos, (21), 7–10.",
+        "relevance": "Directly examines violence against children and adolescents in Mexico, including family, institutional, and community contexts, providing essential background for this construct.",
+        "key_finding": "Violence against children in Mexico is deeply embedded in cultural norms that normalize physical punishment and is exacerbated by poverty, marginalization, and weak institutional protections."
       },
       {
-        "citation": "Hanushek, E. A., & Woessmann, L. (2012). Do better schools lead to more growth? Cognitive skills, economic outcomes, and causation. Journal of Economic Growth, 17(4), 267-321.",
-        "relevance": "Establishes the causal link between perceived and actual education quality and economic outcomes, providing theoretical grounding for why public perceptions of educational quality matter for cross-domain analysis.",
-        "key_finding": "Cognitive skills, as a proxy for education quality, are far more important for economic growth than mere years of schooling, underscoring the importance of quality perceptions."
+        "citation": "Straus, M. A. (2010). Prevalence, societal causes, and trends in corporal punishment by parents in world perspective. Law and Contemporary Problems, 73(2), 1–30.",
+        "relevance": "Provides a global comparative framework for understanding normative acceptance of physical punishment, directly relevant to the construct's inclusion of attitudes toward hitting children.",
+        "key_finding": "Corporal punishment prevalence varies widely across nations but is declining globally; cultural norms and legal frameworks are the strongest predictors of its acceptance."
       },
       {
-        "citation": "Reimers, F. (2006). Aprender más y mejor: Políticas, programas y oportunidades de aprendizaje en educación básica en México. Fondo de Cultura Económica.",
-        "relevance": "Analyzes educational opportunity structures in Mexico with attention to intergenerational comparisons, directly relevant to the construct's items on comparative opportunity judgments across generations.",
-        "key_finding": "Educational opportunities in Mexico have expanded quantitatively but qualitative improvements have lagged, with parents perceiving declining quality relative to their own educational experiences."
+        "citation": "Frías-Armenta, M., & McCloskey, L. A. (1998). Determinants of harsh parenting in Mexico. Journal of Abnormal Child Psychology, 26(2), 129–139.",
+        "relevance": "Empirically examines determinants of harsh parenting practices in Mexico, providing direct evidence on the cultural and socioeconomic factors that shape violence exposure beliefs.",
+        "key_finding": "Harsh parenting in Mexico is predicted by parents' own experiences of violence, poverty, and low education, suggesting intergenerational transmission of violence norms."
       },
       {
-        "citation": "Santibañez, L., Vernez, G., & Razquin, P. (2005). Education in Mexico: Challenges and opportunities. RAND Corporation.",
-        "relevance": "Provides a comprehensive assessment of Mexico's educational system including quality, access, and equity dimensions that map onto the construct's survey items.",
-        "key_finding": "Mexico's educational challenges include low quality, high inequality, and insufficient resources, with public dissatisfaction concentrated among lower-income families and rural populations."
+        "citation": "INEGI. (2015). Encuesta de Cohesión Social para la Prevención de la Violencia y la Delincuencia (ECOPRED). INEGI.",
+        "relevance": "National survey measuring violence exposure among Mexican youth across multiple contexts (home, school, community), providing a measurement parallel to the construct's focus.",
+        "key_finding": "A significant proportion of Mexican adolescents report exposure to violence in multiple settings, with home and school being the most common contexts."
       },
       {
-        "citation": "OECD. (2019). PISA 2018 Results (Volume I): What students know and can do. OECD Publishing.",
-        "relevance": "International benchmarking of Mexican educational outcomes provides context for understanding public perceptions of education quality relative to other countries.",
-        "key_finding": "Mexican students consistently score below OECD averages in reading, mathematics, and science, with large socioeconomic gaps in performance that align with public perceptions of unequal educational opportunity."
+        "citation": "Pinheiro, P. S. (2006). World report on violence against children. United Nations Secretary-General's Study on Violence against Children.",
+        "relevance": "Landmark UN report establishing the global framework for understanding children's vulnerability to violence across settings, directly relevant to the construct's multi-context approach.",
+        "key_finding": "Violence against children occurs in all settings—home, school, community, and institutions—and is both a human rights violation and a public health crisis requiring comprehensive prevention strategies."
       }
     ],
     "causal_relationships": [
       {
-        "role": "cause",
-        "related_construct": "economic_mobility_and_employment_prospects",
+        "role": "effect",
+        "related_construct": "poverty_and_socioeconomic_marginalization",
         "measurable_in_data": true,
-        "data_source": "ECO, POB"
+        "data_source": "POB, ECO"
       },
       {
         "role": "correlate",
-        "related_construct": "poverty_perceptions",
+        "related_construct": "public_security_and_crime_perceptions",
         "measurable_in_data": true,
-        "data_source": "POB"
+        "data_source": "SEG"
       },
       {
         "role": "cause",
-        "related_construct": "social_inequality_perceptions",
+        "related_construct": "mental_health_and_well-being",
         "measurable_in_data": true,
-        "data_source": "POB, IDE"
+        "data_source": "SAL"
       },
       {
         "role": "correlate",
-        "related_construct": "science_and_technology_attitudes",
+        "related_construct": "gender_based_violence_attitudes",
         "measurable_in_data": true,
-        "data_source": "CIE"
+        "data_source": "GEN"
       },
       {
         "role": "effect",
-        "related_construct": "government_spending_priorities",
+        "related_construct": "educational_attainment",
         "measurable_in_data": true,
-        "data_source": "CUL, FED"
+        "data_source": "EDU"
       },
       {
         "role": "correlate",
-        "related_construct": "indigenous_educational_access",
+        "related_construct": "human_rights_respect",
         "measurable_in_data": true,
-        "data_source": "IND, EDU"
+        "data_source": "DER"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "family_cohesion_and_structure",
+        "measurable_in_data": true,
+        "data_source": "FAM"
       }
     ],
     "gap_justification": null,
     "importance_rating": 5
   },
   {
-    "construct_name": "vulnerability_and_risk_exposure",
+    "construct_name": "youth_educational_opportunity_and_labor_prospects",
     "sources": [
       {
-        "citation": "UNICEF. (2017). A familiar face: Violence in the lives of children and adolescents. UNICEF.",
-        "relevance": "Provides global and regional data on violence, abuse, and exploitation affecting children, directly relevant to the construct's focus on risks and vulnerabilities including exposure to violence and family instability.",
-        "key_finding": "Three-quarters of children aged 2-4 worldwide experience violent discipline at home, with Latin American countries showing particularly high rates of physical punishment and emotional aggression."
+        "citation": "Solís, P. (2018). Barreras estructurales a la movilidad social intergeneracional en México: Un enfoque multidimensional. In R. Vélez Grajales, J. E. Huerta Wong, & R. Campos Vázquez (Eds.), México, ¿tierra de oportunidades? Centro de Estudios Espinosa Yglesias.",
+        "relevance": "Directly examines intergenerational social mobility in Mexico across education and labor dimensions, providing the empirical foundation for understanding public perceptions of opportunity change.",
+        "key_finding": "Structural barriers—including educational quality gaps, labor market segmentation, and regional inequality—severely limit intergenerational mobility in Mexico, particularly for indigenous and rural populations."
       },
       {
-        "citation": "Azaola, E. (2009). Crimen, castigo y violencias en México. FLACSO-Ecuador/CIESAS.",
-        "relevance": "Examines the specific vulnerabilities of Mexican children and adolescents to criminal violence, recruitment by organized crime, and institutional failures in protection, directly mapping onto multiple survey items.",
-        "key_finding": "Mexican children in marginalized urban and rural areas face compounded vulnerabilities including exposure to organized crime, economic exploitation, and inadequate institutional protection."
+        "citation": "De Hoyos, R., Rogers, H., & Székely, M. (2016). Ninis en América Latina: 20 millones de jóvenes en busca de oportunidades. World Bank Group.",
+        "relevance": "Examines the 'NiNi' (neither in education nor employment) phenomenon in Latin America, directly relevant to the construct's focus on youth labor and educational prospects.",
+        "key_finding": "Approximately 20 million young people in Latin America are neither in education nor employment, with Mexico having one of the highest rates, driven by low educational quality and labor market informality."
       },
       {
-        "citation": "Pinheiro, P. S. (2006). World report on violence against children. United Nations Secretary-General's Study on Violence against Children.",
-        "relevance": "Comprehensive UN study on violence against children across settings (home, school, community, institutions), providing the conceptual framework for understanding multi-dimensional vulnerability.",
-        "key_finding": "Violence against children is pervasive across all countries and settings, with poverty, inequality, and weak rule of law significantly amplifying risk exposure."
+        "citation": "Torche, F. (2014). Intergenerational mobility and inequality: The Latin American case. Annual Review of Sociology, 40, 619–642.",
+        "relevance": "Provides a comparative framework for understanding intergenerational mobility beliefs in Latin America, relevant to the construct's focus on whether younger generations have better or worse prospects.",
+        "key_finding": "Latin America exhibits lower intergenerational mobility than other regions, with education serving as both a potential equalizer and a mechanism for reproducing inequality depending on quality and access."
       },
       {
-        "citation": "REDIM (Red por los Derechos de la Infancia en México). (2019). Balance anual: La infancia cuenta en México 2019. REDIM.",
-        "relevance": "Provides Mexico-specific data on child vulnerability indicators including homicide rates, poverty, health access, and migration risks, directly corresponding to the construct's breadth of risk dimensions.",
-        "key_finding": "Between 2006 and 2019, over 21,000 children and adolescents were victims of homicide in Mexico, with rising trends in forced disappearance and recruitment by criminal organizations."
+        "citation": "Levy, S. (2008). Good intentions, bad outcomes: Social policy, informality, and economic growth in Mexico. Brookings Institution Press.",
+        "relevance": "Analyzes how Mexico's social policy and labor market structure affect economic opportunities for younger generations, providing context for public perceptions of declining job quality.",
+        "key_finding": "Mexico's dual labor market—with a large informal sector offering low wages and no benefits—undermines intergenerational economic mobility and shapes perceptions of declining opportunity."
       },
       {
-        "citation": "Bronfenbrenner, U. (1979). The ecology of human development: Experiments by nature and design. Harvard University Press.",
-        "relevance": "Provides the ecological systems theory framework for understanding how multiple levels of risk (family, community, societal) interact to create vulnerability for children, justifying the construct's multi-dimensional approach.",
-        "key_finding": "Child development outcomes are shaped by nested environmental systems, and risk factors at any level (microsystem to macrosystem) can cascade across domains to compound vulnerability."
+        "citation": "OECD. (2019). Education at a Glance 2019: OECD Indicators. OECD Publishing.",
+        "relevance": "Provides comparative data on educational access and returns to education in Mexico, relevant to measuring perceptions of educational opportunity change across generations.",
+        "key_finding": "While educational attainment in Mexico has increased significantly across generations, returns to education have stagnated and quality gaps persist, potentially explaining perceptions of limited improvement."
       }
     ],
     "causal_relationships": [
       {
         "role": "effect",
-        "related_construct": "public_insecurity_and_violence",
+        "related_construct": "economic_conditions_and_labor_market_structure",
         "measurable_in_data": true,
-        "data_source": "SEG"
-      },
-      {
-        "role": "effect",
-        "related_construct": "poverty_and_economic_inequality",
-        "measurable_in_data": true,
-        "data_source": "POB, ECO"
+        "data_source": "ECO"
       },
       {
         "role": "correlate",
-        "related_construct": "family_structure_and_stability",
+        "related_construct": "educational_quality_and_access",
         "measurable_in_data": true,
-        "data_source": "FAM"
+        "data_source": "EDU"
       },
       {
         "role": "cause",
@@ -302,33 +302,33 @@
       },
       {
         "role": "correlate",
-        "related_construct": "health_access_and_outcomes",
+        "related_construct": "poverty_perceptions",
         "measurable_in_data": true,
-        "data_source": "SAL"
+        "data_source": "POB"
       },
       {
         "role": "effect",
-        "related_construct": "corruption_and_institutional_weakness",
+        "related_construct": "globalization_and_economic_integration",
         "measurable_in_data": true,
-        "data_source": "COR, JUS"
+        "data_source": "GLO"
       },
       {
         "role": "correlate",
-        "related_construct": "human_rights_violations",
+        "related_construct": "family_formation_and_housing_access",
         "measurable_in_data": true,
-        "data_source": "DER"
-      },
-      {
-        "role": "cause",
-        "related_construct": "educational_dropout_and_disengagement",
-        "measurable_in_data": true,
-        "data_source": "EDU, NIN"
+        "data_source": "FAM, HAB"
       },
       {
         "role": "correlate",
         "related_construct": "indigenous_marginalization",
         "measurable_in_data": true,
         "data_source": "IND"
+      },
+      {
+        "role": "cause",
+        "related_construct": "political_dissatisfaction_and_distrust",
+        "measurable_in_data": true,
+        "data_source": "CUL"
       }
     ],
     "gap_justification": null,

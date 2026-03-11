@@ -1,80 +1,66 @@
 [
   {
-    "name": "institutional_justice_trust",
-    "description": "Captures the degree to which respondents trust formal justice institutions—courts, judges, police, and the public ministry—to operate fairly, independently, and effectively. Reflects confidence in the rule of law as administered by state actors.",
+    "name": "judicial_institutional_trust",
+    "description": "Perceived legitimacy, fairness, and trustworthiness of formal judicial institutions including courts, judges, and magistrates. Captures whether respondents believe the justice system operates impartially and effectively.",
     "question_cluster": [
-      "p22",
-      "p24_1",
-      "p38_1",
-      "p41",
-      "p42_1",
-      "p46",
-      "p50",
-      "p33"
+      "p22|JUS",
+      "p41|JUS",
+      "p42_1|JUS",
+      "p46|JUS",
+      "p33|JUS",
+      "p50|JUS",
+      "p43|JUS"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "legal_cynicism_extrajudicial_tolerance",
-    "description": "Measures the extent to which respondents distrust or bypass formal legal norms, including tolerance for extrajudicial punishment, vigilante justice, and the belief that laws and institutions are ineffective or corrupt. Reflects a disposition toward informal or violent alternatives to the justice system.",
+    "name": "legal_cynicism_extrajudicial_justice",
+    "description": "Disposition to accept or endorse bypassing formal legal processes, including tolerance for extrajudicial punishment by communities or lethal force by security forces instead of due process. Reflects distrust in the law's capacity to deliver justice.",
     "question_cluster": [
-      "p17",
-      "p18",
-      "p55",
-      "p57",
-      "p25a_1",
-      "p39",
-      "p37"
+      "p17|JUS",
+      "p18|JUS",
+      "p19|JUS",
+      "p27|JUS",
+      "p44|JUS"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "legal_knowledge_rights_awareness",
-    "description": "Assesses respondents' self-reported and objective knowledge of their legal rights, constitutional provisions, and available legal remedies such as amparo. Indicates civic legal literacy and capacity to navigate the formal justice system.",
+    "name": "police_trust_and_legitimacy",
+    "description": "Respondent's trust in and respect for police, and perception of whether police act fairly and professionally. Combines affective trust ratings with evaluative judgments about police conduct.",
     "question_cluster": [
-      "p12",
-      "p29",
-      "p34",
-      "p35",
-      "p36"
+      "p38_1|JUS",
+      "p24_1|JUS",
+      "p25a_1|JUS",
+      "p59|JUS",
+      "p40_2_1|JUS"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "procedural_justice_expectations",
-    "description": "Captures expectations about fair and respectful treatment by justice system actors (courts, police, public ministry) and preferences regarding how justice should be administered, including the balance between strict legality and equitable outcomes.",
+    "name": "legal_self_efficacy_and_access",
+    "description": "Respondent's perceived capacity to navigate the legal system, including knowledge of rights, willingness to use courts, access to legal representation, and beliefs about the utility of formal legal recourse.",
     "question_cluster": [
-      "p40_1",
-      "p40_1_1",
-      "p40_2_1",
-      "p43",
-      "p44",
-      "p45",
-      "p49"
+      "p12|JUS",
+      "p28|JUS",
+      "p34|JUS",
+      "p35|JUS",
+      "p36|JUS",
+      "p37|JUS",
+      "p39|JUS",
+      "p54|JUS"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "legal_problem_resolution_efficacy",
-    "description": "Measures respondents' practical experience resolving a range of everyday legal and administrative disputes, reflecting perceived and actual efficacy of formal and informal dispute-resolution mechanisms in Mexico.",
+    "name": "law_compliance_motivation",
+    "description": "The normative and instrumental reasons underlying why individuals obey laws, and their self-assessed versus perceived law-abidingness of citizens and government officials. Captures the motivational basis of legal compliance.",
     "question_cluster": [
-      "p60_1",
-      "p61_2",
-      "p61_3",
-      "p61_4",
-      "p61_5",
-      "p61_6",
-      "p61_7",
-      "p61_8",
-      "p61_9",
-      "p61_10",
-      "p61_11",
-      "p61_12",
-      "p61_13",
-      "p61_14",
-      "p61_16",
-      "p61_17",
-      "p61_18"
+      "p7|JUS",
+      "p8|JUS",
+      "p9|JUS",
+      "p10|JUS",
+      "p11_1|JUS"
     ],
     "requires_aggregation": true
   }

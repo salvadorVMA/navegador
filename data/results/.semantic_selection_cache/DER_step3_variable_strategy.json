@@ -1,70 +1,55 @@
 [
   {
-    "construct_name": "institutional_trust_and_justice_system_performance",
+    "construct_name": "institutional_trust_justice",
     "strategy": "aggregate",
     "selected_qids": [
-      "p18",
-      "p19",
-      "p20",
-      "p21",
-      "p34",
-      "p6"
+      "p18|DER",
+      "p19|DER",
+      "p20|DER",
+      "p34|DER"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Institutional trust is inherently multi-dimensional, spanning trust in courts, police, government, and justice delivery, so no single item captures the full construct. The questions share broadly compatible ordinal Likert-style scales (5–7 categories) and collectively tap the same latent dimension of institutional confidence. PCA extracts the dominant shared variance across these items while handling minor scale differences, and binning the first component into 5 quantiles yields a well-distributed ordinal bridge variable; p33 is excluded due to its notably lower entropy (H=1.45), suggesting limited discriminatory power."
+    "justification": "Institutional trust in justice is inherently multi-dimensional, spanning prosecutorial performance, victim treatment, judicial confidence, and human rights commission effectiveness; no single item captures the full construct. Questions p18, p19, p20, and p34 all use 6-7 point evaluative/confidence scales that are sufficiently compatible for PCA, which will extract the dominant shared variance reflecting generalized trust in justice institutions. Questions p21 and p33 are excluded because p21 is a binary perception item and p33 is a multiple-choice opinion item about functions rather than trust, making them dimensionally incompatible with the evaluative scale items."
   },
   {
-    "construct_name": "authoritarian_attitudes_and_punitive_tolerance",
+    "construct_name": "authoritarian_security_tradeoff",
     "strategy": "aggregate",
     "selected_qids": [
-      "p7",
-      "p9",
-      "p16",
-      "p17",
-      "p22",
-      "p23"
+      "p16|DER",
+      "p17|DER",
+      "p9|DER"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Authoritarian attitudes and punitive tolerance form a latent attitudinal syndrome that is best captured by multiple items probing different facets such as support for strong-hand governance, tolerance of extrajudicial punishment, and deference to authority. While most items use 5-category scales, p16 (K=8) and p17 (K=7) differ slightly, making PCA preferable to a simple sum as it accommodates scale heterogeneity and extracts the shared authoritarian dimension. Retaining all six items maximizes construct coverage and reduces single-item measurement error for this high-priority construct."
+    "justification": "The authoritarian security tradeoff construct captures a latent disposition toward accepting rights violations in the name of security, which is best measured by combining items on police violence, torture acceptance, and the rights-as-obstacle perception. p16 and p17 are both agreement scales (7-8 points) tapping willingness to endorse state coercion, while p9 (5-point yes/no-style scale) directly measures the core trade-off framing; PCA will identify the shared authoritarian-security dimension across these items. p7 is excluded because its two-choice forced comparison format is dimensionally distinct from the agreement scales and would distort the composite."
   },
   {
-    "construct_name": "perceived_discrimination_and_social_exclusion",
+    "construct_name": "perceived_discrimination_social_exclusion",
     "strategy": "aggregate",
     "selected_qids": [
-      "p35_1",
-      "p36_1",
-      "p39",
-      "p44",
-      "p47"
+      "p39|DER",
+      "p40_1|DER",
+      "p41|DER"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "Perceived discrimination and social exclusion is a multi-dimensional construct spanning racial, sexual orientation, and appearance-based exclusion, requiring aggregation to capture its breadth. p39 (6-point skin-color treatment scale), p40_1 (5-point tolerance scale), and p41 (7-point penalization agreement scale) all use ordinal evaluative or agreement scales of comparable range and together cover the core attitudinal dimensions of discrimination tolerance; PCA will extract the dominant prejudice-exclusion factor. p35_1, p36_1, and p44 are excluded because they are binary or near-binary items with very low entropy (H ≤ 1.23) that would contribute little discriminating information and are better characterized as behavioral rather than attitudinal measures."
+  },
+  {
+    "construct_name": "rights_awareness_personal_experience",
+    "strategy": "single_best_match",
+    "selected_qids": [
+      "p45|DER"
+    ],
+    "aggregation_method": null,
+    "justification": "p45 — whether the respondent believes their own human rights have ever been violated — is the gold-standard face-valid measure of personal rights experience, directly operationalizing the construct name as a first-person experiential judgment. The remaining items tap narrow, domain-specific victimization experiences (labor overtime, bullying, mobbing) or a general protection perception (p5), which are heterogeneous in content and scale and would not aggregate coherently into a single rights-awareness dimension. A single best-match item avoids conflating distinct victimization domains and provides a clean, interpretable bridge variable."
+  },
+  {
+    "construct_name": "social_rights_service_quality",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p30|DER",
+      "p32|DER"
     ],
     "aggregation_method": "mean_score",
-    "justification": "Perceived discrimination is a multi-faceted construct covering personal experience of discrimination, witnessed exclusion, and group-based marginalization, so aggregation across all five items is warranted. The scales are broadly compatible (4–6 ordinal categories) and a mean score normalizes for the small differences in range before binning. Mean aggregation is preferred over PCA here given the modest number of items and the relatively low entropy values, which suggest a shared but narrow response distribution that a simple mean captures adequately."
-  },
-  {
-    "construct_name": "gender_family_and_vulnerable_group_rights",
-    "strategy": "aggregate",
-    "selected_qids": [
-      "p55",
-      "p61",
-      "p49",
-      "p52",
-      "p58",
-      "p59"
-    ],
-    "aggregation_method": "pca_first_component",
-    "justification": "Rights attitudes toward gender, family, and vulnerable groups span multiple sub-domains (reproductive rights, LGBTQ+ rights, disability, minority protections) that together define the construct but individually are insufficient; aggregation is therefore necessary. Most items use 4–5 category scales with p49 extending to 6, so PCA handles this heterogeneity better than a raw sum. p56 is deprioritized relative to the selected items due to its lower entropy (H=1.17), but all six selected items have reasonable face validity for the construct; the first PC will capture the dominant progressive-versus-conservative rights orientation."
-  },
-  {
-    "construct_name": "civil_liberties_and_protest_rights",
-    "strategy": "aggregate",
-    "selected_qids": [
-      "p13",
-      "p14",
-      "p40_1",
-      "p41",
-      "p42"
-    ],
-    "aggregation_method": "pca_first_component",
-    "justification": "Civil liberties and protest rights encompass attitudes toward freedom of expression, assembly, and state repression, requiring multiple items to cover the construct adequately. The five selected items have the highest entropy values in the cluster (H ranging from 1.70 to 2.37), maximizing information content, while p8, p15, and p26 are excluded due to lower entropy and narrower coverage. Scale heterogeneity (K=5, 7, 8) makes PCA the most appropriate aggregation method, as it extracts the dominant latent civil-liberties dimension without assuming equal interval spacing across differently-scaled items."
+    "justification": "Social rights service quality is best captured by combining evaluations of public health and public education services, as both are core social rights domains measured on identical 7-point efficiency/quality scales, making them directly combinable via a mean score. p31 (dignified housing perception) is excluded because it uses a 5-point yes/no-style format that is scale-incompatible with the 7-point evaluative items and taps housing conditions rather than service quality per se. The mean of p30 and p32 yields a parsimonious, internally consistent composite of public service quality that is well-suited for the bridge regression."
   }
 ]

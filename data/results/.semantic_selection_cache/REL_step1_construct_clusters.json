@@ -1,7 +1,7 @@
 [
   {
-    "name": "supernatural_belief_system",
-    "description": "Measures the breadth and content of an individual's supernatural and metaphysical beliefs, capturing both orthodox religious doctrines (God, heaven, hell, soul) and folk or syncretic beliefs (witchcraft, karma, reincarnation, limpias), which together index the structure of a person's cosmological worldview.",
+    "name": "supernatural_beliefs",
+    "description": "Measures the breadth and depth of an individual's belief in supernatural, religious, and metaphysical entities or forces, ranging from orthodox Christian beliefs (God, hell, resurrection) to folk and syncretic beliefs (witchcraft, karma, limpias, reincarnation). Captures the overall cosmological worldview rather than institutional religiosity.",
     "question_cluster": [
       "p17_1",
       "p17_2",
@@ -21,23 +21,22 @@
     "requires_aggregation": true
   },
   {
-    "name": "religious_practice_and_devotion",
-    "description": "Captures the intensity of personal religious practice and devotional behavior, including prayer frequency, seeking comfort in religion, use of religious values in family life, reliance on religious figures for guidance, and ritual observance for life events.",
+    "name": "personal_religiosity",
+    "description": "Measures the degree to which religion is personally meaningful and actively practiced in daily life, including prayer outside formal worship, finding comfort in religion, using religious values to guide family behavior, reliance on clergy for life decisions, and the importance of God in one's life. Reflects internalized religious commitment rather than mere affiliation.",
     "question_cluster": [
       "p10",
-      "p11",
       "p12",
       "p13_1",
       "p14",
-      "p16_1",
       "p18",
-      "p25"
+      "p25",
+      "p11"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "religious_socialization_and_identity",
-    "description": "Measures the degree to which religious identity was transmitted through family and formal education and remains stable across generations, reflecting the strength of religious socialization as a mechanism of cultural reproduction.",
+    "name": "religious_socialization",
+    "description": "Measures the extent to which an individual's religious identity and practice were shaped by family and institutional upbringing, including whether they share the religion of their parents, whether family members are religiously homogeneous, and whether they received formal religious education. Captures intergenerational transmission of religion.",
     "question_cluster": [
       "p2",
       "p3",
@@ -45,35 +44,31 @@
       "p5",
       "p6",
       "p7_1",
-      "p15",
       "p33_1"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "church_state_separation_attitudes",
-    "description": "Assesses citizens' normative views on the appropriate boundaries between religious institutions and the public sphere, including opinions on churches in politics, use of public resources for religious events, church taxation, media religious content, and clergy involvement in political discourse.",
+    "name": "church_state_separation",
+    "description": "Measures attitudes toward the appropriate boundaries between religious institutions and the public sphere, including opinions on clergy discussing politics during services, churches forming political parties, use of public resources for religious events, church taxation, and media broadcasting religious content. Reflects support for or opposition to laicidad (secularism) as a political principle.",
     "question_cluster": [
       "p52_1",
       "p55",
       "p56",
       "p57",
-      "p58",
-      "p40"
+      "p58"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "religious_tolerance_and_pluralism",
-    "description": "Measures an individual's acceptance of religious diversity and willingness to coexist with people of different faiths, including perceptions of freedom of religion, tolerance within family and community, and attitudes toward exclusion or expulsion based on religious minority status.",
+    "name": "religious_tolerance",
+    "description": "Measures the degree to which individuals accept religious diversity in their social environment, including willingness to cohabit with people of other religions, family tolerance toward non-Catholics, justification for expelling religious minorities from communities, and opinions on how authorities should handle majority-minority religious conflicts.",
     "question_cluster": [
-      "p34",
       "p44_1",
       "p46_1",
       "p47",
       "p48",
-      "p50_1",
-      "p35"
+      "p40"
     ],
     "requires_aggregation": true
   }

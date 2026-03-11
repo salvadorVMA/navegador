@@ -1,73 +1,66 @@
 [
   {
     "name": "corruption_perception",
-    "description": "Captures respondents' subjective beliefs about the prevalence, trajectory, and location of corruption in Mexico, reflecting a generalized cognitive appraisal of systemic corruption as a social phenomenon.",
+    "description": "Measures the respondent's subjective perception of the prevalence, trajectory, and location of corruption in Mexico, capturing both temporal assessments (past and future) and spatial attributions (where corruption is most concentrated).",
     "question_cluster": [
-      "p2",
-      "p3",
-      "p15",
-      "p16",
-      "p17",
-      "p34"
+      "p2|COR",
+      "p3|COR",
+      "p15|COR",
+      "p16|COR",
+      "p17|COR",
+      "p34|COR"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "civic_tolerance_of_deviance",
-    "description": "Measures the degree to which individuals normalize, justify, or accept minor rule-breaking and corrupt behaviors in everyday life, reflecting internalized ethical thresholds for what constitutes acceptable conduct.",
+    "name": "tolerance_of_corrupt_behavior",
+    "description": "Measures the degree to which respondents normalize or accept corrupt and rule-breaking behaviors, including agreement with pro-corruption rationalizations, willingness to pay bribes, and comfort with minor civic violations.",
     "question_cluster": [
-      "p9_1",
-      "p10_1",
-      "p13_1",
-      "p52_1",
-      "p56"
+      "p10_1|COR",
+      "p13_1|COR",
+      "p14|COR",
+      "p19|COR",
+      "p12|COR",
+      "p9_1|COR"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "prosocial_reporting_behavior",
-    "description": "Assesses respondents' actual and hypothetical willingness to report or denounce corrupt, dishonest, or rule-violating behavior by others, capturing the behavioral dimension of anti-corruption engagement.",
+    "name": "civic_enforcement_norms",
+    "description": "Measures respondents' beliefs about how rule violations should be sanctioned and their personal behavioral responses when witnessing misconduct, reflecting internalized norms around accountability and social enforcement.",
     "question_cluster": [
-      "p11",
-      "p20",
-      "p21",
-      "p22",
-      "p23",
-      "p24",
-      "p27",
-      "p28",
-      "p30"
+      "p20|COR",
+      "p21|COR",
+      "p22|COR",
+      "p23|COR",
+      "p24|COR",
+      "p11|COR"
     ],
     "requires_aggregation": true
   },
   {
     "name": "institutional_trust_and_efficacy",
-    "description": "Measures trust in and perceived effectiveness of institutions—government, media, and enforcement bodies—in combating corruption and upholding legality, reflecting confidence in formal social control mechanisms.",
+    "description": "Measures trust in and perceived effectiveness of institutions in combating corruption, including honesty ratings of public figures, ratings of institutional anti-corruption effort, and awareness of where corruption can be reported.",
     "question_cluster": [
-      "p6_1",
-      "p18",
-      "p25_1",
-      "p36_1",
-      "p37",
-      "p38",
-      "p39",
-      "p53"
+      "p6_1|COR",
+      "p36_1|COR",
+      "p25_1|COR",
+      "p18|COR",
+      "p35_1|COR"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "anticorruption_civic_engagement",
-    "description": "Captures respondents' exposure to, awareness of, and participation in anticorruption efforts including media campaigns, neighborhood meetings, and personal agency in resisting bribery demands, reflecting active civic engagement against corruption.",
+    "name": "reporting_behavior_and_barriers",
+    "description": "Measures actual behavior and motivations related to reporting corruption and authority abuse, including whether incidents were reported, reasons for non-reporting, and outcomes when reports were made.",
     "question_cluster": [
-      "p14",
-      "p31",
-      "p33",
-      "p35_1",
-      "p41",
-      "p44",
-      "p45",
-      "p46",
-      "p59_1"
+      "p27|COR",
+      "p28|COR",
+      "p29|COR",
+      "p30|COR",
+      "p31|COR",
+      "p32|COR",
+      "p33|COR"
     ],
     "requires_aggregation": true
   }

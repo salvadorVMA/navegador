@@ -1,72 +1,65 @@
 [
   {
-    "name": "emigration_intention",
-    "description": "Measures the respondent's personal disposition and likelihood to emigrate from Mexico, capturing both attitudinal willingness and behavioral probability of moving abroad.",
+    "name": "emigration_intention_likelihood",
+    "description": "Measures the respondent's personal disposition and perceived probability of leaving Mexico to live abroad, capturing both desire and anticipated behavior regarding emigration.",
     "question_cluster": [
-      "p15_1",
-      "p17",
-      "p18",
-      "p24",
-      "p25"
+      "p15_1|MIG",
+      "p17|MIG",
+      "p18|MIG"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "perceived_opportunity_deprivation",
-    "description": "Captures the respondent's perception of limited structural opportunities in Mexico across economic and social domains, reflecting a sense of relative deprivation that may motivate emigration.",
+    "name": "perceived_opportunity_structure",
+    "description": "Measures the respondent's perception of available life opportunities in Mexico across economic and social domains, reflecting subjective assessments of structural mobility and access to resources.",
     "question_cluster": [
-      "p3_1",
-      "p3_2",
-      "p3_3",
-      "p3_4",
-      "p3_9",
-      "p60_1"
+      "p3_1|MIG",
+      "p3_2|MIG",
+      "p3_3|MIG",
+      "p3_4|MIG",
+      "p3_9|MIG"
     ],
     "requires_aggregation": true
   },
   {
     "name": "transnational_social_ties",
-    "description": "Measures the strength and density of the respondent's social network connections to Mexicans living abroad, including family, friends, remittances, and frequency of contact.",
+    "description": "Measures the extent and nature of the respondent's social network connections to Mexicans living abroad, including family, friends, remittance flows, and frequency of contact, capturing embeddedness in transnational social fields.",
     "question_cluster": [
-      "p21",
-      "p21_1",
-      "p21_2",
-      "p21_3",
-      "p22",
-      "p23",
-      "p16",
-      "p16_1"
+      "p21|MIG",
+      "p21_1|MIG",
+      "p21_2|MIG",
+      "p21_3|MIG",
+      "p22|MIG",
+      "p23|MIG",
+      "p24|MIG"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "xenophilia_tolerance",
-    "description": "Assesses the respondent's openness toward foreigners and cultural diversity in Mexico, including attitudes about foreigners' rights, economic contributions, and treatment relative to Mexicans.",
+    "name": "attitudes_toward_foreigners_in_mexico",
+    "description": "Measures the respondent's evaluative orientation toward immigrants living in Mexico, encompassing general opinion, perceived economic contribution, perceived discrimination, rights entitlements, and views on the appropriate number of foreigners in the country.",
     "question_cluster": [
-      "p5_1",
-      "p7_1",
-      "p42",
-      "p43_1",
-      "p45",
-      "p47",
-      "p48",
-      "p51",
-      "p52"
+      "p42|MIG",
+      "p43_1|MIG",
+      "p44|MIG",
+      "p45|MIG",
+      "p47|MIG",
+      "p48|MIG",
+      "p51|MIG",
+      "p52|MIG"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "migration_policy_attitudes",
-    "description": "Measures the respondent's normative orientations toward migration governance, including views on undocumented migration, government protection of migrants, voting rights abroad, and Central American transit migrants.",
+    "name": "perceived_costs_benefits_mexican_emigration",
+    "description": "Measures the respondent's beliefs about the consequences of Mexican emigration to the United States, including perceived benefits to Mexico, main disadvantages, discrimination faced by migrants, and the quality of jobs held by Mexicans abroad.",
     "question_cluster": [
-      "p6_1",
-      "p55",
-      "p58",
-      "p59",
-      "p65",
-      "p67_1",
-      "p34",
-      "p35_1"
+      "p29a|MIG",
+      "p30aa_1|MIG",
+      "p31|MIG",
+      "p32_1|MIG",
+      "p36|MIG",
+      "p38|MIG"
     ],
     "requires_aggregation": true
   }

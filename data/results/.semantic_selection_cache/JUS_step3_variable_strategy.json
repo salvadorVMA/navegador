@@ -1,80 +1,62 @@
 [
   {
-    "construct_name": "institutional_justice_trust",
+    "construct_name": "judicial_institutional_trust",
     "strategy": "aggregate",
     "selected_qids": [
-      "p22",
-      "p24_1",
-      "p42_1",
-      "p46",
-      "p50",
-      "p33"
+      "p22|JUS",
+      "p41|JUS",
+      "p42_1|JUS",
+      "p46|JUS",
+      "p33|JUS",
+      "p50|JUS"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Institutional justice trust is inherently multi-dimensional, spanning trust in courts, police, prosecutors, and legal institutions, so no single item captures the full construct. PCA first component is preferred over sum/mean because the items span different scale widths (K=5 to K=8), making raw summation distorting; PCA extracts the shared latent variance while accommodating scale heterogeneity. Items p38_1 (K=13) and p41 (K=9) are excluded because their extreme category counts would dominate the composite and are difficult to align with the 5–8 category items; the retained six items share broadly compatible Likert-style ranges and collectively cover institutional trust breadth."
+    "justification": "Judicial institutional trust is inherently multi-dimensional, spanning perceptions of system functioning (p22), judicial independence (p41), fairness of trials (p42_1), Supreme Court fairness (p46), equal treatment (p33), and accountability (p50), and no single item captures the full construct. PCA is preferred over sum/mean scoring because the items use heterogeneous scale widths (K=5 to K=9), making raw summation distort the composite; the first principal component will weight items by their shared variance and produce a single latent score that can be binned into 5 quantile categories. p43 is excluded because it measures a normative preference (justice vs. legalism) rather than trust per se, reducing construct contamination."
   },
   {
-    "construct_name": "legal_cynicism_extrajudicial_tolerance",
+    "construct_name": "legal_cynicism_extrajudicial_justice",
     "strategy": "aggregate",
     "selected_qids": [
-      "p17",
-      "p18",
-      "p55",
-      "p57",
-      "p39",
-      "p37"
+      "p17|JUS",
+      "p18|JUS",
+      "p19|JUS",
+      "p27|JUS",
+      "p44|JUS"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Legal cynicism and extrajudicial tolerance is a latent attitudinal construct combining distrust of legal norms with acceptance of vigilante or informal justice, requiring multiple items to distinguish cynicism from mere dissatisfaction. The six selected items share broadly compatible ordinal scales (K=5–8) and collectively tap both cynicism (p17, p18, p39) and extrajudicial tolerance (p55, p57, p37); PCA first component handles the modest scale-width variation and extracts the dominant shared attitude dimension. Item p25a_1 (K=4, H=1.06) is excluded as its very low entropy and narrow scale suggest a poorly discriminating item that would add noise rather than signal to the composite."
+    "justification": "Legal cynicism and endorsement of extrajudicial justice is a latent attitudinal construct that manifests across multiple behavioral and normative scenarios—vigilante punishment (p17), extrajudicial killing (p18), tolerance of system errors (p19), dispute resolution preferences (p27), and executive defiance of courts (p44)—so no single item is sufficient. Scale widths vary (K=6 to K=8) and item content spans distinct facets of cynicism, making PCA the most appropriate method to extract the dominant shared dimension while accommodating scale heterogeneity. All five items have reasonable entropy (H≥1.79) and strong face validity for the construct, justifying their joint inclusion."
   },
   {
-    "construct_name": "legal_knowledge_rights_awareness",
+    "construct_name": "police_trust_and_legitimacy",
     "strategy": "aggregate",
     "selected_qids": [
-      "p12",
-      "p29",
-      "p34",
-      "p35",
-      "p36"
-    ],
-    "aggregation_method": "mean_score",
-    "justification": "Legal knowledge and rights awareness is best captured as a composite because knowledge is cumulative across domains (procedural rights, substantive rights, institutional roles) and no single item covers the full breadth. All five items share compatible ordinal scales (K=5–8) with moderate entropy, making mean-scoring appropriate and interpretable as an average knowledge level. Mean score is preferred over PCA here because the items are expected to be roughly equally weighted indicators of a unidimensional knowledge trait, and binning the mean to ≤5 categories yields a clean ordinal bridge variable."
-  },
-  {
-    "construct_name": "procedural_justice_expectations",
-    "strategy": "aggregate",
-    "selected_qids": [
-      "p43",
-      "p44",
-      "p45",
-      "p49"
+      "p38_1|JUS",
+      "p24_1|JUS",
+      "p25a_1|JUS",
+      "p40_2_1|JUS"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Procedural justice expectations span multiple facets—fairness of treatment, voice, neutrality, and dignity—requiring aggregation across items that tap distinct but related expectations. The p40_1, p40_1_1, and p40_2_1 items are excluded due to very low entropy (H≤1.09), indicating near-uniform or highly skewed distributions that contribute little discriminating information to the composite. The four retained items (K=6–10) have meaningfully higher entropy and cover complementary procedural dimensions; PCA first component handles the scale-width variation (K=6 to K=10) and isolates the dominant shared expectation dimension for the bridge variable."
+    "justification": "Police trust and legitimacy spans affective trust (p38_1), respect (p24_1), perceived fairness (p25a_1), and procedural justice expectations (p40_2_1), requiring aggregation to capture the full construct. p59 is excluded because it asks about preferred policy mechanisms to prevent abuse—a prescriptive opinion rather than a trust or legitimacy evaluation—which would introduce construct-irrelevant variance. Scale widths are heterogeneous (K=4 to K=13), so PCA is preferred over summation to extract the shared latent dimension without distortion from differing response ranges."
   },
   {
-    "construct_name": "legal_problem_resolution_efficacy",
+    "construct_name": "legal_self_efficacy_and_access",
     "strategy": "aggregate",
     "selected_qids": [
-      "p60_1",
-      "p61_2",
-      "p61_3",
-      "p61_4",
-      "p61_5",
-      "p61_6",
-      "p61_7",
-      "p61_8",
-      "p61_9",
-      "p61_10",
-      "p61_11",
-      "p61_12",
-      "p61_13",
-      "p61_14",
-      "p61_16",
-      "p61_17",
-      "p61_18"
+      "p12|JUS",
+      "p36|JUS",
+      "p37|JUS",
+      "p39|JUS"
     ],
-    "aggregation_method": "sum_score",
-    "justification": "Legal problem resolution efficacy is best operationalized as a sum score across all available items because the p61 battery appears to be a checklist or multi-domain efficacy scale where each item contributes additively to an overall efficacy index. Nearly all items share the same K=5 scale (with a few K=6), making summation scale-compatible, and the extremely low individual entropies (most H<1.0) indicate that no single item is sufficiently discriminating on its own—only the aggregate sum achieves adequate variance for the bridge model. The sum is then binned to ≤5 ordinal categories, converting the wide raw-score range into a tractable ordered outcome while preserving the rank ordering of efficacy levels."
+    "aggregation_method": "pca_first_component",
+    "justification": "Legal self-efficacy and access is best captured by items reflecting subjective competence and perceived utility of the legal system: rights knowledge (p12), belief that suing the government is possible (p36), likelihood of winning such a suit (p37), and whether going to court is worthwhile (p39). p28 is excluded because it measures behavioral intention under a hypothetical constraint rather than efficacy beliefs, p34–p35 tap specific amparo knowledge which is a narrow legal literacy sub-domain, and p54 reflects cost-preference rather than efficacy. The retained items share a common evaluative orientation toward personal legal agency and use comparable ordinal scales (K=6–7), making PCA aggregation appropriate."
+  },
+  {
+    "construct_name": "law_compliance_motivation",
+    "strategy": "single_best_match",
+    "selected_qids": [
+      "p7|JUS"
+    ],
+    "aggregation_method": null,
+    "justification": "p7 directly asks respondents why they obey laws, making it the gold-standard face-valid measure of compliance motivation—the construct's core theoretical content—by eliciting the underlying normative, instrumental, or coercive reasons for compliance. The remaining items measure perceived law-abidingness of others (p8, p9, p11_1) or self-reported behavior (p10), which are correlates of compliance motivation but not its direct operationalization; mixing them would conflate motivation with descriptive norms and self-reported behavior. Although p8–p10 have higher entropy, their content validity for motivation is lower, and a single best-match item is preferable to an aggregate that blurs conceptually distinct phenomena."
   }
 ]
