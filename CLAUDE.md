@@ -91,11 +91,24 @@ Data Layer (ChromaDB embeddings, JSON files)
 - **Format**: JSON dictionary mapping questions to aggregated responses
 - **Processing**: ChromaDB embeddings for semantic search
 
-## Current Branch
+## Active Branches
 
-`feature/bivariate-analysis` (branched from `Claude1`) — active development branch.
+### `feature/bivariate-analysis` (branched from `Claude1`)
+
+Primary development branch for los_mex SES bridge work, construct-level analysis, and all core modules.
 
 The `worktree-knowledge-graph` worktree has been **merged** into this branch (commit `0f1fb30`). All knowledge-graph and expanded SES-bridge work now lives in the main workspace.
+
+### `wvs` (branched from `feature/bivariate-analysis`)
+
+World Values Survey integration branch. Extends the SES bridge to WVS data, adding time (7 waves, 1981-2022) and geography (66 countries, 8 cultural zones) dimensions. Key additions:
+- `data/wvs/` — WVS metadata files (variable equivalences, country codes, questionnaires)
+- `docs/WVS_INTEGRATION_PLAN.md` — Full integration plan with γ-surface formulation
+- WVS data zips (Wave 7 + Time Series) stored locally but gitignored (138MB)
+- **γ-surface concept**: γ(variable_pair, country, wave, SES_reference) — the bridge "travels" across contexts
+- **Anchor questions**: Shared questions between WVS and los_mex for bridge validation
+- **SES harmonization**: WVS Q260/Q262/Q275/G_TOWNSIZE → los_mex sexo/edad/escol/Tam_loc
+- **Mexico in all 7 WVS waves**: 11,714 total respondents (1,741 in Wave 7, fielded 2018)
 
 ### Key Modules Added / Significantly Changed
 
@@ -258,3 +271,4 @@ See `docs/` folder for detailed guides:
 - `META_PROMPTING_GUIDE.md` - Prompt optimization
 - `SANDBOX_README.md` - Docker sandbox usage
 - `SECURITY_TOOLS.md` - Security tools and scanning procedures
+- `WVS_INTEGRATION_PLAN.md` - World Values Survey integration plan (branch `wvs`)
