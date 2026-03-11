@@ -70,3 +70,6 @@ test_agent_tracing.log
 
 # Jupyter checkpoints
 .ipynb_checkpoints/
+
+# WVS processed data (generated locally from zips)
+data/wvs/wvs_mex_dict.json
