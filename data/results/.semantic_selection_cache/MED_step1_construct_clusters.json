@@ -1,66 +1,61 @@
 [
   {
-    "name": "environmental_knowledge_literacy",
-    "description": "Measures the respondent's self-assessed and objective knowledge about environmental problems, their causes, solutions, and renewable energy, capturing environmental literacy as a latent cognitive construct.",
+    "name": "environmental_problem_salience",
+    "description": "Captures the perceived severity and personal relevance of environmental problems, measuring both macro-level (national) and micro-level (local and household) environmental concern.",
     "question_cluster": [
-      "p8",
-      "p9",
-      "p27_1",
-      "p28_1",
-      "p29",
-      "p36_1"
+      "p4|MED",
+      "p5|MED",
+      "p6|MED",
+      "p7|MED",
+      "p30_1|MED"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "environmental_concern_risk_perception",
-    "description": "Captures the degree to which respondents perceive environmental problems as serious threats at national and local levels, including concern about specific issues such as climate change and fossil fuel impacts.",
+    "name": "environmental_knowledge_self_efficacy",
+    "description": "Measures respondents' self-assessed understanding of environmental causes, solutions, and renewable energy, reflecting perceived cognitive competence to engage with environmental issues.",
     "question_cluster": [
-      "p4",
-      "p5",
-      "p6",
-      "p7",
-      "p30_1",
-      "p37",
-      "p38_1"
+      "p8|MED",
+      "p9|MED",
+      "p27_1|MED",
+      "p28_1|MED",
+      "p29|MED",
+      "p36_1|MED"
     ],
     "requires_aggregation": true
   },
   {
     "name": "pro_environmental_civic_engagement",
-    "description": "Measures the extent to which respondents have taken collective or civic action to address environmental issues, reflecting behavioral mobilization beyond individual lifestyle choices.",
+    "description": "Measures the extent to which respondents have taken active collective or civic actions in defense of the environment, including petitions, protests, donations, reporting, and attending talks.",
     "question_cluster": [
-      "p34_1",
-      "p34_2",
-      "p34_3",
-      "p34_4",
-      "p34_5"
+      "p34_1|MED",
+      "p34_2|MED",
+      "p34_3|MED",
+      "p34_4|MED",
+      "p34_5|MED"
     ],
     "requires_aggregation": true
   },
   {
     "name": "environmental_governance_attitudes",
-    "description": "Captures respondents' beliefs about who bears responsibility for environmental protection and the appropriate role of government and companies in regulating environmental behavior.",
+    "description": "Captures beliefs about who bears responsibility for environmental protection and what regulatory or policy mechanisms should be used, reflecting orientations toward state intervention and corporate accountability.",
     "question_cluster": [
-      "p12_1",
-      "p13",
-      "p40",
-      "p41"
+      "p12_1|MED",
+      "p13|MED",
+      "p14|MED",
+      "p40|MED",
+      "p41|MED"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "socioeconomic_environmental_context",
-    "description": "Measures the material and infrastructural conditions of respondents' households and communities that shape both environmental exposure and adaptive capacity, serving as a proxy for socio-environmental vulnerability.",
+    "name": "climate_change_risk_perception",
+    "description": "Measures the degree to which respondents perceive climate change as a real, personally experienced, and socially differentiated threat, including beliefs about its impacts on daily life and vulnerable populations.",
     "question_cluster": [
-      "p25_1",
-      "p26_1",
-      "p39",
-      "p42",
-      "p44",
-      "p45",
-      "p46_1",
-      "p47"
+      "p37|MED",
+      "p38_1|MED",
+      "p39|MED",
+      "p10_1|MED"
     ],
     "requires_aggregation": true
   }

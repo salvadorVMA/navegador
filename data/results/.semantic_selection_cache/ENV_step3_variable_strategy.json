@@ -1,66 +1,64 @@
 [
   {
-    "construct_name": "ageism_and_age_discrimination",
+    "construct_name": "ageism_and_negative_stereotypes",
     "strategy": "aggregate",
     "selected_qids": [
-      "p14_1",
       "p13_1",
+      "p14_1",
       "p26",
-      "p27",
-      "p15_1"
+      "p27"
     ],
-    "aggregation_method": "pca_first_component",
-    "justification": "Ageism is inherently multi-dimensional, encompassing stereotypes, prejudice, and discriminatory behavior, so no single item captures the full construct. The five selected questions all exhibit moderate-to-high entropy (H≥1.82) and appear to tap attitudinal and experiential facets of age discrimination on comparable Likert-type scales, making them combinable. PCA first component is preferred over a simple sum because the items likely vary in their factor loadings and this method extracts the dominant shared variance while discarding item-specific noise, with the resulting score binned into 5 quantile categories for the bridge model."
+    "aggregation_method": "mean_score",
+    "justification": "Ageism is inherently multi-dimensional, encompassing stereotypic beliefs, prejudicial attitudes, and discriminatory perceptions that no single item can fully capture. The four selected items (p13_1, p14_1, p26, p27) share a compatible 7-point scale and exhibit the highest entropy values (H=1.91–2.28), indicating good distributional spread and measurement information. Items p18_1 and p25_1 are excluded because their narrower scales (4 and 5 categories) and substantially lower entropy (H=0.78, 1.05) would distort a mean composite; mean-scoring the four 7-point items and binning to ≤5 categories preserves ordinal structure while reducing single-item measurement error."
   },
   {
-    "construct_name": "elder_abuse_awareness",
+    "construct_name": "perceived_elder_abuse_and_mistreatment",
     "strategy": "aggregate",
     "selected_qids": [
-      "p20aa_1",
+      "p16_1",
       "p17_1",
+      "p19_1",
       "p20"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Elder abuse awareness spans knowledge of abuse types, recognition of warning signs, and perceived prevalence, requiring multiple items to cover the construct adequately. p20aa_1 (H=2.64, K=10) and p17_1 (H=1.66, K=6) carry the most information and likely reflect different facets (e.g., severity/frequency judgments vs. type recognition), while p20 (H=1.10) adds a complementary attitudinal or awareness dimension; however, their differing scale widths make PCA preferable to a raw sum, as it standardizes contributions before extracting the dominant axis, with the score then binned to 5 quantiles."
+    "justification": "Elder abuse perception is multi-faceted (awareness, prevalence beliefs, severity, type), requiring aggregation across items; however, the items have heterogeneous scales (4, 6, 4, 4 categories) and varying entropy, making a simple sum or mean inappropriate. PCA on the first component accommodates scale heterogeneity by standardizing inputs before extraction, capturing the dominant shared variance in perceived mistreatment. p20aa_1 is excluded because its 10-category structure and high entropy (H=2.64) suggest it may tap a distinct sub-dimension (e.g., specific abuse type frequency) that could distort the common factor; the remaining four items more coherently reflect general perceived abuse prevalence and seriousness."
   },
   {
     "construct_name": "state_and_family_responsibility_for_elder_care",
     "strategy": "aggregate",
     "selected_qids": [
-      "p30",
+      "p8",
       "p42_1",
       "p43",
-      "p29_1",
+      "p30",
       "p31"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Responsibility attribution for elder care is a multi-dimensional construct that distinguishes state versus family obligations and varies across policy and normative dimensions, so aggregation across several items is necessary. The five selected questions have the highest entropy values in the cluster (H≥1.51) and all use ordered response scales (5–9 categories) reflecting degrees of agreement or preference, making them conceptually combinable. PCA first component is chosen because scale widths differ (5 to 9 categories), and the first PC will capture the dominant ideological axis—state vs. family responsibility—while the resulting score is binned into 5 quantiles for the bridge."
+    "justification": "Responsibility attribution for elder care spans both state and family dimensions and is genuinely multi-dimensional, requiring aggregation to capture the full construct. The items have moderately compatible but not identical scales (5–9 categories) and varying entropy (H=1.51–2.03), making PCA preferable to a raw sum or mean as it standardizes inputs and extracts the dominant attitudinal dimension. p44 is excluded due to its very low entropy (H=0.78, K=4), indicating a highly skewed distribution that would contribute little variance to the composite and could suppress the first principal component's interpretability."
   },
   {
-    "construct_name": "perceived_quality_of_life_and_social_inclusion_of_older_adults",
+    "construct_name": "assessment_of_older_adult_wellbeing_and_social_conditions",
     "strategy": "aggregate",
     "selected_qids": [
       "p9",
       "p10",
-      "p11",
       "p36",
       "p38",
-      "p39",
-      "p21_2"
+      "p39"
     ],
-    "aggregation_method": "pca_first_component",
-    "justification": "Perceived quality of life and social inclusion is a broad, multi-faceted construct encompassing subjective wellbeing, social participation, and inclusion perceptions, which cannot be adequately captured by any single item. The seven selected questions all use 5–6 category ordered scales with moderate-to-high entropy (H≥1.65), indicating good distributional spread and conceptual alignment around life quality and social dimensions. PCA first component is appropriate because it identifies the dominant shared variance across these related but not identical facets, avoids arbitrary equal weighting in a sum, and the resulting continuous score is binned into 5 quantiles to satisfy the bridge model's categorical requirement."
+    "aggregation_method": "mean_score",
+    "justification": "Wellbeing and social conditions assessments are inherently multi-dimensional (economic, health, social integration, quality of life), requiring aggregation across items. p9, p10, p38, and p39 share a 6-point scale while p36 uses a 5-point scale—sufficiently compatible for mean-scoring after confirming directional alignment—and all have moderate-to-high entropy (H=1.65–2.27), ensuring informative spread. p37_1 (K=10) and p7_1a_1/p7_2a_1 (K=11, K=8) are excluded because their wider, potentially non-Likert response formats are scale-incompatible with the core 5–6 point items and risk introducing construct-irrelevant variance into the composite."
   },
   {
-    "construct_name": "intergenerational_contact_and_family_integration",
+    "construct_name": "support_for_elder_friendly_public_policy",
     "strategy": "aggregate",
     "selected_qids": [
-      "p46_1",
-      "p45_1",
-      "p2",
-      "p12"
+      "p40_1",
+      "p41_1",
+      "p21_2",
+      "p34_1"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Intergenerational contact and family integration encompasses both frequency of contact and quality of family relationships across generations, requiring multiple items to represent both dimensions. The four selected questions span the highest-entropy items in the cluster (H≥1.53) and cover contact frequency and integration quality on ordered scales (7–11 categories), making them substantively combinable. PCA first component is preferred over a sum because the wider-scale items (p46_1 K=11, p45_1 K=8) would otherwise dominate a raw sum, and the first PC extracts the shared intergenerational contact dimension with the score binned to 5 quantiles for the bridge."
+    "justification": "Support for elder-friendly public policy spans multiple policy domains (healthcare, housing, income support, social services), making aggregation essential to represent the construct's breadth. The items have heterogeneous scales (5, 5, 5, 6, and 13 categories), so PCA with standardized inputs is preferred over a raw mean to handle scale differences while extracting the dominant pro-policy attitude dimension. p40_1 (K=13, H=2.50) is retained because its high entropy provides valuable discriminating power, but PCA's standardization prevents its wider scale from dominating; p35 (H=1.35, the lowest) is excluded as its limited distributional spread contributes the least unique information to the latent policy-support factor."
   }
 ]

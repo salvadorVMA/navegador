@@ -5,60 +5,53 @@
     "selected_qids": [
       "p19_1",
       "p20",
-      "p15",
-      "p18_1",
-      "p55"
+      "p11"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Cosmopolitan identity is inherently multi-dimensional, encompassing self-identification with the world, openness to others, and sense of global belonging, so no single item fully captures it. The questions share broadly compatible Likert-style scales (6–7 categories) and collectively triangulate the construct from complementary angles. PCA on the first component is preferred over a simple mean because the items likely vary in their loading strength on the latent cosmopolitan dimension, and PCA extracts the shared variance most efficiently before binning to 5 quantiles."
+    "justification": "Cosmopolitan identity is inherently multi-dimensional, spanning self-identification as a world citizen, global vs. national identity framing, and interest in other cultures; no single item captures the full construct. p19_1, p20, and p11 are conceptually coherent indicators of outward cosmopolitan orientation and use broadly compatible ordinal scales (4–6 categories), making PCA appropriate to extract the dominant latent dimension. p15 (pride in being Mexican) is excluded because national pride is conceptually orthogonal to cosmopolitanism and would introduce construct-irrelevant variance into the composite."
   },
   {
-    "construct_name": "transnational_connectedness",
+    "construct_name": "transnational_exposure",
     "strategy": "aggregate",
     "selected_qids": [
-      "p6a_1",
       "p8",
-      "p8_2"
-    ],
-    "aggregation_method": "mean_score",
-    "justification": "Transnational connectedness reflects actual cross-border ties and interactions, but several items in this cluster (p2, p3, p4, p7) have very low entropy (≤1.07 bits), indicating highly skewed distributions that would contribute little discriminating information and could distort a composite. p6a_1, p8, and p8_2 have the highest entropy values and plausibly tap into frequency or intensity of transnational contact, making them the most informative and combinable subset. A mean score is appropriate because the selected items share similar 4–7 category ordinal scales and averaging preserves the ordinal metric before binning."
-  },
-  {
-    "construct_name": "cultural_openness",
-    "strategy": "aggregate",
-    "selected_qids": [
-      "p11",
-      "p24_1",
-      "p30",
-      "p11_2"
+      "p8_2",
+      "p7",
+      "p3"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Cultural openness is a latent attitudinal construct best captured by multiple items reflecting tolerance, curiosity, and receptivity toward other cultures. p11, p24_1, p30, and p11_2 carry the highest entropy values in the cluster and span distinct facets of the construct (general openness, specific cultural attitudes, behavioral dispositions), while p22_6a_1 and p22_1 have many categories or lower entropy suggesting noisier measurement. PCA extracts the dominant shared dimension across these moderately compatible ordinal items and avoids scale-mismatch distortion before binning to 5 quantiles."
+    "justification": "Transnational exposure is a latent behavioral construct best captured by combining indicators of cross-border social ties and direct international experience rather than any single item. p8, p8_2, p7, and p3 all tap interpersonal transnational contact (having people abroad, communicating with them, relationships with foreigners in Mexico, and having lived abroad), forming a coherent social-exposure dimension. p2 (languages) and p4 (travel frequency) are excluded because p2 has very low entropy (H=0.80) and p4's 15-category scale is incompatible with the others, and both tap different facets (linguistic capital, tourism) that would dilute the social-exposure signal."
   },
   {
-    "construct_name": "national_cultural_pride",
-    "strategy": "aggregate",
+    "construct_name": "cultural_openness_to_foreign_influence",
+    "strategy": "single_max_entropy",
     "selected_qids": [
-      "p17_1",
-      "p17_2",
-      "p17_3",
-      "p17_4",
-      "p17_5",
-      "p17_6"
+      "p24_1"
     ],
-    "aggregation_method": "sum_score",
-    "justification": "The p17 battery is a classic multi-item pride scale where all six items share an identical 7-point scale, making them directly summable without rescaling. Together they cover distinct domains of national pride (e.g., culture, history, institutions), and summing them into a composite reduces item-level measurement error and yields a reliable overall pride index. p65a_1 and p66a_1 have 14–15 categories and very high entropy suggesting they measure a different or broader construct (possibly national identity salience), so they are excluded to maintain scale homogeneity; the sum is then binned to ≤5 categories for the bridge model."
+    "aggregation_method": null,
+    "justification": "p24_1 (frequency of consuming American fast food) has the highest entropy (H=2.18) among the available items and serves as a concrete behavioral indicator of actual engagement with foreign cultural products rather than stated preferences or attitudes. The remaining items use incompatible scales and tap distinct sub-facets (reading habits, music preference, normative evaluation of foreign influence, TV consumption origin) that do not form a unidimensional scale, making aggregation methodologically risky. As a behavioral frequency measure with seven ordered categories and maximum distributional spread, p24_1 provides the most reliable single bridge variable for this construct."
   },
   {
-    "construct_name": "global_governance_support",
+    "construct_name": "economic_globalization_attitudes",
     "strategy": "aggregate",
     "selected_qids": [
+      "p47",
       "p48",
-      "p56_1",
-      "p54_1",
-      "p57"
+      "p31_1"
     ],
     "aggregation_method": "mean_score",
-    "justification": "Support for global governance is a multi-faceted attitude encompassing trust in international institutions, willingness to delegate sovereignty, and endorsement of multilateral solutions, requiring aggregation to capture its breadth. p48, p56_1, p54_1, and p57 have the highest entropy values in the cluster (≥1.66 bits) and plausibly tap into distinct but related dimensions of global governance attitudes, while p52_1, p58, p60_1, and p63_1 show lower entropy and may reflect more specific or skewed sub-questions. These four items use 5–7 category ordinal scales that are sufficiently compatible for averaging, and the mean is then binned to ≤5 categories for the ordinal bridge model."
+    "justification": "Economic globalization attitudes constitute a coherent attitudinal construct best measured by combining evaluations of trade openness, FTA support, and the bilateral US-Mexico trade relationship, which together span the key dimensions of trade liberalization sentiment. p47, p48, and p31_1 use compatible ordinal scales (4–6 categories) and all tap pro- vs. anti-globalization trade attitudes with reasonable entropy (H=1.39, 1.82, 1.60), making a mean score appropriate after rescaling to a common range. p46_1 is excluded as it closely overlaps with p48 (both assess FTA valence), and p49_1 (foreign investment in telecoms) taps a more specific regulatory attitude that may not load on the same general trade-openness dimension."
+  },
+  {
+    "construct_name": "international_institutional_engagement",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p54_1",
+      "p57",
+      "p58",
+      "p60_1"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "International institutional engagement is a multi-faceted construct encompassing preferences for multilateral governance, support for international human rights mechanisms, and willingness to use international bodies, requiring aggregation to capture its breadth. p54_1, p57, p58, and p60_1 all directly address the role and authority of international institutions (UN, regional bodies) across governance, human rights, and security domains, using compatible 4–7 category ordinal scales with moderate-to-good entropy. p52_1 and p63_1 are excluded because they have very low entropy (H=0.91 and H=0.66 respectively), indicating near-ceiling agreement that would compress variance and reduce bridge model discriminability."
   }
 ]

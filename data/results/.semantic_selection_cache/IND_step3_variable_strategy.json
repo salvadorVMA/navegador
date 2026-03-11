@@ -1,61 +1,62 @@
 [
   {
-    "construct_name": "perceived_ethnic_discrimination",
+    "construct_name": "perceived_indigenous_discrimination",
     "strategy": "aggregate",
     "selected_qids": [
       "p20",
-      "p21",
-      "p32",
-      "p34_1",
-      "p36",
-      "p38_1"
-    ],
-    "aggregation_method": "pca_first_component",
-    "justification": "Perceived ethnic discrimination is inherently multi-dimensional, spanning personal experiences, witnessed events, and institutional contexts, so no single item captures the full construct. The questions share broadly compatible Likert-style ordinal scales (K=4–6) and collectively cover the construct's breadth, making aggregation appropriate to reduce measurement error. PCA is preferred over a simple sum because the slight scale heterogeneity (one item has K=6) and varying entropy levels suggest items may load differently on the latent discrimination dimension; the first principal component extracts the dominant shared variance while down-weighting idiosyncratic item variance. p25_1 is excluded due to its very low entropy (H=0.83), indicating near-zero variance that would add noise rather than signal."
-  },
-  {
-    "construct_name": "indigenous_rights_and_autonomy",
-    "strategy": "aggregate",
-    "selected_qids": [
       "p30",
-      "p35_1",
-      "p46",
-      "p47",
-      "p49"
+      "p32",
+      "p34_1"
     ],
     "aggregation_method": "mean_score",
-    "justification": "Indigenous rights and autonomy is a multi-faceted construct encompassing land rights, political self-determination, and cultural autonomy, so all five available items should be combined to capture its full scope. The questions use compatible 4- or 5-point ordinal scales, making a mean score appropriate for producing a continuous composite that can then be binned into ordinal categories. Mean scoring (rather than sum) is preferred because it handles the minor scale difference between the K=5 item (p30) and the K=4 items gracefully by normalizing each item's contribution, and the moderate entropy values across all items (0.85–1.52) indicate sufficient variance in each to contribute meaningfully."
+    "justification": "Perceived discrimination is inherently multi-dimensional, spanning awareness of systemic bias, personal experience, and institutional treatment, so no single item fully captures it. The four selected questions all use compatible 5-point scales and carry the highest entropy values (H ≥ 1.37), maximizing informational content in the composite. p25_1 and p35_1 are excluded due to low entropy (H ≤ 0.83–1.17), indicating skewed distributions that would distort the mean; p21 is similarly low-entropy and likely redundant once the higher-entropy items are included."
   },
   {
     "construct_name": "social_distance_toward_indigenous_people",
     "strategy": "aggregate",
     "selected_qids": [
-      "p26_1",
-      "p37_1",
+      "p36",
+      "p38_1",
       "p39_1",
       "p40_1"
     ],
-    "aggregation_method": "sum_score",
-    "justification": "Social distance is a classic multi-item construct that requires aggregation across different social scenarios (e.g., neighborhood, workplace, family) to yield a reliable measure; no single scenario item is sufficient on its own. All four items use compatible 4- or 5-point ordinal scales measuring willingness or comfort with proximity to indigenous people, making them directly summable into a Bogardus-style composite. A sum score is appropriate here because the items are conceptually parallel indicators of the same underlying attitude, and summing preserves the additive structure of social distance scales before binning into ≤5 ordinal categories."
+    "aggregation_method": "pca_first_component",
+    "justification": "Social distance is a classic latent construct best captured by multiple behavioral-intention items (e.g., willingness to live near, work with, or have family ties with indigenous people), and the five questions collectively triangulate this latent dimension. However, the items use slightly varying response scales (K=4, 5, 6), making a simple sum or mean less defensible; PCA extracts the dominant shared variance while accommodating scale heterogeneity. p37_1 is excluded due to its very low entropy (H=0.94), suggesting a near-constant response that would add noise rather than signal to the first component."
   },
   {
-    "construct_name": "attributions_for_indigenous_disadvantage",
+    "construct_name": "indigenous_cultural_integration_vs_autonomy",
     "strategy": "aggregate",
     "selected_qids": [
       "p22",
-      "p44_1",
-      "p45a_1"
+      "p29",
+      "p46",
+      "p48",
+      "p49"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Attributions for indigenous disadvantage span internal (individual/cultural blame) versus external (structural/historical) causal dimensions, requiring multiple items to capture the attitudinal spectrum; aggregation reduces single-item bias. p43 (K=14) and p15 (K=6) are excluded because their very different category structures are incompatible with the remaining Likert-5 items and would distort a composite, while p22, p44_1, and p45a_1 share broadly compatible ordinal scales. PCA is chosen over a simple mean because p45a_1 has a notably wider response scale (K=11) and the highest entropy (H=2.63), so the first principal component will appropriately weight items by their shared variance rather than letting the high-K item dominate arithmetically."
+    "justification": "The integration-versus-autonomy dimension is a bipolar attitudinal construct with multiple facets (language policy, governance, land rights, cultural preservation), requiring aggregation to capture the full ideological spectrum. Scale heterogeneity across items (K=4, 5, 7) makes PCA preferable to a simple mean, as it weights items by their shared variance rather than treating all response ranges as equivalent. p47 is excluded due to its very low entropy (H=0.85), indicating a highly skewed distribution that would suppress variance in the first component rather than contributing meaningful discriminating power."
   },
   {
-    "construct_name": "indigenous_cultural_knowledge_and_identity",
-    "strategy": "single_max_entropy",
+    "construct_name": "stereotyping_and_social_image_of_indigenous_people",
+    "strategy": "aggregate",
     "selected_qids": [
-      "p18_1a_1"
+      "p13a_1",
+      "p14a_1",
+      "p26_1",
+      "p27_1",
+      "p28_1"
     ],
-    "aggregation_method": null,
-    "justification": "The construct does not require aggregation (requires_aggregation=False), and p18_1a_1 has by far the highest Shannon entropy (H=2.41, K=8), indicating it captures the most variation across respondents and is therefore the most informative single indicator. The remaining items have low entropy (p10: H=0.65; p16: H=0.72; p17: H=0.58), suggesting they are near-constant and would add little discriminatory power. p18_1a_1 most plausibly taps a rich, multi-level identity or cultural knowledge question (given its 8 categories and high entropy), making it both statistically and substantively the best single representative of this construct."
+    "aggregation_method": "pca_first_component",
+    "justification": "Stereotyping and social image is a latent construct spanning trait attributions, affect, and group image, making multi-item aggregation essential for construct validity. The selected items span a wide range of category counts (K=5 to 15), ruling out a simple sum or mean; PCA is appropriate because it extracts the dominant attitudinal factor regardless of scale differences. p15 is excluded because with K=6 and H=1.57 it has moderate entropy but lower face validity for stereotype content specifically compared to the direct trait-rating and image items retained; the PCA will still capture its shared variance indirectly through the dominant component."
+  },
+  {
+    "construct_name": "national_economic_outlook",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p1",
+      "p2"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "National economic outlook is a two-item construct likely tapping retrospective and prospective economic evaluations (sociotropic assessments), and combining both items reduces measurement error relative to either alone. Both questions use compatible 6-point scales (K=6), making a simple mean directly interpretable and appropriate without needing dimensionality reduction. With only two items PCA is unnecessary; the mean score will be binned into ≤5 ordinal categories for the bridge model, preserving the full range of the combined distribution."
   }
 ]

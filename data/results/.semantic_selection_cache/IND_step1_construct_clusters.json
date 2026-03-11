@@ -1,64 +1,63 @@
 [
   {
-    "name": "perceived_ethnic_discrimination",
-    "description": "Measures the degree to which respondents perceive that indigenous people face discrimination and unequal treatment in employment, rights assertion, and daily life in Mexico.",
+    "name": "perceived_indigenous_discrimination",
+    "description": "Measures the degree to which respondents perceive that indigenous people face discrimination, unequal treatment, and denial of rights in Mexican society, capturing both attitudinal recognition of discrimination and assessments of systemic inequality.",
     "question_cluster": [
       "p20",
       "p21",
       "p25_1",
+      "p30",
       "p32",
       "p34_1",
-      "p36",
-      "p38_1"
-    ],
-    "requires_aggregation": true
-  },
-  {
-    "name": "indigenous_rights_and_autonomy",
-    "description": "Captures attitudes toward indigenous peoples' political self-determination, land rights, linguistic access to public services, and respect for their human rights by the state.",
-    "question_cluster": [
-      "p30",
-      "p35_1",
-      "p46",
-      "p47",
-      "p49"
+      "p35_1"
     ],
     "requires_aggregation": true
   },
   {
     "name": "social_distance_toward_indigenous_people",
-    "description": "Measures the willingness of non-indigenous respondents to engage in close personal, domestic, or professional relationships with indigenous people, reflecting affective prejudice and social exclusion.",
+    "description": "Measures the willingness of non-indigenous respondents to engage in close personal, domestic, or professional relationships with indigenous people, reflecting affective prejudice and behavioral exclusion tendencies.",
     "question_cluster": [
-      "p26_1",
+      "p36",
       "p37_1",
+      "p38_1",
       "p39_1",
       "p40_1"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "attributions_for_indigenous_disadvantage",
-    "description": "Assesses whether respondents attribute indigenous poverty and hardship to structural/systemic factors or to individual and cultural deficiencies, capturing meritocratic versus structural explanatory frames.",
+    "name": "indigenous_cultural_integration_vs_autonomy",
+    "description": "Captures respondents' preferences regarding whether indigenous peoples should assimilate into mainstream Mexican society or maintain distinct cultural, political, and linguistic autonomy, including views on self-governance, land rights, and language of education.",
     "question_cluster": [
-      "p15",
       "p22",
-      "p43",
-      "p44_1",
-      "p45a_1"
+      "p29",
+      "p46",
+      "p47",
+      "p48",
+      "p49"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "indigenous_cultural_knowledge_and_identity",
-    "description": "Measures respondents' factual knowledge about indigenous groups and language speakers in Mexico, their own ethnic self-identification, and family connections to indigenous language heritage.",
+    "name": "stereotyping_and_social_image_of_indigenous_people",
+    "description": "Measures the content and valence of respondents' mental representations of indigenous people, including occupational stereotypes, family-level attitudes, and perceived advantages and disadvantages of indigenous identity.",
     "question_cluster": [
-      "p8",
-      "p10",
-      "p12_1",
-      "p16",
-      "p17",
-      "p18_1a_1"
+      "p13a_1",
+      "p14a_1",
+      "p15",
+      "p26_1",
+      "p27_1",
+      "p28_1"
     ],
-    "requires_aggregation": false
+    "requires_aggregation": true
+  },
+  {
+    "name": "national_economic_outlook",
+    "description": "Measures respondents' retrospective and prospective evaluations of Mexico's overall economic situation, capturing both sociotropic economic assessments and economic expectations.",
+    "question_cluster": [
+      "p1",
+      "p2"
+    ],
+    "requires_aggregation": true
   }
 ]

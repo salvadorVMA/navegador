@@ -1,6 +1,6 @@
 [
   {
-    "construct_name": "subjective_social_mobility",
+    "construct_name": "intergenerational_mobility_perception",
     "strategy": "aggregate",
     "selected_qids": [
       "p22",
@@ -10,61 +10,54 @@
       "p36"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Subjective social mobility is inherently multi-dimensional, encompassing retrospective, current, and prospective assessments of one's social position, and no single item fully captures this breadth. All five questions use similar ordinal ladder/rank scales (6–8 categories) with moderate-to-good entropy, making them combinable; PCA extracts the dominant shared variance across past, present, and future mobility perceptions while discarding item-specific noise. Binning the first principal component into 5 quantiles yields a compact ordinal variable that maximizes construct coverage for the bridge regression."
+    "justification": "Intergenerational mobility perception is inherently multi-dimensional, encompassing both retrospective assessments (past mobility) and prospective expectations (future mobility), so no single item captures the full construct. The questions span 6–8 category scales with moderate-to-good entropy, making them broadly compatible for a latent-variable reduction approach. PCA on the first component extracts the dominant shared variance across all five items while handling minor scale-range differences, and binning to 5 quantiles yields a well-distributed ordinal target suitable for the bridge model."
   },
   {
-    "construct_name": "material_living_standards",
+    "construct_name": "poverty_attribution_and_definition",
     "strategy": "aggregate",
     "selected_qids": [
-      "p47",
-      "p53",
-      "p54",
-      "p52",
-      "p51"
-    ],
-    "aggregation_method": "pca_first_component",
-    "justification": "Material living standards is a multi-dimensional construct spanning income, asset ownership, housing quality, and consumption capacity, so aggregation is strongly preferred over any single item. p47 (15 categories, H=2.59), p53 (H=1.87), p54 (H=1.55), p52 (H=1.45), and p51 (H=1.13) are selected as the highest-entropy and most content-valid items covering distinct material dimensions; p48, p49, and p55 are excluded due to very low entropy (≤1.10 bits) indicating near-constant responses that would distort a sum or mean. PCA on these five items captures the dominant axis of material deprivation/affluence and is robust to their differing scale widths, with the first component binned to 5 quantiles to satisfy the ≤15 category constraint."
-  },
-  {
-    "construct_name": "structural_attribution_of_poverty",
-    "strategy": "aggregate",
-    "selected_qids": [
-      "p27_1",
+      "p25",
+      "p26",
       "p39",
-      "p40",
-      "p33",
-      "p32"
+      "p40"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Structural attribution of poverty requires capturing the degree to which respondents blame systemic/societal factors versus individual factors, a latent attitude that is best measured by multiple items to reduce acquiescence and item-specific bias. p27_1 (H=2.82), p39 (H=2.29), p40 (H=1.67), p33 (H=1.47), and p32 (H=1.13) are selected for their higher entropy and face validity as attitudinal items about causes of poverty; p37 is excluded because its very low entropy (H=0.55) indicates a near-degenerate distribution that would suppress variance in any composite. PCA is preferred over a sum score because the items span different scale widths (4–10 categories), and the first component will reflect the shared structural-vs-individual attribution dimension after standardization."
+    "justification": "Poverty attribution and definition is a conceptually rich construct covering both causal beliefs (structural vs. individual responsibility) and definitional thresholds, requiring multiple items to represent it adequately. p27_1 is excluded because its 10-category scale with the highest entropy (2.82 bits) likely reflects a distinct distributional format that could distort a simple composite, while p25, p26, p39, and p40 share comparable 6–9 category ordinal structures. PCA on the first component captures the dominant attitudinal dimension across these four items and bins cleanly to 5 quantiles for the bridge regression."
   },
   {
     "construct_name": "social_policy_preferences",
     "strategy": "aggregate",
     "selected_qids": [
       "p29_1",
+      "p41",
       "p42",
-      "p31",
-      "p30",
-      "p43",
-      "p41"
+      "p43"
     ],
-    "aggregation_method": "pca_first_component",
-    "justification": "Social policy preferences span support for redistribution, targeted transfers, public services, and state intervention, making it a genuinely multi-dimensional construct that no single item can represent adequately. p29_1 (H=2.35), p42 (H=2.37), p31 (H=2.64), p30 (H=2.28), p43 (H=2.18), and p41 (H=1.84) are selected as the six highest-entropy items covering distinct policy domains; p44 (H=1.20) is excluded as its lower entropy and narrower scale (4 categories) add little discriminating information. PCA handles the mixed scale widths (6–11 categories) by standardizing items before extraction, and binning the first component into 5 quantiles produces a valid ordinal bridge variable reflecting the dominant pro- vs. anti-redistribution attitude dimension."
+    "aggregation_method": "mean_score",
+    "justification": "Social policy preferences require aggregation because attitudes toward redistribution, targeting, and program design are distinct but correlated facets of a single latent preference dimension. p29_1, p41, p42, and p43 share broadly comparable ordinal scales (6–8 categories) and collectively cover the breadth of the construct; p44 is excluded because its 4-category scale with low entropy (1.20 bits) adds little information and would compress the composite range. Mean-scoring these four items and binning to ≤5 categories produces a stable, interpretable ordinal variable with good spread for the bridge model."
   },
   {
-    "construct_name": "subjective_economic_wellbeing",
+    "construct_name": "perceived_social_inequality_and_discrimination",
     "strategy": "aggregate",
     "selected_qids": [
-      "p14",
-      "p17_1",
+      "p32",
+      "p33",
+      "p37"
+    ],
+    "aggregation_method": "sum_score",
+    "justification": "With only three items available, all three should be retained to maximize construct coverage across the inequality-perception and discrimination-experience dimensions. The scales are narrow (4–5 categories) and the entropy of p37 is notably low (0.55 bits), suggesting a skewed but substantively important item that complements the more evenly distributed p32 and p33. Summing the three items and binning to ≤5 categories is appropriate given the small number of items and limited scale range, producing an ordinal composite that captures cumulative perceived disadvantage."
+  },
+  {
+    "construct_name": "subjective_economic_wellbeing_and_agency",
+    "strategy": "aggregate",
+    "selected_qids": [
       "p13",
+      "p14",
       "p15",
-      "p20_1",
       "p16",
-      "p18_1"
+      "p10"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Subjective economic wellbeing is a latent construct encompassing perceived income adequacy, financial stress, ability to make ends meet, and economic expectations, all of which are distinct facets requiring multiple indicators for reliable measurement. All seven selected items use near-identical 12–13 category scales with high entropy (H ranging from 2.36 to 3.16 bits), making them highly compatible for aggregation; p10 (K=7, H=1.98) is excluded because its narrower scale is incompatible with the dominant 13-point scale family and would introduce scale-mixing artifacts. PCA on the seven homogeneous items extracts the primary subjective wellbeing dimension with maximum fidelity, and binning to 5 quantiles produces a parsimonious ordinal variable well-suited for the bridge regression."
+    "justification": "Subjective economic wellbeing and agency is a multi-faceted construct spanning current financial situation, perceived control, and economic trajectory, so aggregation across all five items is warranted. p13–p16 share an identical 13-category scale with high entropy, while p10 uses a 7-category scale; PCA accommodates this mild scale heterogeneity by extracting the dominant latent dimension rather than assuming strict additivity. Binning the first principal component to 5 quantiles yields a well-spread ordinal variable that efficiently summarizes the shared variance in subjective economic experience for the bridge regression."
   }
 ]

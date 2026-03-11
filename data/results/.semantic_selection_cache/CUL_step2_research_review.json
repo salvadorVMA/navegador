@@ -1,415 +1,378 @@
 [
   {
-    "construct_name": "democratic_legitimacy",
+    "construct_name": "democratic_legitimacy_support",
     "sources": [
       {
         "citation": "Booth, J. A., & Seligson, M. A. (2009). The Legitimacy Puzzle in Latin America: Political Support and Democracy in Eight Nations. Cambridge University Press.",
-        "relevance": "Directly theorizes and measures democratic legitimacy in Latin America, distinguishing between diffuse support for democracy as a system and specific satisfaction with democratic performance.",
-        "key_finding": "Democratic legitimacy in Latin America is multidimensional, with citizens simultaneously endorsing democracy in principle while expressing dissatisfaction with its performance, and these dimensions have distinct determinants."
+        "relevance": "Directly theorizes and measures democratic legitimacy as a multidimensional construct encompassing diffuse and specific support across Latin American countries including Mexico.",
+        "key_finding": "Democratic legitimacy in Latin America is multidimensional, with citizens distinguishing between support for democratic principles and satisfaction with democratic performance."
       },
       {
-        "citation": "Moreno, A. (2002). La sociedad mexicana y el cambio: Apoyo a la democracia y preferencia por la estabilidad. In A. Moreno (Ed.), El votante mexicano: Democracia, actitudes políticas y conducta electoral. Fondo de Cultura Económica.",
-        "relevance": "Analyzes Mexican citizens' normative commitment to democracy versus authoritarian alternatives in the context of Mexico's democratic transition.",
-        "key_finding": "Mexican support for democracy increased significantly after the 2000 alternation in power, but satisfaction with democratic functioning remained low, revealing a legitimacy gap."
+        "citation": "Moreno, A. (2002). La sociedad mexicana y el cambio: Apoyo a la democracia. In A. Moreno (Ed.), El votante mexicano: Democracia, actitudes políticas y conducta electoral. Fondo de Cultura Económica.",
+        "relevance": "Analyzes Mexican citizens' normative commitment to democracy and satisfaction with its functioning in the context of democratic transition.",
+        "key_finding": "Mexican support for democracy increased significantly after the 2000 transition but remained tempered by dissatisfaction with democratic performance and institutional quality."
       },
       {
         "citation": "Norris, P. (2011). Democratic Deficit: Critical Citizens Revisited. Cambridge University Press.",
-        "relevance": "Provides the theoretical framework of 'critical citizens' who support democratic ideals but are dissatisfied with democratic practice, directly relevant to measuring both normative and evaluative dimensions.",
-        "key_finding": "Growing democratic deficits—gaps between democratic aspirations and perceived performance—are a global phenomenon that can either undermine or strengthen democracy depending on institutional context."
+        "relevance": "Provides the theoretical framework of 'critical citizens' who support democratic ideals but are dissatisfied with democratic practice, directly applicable to the normative vs. evaluative dimensions captured in this construct.",
+        "key_finding": "Growing gaps between democratic aspirations and perceived democratic performance generate 'critical citizens' who demand better governance rather than reject democracy outright."
       },
       {
-        "citation": "Schedler, A., & Sarsfield, R. (2007). Democrats with adjectives: Linking direct and indirect measures of democratic support. European Journal of Political Research, 46(5), 637–659.",
-        "relevance": "Examines the measurement of democratic support in Mexico using both direct (preference for democracy) and indirect (rejection of authoritarian alternatives) indicators.",
-        "key_finding": "Direct and indirect measures of democratic support tap into different attitudinal dimensions, and many Mexicans who express support for democracy also endorse authoritarian alternatives, complicating legitimacy measurement."
+        "citation": "Crow, D. (2010). The Party's Over: Citizen Conceptions of Democracy and Political Dissatisfaction in Mexico. Comparative Politics, 43(1), 41–61.",
+        "relevance": "Examines how Mexican citizens conceptualize democracy and how these conceptions shape satisfaction with democratic governance.",
+        "key_finding": "Citizens who define democracy in substantive terms (economic well-being, social justice) are significantly less satisfied with Mexican democracy than those who define it procedurally."
       },
       {
-        "citation": "Latinobarómetro. (2021). Informe Latinobarómetro 2021. Corporación Latinobarómetro.",
-        "relevance": "Provides longitudinal comparative data on satisfaction with democracy and preference for democracy across Latin America, including Mexico.",
-        "key_finding": "Support for democracy in Latin America declined to historic lows by 2021, with Mexico showing particularly sharp drops in satisfaction with democratic performance."
+        "citation": "Latinobarómetro. (2018). Informe 2018. Corporación Latinobarómetro.",
+        "relevance": "Provides comparative survey data on democratic support and satisfaction across Latin America, using items closely paralleling those in this construct.",
+        "key_finding": "Support for democracy in Mexico declined to historic lows by 2018, with only 38% of Mexicans stating democracy is preferable to any other form of government."
       }
     ],
     "causal_relationships": [
       {
         "role": "effect",
-        "related_construct": "institutional_trust_and_efficacy",
-        "measurable_in_data": true,
-        "data_source": "CUL"
-      },
-      {
-        "role": "effect",
-        "related_construct": "perceived_corruption",
+        "related_construct": "corruption perceptions",
         "measurable_in_data": true,
         "data_source": "COR"
       },
       {
+        "role": "effect",
+        "related_construct": "economic satisfaction and employment conditions",
+        "measurable_in_data": true,
+        "data_source": "ECO, POB"
+      },
+      {
         "role": "cause",
-        "related_construct": "voter_turnout_and_political_participation",
+        "related_construct": "voter turnout and political participation",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "institutional trust and electoral confidence",
         "measurable_in_data": true,
         "data_source": "CUL"
       },
       {
         "role": "effect",
-        "related_construct": "economic_performance_evaluations",
-        "measurable_in_data": true,
-        "data_source": "ECO"
-      },
-      {
-        "role": "moderator",
-        "related_construct": "rule_of_law_and_justice_perceptions",
-        "measurable_in_data": true,
-        "data_source": "JUS, SEG"
-      },
-      {
-        "role": "effect",
-        "related_construct": "educational_attainment",
+        "related_construct": "educational attainment",
         "measurable_in_data": true,
         "data_source": "EDU"
       },
       {
-        "role": "correlate",
-        "related_construct": "human_rights_perceptions",
-        "measurable_in_data": true,
-        "data_source": "DER"
-      },
-      {
         "role": "effect",
-        "related_construct": "public_security_perceptions",
+        "related_construct": "public security perceptions",
         "measurable_in_data": true,
         "data_source": "SEG"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "human rights attitudes",
+        "measurable_in_data": true,
+        "data_source": "DER"
       }
     ],
     "gap_justification": null,
     "importance_rating": 5
   },
   {
-    "construct_name": "institutional_trust_and_efficacy",
+    "construct_name": "institutional_trust_and_electoral_confidence",
     "sources": [
       {
-        "citation": "Mishler, W., & Rose, R. (2001). What are the origins of political trust? Testing institutional and cultural theories in post-communist societies. Comparative Political Studies, 34(1), 30–62.",
-        "relevance": "Tests whether institutional trust derives from cultural predispositions or rational evaluations of institutional performance, directly relevant to the trust component of this construct.",
-        "key_finding": "Institutional trust is primarily driven by evaluations of institutional performance rather than deep cultural orientations, suggesting trust is responsive to governance quality."
+        "citation": "Schedler, A. (2012). The Politics of Uncertainty: Sustaining and Subverting Electoral Authoritarianism. Oxford University Press.",
+        "relevance": "Theorizes how citizen confidence in electoral integrity is central to democratic consolidation in Mexico, directly relevant to the INE-related items in this construct.",
+        "key_finding": "Electoral confidence in Mexico is shaped by partisan cues, media exposure, and direct experience with electoral irregularities, and is critical for regime legitimacy."
       },
       {
-        "citation": "Moreno, A. (2010). Confianza institucional en México. In A. Moreno (Ed.), La confianza en las instituciones: México en perspectiva comparada. Centro de Estudios Sociales y de Opinión Pública, Cámara de Diputados.",
-        "relevance": "Directly examines institutional trust in the Mexican context, analyzing trust in political parties, congress, judiciary, and other institutions.",
-        "key_finding": "Institutional trust in Mexico is generally low and varies significantly across institutions, with the military and church receiving higher trust than political parties and congress."
+        "citation": "Moreno, A., & Méndez, P. (2007). La confianza institucional en México. In A. Moreno (Ed.), Nuestros valores: Los mexicanos en México y en Estados Unidos al inicio del siglo XXI. Banamex.",
+        "relevance": "Directly measures institutional trust in Mexico across multiple institutions including police, electoral authorities, and interpersonal trust.",
+        "key_finding": "Institutional trust in Mexico is consistently low, with police and political parties ranking among the least trusted institutions, while interpersonal trust also remains below regional averages."
       },
       {
-        "citation": "Niemi, R. G., Craig, S. C., & Mattei, F. (1991). Measuring internal political efficacy in the 1988 National Election Study. American Political Science Review, 85(4), 1407–1413.",
-        "relevance": "Provides foundational measurement framework for political efficacy, distinguishing internal (citizen competence) from external (government responsiveness) efficacy.",
-        "key_finding": "Internal and external political efficacy are empirically distinct dimensions that require separate measurement, with external efficacy more closely tied to institutional trust."
+        "citation": "Eisenstadt, T. A. (2004). Courting Democracy in Mexico: Party Strategies and Electoral Institutions. Cambridge University Press.",
+        "relevance": "Analyzes the evolution of electoral institutions in Mexico and how citizen confidence in the IFE/INE shaped democratic transition.",
+        "key_finding": "The credibility of Mexico's electoral management body was pivotal to democratic transition, but confidence eroded as partisan conflicts over electoral reform intensified."
       },
       {
-        "citation": "Cleary, M. R., & Stokes, S. C. (2006). Democracy and the Culture of Skepticism: Political Trust in Argentina and Mexico. Russell Sage Foundation.",
-        "relevance": "Directly compares institutional trust in Mexico and Argentina, examining how democratic experience shapes trust in government institutions.",
-        "key_finding": "In newer democracies like Mexico, political trust is more closely linked to partisanship and clientelistic networks than to evaluations of government performance."
+        "citation": "Córdova, L. (2008). La reforma electoral y el cambio político en México. In D. Zovatto & J. J. Orozco (Eds.), Reforma política y electoral en América Latina 1978–2007. UNAM/IDEA Internacional.",
+        "relevance": "Discusses how electoral reforms and the role of INE in overseeing state elections affect citizen confidence in electoral processes.",
+        "key_finding": "Centralization of electoral oversight under INE was designed to increase confidence in subnational elections, but results have been mixed depending on local political dynamics."
+      },
+      {
+        "citation": "Levi, M., & Stoker, L. (2000). Political Trust and Trustworthiness. Annual Review of Political Science, 3(1), 475–507.",
+        "relevance": "Provides the foundational theoretical framework for understanding political trust as distinct from interpersonal trust, relevant to the construct's combination of institutional and social trust items.",
+        "key_finding": "Political trust is generated by institutional performance and procedural fairness, and is conceptually and empirically distinct from generalized social trust."
       }
     ],
     "causal_relationships": [
       {
-        "role": "cause",
-        "related_construct": "democratic_legitimacy",
-        "measurable_in_data": true,
-        "data_source": "CUL"
-      },
-      {
         "role": "effect",
-        "related_construct": "perceived_corruption",
+        "related_construct": "corruption perceptions and experiences",
         "measurable_in_data": true,
         "data_source": "COR"
       },
       {
         "role": "cause",
-        "related_construct": "civic_and_political_participation",
+        "related_construct": "democratic legitimacy support",
         "measurable_in_data": true,
         "data_source": "CUL"
       },
       {
         "role": "effect",
-        "related_construct": "public_security_perceptions",
+        "related_construct": "public security and crime victimization",
         "measurable_in_data": true,
         "data_source": "SEG"
       },
       {
-        "role": "effect",
-        "related_construct": "justice_system_evaluations",
+        "role": "cause",
+        "related_construct": "electoral participation and voter turnout",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "justice system perceptions",
         "measurable_in_data": true,
         "data_source": "JUS"
       },
       {
         "role": "effect",
-        "related_construct": "economic_evaluations",
-        "measurable_in_data": true,
-        "data_source": "ECO"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "media_consumption_and_information_access",
-        "measurable_in_data": true,
-        "data_source": "SOC, CUL"
-      },
-      {
-        "role": "moderator",
-        "related_construct": "federalism_and_decentralization_attitudes",
-        "measurable_in_data": true,
-        "data_source": "FED"
-      }
-    ],
-    "gap_justification": null,
-    "importance_rating": 5
-  },
-  {
-    "construct_name": "civic_and_political_participation",
-    "sources": [
-      {
-        "citation": "Verba, S., Schlozman, K. L., & Brady, H. E. (1995). Voice and Equality: Civic Voluntarism in American Politics. Harvard University Press.",
-        "relevance": "Provides the foundational civic voluntarism model explaining participation through resources, engagement, and recruitment, applicable to measuring diverse forms of participation.",
-        "key_finding": "Political participation is driven by resources (time, money, civic skills), psychological engagement, and recruitment networks, with socioeconomic status as a key predictor."
-      },
-      {
-        "citation": "Klesner, J. L. (2007). Social capital and political participation in Latin America: Evidence from Argentina, Chile, Mexico, and Peru. Latin American Research Review, 42(2), 1–32.",
-        "relevance": "Directly examines the relationship between social capital and political participation in Mexico and other Latin American countries.",
-        "key_finding": "Social capital—measured through associational membership and interpersonal trust—significantly predicts both conventional and unconventional political participation in Mexico."
-      },
-      {
-        "citation": "Somuano, M. F. (2005). Más allá del voto: Modos de participación política no electoral en México. Foro Internacional, 45(1), 65–88.",
-        "relevance": "Directly analyzes non-electoral forms of political participation in Mexico, including community organizing, protest, and contacting officials.",
-        "key_finding": "Non-electoral participation in Mexico is shaped by education, political interest, and organizational membership, with significant variation across urban and rural contexts."
-      },
-      {
-        "citation": "Holzner, C. A. (2010). Poverty of Democracy: The Institutional Roots of Political Participation in Mexico. University of Pittsburgh Press.",
-        "relevance": "Examines how institutional context and clientelism shape political participation patterns in Mexico, particularly among lower-income citizens.",
-        "key_finding": "Clientelistic mobilization substitutes for autonomous participation among Mexico's poor, creating a participation pattern that reinforces rather than challenges inequality."
-      }
-    ],
-    "causal_relationships": [
-      {
-        "role": "effect",
-        "related_construct": "educational_attainment",
-        "measurable_in_data": true,
-        "data_source": "EDU"
-      },
-      {
-        "role": "effect",
-        "related_construct": "political_interest_and_engagement",
-        "measurable_in_data": true,
-        "data_source": "CUL"
-      },
-      {
-        "role": "effect",
-        "related_construct": "institutional_trust_and_efficacy",
-        "measurable_in_data": true,
-        "data_source": "CUL"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "socioeconomic_status_and_poverty",
-        "measurable_in_data": true,
-        "data_source": "POB, ECO"
-      },
-      {
-        "role": "effect",
-        "related_construct": "social_capital_and_community_ties",
-        "measurable_in_data": true,
-        "data_source": "CUL, FAM"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "gender_equality_attitudes",
-        "measurable_in_data": true,
-        "data_source": "GEN"
-      },
-      {
-        "role": "cause",
-        "related_construct": "democratic_legitimacy",
-        "measurable_in_data": true,
-        "data_source": "CUL"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "indigenous_identity",
-        "measurable_in_data": true,
-        "data_source": "IND"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "youth_engagement",
-        "measurable_in_data": true,
-        "data_source": "NIN"
-      }
-    ],
-    "gap_justification": null,
-    "importance_rating": 5
-  },
-  {
-    "construct_name": "political_interest_and_engagement",
-    "sources": [
-      {
-        "citation": "Prior, M. (2010). You've either got it or you don't? The stability of political interest over the life cycle. Journal of Politics, 72(3), 747–766.",
-        "relevance": "Examines the stability and determinants of political interest as a core attitudinal dimension, relevant to measuring subjective interest and its relationship to media consumption.",
-        "key_finding": "Political interest is remarkably stable over the life course and is largely set by early adulthood, functioning as a dispositional trait rather than a situational response."
-      },
-      {
-        "citation": "Moreno, A., & Méndez, P. (2007). Getting to know the Mexican voter. In J. I. Domínguez, C. Lawson, & A. Moreno (Eds.), Consolidating Mexico's Democracy: The 2006 Presidential Campaign in Comparative Perspective. Johns Hopkins University Press.",
-        "relevance": "Analyzes political interest, media consumption, and ideological self-placement among Mexican voters during a critical election.",
-        "key_finding": "Political interest in Mexico is strongly stratified by education and socioeconomic status, with media consumption patterns mediating the relationship between interest and political knowledge."
-      },
-      {
-        "citation": "Zaller, J. R. (1992). The Nature and Origins of Mass Opinion. Cambridge University Press.",
-        "relevance": "Provides the theoretical framework linking political awareness (interest + media consumption) to opinion formation, directly relevant to the cognitive engagement dimension.",
-        "key_finding": "Political awareness—a combination of interest and information exposure—is the key moderator of how citizens receive and accept political messages, shaping opinion formation."
-      },
-      {
-        "citation": "Camp, R. A. (2014). Politics in Mexico: Democratic Consolidation or Decline? (6th ed.). Oxford University Press.",
-        "relevance": "Provides comprehensive analysis of Mexican political culture including political interest, ideological orientations, and media's role in political engagement.",
-        "key_finding": "Political interest in Mexico remains comparatively low by international standards, with significant urban-rural and generational divides in engagement patterns."
-      }
-    ],
-    "causal_relationships": [
-      {
-        "role": "cause",
-        "related_construct": "civic_and_political_participation",
-        "measurable_in_data": true,
-        "data_source": "CUL"
-      },
-      {
-        "role": "effect",
-        "related_construct": "educational_attainment",
-        "measurable_in_data": true,
-        "data_source": "EDU"
-      },
-      {
-        "role": "cause",
-        "related_construct": "political_knowledge",
-        "measurable_in_data": true,
-        "data_source": "CUL"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "media_and_information_access",
+        "related_construct": "media consumption and information access",
         "measurable_in_data": true,
         "data_source": "SOC"
       },
       {
         "role": "moderator",
-        "related_construct": "democratic_legitimacy",
-        "measurable_in_data": true,
-        "data_source": "CUL"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "age_and_generational_effects",
-        "measurable_in_data": true,
-        "data_source": "NIN, ENV"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "gender_differences_in_engagement",
-        "measurable_in_data": true,
-        "data_source": "GEN"
-      },
-      {
-        "role": "effect",
-        "related_construct": "socioeconomic_status",
+        "related_construct": "poverty and socioeconomic marginalization",
         "measurable_in_data": true,
         "data_source": "POB, ECO"
       }
     ],
     "gap_justification": null,
-    "importance_rating": 4
+    "importance_rating": 5
   },
   {
-    "construct_name": "authoritarian_versus_democratic_values",
+    "construct_name": "political_efficacy_and_engagement",
     "sources": [
       {
-        "citation": "Inglehart, R., & Welzel, C. (2005). Modernization, Cultural Change, and Democracy: The Human Development Sequence. Cambridge University Press.",
-        "relevance": "Provides the foundational theory linking socioeconomic development to shifts from survival/authoritarian values toward self-expression/democratic values, directly relevant to the authoritarian-democratic value dimension.",
-        "key_finding": "Rising existential security drives a cultural shift from authoritarian to emancipative values, which in turn creates mass demand for democratic institutions and civil liberties."
+        "citation": "Campbell, A., Gurin, G., & Miller, W. E. (1954). The Voter Decides. Row, Peterson and Company.",
+        "relevance": "Foundational work that introduced the concept of political efficacy, distinguishing internal efficacy (belief in one's competence) from external efficacy (belief in government responsiveness), both captured in this construct.",
+        "key_finding": "Political efficacy is a key predictor of political participation, with citizens who feel efficacious being significantly more likely to vote and engage in political activities."
       },
       {
-        "citation": "Seligson, M. A., & Booth, J. A. (2009). Predicting coups? Democratic vulnerabilities, the AmericasBarometer and the 2009 Honduran crisis. Americas Barometer Insights, 2009(1).",
-        "relevance": "Uses survey measures of authoritarian attitudes and tolerance for extralegal action to assess democratic vulnerability in Latin America, directly relevant to measuring preferences for strong leadership over institutional constraints.",
-        "key_finding": "High levels of tolerance for executive coups and military intervention correlate with low institutional trust and perceived insecurity, identifying attitudinal preconditions for democratic breakdown."
+        "citation": "Moreno, A. (2003). El votante mexicano: Democracia, actitudes políticas y conducta electoral. Fondo de Cultura Económica.",
+        "relevance": "Analyzes political interest, efficacy, and engagement among Mexican voters, using items closely paralleling those in this construct.",
+        "key_finding": "Political efficacy in Mexico is stratified by education and socioeconomic status, with lower-income citizens reporting significantly lower internal and external efficacy."
       },
       {
-        "citation": "Magaloni, B. (2006). Voting for Autocracy: Hegemonic Party Survival and its Demise in Mexico. Cambridge University Press.",
-        "relevance": "Analyzes how authoritarian values and clientelistic attachments sustained one-party rule in Mexico, providing historical context for the persistence of authoritarian orientations.",
-        "key_finding": "Authoritarian values in Mexico were reinforced by the PRI's hegemonic party system through a combination of patronage, fear, and strategic coordination, leaving a lasting imprint on political culture."
+        "citation": "Klesner, J. L. (2007). Social Capital and Political Participation in Latin America: Evidence from Argentina, Chile, Mexico, and Peru. Latin American Research Review, 42(2), 1–32.",
+        "relevance": "Examines the relationship between social capital, political efficacy, and various forms of political participation in Mexico and other Latin American countries.",
+        "key_finding": "Social capital and political efficacy independently predict political participation in Mexico, but their effects vary across conventional and unconventional participation modes."
       },
       {
-        "citation": "Canache, D. (2012). Citizens' conceptualizations of democracy: Structural complexity, substantive content, and political significance. Comparative Political Studies, 45(9), 1132–1158.",
-        "relevance": "Examines how Latin American citizens conceptualize democracy, including whether they prioritize freedom, order, or economic outcomes, relevant to the values dimension.",
-        "key_finding": "Citizens who conceptualize democracy in terms of freedoms and rights are more likely to reject authoritarian alternatives, while those emphasizing order and economic outcomes show greater tolerance for authoritarianism."
-      },
-      {
-        "citation": "Díaz Domínguez, A. (2020). Valores autoritarios y apoyo a la democracia en México. Política y Gobierno, 27(1), 1–28.",
-        "relevance": "Directly measures authoritarian value orientations in Mexico and their relationship to democratic support, using survey data comparable to the ENCUP framework.",
-        "key_finding": "Authoritarian values remain prevalent in Mexico, particularly among less educated and rural populations, and significantly predict tolerance for extralegal government actions and preference for strong-hand leadership."
+        "citation": "Buendía, J., & Somuano, F. (2003). Participación electoral en nuevas democracias: La elección presidencial de 2000 en México. Política y Gobierno, 10(2), 289–323.",
+        "relevance": "Directly examines how political interest and perceived efficacy shaped electoral participation during Mexico's democratic transition.",
+        "key_finding": "Political interest and external efficacy were significant predictors of voter turnout in the 2000 Mexican presidential election, even after controlling for sociodemographic variables."
       }
     ],
     "causal_relationships": [
       {
         "role": "cause",
-        "related_construct": "democratic_legitimacy",
+        "related_construct": "voter turnout and political participation",
         "measurable_in_data": true,
         "data_source": "CUL"
       },
       {
-        "role": "correlate",
-        "related_construct": "human_rights_attitudes",
-        "measurable_in_data": true,
-        "data_source": "DER"
-      },
-      {
         "role": "effect",
-        "related_construct": "public_security_concerns",
-        "measurable_in_data": true,
-        "data_source": "SEG"
-      },
-      {
-        "role": "effect",
-        "related_construct": "educational_attainment",
+        "related_construct": "educational attainment and civic education",
         "measurable_in_data": true,
         "data_source": "EDU"
       },
       {
         "role": "correlate",
-        "related_construct": "tolerance_of_corruption",
+        "related_construct": "democratic legitimacy support",
         "measurable_in_data": true,
-        "data_source": "COR"
+        "data_source": "CUL"
       },
       {
-        "role": "correlate",
-        "related_construct": "gender_equality_values",
+        "role": "effect",
+        "related_construct": "media consumption and information access",
+        "measurable_in_data": true,
+        "data_source": "SOC"
+      },
+      {
+        "role": "effect",
+        "related_construct": "socioeconomic status and poverty",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "gender and political participation",
         "measurable_in_data": true,
         "data_source": "GEN"
       },
       {
         "role": "correlate",
-        "related_construct": "religious_values_and_secularization",
+        "related_construct": "social trust and community engagement",
         "measurable_in_data": true,
-        "data_source": "REL"
+        "data_source": "CUL, FAM"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "authoritarian_predisposition",
+    "sources": [
+      {
+        "citation": "Seligson, M. A., & Booth, J. A. (2009). Predicting Coups? Democratic Values and Authoritarian Attitudes among Elites and the General Public in Latin America. Comparative Political Studies, 42(10), 1–28.",
+        "relevance": "Directly measures authoritarian attitudes in Latin America, including preference for strong leaders over rule of law, which is central to this construct.",
+        "key_finding": "Authoritarian predispositions among Latin American publics are significantly associated with lower education, lower political knowledge, and experience with insecurity."
+      },
+      {
+        "citation": "Moreno, A. (2005). Nuestros valores: Los mexicanos en México y en Estados Unidos al inicio del siglo XXI. Banamex.",
+        "relevance": "Examines Mexican value orientations including the freedom-security tradeoff and tolerance for strong leadership, directly paralleling items in this construct.",
+        "key_finding": "A substantial proportion of Mexicans prioritize security over freedom and express tolerance for rule-bending by authorities, particularly in contexts of high insecurity."
+      },
+      {
+        "citation": "Canache, D. (2012). Citizens' Conceptualizations of Democracy: Structural Complexity, Substantive Content, and Political Significance. Comparative Political Studies, 45(9), 1132–1158.",
+        "relevance": "Analyzes how citizens' conceptualizations of democracy relate to authoritarian predispositions, relevant to the tension between democratic norms and authoritarian preferences.",
+        "key_finding": "Citizens with thin or instrumental conceptions of democracy are more likely to endorse authoritarian alternatives when democratic performance is perceived as poor."
+      },
+      {
+        "citation": "Feldman, S. (2003). Enforcing Social Conformity: A Theory of Authoritarianism. Political Psychology, 24(1), 41–74.",
+        "relevance": "Provides the psychological theory of authoritarianism as a predisposition activated by threat, relevant to the security-freedom tradeoff and rule-breaking tolerance items.",
+        "key_finding": "Authoritarian predispositions are activated by perceived threats to social order, leading to increased support for strong leaders and willingness to sacrifice civil liberties."
+      },
+      {
+        "citation": "Romero, V. (2016). Desempeño gubernamental y actitudes hacia la democracia en México. Política y Gobierno, 23(2), 409–441.",
+        "relevance": "Examines how government performance evaluations in Mexico relate to authoritarian attitudes and democratic backsliding preferences.",
+        "key_finding": "Poor government performance evaluations increase authoritarian predispositions among Mexican citizens, particularly among those with lower education and greater economic vulnerability."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "public insecurity and crime victimization",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support for human rights restrictions",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "democratic legitimacy support (inverse)",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "religiosity and traditional values",
+        "measurable_in_data": true,
+        "data_source": "REL, IDE"
+      },
+      {
+        "role": "effect",
+        "related_construct": "corruption perceptions and tolerance",
+        "measurable_in_data": true,
+        "data_source": "COR"
       },
       {
         "role": "moderator",
-        "related_construct": "justice_system_evaluations",
+        "related_construct": "justice system evaluations",
         "measurable_in_data": true,
         "data_source": "JUS"
       },
       {
         "role": "effect",
-        "related_construct": "socioeconomic_development_and_poverty",
+        "related_construct": "economic deprivation and poverty",
         "measurable_in_data": true,
         "data_source": "POB, ECO"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "identity_and_national_values",
-        "measurable_in_data": true,
-        "data_source": "IDE"
       }
     ],
     "gap_justification": null,
     "importance_rating": 5
+  },
+  {
+    "construct_name": "perceived_political_influence_of_actors",
+    "sources": [
+      {
+        "citation": "Hagopian, F. (1998). Democracy and Political Representation in Latin America in the 1990s: Pause, Reorganization, or Decline? In F. Agüero & J. Stark (Eds.), Fault Lines of Democracy in Post-Transition Latin America (pp. 99–143). North-South Center Press.",
+        "relevance": "Discusses the perceived power of various political actors—parties, business, unions, the Church—in shaping Latin American democracies, directly relevant to the actors listed in this construct.",
+        "key_finding": "Citizens' perceptions of which actors wield political influence shape their evaluations of democratic quality and their sense of political exclusion."
+      },
+      {
+        "citation": "Lawson, C. (2002). Building the Fourth Estate: Democratization and the Rise of a Free Press in Mexico. University of California Press.",
+        "relevance": "Analyzes the role of media as a political actor in Mexico's democratization, relevant to the perceived influence of media item in this construct.",
+        "key_finding": "Media became an increasingly autonomous and influential political actor during Mexico's democratic transition, and citizens' perceptions of media power reflect broader assessments of democratic pluralism."
+      },
+      {
+        "citation": "Lehoucq, F. (2012). The Politics of Modern Central America: Civil War, Democratization, and Underdevelopment. Cambridge University Press.",
+        "relevance": "Provides comparative context on how perceptions of elite capture (business, church, military) undermine democratic legitimacy in Latin America.",
+        "key_finding": "When citizens perceive that economic elites and non-democratic actors dominate politics, democratic satisfaction and institutional trust decline significantly."
+      },
+      {
+        "citation": "Camp, R. A. (2014). Politics in Mexico: Democratic Consolidation or Decline? (6th ed.). Oxford University Press.",
+        "relevance": "Comprehensive analysis of power structures in Mexican politics, including the relative influence of the presidency, parties, business, unions, the Church, and civil society.",
+        "key_finding": "The Mexican presidency remains perceived as the most influential political actor, but the growing influence of business groups and media has reshaped citizens' mental maps of political power."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "cause",
+        "related_construct": "political efficacy (citizen influence perceptions)",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "democratic legitimacy and satisfaction",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "corruption perceptions",
+        "measurable_in_data": true,
+        "data_source": "COR"
+      },
+      {
+        "role": "effect",
+        "related_construct": "media consumption patterns",
+        "measurable_in_data": true,
+        "data_source": "SOC"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "religiosity and Church influence perceptions",
+        "measurable_in_data": true,
+        "data_source": "REL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "economic inequality perceptions",
+        "measurable_in_data": true,
+        "data_source": "ECO, POB"
+      },
+      {
+        "role": "effect",
+        "related_construct": "globalization attitudes (foreign business influence)",
+        "measurable_in_data": true,
+        "data_source": "GLO"
+      }
+    ],
+    "gap_justification": "While the individual actors (president, parties, media, etc.) have been studied extensively in Mexican politics, the specific construct of citizens' comparative perceptions of influence across multiple actor types measured simultaneously is less common in the academic literature. Most studies focus on one actor at a time (e.g., media influence, business power) rather than examining the full ecology of perceived influence. This construct fills an important gap by capturing how citizens mentally map the distribution of political power, which is essential for understanding whether they perceive democracy as pluralistic or captured by specific interests. In the Mexican context, where power has historically been concentrated in the presidency and ruling party, tracking shifts in perceived influence across actors provides a unique barometer of democratic consolidation or regression.",
+    "importance_rating": 4
   }
 ]

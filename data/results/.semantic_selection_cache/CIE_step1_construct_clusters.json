@@ -1,76 +1,68 @@
 [
   {
-    "name": "science_self_efficacy",
-    "description": "Measures the respondent's perceived ability to understand, engage with, and assess their own knowledge of science and technology, capturing subjective competence in scientific and technological domains.",
+    "name": "science_technology_self_efficacy",
+    "description": "Measures respondents' perceived ability to understand and engage with science and technology, including self-assessed knowledge levels and agreement that science is too specialized to comprehend. Captures the subjective sense of competence in scientific and technological domains.",
     "question_cluster": [
       "p16",
       "p17",
       "p45_1",
-      "p37_1",
-      "p18",
-      "p27"
+      "p37_1"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "science_technology_interest_engagement",
+    "description": "Measures the degree to which respondents are actively interested in and seek out information about science and technology, including frequency of media consumption, expressed interest levels, and desire to participate in related activities.",
+    "question_cluster": [
+      "p11",
+      "p22",
+      "p23",
+      "p35",
+      "p43",
+      "p38_4",
+      "p38_5",
+      "p38_6"
     ],
     "requires_aggregation": true
   },
   {
     "name": "institutional_trust_in_science",
-    "description": "Captures the degree to which respondents trust scientific institutions, researchers, and universities to act in the public interest and produce socially relevant knowledge, reflecting broader orientations toward epistemic authority.",
+    "description": "Measures respondents' trust in and perceived integrity of scientific institutions and actors, including skepticism about scientists' motivations, confidence in research disciplines, and perceived commitment of Mexican scientists to society.",
     "question_cluster": [
       "p32_1",
       "p33",
-      "p34",
       "p40_1",
-      "p49_1",
       "p50_1",
-      "p31_1"
+      "p49_1"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "science_technology_engagement",
-    "description": "Measures the extent to which respondents actively seek out, consume, and engage with science and technology information across multiple media and informal channels outside of formal schooling.",
+    "name": "perceived_societal_value_of_science_technology",
+    "description": "Measures beliefs about the practical contribution and importance of science and technology to solving Mexico's social problems, including perceived usefulness of scientific knowledge, quality of science education, and expectations for future contributions.",
     "question_cluster": [
-      "p9_1",
-      "p10_1",
-      "p11",
-      "p22",
-      "p23",
-      "p24_1",
-      "p19",
-      "p25"
+      "p34",
+      "p36",
+      "p44_1",
+      "p57",
+      "p58",
+      "p42_1",
+      "p39_1",
+      "p51_1"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "information_capital",
-    "description": "Assesses the household and personal stock of informational resources — including books of various types, computer ownership, and internet access — that enable access to knowledge and reflect socioeconomic and cultural capital.",
+    "name": "household_science_cultural_capital",
+    "description": "Measures the presence of knowledge-related resources in the household that reflect exposure to scientific and educational culture, including scientific, technical, encyclopedic, and history books, as well as access to digital infrastructure such as computers and internet.",
     "question_cluster": [
-      "p3_1",
       "p3_2",
       "p3_3",
       "p3_6",
-      "p3_7",
       "p3_8",
-      "p3_15",
+      "p3_11",
       "p4",
-      "p5",
-      "p6"
-    ],
-    "requires_aggregation": true
-  },
-  {
-    "name": "science_technology_policy_attitudes",
-    "description": "Captures respondents' normative beliefs about the role of science and technology in addressing Mexico's national problems, including views on domestic technology development, public financing, and the societal obligations of science.",
-    "question_cluster": [
-      "p46_1",
-      "p47_1",
-      "p48_1",
-      "p51_1",
-      "p57",
-      "p58",
-      "p59_1",
-      "p53",
-      "p54"
+      "p5"
     ],
     "requires_aggregation": true
   }

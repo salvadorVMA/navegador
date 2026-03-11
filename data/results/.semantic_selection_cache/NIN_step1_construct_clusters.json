@@ -1,79 +1,59 @@
 [
   {
-    "name": "perceived_situation_of_minors",
-    "description": "Captures respondents' assessments of whether the overall political, economic, and social conditions for children and adolescents in Mexico have improved, worsened, or stayed the same over time, reflecting a generalized evaluation of societal progress for younger generations.",
+    "name": "perceived_situation_of_children_and_youth",
+    "description": "Measures respondents' perception of whether the general situation (social, economic) of children, adolescents, and young people in Mexico has improved or deteriorated over time, capturing a broad evaluative orientation toward generational well-being.",
     "question_cluster": [
-      "p1",
-      "p2",
-      "p5",
-      "p31",
-      "p61"
+      "p5|NIN",
+      "p31|NIN",
+      "p61|NIN"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "children_rights_recognition",
-    "description": "Measures the degree to which respondents recognize, endorse, and perceive respect for the fundamental rights of children and adolescents, including rights to education, participation in trials, and overall rights respect in Mexico.",
+    "name": "children_rights_recognition_and_respect",
+    "description": "Measures the degree to which respondents believe children's rights are known, respected, and upheld in Mexico, including awareness of specific rights and perceptions of how well institutions honor them.",
     "question_cluster": [
-      "p19",
-      "p21_2",
-      "p22",
-      "p73_3",
-      "p17_1",
-      "p48_1"
+      "p17_1|NIN",
+      "p19|NIN",
+      "p20|NIN",
+      "p21_2|NIN",
+      "p22|NIN",
+      "p73_3|NIN"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "child_agency_and_participation",
-    "description": "Assesses attitudes toward the voice, autonomy, and civic participation of children and adolescents in family decisions, school decisions, and public mobilizations, reflecting beliefs about the appropriate role of minors as social actors.",
+    "name": "child_participation_and_voice",
+    "description": "Measures attitudes toward the extent to which children and adolescents should have a say in decisions affecting them — in family, school, and public life — capturing normative beliefs about youth agency and civic inclusion.",
     "question_cluster": [
-      "p12",
-      "p13",
-      "p41",
-      "p16_1",
-      "p11",
-      "p20"
+      "p12|NIN",
+      "p13|NIN",
+      "p16_1|NIN",
+      "p41|NIN",
+      "p48_1|NIN"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "education_quality_and_opportunity",
-    "description": "Measures perceptions of the quality, accessibility, and adequacy of the educational system for children and adolescents, including satisfaction with current educational arrangements and comparative opportunity judgments across generations.",
+    "name": "child_vulnerability_and_violence_exposure",
+    "description": "Measures beliefs about children's exposure to violence, the contexts in which violence occurs, and the normative acceptance of physical punishment, reflecting attitudes toward child protection and safety.",
     "question_cluster": [
-      "p6",
-      "p7_1",
-      "p8",
-      "p9_1",
-      "p10_7",
-      "p28_1",
-      "p32",
-      "p34_1"
+      "p24|NIN",
+      "p25|NIN",
+      "p26_1|NIN",
+      "p27|NIN"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "vulnerability_and_risk_exposure",
-    "description": "Captures beliefs about the specific risks, problems, and vulnerabilities faced by children, adolescents, and youth in Mexico, including exposure to violence, health problems, criminal responsibility, economic precarity, and family instability.",
+    "name": "youth_educational_opportunity_and_labor_prospects",
+    "description": "Measures perceptions of whether today's children and young people have better or worse access to education and quality employment compared to previous generations, capturing intergenerational mobility beliefs.",
     "question_cluster": [
-      "p4_1a_1",
-      "p24",
-      "p25",
-      "p26_1",
-      "p27",
-      "p30_1a_1",
-      "p44",
-      "p46_1",
-      "p54",
-      "p55_1a_1",
-      "p56",
-      "p59_2a_1",
-      "p72_2",
-      "p81_2",
-      "p82",
-      "p83_1",
-      "p18_3",
-      "p75"
+      "p8|NIN",
+      "p28_1|NIN",
+      "p81_2|NIN",
+      "p82|NIN",
+      "p83_1|NIN"
     ],
     "requires_aggregation": true
   }

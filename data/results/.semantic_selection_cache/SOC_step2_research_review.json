@@ -1,378 +1,356 @@
 [
   {
-    "construct_name": "digital_access_and_equipment",
+    "construct_name": "digital_technology_access_and_ownership",
     "sources": [
       {
         "citation": "van Dijk, J. A. G. M. (2005). The Deepening Divide: Inequality in the Information Society. Sage Publications.",
-        "relevance": "Foundational work on the 'first-level digital divide' focusing on material access to ICTs, including device ownership and internet connectivity as prerequisites for digital participation.",
-        "key_finding": "Material access to technology is stratified by socioeconomic status, education, age, and geography, creating cumulative inequalities in information society participation."
-      },
-      {
-        "citation": "Hilbert, M. (2011). The end justifies the definition: The manifold outlooks on the digital divide and their practical usefulness for policy-making. Telecommunications Policy, 35(8), 715–736.",
-        "relevance": "Provides a comprehensive taxonomy of digital divide definitions, emphasizing that device and connectivity access remains the foundational layer upon which usage and outcomes depend.",
-        "key_finding": "Access-based measures of the digital divide remain essential for policy but must be complemented by usage and outcome indicators for a complete picture."
+        "relevance": "Foundational work on the 'digital divide' that conceptualizes material access to ICTs as the first level of digital inequality, directly aligning with household device ownership measures.",
+        "key_finding": "Material access to digital technologies is stratified by income, education, age, and geography, creating cumulative advantages that deepen social inequality."
       },
       {
         "citation": "Mariscal, J. (2005). Digital divide in a developing country. Telecommunications Policy, 29(5-6), 409–428.",
-        "relevance": "Directly examines the digital divide in Mexico, analyzing household technology access patterns and their relationship to income, education, and regional disparities.",
-        "key_finding": "Mexico's digital divide is strongly correlated with income inequality and geographic location, with rural and low-income households significantly less likely to own computers or have internet access."
+        "relevance": "Examines the digital divide specifically in Mexico, analyzing household access to ICTs and the socioeconomic determinants of technology adoption.",
+        "key_finding": "Income and geographic location (urban vs. rural) are the strongest predictors of ICT access in Mexican households, with significant disparities persisting despite national connectivity programs."
       },
       {
-        "citation": "INEGI. (2020). Encuesta Nacional sobre Disponibilidad y Uso de Tecnologías de la Información en los Hogares (ENDUTIH). Instituto Nacional de Estadística y Geografía.",
-        "relevance": "Mexico's official national survey measuring household ICT equipment and internet access, providing the empirical baseline for tracking digital access indicators.",
-        "key_finding": "By 2020, approximately 60% of Mexican households had internet access, but significant urban-rural and socioeconomic gaps persisted."
+        "citation": "Hilbert, M. (2011). The end justifies the definition: The manifold outlooks on the digital divide and their practical usefulness for policy-making. Telecommunications Policy, 35(8), 715–736.",
+        "relevance": "Provides a comprehensive taxonomy of digital divide definitions and measurement approaches, including device-count indices similar to the construct's composite index approach.",
+        "key_finding": "Measuring access through multiple device types and connectivity indicators provides a more nuanced picture of digital readiness than binary connected/not-connected measures."
+      },
+      {
+        "citation": "INEGI. (2021). Encuesta Nacional sobre Disponibilidad y Uso de Tecnologías de la Información en los Hogares (ENDUTIH). Instituto Nacional de Estadística y Geografía.",
+        "relevance": "Mexico's official household ICT survey that measures device ownership and internet access at the household level, providing the empirical benchmark for this construct in the Mexican context.",
+        "key_finding": "By 2021, 75.6% of Mexican households had at least one smartphone user, but only 37.4% had a computer, revealing persistent device-specific gaps."
       },
       {
         "citation": "Warschauer, M. (2004). Technology and Social Inclusion: Rethinking the Digital Divide. MIT Press.",
-        "relevance": "Argues that physical access to devices and connectivity is necessary but insufficient for digital inclusion, situating equipment access within a broader framework of social resources.",
-        "key_finding": "Effective technology access requires not just hardware and connectivity but also content, literacy, and community and institutional support structures."
+        "relevance": "Argues that physical access to devices is a necessary but insufficient condition for meaningful participation in the information society, contextualizing the construct as a baseline measure.",
+        "key_finding": "Device ownership must be complemented by literacy, content, and institutional support to translate into meaningful social inclusion."
       }
     ],
     "causal_relationships": [
       {
         "role": "effect",
-        "related_construct": "household_income_and_socioeconomic_status",
+        "related_construct": "household income and socioeconomic status",
         "measurable_in_data": true,
         "data_source": "POB, ECO"
       },
       {
         "role": "cause",
-        "related_construct": "digital_literacy_and_internet_engagement",
+        "related_construct": "internet use and digital engagement",
         "measurable_in_data": true,
         "data_source": "SOC"
       },
       {
         "role": "effect",
-        "related_construct": "educational_attainment",
+        "related_construct": "educational attainment",
         "measurable_in_data": true,
-        "data_source": "EDU"
+        "data_source": "EDU, SOC"
       },
       {
         "role": "correlate",
-        "related_construct": "urban_rural_residence",
+        "related_construct": "urban vs. rural residence",
         "measurable_in_data": true,
         "data_source": "HAB, POB"
       },
       {
-        "role": "cause",
-        "related_construct": "media_consumption_and_news_habits",
+        "role": "moderator",
+        "related_construct": "political participation and civic engagement",
         "measurable_in_data": true,
-        "data_source": "SOC"
+        "data_source": "CUL, SOC"
       },
       {
-        "role": "moderator",
-        "related_construct": "digital_civic_and_political_participation",
+        "role": "cause",
+        "related_construct": "media consumption breadth",
         "measurable_in_data": true,
-        "data_source": "SOC, CUL"
+        "data_source": "SOC"
       }
     ],
     "gap_justification": null,
     "importance_rating": 5
   },
   {
-    "construct_name": "digital_literacy_and_internet_engagement",
+    "construct_name": "media_consumption_breadth",
     "sources": [
       {
-        "citation": "Hargittai, E. (2002). Second-level digital divide: Differences in people's online skills. First Monday, 7(4).",
-        "relevance": "Seminal work defining the 'second-level digital divide' as differences in digital skills and usage patterns beyond mere access, directly corresponding to this construct's focus on proficiency and engagement.",
-        "key_finding": "Even among those with internet access, significant variation exists in online skills, which are predicted by education, age, and socioeconomic background."
+        "citation": "Hasebrink, U., & Popp, J. (2006). Media repertoires as a result of selective media use: A conceptual approach to the analysis of patterns of exposure. Communications, 31(3), 369–387.",
+        "relevance": "Introduces the 'media repertoire' concept that captures the diversity and intensity of media use across platforms, directly corresponding to this construct's multi-channel measurement approach.",
+        "key_finding": "Individuals develop stable media repertoires that reflect both structural availability and personal preferences, and these repertoires are strongly associated with sociodemographic characteristics."
       },
       {
-        "citation": "van Deursen, A. J. A. M., & van Dijk, J. A. G. M. (2014). The digital divide shifts to differences in usage. New Media & Society, 16(3), 507–526.",
-        "relevance": "Empirically demonstrates that once access is controlled for, usage patterns (frequency, diversity of activities, locations) become the key differentiator in digital inequality.",
-        "key_finding": "People with higher education and socioeconomic status engage in more capital-enhancing internet activities (information, career, political), while lower-status users favor entertainment."
+        "citation": "Prior, M. (2007). Post-Broadcast Democracy: How Media Choice Increases Inequality in Political Involvement. Cambridge University Press.",
+        "relevance": "Analyzes how the proliferation of media channels affects the breadth and depth of news consumption, with implications for political knowledge gaps.",
+        "key_finding": "Greater media choice leads to audience fragmentation, where politically interested individuals consume more news across channels while others opt out entirely, widening political knowledge gaps."
       },
       {
-        "citation": "Livingstone, S., & Helsper, E. (2007). Gradations in digital inclusion: Children, young people and the digital divide. New Media & Society, 9(4), 671–696.",
-        "relevance": "Proposes a graduated model of digital inclusion from access to basic use to diverse engagement, aligning with this construct's measurement of frequency, purposes, and locations of use.",
-        "key_finding": "Digital inclusion is best understood as a continuum where breadth and quality of online activities matter more than simple access or time spent online."
+        "citation": "Guerrero, M. A., & Márquez-Ramírez, M. (2014). Media Systems and Communication Policies in Latin America. Palgrave Macmillan.",
+        "relevance": "Provides context on the Mexican media system including television dominance, radio penetration, and the growth of online news, essential for interpreting cross-platform consumption patterns.",
+        "key_finding": "Mexico's media system is characterized by high television concentration (Televisa and TV Azteca), growing internet news consumption among urban youth, and persistent radio importance in rural areas."
       },
       {
-        "citation": "Martínez-Domínguez, M., & Mora-Rivera, J. (2020). Internet adoption and usage patterns in rural Mexico. Technology in Society, 60, 101226.",
-        "relevance": "Examines internet usage behaviors in Mexico specifically, analyzing how rural populations differ in their engagement patterns and the sociodemographic predictors of varied online activities.",
-        "key_finding": "Rural Mexican internet users engage in a narrower range of online activities compared to urban users, with communication and entertainment dominating over informational or transactional uses."
-      },
-      {
-        "citation": "Hargittai, E., & Hinnant, A. (2008). Digital inequality: Differences in young adults' use of the Internet. Communication Research, 35(5), 602–621.",
-        "relevance": "Demonstrates that internet skill levels predict the types of activities users engage in online, supporting the construct's integration of skill self-assessment with behavioral indicators.",
-        "key_finding": "Higher internet skills are associated with more capital-enhancing uses of the web, suggesting that skill differences translate into tangible life-outcome disparities."
+        "citation": "Stroud, N. J. (2011). Niche News: The Politics of News Choice. Oxford University Press.",
+        "relevance": "Examines how individuals select across media channels and how breadth of consumption relates to political attitudes and knowledge.",
+        "key_finding": "Consuming news from multiple media types is associated with greater political knowledge but also with stronger partisan attitudes when channels are ideologically differentiated."
       }
     ],
     "causal_relationships": [
       {
-        "role": "effect",
-        "related_construct": "digital_access_and_equipment",
+        "role": "cause",
+        "related_construct": "political knowledge and awareness",
         "measurable_in_data": true,
-        "data_source": "SOC"
+        "data_source": "CUL, SOC"
       },
       {
         "role": "effect",
-        "related_construct": "educational_attainment",
+        "related_construct": "educational attainment",
         "measurable_in_data": true,
         "data_source": "EDU"
       },
       {
-        "role": "cause",
-        "related_construct": "digital_civic_and_political_participation",
+        "role": "correlate",
+        "related_construct": "political participation (voting, protest, civic engagement)",
         "measurable_in_data": true,
-        "data_source": "SOC, CUL"
+        "data_source": "CUL"
       },
       {
-        "role": "cause",
-        "related_construct": "media_consumption_and_news_habits",
+        "role": "effect",
+        "related_construct": "digital technology access and ownership",
         "measurable_in_data": true,
         "data_source": "SOC"
       },
       {
         "role": "correlate",
-        "related_construct": "employment_and_labor_market_outcomes",
+        "related_construct": "trust in institutions",
+        "measurable_in_data": true,
+        "data_source": "CUL, COR"
+      },
+      {
+        "role": "cause",
+        "related_construct": "perceptions of public security",
+        "measurable_in_data": true,
+        "data_source": "SEG"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "perception of corruption",
+        "measurable_in_data": true,
+        "data_source": "COR"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "internet_engagement_and_digital_literacy",
+    "sources": [
+      {
+        "citation": "Hargittai, E. (2002). Second-level digital divide: Differences in people's online skills. First Monday, 7(4).",
+        "relevance": "Seminal article defining the 'second-level digital divide' as differences in internet skills and usage patterns beyond mere access, directly corresponding to this construct's focus on proficiency and purposeful use.",
+        "key_finding": "Sociodemographic factors such as education, age, and experience predict significant variation in online skills, which in turn determine the range and sophistication of internet activities undertaken."
+      },
+      {
+        "citation": "van Deursen, A. J. A. M., & van Dijk, J. A. G. M. (2014). The digital divide shifts to differences in usage. New Media & Society, 16(3), 507–526.",
+        "relevance": "Empirically demonstrates that once access is achieved, the critical divide shifts to how people use the internet—ranging from passive consumption to capital-enhancing activities—aligning with the construct's activity-range items.",
+        "key_finding": "Higher-educated and higher-income individuals engage in more capital-enhancing internet activities (e.g., work, civic participation), while lower-SES groups concentrate on entertainment uses."
+      },
+      {
+        "citation": "Trejo Delarbre, R. (2006). Viviendo en el Aleph: La sociedad de la información y sus laberintos. Gedisa.",
+        "relevance": "Analyzes the information society in the Mexican and Latin American context, discussing digital literacy challenges and the gap between internet access and meaningful digital engagement.",
+        "key_finding": "In Mexico, digital literacy remains unevenly distributed, with significant portions of the connected population limited to basic social media use rather than productive or civic online engagement."
+      },
+      {
+        "citation": "Hargittai, E., & Hsieh, Y. P. (2012). Succinct survey measures of web-use skills. Social Science Computer Review, 30(1), 95–107.",
+        "relevance": "Validates self-assessed internet proficiency measures as reasonable proxies for actual digital skills, supporting the use of p36 (self-assessed proficiency) in this construct.",
+        "key_finding": "Self-reported internet skill measures correlate moderately with performance-based assessments and are practical for large-scale survey research on digital literacy."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "educational attainment and human capital",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "cause",
+        "related_construct": "online civic and political participation",
+        "measurable_in_data": true,
+        "data_source": "CUL, SOC"
+      },
+      {
+        "role": "effect",
+        "related_construct": "age and generational cohort",
+        "measurable_in_data": true,
+        "data_source": "SOC, ENV"
+      },
+      {
+        "role": "cause",
+        "related_construct": "labor market outcomes and employment quality",
         "measurable_in_data": true,
         "data_source": "ECO"
       },
       {
-        "role": "correlate",
-        "related_construct": "age_and_generational_cohort",
-        "measurable_in_data": true,
-        "data_source": "ENV, NIN"
-      },
-      {
-        "role": "cause",
-        "related_construct": "science_and_technology_attitudes",
-        "measurable_in_data": true,
-        "data_source": "CIE"
-      }
-    ],
-    "gap_justification": null,
-    "importance_rating": 5
-  },
-  {
-    "construct_name": "media_consumption_and_news_habits",
-    "sources": [
-      {
-        "citation": "Prior, M. (2007). Post-Broadcast Democracy: How Media Choice Increases Inequality in Political Involvement and Polarizes Elections. Cambridge University Press.",
-        "relevance": "Examines how the expansion of media choices (cable, internet) reshapes news consumption patterns, with implications for political knowledge and participation—directly relevant to measuring channel preferences and frequency.",
-        "key_finding": "Increased media choice leads to greater stratification in news exposure: politically interested citizens consume more news while others opt for entertainment, widening political knowledge gaps."
-      },
-      {
-        "citation": "Guerrero, M. A., & Márquez-Ramírez, M. (2014). Media systems and communication policies in Latin America. Palgrave Macmillan.",
-        "relevance": "Provides context for understanding Mexico's media landscape, including the dominance of television, the role of media conglomerates, and the emerging digital media ecosystem.",
-        "key_finding": "Mexico's media system is characterized by high television concentration and a transitioning digital landscape, making cross-platform news consumption patterns particularly important to measure."
-      },
-      {
-        "citation": "Newman, N., Fletcher, R., Schulz, A., Andı, S., & Nielsen, R. K. (2020). Reuters Institute Digital News Report 2020. Reuters Institute for the Study of Journalism.",
-        "relevance": "Provides comparative data on news consumption habits across platforms including Mexico, documenting the shift from traditional to digital news sources and the role of social media as a news gateway.",
-        "key_finding": "In Mexico, social media (especially Facebook and WhatsApp) have become primary news sources for large segments of the population, though television remains the most widely used news medium."
-      },
-      {
-        "citation": "Stroud, N. J. (2011). Niche News: The Politics of News Choice. Oxford University Press.",
-        "relevance": "Analyzes how individuals' media diets across multiple platforms relate to political attitudes and engagement, supporting the construct's multi-channel measurement approach.",
-        "key_finding": "Partisan selective exposure in news consumption reinforces existing political attitudes and contributes to polarization, making media diet measurement essential for understanding opinion formation."
-      }
-    ],
-    "causal_relationships": [
-      {
-        "role": "cause",
-        "related_construct": "political_knowledge_and_awareness",
-        "measurable_in_data": true,
-        "data_source": "CUL"
-      },
-      {
-        "role": "effect",
-        "related_construct": "digital_access_and_equipment",
-        "measurable_in_data": true,
-        "data_source": "SOC"
-      },
-      {
-        "role": "cause",
-        "related_construct": "media_trust_and_critical_evaluation",
-        "measurable_in_data": true,
-        "data_source": "SOC"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "voter_turnout_and_political_participation",
-        "measurable_in_data": true,
-        "data_source": "CUL"
-      },
-      {
-        "role": "effect",
-        "related_construct": "educational_attainment",
-        "measurable_in_data": true,
-        "data_source": "EDU"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "perceptions_of_corruption",
-        "measurable_in_data": true,
-        "data_source": "COR"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "perceptions_of_public_security",
-        "measurable_in_data": true,
-        "data_source": "SEG"
-      }
-    ],
-    "gap_justification": null,
-    "importance_rating": 4
-  },
-  {
-    "construct_name": "media_trust_and_critical_evaluation",
-    "sources": [
-      {
-        "citation": "Tsfati, Y., & Cappella, J. N. (2003). Do people watch what they do not trust? Exploring the association between news media skepticism and exposure. Communication Research, 30(5), 504–529.",
-        "relevance": "Foundational study on the relationship between media trust/skepticism and media consumption behavior, directly relevant to understanding how trust evaluations shape information-seeking in Mexico.",
-        "key_finding": "Media skepticism is negatively associated with mainstream news exposure but positively associated with use of alternative and non-mainstream sources."
-      },
-      {
-        "citation": "Layton, M. L., & Smith, A. E. (2015). Is it race, class, or gender? The sources of perceived discrimination in Brazil. Latin American Politics and Society, 57(1), 1–26.",
-        "relevance": "While focused on discrimination, this work uses AmericasBarometer data from Latin America including Mexico to examine how institutional trust (including media trust) varies across social groups, providing methodological precedent.",
-        "key_finding": "Institutional trust in Latin America, including trust in media, is shaped by intersecting social identities and experiences with institutional performance."
-      },
-      {
-        "citation": "Corduneanu, V. I., & Muñiz, C. (2021). Media trust and its relationship with political attitudes and news consumption in Mexico. Comunicación y Sociedad, e7929.",
-        "relevance": "Directly examines media trust in the Mexican context, analyzing how citizens evaluate media credibility and how this relates to political attitudes and news consumption patterns.",
-        "key_finding": "Mexican citizens' media trust is relatively low and varies significantly by media type, with traditional media (especially television) receiving higher trust than digital and social media sources."
-      },
-      {
-        "citation": "Strömbäck, J., Tsfati, Y., Boomgaarden, H., Damstra, A., Lindgren, E., Vliegenthart, R., & Lindholm, T. (2020). News media trust and its impact on media use: Toward a framework for future research. Annals of the International Communication Association, 44(2), 139–156.",
-        "relevance": "Provides a comprehensive theoretical framework for studying media trust, distinguishing between trust in news media as an institution and trust in specific outlets, relevant to the construct's multi-dimensional measurement.",
-        "key_finding": "Media trust operates at multiple levels (institutional, outlet-specific, content-specific) and is both a cause and consequence of media use patterns, requiring nuanced measurement approaches."
-      }
-    ],
-    "causal_relationships": [
-      {
-        "role": "effect",
-        "related_construct": "media_consumption_and_news_habits",
-        "measurable_in_data": true,
-        "data_source": "SOC"
-      },
-      {
-        "role": "cause",
-        "related_construct": "institutional_trust_general",
+        "role": "moderator",
+        "related_construct": "trust in government and institutions",
         "measurable_in_data": true,
         "data_source": "CUL, COR"
       },
       {
         "role": "correlate",
-        "related_construct": "perceptions_of_corruption",
+        "related_construct": "access to justice and rights awareness",
+        "measurable_in_data": true,
+        "data_source": "JUS, DER"
+      },
+      {
+        "role": "cause",
+        "related_construct": "exposure to misinformation and privacy risks",
+        "measurable_in_data": true,
+        "data_source": "SOC"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "media_trust_and_quality_evaluation",
+    "sources": [
+      {
+        "citation": "Tsfati, Y., & Cappella, J. N. (2003). Do people watch what they do not trust? Exploring the association between news media skepticism and exposure. Communication Research, 30(5), 504–529.",
+        "relevance": "Examines the relationship between media skepticism and media consumption, establishing that trust evaluations are distinct from consumption behavior and have independent effects on information processing.",
+        "key_finding": "Media skepticism is negatively but only weakly associated with mainstream news exposure; skeptical audiences often continue consuming mainstream media while supplementing with alternative sources."
+      },
+      {
+        "citation": "Guerrero, M. A. (2014). The 'captured liberal' model of media systems in Latin America. In M. A. Guerrero & M. Márquez-Ramírez (Eds.), Media Systems and Communication Policies in Latin America (pp. 43–65). Palgrave Macmillan.",
+        "relevance": "Analyzes how media capture by political and economic elites in Mexico shapes public perceptions of media quality and trustworthiness, providing essential context for interpreting trust evaluations.",
+        "key_finding": "Mexican media's historical ties to political power and concentrated ownership structures contribute to public skepticism about media independence and information completeness."
+      },
+      {
+        "citation": "Yamamoto, M., Lee, T. T., & Ran, W. (2016). Media trust in a community context: A multilevel analysis of individual- and prefecture-level predictors of media trust in Japan. Communication Research, 43(1), 131–154.",
+        "relevance": "Demonstrates that media trust is shaped by both individual-level factors (education, political interest) and contextual factors (media environment quality), supporting the multi-item measurement approach.",
+        "key_finding": "Media trust is a multidimensional construct influenced by perceived media quality, information completeness, and the local media environment, not reducible to a single trust question."
+      },
+      {
+        "citation": "Moreno, A., & García, C. (2017). Confianza en las instituciones: México en perspectiva comparada. Fondo de Cultura Económica.",
+        "relevance": "Analyzes institutional trust in Mexico including media institutions, situating media trust within the broader landscape of declining institutional confidence.",
+        "key_finding": "Trust in Mexican media has declined alongside trust in other institutions, but media trust is particularly sensitive to perceptions of corruption and political bias in coverage."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "media consumption breadth",
+        "measurable_in_data": true,
+        "data_source": "SOC"
+      },
+      {
+        "role": "cause",
+        "related_construct": "political trust and institutional confidence",
+        "measurable_in_data": true,
+        "data_source": "CUL, COR"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "perception of corruption",
         "measurable_in_data": true,
         "data_source": "COR"
       },
       {
-        "role": "correlate",
-        "related_construct": "democratic_values_and_satisfaction",
-        "measurable_in_data": true,
-        "data_source": "CUL"
-      },
-      {
         "role": "moderator",
-        "related_construct": "political_knowledge_and_opinion_formation",
+        "related_construct": "political knowledge and opinion formation",
         "measurable_in_data": true,
         "data_source": "CUL"
       },
       {
         "role": "effect",
-        "related_construct": "educational_attainment",
+        "related_construct": "educational attainment",
         "measurable_in_data": true,
         "data_source": "EDU"
       },
       {
         "role": "correlate",
-        "related_construct": "perceptions_of_human_rights_protection",
+        "related_construct": "interpersonal trust",
         "measurable_in_data": true,
-        "data_source": "DER"
+        "data_source": "CUL, IDE"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support for media regulation",
+        "measurable_in_data": true,
+        "data_source": "SOC"
       }
     ],
     "gap_justification": null,
     "importance_rating": 4
   },
   {
-    "construct_name": "digital_civic_and_political_participation",
+    "construct_name": "perceived_media_social_impact",
     "sources": [
       {
-        "citation": "Gil de Zúñiga, H., Jung, N., & Valenzuela, S. (2012). Social media use for news and individuals' social capital, civic engagement and political participation. Journal of Computer-Mediated Communication, 17(3), 319–336.",
-        "relevance": "Directly examines how social media use for informational purposes predicts civic and political participation, aligning with this construct's measurement of online opinion-sharing and collective action.",
-        "key_finding": "Social media use for news is positively associated with civic participation and political participation, both online and offline, mediated by gains in social capital."
+        "citation": "Gerbner, G., Gross, L., Morgan, M., Signorielli, N., & Shanahan, J. (2002). Growing up with television: Cultivation processes. In J. Bryant & D. Zillmann (Eds.), Media Effects: Advances in Theory and Research (2nd ed., pp. 43–67). Lawrence Erlbaum Associates.",
+        "relevance": "Cultivation theory provides the theoretical foundation for understanding how audiences perceive media's social effects, particularly regarding violence portrayals and their influence on worldviews.",
+        "key_finding": "Heavy television viewers are more likely to perceive the world as violent and dangerous, and to believe that media content shapes social norms and family dynamics."
       },
       {
-        "citation": "Valenzuela, S., Arriagada, A., & Scherman, A. (2014). Facebook, Twitter, and youth engagement: A quasi-experimental study of social media use and protest behavior. International Journal of Communication, 8, 2046–2070.",
-        "relevance": "Studies digital political participation among Latin American youth, examining how social media use translates into protest behavior and political engagement in a context similar to Mexico.",
-        "key_finding": "Social media use for political information and expression significantly predicts protest participation among young Latin Americans, even after controlling for traditional predictors of political engagement."
+        "citation": "Rosas Mantecón, A. (2017). Ir al cine: Antropología de los públicos, la ciudad y las pantallas. Gedisa.",
+        "relevance": "Examines media audiences in Mexico and how they perceive the social effects of media content, including concerns about violence and gender representation in Mexican media.",
+        "key_finding": "Mexican audiences express growing concern about media violence and gender stereotyping, with these perceptions varying significantly by socioeconomic status and gender."
       },
       {
-        "citation": "Sandoval-Almazán, R., & Gil-García, J. R. (2014). Towards cyberactivism 2.0? Understanding the use of social media and other information technologies for political activism and social movements. Government Information Quarterly, 31(3), 365–378.",
-        "relevance": "Examines digital activism in Mexico specifically, analyzing how citizens use social media platforms for political expression, mobilization, and collective action.",
-        "key_finding": "Mexican digital activists use social media primarily for information dissemination and opinion expression, with Twitter and Facebook serving distinct functions in political mobilization."
+        "citation": "Vega Montiel, A. (2014). Media literacy and gender: Representation of women in Mexican media. Comunicar, 22(43), 31–39.",
+        "relevance": "Directly addresses perceptions of how Mexican media portrays women, aligning with the p62_1 item on perceived media portrayal of women.",
+        "key_finding": "Mexican media consistently reproduces gender stereotypes, and audiences—particularly women with higher education—are increasingly critical of these portrayals."
       },
       {
-        "citation": "Boulianne, S. (2015). Social media use and participation: A meta-analysis of current research. Information, Communication & Society, 18(5), 524–538.",
-        "relevance": "Meta-analysis synthesizing evidence on the relationship between social media use and political participation, providing robust evidence for the construct's theoretical foundation.",
-        "key_finding": "A positive relationship exists between social media use and participation in civic and political life, though effect sizes are small and the relationship is stronger for expressive than for institutional forms of participation."
-      },
-      {
-        "citation": "Treré, E. (2015). Reclaiming, proclaiming, and maintaining collective identity in the #YoSoy132 movement in Mexico: An examination of digital frontstage and backstage activism through social media and instant messaging platforms. Information, Communication & Society, 18(8), 901–915.",
-        "relevance": "Case study of Mexico's #YoSoy132 movement demonstrating how digital tools enable civic and political participation, providing Mexican-specific evidence for this construct.",
-        "key_finding": "Mexican social movements strategically use multiple digital platforms for different participatory functions—public mobilization on Twitter, internal coordination on Facebook and WhatsApp—highlighting the multi-dimensional nature of digital civic participation."
+        "citation": "McQuail, D. (2010). McQuail's Mass Communication Theory (6th ed.). Sage Publications.",
+        "relevance": "Provides the theoretical framework for understanding public perceptions of media's social responsibility, including beliefs about media regulation and content oversight.",
+        "key_finding": "Public support for media regulation is driven by perceived negative social effects of media content, particularly regarding violence, children's welfare, and the representation of vulnerable groups."
       }
     ],
     "causal_relationships": [
       {
-        "role": "effect",
-        "related_construct": "digital_literacy_and_internet_engagement",
-        "measurable_in_data": true,
-        "data_source": "SOC"
-      },
-      {
         "role": "cause",
-        "related_construct": "voter_turnout_and_electoral_participation",
-        "measurable_in_data": true,
-        "data_source": "CUL"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "political_interest_and_efficacy",
-        "measurable_in_data": true,
-        "data_source": "CUL"
-      },
-      {
-        "role": "effect",
-        "related_construct": "media_trust_and_critical_evaluation",
+        "related_construct": "support for government media regulation",
         "measurable_in_data": true,
         "data_source": "SOC"
       },
       {
         "role": "correlate",
-        "related_construct": "social_capital_and_civic_engagement",
+        "related_construct": "perceptions of public insecurity and violence",
         "measurable_in_data": true,
-        "data_source": "CUL"
+        "data_source": "SEG"
       },
       {
         "role": "correlate",
-        "related_construct": "perceptions_of_corruption",
+        "related_construct": "gender attitudes and gender equality beliefs",
         "measurable_in_data": true,
-        "data_source": "COR"
+        "data_source": "GEN"
       },
       {
         "role": "correlate",
-        "related_construct": "human_rights_awareness_and_advocacy",
+        "related_construct": "parenting practices and family values",
         "measurable_in_data": true,
-        "data_source": "DER"
+        "data_source": "FAM, NIN"
       },
       {
         "role": "effect",
-        "related_construct": "age_and_generational_cohort",
+        "related_construct": "media consumption breadth",
         "measurable_in_data": true,
-        "data_source": "ENV, NIN"
+        "data_source": "SOC"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "attitudes toward children's rights and protection",
+        "measurable_in_data": true,
+        "data_source": "NIN, DER"
       },
       {
         "role": "moderator",
-        "related_construct": "democratic_satisfaction_and_support",
+        "related_construct": "political ideology (liberal-conservative spectrum)",
         "measurable_in_data": true,
-        "data_source": "CUL"
+        "data_source": "CUL, IDE"
       }
     ],
-    "gap_justification": null,
-    "importance_rating": 5
+    "gap_justification": "While cultivation theory and media effects research are well-established globally, there is relatively limited empirical work specifically measuring Mexican public perceptions of media's social impact as a unified construct combining violence assessment, gender representation, family effects, and regulatory attitudes. Most Mexican media studies focus on content analysis rather than audience perceptions of social consequences. This construct fills an important gap by capturing how ordinary Mexicans evaluate the societal footprint of their media environment, which is critical for understanding public demand for media reform and regulation in a country where media concentration and violence coverage are politically salient issues. The construct is particularly valuable for cross-domain analysis because it bridges media studies with public security perceptions, gender attitudes, and family policy preferences.",
+    "importance_rating": 4
   }
 ]

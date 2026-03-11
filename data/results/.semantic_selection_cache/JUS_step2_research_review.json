@@ -1,347 +1,341 @@
 [
   {
-    "construct_name": "institutional_justice_trust",
+    "construct_name": "judicial_institutional_trust",
     "sources": [
       {
-        "citation": "Ríos Figueroa, J. (2007). Fragmentation of power and the emergence of an effective judiciary in Mexico, 1994–2002. Latin American Politics and Society, 49(1), 31–57.",
-        "relevance": "Examines the conditions under which Mexican courts gained independence and public credibility, directly informing the measurement of trust in judicial institutions.",
-        "key_finding": "Fragmentation of political power after Mexico's democratic transition enabled greater judicial independence, which in turn shaped public perceptions of court fairness."
+        "citation": "Tyler, T. R. (2006). Why People Obey the Law. Princeton University Press.",
+        "relevance": "Foundational work on procedural justice and institutional legitimacy, directly relevant to measuring perceived fairness and trustworthiness of courts and judges.",
+        "key_finding": "People's compliance with the law is driven more by perceived legitimacy and procedural fairness of legal institutions than by fear of punishment."
+      },
+      {
+        "citation": "Ríos-Figueroa, J. (2007). Fragmentation of power and the emergence of an effective judiciary in Mexico, 1994–2002. Latin American Politics and Society, 49(1), 31–57.",
+        "relevance": "Examines the development of judicial independence in Mexico, directly relevant to questions about judicial autonomy and Supreme Court fairness.",
+        "key_finding": "Political fragmentation facilitated greater judicial independence in Mexico, though public perceptions of that independence lagged behind institutional reforms."
       },
       {
         "citation": "Seligson, M. A. (2002). The impact of corruption on regime legitimacy: A comparative study of four Latin American countries. Journal of Politics, 64(2), 408–433.",
-        "relevance": "Measures institutional trust across Latin American justice systems and links corruption perceptions to declining confidence in courts and police.",
-        "key_finding": "Perceived corruption significantly erodes trust in justice institutions, with effects that spill over into broader regime legitimacy."
+        "relevance": "Explores how corruption perceptions erode institutional trust in Latin America, relevant to items on unequal treatment and impunity for judges.",
+        "key_finding": "Direct experience with corruption significantly reduces trust in political and judicial institutions across Latin American countries."
       },
       {
-        "citation": "Ingram, M. C. (2016). Crafting courts in new democracies: The politics of subnational judicial reform in Brazil and Mexico. Cambridge University Press.",
-        "relevance": "Analyzes subnational variation in judicial reform in Mexico and how institutional design affects public trust in courts and judges.",
-        "key_finding": "Subnational judicial reforms that enhance transparency and merit-based selection increase public confidence in the judiciary."
+        "citation": "Magaloni, B. (2003). Authoritarianism, democracy and the Supreme Court: Horizontal exchange and the rule of law in Mexico. In S. Mainwaring & C. Welna (Eds.), Democratic Accountability in Latin America (pp. 266–305). Oxford University Press.",
+        "relevance": "Analyzes the role of Mexico's Supreme Court in democratic transition, relevant to perceptions of judicial fairness and independence.",
+        "key_finding": "The Mexican Supreme Court gained legitimacy through strategic assertion of independence during democratization, but public trust remained contingent on perceived impartiality."
       },
       {
-        "citation": "Malone, M. F. T. (2010). The verdict is in: The impact of crime on public trust in Central American justice systems. Journal of Politics in Latin America, 2(3), 99–128.",
-        "relevance": "Provides a comparative framework for measuring trust in justice institutions in Latin America, including police and courts, applicable to the Mexican context.",
-        "key_finding": "Crime victimization significantly reduces trust in justice institutions, but the effect is moderated by perceptions of institutional performance."
-      },
-      {
-        "citation": "Shirk, D. A. (2010). Justice reform in Mexico: Change and challenges in the judicial sector. In E. L. Olson, D. A. Shirk, & A. Selee (Eds.), Shared responsibility: U.S.-Mexico policy options for confronting organized crime (pp. 205–246). Woodrow Wilson Center.",
-        "relevance": "Reviews Mexico's 2008 criminal justice reform and its implications for public trust in courts, judges, and the public ministry.",
-        "key_finding": "The transition from inquisitorial to accusatorial criminal proceedings was designed to increase transparency and public trust, though implementation has been uneven."
+        "citation": "Shirk, D. A. (2010). Justice reform in Mexico: Change and challenges in the judicial sector. In E. L. Olson, D. A. Shirk, & A. Selee (Eds.), Shared Responsibility: U.S.-Mexico Policy Options for Confronting Organized Crime (pp. 205–246). Woodrow Wilson Center Press.",
+        "relevance": "Directly addresses Mexico's 2008 judicial reform and public perceptions of the justice system's effectiveness and fairness.",
+        "key_finding": "Mexico's transition to an adversarial justice system aimed to increase transparency and public trust, but implementation challenges sustained public skepticism."
       }
     ],
     "causal_relationships": [
       {
         "role": "effect",
-        "related_construct": "perceived corruption in government",
+        "related_construct": "corruption_perceptions",
         "measurable_in_data": true,
         "data_source": "COR"
       },
       {
+        "role": "cause",
+        "related_construct": "legal_compliance_and_rule_of_law_support",
+        "measurable_in_data": true,
+        "data_source": "JUS, CUL"
+      },
+      {
         "role": "correlate",
-        "related_construct": "democratic legitimacy and political culture",
+        "related_construct": "democratic_satisfaction",
         "measurable_in_data": true,
         "data_source": "CUL"
       },
       {
         "role": "effect",
-        "related_construct": "crime victimization and public security perceptions",
+        "related_construct": "socioeconomic_inequality",
         "measurable_in_data": true,
-        "data_source": "SEG"
+        "data_source": "POB, ECO"
       },
       {
         "role": "cause",
-        "related_construct": "willingness to report crimes / use formal legal channels",
+        "related_construct": "willingness_to_use_formal_legal_channels",
         "measurable_in_data": true,
-        "data_source": "JUS, SEG"
+        "data_source": "JUS"
       },
       {
         "role": "correlate",
-        "related_construct": "human rights perceptions",
+        "related_construct": "human_rights_perceptions",
         "measurable_in_data": true,
         "data_source": "DER"
-      },
-      {
-        "role": "effect",
-        "related_construct": "educational attainment and civic knowledge",
-        "measurable_in_data": true,
-        "data_source": "EDU"
       }
     ],
     "gap_justification": null,
     "importance_rating": 5
   },
   {
-    "construct_name": "legal_cynicism_extrajudicial_tolerance",
+    "construct_name": "legal_cynicism_extrajudicial_justice",
     "sources": [
       {
         "citation": "Kirk, D. S., & Papachristos, A. V. (2011). Cultural mechanisms and the persistence of neighborhood violence. American Journal of Sociology, 116(4), 1190–1233.",
-        "relevance": "Develops and validates the concept of legal cynicism—the belief that laws and institutions are illegitimate and unresponsive—which directly maps onto tolerance for extrajudicial action.",
-        "key_finding": "Legal cynicism at the neighborhood level is a robust predictor of violence, operating independently of structural disadvantage."
+        "relevance": "Defines and operationalizes legal cynicism as a cultural frame in which laws and the justice system are perceived as illegitimate and unresponsive, directly relevant to tolerance for extrajudicial action.",
+        "key_finding": "Legal cynicism at the neighborhood level is a significant predictor of violence, operating as a cultural mechanism that legitimizes extralegal dispute resolution."
       },
       {
-        "citation": "Godoy, A. S. (2006). Popular injustice: Violence, community, and law in Latin America. Stanford University Press.",
-        "relevance": "Examines lynching and vigilante justice in Latin America, providing theoretical grounding for measuring tolerance of extrajudicial punishment in Mexico.",
-        "key_finding": "Vigilante justice in Latin America arises from a combination of institutional failure, historical marginalization, and community norms that legitimize collective punishment."
+        "citation": "Godoy, A. S. (2006). Popular Injustice: Violence, Community, and Law in Latin America. Stanford University Press.",
+        "relevance": "Examines lynching and community justice in Latin America, directly relevant to items on community punishment of criminals when authorities fail.",
+        "key_finding": "Community-enacted extrajudicial violence in Latin America reflects deep institutional failures and a perceived vacuum of legitimate state justice."
       },
       {
         "citation": "Zizumbo-Colunga, D. (2017). Community, authorities, and support for vigilantism: Experimental evidence. Political Behavior, 39(4), 989–1015.",
-        "relevance": "Uses experimental methods in Mexico to measure determinants of support for vigilante justice, directly relevant to the extrajudicial tolerance dimension.",
-        "key_finding": "Support for vigilantism in Mexico increases when respondents perceive that formal authorities are absent or ineffective, and when community ties are strong."
+        "relevance": "Directly studies Mexican public opinion on vigilante justice and its relationship to institutional trust, closely matching the construct's items.",
+        "key_finding": "Support for vigilantism in Mexico increases when respondents perceive state institutions as ineffective and when community ties are strong."
       },
       {
-        "citation": "Sampson, R. J., & Bartusch, D. J. (1998). Legal cynicism and (subcultural?) tolerance of deviance: The neighborhood context of racial differences. Law & Society Review, 32(4), 777–804.",
-        "relevance": "Foundational work on legal cynicism as a measurable construct, establishing its distinction from tolerance of deviance and its structural determinants.",
-        "key_finding": "Legal cynicism is concentrated in structurally disadvantaged neighborhoods and is analytically distinct from subcultural tolerance of deviance."
+        "citation": "Malone, M. F. T. (2010). The verdict is in: The impact of crime on public trust in Central American justice systems. Journal of Politics in Latin America, 2(3), 99–128.",
+        "relevance": "Explores how crime victimization and institutional failure drive support for extralegal measures in Latin American justice systems.",
+        "key_finding": "Crime victimization and perceptions of judicial inefficacy significantly increase public tolerance for extrajudicial approaches to crime."
       }
     ],
     "causal_relationships": [
       {
         "role": "effect",
-        "related_construct": "institutional trust in justice system",
+        "related_construct": "judicial_institutional_trust",
         "measurable_in_data": true,
         "data_source": "JUS"
       },
       {
         "role": "effect",
-        "related_construct": "crime victimization and insecurity",
+        "related_construct": "crime_victimization_and_insecurity",
         "measurable_in_data": true,
         "data_source": "SEG"
       },
       {
         "role": "cause",
-        "related_construct": "support for authoritarian or extralegal measures",
+        "related_construct": "support_for_authoritarian_governance",
         "measurable_in_data": true,
-        "data_source": "CUL, DER"
+        "data_source": "CUL"
       },
       {
         "role": "correlate",
-        "related_construct": "perceived corruption",
+        "related_construct": "human_rights_attitudes",
         "measurable_in_data": true,
-        "data_source": "COR"
-      },
-      {
-        "role": "effect",
-        "related_construct": "poverty and socioeconomic marginalization",
-        "measurable_in_data": true,
-        "data_source": "POB"
+        "data_source": "DER"
       },
       {
         "role": "moderator",
-        "related_construct": "community social cohesion and indigenous identity",
+        "related_construct": "community_social_cohesion",
         "measurable_in_data": true,
-        "data_source": "IND, IDE"
+        "data_source": "CUL, IDE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "respect_for_rule_of_law_and_separation_of_powers",
+        "measurable_in_data": true,
+        "data_source": "CUL, FED"
       }
     ],
     "gap_justification": null,
     "importance_rating": 5
   },
   {
-    "construct_name": "legal_knowledge_rights_awareness",
+    "construct_name": "police_trust_and_legitimacy",
     "sources": [
       {
-        "citation": "Gallagher, J. (2017). Legal literacy and access to justice in Mexico. In R. Sieder (Ed.), Demanding justice and security: Indigenous movements, state governance and the rule of law in the Americas. Rutgers University Press.",
-        "relevance": "Discusses the gap between formal legal rights and citizens' awareness of those rights in Mexico, particularly regarding constitutional protections like amparo.",
-        "key_finding": "Low legal literacy among marginalized populations in Mexico significantly limits their ability to access formal justice mechanisms."
+        "citation": "Tyler, T. R. (2004). Enhancing police legitimacy. The Annals of the American Academy of Political and Social Science, 593(1), 84–99.",
+        "relevance": "Core theoretical framework for police legitimacy based on procedural justice, directly applicable to items on respectful treatment and fair problem resolution.",
+        "key_finding": "Police legitimacy is primarily built through procedural justice—fair, respectful, and transparent interactions—rather than through effective crime control alone."
       },
       {
-        "citation": "Pleasence, P., & Balmer, N. J. (2014). How people understand and interact with the law. Legal Education Foundation.",
-        "relevance": "Provides a comprehensive framework for measuring legal capability, including knowledge of rights and legal processes, applicable cross-nationally.",
-        "key_finding": "Legal knowledge is stratified by education, income, and prior legal experience, and directly predicts the likelihood of taking action to resolve legal problems."
+        "citation": "Sabet, D. M. (2012). Police Reform in Mexico: Informal Politics and the Challenge of Institutional Change. Stanford University Press.",
+        "relevance": "Directly examines police reform challenges in Mexico, relevant to items on police abuse prevention and trust levels.",
+        "key_finding": "Informal institutional dynamics, including corruption networks and patronage, have persistently undermined formal police reform efforts in Mexico."
       },
       {
-        "citation": "CONEVAL & UNAM. (2015). Encuesta Nacional de Justicia: Diagnóstico de conocimiento y percepción del sistema de justicia. CONEVAL.",
-        "relevance": "Directly measures legal knowledge among Mexican citizens, including awareness of amparo and constitutional rights, providing a benchmark for this construct.",
-        "key_finding": "A majority of Mexicans report limited knowledge of their legal rights, with significant disparities by education level and region."
+        "citation": "Bergman, M. (2006). Crime and citizen security in Latin America: The challenges for new scholarship. Latin American Research Review, 41(2), 213–227.",
+        "relevance": "Reviews the relationship between citizen security perceptions and trust in police across Latin America.",
+        "key_finding": "Low police trust in Latin America is driven by both direct experiences of corruption and broader perceptions of institutional ineffectiveness."
       },
       {
-        "citation": "Genn, H. (1999). Paths to justice: What people do and think about going to law. Hart Publishing.",
-        "relevance": "Foundational study on how legal knowledge shapes dispute resolution behavior, establishing the link between rights awareness and access to justice.",
-        "key_finding": "People with greater legal knowledge are more likely to identify problems as legal in nature and to seek formal resolution."
+        "citation": "Artz, S. (2003). Militarización de la Procuraduría General de la República: Riesgos para la democracia mexicana. In J. Bailey & J. Chabat (Eds.), Crimen Transnacional y Seguridad Pública. Plaza y Janés.",
+        "relevance": "Analyzes the militarization of law enforcement in Mexico and its implications for public trust and democratic policing.",
+        "key_finding": "Militarization of policing functions in Mexico has generated mixed public reactions, with some increased perceived effectiveness but decreased trust in procedural fairness."
       }
     ],
     "causal_relationships": [
       {
         "role": "effect",
-        "related_construct": "educational attainment",
+        "related_construct": "crime_victimization_experience",
         "measurable_in_data": true,
-        "data_source": "EDU"
+        "data_source": "SEG"
       },
       {
         "role": "cause",
-        "related_construct": "use of formal justice mechanisms and legal problem resolution",
+        "related_construct": "willingness_to_report_crime",
         "measurable_in_data": true,
-        "data_source": "JUS"
+        "data_source": "SEG"
       },
       {
         "role": "correlate",
-        "related_construct": "human rights awareness",
-        "measurable_in_data": true,
-        "data_source": "DER"
-      },
-      {
-        "role": "effect",
-        "related_construct": "socioeconomic status and poverty",
-        "measurable_in_data": true,
-        "data_source": "POB, ECO"
-      },
-      {
-        "role": "moderator",
-        "related_construct": "indigenous identity and language",
-        "measurable_in_data": true,
-        "data_source": "IND"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "access to information and media",
-        "measurable_in_data": true,
-        "data_source": "SOC"
-      }
-    ],
-    "gap_justification": null,
-    "importance_rating": 4
-  },
-  {
-    "construct_name": "procedural_justice_expectations",
-    "sources": [
-      {
-        "citation": "Tyler, T. R. (2003). Procedural justice, legitimacy, and the effective rule of law. Crime and Justice, 30, 283–357.",
-        "relevance": "Seminal theoretical framework establishing that perceptions of procedural fairness—voice, neutrality, respect, trustworthiness—drive compliance with and trust in legal authorities.",
-        "key_finding": "People's willingness to accept legal decisions depends more on the perceived fairness of the process than on the favorability of the outcome."
-      },
-      {
-        "citation": "Tankebe, J. (2013). Viewing things differently: The dimensions of public perceptions of police legitimacy. Criminology, 51(1), 103–135.",
-        "relevance": "Empirically distinguishes procedural justice from other legitimacy dimensions (distributive justice, effectiveness, lawfulness), relevant to measuring expectations of fair treatment by police and courts.",
-        "key_finding": "Procedural justice is the strongest predictor of police legitimacy, but distributive justice and effectiveness also contribute independently."
-      },
-      {
-        "citation": "Fondevila, G., & Mejía Vargas, A. (2019). Trust in justice in Mexico: What is it and who has it? Journal of Trust Research, 9(1), 48–70.",
-        "relevance": "Directly measures procedural justice perceptions in the Mexican context, examining how expectations of fair treatment vary across demographic groups.",
-        "key_finding": "Procedural justice expectations in Mexico are shaped by prior contact with justice institutions, with negative experiences producing lasting distrust."
-      },
-      {
-        "citation": "Sunshine, J., & Tyler, T. R. (2003). The role of procedural justice and legitimacy in shaping public support for policing. Law & Society Review, 37(3), 513–548.",
-        "relevance": "Demonstrates the causal pathway from procedural justice perceptions to cooperation with police, applicable to understanding Mexican public expectations.",
-        "key_finding": "Procedural justice judgments are the primary driver of perceived legitimacy, which in turn predicts willingness to cooperate with police."
-      }
-    ],
-    "causal_relationships": [
-      {
-        "role": "cause",
-        "related_construct": "institutional trust in justice system",
-        "measurable_in_data": true,
-        "data_source": "JUS"
-      },
-      {
-        "role": "cause",
-        "related_construct": "compliance with law and legal cooperation",
-        "measurable_in_data": true,
-        "data_source": "JUS, SEG"
-      },
-      {
-        "role": "effect",
-        "related_construct": "prior contact with justice institutions (victimization, arrest)",
-        "measurable_in_data": true,
-        "data_source": "SEG, JUS"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "perceptions of corruption in justice system",
+        "related_construct": "corruption_perceptions",
         "measurable_in_data": true,
         "data_source": "COR"
       },
       {
+        "role": "cause",
+        "related_construct": "legal_compliance",
+        "measurable_in_data": true,
+        "data_source": "JUS"
+      },
+      {
         "role": "correlate",
-        "related_construct": "democratic values and political culture",
+        "related_construct": "general_institutional_trust",
         "measurable_in_data": true,
         "data_source": "CUL"
       },
       {
         "role": "effect",
-        "related_construct": "gender and discrimination experiences",
+        "related_construct": "socioeconomic_status",
         "measurable_in_data": true,
-        "data_source": "GEN, DER"
+        "data_source": "POB, ECO"
+      }
+    ],
+    "gap_justification": null,
+    "importance_rating": 5
+  },
+  {
+    "construct_name": "legal_self_efficacy_and_access",
+    "sources": [
+      {
+        "citation": "Sandefur, R. L. (2008). Access to civil justice and race, class, and gender inequality. Annual Review of Sociology, 34, 339–358.",
+        "relevance": "Foundational review of how socioeconomic factors shape access to justice and legal self-efficacy, directly relevant to items on affording lawyers and suing the government.",
+        "key_finding": "Access to justice is stratified by race, class, and gender, with lower-status individuals less likely to recognize legal problems and seek formal remedies."
+      },
+      {
+        "citation": "Pleasence, P., & Balmer, N. J. (2014). How people resolve 'legal' problems: A report to the Legal Services Board. Legal Services Board.",
+        "relevance": "Empirically examines how individuals navigate legal problems and the role of legal knowledge and self-efficacy in seeking formal resolution.",
+        "key_finding": "Legal capability—including knowledge of rights and confidence in navigating the system—is a stronger predictor of accessing justice than income alone."
+      },
+      {
+        "citation": "Fix-Fierro, H. (2003). La reforma judicial en México: ¿De dónde viene? ¿Hacia dónde va? Reforma Judicial: Revista Mexicana de Justicia, 2, 1–37.",
+        "relevance": "Analyzes access to justice in the Mexican context, including the amparo remedy and barriers to legal participation for ordinary citizens.",
+        "key_finding": "Despite constitutional guarantees like amparo, practical access to justice in Mexico remains severely limited for marginalized populations due to cost, complexity, and information barriers."
+      },
+      {
+        "citation": "World Justice Project. (2020). Mexico States Rule of Law Index 2020. World Justice Project.",
+        "relevance": "Provides empirical measurement of access to justice across Mexican states, including civil justice accessibility and knowledge of legal remedies.",
+        "key_finding": "Access to civil justice varies dramatically across Mexican states, with affordability and awareness of legal mechanisms being the primary barriers."
+      }
+    ],
+    "causal_relationships": [
+      {
+        "role": "effect",
+        "related_construct": "educational_attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "effect",
+        "related_construct": "socioeconomic_status_and_poverty",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
+      },
+      {
+        "role": "cause",
+        "related_construct": "judicial_institutional_trust",
+        "measurable_in_data": true,
+        "data_source": "JUS"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "civic_engagement_and_political_participation",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "indigenous_identity",
+        "measurable_in_data": true,
+        "data_source": "IND"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "human_rights_knowledge",
+        "measurable_in_data": true,
+        "data_source": "DER"
+      },
+      {
+        "role": "effect",
+        "related_construct": "gender_inequality",
+        "measurable_in_data": true,
+        "data_source": "GEN"
       }
     ],
     "gap_justification": null,
     "importance_rating": 4
   },
   {
-    "construct_name": "legal_problem_resolution_efficacy",
+    "construct_name": "law_compliance_motivation",
     "sources": [
       {
-        "citation": "Genn, H. (1999). Paths to justice: What people do and think about going to law. Hart Publishing.",
-        "relevance": "Pioneered the 'legal needs' survey methodology that measures how people experience and resolve justiciable problems, the direct precursor to the question battery in this construct.",
-        "key_finding": "Most justiciable problems are resolved outside the formal legal system, and the choice of resolution strategy is shaped by problem type, knowledge, and resources."
+        "citation": "Tyler, T. R. (2006). Why People Obey the Law. Princeton University Press.",
+        "relevance": "The seminal work on motivational bases of legal compliance, distinguishing instrumental (deterrence) from normative (legitimacy-based) motivations, directly matching the construct's focus.",
+        "key_finding": "Normative motivations rooted in perceived legitimacy and moral alignment are stronger predictors of legal compliance than instrumental fear of sanctions."
       },
       {
-        "citation": "Pleasence, P., Balmer, N. J., & Sandefur, R. L. (2013). Paths to justice: A past, present and future roadmap. UCL Centre for Empirical Legal Studies.",
-        "relevance": "Reviews two decades of legal needs surveys globally, establishing best practices for measuring legal problem resolution that inform the construct's operationalization.",
-        "key_finding": "Legal problem resolution efficacy varies dramatically by problem type, with employment, housing, and family disputes showing distinct resolution patterns."
+        "citation": "Bergman, M. (2009). Tax Evasion and the Rule of Law in Latin America: The Political Culture of Cheating and Compliance in Argentina and Chile. Penn State University Press.",
+        "relevance": "Examines the motivational bases of law compliance in Latin America, including the gap between self-reported and actual compliance, relevant to items comparing self-assessed vs. perceived compliance.",
+        "key_finding": "In Latin American contexts, social norms and perceptions of others' compliance are as important as individual moral reasoning in determining legal compliance."
       },
       {
-        "citation": "INEGI. (2020). Encuesta Nacional de Acceso a la Justicia (ENAJ). Instituto Nacional de Estadística y Geografía.",
-        "relevance": "Mexico's national access-to-justice survey directly measures the types of legal problems citizens face and how they resolve them, providing a national benchmark.",
-        "key_finding": "A significant proportion of Mexicans who experience legal problems do not seek any form of resolution, citing distrust, cost, and lack of knowledge as primary barriers."
+        "citation": "Latinobarómetro. (2018). Informe 2018. Corporación Latinobarómetro.",
+        "relevance": "Provides comparative data on rule of law perceptions across Latin America, including citizen and official law-abidingness ratings similar to the construct's items.",
+        "key_finding": "Latin Americans consistently rate government officials as less law-abiding than citizens, reflecting a perceived double standard that undermines compliance motivation."
       },
       {
-        "citation": "Sandefur, R. L. (2008). Access to civil justice and race, class, and gender inequality. Annual Review of Sociology, 34, 339–358.",
-        "relevance": "Theorizes how social stratification shapes access to and efficacy of legal problem resolution, relevant to understanding disparities in the Mexican context.",
-        "key_finding": "Race, class, and gender intersect to produce cumulative disadvantage in legal problem resolution, with marginalized groups less likely to obtain favorable outcomes."
+        "citation": "García Villegas, M. (2010). Normas de papel: La cultura del incumplimiento de reglas. Siglo del Hombre Editores.",
+        "relevance": "Directly examines the culture of legal non-compliance in Latin America, analyzing why citizens and officials violate laws and the normative frameworks underlying compliance.",
+        "key_finding": "A 'culture of non-compliance' in Latin America is sustained by perceptions that laws are made by and for elites, creating rational and normative justifications for disobedience."
       }
     ],
     "causal_relationships": [
       {
         "role": "effect",
-        "related_construct": "socioeconomic status and poverty",
-        "measurable_in_data": true,
-        "data_source": "POB, ECO"
-      },
-      {
-        "role": "effect",
-        "related_construct": "legal knowledge and rights awareness",
+        "related_construct": "judicial_institutional_trust",
         "measurable_in_data": true,
         "data_source": "JUS"
       },
       {
         "role": "effect",
-        "related_construct": "institutional trust in justice system",
+        "related_construct": "corruption_perceptions_and_experience",
         "measurable_in_data": true,
-        "data_source": "JUS"
+        "data_source": "COR"
+      },
+      {
+        "role": "cause",
+        "related_construct": "tax_compliance_and_civic_behavior",
+        "measurable_in_data": true,
+        "data_source": "CUL, ECO"
       },
       {
         "role": "correlate",
-        "related_construct": "educational attainment",
+        "related_construct": "democratic_values_and_political_culture",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational_attainment",
         "measurable_in_data": true,
         "data_source": "EDU"
       },
       {
-        "role": "effect",
-        "related_construct": "gender inequality and discrimination",
+        "role": "correlate",
+        "related_construct": "interpersonal_trust",
         "measurable_in_data": true,
-        "data_source": "GEN"
+        "data_source": "CUL, IDE"
       },
       {
         "role": "correlate",
-        "related_construct": "housing and property disputes",
+        "related_construct": "religiosity_and_moral_values",
         "measurable_in_data": true,
-        "data_source": "HAB"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "employment and labor disputes",
-        "measurable_in_data": true,
-        "data_source": "ECO"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "family law issues (divorce, custody)",
-        "measurable_in_data": true,
-        "data_source": "FAM"
-      },
-      {
-        "role": "effect",
-        "related_construct": "indigenous identity and marginalization",
-        "measurable_in_data": true,
-        "data_source": "IND"
+        "data_source": "REL, IDE"
       }
     ],
     "gap_justification": null,

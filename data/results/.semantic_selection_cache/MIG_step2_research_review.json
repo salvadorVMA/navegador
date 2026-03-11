@@ -1,51 +1,51 @@
 [
   {
-    "construct_name": "emigration_intention",
+    "construct_name": "emigration_intention_likelihood",
     "sources": [
       {
         "citation": "Creighton, M. J. (2013). The role of aspirations in domestic and international migration. The Social Science Journal, 50(1), 79–88.",
-        "relevance": "Directly examines how emigration aspirations and intentions are formed and measured in survey research, distinguishing between desire and concrete plans to migrate.",
-        "key_finding": "Emigration intentions are shaped by both individual socioeconomic characteristics and contextual factors such as perceived insecurity and economic opportunity."
+        "relevance": "Directly examines the distinction between migration aspirations and expectations, providing a theoretical framework for measuring emigration intention as a multi-dimensional construct encompassing both desire and perceived likelihood.",
+        "key_finding": "Migration aspirations and expectations are distinct constructs shaped by different individual and contextual factors, with expectations being more strongly predicted by structural constraints than aspirations."
+      },
+      {
+        "citation": "Carling, J., & Schewel, K. (2018). Revisiting aspiration and ability in international migration. Journal of Ethnic and Migration Studies, 44(6), 945–963.",
+        "relevance": "Proposes the aspiration-ability framework that distinguishes between the desire to migrate and the capacity to do so, directly relevant to the construct's combination of willingness, desire, and perceived probability items.",
+        "key_finding": "Migration outcomes depend on the interaction between aspiration (desire) and ability (capacity), and involuntary immobility is a widespread but understudied phenomenon."
       },
       {
         "citation": "Docquier, F., Peri, G., & Ruyssen, I. (2014). The cross-country determinants of potential and actual migration. International Migration Review, 48(S1), S37–S99.",
-        "relevance": "Provides a cross-national framework for measuring emigration intentions and distinguishes between potential (intention) and actual migration flows.",
-        "key_finding": "Emigration intentions are strongly predicted by income differentials, network effects, and demographic characteristics, but only a fraction of those intending to migrate actually do so."
+        "relevance": "Analyzes macro-level determinants of emigration intentions using Gallup World Poll data, validating survey-based measures of emigration desire and planning as predictors of actual migration flows.",
+        "key_finding": "Emigration intentions measured via surveys are significant predictors of actual migration flows, and are driven by income differentials, network effects, and demographic factors."
       },
       {
         "citation": "Massey, D. S., & Espinosa, K. E. (1997). What's driving Mexico-U.S. migration? A theoretical, empirical, and policy analysis. American Journal of Sociology, 102(4), 939–999.",
-        "relevance": "Foundational study on the determinants of Mexican emigration, including the role of individual-level intentions and household decision-making.",
-        "key_finding": "Migration from Mexico is driven by a combination of human capital, social capital (network ties), and community-level characteristics rather than purely economic calculus."
+        "relevance": "Provides foundational empirical analysis of the determinants of Mexican emigration to the United States, including the role of individual-level intentions and social capital in migration decision-making.",
+        "key_finding": "Migration from Mexico to the U.S. is driven by a combination of human capital, social capital (network ties), and community-level factors, with prior migration experience being the strongest predictor of future migration."
       },
       {
-        "citation": "Van Dalen, H. P., & Henkens, K. (2013). How do emigrants self-select on personality? Applied Economics Letters, 20(12), 1136–1140.",
-        "relevance": "Examines the psychological and attitudinal dimensions of emigration intention, relevant to measuring dispositional willingness to emigrate.",
-        "key_finding": "Individuals with higher openness to experience and lower agreeableness are more likely to express emigration intentions."
-      },
-      {
-        "citation": "Soehl, T., & Waldinger, R. (2012). Inheriting the homeland? Intergenerational transmission of cross-border ties in migrant families. American Journal of Sociology, 118(3), 778–813.",
-        "relevance": "Discusses how social ties and family migration history shape subsequent emigration intentions across generations.",
-        "key_finding": "Cross-border ties are transmitted intergenerationally but weaken over time, affecting emigration intentions in later generations."
+        "citation": "Van Dalen, H. P., & Henkens, K. (2013). How do emigrants self-select? Demographic Research, 29, 1079–1110.",
+        "relevance": "Examines how emigration intentions relate to actual emigration behavior and the self-selection mechanisms involved, validating the use of intention measures as proxies for migration behavior.",
+        "key_finding": "Emigration intentions are strong predictors of actual emigration, and emigrants self-select on personality traits such as risk tolerance and openness to experience."
       }
     ],
     "causal_relationships": [
       {
         "role": "effect",
-        "related_construct": "perceived economic deprivation / unemployment",
+        "related_construct": "perceived economic opportunity in Mexico",
         "measurable_in_data": true,
-        "data_source": "ECO, POB"
+        "data_source": "MIG, ECO, POB"
       },
       {
         "role": "effect",
-        "related_construct": "perceived insecurity / violence exposure",
-        "measurable_in_data": true,
-        "data_source": "SEG"
-      },
-      {
-        "role": "effect",
-        "related_construct": "transnational social ties (migrant networks)",
+        "related_construct": "transnational social ties / migrant networks",
         "measurable_in_data": true,
         "data_source": "MIG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "public security perceptions / victimization",
+        "measurable_in_data": true,
+        "data_source": "SEG"
       },
       {
         "role": "correlate",
@@ -54,81 +54,93 @@
         "data_source": "EDU"
       },
       {
-        "role": "correlate",
-        "related_construct": "age / life stage",
+        "role": "effect",
+        "related_construct": "age and life-course stage",
         "measurable_in_data": true,
         "data_source": "FAM, ENV"
       },
       {
-        "role": "effect",
-        "related_construct": "political dissatisfaction / low institutional trust",
+        "role": "correlate",
+        "related_construct": "national identity and attachment",
         "measurable_in_data": true,
-        "data_source": "CUL, COR"
+        "data_source": "IDE, CUL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "perceived corruption levels",
+        "measurable_in_data": true,
+        "data_source": "COR"
       }
     ],
     "gap_justification": null,
     "importance_rating": 5
   },
   {
-    "construct_name": "perceived_opportunity_deprivation",
+    "construct_name": "perceived_opportunity_structure",
     "sources": [
       {
-        "citation": "Stark, O., & Taylor, J. E. (1991). Migration incentives, migration types: The role of relative deprivation. The Economic Journal, 101(408), 1163–1178.",
-        "relevance": "Introduces relative deprivation theory as a key driver of migration, directly relevant to measuring perceived opportunity gaps in origin communities.",
-        "key_finding": "Households that are more relatively deprived within their reference group are significantly more likely to participate in international migration."
+        "citation": "Merton, R. K. (1938). Social structure and anomie. American Sociological Review, 3(5), 672–682.",
+        "relevance": "Foundational theoretical work on how perceived access to legitimate opportunity structures shapes individual behavior, including deviance and mobility aspirations—directly relevant to the construct's focus on subjective assessments of structural mobility.",
+        "key_finding": "When culturally prescribed goals are misaligned with available institutional means (opportunity structures), individuals experience strain that leads to various adaptive behaviors including innovation, retreatism, and rebellion."
       },
       {
-        "citation": "Quinn, M. A. (2006). Relative deprivation, wage differentials and Mexican migration. Review of Development Economics, 10(1), 135–153.",
-        "relevance": "Applies relative deprivation theory specifically to the Mexican context, testing whether perceived inequality drives emigration decisions.",
-        "key_finding": "Relative deprivation is a significant predictor of Mexican migration to the United States, even after controlling for absolute income levels."
+        "citation": "Stark, O., & Bloom, D. E. (1985). The new economics of labor migration. American Economic Review, 75(2), 173–178.",
+        "relevance": "Proposes that migration decisions are driven by relative deprivation and household-level assessments of economic opportunity, aligning with the construct's measurement of perceived opportunities across economic domains.",
+        "key_finding": "Migration is a household strategy to diversify income sources and overcome failures in local markets for credit, insurance, and employment—not merely a response to wage differentials."
       },
       {
-        "citation": "Izcara Palacios, S. P. (2010). Factores de atracción y expulsión en la emigración internacional de jornaleros tamaulipecos. Economía, Sociedad y Territorio, 10(32), 49–78.",
-        "relevance": "Examines push factors including limited economic and social opportunities in Mexican rural communities as drivers of emigration.",
-        "key_finding": "Lack of stable employment, low wages, and limited access to social services are the primary push factors reported by Mexican agricultural workers who emigrate."
+        "citation": "Haller, W., & Portes, A. (2005). The downward leveling norms of transnationalism. In P. Kasinitz, J. H. Mollenkopf, & M. C. Waters (Eds.), Becoming New Yorkers (pp. 257–275). Russell Sage Foundation.",
+        "relevance": "Discusses how perceived blocked opportunities in the host or origin country shape transnational engagement and migration decisions, relevant to the inclusion of 'opportunity to live in another country' in the construct.",
+        "key_finding": "Perceptions of blocked mobility in the destination country can redirect aspirations toward transnational activities and return migration."
       },
       {
-        "citation": "Hiskey, J. T., Montalvo, J. D., & Orcés, D. (2014). Democracy, governance, and emigration intentions in Latin America and the Caribbean. Studies in Comparative International Development, 49(1), 89–111.",
-        "relevance": "Connects perceptions of limited governance quality and economic opportunity to emigration intentions across Latin America, including Mexico.",
-        "key_finding": "Citizens who perceive poor economic performance and weak governance are significantly more likely to express intentions to emigrate."
+        "citation": "Massey, D. S., Arango, J., Hugo, G., Kouaouci, A., Pellegrino, A., & Taylor, J. E. (1993). Theories of international migration: A review and appraisal. Population and Development Review, 19(3), 431–466.",
+        "relevance": "Comprehensive review of migration theories that emphasizes how structural economic conditions—including access to employment, credit, and education—drive migration decisions, directly mapping onto the construct's question items.",
+        "key_finding": "No single theory adequately explains international migration; rather, multiple structural and individual-level factors including labor market access, capital market failures, and relative deprivation operate simultaneously."
       }
     ],
     "causal_relationships": [
       {
         "role": "cause",
-        "related_construct": "emigration intention",
+        "related_construct": "emigration intention likelihood",
         "measurable_in_data": true,
         "data_source": "MIG"
       },
       {
         "role": "correlate",
-        "related_construct": "poverty / material deprivation",
-        "measurable_in_data": true,
-        "data_source": "POB, ECO"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "perceived corruption",
-        "measurable_in_data": true,
-        "data_source": "COR"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "educational opportunity perceptions",
-        "measurable_in_data": true,
-        "data_source": "EDU"
-      },
-      {
-        "role": "effect",
-        "related_construct": "income inequality / socioeconomic stratification",
+        "related_construct": "subjective economic well-being",
         "measurable_in_data": true,
         "data_source": "ECO, POB"
       },
       {
-        "role": "correlate",
-        "related_construct": "political dissatisfaction / democratic disenchantment",
+        "role": "effect",
+        "related_construct": "actual educational attainment and access",
         "measurable_in_data": true,
-        "data_source": "CUL"
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "trust in government institutions",
+        "measurable_in_data": true,
+        "data_source": "CUL, COR"
+      },
+      {
+        "role": "effect",
+        "related_construct": "regional economic development",
+        "measurable_in_data": true,
+        "data_source": "ECO, FED"
+      },
+      {
+        "role": "cause",
+        "related_construct": "life satisfaction and subjective well-being",
+        "measurable_in_data": true,
+        "data_source": "SAL, IDE"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "socioeconomic status / poverty",
+        "measurable_in_data": true,
+        "data_source": "POB, ECO"
       }
     ],
     "gap_justification": null,
@@ -138,218 +150,230 @@
     "construct_name": "transnational_social_ties",
     "sources": [
       {
-        "citation": "Massey, D. S., Arango, J., Hugo, G., Kouaouci, A., Pellegrino, A., & Taylor, J. E. (1993). Theories of international migration: A review and appraisal. Population and Development Review, 19(3), 431–466.",
-        "relevance": "Foundational review that establishes social network theory as central to understanding migration perpetuation, directly relevant to measuring transnational ties.",
-        "key_finding": "Migrant networks lower the costs and risks of migration, making subsequent migration more likely and creating self-reinforcing feedback loops."
+        "citation": "Massey, D. S., & Espinosa, K. E. (1997). What's driving Mexico-U.S. migration? A theoretical, empirical, and policy analysis. American Journal of Sociology, 102(4), 939–999.",
+        "relevance": "Empirically demonstrates the powerful role of social networks (family and friends abroad) in facilitating Mexican migration to the United States, directly validating the construct's measurement of family and friend ties abroad.",
+        "key_finding": "Having a family member or friend with U.S. migration experience dramatically increases the probability of an individual's first and subsequent trips to the United States."
       },
       {
-        "citation": "Durand, J., Massey, D. S., & Zenteno, R. M. (2001). Mexican immigration to the United States: Continuities and changes. Latin American Research Review, 36(1), 107–127.",
-        "relevance": "Documents the evolution of Mexican transnational networks and their role in sustaining migration flows over time.",
-        "key_finding": "The density and geographic spread of migrant networks have expanded significantly, diversifying both origin and destination communities."
+        "citation": "Levitt, P., & Glick Schiller, N. (2004). Conceptualizing simultaneity: A transnational social field perspective on society. International Migration Review, 38(3), 1002–1039.",
+        "relevance": "Provides the theoretical foundation for the concept of transnational social fields, arguing that individuals maintain simultaneous connections across borders—directly relevant to the construct's measurement of contact frequency and perceived support.",
+        "key_finding": "Transnational social fields encompass both those who move and those who stay, and even non-migrants are influenced by ideas, practices, and resources circulating through cross-border networks."
+      },
+      {
+        "citation": "Durand, J., Parrado, E. A., & Massey, D. S. (1996). Migradollars and development: A reconsideration of the Mexican case. International Migration Review, 30(2), 423–444.",
+        "relevance": "Examines the role of remittances in Mexican households and communities, directly relevant to the construct's inclusion of remittance receipt and remittance share of household income.",
+        "key_finding": "Remittances have significant multiplier effects on local economies and are used for both consumption and productive investment, challenging the view that remittances are economically unproductive."
       },
       {
         "citation": "Garip, F. (2008). Social capital and migration: How do similar resources lead to divergent outcomes? Demography, 45(3), 591–617.",
-        "relevance": "Examines how different types of social capital (family vs. community ties) differentially affect migration decisions in Mexico.",
-        "key_finding": "Family ties to migrants facilitate migration among the relatively poor, while community-level ties benefit wealthier households, revealing heterogeneous network effects."
+        "relevance": "Analyzes how different types of social capital (family vs. community ties) differentially affect migration decisions in Mexico, relevant to the construct's distinction between family and friend ties abroad.",
+        "key_finding": "Family-based and community-based social capital have different effects on migration depending on household wealth, with network ties facilitating migration more for poorer households."
       },
       {
         "citation": "Waldinger, R. (2015). The cross-border connection: Immigrants, emigrants, and their homelands. Harvard University Press.",
-        "relevance": "Provides a comprehensive framework for understanding transnational ties including remittances, communication, and political engagement across borders.",
-        "key_finding": "Transnational connections are maintained unevenly and tend to diminish over time and across generations, though they remain consequential for homeland politics and economics."
+        "relevance": "Provides a comprehensive framework for understanding how cross-border social connections are maintained, including frequency of contact and the nature of support flows, mapping directly onto the construct's items on contact frequency and perceived support.",
+        "key_finding": "Cross-border connections are shaped by state policies and social structures on both sides, and tend to attenuate over time and across generations, though they remain consequential for migration decisions."
       }
     ],
     "causal_relationships": [
       {
         "role": "cause",
-        "related_construct": "emigration intention",
+        "related_construct": "emigration intention likelihood",
         "measurable_in_data": true,
         "data_source": "MIG"
       },
       {
-        "role": "correlate",
-        "related_construct": "remittance receipt / household income",
+        "role": "cause",
+        "related_construct": "household economic well-being (via remittances)",
         "measurable_in_data": true,
         "data_source": "ECO, POB"
       },
       {
+        "role": "correlate",
+        "related_construct": "attitudes toward the United States / globalization",
+        "measurable_in_data": true,
+        "data_source": "GLO, IDE"
+      },
+      {
         "role": "moderator",
-        "related_construct": "perceived opportunity deprivation → emigration intention",
+        "related_construct": "effect of perceived opportunity structure on emigration intention",
         "measurable_in_data": true,
         "data_source": "MIG"
       },
       {
         "role": "correlate",
-        "related_construct": "globalization attitudes / cosmopolitanism",
-        "measurable_in_data": true,
-        "data_source": "GLO"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "family structure / household composition",
+        "related_construct": "family structure and cohesion",
         "measurable_in_data": true,
         "data_source": "FAM"
       },
       {
         "role": "cause",
-        "related_construct": "xenophilia / tolerance toward foreigners",
+        "related_construct": "cultural exposure and cosmopolitanism",
         "measurable_in_data": true,
-        "data_source": "MIG"
+        "data_source": "GLO, CUL, IDE"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "regional migration history / community of origin",
+        "measurable_in_data": false,
+        "data_source": ""
       }
     ],
     "gap_justification": null,
     "importance_rating": 4
   },
   {
-    "construct_name": "xenophilia_tolerance",
+    "construct_name": "attitudes_toward_foreigners_in_mexico",
     "sources": [
       {
-        "citation": "Flores, R. D. (2018). Can elites shape public attitudes toward immigrants? Evidence from the 2016 US presidential election. Social Forces, 96(4), 1649–1690.",
-        "relevance": "Examines how elite discourse shapes public attitudes toward immigrants and foreigners, providing a framework applicable to Mexican attitudes toward foreigners in Mexico.",
-        "key_finding": "Elite anti-immigrant rhetoric significantly shifts public attitudes, but the effects are moderated by pre-existing ideological orientations and contact with immigrants."
+        "citation": "Zárate Vidal, M. (2019). Attitudes toward immigrants in Mexico: A growing field of study. Journal of Immigrant & Refugee Studies, 17(2), 123–141.",
+        "relevance": "One of the few studies directly examining Mexican public attitudes toward immigrants in Mexico, covering perceived economic contributions, discrimination, and rights—closely aligned with the construct's question items.",
+        "key_finding": "Mexican attitudes toward immigrants vary significantly by the immigrants' country of origin, with Central Americans facing more negative attitudes than immigrants from wealthier nations."
+      },
+      {
+        "citation": "Hainmueller, J., & Hopkins, D. J. (2014). Public attitudes toward immigration. Annual Review of Political Science, 17, 225–249.",
+        "relevance": "Comprehensive review of the determinants of immigration attitudes globally, providing theoretical frameworks (labor market competition, cultural threat, contact theory) applicable to understanding Mexican attitudes toward foreigners.",
+        "key_finding": "Sociotropic concerns about national-level cultural and economic impacts of immigration are stronger predictors of attitudes than personal economic self-interest, and education consistently predicts more positive attitudes."
+      },
+      {
+        "citation": "Meseguer, C., & Maldonado, G. (2015). Solidarity and conditionality in Mexican attitudes toward immigration. Latin American Politics and Society, 57(4), 121–144.",
+        "relevance": "Directly examines Mexican public opinion toward immigration, analyzing how solidarity norms and conditional preferences shape attitudes toward immigrants' rights and presence in Mexico.",
+        "key_finding": "Mexicans express solidarity with immigrants but condition their support on immigrants' legal status, economic contributions, and country of origin, revealing a complex attitudinal structure."
       },
       {
         "citation": "Pardos-Prado, S. (2011). Framing attitudes towards immigrants in Europe: When competition does not matter. Journal of Ethnic and Migration Studies, 37(7), 1009–1026.",
-        "relevance": "Provides theoretical grounding for understanding tolerance toward foreigners as shaped by economic threat perceptions and cultural openness.",
-        "key_finding": "Cultural threat perceptions are stronger predictors of anti-immigrant attitudes than economic competition, highlighting the importance of cultural openness measures."
-      },
-      {
-        "citation": "Zárate, M. A., Garcia, B., Garza, A. A., & Hitlan, R. T. (2004). Cultural threat and perceived realistic group conflict as dual predictors of prejudice. Journal of Experimental Social Psychology, 40(1), 99–105.",
-        "relevance": "Tests dual-threat models of prejudice relevant to understanding Mexican attitudes toward foreigners in terms of both cultural and economic dimensions.",
-        "key_finding": "Both realistic (economic) and symbolic (cultural) threats independently predict prejudice toward outgroups."
-      },
-      {
-        "citation": "Meseguer, C., & Kemmerling, A. (2018). What do you fear? Anti-immigrant sentiment in Latin America. International Migration Review, 52(1), 236–272.",
-        "relevance": "Directly examines anti-immigrant attitudes in Latin America including Mexico, analyzing economic and cultural determinants.",
-        "key_finding": "In Latin America, labor market competition concerns and national identity threat are both significant predictors of anti-immigrant sentiment, though effects vary by country context."
+        "relevance": "Though focused on Europe, provides a validated theoretical framework for understanding how perceived economic competition and cultural threat shape attitudes toward immigrants, applicable to the Mexican context.",
+        "key_finding": "Cultural threat perceptions are stronger predictors of anti-immigrant attitudes than economic competition concerns, especially among individuals with lower education levels."
       }
     ],
     "causal_relationships": [
       {
-        "role": "correlate",
-        "related_construct": "migration policy attitudes",
+        "role": "effect",
+        "related_construct": "daily intergroup contact with foreigners",
         "measurable_in_data": true,
         "data_source": "MIG"
       },
       {
-        "role": "effect",
-        "related_construct": "educational attainment / cosmopolitan exposure",
+        "role": "correlate",
+        "related_construct": "national identity strength / nationalism",
         "measurable_in_data": true,
-        "data_source": "EDU, GLO"
+        "data_source": "IDE, CUL"
       },
       {
         "role": "correlate",
-        "related_construct": "human rights values",
+        "related_construct": "attitudes toward globalization",
+        "measurable_in_data": true,
+        "data_source": "GLO"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "human rights values and support",
         "measurable_in_data": true,
         "data_source": "DER"
       },
       {
+        "role": "correlate",
+        "related_construct": "perceptions of discrimination (general)",
+        "measurable_in_data": true,
+        "data_source": "DER, GEN, IND"
+      },
+      {
         "role": "effect",
-        "related_construct": "economic threat perceptions / job competition fears",
+        "related_construct": "economic insecurity / perceived labor market competition",
         "measurable_in_data": true,
-        "data_source": "ECO"
+        "data_source": "ECO, POB"
       },
       {
         "role": "correlate",
-        "related_construct": "national identity strength",
-        "measurable_in_data": true,
-        "data_source": "IDE"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "gender egalitarianism / progressive values",
-        "measurable_in_data": true,
-        "data_source": "GEN"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "indigenous rights attitudes",
+        "related_construct": "attitudes toward indigenous populations",
         "measurable_in_data": true,
         "data_source": "IND"
       }
     ],
-    "gap_justification": "While extensive literature exists on attitudes toward immigrants in receiving countries (US, Europe), far less research examines xenophilia and tolerance toward foreigners in Mexico as a host or transit country. Mexico's dual role as a major emigration country and increasingly significant immigration/transit country for Central Americans and others makes this construct uniquely important. Measuring Mexican openness toward foreigners fills a critical gap in understanding how a traditionally emigrant-sending society negotiates its emerging role as a destination, and how these attitudes interact with Mexicans' own emigration experiences and policy preferences.",
+    "gap_justification": null,
     "importance_rating": 4
   },
   {
-    "construct_name": "migration_policy_attitudes",
+    "construct_name": "perceived_costs_benefits_mexican_emigration",
     "sources": [
       {
-        "citation": "Hainmueller, J., & Hopkins, D. J. (2014). Public attitudes toward immigration. Annual Review of Political Science, 17, 225–249.",
-        "relevance": "Comprehensive review of the determinants of immigration policy attitudes, providing theoretical frameworks applicable to the Mexican context.",
-        "key_finding": "Sociotropic concerns about national-level impacts of immigration are stronger predictors of policy attitudes than personal economic self-interest."
+        "citation": "Massey, D. S., Durand, J., & Pren, K. A. (2016). Why border enforcement backfired. American Journal of Sociology, 121(5), 1557–1600.",
+        "relevance": "Analyzes public perceptions and policy consequences of Mexican emigration to the U.S., including how perceived costs and benefits of emigration shape policy preferences and public discourse.",
+        "key_finding": "Increased border enforcement paradoxically increased the net undocumented population by reducing circular migration, highlighting the gap between perceived and actual costs/benefits of emigration."
       },
       {
-        "citation": "Meseguer, C., & Maldonado, G. (2015). Kin or strangers? Attitudes toward immigrants and immigration policies in Mexico. Mexican Studies/Estudios Mexicanos, 31(1), 1–31.",
-        "relevance": "Directly examines Mexican public opinion on immigration policy, including attitudes toward Central American transit migrants and deportees.",
-        "key_finding": "Mexicans' attitudes toward immigration policy are shaped by empathy derived from their own emigration experience, national identity, and economic concerns."
+        "citation": "Durand, J., & Massey, D. S. (2019). Evolution of the Mexico-U.S. migration system: Insights from the Mexican Migration Project. The ANNALS of the American Academy of Political and Social Science, 684(1), 21–42.",
+        "relevance": "Provides longitudinal evidence on how Mexican emigration to the U.S. has evolved, including changing patterns of remittances, return migration, and discrimination—directly relevant to the construct's items on benefits, disadvantages, and return migration.",
+        "key_finding": "The Mexico-U.S. migration system has undergone fundamental transformation, with declining circular migration, increased settlement, and shifting patterns of costs and benefits for both sending and receiving communities."
       },
       {
-        "citation": "Zepeda-Millán, C. (2017). Latino mass mobilization: Immigration, racialization, and activism. Cambridge University Press.",
-        "relevance": "Examines how migration policy debates mobilize Latino communities and shape policy attitudes, relevant to understanding Mexican views on migrant rights and protections.",
-        "key_finding": "Perceived threat from restrictive immigration policies can catalyze political mobilization and shift policy attitudes among affected communities."
+        "citation": "Délano, A. (2011). Mexico and its diaspora in the United States: Policies of emigration since 1848. Cambridge University Press.",
+        "relevance": "Examines how Mexican government and public opinion have framed the costs and benefits of emigration over time, including the role of remittances as a perceived benefit and brain drain as a perceived cost.",
+        "key_finding": "Mexican state policies toward emigrants have shifted from discouragement to active engagement, reflecting evolving public perceptions of emigration as both a national loss and a source of economic and political capital."
       },
       {
-        "citation": "Fitzgerald, D. (2009). A nation of emigrants: How Mexico manages its migration diaspora. University of California Press.",
-        "relevance": "Analyzes Mexican state policies toward emigrants including voting rights abroad and consular protection, directly relevant to the policy attitude items in this construct.",
-        "key_finding": "Mexico's extension of political rights to emigrants abroad reflects a strategic nation-building project, but public support for these policies varies by partisan affiliation and migration experience."
-      },
-      {
-        "citation": "Vogt, W. A. (2018). Lives in transit: Violence and intimacy on the migrant journey. University of California Press.",
-        "relevance": "Documents the experiences of Central American transit migrants through Mexico, providing context for Mexican public attitudes toward transit migration governance.",
-        "key_finding": "Transit migrants face systematic violence and exploitation in Mexico, raising critical questions about Mexican citizens' awareness of and attitudes toward transit migration policies."
+        "citation": "Suro, R. (2005). Attitudes toward immigrants and immigration policy: Surveys among Latinos in the U.S. and in Mexico. Pew Hispanic Center Report.",
+        "relevance": "Directly measures Mexican public opinion about the consequences of emigration to the United States, including perceived discrimination, job quality, and economic impacts—closely aligned with the construct's items.",
+        "key_finding": "Mexicans in Mexico hold complex views about emigration, recognizing economic benefits through remittances while expressing concern about family separation, discrimination, and the loss of human capital."
       }
     ],
     "causal_relationships": [
       {
-        "role": "effect",
-        "related_construct": "xenophilia / tolerance toward foreigners",
-        "measurable_in_data": true,
-        "data_source": "MIG"
-      },
-      {
-        "role": "effect",
-        "related_construct": "personal emigration experience / transnational ties",
+        "role": "cause",
+        "related_construct": "emigration intention likelihood",
         "measurable_in_data": true,
         "data_source": "MIG"
       },
       {
         "role": "correlate",
-        "related_construct": "human rights orientations",
+        "related_construct": "transnational social ties",
         "measurable_in_data": true,
-        "data_source": "DER"
+        "data_source": "MIG"
       },
       {
         "role": "correlate",
-        "related_construct": "political ideology / partisanship",
-        "measurable_in_data": true,
-        "data_source": "CUL"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "trust in government institutions",
-        "measurable_in_data": true,
-        "data_source": "CUL, COR, JUS"
-      },
-      {
-        "role": "effect",
-        "related_construct": "perceived public security / crime concerns",
-        "measurable_in_data": true,
-        "data_source": "SEG"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "federalism / views on government responsibility",
-        "measurable_in_data": true,
-        "data_source": "FED"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "globalization attitudes",
+        "related_construct": "attitudes toward the United States / bilateral relations",
         "measurable_in_data": true,
         "data_source": "GLO"
+      },
+      {
+        "role": "effect",
+        "related_construct": "media consumption and framing of migration",
+        "measurable_in_data": true,
+        "data_source": "SOC"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "perceived economic conditions in Mexico",
+        "measurable_in_data": true,
+        "data_source": "ECO, POB"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "national identity and pride",
+        "measurable_in_data": true,
+        "data_source": "IDE, CUL"
+      },
+      {
+        "role": "effect",
+        "related_construct": "personal or family migration experience",
+        "measurable_in_data": true,
+        "data_source": "MIG"
+      },
+      {
+        "role": "cause",
+        "related_construct": "support for migration policy (restrictive vs. permissive)",
+        "measurable_in_data": true,
+        "data_source": "MIG"
       }
     ],
-    "gap_justification": null,
-    "importance_rating": 5
+    "gap_justification": "While there is substantial literature on the objective costs and benefits of Mexican emigration (remittances, brain drain, etc.), there is relatively less research specifically measuring Mexican public perceptions of these costs and benefits as an attitudinal construct. Most studies examine actual economic flows or policy outcomes rather than how ordinary Mexicans subjectively evaluate the consequences of emigration. This construct fills an important gap by capturing the demand-side perspective—how the Mexican public frames emigration as beneficial or harmful to the nation. Understanding these perceptions is critical because they shape political support for diaspora engagement policies, bilateral migration agreements, and domestic development strategies. Moreover, the inclusion of items on perceived discrimination abroad and return migration since 2008 captures temporally specific attitudes that reflect evolving Mexico-U.S. relations.",
+    "importance_rating": 4
   }
 ]

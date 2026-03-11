@@ -1,73 +1,68 @@
 [
   {
-    "construct_name": "democratic_legitimacy",
+    "construct_name": "democratic_legitimacy_support",
     "strategy": "aggregate",
     "selected_qids": [
-      "p30",
-      "p33",
-      "p34",
-      "p32",
-      "p35",
-      "p41"
+      "p33|CUL",
+      "p34|CUL",
+      "p35|CUL",
+      "p32|CUL"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Democratic legitimacy is inherently multi-dimensional, encompassing satisfaction with democracy, support for democratic institutions, and evaluations of democratic performance, so no single item captures it fully. The selected questions span evaluative and attitudinal dimensions of legitimacy and are selected for higher entropy (H≥2.12), ensuring sufficient variance for PCA to extract a meaningful first component. PCA is preferred over sum/mean scoring because the items have heterogeneous scale widths (K=5 to K=13), and the first principal component will weight items by their shared variance rather than treating all scales as equivalent."
+    "justification": "Democratic legitimacy support is inherently multi-dimensional, spanning normative valuation of democracy (p33), perceived democratic performance (p34), satisfaction with democracy (p35), and current democratic assessment (p32). These four items share compatible evaluative scales (0-10 or ordered Likert) and together capture both the aspirational and experiential dimensions of legitimacy support. PCA is preferred over simple summation because the items tap related but distinct facets—importance vs. satisfaction vs. assessment—and the first component will extract the shared latent variance without assuming equal item weights."
   },
   {
-    "construct_name": "institutional_trust_and_efficacy",
+    "construct_name": "institutional_trust_and_electoral_confidence",
     "strategy": "aggregate",
     "selected_qids": [
-      "p81_1",
-      "p82_1",
-      "p84_4",
-      "p84_6",
-      "p84_7",
-      "p63_1",
-      "p46"
+      "p41|CUL",
+      "p42|CUL",
+      "p43|CUL",
+      "p71|CUL",
+      "p72|CUL"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Institutional trust and efficacy is a broad construct requiring multiple institutions and efficacy dimensions to be represented, so aggregation is necessary. The p84_x battery items share a common 6-point scale and tap trust in specific institutions, while p81_1 and p82_1 (K=13, highest entropy) capture broader systemic trust and efficacy perceptions; p63_1 and p46 add evaluative and efficacy facets. PCA is chosen because of the mixed scale widths (6-point battery vs. 7-point vs. 13-point items), allowing the first component to capture the dominant trust dimension without distortion from raw score differences."
+    "justification": "Institutional trust and electoral confidence is best captured by combining perceptions of election quality (p41), INE's guarantee of clean processes (p42), reliability of state elections under INE (p43), vote-buying by parties (p71), and personal experience of vote-buying (p72), all of which directly index electoral integrity beliefs. The interpersonal trust items (p81_1, p82_1) are excluded because they tap a conceptually distinct generalized-trust dimension that would dilute the electoral-confidence signal. Although scales differ slightly (7-point vs. 5-point), PCA handles this by standardizing items internally, extracting the dominant shared variance across the electoral integrity cluster."
   },
   {
-    "construct_name": "civic_and_political_participation",
+    "construct_name": "political_efficacy_and_engagement",
     "strategy": "aggregate",
     "selected_qids": [
-      "p70",
-      "p52",
-      "p51",
-      "p77",
-      "p25",
-      "p69_1"
+      "p25|CUL",
+      "p46|CUL",
+      "p51|CUL",
+      "p52|CUL",
+      "p10|CUL"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Civic and political participation spans voting, organizational membership, protest, and community engagement, making it inherently multi-dimensional and requiring aggregation. The selected items cover distinct participation modes (electoral, associational, collective action) and are chosen for higher entropy (H≥1.89), ensuring they carry sufficient distributional information. PCA is preferred because scale widths vary (K=5 to K=14), and the first component will isolate the general participation propensity factor while downweighting low-variance or redundant items like p48_1 and p53_1 (H<1.0)."
+    "justification": "Political efficacy and engagement spans internal efficacy (belief participation is worthwhile, p25; citizens can influence government, p46), external efficacy (satisfaction with participation opportunities, p51; opinions taken into account, p52), and motivational engagement (interest in politics, p10). These five items collectively cover the canonical efficacy-engagement construct better than any single item, and PCA will isolate the shared latent dimension while down-weighting items that load on secondary factors such as political complexity (p20) or instrumental views of politics (p21), which are more attitudinal than efficacy-specific."
   },
   {
-    "construct_name": "political_interest_and_engagement",
+    "construct_name": "authoritarian_predisposition",
     "strategy": "aggregate",
     "selected_qids": [
-      "p16",
-      "p15_1",
-      "p14_1",
-      "p78",
-      "p11",
-      "p10"
+      "p61|CUL",
+      "p64|CUL",
+      "p60|CUL",
+      "p17|CUL",
+      "p23|CUL"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "Political interest and engagement encompasses self-reported interest, media consumption, political discussion, and knowledge, requiring multiple items to avoid single-item bias. The selected questions have the highest entropy values (H≥1.89) and span cognitive engagement (interest, attention) and behavioral engagement (discussion, information-seeking), providing good construct coverage. PCA is appropriate given the heterogeneous scale widths (K=6 to K=14), and the first component will capture the latent general engagement factor that underlies these correlated but not identical indicators."
+    "justification": "Authoritarian predisposition is a latent trait best measured by combining endorsement of strong leadership over laws (p61), preference for authorities acting outside rules for justice (p64), skepticism of majority-rule legitimacy (p60), prioritizing security over freedom (p17), and preference for avoiding conflict over implementing good policy (p23). These items all use 5-to-7 category ordered scales and jointly tap the core authoritarian syndrome of deference to authority, rule-bending, and conflict-aversion. PCA is appropriate because the items reflect overlapping but not identical facets of the construct, and the first component will capture the dominant authoritarian variance while accommodating minor scale differences."
   },
   {
-    "construct_name": "authoritarian_versus_democratic_values",
+    "construct_name": "perceived_political_influence_of_actors",
     "strategy": "aggregate",
     "selected_qids": [
-      "p65",
-      "p7",
-      "p50",
-      "p56_1",
-      "p60",
-      "p23"
+      "p84_1|CUL",
+      "p84_2|CUL",
+      "p84_3|CUL",
+      "p84_4|CUL",
+      "p84_6|CUL",
+      "p84_7|CUL",
+      "p84_8|CUL"
     ],
     "aggregation_method": "pca_first_component",
-    "justification": "The authoritarian-democratic values dimension is a latent attitudinal construct that cannot be captured by any single item, as it encompasses preferences for strong leadership, rule of law, minority rights, and democratic norms. The selected items have the highest entropy (H≥1.74) and collectively span both the authoritarian pole (preference for strong leaders, order) and the democratic pole (support for rights, pluralism), ensuring the PCA first component reflects the full ideological continuum. PCA is preferred over sum scoring because scale widths are mixed (K=5 to K=7) and items at opposite poles of the construct need to be oriented consistently by the factor loadings rather than assumed to be additive."
+    "justification": "All seven items share an identical 6-category scale measuring perceived influence of distinct actors, making them directly combinable. The construct of interest is the respondent's overall mental model of who holds political power, which is best summarized by the first principal component—likely contrasting elite actors (businesses, president, parties, media) against popular/civil actors (citizens, unions, church). Using all items maximizes content coverage across the actor typology, and PCA avoids the distortion that a simple mean would introduce by treating all actors as equally central to the construct."
   }
 ]

@@ -1,7 +1,7 @@
 [
   {
-    "name": "subjective_social_mobility",
-    "description": "Captures respondents' perceived trajectory of economic and social standing across generations — backward-looking (own situation vs. parents), forward-looking (children vs. self), and structural beliefs about whether upward mobility is realistically achievable for young Mexicans today.",
+    "name": "intergenerational_mobility_perception",
+    "description": "Perceived economic mobility across generations, capturing whether respondents believe their own situation has improved relative to their parents and whether they expect their children/grandchildren to fare better or worse, as well as their assessment of structural opportunities for youth upward mobility.",
     "question_cluster": [
       "p22",
       "p23",
@@ -12,40 +12,22 @@
     "requires_aggregation": true
   },
   {
-    "name": "material_living_standards",
-    "description": "Measures objective household material conditions through dwelling quality and asset ownership, forming a composite index of socioeconomic deprivation or well-being consistent with multidimensional poverty measurement frameworks.",
+    "name": "poverty_attribution_and_definition",
+    "description": "Respondents' conceptual understanding of poverty and extreme poverty alongside their causal attributions for why poverty exists, capturing whether they locate responsibility in structural, institutional, or individual factors.",
     "question_cluster": [
-      "p47",
-      "p48",
-      "p49",
-      "p51",
-      "p52",
-      "p53",
-      "p54",
-      "p55"
-    ],
-    "requires_aggregation": true
-  },
-  {
-    "name": "structural_attribution_of_poverty",
-    "description": "Assesses the degree to which respondents attribute poverty and social problems to systemic, institutional, or structural forces (e.g., government, elites, discrimination) rather than individual failings, reflecting ideological orientations toward inequality.",
-    "question_cluster": [
+      "p25",
+      "p26",
       "p27_1",
-      "p37",
       "p39",
-      "p40",
-      "p32",
-      "p33"
+      "p40"
     ],
     "requires_aggregation": true
   },
   {
     "name": "social_policy_preferences",
-    "description": "Captures respondents' normative preferences regarding how anti-poverty policy should be designed, funded, prioritized, and delivered, including beliefs about government effectiveness and the appropriate role of different societal actors.",
+    "description": "Normative preferences about how social policy should be designed, funded, and prioritized, including beliefs about government spending priorities, the guiding principles of social programs, and preferred funding mechanisms.",
     "question_cluster": [
       "p29_1",
-      "p30",
-      "p31",
       "p41",
       "p42",
       "p43",
@@ -54,17 +36,24 @@
     "requires_aggregation": true
   },
   {
-    "name": "subjective_economic_wellbeing",
-    "description": "Measures respondents' self-assessed economic and psychological well-being, including perceived personal control over economic outcomes, happiness, satisfaction with work and leisure, self-identified social class, and perceived resilience — capturing the subjective experience of living standards beyond objective material conditions.",
+    "name": "perceived_social_inequality_and_discrimination",
+    "description": "Beliefs about the existence and personal experience of social stratification in Mexico, including whether citizens are treated as first- or second-class, whether the poor face discrimination, and the respondent's own sense of how society treats them.",
     "question_cluster": [
-      "p10",
+      "p32",
+      "p33",
+      "p37"
+    ],
+    "requires_aggregation": true
+  },
+  {
+    "name": "subjective_economic_wellbeing_and_agency",
+    "description": "Respondents' sense of personal economic control and overall life satisfaction, combining self-assessed resilience, perceived influence of national conditions on personal welfare, and perceived personal agency over future economic outcomes.",
+    "question_cluster": [
       "p13",
       "p14",
       "p15",
       "p16",
-      "p17_1",
-      "p18_1",
-      "p20_1"
+      "p10"
     ],
     "requires_aggregation": true
   }

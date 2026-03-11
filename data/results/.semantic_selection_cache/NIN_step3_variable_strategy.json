@@ -1,60 +1,53 @@
 [
   {
-    "construct_name": "perceived_situation_of_minors",
+    "construct_name": "perceived_situation_of_children_and_youth",
     "strategy": "aggregate",
     "selected_qids": [
-      "p1",
-      "p2",
-      "p5",
-      "p31",
-      "p61"
+      "p5|NIN",
+      "p31|NIN",
+      "p61|NIN"
     ],
     "aggregation_method": "mean_score",
-    "justification": "Perceived situation of minors is inherently multi-dimensional, spanning general assessments of children's wellbeing across different life domains, and no single question captures the full construct. All five questions share compatible ordinal Likert-style scales with 6–7 categories and exhibit high, similar entropy (1.87–2.12 bits), indicating comparable distributional spread and combinability. Averaging across items and binning to 5 quantile-based categories reduces idiosyncratic measurement error and yields a stable composite that reflects the breadth of perceived conditions for minors."
+    "justification": "All three questions use the same 6-category scale measuring perceived change since 2010, making them directly combinable via mean scoring. The construct is explicitly multi-dimensional—covering children, adolescents, and youth economic conditions—and no single item captures the full breadth of perceived situational change. Averaging reduces item-specific measurement error and yields a stable ordinal composite that can be binned into ≤5 categories for the bridge model."
   },
   {
-    "construct_name": "children_rights_recognition",
-    "strategy": "aggregate",
-    "selected_qids": [
-      "p48_1",
-      "p22",
-      "p17_1",
-      "p19"
-    ],
-    "aggregation_method": "pca_first_component",
-    "justification": "Children's rights recognition is a latent attitudinal construct best captured by multiple items tapping awareness, endorsement, and institutional recognition of rights, making aggregation preferable to any single item. However, p21_2 (H=0.46) and p73_3 (H=1.20) show markedly lower entropy, suggesting poor discriminability and potential scale incompatibility, so they are excluded to preserve measurement quality. PCA on the four retained items (all 6–7 category ordinal scales with H ≥ 1.33) extracts the dominant shared variance reflecting rights recognition, and binning the first component into 5 quantiles yields an ordinal bridge variable within the required category limit."
-  },
-  {
-    "construct_name": "child_agency_and_participation",
-    "strategy": "aggregate",
-    "selected_qids": [
-      "p11",
-      "p16_1",
-      "p12",
-      "p13"
-    ],
-    "aggregation_method": "mean_score",
-    "justification": "Child agency and participation is a multi-faceted construct encompassing children's voice, autonomy, and involvement in decisions, requiring multiple items for adequate coverage. p41 (K=12) is excluded due to scale incompatibility with the remaining 7-category items, and p20 (K=6, H=1.44) is excluded as its lower entropy adds less discriminating information. The four retained items all use 7-category ordinal scales with moderate-to-good entropy (1.59–1.86 bits), making them directly combinable via mean-scoring followed by binning into 5 categories to produce a reliable composite agency measure."
-  },
-  {
-    "construct_name": "education_quality_and_opportunity",
-    "strategy": "aggregate",
-    "selected_qids": [
-      "p8",
-      "p7_1",
-      "p6",
-      "p32"
-    ],
-    "aggregation_method": "pca_first_component",
-    "justification": "Education quality and opportunity is a broad, multi-dimensional construct spanning access, quality perceptions, and outcomes, so aggregation across items is strongly preferred over any single indicator. Items p8 (K=13, H=3.03), p7_1 (K=11, H=2.53), p6 (K=6, H=1.99), and p32 (K=6, H=1.99) are selected for their high entropy and face validity as direct education assessments; p9_1 (H=1.06), p28_1 (H=1.12), and p10_7 (K=15, near boundary) are excluded due to low entropy or scale extremity. PCA is used because the retained items have heterogeneous scale widths (6–13 categories), and the first principal component captures shared educational quality variance while binning to 5 quantiles keeps the bridge variable within model constraints."
-  },
-  {
-    "construct_name": "vulnerability_and_risk_exposure",
+    "construct_name": "children_rights_recognition_and_respect",
     "strategy": "single_max_entropy",
     "selected_qids": [
-      "p26_1"
+      "p22|NIN"
     ],
     "aggregation_method": null,
-    "justification": "Vulnerability and risk exposure spans an extremely heterogeneous set of 18 items covering distinct risk domains (violence, poverty, health, exploitation) with widely varying scale widths (4–14 categories) and entropy values, making meaningful aggregation across incompatible scales methodologically unsound and likely to produce a construct-invalid composite. p26_1 has the highest Shannon entropy (H=2.88 bits) among all items, indicating maximum discriminability across respondents, and with K=10 categories it captures a broad range of risk gradations within the ≤15 category constraint. Selecting this single highest-entropy item provides the most information-rich bridge variable while avoiding the distortions introduced by forcing incommensurable risk indicators onto a common scale."
+    "justification": "The six questions in this cluster use incompatible scales and tap very different facets (knowledge of rights, normative opinions, specific right beliefs), making meaningful aggregation problematic. p22|NIN—asking how much children's rights are respected in Mexico—has the highest entropy (H=1.97) and is the most direct, face-valid measure of the construct's core evaluative dimension. Its 7-category response scale provides sufficient ordinal resolution for the bridge regression without conflating distinct sub-constructs."
+  },
+  {
+    "construct_name": "child_participation_and_voice",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p12|NIN",
+      "p13|NIN",
+      "p48_1|NIN"
+    ],
+    "aggregation_method": "mean_score",
+    "justification": "p12, p13, and p48_1 all use 7-category Likert-type scales and together capture the attitudinal core of the construct: how much weight children's voices should carry in family and school decisions, and whether adolescent rights are seen as threatening adult authority. p16_1 is a first-mention categorical probe with a different response logic, and p41 has 12 categories covering a distinct behavioral context (public marches), so both are excluded to preserve scale compatibility. Averaging the three compatible items and binning to ≤5 categories yields a coherent, low-noise composite of adult attitudes toward child participation."
+  },
+  {
+    "construct_name": "child_vulnerability_and_violence_exposure",
+    "strategy": "single_max_entropy",
+    "selected_qids": [
+      "p26_1|NIN"
+    ],
+    "aggregation_method": null,
+    "justification": "The four questions span fundamentally incompatible response formats—a 4-category belief item, an 8-category location probe, a 10-category open-ended justification item, and a 10-category family-problems item—making aggregation methodologically unsound. p26_1|NIN has the highest entropy (H=2.88) and directly taps the most sensitive and policy-relevant dimension of the construct: under what circumstances adults justify hitting a child, which is a strong proxy for normative tolerance of violence against children. Its 10 categories can be recoded into a meaningful ordinal scale (never justified → always justified) for the bridge model."
+  },
+  {
+    "construct_name": "youth_educational_opportunity_and_labor_prospects",
+    "strategy": "aggregate",
+    "selected_qids": [
+      "p28_1|NIN",
+      "p82|NIN",
+      "p83_1|NIN"
+    ],
+    "aggregation_method": "pca_first_component",
+    "justification": "p28_1, p82, and p83_1 all use comparative ordinal scales (fewer/same/more or worse/same/better framing) that share a common directional logic of intergenerational opportunity comparison, making them conceptually and statistically combinable. p8|NIN uses a 0–10 ease-of-access scale with a different response format, and p81_2 taps family formation rather than education/labor, so both are excluded to maintain construct coherence. PCA on the three compatible items extracts the dominant latent dimension of perceived intergenerational opportunity change, and binning the first component into 5 quantiles produces a well-distributed ordinal variable suitable for the bridge regression."
   }
 ]

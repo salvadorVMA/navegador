@@ -1,7 +1,7 @@
 [
   {
     "name": "functional_health_status",
-    "description": "Measures the degree to which physical health limits an individual's capacity to perform everyday activities, including moderate exertion, stair climbing, and work or daily routines. Captures the functional burden of illness on daily life.",
+    "description": "Measures the degree to which physical health limits everyday functioning, including moderate physical effort, stair climbing, and reduced activity or work performance due to physical health problems in the past four weeks.",
     "question_cluster": [
       "p2|SAL",
       "p3|SAL",
@@ -12,64 +12,54 @@
     "requires_aggregation": true
   },
   {
+    "name": "subjective_wellbeing",
+    "description": "Captures self-assessed quality of life, life satisfaction, enjoyment of life, and sexual satisfaction, reflecting the affective and evaluative dimensions of personal wellbeing beyond physical health.",
+    "question_cluster": [
+      "p37|SAL",
+      "p38|SAL",
+      "p39|SAL",
+      "p40|SAL",
+      "p41|SAL",
+      "p8_1|SAL"
+    ],
+    "requires_aggregation": true
+  },
+  {
     "name": "healthcare_access_and_utilization",
-    "description": "Measures whether individuals are affiliated with health institutions, how they respond to health problems, what type of services they access, and the barriers they face including travel time and treatment adherence. Reflects structural and behavioral dimensions of healthcare access in Mexico.",
+    "description": "Measures the extent to which individuals access and use formal health services when facing a health problem, including institutional affiliation, type of service used, travel time, treatment receipt, and hospitalization.",
     "question_cluster": [
       "p9|SAL",
       "p10|SAL",
-      "p11|SAL",
       "p13|SAL",
       "p14|SAL",
       "p15|SAL",
       "p17|SAL",
-      "p18|SAL",
-      "p18_1|SAL",
       "p19|SAL",
-      "p20|SAL",
-      "p21|SAL",
       "p24|SAL"
     ],
     "requires_aggregation": true
   },
   {
     "name": "financial_burden_of_healthcare",
-    "description": "Captures the economic impact of healthcare on households, including out-of-pocket payments for medical attention and perceived negative effects of medical expenses on family finances. Relevant to understanding health-related economic vulnerability.",
+    "description": "Measures the perceived and actual economic impact of healthcare on individuals and families, including out-of-pocket payments and agreement that medical expenses negatively affect household finances.",
     "question_cluster": [
       "p22|SAL",
-      "p23_1|SAL"
+      "p23_1|SAL",
+      "p48_3|SAL"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "subjective_wellbeing_and_life_quality",
-    "description": "Measures individuals' overall psychological and hedonic wellbeing, including self-rated quality of life, life satisfaction, enjoyment of life, sense of calm, satisfaction with sexual life, and self-perception of current life situation. Reflects the subjective dimension of welfare central to public opinion research.",
+    "name": "health_risk_behaviors",
+    "description": "Captures engagement in behaviors that pose risks to physical health, including tobacco use history, intensity of smoking, and frequency and intensity of alcohol consumption.",
     "question_cluster": [
-      "p8_1|SAL",
-      "p36_1|SAL",
-      "p37|SAL",
-      "p38|SAL",
-      "p39|SAL",
-      "p40|SAL",
-      "p41|SAL"
-    ],
-    "requires_aggregation": true
-  },
-  {
-    "name": "health_behaviors_and_lifestyle",
-    "description": "Measures health-related behavioral choices including diet (vegetable consumption and its perceived importance), tobacco use, alcohol consumption, physical activity, and engagement in recreational activities. Captures lifestyle factors that shape long-term health outcomes and are relevant to public health policy.",
-    "question_cluster": [
-      "p26_1|SAL",
-      "p27_1|SAL",
       "p28|SAL",
       "p30|SAL",
       "p31|SAL",
       "p32|SAL",
       "p33|SAL",
       "p34|SAL",
-      "p35|SAL",
-      "p44|SAL",
-      "p45|SAL",
-      "p46|SAL"
+      "p35|SAL"
     ],
     "requires_aggregation": true
   }

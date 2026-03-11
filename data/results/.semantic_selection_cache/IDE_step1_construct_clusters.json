@@ -1,69 +1,63 @@
 [
   {
-    "name": "institutional_and_social_trust",
-    "description": "Measures the degree to which individuals trust formal institutions (police) and informal social actors (neighbors, strangers), capturing generalized interpersonal and institutional confidence that underpins civic cooperation.",
+    "name": "national_identity_pride",
+    "description": "Measures the strength of emotional attachment and pride in being Mexican, including feelings toward the country and sense of belonging to one's locality. Captures affective identification with national and local community.",
     "question_cluster": [
-      "p50_1",
-      "p51_1",
-      "p52_1",
-      "p48",
-      "p49",
-      "p40"
+      "p3_2|IDE",
+      "p5_1a|IDE",
+      "p6|IDE",
+      "p7|IDE",
+      "p8|IDE"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "national_identity_and_pride",
-    "description": "Captures the emotional and symbolic attachment respondents feel toward Mexico as a nation, including pride in being Mexican, primary emotions about the country, and the importance of preserving cultural traditions of origin.",
+    "name": "tolerance_social_diversity",
+    "description": "Measures openness and acceptance toward socially diverse groups, including ethnic minorities, people of different religions, and homosexuals, as well as opinions on how cultural differences should be managed in society.",
     "question_cluster": [
-      "p3_2",
-      "p5_1a",
-      "p6",
-      "p8",
-      "p9",
-      "p78"
+      "p9|IDE",
+      "p54_5|IDE",
+      "p54_6|IDE",
+      "p54_8|IDE",
+      "p68|IDE",
+      "p73_1|IDE"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "subjective_wellbeing_and_life_satisfaction",
-    "description": "Measures hedonic and evaluative dimensions of personal wellbeing, including overall happiness, life satisfaction, perceived control over one's future, and confidence in realizing personal projects.",
+    "name": "interpersonal_institutional_trust",
+    "description": "Measures the degree to which respondents trust others in their social environment — neighbors, police, and people in general — reflecting generalized social trust and confidence in formal institutions.",
     "question_cluster": [
-      "p24",
-      "p29",
-      "p20",
-      "p74",
-      "p30_1",
-      "p25_2"
+      "p50_1|IDE",
+      "p51_1|IDE",
+      "p52_1|IDE"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "socioeconomic_mobility_and_opportunity_perception",
-    "description": "Assesses respondents' perceptions of economic progress across generations and their expectations about future opportunity, reflecting beliefs about social mobility and structural fairness in Mexico.",
+    "name": "personal_optimism_efficacy",
+    "description": "Measures respondents' sense of control over their own lives, confidence in achieving future goals, satisfaction with life, and perceived ability to determine their own future, capturing a latent dimension of personal agency and optimism.",
     "question_cluster": [
-      "p11",
-      "p18",
-      "p19",
-      "p22",
-      "p23_1",
-      "p27"
+      "p19|IDE",
+      "p20|IDE",
+      "p24|IDE",
+      "p29|IDE",
+      "p30_1|IDE",
+      "p74|IDE"
     ],
     "requires_aggregation": true
   },
   {
-    "name": "moral_conservatism_and_social_values",
-    "description": "Taps into traditional versus liberal value orientations across family, gender, and ethical domains, including attitudes toward corporal punishment, premarital sex, abortion, same-sex adoption, and self-placement on a conservative-liberal scale.",
+    "name": "moral_normative_conservatism",
+    "description": "Measures adherence to traditional or conservative moral norms across family, sexuality, and social conduct, including views on premarital sex, abortion, corporal punishment of children, and self-identification on a conservative-liberal spectrum.",
     "question_cluster": [
-      "p55",
-      "p56",
-      "p57",
-      "p58",
-      "p60",
-      "p66_1",
-      "p67",
-      "p68",
-      "p71_2"
+      "p55|IDE",
+      "p56|IDE",
+      "p57|IDE",
+      "p58|IDE",
+      "p60|IDE",
+      "p66|IDE",
+      "p71_2|IDE"
     ],
     "requires_aggregation": true
   }

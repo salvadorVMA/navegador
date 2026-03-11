@@ -3,114 +3,108 @@
     "construct_name": "corruption_perception",
     "sources": [
       {
-        "citation": "Morris, S. D., & Klesner, J. L. (2010). Corruption and trust: Theoretical considerations and evidence from Mexico. Comparative Political Studies, 43(10), 1258–1285.",
-        "relevance": "Directly examines how Mexican citizens perceive corruption and the relationship between corruption perceptions and political trust, providing a foundational framework for measuring subjective beliefs about systemic corruption.",
-        "key_finding": "Perceptions of corruption significantly erode political trust, and this relationship is reciprocal, with low trust also fostering higher corruption perceptions."
+        "citation": "Morris, S. D. (2009). Political corruption in Mexico: The impact of democratization. Lynne Rienner Publishers.",
+        "relevance": "Provides a comprehensive framework for understanding how Mexican citizens perceive corruption across institutions and over time, directly relevant to temporal and spatial attributions of corruption.",
+        "key_finding": "Democratization in Mexico did not reduce perceived corruption; instead, greater media freedom and political competition heightened public awareness and perception of corruption's prevalence."
       },
       {
-        "citation": "Seligson, M. A. (2002). The impact of corruption on regime legitimacy: A comparative study of four Latin American countries. The Journal of Politics, 64(2), 408–433.",
-        "relevance": "Provides a comparative framework for measuring corruption perceptions in Latin America, including Mexico, and links these perceptions to regime legitimacy.",
-        "key_finding": "Personal experience with corruption significantly reduces belief in the legitimacy of the political system, beyond the effect of generalized perceptions."
+        "citation": "Seligson, M. A. (2006). The measurement and impact of corruption victimization: Survey evidence from Latin America. World Development, 34(2), 381–404.",
+        "relevance": "Discusses methodological approaches to measuring corruption perception versus corruption victimization in Latin American surveys, directly informing how subjective perception items should be interpreted.",
+        "key_finding": "Corruption perception and corruption victimization are empirically distinct constructs; perception is shaped by media exposure and political attitudes beyond personal experience."
+      },
+      {
+        "citation": "Bailey, J., & Paras, P. (2006). Perceptions and attitudes about corruption and democracy in Mexico. Mexican Studies/Estudios Mexicanos, 22(1), 57–82.",
+        "relevance": "Directly examines Mexican public opinion data on corruption perceptions, including temporal assessments and institutional attributions, closely mirroring the survey items in this construct.",
+        "key_finding": "Mexican citizens consistently perceive corruption as worsening over time and concentrate their attributions on government institutions, particularly police and political parties."
       },
       {
         "citation": "Canache, D., & Allison, M. E. (2005). Perceptions of political corruption in Latin American democracies. Latin American Politics and Society, 47(3), 91–111.",
-        "relevance": "Analyzes the determinants of corruption perceptions across Latin American countries, identifying both individual-level and contextual factors that shape subjective assessments of corruption prevalence.",
-        "key_finding": "Media exposure, education, and personal victimization are key predictors of corruption perceptions, with significant cross-national variation."
+        "relevance": "Examines cross-national variation in corruption perceptions in Latin America, providing comparative context for Mexican-specific findings.",
+        "key_finding": "Corruption perceptions are strongly associated with evaluations of democratic performance and economic conditions, suggesting perceptions capture broader dissatisfaction beyond actual corruption levels."
       },
       {
-        "citation": "Bailey, J. (2006). Corruption and democratic governability in Latin America: Issues of types, arenas, perceptions, and linkages. Paper prepared for the meeting of the Latin American Studies Association, San Juan, Puerto Rico.",
-        "relevance": "Offers a typological framework for understanding corruption perceptions in Mexico, distinguishing between grand and petty corruption and their differential perception by citizens.",
-        "key_finding": "Mexican citizens differentiate between types of corruption, and perceptions of grand corruption are more strongly linked to political disaffection than perceptions of petty corruption."
-      },
-      {
-        "citation": "Transparencia Internacional & Transparencia Mexicana. (2011). Índice Nacional de Corrupción y Buen Gobierno. Mexico City: Transparencia Mexicana.",
-        "relevance": "Provides the primary Mexican measurement instrument for corruption perceptions and experiences at the national and subnational level, directly relevant to the operationalization of this construct.",
-        "key_finding": "Corruption perceptions in Mexico vary significantly by region, socioeconomic status, and type of public service, highlighting the multidimensional nature of the construct."
+        "citation": "Transparency International. (2023). Corruption Perceptions Index 2023. Transparency International.",
+        "relevance": "Provides the most widely used global benchmark for corruption perception measurement, offering methodological parallels to the survey items measuring perceived prevalence and trajectory.",
+        "key_finding": "Mexico consistently scores in the lower third of the CPI, reflecting persistent high levels of perceived corruption among both citizens and expert assessors."
       }
     ],
     "causal_relationships": [
       {
         "role": "cause",
-        "related_construct": "political trust / institutional trust",
+        "related_construct": "institutional trust",
         "measurable_in_data": true,
         "data_source": "COR, CUL"
       },
       {
         "role": "cause",
-        "related_construct": "regime legitimacy / democratic satisfaction",
+        "related_construct": "democratic satisfaction",
         "measurable_in_data": true,
         "data_source": "CUL"
       },
       {
         "role": "effect",
-        "related_construct": "media exposure / information access",
+        "related_construct": "media exposure and information access",
         "measurable_in_data": true,
-        "data_source": "SOC, COR"
-      },
-      {
-        "role": "effect",
-        "related_construct": "educational attainment",
-        "measurable_in_data": true,
-        "data_source": "EDU"
+        "data_source": "SOC, CUL"
       },
       {
         "role": "correlate",
-        "related_construct": "voter turnout / political participation",
+        "related_construct": "economic pessimism / subjective economic evaluation",
         "measurable_in_data": true,
-        "data_source": "CUL"
+        "data_source": "ECO"
       },
       {
         "role": "cause",
-        "related_construct": "willingness to pay taxes / fiscal morale",
+        "related_construct": "voter turnout and political participation",
         "measurable_in_data": true,
-        "data_source": "ECO, CUL"
+        "data_source": "CUL"
       },
       {
         "role": "correlate",
         "related_construct": "perception of public security",
         "measurable_in_data": true,
         "data_source": "SEG"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment",
+        "measurable_in_data": true,
+        "data_source": "EDU"
       }
     ],
     "gap_justification": null,
     "importance_rating": 5
   },
   {
-    "construct_name": "civic_tolerance_of_deviance",
+    "construct_name": "tolerance_of_corrupt_behavior",
     "sources": [
       {
-        "citation": "Moreno, A. (2002). Corruption and democracy: A cultural assessment. Comparative Sociology, 1(3–4), 495–507.",
-        "relevance": "Examines how cultural values and tolerance of deviant behavior relate to corruption in Mexico and other countries, providing a theoretical basis for measuring normalization of rule-breaking.",
-        "key_finding": "Societies with higher tolerance for justifiable deviance (e.g., tax evasion, bribery) tend to exhibit higher levels of actual corruption, suggesting a cultural feedback loop."
+        "citation": "Manzetti, L., & Wilson, C. J. (2007). Why do corrupt governments maintain public support? Comparative Political Studies, 40(8), 949–970.",
+        "relevance": "Examines why citizens tolerate corruption, including rationalization mechanisms and clientelistic exchanges, directly relevant to items measuring agreement with pro-corruption statements.",
+        "key_finding": "Citizens tolerate corruption when they perceive direct material benefits from clientelistic networks, suggesting tolerance is instrumentally rational rather than purely cultural."
       },
       {
-        "citation": "Zalpa, G., Tapia, E., & Reyes, J. (2014). 'El que no transa no avanza': La cultura de la corrupción en México. Política y Gobierno, 21(1), 149–171.",
-        "relevance": "Directly studies the cultural normalization of corruption and minor deviance in Mexican society, analyzing popular sayings and attitudes that reflect tolerance of dishonest behavior.",
-        "key_finding": "Mexican popular culture contains deeply embedded narratives that normalize corruption and petty deviance, but citizens simultaneously express moral disapproval, revealing an ambivalent cultural stance."
+        "citation": "Guerrero Gutiérrez, E. (2004). Cultura de la legalidad en México. In F. Carbonell (Ed.), Hacia una cultura de la legalidad. UNAM.",
+        "relevance": "Directly addresses the Mexican context of 'cultura de la legalidad' and how normalization of minor rule-breaking (like traffic violations) connects to broader tolerance of corruption.",
+        "key_finding": "Tolerance of minor civic violations in Mexico forms a continuum with tolerance of larger corrupt acts, suggesting a unified cultural dimension of legality."
       },
       {
-        "citation": "Inglehart, R., & Welzel, C. (2005). Modernization, cultural change, and democracy: The human development sequence. Cambridge University Press.",
-        "relevance": "Provides the broader World Values Survey framework for measuring justifiable deviance (tax cheating, bribery, fare evasion) as indicators of civic morality and self-expression values.",
-        "key_finding": "Tolerance of deviance decreases with economic development and the rise of self-expression values, but the relationship is mediated by institutional quality."
+        "citation": "Bohara, A. K., Mitchell, N. J., & Mittendorff, C. F. (2004). Compound democracy and the control of corruption: A cross-country investigation. Policy Studies Journal, 32(4), 481–499.",
+        "relevance": "Provides theoretical grounding for how individual-level tolerance of corruption aggregates into societal norms that sustain corrupt systems.",
+        "key_finding": "Countries with higher individual-level tolerance of rule-breaking exhibit weaker institutional controls on corruption, creating a feedback loop between cultural norms and institutional performance."
       },
       {
-        "citation": "Guerrero Gutiérrez, E. (2004). Cultura de la legalidad en México. In Diagnóstico de la cultura cívica en México. Mexico City: IFE.",
-        "relevance": "Directly addresses the culture of legality in Mexico, examining how citizens' tolerance of minor infractions relates to broader patterns of corruption and institutional weakness.",
-        "key_finding": "A weak culture of legality, characterized by tolerance of minor rule-breaking, undermines the rule of law and facilitates the persistence of systemic corruption in Mexico."
+        "citation": "Zalpa, G., Tapia, E., & Reyes, J. (2014). 'El que no transa no avanza': La cultura de la corrupción en México. Culturales, 2(1), 145–172.",
+        "relevance": "Directly examines the Mexican saying 'el que no transa no avanza' (those who don't cheat don't get ahead), which corresponds to survey item p13_1, analyzing its cultural embeddedness.",
+        "key_finding": "The proverb reflects a deeply internalized cultural schema in which corruption is perceived as a survival strategy rather than a moral failing, particularly among lower socioeconomic groups."
       }
     ],
     "causal_relationships": [
       {
         "role": "cause",
-        "related_construct": "corruption experience / bribery behavior",
+        "related_construct": "bribery victimization / corruption experience",
         "measurable_in_data": true,
         "data_source": "COR"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "interpersonal trust / social capital",
-        "measurable_in_data": true,
-        "data_source": "CUL, IDE"
       },
       {
         "role": "effect",
@@ -119,87 +113,87 @@
         "data_source": "POB, ECO"
       },
       {
-        "role": "moderator",
-        "related_construct": "prosocial reporting behavior",
+        "role": "correlate",
+        "related_construct": "interpersonal trust",
         "measurable_in_data": true,
-        "data_source": "COR"
+        "data_source": "CUL, IDE"
       },
       {
         "role": "effect",
-        "related_construct": "educational attainment / civic education",
+        "related_construct": "educational attainment and civic education",
         "measurable_in_data": true,
         "data_source": "EDU"
       },
       {
-        "role": "correlate",
-        "related_construct": "perception of public security / crime normalization",
+        "role": "moderator",
+        "related_construct": "religiosity and moral values",
         "measurable_in_data": true,
-        "data_source": "SEG"
+        "data_source": "REL, IDE"
       },
       {
         "role": "correlate",
-        "related_construct": "religiosity / moral values",
+        "related_construct": "rule of law perceptions",
         "measurable_in_data": true,
-        "data_source": "REL, IDE"
+        "data_source": "JUS, COR"
+      },
+      {
+        "role": "cause",
+        "related_construct": "willingness to report corruption",
+        "measurable_in_data": true,
+        "data_source": "COR"
       }
     ],
     "gap_justification": null,
-    "importance_rating": 4
+    "importance_rating": 5
   },
   {
-    "construct_name": "prosocial_reporting_behavior",
+    "construct_name": "civic_enforcement_norms",
     "sources": [
       {
-        "citation": "Olsen, J. (2017). The institutional antecedents of whistleblowing: A review and research agenda. Journal of Business Ethics, 143(4), 849–862.",
-        "relevance": "Reviews the determinants of whistleblowing and reporting behavior, including institutional protections, perceived efficacy, and fear of retaliation, which are relevant to understanding reporting in the Mexican context.",
-        "key_finding": "Willingness to report wrongdoing is strongly influenced by perceived organizational support, protection from retaliation, and the belief that reporting will lead to corrective action."
+        "citation": "Bicchieri, C., & Xiao, E. (2009). Do the right thing: But only if others do so. Journal of Behavioral Decision Making, 22(2), 191–208.",
+        "relevance": "Provides theoretical grounding for how social norms around sanctioning deviant behavior operate, relevant to items measuring preferred punishments and bystander responses.",
+        "key_finding": "People's willingness to enforce norms is conditional on their belief that others also enforce them, creating threshold effects in social norm compliance."
       },
       {
-        "citation": "Ríos Cázares, A., & Shirk, D. A. (2007). Reforming the administration of justice in Mexico. In W. A. Cornelius & D. A. Shirk (Eds.), Reforming the administration of justice in Mexico (pp. 1–38). University of Notre Dame Press.",
-        "relevance": "Discusses barriers to citizen reporting and denunciation in Mexico's justice system, including distrust, fear, and bureaucratic obstacles that suppress prosocial reporting behavior.",
-        "key_finding": "The 'cifra negra' (dark figure of unreported crime and corruption) in Mexico is extremely high, driven primarily by citizens' perception that reporting is useless or dangerous."
+        "citation": "Fehr, E., & Fischbacher, U. (2004). Third-party punishment and social norms. Evolution and Human Behavior, 25(2), 63–87.",
+        "relevance": "Examines third-party punishment behavior, directly relevant to survey items asking what respondents would do when witnessing theft or cheating by others.",
+        "key_finding": "Third-party punishment is a robust behavioral phenomenon that sustains cooperation; its strength varies with perceived norm violation severity and institutional context."
       },
       {
-        "citation": "Guerrero, M. A., & Rodríguez-Oreggia, E. (2008). On the individual decisions to commit corruption: A methodological complement. Journal of Economic Behavior & Organization, 65(2), 357–372.",
-        "relevance": "Analyzes individual-level decision-making around corruption in Mexico, including the decision to report or remain silent, providing a rational-choice framework for understanding prosocial reporting.",
-        "key_finding": "The decision to report corruption is modeled as a cost-benefit calculation where expected punishment for the corrupt actor and protection for the reporter are key parameters."
+        "citation": "Almond, G. A., & Verba, S. (1963). The civic culture: Political attitudes and democracy in five nations. Princeton University Press.",
+        "relevance": "Classic work on civic culture that frames how internalized norms of accountability and social enforcement relate to democratic functioning, including Mexico as a case study.",
+        "key_finding": "Mexico exhibited a 'subject' political culture with low levels of civic engagement and norm enforcement, contrasting with the 'participant' cultures of established democracies."
       },
       {
-        "citation": "INEGI. (2019). Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública (ENVIPE). Mexico City: INEGI.",
-        "relevance": "Provides empirical data on reporting rates for crime and corruption in Mexico, documenting the magnitude of non-reporting and its determinants at the population level.",
-        "key_finding": "Over 93% of crimes in Mexico go unreported, with the primary reasons being perceived futility of reporting, distrust of authorities, and fear of reprisal."
+        "citation": "Méndez, I., & Loewe, D. (2016). Cultura de la legalidad y derechos humanos en México. Perfiles Latinoamericanos, 24(48), 13–40.",
+        "relevance": "Examines the relationship between legal culture, norm enforcement, and human rights in Mexico, providing direct contextual relevance for how Mexicans conceptualize sanctioning behavior.",
+        "key_finding": "Weak civic enforcement norms in Mexico are associated with distrust in formal institutions, leading citizens to prefer informal or lenient sanctions over formal legal processes."
       }
     ],
     "causal_relationships": [
       {
-        "role": "effect",
-        "related_construct": "institutional trust and efficacy",
+        "role": "correlate",
+        "related_construct": "institutional trust",
         "measurable_in_data": true,
         "data_source": "COR, CUL, JUS"
       },
       {
         "role": "effect",
-        "related_construct": "fear of retaliation / perception of security",
+        "related_construct": "socialization and family values",
         "measurable_in_data": true,
-        "data_source": "SEG"
+        "data_source": "FAM, IDE"
       },
       {
         "role": "cause",
-        "related_construct": "accountability / corruption reduction",
-        "measurable_in_data": false,
-        "data_source": ""
-      },
-      {
-        "role": "effect",
-        "related_construct": "civic tolerance of deviance",
+        "related_construct": "corruption reporting behavior",
         "measurable_in_data": true,
         "data_source": "COR"
       },
       {
         "role": "correlate",
-        "related_construct": "political participation / civic engagement",
+        "related_construct": "perception of justice system effectiveness",
         "measurable_in_data": true,
-        "data_source": "CUL"
+        "data_source": "JUS"
       },
       {
         "role": "effect",
@@ -209,9 +203,15 @@
       },
       {
         "role": "correlate",
-        "related_construct": "access to justice / legal knowledge",
+        "related_construct": "human rights attitudes",
         "measurable_in_data": true,
-        "data_source": "JUS, DER"
+        "data_source": "DER"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "community social capital",
+        "measurable_in_data": true,
+        "data_source": "CUL, IDE"
       }
     ],
     "gap_justification": null,
@@ -221,29 +221,24 @@
     "construct_name": "institutional_trust_and_efficacy",
     "sources": [
       {
+        "citation": "Mishler, W., & Rose, R. (2001). What are the origins of political trust? Testing institutional and cultural theories in post-communist societies. Comparative Political Studies, 34(1), 30–62.",
+        "relevance": "Provides the theoretical framework for distinguishing institutional versus cultural origins of political trust, directly relevant to measuring trust in anti-corruption institutions.",
+        "key_finding": "Institutional trust is primarily driven by institutional performance evaluations rather than cultural predispositions, suggesting that perceived anti-corruption efficacy shapes trust."
+      },
+      {
         "citation": "Morris, S. D., & Klesner, J. L. (2010). Corruption and trust: Theoretical considerations and evidence from Mexico. Comparative Political Studies, 43(10), 1258–1285.",
-        "relevance": "Directly examines the relationship between institutional trust and corruption in Mexico, providing both theoretical grounding and empirical evidence for the construct.",
-        "key_finding": "Institutional trust and corruption perceptions are reciprocally related in Mexico: corruption erodes trust, and low trust facilitates tolerance of corrupt practices."
+        "relevance": "Directly examines the relationship between corruption and institutional trust in Mexico using survey data, closely paralleling the construct's measurement approach.",
+        "key_finding": "Corruption experience and perception both erode institutional trust in Mexico, but the effect of perception is stronger, suggesting that subjective assessments of institutional honesty matter more than direct victimization."
       },
       {
-        "citation": "Catterberg, G., & Moreno, A. (2006). The individual bases of political trust: Trends in new and established democracies. International Journal of Public Opinion Research, 18(1), 31–48.",
-        "relevance": "Analyzes the determinants of political and institutional trust in new democracies including Mexico, distinguishing between performance-based and cultural explanations.",
-        "key_finding": "In new democracies like Mexico, institutional trust is primarily driven by evaluations of government performance, especially regarding corruption and economic management, rather than by cultural factors alone."
+        "citation": "Paras, P. (2007). Cultura política de la democracia en México. LAPOP/Vanderbilt University.",
+        "relevance": "Uses Mexican survey data to measure trust in institutions including religious figures, government, and civil society, directly paralleling items like honesty ratings of priests and government anti-corruption effort.",
+        "key_finding": "Mexicans exhibit differentiated trust across institutions, with higher trust in religious and military institutions and lower trust in political parties and police, reflecting selective institutional credibility."
       },
       {
-        "citation": "Moisés, J. Á. (2006). Ciudadanía, confianza y instituciones democráticas. Opinião Pública, 12(1), 73–96.",
-        "relevance": "Provides a Latin American framework for understanding how citizens evaluate institutional effectiveness in combating corruption and upholding the rule of law.",
-        "key_finding": "Institutional trust in Latin America is strongly conditioned by perceptions of institutional efficacy in delivering public goods and controlling corruption."
-      },
-      {
-        "citation": "Pharr, S. J., & Putnam, R. D. (Eds.). (2000). Disaffected democracies: What's troubling the trilateral countries? Princeton University Press.",
-        "relevance": "Offers a comparative framework for understanding declining institutional trust and its consequences for democratic governance, applicable to the Mexican case.",
-        "key_finding": "Declining confidence in institutions is a widespread phenomenon linked to perceptions of institutional inefficacy, corruption, and unresponsiveness to citizen demands."
-      },
-      {
-        "citation": "Del Tronco, J. (2012). Las causas de la desconfianza política en México. Perfiles Latinoamericanos, 20(40), 227–251.",
-        "relevance": "Directly analyzes the causes of political distrust in Mexico, examining how corruption, inequality, and institutional performance shape citizens' confidence in government.",
-        "key_finding": "Corruption perceptions and perceived government inefficacy are the strongest predictors of political distrust in Mexico, surpassing sociodemographic variables."
+        "citation": "Rothstein, B. (2011). The quality of government: Corruption, social trust, and inequality in international perspective. University of Chicago Press.",
+        "relevance": "Theorizes the relationship between government quality, corruption control, and social trust, providing the causal logic linking institutional anti-corruption efficacy to broader trust.",
+        "key_finding": "Impartial and effective government institutions generate social trust, while perceived corruption in public institutions destroys both institutional and generalized social trust."
       }
     ],
     "causal_relationships": [
@@ -255,72 +250,72 @@
       },
       {
         "role": "cause",
-        "related_construct": "political participation / voter turnout",
+        "related_construct": "political participation and voting behavior",
+        "measurable_in_data": true,
+        "data_source": "CUL"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "democratic satisfaction",
         "measurable_in_data": true,
         "data_source": "CUL"
       },
       {
         "role": "cause",
-        "related_construct": "prosocial reporting behavior",
+        "related_construct": "willingness to report corruption",
         "measurable_in_data": true,
         "data_source": "COR"
       },
       {
         "role": "correlate",
-        "related_construct": "democratic satisfaction / regime legitimacy",
-        "measurable_in_data": true,
-        "data_source": "CUL"
-      },
-      {
-        "role": "effect",
-        "related_construct": "economic performance evaluation",
-        "measurable_in_data": true,
-        "data_source": "ECO"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "perception of public security",
+        "related_construct": "perception of public security effectiveness",
         "measurable_in_data": true,
         "data_source": "SEG"
-      },
-      {
-        "role": "cause",
-        "related_construct": "tax compliance / fiscal morale",
-        "measurable_in_data": true,
-        "data_source": "ECO, CUL"
       },
       {
         "role": "correlate",
         "related_construct": "trust in justice system",
         "measurable_in_data": true,
         "data_source": "JUS"
+      },
+      {
+        "role": "effect",
+        "related_construct": "media consumption and information access",
+        "measurable_in_data": true,
+        "data_source": "SOC, CUL"
+      },
+      {
+        "role": "moderator",
+        "related_construct": "religiosity",
+        "measurable_in_data": true,
+        "data_source": "REL"
       }
     ],
     "gap_justification": null,
     "importance_rating": 5
   },
   {
-    "construct_name": "anticorruption_civic_engagement",
+    "construct_name": "reporting_behavior_and_barriers",
     "sources": [
       {
-        "citation": "Fox, J. (2007). Accountability politics: Power and voice in rural Mexico. Oxford University Press.",
-        "relevance": "Examines citizen-led accountability initiatives in Mexico, including community-level anticorruption mobilization and the conditions under which civic engagement translates into institutional reform.",
-        "key_finding": "Effective anticorruption civic engagement requires both bottom-up citizen mobilization and top-down institutional openness; isolated citizen action without institutional support rarely produces sustained change."
+        "citation": "Olken, B. A. (2007). Monitoring corruption: Evidence from a field experiment in Indonesia. Journal of Political Economy, 115(2), 200–249.",
+        "relevance": "Examines the behavioral dynamics of corruption reporting and monitoring, providing theoretical grounding for understanding why citizens do or do not report corruption.",
+        "key_finding": "Community-based monitoring increases reporting when institutional channels are perceived as responsive, but fear of retaliation and perceived futility remain major barriers."
       },
       {
-        "citation": "Isunza Vera, E., & Olvera, A. J. (2006). Democratización, rendición de cuentas y sociedad civil: Participación ciudadana y control social. Mexico City: CIESAS/Miguel Ángel Porrúa.",
-        "relevance": "Analyzes the role of civil society organizations and citizen participation in accountability and anticorruption efforts in Mexico, providing a framework for understanding civic engagement against corruption.",
-        "key_finding": "Citizen participation in anticorruption efforts in Mexico is highly uneven, concentrated among educated urban populations, and constrained by weak institutional channels for civic input."
+        "citation": "Arias, E. D. (2009). Drugs and democracy in Rio de Janeiro: Trafficking, social networks, and public security. University of North Carolina Press.",
+        "relevance": "While focused on Brazil, provides transferable insights about why citizens in Latin American contexts remain silent about institutional abuse, relevant to items on authority abuse reactions.",
+        "key_finding": "Citizens' silence about institutional abuse is driven by rational calculations about personal safety and the perceived complicity of authorities, not merely apathy."
       },
       {
-        "citation": "Ackerman, J. M. (2007). Organismos autónomos y democracia: El caso de México. Mexico City: Siglo XXI/UNAM.",
-        "relevance": "Discusses the role of autonomous institutions and citizen engagement in Mexico's anticorruption architecture, relevant to understanding how citizens interact with formal anticorruption mechanisms.",
-        "key_finding": "Autonomous anticorruption bodies in Mexico are more effective when they have strong citizen engagement and oversight, but public awareness and participation remain low."
+        "citation": "INEGI. (2021). Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública (ENVIPE). Instituto Nacional de Estadística y Geografía.",
+        "relevance": "Mexico's national victimization survey measures the 'cifra negra' (dark figure) of unreported crime and corruption, providing direct empirical context for non-reporting behavior.",
+        "key_finding": "Over 90% of crimes and corruption acts in Mexico go unreported, with the primary reasons being perceived futility of reporting, distrust in authorities, and fear of retaliation."
       },
       {
-        "citation": "Hevia de la Jara, F. (2009). Contraloría social y protección de programas sociales en México: Experiencias y debates. Gestión y Política Pública, 18(2), 363–401.",
-        "relevance": "Examines social comptrollership (contraloría social) as a form of anticorruption civic engagement in Mexico, analyzing citizen monitoring of government programs.",
-        "key_finding": "Social comptrollership mechanisms in Mexico show limited effectiveness due to low citizen participation, inadequate training, and insufficient institutional support for citizen oversight."
+        "citation": "Tavits, M. (2010). Why do people engage in corruption? The case of Estonia. Social Forces, 88(3), 1257–1279.",
+        "relevance": "Examines individual-level determinants of engagement with and reporting of corruption, providing a micro-level behavioral framework applicable to the Mexican context.",
+        "key_finding": "Social norms and perceived prevalence of corruption significantly predict both engagement in and reporting of corrupt acts; when corruption is perceived as widespread, reporting decreases."
       }
     ],
     "causal_relationships": [
@@ -332,54 +327,48 @@
       },
       {
         "role": "effect",
-        "related_construct": "corruption perception",
+        "related_construct": "corruption perception (perceived prevalence)",
         "measurable_in_data": true,
         "data_source": "COR"
       },
       {
         "role": "effect",
-        "related_construct": "educational attainment / civic education",
+        "related_construct": "fear of retaliation / public security perceptions",
         "measurable_in_data": true,
-        "data_source": "EDU"
+        "data_source": "SEG"
       },
       {
         "role": "correlate",
-        "related_construct": "general political participation",
-        "measurable_in_data": true,
-        "data_source": "CUL"
-      },
-      {
-        "role": "effect",
-        "related_construct": "media exposure / information access",
-        "measurable_in_data": true,
-        "data_source": "SOC"
-      },
-      {
-        "role": "correlate",
-        "related_construct": "social capital / community organization",
-        "measurable_in_data": true,
-        "data_source": "CUL, IDE"
-      },
-      {
-        "role": "effect",
         "related_construct": "socioeconomic status",
         "measurable_in_data": true,
         "data_source": "POB, ECO"
       },
       {
-        "role": "cause",
-        "related_construct": "government accountability / transparency",
-        "measurable_in_data": false,
-        "data_source": ""
+        "role": "effect",
+        "related_construct": "civic enforcement norms",
+        "measurable_in_data": true,
+        "data_source": "COR"
       },
       {
         "role": "correlate",
-        "related_construct": "human rights awareness",
+        "related_construct": "access to justice",
         "measurable_in_data": true,
-        "data_source": "DER"
+        "data_source": "JUS, DER"
+      },
+      {
+        "role": "effect",
+        "related_construct": "educational attainment and legal literacy",
+        "measurable_in_data": true,
+        "data_source": "EDU"
+      },
+      {
+        "role": "correlate",
+        "related_construct": "gender",
+        "measurable_in_data": true,
+        "data_source": "GEN"
       }
     ],
-    "gap_justification": "While general civic engagement and political participation are well-studied, the specific construct of anticorruption civic engagement—combining media campaign exposure, neighborhood-level collective action, and personal agency in resisting bribery—has received limited integrated treatment in the literature. Most studies examine either formal civil society organizations or individual whistleblowing, but not the broader spectrum of everyday anticorruption behaviors and awareness captured here. This construct fills an important gap by measuring the demand side of anticorruption policy in Mexico, where institutional reforms have outpaced citizen engagement. Understanding the determinants and distribution of anticorruption civic engagement is critical for evaluating whether Mexico's National Anticorruption System and related reforms can achieve their goals. The construct also bridges the gap between attitudinal measures (perceptions, tolerance) and behavioral outcomes, providing a more complete picture of how Mexican citizens respond to corruption in practice.",
+    "gap_justification": null,
     "importance_rating": 4
   }
 ]
