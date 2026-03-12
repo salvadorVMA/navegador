@@ -105,6 +105,72 @@ World Values Survey integration branch. Extends the SES bridge to WVS data, addi
 - `data/wvs/` — WVS metadata files (variable equivalences, country codes, questionnaires)
 - `docs/WVS_INTEGRATION_PLAN.md` — Full integration plan with γ-surface formulation
 - WVS data zips (Wave 7 + Time Series) stored locally but gitignored (138MB)
+
+#### WVS Phase 1 ✅ COMPLETE (2026-03-12)
+
+| Module | Purpose |
+|--------|---------|
+| `wvs_metadata.py` | Parse equivalence XLSX → a_code/title/domain/wave Q-codes; `CULTURAL_ZONES` (8 IW zones); `SES_VARS` harmonization config; country registry helpers |
+| `wvs_loader.py` | `WVSLoader` class: load CSV from zip/file, filter by wave+country, clean sentinels, harmonize SES vars, build `wvs_dict`, JSON cache save/load |
+| `tests/unit/test_wvs_integration.py` | 75 tests covering all Phase 1 functionality |
+
+**wvs_dict structure** (mirrors los_mex_dict):
+- `enc_dict`: `WVS_W{n}_{ALPHA3}` keys → `{dataframe, metadata}`
+- `enc_nom_dict`: `W{n}_{ALPHA3}` short IDs
+- `pregs_dict`: `{Q-code|short_id: survey_key|title}`
+- `ses_dict`: harmonized SES cols per survey
+- `var_equivalences`: equivalence DataFrame
+- `country_registry`: wave participation counts
+
+**SES harmonization** (income excluded; 4-var config matching v3 sweep):
+- `Q260 → sexo` (direct: 1=M, 2=F)
+- `Q262 → edad` (continuous → 7 age bins, matches `ses_analysis.categorize_age`)
+- `Q275 → escol` (ISCED 0-8 → 5-level ordinal)
+- `G_TOWNSIZE → Tam_loc` (8-level → 4-level collapse)
+
+**CLI:** `python wvs_loader.py --waves 7 --countries MEX ARG --output data/wvs/wvs_dict.json`
+**Mexico time series:** `python wvs_loader.py --mexico-ts`
+
+#### WVS Phase 2 ✅ COMPLETE (2026-03-12)
+
+| Module | Purpose |
+|--------|---------|
+| `wvs_ses_bridge.py` | `SESHarmonizer` (validate SES cols, build standardized/zone-pooled reference populations); `WVSBridgeEstimator` (wraps DR estimator for WVS); `temporal_sweep()`, `geographic_sweep()`; `summarise_temporal()`, `summarise_geographic()` |
+| `tests/unit/test_wvs_integration.py` | Extended to 108 tests (33 new Phase 2 tests) |
+
+**Weight unification:** `W_WEIGHT` (WVS) and `Pondi2` (los_mex) both normalised to `bridge_weight` before passing to `DoublyRobustBridgeEstimator`.
+
+**γ-surface API (`WVSBridgeEstimator`):**
+- `estimate_cross_dataset(df_wvs, col_wvs, df_los_mex, col_los_mex)` — WVS × los_mex
+- `estimate_within_wvs(df_a, col_a, df_b, col_b)` — WVS × WVS (cross-wave or cross-country)
+- `temporal_sweep(enc_dict, col_a, col_b, country='MEX')` → `{wave: result}`
+- `geographic_sweep(enc_dict, col_a, col_b, wave=7, zone=None)` → `{alpha3: result}`
+
+#### WVS Phase 3 ✅ COMPLETE (2026-03-12)
+
+| Module | Purpose |
+|--------|---------|
+| `wvs_anchor_discovery.py` | `WVSAnchorDiscovery`: vector search against los_mex ChromaDB → LLM grades 0-3; `AnchorEntry`/`AnchorCandidate` Pydantic models; `filter_anchors()`, `registry_to_dataframe()`, `summarise_registry()`; JSON save/load |
+| `tests/unit/test_wvs_integration.py` | Extended to 135 tests (27 new Phase 3 tests, all with mock LLM) |
+
+**Anchor grading scale:** 3=near-identical (direct validation), 2=same concept different wording (thematic), 1=weak overlap, 0=unrelated.
+
+**To run anchor discovery** (requires los_mex ChromaDB + OpenAI API key):
+```python
+from wvs_anchor_discovery import WVSAnchorDiscovery
+from wvs_metadata import load_equivalences
+disc = WVSAnchorDiscovery(db_f1=db_f1, llm=llm)
+registry = disc.build_registry(load_equivalences(), wave=7, n_candidates=5)
+disc.save(registry, Path('data/wvs/anchor_registry.json'))
+```
+
+> ⚠️ **ACTION REQUIRED (Mac):** WVS CSV/zip files are NOT present in the Codespace. They must be added to the `navegador_data` repo (or uploaded to `data/wvs/`) from the local Mac before `wvs_loader.py` can process data. Files needed:
+> - `F00011356-WVS_Cross-National_Wave_7_csv_v6_0.zip` (~20MB)
+> - `F00011931-WVS_Time_Series_1981-2022_csv_v5_0.zip` (~118MB)
+> Once present, run: `python wvs_loader.py --waves 7 --output data/wvs/wvs_w7_dict.json`
+>
+> 📋 **Analysis pipeline ready to run** (committed 2026-03-12, branch `wvs`): All Phase 1–3 modules are complete and tested (135 unit tests pass). Once CSV files are uploaded, the full pipeline runs end-to-end: `wvs_loader.py` → `wvs_ses_bridge.py` → `wvs_anchor_discovery.py`.
+
 - **γ-surface concept**: γ(variable_pair, country, wave, SES_reference) — the bridge "travels" across contexts
 - **Anchor questions**: Shared questions between WVS and los_mex for bridge validation
 - **SES harmonization**: WVS Q260/Q262/Q275/G_TOWNSIZE → los_mex sexo/edad/escol/Tam_loc

@@ -82,8 +82,6 @@ WVS uses **negative sentinel codes** (unlike los_mex which uses `>= 97`):
 | Q275 | Education ISCED (8 levels) | escol | 1664 | 0-8 |
 | Q275R | Education recoded (3 groups) | — | 1733 | 1-3 |
 | Q279 | Marital status | est_civil | 1664 | 1-7 |
-| Q288 | Income scale (10 levels) | income_quintile | 1719 | 1-10 |
-| Q288R | Income recoded (3 groups) | — | 1719 | 1-3 |
 | G_TOWNSIZE | Town size (8 levels) | Tam_loc (4 levels) | 1724 | 1-8 |
 | H_URBRURAL | Urban/Rural | — | 1741 | 1-2 |
 | N_REGION_WVS | Region (country-specific) | region | 1741 | 484101-484132 |
@@ -368,7 +366,6 @@ For any WVS variable pair, compute γ within each country using the same DR esti
 
 **SES harmonization across countries:** WVS SES variables (X001, X003, X025, X049) are already harmonized by design — they use the same codes in all countries. However:
 - **Education (X025/Q275)**: ISCED levels mean different things in different educational systems. Use recoded 3-group (X025R/Q275R) for cross-country comparability.
-- **Income (X047/Q288)**: Country-specific scales. Use recoded 3-group (X047R/Q288R) or within-country percentile normalization.
 - **Settlement size**: Harmonized 1-8 scale across countries, but absolute sizes differ (a "large city" in Bolivia ≠ in Japan).
 
 #### What the geographic bridge cannot do
