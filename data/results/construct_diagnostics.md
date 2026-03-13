@@ -13,7 +13,7 @@ Frequency distributions and SES bivariate profiles for all 56 significant DR bri
   N=1200, mean=1.75, std=1.55, min=1.00, max=10.00, skew=3.89, kurt=15.92
   P10=1.00, P25=1.00, P50=1.38, P75=1.94, P90=2.31
   | (0.991, 2.8]: 1103 | (2.8, 4.6]: 43 | (4.6, 6.4]: 15 | (6.4, 8.2]: 4 | (8.2, 10.0]: 35 |
-
+TODO 
 ### Bivariate by SES Variable
 
 **sexo**
@@ -22,7 +22,7 @@ Frequency distributions and SES bivariate profiles for all 56 significant DR bri
   Mujer (n=607): mean=1.80, std=1.59
 
 **edad**
-
+TODO why is edad not available?? is it missing fromthis report or from the sweep??
   _edad not available_
 
 **escol**
@@ -81,7 +81,7 @@ Frequency distributions and SES bivariate profiles for all 56 significant DR bri
 ---
 
 ## [03] REL|supernatural_beliefs  (α=0.9003, good, N=1023)
-
+TODO whats the direction of the score, ie, higher values mean  what? check that all components of every constructs are correctly signed to be directed
 ### Marginal Distribution
 
   N=1023, mean=3.56, std=1.73, min=1.00, max=10.00, skew=0.45, kurt=-0.39

@@ -97,6 +97,7 @@ Top 8 columns most correlated with having valid construct responses (|r| > 0.15)
 ### Recommendation
 
 **Remove from bridge** — N=255 is below the minimum for reliable DR estimation. Even if routing is explainable, bootstrap CIs will be unreliably wide. Mark construct as `excluded_low_n` in SVS v4.
+TODO build new construct with vars above
 
 ---
 
@@ -226,7 +227,7 @@ Top 8 columns most correlated with having valid construct responses (|r| > 0.15)
 ### Recommendation
 
 **Remove from bridge** — N=360 is below the minimum for reliable DR estimation. Even if routing is explainable, bootstrap CIs will be unreliably wide. Mark construct as `excluded_low_n` in SVS v4.
-
+TODO remove
 ---
 
 ## SOC|internet_engagement_and_digital_literacy
@@ -321,6 +322,7 @@ Top 8 columns most correlated with having valid construct responses (|r| > 0.15)
 ### Recommendation
 
 **Remove from bridge** — N=364 is below the minimum for reliable DR estimation. Even if routing is explainable, bootstrap CIs will be unreliably wide. Mark construct as `excluded_low_n` in SVS v4.
+TODO remove
 
 ---
 
@@ -408,7 +410,7 @@ Top 8 columns most correlated with having valid construct responses (|r| > 0.15)
 ### Recommendation
 
 **Keep with annotation** — Strong routing pattern detected via `p15a_3` (r=-0.749). Construct measures a sub-population. γ estimates are conditional on that sub-population. Add routing note to `significant_constructs.md`.
-
+TODO USE acostumbra questions, not frecuencia
 ---
 
 ## JUS|legal_self_efficacy_and_access
@@ -493,7 +495,7 @@ Top 5 columns most correlated with having valid construct responses (|r| > 0.15)
 
 **Keep with annotation** — Strong routing pattern detected via `p34_1` (r=+0.868). Construct measures a sub-population. γ estimates are conditional on that sub-population. Add routing note to `significant_constructs.md`.
 
----
+---TODO remove
 
 ## GEN|intimate_partner_power_dynamics
 
@@ -596,7 +598,7 @@ Top 8 columns most correlated with having valid construct responses (|r| > 0.15)
 ### Recommendation
 
 **Keep with annotation** — Strong routing pattern detected via `p23_3` (r=+0.937). Construct measures a sub-population. γ estimates are conditional on that sub-population. Add routing note to `significant_constructs.md`.
-
+TODO find question that filters, and see is it makes sense to recover these rows with a neutral point on a scale built with the others - but what scale? think about it and make a proposal
 ---
 
 ## REL|religious_socialization
@@ -715,6 +717,6 @@ Top 8 columns most correlated with having valid construct responses (|r| > 0.15)
 ### Recommendation
 
 **Keep with annotation** — Strong routing pattern detected via `religion` (r=-0.537). Construct measures a sub-population. γ estimates are conditional on that sub-population. Add routing note to `significant_constructs.md`.
-
+TODO propose a n alternative list os questions to measure religiuos sociialization, but be careful with gateways and filters to keep n high
 ---
 

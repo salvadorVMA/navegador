@@ -2,6 +2,7 @@
 
 Side-by-side comparison of answer codes for every item in every construct. Flags: **[DIR?]** direction reversal may be needed, **[SCALE?]** n-categories mismatch, **[NOMINAL]** non-ordinal codes, **[SPARSE]** >30% missing, **[R]** currently reverse-coded in SVS v4.
 
+TODO treat all depende as sentinel and, once removing all sentinels, review each question to check direction of scale, most flagged asaigupus may be directional with a closer reading of questions and options
 ---
 
 ## [01] FED|legal_uniformity_preference  (α=0.9482, good)
@@ -49,7 +50,7 @@ Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
 ## [03] REL|supernatural_beliefs  (α=0.9003, good)
 
 > ✓ No automatic flags
-
+TODO treat 4 otra ans tret 2 si en parte as intermediate to treat vars as ordinal
 Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
 
 - `p17_1`
@@ -111,7 +112,7 @@ Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
 > ✓ No automatic flags
 
 Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
-
+TODO treat as negative
 - `p3_1`  [NOMINAL]
   1=Muchas | 2=Algunas | 3=Pocas | 4=Ningunas | 8=NS | 9=NC → direction: _ambiguous_
 - `p3_2`  [NOMINAL]
@@ -130,7 +131,7 @@ Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
 > **[SCALE?]** Items have different n-categories: [6, 7, 6, 5, 5, 6, 6, 6]
 
 Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
-
+TODO treat ambiguous as ordinal with si en parte as ne intermediate - but consider different scales!
 - `p11`  [NOMINAL]
   1=Mucho | 2=Algo | 3=Poco | 4=Nada | 8=NS | 9=NC → direction: **negative**
 - `p22`  [NOMINAL]
@@ -155,7 +156,7 @@ Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
 > ✓ No automatic flags
 
 Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
-
+TODO check cuestion and use si or no as positive case
 - `p3_2`  [NOMINAL]
   1=Sí | 2=No | 8=NS | 9=NC → direction: _ambiguous_
 - `p3_3`  [NOMINAL]
@@ -194,8 +195,8 @@ Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
 
 > ✓ No automatic flags
 
-Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
-
+Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none` 
+TODO Check question to identify positive case 
 - `p34_1`  [NOMINAL]
   1=Sí | 2=No | 8=NS | 9=NC → direction: _ambiguous_
 - `p34_2`  [NOMINAL]
@@ -227,7 +228,7 @@ Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
 > **[SCALE?]** Items have different n-categories: [4, 4, 4, 4, 4, 7, 7, 7]
 
 Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
-
+TODO read questions to find positive cases for both types of scales, recode if necessary
 - `p47_3`  [NOMINAL]
   1=Sí | 2=No | 8=NS | 9=NC → direction: _ambiguous_
 - `p47_4`  [NOMINAL]
@@ -252,7 +253,7 @@ Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
 > **[SCALE?]** Items have different n-categories: [3, 4, 3, 4, 3, 2]
 
 Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
-
+TODO reas questions and check positive cases for si, treat otro as sentinel, and mind the different scales
 - `p10`
   1=Sí | 2=Sí, en parte | 3=No → direction: _ambiguous_
 - `p12`
@@ -321,7 +322,7 @@ Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
 ## [15] IND|national_economic_outlook  (α=0.7166, good)
 
 > ✓ No automatic flags
-
+TODO see that scales are directional
 Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
 
 - `p1`
@@ -345,7 +346,7 @@ Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
   1=Mucha | 2=Algo | 3=Poca | 4=Nada | 8=NS | 9=NC → direction: _ambiguous_
 - `p21`  [NOMINAL]
   1=Sí | 2=A veces (esp.) | 3=No | 8=NS | 9=NC → direction: _ambiguous_
-- `p33`  [NOMINAL]
+- `p33`  [NOMINAL] TODO drop this item
   1=Proteger a los personas de los abusos  de autoridad | 2=Evitar que los delincuentes sean  castigados justamente | 3=Tramitar juicios a las personas que no  pueden pagar un abogado | 8=NS | 9=NC → direction: _ambiguous_
 - `p34`  [NOMINAL]
   1=Mucho | 2=Algo | 3=Poco | 4=Nada | 8=NS | 9=NC → direction: **negative**
@@ -357,7 +358,7 @@ Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
 > **[SCALE?]** Items have different n-categories: [0, 0, 7]
 
 Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
-
+TODO check questions to see what items are used, if not viable drop
 - `p16`
   _(no codes found)_ → direction: _ambiguous_
 - `p17`
@@ -372,7 +373,7 @@ Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
 > **[SCALE?]** Items have different n-categories: [4, 4, 6, 4, 6]
 
 Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
-
+TODO review directions and scales, they are not amigupus
 - `p46_1`  [NOMINAL]
   1=Positivo | 2=Negativo | 8=NS | 9=NC → direction: _ambiguous_
 - `p47`  [NOMINAL]
@@ -410,7 +411,7 @@ Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
 > **[SCALE?]** Items have different n-categories: [11, 11, 9, 4]
 
 Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
-
+TODO drop
 - `p64`  [SPARSE 40%]
   1=Ninguno, pero sabía leer | 2=Ninguno, pero no sabía leer | 3=Preescolar | 4=Primaria | 5=Secundaria | 6=Preparatoria o Bachillerato | 7=Normal | 8=Carrera técnica | 9=Profesional (Licenciatura) | 10=Maestría | 11=Doctorado → direction: _ambiguous_
 - `p65`  [SPARSE 45%]
@@ -431,7 +432,7 @@ Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
 - `p22`  [NOMINAL]
   1=Funciona bien | 2=Funciona bien, en parte (esp.) | 3=Funciona mal en parte (esp.) | 4=Funciona mal | 5=Ni bien, ni mal (esp.) | 8=NS | 9=NC → direction: _ambiguous_
 - `p41`
-  1=Muy independientes | 2=Independientes | 3=Ni dependientes, ni independientes (esp.) | 4=No son independientes | 5=Nada independientes | 6=Depende (esp.) | 7=Otra (esp.) | 8=NS | 9=NC → direction: _ambiguous_
+  1=Muy independientes | 2=Independientes | 3=Ni dependientes, ni independientes (esp.) | 4=No son independientes | 5=Nada independientes | 6=Depende (esp.) | 7=Otra (esp.) | 8=NS | 9=NC → direction: _ambiguous_ TODO treat 6 as sentinel
 - `p42_1`  [NOMINAL]
   1=De acuerdo | 2=De acuerdo en parte (esp.) | 3=Descuerdo en parte (esp.) | 4=Desacuerdo | 8=NS | 9=NC → direction: _ambiguous_
 - `p46`  [NOMINAL]
@@ -439,7 +440,7 @@ Construct type: `reflective_scale` | Reverse-coded items in SVS v4: `none`
 - `p33`  [NOMINAL]
   1=Todas las personas reciben igual trato | 2=Solamente con dinero y relaciones se  puede ganar un juicio | 3=Otra (esp.) | 8=NS | 9=NC → direction: _ambiguous_
 - `p50`  [NOMINAL]
-  1=Recibe un castigo | 2=Queda impune | 3=Depende (esp.) | 8=NS | 9=NC → direction: _ambiguous_
+  1=Recibe un castigo | 2=Queda impune | 3=Depende (esp.) | 8=NS | 9=NC → direction: _ambiguous_ TODO treat depende as sentinel
 - `p43`  [NOMINAL]
   1=Que las sentencias que dictan los jueces y magistrados sean justas | 2=Que estén apegadas a lo que dispone la ley | 3=Ambas (esp.) | 4=Otra (esp.) | 8=NS | 9=NC → direction: _ambiguous_
 

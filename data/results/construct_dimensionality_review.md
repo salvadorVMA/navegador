@@ -1,7 +1,7 @@
 # Dimensionality Review — Stream 3
 
 Inter-item Spearman correlations and 2-component PCA for constructs flagged as potentially multi-dimensional.
-
+TODO explain logic fir dimensionality analysis and for your recommendations
 **Significance**: * p<0.05, ** p<0.01
 
 ---

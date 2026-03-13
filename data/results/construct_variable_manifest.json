@@ -15,7 +15,7 @@
     "var_id": "agg_tolerance_social_diversity|IDE",
     "type": "questionable",
     "alpha": 0.5883,
-    "n_items": 6,
+    "n_items": 3,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -25,7 +25,7 @@
     "var_id": "agg_personal_optimism_efficacy|IDE",
     "type": "tier3_caveat",
     "alpha": 0.4045,
-    "n_items": 4,
+    "n_items": 3,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -35,7 +35,7 @@
     "var_id": "agg_moral_normative_conservatism|IDE",
     "type": "questionable",
     "alpha": 0.5072,
-    "n_items": 5,
+    "n_items": 4,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -45,8 +45,8 @@
     "var_id": "agg_environmental_problem_salience|MED",
     "type": "tier3_caveat",
     "alpha": 0.4666,
-    "n_items": 3,
-    "n_valid": 1161,
+    "n_items": 2,
+    "n_valid": 1171,
     "reverse_coded": null
   },
   {
@@ -55,9 +55,11 @@
     "var_id": "agg_environmental_knowledge_self_efficacy|MED",
     "type": "questionable",
     "alpha": 0.5405,
-    "n_items": 5,
+    "n_items": 3,
     "n_valid": 1057,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p28_1"
+    ]
   },
   {
     "key": "MED|pro_environmental_civic_engagement",
@@ -65,9 +67,15 @@
     "var_id": "agg_pro_environmental_civic_engagement|MED",
     "type": "good",
     "alpha": 0.796,
-    "n_items": 5,
+    "n_items": 4,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p34_1",
+      "p34_2",
+      "p34_3",
+      "p34_4",
+      "p34_5"
+    ]
   },
   {
     "key": "MED|climate_change_risk_perception",
@@ -85,8 +93,8 @@
     "var_id": "agg_intergenerational_mobility_perception|POB",
     "type": "questionable",
     "alpha": 0.537,
-    "n_items": 4,
-    "n_valid": 1075,
+    "n_items": 3,
+    "n_valid": 1097,
     "reverse_coded": null
   },
   {
@@ -105,8 +113,8 @@
     "var_id": "agg_subjective_economic_wellbeing_and_agency|POB",
     "type": "questionable",
     "alpha": 0.6228,
-    "n_items": 5,
-    "n_valid": 1122,
+    "n_items": 4,
+    "n_valid": 1152,
     "reverse_coded": [
       "p10"
     ]
@@ -117,7 +125,7 @@
     "var_id": "agg_democratic_legitimacy_support|CUL",
     "type": "questionable",
     "alpha": 0.5821,
-    "n_items": 5,
+    "n_items": 4,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -127,7 +135,7 @@
     "var_id": "agg_institutional_trust_and_electoral_confidence|CUL",
     "type": "tier3_caveat",
     "alpha": 0.4858,
-    "n_items": 5,
+    "n_items": 3,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -137,7 +145,7 @@
     "var_id": "agg_political_efficacy_and_engagement|CUL",
     "type": "questionable",
     "alpha": 0.5935,
-    "n_items": 8,
+    "n_items": 6,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -147,7 +155,7 @@
     "var_id": "agg_authoritarian_predisposition|CUL",
     "type": "tier3_caveat",
     "alpha": 0.4947,
-    "n_items": 6,
+    "n_items": 4,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -159,7 +167,15 @@
     "alpha": 0.8701,
     "n_items": 7,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p84_1",
+      "p84_2",
+      "p84_3",
+      "p84_4",
+      "p84_6",
+      "p84_7",
+      "p84_8"
+    ]
   },
   {
     "key": "REL|supernatural_beliefs",
@@ -167,9 +183,25 @@
     "var_id": "agg_supernatural_beliefs|REL",
     "type": "good",
     "alpha": 0.9003,
-    "n_items": 14,
-    "n_valid": 1023,
-    "reverse_coded": null
+    "n_items": 13,
+    "n_valid": 1005,
+    "reverse_coded": [
+      "p17_1",
+      "p17_2",
+      "p17_3",
+      "p17_4",
+      "p17_5",
+      "p17_6",
+      "p17_7",
+      "p17_8",
+      "p17_9",
+      "p17_10",
+      "p17_11",
+      "p17_12",
+      "p17_13",
+      "p17_14",
+      "p17_15"
+    ]
   },
   {
     "key": "REL|personal_religiosity",
@@ -177,9 +209,16 @@
     "var_id": "agg_personal_religiosity|REL",
     "type": "good",
     "alpha": 0.7318,
-    "n_items": 6,
-    "n_valid": 961,
-    "reverse_coded": null
+    "n_items": 5,
+    "n_valid": 968,
+    "reverse_coded": [
+      "p10",
+      "p11",
+      "p12",
+      "p13_1",
+      "p14",
+      "p25"
+    ]
   },
   {
     "key": "REL|religious_socialization",
@@ -187,8 +226,8 @@
     "var_id": "agg_religious_socialization|REL",
     "type": "questionable",
     "alpha": 0.5548,
-    "n_items": 6,
-    "n_valid": 847,
+    "n_items": 3,
+    "n_valid": 1163,
     "reverse_coded": null
   },
   {
@@ -197,9 +236,11 @@
     "var_id": "agg_church_state_separation|REL",
     "type": "questionable",
     "alpha": 0.568,
-    "n_items": 5,
-    "n_valid": 1030,
-    "reverse_coded": null
+    "n_items": 4,
+    "n_valid": 1045,
+    "reverse_coded": [
+      "p57"
+    ]
   },
   {
     "key": "REL|religious_tolerance",
@@ -219,7 +260,12 @@
     "alpha": 0.8018,
     "n_items": 4,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p3",
+      "p4",
+      "p5",
+      "p6"
+    ]
   },
   {
     "key": "SEG|police_institutional_legitimacy",
@@ -250,7 +296,7 @@
     "var_id": "agg_fear_and_risk_avoidance|SEG",
     "type": "questionable",
     "alpha": 0.5676,
-    "n_items": 5,
+    "n_items": 3,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -260,7 +306,7 @@
     "var_id": "agg_punitive_and_vigilante_attitudes|SEG",
     "type": "questionable",
     "alpha": 0.528,
-    "n_items": 5,
+    "n_items": 4,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -272,7 +318,12 @@
     "alpha": 0.7226,
     "n_items": 4,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p2",
+      "p3",
+      "p4",
+      "p5"
+    ]
   },
   {
     "key": "SAL|subjective_wellbeing",
@@ -280,19 +331,17 @@
     "var_id": "agg_subjective_wellbeing|SAL",
     "type": "questionable",
     "alpha": 0.5876,
-    "n_items": 5,
+    "n_items": 4,
     "n_valid": 1200,
     "reverse_coded": null
   },
   {
     "key": "SAL|healthcare_access_and_utilization",
-    "column": "agg_healthcare_access_and_utilization",
-    "var_id": "agg_healthcare_access_and_utilization|SAL",
-    "type": "questionable",
-    "alpha": 0.5117,
-    "n_items": 6,
-    "n_valid": 177,
-    "reverse_coded": null
+    "column": null,
+    "type": "excluded",
+    "reason": "excluded_low_n",
+    "alpha": null,
+    "n_valid": 0
   },
   {
     "key": "SAL|health_risk_behaviors",
@@ -300,7 +349,7 @@
     "var_id": "agg_health_risk_behaviors|SAL",
     "type": "questionable",
     "alpha": 0.539,
-    "n_items": 3,
+    "n_items": 2,
     "n_valid": 689,
     "reverse_coded": null
   },
@@ -310,8 +359,8 @@
     "var_id": "agg_perceived_indigenous_discrimination|IND",
     "type": "tier3_caveat",
     "alpha": 0.4011,
-    "n_items": 4,
-    "n_valid": 1166,
+    "n_items": 3,
+    "n_valid": 1174,
     "reverse_coded": null
   },
   {
@@ -320,8 +369,8 @@
     "var_id": "agg_social_distance_toward_indigenous_people|IND",
     "type": "questionable",
     "alpha": 0.5097,
-    "n_items": 3,
-    "n_valid": 1102,
+    "n_items": 2,
+    "n_valid": 1109,
     "reverse_coded": null
   },
   {
@@ -332,37 +381,34 @@
     "alpha": 0.7166,
     "n_items": 2,
     "n_valid": 1111,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p1",
+      "p2"
+    ]
   },
   {
     "key": "SOC|digital_technology_access_and_ownership",
-    "column": "agg_digital_technology_access_and_ownership",
-    "var_id": "agg_digital_technology_access_and_ownership|SOC",
-    "type": "good",
-    "alpha": 0.7857,
-    "n_items": 2,
-    "n_valid": 255,
-    "reverse_coded": null
+    "column": null,
+    "type": "excluded",
+    "reason": "excluded_low_n",
+    "alpha": null,
+    "n_valid": 0
   },
   {
     "key": "SOC|media_consumption_breadth",
-    "column": "agg_media_consumption_breadth",
-    "var_id": "agg_media_consumption_breadth|SOC",
-    "type": "tier3_caveat",
-    "alpha": 0.4742,
-    "n_items": 5,
-    "n_valid": 338,
-    "reverse_coded": null
+    "column": null,
+    "type": "excluded",
+    "reason": "excluded_low_n",
+    "alpha": null,
+    "n_valid": 0
   },
   {
     "key": "SOC|internet_engagement_and_digital_literacy",
-    "column": "agg_internet_engagement_and_digital_literacy",
-    "var_id": "agg_internet_engagement_and_digital_literacy|SOC",
-    "type": "tier3_caveat",
-    "alpha": 0.4825,
-    "n_items": 3,
-    "n_valid": 364,
-    "reverse_coded": null
+    "column": null,
+    "type": "excluded",
+    "reason": "excluded_low_n",
+    "alpha": null,
+    "n_valid": 0
   },
   {
     "key": "SOC|media_trust_and_quality_evaluation",
@@ -370,8 +416,8 @@
     "var_id": "agg_media_trust_and_quality_evaluation|SOC",
     "type": "questionable",
     "alpha": 0.587,
-    "n_items": 6,
-    "n_valid": 1186,
+    "n_items": 5,
+    "n_valid": 1200,
     "reverse_coded": [
       "p53_1"
     ]
@@ -382,7 +428,7 @@
     "var_id": "agg_perceived_media_social_impact|SOC",
     "type": "questionable",
     "alpha": 0.5866,
-    "n_items": 7,
+    "n_items": 6,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -392,7 +438,7 @@
     "var_id": "agg_ageism_and_negative_stereotypes|ENV",
     "type": "questionable",
     "alpha": 0.5177,
-    "n_items": 4,
+    "n_items": 3,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -402,7 +448,7 @@
     "var_id": "agg_state_and_family_responsibility_for_elder_care|ENV",
     "type": "tier3_caveat",
     "alpha": 0.4516,
-    "n_items": 4,
+    "n_items": 1,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -422,9 +468,13 @@
     "var_id": "agg_institutional_trust_justice|DER",
     "type": "good",
     "alpha": 0.7127,
-    "n_items": 6,
+    "n_items": 4,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p18",
+      "p19",
+      "p34"
+    ]
   },
   {
     "key": "DER|authoritarian_security_tradeoff",
@@ -442,7 +492,7 @@
     "var_id": "agg_perceived_discrimination_social_exclusion|DER",
     "type": "questionable",
     "alpha": 0.5814,
-    "n_items": 6,
+    "n_items": 4,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -452,7 +502,7 @@
     "var_id": "agg_rights_awareness_personal_experience|DER",
     "type": "questionable",
     "alpha": 0.5536,
-    "n_items": 3,
+    "n_items": 2,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -464,7 +514,11 @@
     "alpha": 0.6284,
     "n_items": 3,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p30",
+      "p31",
+      "p32"
+    ]
   },
   {
     "key": "COR|corruption_perception",
@@ -525,8 +579,8 @@
     "var_id": "agg_basic_services_access|HAB",
     "type": "questionable",
     "alpha": 0.5301,
-    "n_items": 6,
-    "n_valid": 1126,
+    "n_items": 4,
+    "n_valid": 1127,
     "reverse_coded": null
   },
   {
@@ -537,7 +591,20 @@
     "alpha": 0.7254,
     "n_items": 12,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p36_1",
+      "p36_2",
+      "p36_4",
+      "p36_5",
+      "p36_6",
+      "p36_8",
+      "p36_9",
+      "p36_10",
+      "p36_18",
+      "p36_21",
+      "p36_22",
+      "p36_29"
+    ]
   },
   {
     "key": "HAB|housing_tenure_security",
@@ -570,8 +637,8 @@
     "var_id": "agg_economic_globalization_attitudes|GLO",
     "type": "questionable",
     "alpha": 0.6936,
-    "n_items": 5,
-    "n_valid": 1200,
+    "n_items": 4,
+    "n_valid": 1123,
     "reverse_coded": null
   },
   {
@@ -580,7 +647,7 @@
     "var_id": "agg_international_institutional_engagement|GLO",
     "type": "questionable",
     "alpha": 0.5448,
-    "n_items": 6,
+    "n_items": 5,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -590,8 +657,8 @@
     "var_id": "agg_judicial_institutional_trust|JUS",
     "type": "questionable",
     "alpha": 0.6491,
-    "n_items": 7,
-    "n_valid": 1200,
+    "n_items": 6,
+    "n_valid": 804,
     "reverse_coded": null
   },
   {
@@ -616,13 +683,11 @@
   },
   {
     "key": "JUS|legal_self_efficacy_and_access",
-    "column": "agg_legal_self_efficacy_and_access",
-    "var_id": "agg_legal_self_efficacy_and_access|JUS",
-    "type": "tier3_caveat",
-    "alpha": 0.4386,
-    "n_items": 5,
-    "n_valid": 635,
-    "reverse_coded": null
+    "column": null,
+    "type": "excluded",
+    "reason": "excluded_low_n",
+    "alpha": null,
+    "n_valid": 0
   },
   {
     "key": "JUS|law_compliance_motivation",
@@ -630,8 +695,8 @@
     "var_id": "agg_law_compliance_motivation|JUS",
     "type": "questionable",
     "alpha": 0.516,
-    "n_items": 4,
-    "n_valid": 1155,
+    "n_items": 1,
+    "n_valid": 1200,
     "reverse_coded": null
   },
   {
@@ -650,19 +715,23 @@
     "var_id": "agg_perceived_opportunity_structure|MIG",
     "type": "good",
     "alpha": 0.8444,
-    "n_items": 5,
+    "n_items": 4,
     "n_valid": 1199,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p3_1",
+      "p3_2",
+      "p3_3",
+      "p3_4",
+      "p3_9"
+    ]
   },
   {
     "key": "MIG|transnational_social_ties",
-    "column": "agg_transnational_social_ties",
-    "var_id": "agg_transnational_social_ties|MIG",
-    "type": "questionable",
-    "alpha": 0.601,
-    "n_items": 5,
-    "n_valid": 360,
-    "reverse_coded": null
+    "column": null,
+    "type": "excluded",
+    "reason": "excluded_low_n",
+    "alpha": null,
+    "n_valid": 0
   },
   {
     "key": "MIG|attitudes_toward_foreigners_in_mexico",
@@ -670,7 +739,7 @@
     "var_id": "agg_attitudes_toward_foreigners_in_mexico|MIG",
     "type": "questionable",
     "alpha": 0.5688,
-    "n_items": 8,
+    "n_items": 7,
     "n_valid": 1199,
     "reverse_coded": null
   },
@@ -680,9 +749,16 @@
     "var_id": "agg_perceived_representativeness|FED",
     "type": "good",
     "alpha": 0.9157,
-    "n_items": 6,
+    "n_items": 5,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p12_1",
+      "p12_2",
+      "p12_3",
+      "p12_4",
+      "p12_5",
+      "p12_6"
+    ]
   },
   {
     "key": "FED|fiscal_and_service_federalism_preferences",
@@ -690,9 +766,11 @@
     "var_id": "agg_fiscal_and_service_federalism_preferences|FED",
     "type": "questionable",
     "alpha": 0.6026,
-    "n_items": 8,
+    "n_items": 7,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p38"
+    ]
   },
   {
     "key": "FED|legal_uniformity_preference",
@@ -710,7 +788,7 @@
     "var_id": "agg_security_governance_preferences|FED",
     "type": "questionable",
     "alpha": 0.6933,
-    "n_items": 5,
+    "n_items": 4,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -722,7 +800,11 @@
     "alpha": 0.6342,
     "n_items": 3,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p5",
+      "p6",
+      "p7"
+    ]
   },
   {
     "key": "GEN|traditional_gender_role_attitudes",
@@ -730,7 +812,7 @@
     "var_id": "agg_traditional_gender_role_attitudes|GEN",
     "type": "questionable",
     "alpha": 0.5063,
-    "n_items": 5,
+    "n_items": 2,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -741,8 +823,11 @@
     "type": "tier3_caveat",
     "alpha": 0.4071,
     "n_items": 3,
-    "n_valid": 637,
-    "reverse_coded": null
+    "n_valid": 427,
+    "reverse_coded": [
+      "p23_1",
+      "p23_5"
+    ]
   },
   {
     "key": "GEN|tolerance_of_gender_based_violence",
@@ -770,7 +855,7 @@
     "var_id": "agg_cultural_socialization_in_childhood|DEP",
     "type": "tier3_caveat",
     "alpha": 0.4802,
-    "n_items": 3,
+    "n_items": 2,
     "n_valid": 1188,
     "reverse_coded": null
   },
@@ -778,11 +863,15 @@
     "key": "DEP|reading_engagement_and_literacy",
     "column": "agg_reading_engagement_and_literacy",
     "var_id": "agg_reading_engagement_and_literacy|DEP",
-    "type": "single_item_tier2",
+    "type": "tier3_caveat",
     "alpha": 0.3654,
-    "selected_item": "p15c_2",
-    "item_total_r": 0.36,
-    "n_valid": 483
+    "n_items": 3,
+    "n_valid": 1200,
+    "reverse_coded": [
+      "p15a_1",
+      "p15a_2",
+      "p15a_3"
+    ]
   },
   {
     "key": "DEP|cultural_identity_and_heritage",
@@ -790,7 +879,7 @@
     "var_id": "agg_cultural_identity_and_heritage|DEP",
     "type": "tier3_caveat",
     "alpha": 0.4154,
-    "n_items": 6,
+    "n_items": 4,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -800,8 +889,8 @@
     "var_id": "agg_attitudes_toward_cultural_openness_and_foreign_influence|DEP",
     "type": "questionable",
     "alpha": 0.5163,
-    "n_items": 7,
-    "n_valid": 1174,
+    "n_items": 6,
+    "n_valid": 1200,
     "reverse_coded": null
   },
   {
@@ -816,13 +905,11 @@
   },
   {
     "key": "ECO|job_quality_and_labor_conditions",
-    "column": "agg_job_quality_and_labor_conditions",
-    "var_id": "agg_job_quality_and_labor_conditions|ECO",
-    "type": "questionable",
-    "alpha": 0.505,
-    "n_items": 5,
-    "n_valid": 231,
-    "reverse_coded": null
+    "column": null,
+    "type": "excluded",
+    "reason": "excluded_low_n",
+    "alpha": null,
+    "n_valid": 0
   },
   {
     "key": "ECO|job_search_and_employment_precarity",
@@ -842,19 +929,20 @@
     "var_id": "agg_labor_union_attitudes|ECO",
     "type": "questionable",
     "alpha": 0.607,
-    "n_items": 3,
+    "n_items": 2,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p22",
+      "p23"
+    ]
   },
   {
     "key": "ECO|human_capital_and_employment_preparation",
-    "column": "agg_human_capital_and_employment_preparation",
-    "var_id": "agg_human_capital_and_employment_preparation|ECO",
-    "type": "questionable",
-    "alpha": 0.6581,
-    "n_items": 4,
-    "n_valid": 657,
-    "reverse_coded": null
+    "column": null,
+    "type": "excluded",
+    "reason": "audit_drop",
+    "alpha": null,
+    "n_valid": 0
   },
   {
     "key": "NIN|perceived_situation_of_children_and_youth",
@@ -862,7 +950,7 @@
     "var_id": "agg_perceived_situation_of_children_and_youth|NIN",
     "type": "questionable",
     "alpha": 0.5463,
-    "n_items": 3,
+    "n_items": 2,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -882,8 +970,8 @@
     "var_id": "agg_youth_participation_and_voice|NIN",
     "type": "questionable",
     "alpha": 0.5462,
-    "n_items": 6,
-    "n_valid": 1181,
+    "n_items": 4,
+    "n_valid": 1200,
     "reverse_coded": null
   },
   {
@@ -902,7 +990,7 @@
     "var_id": "agg_family_cohesion_quality|FAM",
     "type": "questionable",
     "alpha": 0.5218,
-    "n_items": 5,
+    "n_items": 2,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -912,7 +1000,7 @@
     "var_id": "agg_ideal_family_normativity|FAM",
     "type": "tier3_caveat",
     "alpha": 0.4506,
-    "n_items": 6,
+    "n_items": 4,
     "n_valid": 972,
     "reverse_coded": null
   },
@@ -922,7 +1010,7 @@
     "var_id": "agg_intergenerational_obligations|FAM",
     "type": "tier3_caveat",
     "alpha": 0.4891,
-    "n_items": 5,
+    "n_items": 3,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -932,7 +1020,7 @@
     "var_id": "agg_conjugal_union_attitudes|FAM",
     "type": "questionable",
     "alpha": 0.5042,
-    "n_items": 7,
+    "n_items": 6,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -942,7 +1030,7 @@
     "var_id": "agg_family_value_transmission|FAM",
     "type": "tier3_caveat",
     "alpha": 0.4569,
-    "n_items": 3,
+    "n_items": 2,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -962,9 +1050,18 @@
     "var_id": "agg_science_technology_interest_engagement|CIE",
     "type": "good",
     "alpha": 0.8265,
-    "n_items": 8,
+    "n_items": 5,
     "n_valid": 1194,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p11",
+      "p22",
+      "p23",
+      "p35",
+      "p43",
+      "p38_4",
+      "p38_5",
+      "p38_6"
+    ]
   },
   {
     "key": "CIE|institutional_trust_in_science",
@@ -972,9 +1069,14 @@
     "var_id": "agg_institutional_trust_in_science|CIE",
     "type": "questionable",
     "alpha": 0.6367,
-    "n_items": 5,
+    "n_items": 4,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p32_1",
+      "p33",
+      "p40_1",
+      "p49_1"
+    ]
   },
   {
     "key": "CIE|perceived_societal_value_of_science_technology",
@@ -982,7 +1084,7 @@
     "var_id": "agg_perceived_societal_value_of_science_technology|CIE",
     "type": "questionable",
     "alpha": 0.5085,
-    "n_items": 8,
+    "n_items": 5,
     "n_valid": 1110,
     "reverse_coded": null
   },
@@ -992,9 +1094,17 @@
     "var_id": "agg_household_science_cultural_capital|CIE",
     "type": "good",
     "alpha": 0.8043,
-    "n_items": 7,
+    "n_items": 6,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p3_2",
+      "p3_3",
+      "p3_6",
+      "p3_8",
+      "p3_11",
+      "p4",
+      "p5"
+    ]
   },
   {
     "key": "EDU|perceived_education_quality",
@@ -1013,8 +1123,13 @@
     "type": "questionable",
     "alpha": 0.6073,
     "n_items": 4,
-    "n_valid": 1199,
-    "reverse_coded": null
+    "n_valid": 1194,
+    "reverse_coded": [
+      "p37",
+      "p55_3",
+      "p55_4",
+      "p55_5"
+    ]
   },
   {
     "key": "EDU|school_environment_quality",
@@ -1034,8 +1149,24 @@
     "var_id": "agg_digital_and_cultural_capital|EDU",
     "type": "good",
     "alpha": 0.745,
-    "n_items": 8,
+    "n_items": 4,
     "n_valid": 1199,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p47_3",
+      "p47_4",
+      "p47_6",
+      "p45_1",
+      "p45_2"
+    ]
+  },
+  {
+    "key": "EDU|social_media_engagement",
+    "column": "agg_social_media_engagement",
+    "var_id": "agg_social_media_engagement|EDU",
+    "type": "new_construct",
+    "alpha": null,
+    "n_items": 3,
+    "n_valid": 1199,
+    "description": "Social media account ownership and use of internet for news. Represents the social/communicative dimension of digital capital, split from device ownership via PCA (PC2 21.2% variance)."
   }
 ]

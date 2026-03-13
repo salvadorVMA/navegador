@@ -33,17 +33,28 @@ sys.path.insert(0, str(ROOT))
 
 V4_SVS_PATH = ROOT / "data" / "results" / "semantic_variable_selection_v4.json"
 FIXES_PATH = ROOT / "data" / "results" / "construct_structural_fixes.json"
+V5_OVERRIDES_PATH = ROOT / "data" / "results" / "construct_v5_overrides.json"
 
 
 def _is_sentinel(v: float) -> bool:
     return v >= 97 or v < 0
 
 
-def _clean_series(series: pd.Series) -> pd.Series:
-    """Convert to numeric, replace sentinels with NaN."""
+def _clean_series(series: pd.Series, extra_sentinels: Optional[List[int]] = None) -> pd.Series:
+    """Convert to numeric, replace sentinels and any extra depende/otra codes with NaN."""
     s = pd.to_numeric(series, errors="coerce")
     s = s.where(~s.apply(lambda v: _is_sentinel(v) if pd.notna(v) else False))
+    if extra_sentinels:
+        s = s.where(~s.isin(extra_sentinels))
     return s
+
+
+def _load_v5_overrides(path: Path = V5_OVERRIDES_PATH) -> Dict[str, Any]:
+    """Load v5 override rules; return empty dict if file missing."""
+    if path.exists():
+        with open(path) as f:
+            return json.load(f)
+    return {}
 
 
 def build_v4_constructs(
@@ -51,6 +62,7 @@ def build_v4_constructs(
     enc_nom_dict_rev: dict,
     svs_path: Path = V4_SVS_PATH,
     fixes_path: Path = FIXES_PATH,
+    overrides_path: Path = V5_OVERRIDES_PATH,
     alpha_tier2_threshold: float = 0.4,
 ) -> Tuple[dict, List[dict]]:
     """
@@ -66,6 +78,8 @@ def build_v4_constructs(
         Path to semantic_variable_selection_v4.json.
     fixes_path : Path
         Path to construct_structural_fixes.json (for alpha/tier info).
+    overrides_path : Path
+        Path to construct_v5_overrides.json (exclusions, direction fixes, sentinels).
 
     Returns
     -------
@@ -84,6 +98,16 @@ def build_v4_constructs(
             fixes = json.load(f)
         stats = fixes.get("final_stats", {})
 
+    # Load v5 overrides
+    ov = _load_v5_overrides(overrides_path)
+    excluded_keys = {k for k, v in ov.get("excluded", {}).items() if not k.startswith("_")}
+    items_to_drop = {k: set(v) for k, v in ov.get("items_to_drop", {}).items() if not k.startswith("_")}
+    items_to_add = {k: v for k, v in ov.get("items_to_add", {}).items() if not k.startswith("_")}
+    sentinel_overrides = {k: v for k, v in ov.get("item_sentinel_overrides", {}).items() if not k.startswith("_")}
+    reverse_overrides = {k: v.get("add", []) for k, v in ov.get("reverse_coded_overrides", {}).items() if not k.startswith("_")}
+    type_overrides = {k: v for k, v in ov.get("construct_type_overrides", {}).items() if not k.startswith("_")}
+    new_construct_defs = [c for c in ov.get("new_constructs", []) if c.get("domain")]
+
     manifest = []
     n_built = 0
 
@@ -98,12 +122,38 @@ def build_v4_constructs(
         for cluster in dom_data.get("construct_clusters", []):
             cname = cluster["name"]
             key = f"{domain}|{cname}"
-            construct_type = cluster.get("construct_type", "reflective_scale")
-            reverse_items = cluster.get("reverse_coded_items", [])
+
+            # Skip excluded constructs
+            if key in excluded_keys:
+                manifest.append({
+                    "key": key, "column": None, "type": "excluded",
+                    "reason": ov.get("excluded", {}).get(key, "excluded"),
+                    "alpha": None, "n_valid": 0,
+                })
+                continue
+
+            construct_type = type_overrides.get(key) or cluster.get("construct_type", "reflective_scale")
+
+            # Merge reverse_coded_items from SVS v4 + v5 overrides
+            reverse_items = list(cluster.get("reverse_coded_items", []) or [])
+            extra_reverse = reverse_overrides.get(key, [])
+            for item in extra_reverse:
+                if item not in reverse_items:
+                    reverse_items.append(item)
 
             qids_raw = cluster.get("question_cluster", [])
             qids_bare = [q.split("|")[0] if "|" in q else q for q in qids_raw]
+            # Apply items_to_drop override
+            drop_set = items_to_drop.get(key, set())
+            qids_bare = [q for q in qids_bare if q not in drop_set]
+            # Apply items_to_add override
+            for extra in items_to_add.get(key, []):
+                if extra not in qids_bare:
+                    qids_bare.append(extra)
             cols = [q for q in qids_bare if q in df.columns]
+
+            # Per-construct item sentinel overrides (depende/otra codes)
+            col_sentinels: Dict[str, List[int]] = sentinel_overrides.get(key, {})
 
             if not cols:
                 manifest.append({
@@ -126,7 +176,7 @@ def build_v4_constructs(
                 # Binary recode + sum
                 sub = pd.DataFrame(index=df.index)
                 for col in gateway_cols:
-                    s = _clean_series(df[col])
+                    s = _clean_series(df[col], extra_sentinels=col_sentinels.get(col))
                     if s.dropna().nunique() <= 2:
                         sub[col] = (s == 1).astype(float)
                         sub.loc[s.isna(), col] = np.nan
@@ -160,11 +210,13 @@ def build_v4_constructs(
                 continue
 
             # ── Tier 2 (alpha < threshold): single best item ──
-            if alpha is not None and alpha < alpha_tier2_threshold and len(cols) >= 2:
+            # Skip tier2 path if construct_type was explicitly overridden
+            _type_forced = key in type_overrides
+            if not _type_forced and alpha is not None and alpha < alpha_tier2_threshold and len(cols) >= 2:
                 # Pick item with highest item-total correlation
                 sub = pd.DataFrame()
                 for col in cols:
-                    sub[col] = _clean_series(df[col])
+                    sub[col] = _clean_series(df[col], extra_sentinels=col_sentinels.get(col))
                 clean = sub.dropna()
 
                 if len(clean) >= 10 and len(cols) >= 2:
@@ -210,7 +262,7 @@ def build_v4_constructs(
             # ── Standard aggregation (mean of items, with reverse coding) ──
             sub = pd.DataFrame()
             for col in cols:
-                sub[col] = _clean_series(df[col])
+                sub[col] = _clean_series(df[col], extra_sentinels=col_sentinels.get(col))
 
             # Apply reverse coding
             if reverse_items:
@@ -262,6 +314,63 @@ def build_v4_constructs(
                 "n_items": len(cols), "n_valid": n_valid,
                 "reverse_coded": reverse_items if reverse_items else None,
             })
+
+    # ── New constructs defined in v5 overrides (e.g. EDU splits) ──
+    for nc in new_construct_defs:
+        domain = nc.get("domain", "")
+        cname = nc.get("name", "")
+        key = f"{domain}|{cname}"
+        survey_name = enc_nom_dict_rev.get(domain)
+        if not survey_name or survey_name not in enc_dict:
+            manifest.append({"key": key, "column": None, "type": "no_survey", "n_valid": 0})
+            continue
+        df = enc_dict[survey_name].get("dataframe")
+        if not isinstance(df, pd.DataFrame):
+            continue
+
+        cols = [q for q in nc.get("question_cluster", []) if q in df.columns]
+        if not cols:
+            manifest.append({"key": key, "column": None, "type": "no_columns", "n_valid": 0})
+            continue
+
+        agg_col = f"agg_{cname}"
+        reverse_items = list(nc.get("reverse_coded_items", []) or [])
+        col_sentinels: Dict[str, List[int]] = sentinel_overrides.get(key, {})
+
+        sub = pd.DataFrame()
+        for col in cols:
+            sub[col] = _clean_series(df[col], extra_sentinels=col_sentinels.get(col))
+
+        if reverse_items:
+            for col in reverse_items:
+                if col in sub.columns:
+                    s = sub[col]
+                    mx, mn = s.max(), s.min()
+                    if pd.notna(mx) and pd.notna(mn) and mx > mn:
+                        sub[col] = mx + mn - s
+
+        min_count = max(1, len(cols) // 2)
+        valid_mask = sub.notna().sum(axis=1) >= min_count
+        raw = sub.mean(axis=1, skipna=True).where(valid_mask)
+        n_valid = int(raw.dropna().shape[0])
+
+        if n_valid < 10:
+            manifest.append({"key": key, "column": None, "type": "insufficient_data", "n_valid": n_valid})
+            continue
+
+        lo, hi = raw.min(), raw.max()
+        scaled = (1.0 + 9.0 * (raw - lo) / (hi - lo)) if pd.notna(lo) and hi > lo else raw * 0 + 5.0
+
+        df[agg_col] = np.nan
+        df.loc[scaled.dropna().index, agg_col] = scaled.dropna().astype(float)
+        n_built += 1
+
+        manifest.append({
+            "key": key, "column": agg_col, "var_id": f"{agg_col}|{domain}",
+            "type": "new_construct", "alpha": None,
+            "n_items": len(cols), "n_valid": n_valid,
+            "description": nc.get("description", ""),
+        })
 
     print(f"  build_v4_constructs: {n_built} columns built across "
           f"{len(svs.get('domains', {}))} domains")

@@ -1,0 +1,3064 @@
+[
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure tolerance attitudes, but p54_5, p54_6, and p54_8 measure actual social contact/friendship patterns rather than openness or acceptance beliefs.",
+    "items": [
+      {
+        "item": "p9",
+        "verdict": "OK",
+        "reason": "Directly measures opinion on how cultural differences should be managed in society, core to the construct."
+      },
+      {
+        "item": "p54_5",
+        "verdict": "FLAG",
+        "reason": "Measures actual friendship composition (behavioral outcome) rather than openness or acceptance toward religious diversity."
+      },
+      {
+        "item": "p54_6",
+        "verdict": "FLAG",
+        "reason": "Measures actual friendship composition based on political views rather than tolerance or acceptance attitudes."
+      },
+      {
+        "item": "p54_8",
+        "verdict": "FLAG",
+        "reason": "Measures actual friendship composition with homosexuals rather than acceptance or openness toward homosexuality."
+      },
+      {
+        "item": "p68",
+        "verdict": "OK",
+        "reason": "Directly measures acceptance and support for rights of homosexual couples, core attitudinal component of tolerance."
+      },
+      {
+        "item": "p73_1",
+        "verdict": "OK",
+        "reason": "Measures willingness to accept people of different religions in close proximity, reflecting openness to religious diversity."
+      }
+    ],
+    "_key": "IDE|tolerance_social_diversity",
+    "_items_reviewed": [
+      "p9",
+      "p54_5",
+      "p54_6",
+      "p54_8",
+      "p68",
+      "p73_1"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure personal agency and optimism about the future, but p24 measures retrospective life satisfaction rather than forward-looking efficacy or control.",
+    "items": [
+      {
+        "item": "p19",
+        "verdict": "OK",
+        "reason": "Directly measures perceived ability to secure economic future, a core component of personal efficacy and optimism about life outcomes."
+      },
+      {
+        "item": "p20",
+        "verdict": "OK",
+        "reason": "Directly measures confidence in achieving future goals and projects, a central element of personal agency and optimism."
+      },
+      {
+        "item": "p24",
+        "verdict": "FLAG",
+        "reason": "Measures retrospective satisfaction with past life rather than forward-looking sense of control, efficacy, or optimism about future outcomes."
+      },
+      {
+        "item": "p30_1",
+        "verdict": "OK",
+        "reason": "Directly measures perceived control over a specific life domain (economic situation), a core indicator of personal agency."
+      }
+    ],
+    "_key": "IDE|personal_optimism_efficacy",
+    "_items_reviewed": [
+      "p19",
+      "p20",
+      "p24",
+      "p30_1"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure moral conservatism on family and sexuality norms, but p57 measures political ideology which is conceptually distinct from moral normative conservatism.",
+    "items": [
+      {
+        "item": "p55",
+        "verdict": "OK",
+        "reason": "Directly measures conservative moral norm regarding corporal punishment of children, a core domain of the construct."
+      },
+      {
+        "item": "p56",
+        "verdict": "OK",
+        "reason": "Directly measures self-identified conservatism in family and household moral matters, which is central to the construct."
+      },
+      {
+        "item": "p57",
+        "verdict": "FLAG",
+        "reason": "Measures political ideology conservatism-liberalism, which is substantively distinct from moral normative conservatism on family, sexuality, and social conduct."
+      },
+      {
+        "item": "p58",
+        "verdict": "OK",
+        "reason": "Measures conservative moral norms regarding family autonomy and independence, relevant to traditional family structure values."
+      },
+      {
+        "item": "p60",
+        "verdict": "OK",
+        "reason": "Directly measures conservative moral norms regarding premarital sexual conduct, explicitly mentioned in the construct description."
+      }
+    ],
+    "_key": "IDE|moral_normative_conservatism",
+    "_items_reviewed": [
+      "p55",
+      "p56",
+      "p57",
+      "p58",
+      "p60"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Items p4 and p7 align well with the construct, but p6 measures problem prioritization rather than perceived severity or personal relevance.",
+    "items": [
+      {
+        "item": "p4",
+        "verdict": "OK",
+        "reason": "Directly measures perceived severity of environmental conditions at the macro (national) level, core to environmental problem salience."
+      },
+      {
+        "item": "p6",
+        "verdict": "FLAG",
+        "reason": "Measures which environmental problem respondents rank as most important nationally, which is a prioritization judgment distinct from perceived severity or personal relevance of environmental problems."
+      },
+      {
+        "item": "p7",
+        "verdict": "OK",
+        "reason": "Directly measures personal relevance by asking which environmental problem most affects the respondent and family at the micro (household) level."
+      }
+    ],
+    "_key": "MED|environmental_problem_salience",
+    "_items_reviewed": [
+      "p4",
+      "p6",
+      "p7"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure self-assessed knowledge (self-efficacy), but p28_1 and p36_1 measure actual knowledge/recall rather than perceived competence.",
+    "items": [
+      {
+        "item": "p8",
+        "verdict": "OK",
+        "reason": "Directly measures self-assessed understanding of environmental problem causes on a 0-10 scale, aligned with construct definition."
+      },
+      {
+        "item": "p9",
+        "verdict": "OK",
+        "reason": "Directly measures self-assessed understanding of environmental solutions on a 0-10 scale, aligned with construct definition."
+      },
+      {
+        "item": "p28_1",
+        "verdict": "FLAG",
+        "reason": "Measures actual ability to recall/mention renewable energy sources, not perceived knowledge competence; this is objective knowledge, not self-efficacy."
+      },
+      {
+        "item": "p29",
+        "verdict": "OK",
+        "reason": "Directly measures self-assessed knowledge level regarding renewable energy on a 0-10 scale, aligned with construct definition."
+      },
+      {
+        "item": "p36_1",
+        "verdict": "FLAG",
+        "reason": "Measures actual knowledge of climate change causes through open-ended recall, not perceived competence; this is objective knowledge, not self-efficacy."
+      }
+    ],
+    "_key": "MED|environmental_knowledge_self_efficacy",
+    "_items_reviewed": [
+      "p8",
+      "p9",
+      "p28_1",
+      "p29",
+      "p36_1"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure active civic/collective environmental actions, but p34_5 measures passive attendance at informational events rather than active engagement.",
+    "items": [
+      {
+        "item": "p34_1",
+        "verdict": "OK",
+        "reason": "Signing collective petitions is a direct form of active civic environmental engagement."
+      },
+      {
+        "item": "p34_2",
+        "verdict": "OK",
+        "reason": "Donating to environmental groups is a direct form of active collective environmental engagement."
+      },
+      {
+        "item": "p34_3",
+        "verdict": "OK",
+        "reason": "Participating in protests or demonstrations is a direct form of active civic environmental engagement."
+      },
+      {
+        "item": "p34_4",
+        "verdict": "OK",
+        "reason": "Reporting environmental damage to authorities is a direct form of active civic environmental engagement."
+      },
+      {
+        "item": "p34_5",
+        "verdict": "FLAG",
+        "reason": "Attending talks or conferences is passive information consumption rather than active civic or collective action in defense of the environment."
+      }
+    ],
+    "_key": "MED|pro_environmental_civic_engagement",
+    "_items_reviewed": [
+      "p34_1",
+      "p34_2",
+      "p34_3",
+      "p34_4",
+      "p34_5"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Three items directly measure perceived intergenerational mobility, but p36 measures beliefs about structural barriers (education-employment link) rather than perceived mobility outcomes or opportunities.",
+    "items": [
+      {
+        "item": "p22",
+        "verdict": "OK",
+        "reason": "Directly measures perceived personal economic mobility relative to parents at comparable life stage."
+      },
+      {
+        "item": "p23",
+        "verdict": "OK",
+        "reason": "Directly measures expected intergenerational mobility for next generation relative to respondent's current situation."
+      },
+      {
+        "item": "p24",
+        "verdict": "OK",
+        "reason": "Directly measures perceived structural opportunities for youth upward mobility relative to parental generation."
+      },
+      {
+        "item": "p36",
+        "verdict": "FLAG",
+        "reason": "Measures belief about the efficacy of education as a pathway to employment rather than perceived intergenerational mobility or structural opportunity."
+      }
+    ],
+    "_key": "POB|intergenerational_mobility_perception",
+    "_items_reviewed": [
+      "p22",
+      "p23",
+      "p24",
+      "p36"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure subjective economic wellbeing and agency as described, but p10 measures objective social class identification rather than subjective economic control or life satisfaction.",
+    "items": [
+      {
+        "item": "p13",
+        "verdict": "OK",
+        "reason": "Directly measures perceived resilience and personal strength in facing life adversities, a core component of subjective agency."
+      },
+      {
+        "item": "p14",
+        "verdict": "OK",
+        "reason": "Directly measures perceived influence of national economic conditions on personal welfare, a key element of the construct."
+      },
+      {
+        "item": "p15",
+        "verdict": "OK",
+        "reason": "Directly measures perceived personal agency and control over future economic outcomes."
+      },
+      {
+        "item": "p16",
+        "verdict": "OK",
+        "reason": "Measures overall life satisfaction, which is explicitly included in the construct description as part of subjective economic wellbeing."
+      },
+      {
+        "item": "p10",
+        "verdict": "FLAG",
+        "reason": "Measures objective social class self-identification rather than subjective economic control, resilience, or life satisfaction; it is a demographic proxy correlated with but semantically distinct from the construct."
+      }
+    ],
+    "_key": "POB|subjective_economic_wellbeing_and_agency",
+    "_items_reviewed": [
+      "p13",
+      "p14",
+      "p15",
+      "p16",
+      "p10"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure normative commitment to democracy and satisfaction with democratic functioning, but p30 measures conceptual understanding of democracy rather than valuation or trust in it.",
+    "items": [
+      {
+        "item": "p30",
+        "verdict": "FLAG",
+        "reason": "Measures which aspect respondents consider most important to democracy (conceptual knowledge/priorities) rather than their valuation, trust, or satisfaction with democratic governance."
+      },
+      {
+        "item": "p31",
+        "verdict": "OK",
+        "reason": "Directly measures normative commitment to democracy as a preferred system of governance."
+      },
+      {
+        "item": "p32",
+        "verdict": "OK",
+        "reason": "Measures evaluation of Mexico's actual democratic functioning, a core component of assessing democratic legitimacy."
+      },
+      {
+        "item": "p35",
+        "verdict": "OK",
+        "reason": "Directly measures satisfaction with democracy in Mexico, a key indicator of democratic legitimacy support."
+      },
+      {
+        "item": "p36",
+        "verdict": "OK",
+        "reason": "Measures normative beliefs about the relationship between democracy and human rights, reflecting commitment to democratic principles."
+      }
+    ],
+    "_key": "CUL|democratic_legitimacy_support",
+    "_items_reviewed": [
+      "p30",
+      "p31",
+      "p32",
+      "p35",
+      "p36"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure electoral integrity perceptions and institutional trust in electoral bodies, but p71 and p72 shift focus to vote-buying behavior—a substantively distinct electoral malpractice rather than trust in institutions or confidence in process integrity.",
+    "items": [
+      {
+        "item": "p41",
+        "verdict": "OK",
+        "reason": "Directly measures confidence in electoral process integrity (freedom and fairness), a core component of electoral confidence."
+      },
+      {
+        "item": "p42",
+        "verdict": "OK",
+        "reason": "Directly measures trust in INE's ability to ensure clean elections, a key institutional trust component."
+      },
+      {
+        "item": "p43",
+        "verdict": "OK",
+        "reason": "Measures confidence in electoral reliability under expanded INE jurisdiction, assessing trust in institutional capacity."
+      },
+      {
+        "item": "p71",
+        "verdict": "FLAG",
+        "reason": "Measures perception of vote-buying prevalence, which is a specific electoral malpractice behavior rather than trust in institutions or confidence in process integrity."
+      },
+      {
+        "item": "p72",
+        "verdict": "FLAG",
+        "reason": "Measures personal experience with vote-buying offers, a behavioral outcome and individual victimization measure rather than institutional trust or electoral confidence."
+      }
+    ],
+    "_key": "CUL|institutional_trust_and_electoral_confidence",
+    "_items_reviewed": [
+      "p41",
+      "p42",
+      "p43",
+      "p71",
+      "p72"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure political interest, relevance, and efficacy as described, but p21 measures beliefs about political outcomes rather than personal efficacy or engagement, and p51 conflates satisfaction with participation opportunities with lack of interest.",
+    "items": [
+      {
+        "item": "p10",
+        "verdict": "OK",
+        "reason": "Directly measures subjective interest in politics, a core component of the construct."
+      },
+      {
+        "item": "p11",
+        "verdict": "OK",
+        "reason": "Directly measures perceived relevance of politics to daily life, a core component of the construct."
+      },
+      {
+        "item": "p20",
+        "verdict": "OK",
+        "reason": "Measures subjective comprehension/complexity of politics, a core component of the construct."
+      },
+      {
+        "item": "p21",
+        "verdict": "FLAG",
+        "reason": "Measures beliefs about whether politics improves citizens' welfare, which is a political attitude/outcome evaluation distinct from personal efficacy, relevance, or engagement."
+      },
+      {
+        "item": "p25",
+        "verdict": "OK",
+        "reason": "Measures perceived value of political participation, which relates to engagement and perceived relevance of politics."
+      },
+      {
+        "item": "p46",
+        "verdict": "OK",
+        "reason": "Directly measures perceived ability to influence government decisions, a core component of political efficacy."
+      },
+      {
+        "item": "p51",
+        "verdict": "FLAG",
+        "reason": "Conflates satisfaction with current participation opportunities with lack of interest; the response option 'no le interesa participar' measures disinterest rather than efficacy or engagement."
+      },
+      {
+        "item": "p52",
+        "verdict": "OK",
+        "reason": "Measures satisfaction that one's opinions are heard by government, which reflects perceived influence and efficacy."
+      }
+    ],
+    "_key": "CUL|political_efficacy_and_engagement",
+    "_items_reviewed": [
+      "p10",
+      "p11",
+      "p20",
+      "p21",
+      "p25",
+      "p46",
+      "p51",
+      "p52"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure authoritarian predisposition coherently, but p60 measures democratic compliance behavior rather than authoritarian preference, and p23 measures pragmatic problem-solving rather than authoritarianism.",
+    "items": [
+      {
+        "item": "p17",
+        "verdict": "OK",
+        "reason": "Directly measures preference for security over freedom, a core component of authoritarian predisposition."
+      },
+      {
+        "item": "p61",
+        "verdict": "OK",
+        "reason": "Directly measures preference for strong executive leadership over legal constraints, a central element of the construct."
+      },
+      {
+        "item": "p64",
+        "verdict": "OK",
+        "reason": "Directly measures willingness to bypass legal rules to achieve justice, consistent with the construct's tolerance for rule-breaking."
+      },
+      {
+        "item": "p65",
+        "verdict": "OK",
+        "reason": "Directly measures agreement that breaking the law can be justified for moral ends, a key aspect of authoritarian predisposition."
+      },
+      {
+        "item": "p60",
+        "verdict": "FLAG",
+        "reason": "Measures compliance with majority decisions regardless of personal preference, which is democratic deference rather than authoritarian predisposition toward strong leadership or rule-breaking."
+      },
+      {
+        "item": "p23",
+        "verdict": "FLAG",
+        "reason": "Measures pragmatic willingness to implement effective solutions despite conflict, which is a general problem-solving orientation distinct from authoritarian preference for strong leadership or subordinating freedoms to order."
+      }
+    ],
+    "_key": "CUL|authoritarian_predisposition",
+    "_items_reviewed": [
+      "p17",
+      "p61",
+      "p64",
+      "p65",
+      "p60",
+      "p23"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All items directly measure perceived political influence of specified actors using identical semantic framing and response scales.",
+    "items": [
+      {
+        "item": "p84_1",
+        "verdict": "OK"
+      },
+      {
+        "item": "p84_2",
+        "verdict": "OK"
+      },
+      {
+        "item": "p84_3",
+        "verdict": "OK"
+      },
+      {
+        "item": "p84_4",
+        "verdict": "OK"
+      },
+      {
+        "item": "p84_6",
+        "verdict": "OK"
+      },
+      {
+        "item": "p84_7",
+        "verdict": "OK"
+      },
+      {
+        "item": "p84_8",
+        "verdict": "OK"
+      }
+    ],
+    "_key": "CUL|perceived_political_influence_of_actors",
+    "_items_reviewed": [
+      "p84_1",
+      "p84_2",
+      "p84_3",
+      "p84_4",
+      "p84_6",
+      "p84_7",
+      "p84_8"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items validly measure supernatural and religious beliefs, but p17_15 measures a naturalistic psychological/cognitive phenomenon rather than a supernatural entity or force.",
+    "items": [
+      {
+        "item": "p17_1",
+        "verdict": "OK",
+        "reason": "Directly measures belief in God, a core supernatural entity central to the construct."
+      },
+      {
+        "item": "p17_2",
+        "verdict": "OK",
+        "reason": "Directly measures belief in afterlife, a fundamental supernatural/metaphysical belief."
+      },
+      {
+        "item": "p17_4",
+        "verdict": "OK",
+        "reason": "Directly measures belief in hell, an orthodox Christian supernatural entity."
+      },
+      {
+        "item": "p17_5",
+        "verdict": "OK",
+        "reason": "Directly measures belief in paradise, an orthodox Christian supernatural entity."
+      },
+      {
+        "item": "p17_6",
+        "verdict": "OK",
+        "reason": "Directly measures belief in sin, a core religious/supernatural concept."
+      },
+      {
+        "item": "p17_7",
+        "verdict": "OK",
+        "reason": "Directly measures belief in the soul, a fundamental supernatural entity."
+      },
+      {
+        "item": "p17_8",
+        "verdict": "OK",
+        "reason": "Directly measures belief in resurrection of the dead, an orthodox Christian supernatural belief."
+      },
+      {
+        "item": "p17_9",
+        "verdict": "OK",
+        "reason": "Directly measures belief in the devil, a core supernatural entity in Christian cosmology."
+      },
+      {
+        "item": "p17_10",
+        "verdict": "OK",
+        "reason": "Directly measures belief in reincarnation, a syncretic/folk supernatural belief."
+      },
+      {
+        "item": "p17_11",
+        "verdict": "OK",
+        "reason": "Directly measures belief in witchcraft, a folk supernatural belief explicitly mentioned in the construct description."
+      },
+      {
+        "item": "p17_12",
+        "verdict": "OK",
+        "reason": "Directly measures belief in karma, a metaphysical supernatural belief explicitly mentioned in the construct description."
+      },
+      {
+        "item": "p17_13",
+        "verdict": "OK",
+        "reason": "Directly measures belief in limpias, a folk/syncretic supernatural practice explicitly mentioned in the construct description."
+      },
+      {
+        "item": "p17_14",
+        "verdict": "OK",
+        "reason": "Directly measures belief in destiny/fate, a metaphysical supernatural force."
+      },
+      {
+        "item": "p17_15",
+        "verdict": "FLAG",
+        "reason": "Measures belief in the power of mind, a naturalistic psychological/cognitive phenomenon rather than a supernatural entity or metaphysical force."
+      }
+    ],
+    "_key": "REL|supernatural_beliefs",
+    "_items_reviewed": [
+      "p17_1",
+      "p17_2",
+      "p17_4",
+      "p17_5",
+      "p17_6",
+      "p17_7",
+      "p17_8",
+      "p17_9",
+      "p17_10",
+      "p17_11",
+      "p17_12",
+      "p17_13",
+      "p17_14",
+      "p17_15"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure internalized religious practice and meaning-making, but one item measures a specific behavioral tendency that conflates religious practice with folk devotionalism in a way that may not reflect personal religiosity as defined.",
+    "items": [
+      {
+        "item": "p10",
+        "verdict": "OK",
+        "reason": "Directly measures prayer outside formal worship, a core indicator of personal religious practice."
+      },
+      {
+        "item": "p12",
+        "verdict": "OK",
+        "reason": "Directly measures finding comfort and strength in religion, a key aspect of personal meaningfulness."
+      },
+      {
+        "item": "p13_1",
+        "verdict": "OK",
+        "reason": "Directly measures using religious values to guide family behavior, explicitly mentioned in the construct description."
+      },
+      {
+        "item": "p14",
+        "verdict": "OK",
+        "reason": "Directly measures reliance on clergy for life decisions, explicitly mentioned in the construct description."
+      },
+      {
+        "item": "p25",
+        "verdict": "OK",
+        "reason": "Directly measures prayer, meditation, and contemplation practices, core indicators of personal religious practice."
+      },
+      {
+        "item": "p11",
+        "verdict": "FLAG",
+        "reason": "Measures willingness to petition specific saints/religious figures, which is a folk devotional practice distinct from internalized personal religiosity and may reflect cultural tradition rather than personal religious commitment."
+      }
+    ],
+    "_key": "REL|personal_religiosity",
+    "_items_reviewed": [
+      "p10",
+      "p12",
+      "p13_1",
+      "p14",
+      "p25",
+      "p11"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All three items directly measure core components of religious socialization: family religious homogeneity, formal religious education received, and intergenerational transmission of religious beliefs.",
+    "items": [
+      {
+        "item": "p5",
+        "verdict": "OK",
+        "reason": "Directly measures family religious homogeneity, a key indicator of the religious socialization environment."
+      },
+      {
+        "item": "p6",
+        "verdict": "OK",
+        "reason": "Directly measures receipt of formal religious education, a primary institutional mechanism of religious socialization."
+      },
+      {
+        "item": "p33_1",
+        "verdict": "OK",
+        "reason": "Directly measures alignment between respondent's and parents' religious thinking, capturing intergenerational transmission of religious identity."
+      }
+    ],
+    "_key": "REL|religious_socialization",
+    "_items_reviewed": [
+      "p5",
+      "p6",
+      "p33_1"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items directly measure church-state separation attitudes, but p58 conflates a descriptive premise (media currently broadcasts religious content) with an attitudinal question, making it semantically distinct from the normative boundary-setting focus of other items.",
+    "items": [
+      {
+        "item": "p52_1",
+        "verdict": "OK",
+        "reason": "Directly measures attitudes toward clergy political speech in religious settings, a core church-state boundary issue."
+      },
+      {
+        "item": "p55",
+        "verdict": "OK",
+        "reason": "Directly measures attitudes toward public resource allocation to religious events, a central church-state separation concern."
+      },
+      {
+        "item": "p56",
+        "verdict": "OK",
+        "reason": "Directly measures attitudes toward institutional religious political participation through party formation, a key church-state boundary."
+      },
+      {
+        "item": "p57",
+        "verdict": "OK",
+        "reason": "Directly measures attitudes toward tax treatment of religious institutions, reflecting their public-sphere status and secular governance principles."
+      },
+      {
+        "item": "p58",
+        "verdict": "FLAG",
+        "reason": "Embeds a factual premise about current media practices before asking about agreement, conflating descriptive reality with normative attitudes about religious content in media, which is tangentially related to institutional church-state boundaries rather than directly measuring them."
+      }
+    ],
+    "_key": "REL|church_state_separation",
+    "_items_reviewed": [
+      "p52_1",
+      "p55",
+      "p56",
+      "p57",
+      "p58"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All four items directly measure retrospective and prospective security trajectory assessments at both personal and national levels, with clear semantic alignment to the construct definition.",
+    "items": [
+      {
+        "item": "p3",
+        "verdict": "OK",
+        "reason": "Measures retrospective personal security trajectory (past 12 months), directly aligned with construct."
+      },
+      {
+        "item": "p4",
+        "verdict": "OK",
+        "reason": "Measures prospective personal security trajectory (next 12 months), directly aligned with construct."
+      },
+      {
+        "item": "p5",
+        "verdict": "OK",
+        "reason": "Measures retrospective national public security trajectory (past 12 months), directly aligned with construct."
+      },
+      {
+        "item": "p6",
+        "verdict": "OK",
+        "reason": "Measures prospective national public security trajectory (next 12 months), directly aligned with construct."
+      }
+    ],
+    "_key": "SEG|perceived_security_trajectory",
+    "_items_reviewed": [
+      "p3",
+      "p4",
+      "p5",
+      "p6"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All three items measure distinct but semantically related dimensions of police institutional legitimacy: perceived corruption, human rights violations, and normative acceptance of police authority.",
+    "items": [
+      {
+        "item": "p28_1",
+        "verdict": "OK",
+        "reason": "Directly measures perceived corruption, a key component of institutional trustworthiness and legitimacy."
+      },
+      {
+        "item": "p29_1",
+        "verdict": "OK",
+        "reason": "Directly measures perceived human rights violations, a critical dimension of police legitimacy and trustworthiness."
+      },
+      {
+        "item": "p53",
+        "verdict": "OK",
+        "reason": "Directly measures normative acceptance of police authority and compliance with police decisions, a core element of institutional legitimacy."
+      }
+    ],
+    "_key": "SEG|police_institutional_legitimacy",
+    "_items_reviewed": [
+      "p28_1",
+      "p29_1",
+      "p53"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure fear of crime victimization and avoidance behaviors, but two items measure fear of wrongful arrest and perceived probability of unjust imprisonment, which are substantively distinct constructs.",
+    "items": [
+      {
+        "item": "p11_1",
+        "verdict": "OK",
+        "reason": "Directly measures subjective fear of a specific crime (street robbery with violence), which is core to the construct."
+      },
+      {
+        "item": "p22_1",
+        "verdict": "OK",
+        "reason": "Directly measures avoidance of places due to crime fear, a key behavioral manifestation of the construct."
+      },
+      {
+        "item": "p23_1",
+        "verdict": "OK",
+        "reason": "Directly measures cessation of activities (going out at night) to reduce crime victimization risk, a core construct element."
+      },
+      {
+        "item": "p48",
+        "verdict": "FLAG",
+        "reason": "Measures fear of wrongful arrest by authorities, which is distinct from fear of crime victimization and not part of the described construct domain."
+      },
+      {
+        "item": "p49",
+        "verdict": "FLAG",
+        "reason": "Measures perceived probability of unjust imprisonment in the criminal justice system, which concerns institutional injustice rather than crime victimization fear or avoidance."
+      }
+    ],
+    "_key": "SEG|fear_and_risk_avoidance",
+    "_items_reviewed": [
+      "p11_1",
+      "p22_1",
+      "p23_1",
+      "p48",
+      "p49"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Four items directly measure punitive and vigilante attitudes, but p72 measures approval of specific government anti-drug actions rather than endorsement of coercive or extralegal response principles.",
+    "items": [
+      {
+        "item": "p66",
+        "verdict": "OK",
+        "reason": "Directly measures endorsement of using violence to combat violence, a core component of the construct."
+      },
+      {
+        "item": "p67",
+        "verdict": "OK",
+        "reason": "Directly measures preference for security over liberty, explicitly mentioned in the construct description."
+      },
+      {
+        "item": "p68",
+        "verdict": "OK",
+        "reason": "Directly measures endorsement of community self-justice when authorities fail, a core vigilante attitude component."
+      },
+      {
+        "item": "p71",
+        "verdict": "OK",
+        "reason": "Directly measures support for capital punishment, explicitly mentioned in the construct description."
+      },
+      {
+        "item": "p72",
+        "verdict": "FLAG",
+        "reason": "Measures approval of specific government anti-drug policy implementation rather than endorsement of punitive/vigilante response principles, conflating policy evaluation with attitudinal construct."
+      }
+    ],
+    "_key": "SEG|punitive_and_vigilante_attitudes",
+    "_items_reviewed": [
+      "p66",
+      "p67",
+      "p68",
+      "p71",
+      "p72"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All items directly measure physical health limitations on everyday functioning within the specified domain of moderate physical effort, stair climbing, and activity/work reduction.",
+    "items": [
+      {
+        "item": "p2",
+        "verdict": "OK",
+        "reason": "Directly measures limitation in moderate physical effort (walking 30 minutes, household cleaning) as described in construct definition."
+      },
+      {
+        "item": "p3",
+        "verdict": "OK",
+        "reason": "Directly measures limitation in stair climbing, explicitly mentioned in construct definition."
+      },
+      {
+        "item": "p4",
+        "verdict": "OK",
+        "reason": "Measures reduced activity performance due to physical health in past four weeks, core to functional health status construct."
+      },
+      {
+        "item": "p5",
+        "verdict": "OK",
+        "reason": "Measures work and activity limitation due to physical health, directly aligned with construct's focus on reduced work performance."
+      }
+    ],
+    "_key": "SAL|functional_health_status",
+    "_items_reviewed": [
+      "p2",
+      "p3",
+      "p4",
+      "p5"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items validly measure subjective wellbeing dimensions, but one item measures emotional state rather than self-assessed quality of life or satisfaction.",
+    "items": [
+      {
+        "item": "p37",
+        "verdict": "OK",
+        "reason": "Directly measures self-assessed quality of life, a core evaluative dimension of subjective wellbeing."
+      },
+      {
+        "item": "p38",
+        "verdict": "OK",
+        "reason": "Directly measures life satisfaction, a central evaluative component of subjective wellbeing."
+      },
+      {
+        "item": "p39",
+        "verdict": "OK",
+        "reason": "Directly measures enjoyment of life, an affective dimension of subjective wellbeing explicitly mentioned in the construct description."
+      },
+      {
+        "item": "p40",
+        "verdict": "OK",
+        "reason": "Directly measures sexual satisfaction, explicitly included in the construct description as part of subjective wellbeing."
+      },
+      {
+        "item": "p8_1",
+        "verdict": "FLAG",
+        "reason": "Measures momentary emotional state (feeling calm and tranquil) rather than self-assessed quality of life, life satisfaction, or enjoyment—a transient affective experience distinct from the evaluative wellbeing construct."
+      }
+    ],
+    "_key": "SAL|subjective_wellbeing",
+    "_items_reviewed": [
+      "p37",
+      "p38",
+      "p39",
+      "p40",
+      "p8_1"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Items p34 and p35 directly measure alcohol consumption frequency and intensity as described, but p28 measures only lifetime smoking history without capturing current smoking intensity or frequency.",
+    "items": [
+      {
+        "item": "p28",
+        "verdict": "FLAG",
+        "reason": "Measures lifetime smoking history (yes/no) but does not capture current smoking status, intensity, or frequency as required by the construct description; a behavioral outcome indicator rather than engagement in the behavior."
+      },
+      {
+        "item": "p34",
+        "verdict": "OK",
+        "reason": "Directly measures frequency of alcohol consumption in the past 12 months, which aligns with the construct's focus on frequency and intensity of alcohol consumption."
+      },
+      {
+        "item": "p35",
+        "verdict": "OK",
+        "reason": "Directly measures intensity of alcohol consumption (maximum drinks per occasion in past 12 months), which aligns with the construct's focus on intensity of alcohol consumption."
+      }
+    ],
+    "_key": "SAL|health_risk_behaviors",
+    "_items_reviewed": [
+      "p28",
+      "p34",
+      "p35"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items directly measure perceived discrimination against indigenous people, but p20 measures general skin color discrimination without indigenous-specific focus, making it tangentially related rather than directly on-target.",
+    "items": [
+      {
+        "item": "p20",
+        "verdict": "FLAG",
+        "reason": "Measures perception of skin color discrimination in general society rather than discrimination specifically against indigenous people; conflates racial/colorism discrimination with indigenous-specific discrimination."
+      },
+      {
+        "item": "p21",
+        "verdict": "OK",
+        "reason": "Directly measures recognition of racism in Mexico, which is foundational to perceiving systemic discrimination against indigenous populations."
+      },
+      {
+        "item": "p25_1",
+        "verdict": "OK",
+        "reason": "Directly assesses whether employment discrimination against indigenous people is recognized as discriminatory, measuring attitudinal recognition of indigenous-specific discrimination."
+      },
+      {
+        "item": "p34_1",
+        "verdict": "OK",
+        "reason": "Directly measures perception that indigenous identity creates systemic barriers to employment, capturing assessment of structural inequality affecting indigenous people."
+      }
+    ],
+    "_key": "IND|perceived_indigenous_discrimination",
+    "_items_reviewed": [
+      "p20",
+      "p21",
+      "p25_1",
+      "p34_1"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Two items measure willingness/acceptance (on-target), but one item measures past behavior/experience rather than willingness or social distance.",
+    "items": [
+      {
+        "item": "p37_1",
+        "verdict": "OK",
+        "reason": "Directly measures willingness to engage in a professional/domestic relationship (hiring for childcare), reflecting behavioral acceptance and social distance."
+      },
+      {
+        "item": "p39_1",
+        "verdict": "FLAG",
+        "reason": "Measures past friendship experience rather than willingness or social distance; a behavioral outcome that may correlate with but is semantically distinct from the construct of social distance attitudes."
+      },
+      {
+        "item": "p40_1",
+        "verdict": "OK",
+        "reason": "Directly measures willingness to allow indigenous people into one's home, a core indicator of residential social distance and acceptance."
+      }
+    ],
+    "_key": "IND|social_distance_toward_indigenous_people",
+    "_items_reviewed": [
+      "p37_1",
+      "p39_1",
+      "p40_1"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "Both items directly measure the intended construct of national economic outlook through retrospective (p1) and prospective (p2) evaluations of Mexico's economic situation.",
+    "items": [
+      {
+        "item": "p1",
+        "verdict": "OK",
+        "reason": "Directly measures retrospective sociotropic economic assessment by comparing current national economic situation to one year ago."
+      },
+      {
+        "item": "p2",
+        "verdict": "OK",
+        "reason": "Directly measures prospective economic expectations by asking about anticipated changes in the country's economic situation over the next year."
+      }
+    ],
+    "_key": "IND|national_economic_outlook",
+    "_items_reviewed": [
+      "p1",
+      "p2"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure critical assessment of media quality and coverage, but p53_1 measures trust in family information sources, which is semantically distinct from evaluating media institutions.",
+    "items": [
+      {
+        "item": "p54",
+        "verdict": "OK",
+        "reason": "Directly measures perceived quality of Mexican media content, a core component of media quality evaluation."
+      },
+      {
+        "item": "p55",
+        "verdict": "OK",
+        "reason": "Assesses satisfaction with how public affairs are covered in media, directly aligned with the construct's coverage evaluation domain."
+      },
+      {
+        "item": "p66",
+        "verdict": "OK",
+        "reason": "Measures perceived difficulty in obtaining reliable information from media, reflecting critical assessment of information completeness and trustworthiness."
+      },
+      {
+        "item": "p69_1",
+        "verdict": "OK",
+        "reason": "Directly evaluates perceived completeness and clarity of media information, core to assessing media quality and accuracy."
+      },
+      {
+        "item": "p67",
+        "verdict": "OK",
+        "reason": "Assesses sufficiency of media options available, a legitimate dimension of media system quality evaluation."
+      },
+      {
+        "item": "p53_1",
+        "verdict": "FLAG",
+        "reason": "Measures trust in family as an information source, which is substantively distinct from critical assessment of Mexican media institutions."
+      }
+    ],
+    "_key": "SOC|media_trust_and_quality_evaluation",
+    "_items_reviewed": [
+      "p54",
+      "p55",
+      "p66",
+      "p69_1",
+      "p67",
+      "p53_1"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure perceived societal consequences of media content, but p63_1 measures parental behavior/responsibility rather than beliefs about media's societal impact.",
+    "items": [
+      {
+        "item": "p60",
+        "verdict": "OK",
+        "reason": "Directly measures perceived change in media violence over time, a core aspect of media's societal consequences."
+      },
+      {
+        "item": "p61",
+        "verdict": "OK",
+        "reason": "Measures belief about how media violence portrayal relates to reality, assessing perceived accuracy and societal impact of media representation."
+      },
+      {
+        "item": "p62_1",
+        "verdict": "OK",
+        "reason": "Directly measures perceived representation of women in media, explicitly mentioned in construct description."
+      },
+      {
+        "item": "p59_1",
+        "verdict": "OK",
+        "reason": "Directly measures perceived influence of media on family relationships, explicitly mentioned in construct description."
+      },
+      {
+        "item": "p63_1",
+        "verdict": "FLAG",
+        "reason": "Measures parental supervisory responsibility and behavior rather than beliefs about media's societal consequences or impact."
+      },
+      {
+        "item": "p76",
+        "verdict": "OK",
+        "reason": "Measures perceived necessity of regulatory oversight, explicitly mentioned in construct description."
+      },
+      {
+        "item": "p77_1",
+        "verdict": "OK",
+        "reason": "Measures beliefs about government intervention in media regulation, aligned with perceived necessity of regulatory oversight."
+      }
+    ],
+    "_key": "SOC|perceived_media_social_impact",
+    "_items_reviewed": [
+      "p60",
+      "p61",
+      "p62_1",
+      "p59_1",
+      "p63_1",
+      "p76",
+      "p77_1"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Three items directly measure ageist stereotypes and discriminatory attitudes, but one item measures perceived labor market conditions rather than personal stereotyping or discriminatory beliefs.",
+    "items": [
+      {
+        "item": "p13_1",
+        "verdict": "OK",
+        "reason": "Directly measures a negative stereotype about older adults' health status, a core component of ageist attitudes."
+      },
+      {
+        "item": "p14_1",
+        "verdict": "OK",
+        "reason": "Directly measures a negative stereotype about older adults' disengagement and loss of interest, explicitly mentioned in the construct description."
+      },
+      {
+        "item": "p26",
+        "verdict": "OK",
+        "reason": "Directly measures justification for age-based employment discrimination, explicitly mentioned in the construct description."
+      },
+      {
+        "item": "p27",
+        "verdict": "FLAG",
+        "reason": "Measures perceived labor market opportunities for older adults rather than personal ageist stereotypes or discriminatory attitudes, conflating a descriptive belief about structural conditions with normative stereotyping."
+      }
+    ],
+    "_key": "ENV|ageism_and_negative_stereotypes",
+    "_items_reviewed": [
+      "p13_1",
+      "p14_1",
+      "p26",
+      "p27"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "The construct mixes normative beliefs about responsibility allocation with behavioral outcomes and descriptive observations, creating semantic heterogeneity.",
+    "items": [
+      {
+        "item": "p42_1",
+        "verdict": "OK",
+        "reason": "Directly measures normative belief about state responsibility for elder care, core to the construct."
+      },
+      {
+        "item": "p44",
+        "verdict": "FLAG",
+        "reason": "Measures willingness to contribute financially (behavioral intention/outcome) rather than normative beliefs about who should bear responsibility."
+      },
+      {
+        "item": "p30",
+        "verdict": "FLAG",
+        "reason": "Measures perceived willingness of children to care for parents (descriptive observation of actual behavior/attitudes) rather than respondent's normative beliefs about responsibility allocation."
+      },
+      {
+        "item": "p31",
+        "verdict": "FLAG",
+        "reason": "Measures perceived change in actual caregiving frequency over time (behavioral trend observation) rather than normative beliefs about responsibility."
+      }
+    ],
+    "_key": "ENV|state_and_family_responsibility_for_elder_care",
+    "_items_reviewed": [
+      "p42_1",
+      "p44",
+      "p30",
+      "p31"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All three items measure respondents' evaluations of older adults' circumstances in Mexico—past trends, future prospects, and societal recognition—which directly align with the construct's focus on assessment of wellbeing, social conditions, and salience of their problems.",
+    "items": [
+      {
+        "item": "p9",
+        "verdict": "OK",
+        "reason": "Directly measures perceived trend in older adults' general situation over time (2010–present), a core component of evaluating their current conditions and quality of life."
+      },
+      {
+        "item": "p10",
+        "verdict": "OK",
+        "reason": "Directly measures respondent's evaluation of future trajectory of older adults' situation, capturing forward-looking assessment of their wellbeing and social conditions."
+      },
+      {
+        "item": "p38",
+        "verdict": "OK",
+        "reason": "Directly measures perceived societal salience and consideration of older adults' problems, reflecting how much their issues are recognized and valued in society."
+      }
+    ],
+    "_key": "ENV|assessment_of_older_adult_wellbeing_and_social_conditions",
+    "_items_reviewed": [
+      "p9",
+      "p10",
+      "p38"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure trust and perceived legitimacy of justice institutions, but p19 shifts focus to victim treatment quality, which is a distinct outcome rather than institutional trust.",
+    "items": [
+      {
+        "item": "p18",
+        "verdict": "OK",
+        "reason": "Directly measures perceived effectiveness of prosecutor offices in fulfilling their core justice function, a key component of institutional trust."
+      },
+      {
+        "item": "p19",
+        "verdict": "FLAG",
+        "reason": "Measures quality of victim treatment rather than trust in or legitimacy of the institution itself; this is a service outcome distinct from institutional confidence."
+      },
+      {
+        "item": "p20",
+        "verdict": "OK",
+        "reason": "Directly measures confidence and trust in judges, the core construct of institutional trust."
+      },
+      {
+        "item": "p21",
+        "verdict": "OK",
+        "reason": "Measures perceived legitimacy and effectiveness of the Supreme Court in upholding human rights, consistent with the construct definition."
+      },
+      {
+        "item": "p34",
+        "verdict": "OK",
+        "reason": "Directly measures perceived effectiveness of human rights commissions in defending rights, consistent with institutional trust in formal justice institutions."
+      }
+    ],
+    "_key": "DER|institutional_trust_justice",
+    "_items_reviewed": [
+      "p18",
+      "p19",
+      "p20",
+      "p21",
+      "p34"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All three items directly measure acceptance of coercive state practices and rights violations framed as necessary for security purposes.",
+    "items": [
+      {
+        "item": "p9",
+        "verdict": "OK",
+        "reason": "Directly measures whether respondents view human rights protections as obstacles to public security, capturing the core tradeoff between rights and safety."
+      },
+      {
+        "item": "p16",
+        "verdict": "OK",
+        "reason": "Directly measures acceptance of post-submission harm by police/military, a specific coercive practice central to the construct definition."
+      },
+      {
+        "item": "p17",
+        "verdict": "OK",
+        "reason": "Directly measures acceptance of torture as an interrogation method, explicitly named in the construct description as a key rights violation."
+      }
+    ],
+    "_key": "DER|authoritarian_security_tradeoff",
+    "_items_reviewed": [
+      "p9",
+      "p16",
+      "p17"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure perceived discrimination and attitudes toward vulnerable groups, but two items measure personal discriminatory intentions rather than perceptions of discrimination or social exclusion.",
+    "items": [
+      {
+        "item": "p35_1",
+        "verdict": "OK",
+        "reason": "Directly measures personal experience of rights violations based on physical appearance, core to the construct."
+      },
+      {
+        "item": "p36_1",
+        "verdict": "FLAG",
+        "reason": "Measures respondent's own discriminatory behavior/intentions (whether they would discriminate in housing) rather than perception of discrimination or attitudes toward discrimination against others."
+      },
+      {
+        "item": "p39",
+        "verdict": "OK",
+        "reason": "Measures perception of how dark-skinned people are treated in society, directly assessing perceived discrimination against a vulnerable group."
+      },
+      {
+        "item": "p40_1",
+        "verdict": "FLAG",
+        "reason": "Measures respondent's personal tolerance of their child's homosexuality rather than perception of discrimination or attitudes toward societal discrimination against LGBTQ+ individuals."
+      },
+      {
+        "item": "p41",
+        "verdict": "OK",
+        "reason": "Measures attitudes toward penalizing public expression of homosexuality, reflecting perception of and stance on discrimination against LGBTQ+ individuals."
+      },
+      {
+        "item": "p44",
+        "verdict": "OK",
+        "reason": "Measures attitudes toward discriminatory exclusion from public spaces based on appearance, assessing normative judgments about discrimination."
+      }
+    ],
+    "_key": "DER|perceived_discrimination_social_exclusion",
+    "_items_reviewed": [
+      "p35_1",
+      "p36_1",
+      "p39",
+      "p40_1",
+      "p41",
+      "p44"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "The construct targets personal experience with human rights and labor rights violations, but includes school bullying which is a distinct harm domain outside the rights violation framework.",
+    "items": [
+      {
+        "item": "p45",
+        "verdict": "OK",
+        "reason": "Directly measures personal experience with human rights violations, core to the construct's lived dimension."
+      },
+      {
+        "item": "p53",
+        "verdict": "FLAG",
+        "reason": "School bullying is a peer-to-peer harm distinct from human rights or labor rights violations and does not measure rights abuses by authority or institutional actors."
+      },
+      {
+        "item": "p54",
+        "verdict": "OK",
+        "reason": "Directly measures personal experience with labor rights abuse (workplace mobbing), aligned with the construct's focus on lived rights violations."
+      }
+    ],
+    "_key": "DER|rights_awareness_personal_experience",
+    "_items_reviewed": [
+      "p45",
+      "p53",
+      "p54"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All three items directly measure perceived quality/adequacy of distinct social rights domains (health services, housing, education) that align with the construct definition.",
+    "items": [
+      {
+        "item": "p30",
+        "verdict": "OK",
+        "reason": "Directly measures perceived efficiency of public health services, a core social right component."
+      },
+      {
+        "item": "p31",
+        "verdict": "OK",
+        "reason": "Directly measures perceived adequacy of housing as a dignified social right."
+      },
+      {
+        "item": "p32",
+        "verdict": "OK",
+        "reason": "Directly measures perceived quality of public education, a core social right component."
+      }
+    ],
+    "_key": "DER|social_rights_service_quality",
+    "_items_reviewed": [
+      "p30",
+      "p31",
+      "p32"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All items measure subjective perceptions of corruption's prevalence, trajectory, or spatial location in Mexico, directly aligned with the construct definition.",
+    "items": [
+      {
+        "item": "p2",
+        "verdict": "OK",
+        "reason": "Measures temporal assessment of corruption trajectory by comparing current prevalence to childhood, directly capturing the 'past' dimension of the construct."
+      },
+      {
+        "item": "p3",
+        "verdict": "OK",
+        "reason": "Measures temporal assessment of corruption trajectory by asking about future prevalence in 5 years, directly capturing the 'future' dimension of the construct."
+      },
+      {
+        "item": "p15",
+        "verdict": "OK",
+        "reason": "Measures basic perception of corruption existence in Mexico, establishing the foundational prevalence assessment within the construct domain."
+      },
+      {
+        "item": "p16",
+        "verdict": "OK",
+        "reason": "Measures spatial attribution of corruption by asking respondents to identify the sector where corruption is most concentrated, directly capturing the 'location' dimension of the construct."
+      },
+      {
+        "item": "p17",
+        "verdict": "OK",
+        "reason": "Measures spatial attribution of corruption within government by hierarchical level, providing a refined geographic/organizational location assessment within the construct domain."
+      }
+    ],
+    "_key": "COR|corruption_perception",
+    "_items_reviewed": [
+      "p2",
+      "p3",
+      "p15",
+      "p16",
+      "p17"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All items consistently measure beliefs about appropriate sanctions for rule violations and personal behavioral responses to misconduct across different social contexts.",
+    "items": [
+      {
+        "item": "p20",
+        "verdict": "OK",
+        "reason": "Directly measures beliefs about appropriate sanctions for theft in an educational setting, core to civic enforcement norms."
+      },
+      {
+        "item": "p21",
+        "verdict": "OK",
+        "reason": "Directly measures beliefs about appropriate workplace sanctions for theft, consistent with the construct's focus on how violations should be sanctioned."
+      },
+      {
+        "item": "p22",
+        "verdict": "OK",
+        "reason": "Directly measures beliefs about appropriate managerial responses to theft in a commercial setting, aligned with accountability norms."
+      },
+      {
+        "item": "p23",
+        "verdict": "OK",
+        "reason": "Directly measures personal behavioral responses when witnessing academic misconduct, reflecting internalized enforcement norms and willingness to act."
+      },
+      {
+        "item": "p24",
+        "verdict": "OK",
+        "reason": "Directly measures personal behavioral responses when witnessing theft, reflecting internalized norms about social enforcement and accountability."
+      }
+    ],
+    "_key": "COR|civic_enforcement_norms",
+    "_items_reviewed": [
+      "p20",
+      "p21",
+      "p22",
+      "p23",
+      "p24"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All three items directly measure the physical material composition of core structural elements (walls, roof, floor) that collectively indicate structural adequacy and habitability.",
+    "items": [
+      {
+        "item": "p1",
+        "verdict": "OK",
+        "reason": "Directly measures wall material quality, a primary structural component of dwelling habitability."
+      },
+      {
+        "item": "p2",
+        "verdict": "OK",
+        "reason": "Directly measures roof material quality, a primary structural component essential for weather protection and structural integrity."
+      },
+      {
+        "item": "p3",
+        "verdict": "OK",
+        "reason": "Directly measures floor material quality, a primary structural component indicating habitability and material precariousness."
+      }
+    ],
+    "_key": "HAB|structural_housing_quality",
+    "_items_reviewed": [
+      "p1",
+      "p2",
+      "p3"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items directly measure basic service availability, but p8 conflates sanitation facility type with drainage access, and p36_30 is redundant with p10.",
+    "items": [
+      {
+        "item": "p7",
+        "verdict": "OK",
+        "reason": "Directly measures water supply frequency, a core component of basic services access."
+      },
+      {
+        "item": "p7_1",
+        "verdict": "OK",
+        "reason": "Directly measures water delivery adequacy (continuous vs. intermittent), complementing p7 to assess water service quality."
+      },
+      {
+        "item": "p8",
+        "verdict": "FLAG",
+        "reason": "Measures sanitation facility type rather than drainage infrastructure or public utility connection, conflating household sanitation with basic services access."
+      },
+      {
+        "item": "p10",
+        "verdict": "OK",
+        "reason": "Directly measures drainage/sewage disposal method and connection to public networks, a core component of basic services access."
+      },
+      {
+        "item": "p11",
+        "verdict": "OK",
+        "reason": "Directly measures electricity availability, a core component of basic services access."
+      },
+      {
+        "item": "p36_30",
+        "verdict": "FLAG",
+        "reason": "Redundant binary measure of drainage presence that duplicates p10's more detailed assessment of drainage infrastructure and connection type."
+      }
+    ],
+    "_key": "HAB|basic_services_access",
+    "_items_reviewed": [
+      "p7",
+      "p7_1",
+      "p8",
+      "p10",
+      "p11",
+      "p36_30"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All items measure the presence of durable goods and domestic appliances in the household, directly operationalizing the construct of household asset endowment as a socioeconomic status proxy.",
+    "items": [
+      {
+        "item": "p36_1",
+        "verdict": "OK",
+        "reason": "Radio/radio recorder is a durable domestic appliance consistent with household asset endowment measurement."
+      },
+      {
+        "item": "p36_2",
+        "verdict": "OK",
+        "reason": "Television is a standard durable good included in asset endowment scales."
+      },
+      {
+        "item": "p36_4",
+        "verdict": "OK",
+        "reason": "Blender (licuadora) is a domestic appliance measuring household asset stock."
+      },
+      {
+        "item": "p36_5",
+        "verdict": "OK",
+        "reason": "Washing machine is a core durable appliance in household asset endowment measurement."
+      },
+      {
+        "item": "p36_6",
+        "verdict": "OK",
+        "reason": "Refrigerator is a fundamental durable appliance and standard asset endowment indicator."
+      },
+      {
+        "item": "p36_8",
+        "verdict": "OK",
+        "reason": "Mobile phone is a modern durable good appropriately included in contemporary asset endowment scales."
+      },
+      {
+        "item": "p36_9",
+        "verdict": "OK",
+        "reason": "Vehicle ownership is a durable asset directly measuring household socioeconomic status."
+      },
+      {
+        "item": "p36_10",
+        "verdict": "OK",
+        "reason": "Computer is a modern durable good consistent with household asset endowment measurement."
+      },
+      {
+        "item": "p36_18",
+        "verdict": "OK",
+        "reason": "Gas water heater/boiler is a durable household appliance measuring asset endowment."
+      },
+      {
+        "item": "p36_21",
+        "verdict": "OK",
+        "reason": "Heating system is a durable household asset appropriately included in endowment measurement."
+      },
+      {
+        "item": "p36_22",
+        "verdict": "OK",
+        "reason": "Solar panels are a modern durable asset reflecting household socioeconomic status and living standards."
+      },
+      {
+        "item": "p36_29",
+        "verdict": "OK",
+        "reason": "Air conditioning is a durable household appliance consistent with asset endowment measurement."
+      }
+    ],
+    "_key": "HAB|household_asset_endowment",
+    "_items_reviewed": [
+      "p36_1",
+      "p36_2",
+      "p36_4",
+      "p36_5",
+      "p36_6",
+      "p36_8",
+      "p36_9",
+      "p36_10",
+      "p36_18",
+      "p36_21",
+      "p36_22",
+      "p36_29"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure attitudes toward economic globalization and trade, but p49_1 shifts focus to a specific sectoral foreign investment policy question that may reflect regulatory/nationalist concerns distinct from general trade attitudes.",
+    "items": [
+      {
+        "item": "p46_1",
+        "verdict": "OK",
+        "reason": "Directly measures evaluation of free trade agreements' impact on Mexican economy, core to economic globalization attitudes."
+      },
+      {
+        "item": "p47",
+        "verdict": "OK",
+        "reason": "Directly measures perspective on whether foreign trade benefits the Mexican economy, central to economic globalization attitudes."
+      },
+      {
+        "item": "p48",
+        "verdict": "OK",
+        "reason": "Directly measures agreement with free trade agreements, a key component of economic globalization attitudes."
+      },
+      {
+        "item": "p49_1",
+        "verdict": "FLAG",
+        "reason": "Measures approval of foreign investment in a specific strategic sector (telecommunications) rather than general attitudes toward foreign investment or economic globalization, conflating sectoral protectionism with broader trade orientation."
+      },
+      {
+        "item": "p31_1",
+        "verdict": "OK",
+        "reason": "Directly measures evaluation of bilateral trade relationship with the US, explicitly mentioned in construct description as part of economic globalization attitudes."
+      }
+    ],
+    "_key": "GLO|economic_globalization_attitudes",
+    "_items_reviewed": [
+      "p46_1",
+      "p47",
+      "p48",
+      "p49_1",
+      "p31_1"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure support for international institutional engagement, but p58 measures behavioral intention/willingness to use institutions rather than support for institutional authority.",
+    "items": [
+      {
+        "item": "p52_1",
+        "verdict": "OK",
+        "reason": "Directly measures support for Mexico's involvement with the international community on a global issue."
+      },
+      {
+        "item": "p54_1",
+        "verdict": "OK",
+        "reason": "Measures preference for UN authority over national governments on international peace, core to institutional deference."
+      },
+      {
+        "item": "p57",
+        "verdict": "OK",
+        "reason": "Measures support for UN's active role in human rights promotion, directly assessing institutional authority."
+      },
+      {
+        "item": "p58",
+        "verdict": "FLAG",
+        "reason": "Measures personal behavioral intention to use international institutions rather than support for institutional engagement or authority."
+      },
+      {
+        "item": "p60_1",
+        "verdict": "OK",
+        "reason": "Measures support for UN authority to use military force, directly assessing deference to international institutional power."
+      },
+      {
+        "item": "p63_1",
+        "verdict": "OK",
+        "reason": "Measures support for Mexico's collaborative engagement with other countries on a multilateral issue."
+      }
+    ],
+    "_key": "GLO|international_institutional_engagement",
+    "_items_reviewed": [
+      "p52_1",
+      "p54_1",
+      "p57",
+      "p58",
+      "p60_1",
+      "p63_1"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items validly measure judicial institutional trust, but p43 measures normative preferences about judicial philosophy rather than perceived legitimacy or trustworthiness of institutions.",
+    "items": [
+      {
+        "item": "p22",
+        "verdict": "OK",
+        "reason": "Directly assesses perceived functional effectiveness of the justice system, a core component of institutional trust."
+      },
+      {
+        "item": "p41",
+        "verdict": "OK",
+        "reason": "Measures perceived judicial independence, a key dimension of institutional legitimacy and impartiality."
+      },
+      {
+        "item": "p42_1",
+        "verdict": "OK",
+        "reason": "Assesses belief that judges guarantee fair trials, directly measuring perceived fairness and trustworthiness."
+      },
+      {
+        "item": "p46",
+        "verdict": "OK",
+        "reason": "Measures perceived justice of Supreme Court decisions, capturing trust in judicial fairness and legitimacy."
+      },
+      {
+        "item": "p33",
+        "verdict": "OK",
+        "reason": "Assesses perceived equal treatment and impartiality in courts, a fundamental aspect of institutional fairness."
+      },
+      {
+        "item": "p50",
+        "verdict": "OK",
+        "reason": "Measures perceived accountability of judges, reflecting trust in institutional oversight and legitimacy."
+      },
+      {
+        "item": "p43",
+        "verdict": "FLAG",
+        "reason": "Measures respondent's normative preference between justice and legal adherence rather than perceived trustworthiness or legitimacy of judicial institutions."
+      }
+    ],
+    "_key": "JUS|judicial_institutional_trust",
+    "_items_reviewed": [
+      "p22",
+      "p41",
+      "p42_1",
+      "p46",
+      "p33",
+      "p50",
+      "p43"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All items directly measure core dimensions of legal cynicism: tolerance for extrajudicial punishment, acceptance of lethal force outside due process, willingness to override judicial authority, belief in informal connections determining outcomes, and skepticism of judicial verdicts.",
+    "items": [
+      {
+        "item": "p17",
+        "verdict": "OK",
+        "reason": "Directly measures tolerance for community extrajudicial punishment when formal authorities fail, a core component of the construct."
+      },
+      {
+        "item": "p18",
+        "verdict": "OK",
+        "reason": "Directly measures acceptance of lethal force by security forces as substitute for due process and judicial proceedings, a key dimension of legal cynicism."
+      },
+      {
+        "item": "p44",
+        "verdict": "OK",
+        "reason": "Directly measures willingness to endorse executive override of judicial decisions, reflecting distrust of formal legal constraints on power."
+      },
+      {
+        "item": "p55",
+        "verdict": "OK",
+        "reason": "Directly measures belief that informal connections (knowing the judge) rather than legal merit determine judicial outcomes, a core cynicism dimension."
+      },
+      {
+        "item": "p45",
+        "verdict": "OK",
+        "reason": "Directly measures skepticism toward judicial verdicts and doubt in the legitimacy of judicial determinations of guilt, a key construct component."
+      }
+    ],
+    "_key": "JUS|legal_cynicism_extrajudicial_justice",
+    "_items_reviewed": [
+      "p17",
+      "p18",
+      "p44",
+      "p55",
+      "p45"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Items p7 directly measures motivational basis for compliance, but p8, p9, and p10 measure perceived or self-assessed law-abidingness rather than the underlying reasons for compliance.",
+    "items": [
+      {
+        "item": "p7",
+        "verdict": "OK",
+        "reason": "Directly captures normative and instrumental motivations for obeying laws, which is the core of the construct."
+      },
+      {
+        "item": "p8",
+        "verdict": "FLAG",
+        "reason": "Measures perceived respect for laws by government officials, which is a behavioral outcome or perception of compliance rather than the motivational basis underlying compliance."
+      },
+      {
+        "item": "p9",
+        "verdict": "FLAG",
+        "reason": "Measures perceived respect for laws by citizens, which is a perception of compliance behavior rather than the motivational reasons for compliance."
+      },
+      {
+        "item": "p10",
+        "verdict": "FLAG",
+        "reason": "Measures self-assessed law-abidingness rather than the underlying normative or instrumental motivations that drive compliance behavior."
+      }
+    ],
+    "_key": "JUS|law_compliance_motivation",
+    "_items_reviewed": [
+      "p7",
+      "p8",
+      "p9",
+      "p10"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All three items directly measure emigration intention and likelihood through complementary approaches: willingness for work-related emigration, general emigration preference, and prospective probability.",
+    "items": [
+      {
+        "item": "p15_1",
+        "verdict": "OK",
+        "reason": "Directly measures willingness to emigrate for work, capturing dispositional intent within a specific motivational context."
+      },
+      {
+        "item": "p17",
+        "verdict": "OK",
+        "reason": "Directly measures general emigration preference and desire, capturing the core attitudinal component of emigration intention."
+      },
+      {
+        "item": "p18",
+        "verdict": "OK",
+        "reason": "Directly measures perceived probability of emigration within a specific timeframe, capturing the likelihood/behavioral expectation dimension of the construct."
+      }
+    ],
+    "_key": "MIG|emigration_intention_likelihood",
+    "_items_reviewed": [
+      "p15_1",
+      "p17",
+      "p18"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items validly measure perceived opportunity structure in Mexico, but p3_9 measures perceived opportunity to leave Mexico rather than opportunities within Mexico's structural context.",
+    "items": [
+      {
+        "item": "p3_1",
+        "verdict": "OK",
+        "reason": "Directly measures perceived access to educational opportunities, a core economic/social domain of opportunity structure."
+      },
+      {
+        "item": "p3_2",
+        "verdict": "OK",
+        "reason": "Directly measures perceived access to employment opportunities, a fundamental component of economic opportunity structure."
+      },
+      {
+        "item": "p3_3",
+        "verdict": "OK",
+        "reason": "Directly measures perceived access to entrepreneurial opportunities, a key economic domain of opportunity structure."
+      },
+      {
+        "item": "p3_4",
+        "verdict": "OK",
+        "reason": "Directly measures perceived access to financial resources/credit, an important structural enabler of economic mobility."
+      },
+      {
+        "item": "p3_9",
+        "verdict": "FLAG",
+        "reason": "Measures perceived opportunity to emigrate rather than perceived opportunities within Mexico's opportunity structure, representing a distinct construct of international mobility rather than domestic structural access."
+      }
+    ],
+    "_key": "MIG|perceived_opportunity_structure",
+    "_items_reviewed": [
+      "p3_1",
+      "p3_2",
+      "p3_3",
+      "p3_4",
+      "p3_9"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure attitudes toward foreigners, but p44 is a behavioral/demographic item measuring actual contact rather than evaluative orientation.",
+    "items": [
+      {
+        "item": "p42",
+        "verdict": "OK",
+        "reason": "Directly measures general evaluative opinion toward foreigners in Mexico."
+      },
+      {
+        "item": "p43_1",
+        "verdict": "OK",
+        "reason": "Measures perceived economic contribution, an explicit component of the construct domain."
+      },
+      {
+        "item": "p44",
+        "verdict": "FLAG",
+        "reason": "Measures actual behavioral contact/cohabitation with foreigners rather than evaluative attitudes or opinions about them."
+      },
+      {
+        "item": "p45",
+        "verdict": "OK",
+        "reason": "Measures views on appropriate number of foreigners, an explicit component of the construct domain."
+      },
+      {
+        "item": "p47",
+        "verdict": "OK",
+        "reason": "Measures perceived respect for foreigners' rights, relevant to attitudes about their treatment and entitlements."
+      },
+      {
+        "item": "p48",
+        "verdict": "OK",
+        "reason": "Measures beliefs about rights entitlements for foreigners, an explicit component of the construct domain."
+      },
+      {
+        "item": "p51",
+        "verdict": "OK",
+        "reason": "Measures perceived discrimination against foreigners, an explicit component of the construct domain."
+      },
+      {
+        "item": "p52",
+        "verdict": "OK",
+        "reason": "Measures perceived differential treatment based on origin, relevant to attitudes about discrimination and fairness toward foreigners."
+      }
+    ],
+    "_key": "MIG|attitudes_toward_foreigners_in_mexico",
+    "_items_reviewed": [
+      "p42",
+      "p43_1",
+      "p44",
+      "p45",
+      "p47",
+      "p48",
+      "p51",
+      "p52"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Item p12_1 measures party representativeness rather than elected officials' representativeness, introducing a conceptually distinct element into a scale otherwise focused on multi-level political representation.",
+    "items": [
+      {
+        "item": "p12_1",
+        "verdict": "FLAG",
+        "reason": "Measures political parties' representativeness rather than elected officials' representativeness; parties are organizational entities distinct from the elected representatives (deputies, governors, presidents) that comprise the rest of the scale."
+      },
+      {
+        "item": "p12_2",
+        "verdict": "OK",
+        "reason": "Directly measures perceived representativeness of local deputies, consistent with the multi-level assessment of elected officials."
+      },
+      {
+        "item": "p12_3",
+        "verdict": "OK",
+        "reason": "Directly measures perceived representativeness of federal deputies, consistent with the multi-level assessment of elected officials."
+      },
+      {
+        "item": "p12_4",
+        "verdict": "OK",
+        "reason": "Directly measures perceived representativeness of state governors, consistent with the multi-level assessment of elected officials."
+      },
+      {
+        "item": "p12_5",
+        "verdict": "OK",
+        "reason": "Directly measures perceived representativeness of the national president, consistent with the multi-level assessment of elected officials."
+      },
+      {
+        "item": "p12_6",
+        "verdict": "OK",
+        "reason": "Directly measures perceived representativeness of municipal presidents, consistent with the multi-level assessment of elected officials."
+      }
+    ],
+    "_key": "FED|perceived_representativeness",
+    "_items_reviewed": [
+      "p12_1",
+      "p12_2",
+      "p12_3",
+      "p12_4",
+      "p12_5",
+      "p12_6"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items validly measure federalism preferences regarding distribution of responsibilities and resources, but p37_1 measures satisfaction with service delivery rather than preferences about how governance should be structured.",
+    "items": [
+      {
+        "item": "p31_1",
+        "verdict": "OK",
+        "reason": "Measures attribution of responsibility for a public service across government levels, relevant to understanding federalism preferences."
+      },
+      {
+        "item": "p32_1",
+        "verdict": "OK",
+        "reason": "Directly measures preference for which government level should manage a specific service, core to fiscal and service federalism."
+      },
+      {
+        "item": "p33",
+        "verdict": "OK",
+        "reason": "Measures general preference for which government level should address local problems, directly relevant to decentralization attitudes."
+      },
+      {
+        "item": "p34_1",
+        "verdict": "OK",
+        "reason": "Measures preference for which government level should manage education services, a key domain of federalism preferences."
+      },
+      {
+        "item": "p36",
+        "verdict": "OK",
+        "reason": "Directly measures preferences about fiscal distribution and resource allocation across government levels, core to fiscal federalism."
+      },
+      {
+        "item": "p37_1",
+        "verdict": "FLAG",
+        "reason": "Measures satisfaction with municipal service delivery relative to taxes paid, which is an outcome evaluation rather than a preference about how governance should be structured."
+      },
+      {
+        "item": "p38",
+        "verdict": "OK",
+        "reason": "Measures preference for how tax revenue should be distributed geographically, directly relevant to fiscal federalism preferences."
+      },
+      {
+        "item": "p60",
+        "verdict": "OK",
+        "reason": "Measures preference for centralization versus decentralization of decision-making authority, core to federalism preferences."
+      }
+    ],
+    "_key": "FED|fiscal_and_service_federalism_preferences",
+    "_items_reviewed": [
+      "p31_1",
+      "p32_1",
+      "p33",
+      "p34_1",
+      "p36",
+      "p37_1",
+      "p38",
+      "p60"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All items consistently measure preference for national versus state-level legal uniformity across the specified policy domains, directly operationalizing the normative dimension of legal centralization.",
+    "items": [
+      {
+        "item": "p53_1",
+        "verdict": "OK",
+        "reason": "Directly measures preference for single national law versus state-specific laws in crime policy domain."
+      },
+      {
+        "item": "p53_2",
+        "verdict": "OK",
+        "reason": "Directly measures preference for single national law versus state-specific laws in corruption policy domain."
+      },
+      {
+        "item": "p53_3",
+        "verdict": "OK",
+        "reason": "Directly measures preference for single national law versus state-specific laws in information access policy domain."
+      },
+      {
+        "item": "p53_4",
+        "verdict": "OK",
+        "reason": "Directly measures preference for single national law versus state-specific laws in public security policy domain."
+      },
+      {
+        "item": "p53_5",
+        "verdict": "OK",
+        "reason": "Directly measures preference for single national law versus state-specific laws in environmental policy domain."
+      },
+      {
+        "item": "p53_6",
+        "verdict": "OK",
+        "reason": "Directly measures preference for single national law versus state-specific laws in taxation policy domain."
+      }
+    ],
+    "_key": "FED|legal_uniformity_preference",
+    "_items_reviewed": [
+      "p53_1",
+      "p53_2",
+      "p53_3",
+      "p53_4",
+      "p53_5",
+      "p53_6"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure preferences and evaluations of security governance levels, but p47 measures performance satisfaction rather than governance preferences or coordination assessments.",
+    "items": [
+      {
+        "item": "p45",
+        "verdict": "OK",
+        "reason": "Directly measures evaluation of intergovernmental coordination between federal and state governments in security matters, a core component of security governance."
+      },
+      {
+        "item": "p46",
+        "verdict": "OK",
+        "reason": "Measures preference regarding police organizational structure and command authority, which is a substantive aspect of security governance preferences."
+      },
+      {
+        "item": "p47",
+        "verdict": "FLAG",
+        "reason": "Measures satisfaction with state government performance in security rather than preferences about which level should be responsible or how governance should be organized."
+      },
+      {
+        "item": "p48",
+        "verdict": "OK",
+        "reason": "Measures preference for which government level should assume emergency security response authority, directly addressing governance responsibility allocation."
+      },
+      {
+        "item": "p49",
+        "verdict": "OK",
+        "reason": "Directly measures preference regarding which government level should hold primary responsibility for public security, the core construct domain."
+      }
+    ],
+    "_key": "FED|security_governance_preferences",
+    "_items_reviewed": [
+      "p45",
+      "p46",
+      "p47",
+      "p48",
+      "p49"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All three items directly measure core dimensions of political interest and engagement: news consumption frequency, self-reported political interest, and perceived relevance of politics to daily life.",
+    "items": [
+      {
+        "item": "p5",
+        "verdict": "OK",
+        "reason": "Directly measures frequency of political news consumption, a key behavioral indicator of political engagement."
+      },
+      {
+        "item": "p6",
+        "verdict": "OK",
+        "reason": "Directly measures self-reported interest in politics, a core attitudinal component of the construct."
+      },
+      {
+        "item": "p7",
+        "verdict": "OK",
+        "reason": "Directly measures perceived relevance of politics to daily life, capturing the salience dimension of political engagement."
+      }
+    ],
+    "_key": "FED|political_interest_and_engagement",
+    "_items_reviewed": [
+      "p5",
+      "p6",
+      "p7"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure traditional gender role attitudes, but two items measure gender stereotypes and ideological equivalence rather than endorsement of traditional role norms.",
+    "items": [
+      {
+        "item": "p11_1",
+        "verdict": "OK",
+        "reason": "Directly measures endorsement of male economic dominance, a core component of traditional gender role attitudes."
+      },
+      {
+        "item": "p26_1",
+        "verdict": "OK",
+        "reason": "Directly measures belief that household labor is women's responsibility, a central traditional gender role norm."
+      },
+      {
+        "item": "p61_1",
+        "verdict": "FLAG",
+        "reason": "Measures a gender stereotype about male sexual behavior rather than endorsement of traditional role divisions in domestic, economic, or social life."
+      },
+      {
+        "item": "p63_1",
+        "verdict": "FLAG",
+        "reason": "Measures a negative gender stereotype about female emotional manipulation rather than endorsement of traditional gender role norms."
+      },
+      {
+        "item": "p59_1",
+        "verdict": "FLAG",
+        "reason": "Measures ideological equivalence between feminism and machismo rather than direct endorsement of traditional gender roles."
+      }
+    ],
+    "_key": "GEN|traditional_gender_role_attitudes",
+    "_items_reviewed": [
+      "p11_1",
+      "p26_1",
+      "p61_1",
+      "p63_1",
+      "p59_1"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All three items directly measure power imbalances and autonomy restrictions within intimate partnerships across distinct domains (financial control, movement freedom, and family contact).",
+    "items": [
+      {
+        "item": "p19",
+        "verdict": "OK",
+        "reason": "Directly measures financial control by partner, a core dimension of intimate partner power dynamics."
+      },
+      {
+        "item": "p23_1",
+        "verdict": "OK",
+        "reason": "Directly measures freedom of movement and autonomy by assessing whether permission-seeking is required for daytime activities."
+      },
+      {
+        "item": "p23_5",
+        "verdict": "OK",
+        "reason": "Directly measures autonomy and control over social/family relationships by assessing whether permission-seeking is required for family visits."
+      }
+    ],
+    "_key": "GEN|intimate_partner_power_dynamics",
+    "_items_reviewed": [
+      "p19",
+      "p23_1",
+      "p23_5"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Two items measure parental cultural socialization behavior, but one item measures the child's own reading behavior, which is an outcome rather than exposure to parental cultural transmission.",
+    "items": [
+      {
+        "item": "p8",
+        "verdict": "OK",
+        "reason": "Directly measures parental communication about cultural topics during childhood, a core mechanism of cultural socialization."
+      },
+      {
+        "item": "p11",
+        "verdict": "OK",
+        "reason": "Directly measures parental/familial behavior of gifting books, a concrete cultural resource transmission practice."
+      },
+      {
+        "item": "p12_1",
+        "verdict": "FLAG",
+        "reason": "Measures the child's own reading frequency, which is a behavioral outcome of socialization rather than exposure to parental cultural practices or resources."
+      }
+    ],
+    "_key": "DEP|cultural_socialization_in_childhood",
+    "_items_reviewed": [
+      "p8",
+      "p11",
+      "p12_1"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Items measure only one narrow subdomain (reading habits for newspapers/magazines) and omit key construct elements like access to books, reading ability, and barriers to reading.",
+    "items": [
+      {
+        "item": "p15a_1",
+        "verdict": "OK",
+        "reason": "Directly measures self-reported reading habits for a specific publication type, which is a core component of reading engagement."
+      },
+      {
+        "item": "p15a_2",
+        "verdict": "OK",
+        "reason": "Directly measures self-reported reading habits for a specific publication type, which is a core component of reading engagement."
+      },
+      {
+        "item": "p15a_3",
+        "verdict": "OK",
+        "reason": "Directly measures self-reported reading habits for a specific publication type, which is a core component of reading engagement."
+      }
+    ],
+    "_key": "DEP|reading_engagement_and_literacy",
+    "_items_reviewed": [
+      "p15a_1",
+      "p15a_2",
+      "p15a_3"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items validly measure cultural identity and heritage self-identification, but two items measuring indigenous language ability are tangentially related behavioral competencies rather than direct measures of cultural belonging or self-identification.",
+    "items": [
+      {
+        "item": "p48",
+        "verdict": "OK",
+        "reason": "Directly measures first language acquisition, a core component of cultural heritage and identity formation."
+      },
+      {
+        "item": "p49",
+        "verdict": "OK",
+        "reason": "Directly assesses self-perceived cultural distinctiveness and heritage recognition relative to the majority population."
+      },
+      {
+        "item": "p50",
+        "verdict": "OK",
+        "reason": "Directly measures self-identification as part of a discriminated ethnic/racial group, explicitly mentioned in the construct description."
+      },
+      {
+        "item": "p54",
+        "verdict": "OK",
+        "reason": "Directly measures ethnic/racial self-categorization and self-perception, a core component of cultural identity."
+      },
+      {
+        "item": "p34",
+        "verdict": "FLAG",
+        "reason": "Measures behavioral language competency (ability to converse) rather than cultural identity or belonging; someone may identify culturally with indigenous heritage without conversational ability."
+      },
+      {
+        "item": "p35",
+        "verdict": "FLAG",
+        "reason": "Measures literacy skill in indigenous languages rather than cultural identity or self-identification; literacy is a behavioral outcome distinct from cultural belonging."
+      }
+    ],
+    "_key": "DEP|cultural_identity_and_heritage",
+    "_items_reviewed": [
+      "p48",
+      "p49",
+      "p50",
+      "p54",
+      "p34",
+      "p35"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure attitudes toward cultural openness and pluralism, but p29_1 measures behavioral preference for cultural preservation rather than attitudes toward openness/foreign influence.",
+    "items": [
+      {
+        "item": "p25",
+        "verdict": "OK",
+        "reason": "Directly measures preference for cultural homogeneity (singular culture) versus pluralism (multiple cultures), core to the construct."
+      },
+      {
+        "item": "p26",
+        "verdict": "OK",
+        "reason": "Measures perception of foreign cultural influence magnitude, directly relevant to attitudes toward external cultural impact."
+      },
+      {
+        "item": "p27",
+        "verdict": "OK",
+        "reason": "Measures evaluative orientation toward foreign cultural influence (harmful vs. beneficial), central to the construct domain."
+      },
+      {
+        "item": "p28",
+        "verdict": "OK",
+        "reason": "Directly measures preference for cultural homogeneity versus diversity as a normative position for the country."
+      },
+      {
+        "item": "p29_1",
+        "verdict": "FLAG",
+        "reason": "Measures which cultural elements respondents prioritize for preservation rather than attitudes toward openness to foreign influence or cultural pluralism."
+      },
+      {
+        "item": "p31_1",
+        "verdict": "OK",
+        "reason": "Measures perceived importance of teachers' exposure to foreign cultures, reflecting openness to external cultural knowledge in education."
+      },
+      {
+        "item": "p32",
+        "verdict": "OK",
+        "reason": "Measures support for multicultural education through indigenous language inclusion, consistent with openness to cultural pluralism in schools."
+      }
+    ],
+    "_key": "DEP|attitudes_toward_cultural_openness_and_foreign_influence",
+    "_items_reviewed": [
+      "p25",
+      "p26",
+      "p27",
+      "p28",
+      "p29_1",
+      "p31_1",
+      "p32"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All three items directly measure economic wellbeing perception across personal, national, and intergenerational dimensions as described in the construct definition.",
+    "items": [
+      {
+        "item": "p1",
+        "verdict": "OK",
+        "reason": "Directly measures satisfaction with the country's current economic situation, capturing the societal economic evaluation component of the construct."
+      },
+      {
+        "item": "p2",
+        "verdict": "OK",
+        "reason": "Directly measures personal satisfaction with one's own current economic situation, capturing the individual economic evaluation component of the construct."
+      },
+      {
+        "item": "p3",
+        "verdict": "OK",
+        "reason": "Directly measures perceived intergenerational economic mobility by comparing current living standards to parents' living standards at the same age, capturing the intergenerational comparison component of the construct."
+      }
+    ],
+    "_key": "ECO|economic_wellbeing_perception",
+    "_items_reviewed": [
+      "p1",
+      "p2",
+      "p3"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Two items directly measure union attitudes, but one item measures perceived labor rights respect, which is a contextual outcome rather than an evaluative orientation toward unions themselves.",
+    "items": [
+      {
+        "item": "p23",
+        "verdict": "OK",
+        "reason": "Directly measures perceived necessity of unions, a core normative orientation toward collective labor representation."
+      },
+      {
+        "item": "p24",
+        "verdict": "OK",
+        "reason": "Directly measures evaluative orientations toward unions' role and legitimacy across multiple dimensions (rights protection, corruption, efficiency, governance)."
+      },
+      {
+        "item": "p22",
+        "verdict": "FLAG",
+        "reason": "Measures perceived respect for worker rights in Mexico, which is a contextual outcome or labor market condition rather than a direct evaluative orientation toward unions as institutions."
+      }
+    ],
+    "_key": "ECO|labor_union_attitudes",
+    "_items_reviewed": [
+      "p23",
+      "p24",
+      "p22"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Two items measure general situation perception across age groups, but one item narrows focus specifically to economic situation, introducing a substantive domain distinction.",
+    "items": [
+      {
+        "item": "p5",
+        "verdict": "OK",
+        "reason": "Directly measures perceived change in general situation of children, aligned with construct definition."
+      },
+      {
+        "item": "p31",
+        "verdict": "OK",
+        "reason": "Directly measures perceived change in general situation of adolescents, aligned with construct definition."
+      },
+      {
+        "item": "p61",
+        "verdict": "FLAG",
+        "reason": "Narrows focus to economic situation specifically rather than general situation, measuring a distinct subdomain that may not be semantically equivalent to the broader evaluative orientation described."
+      }
+    ],
+    "_key": "NIN|perceived_situation_of_children_and_youth",
+    "_items_reviewed": [
+      "p5",
+      "p31",
+      "p61"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items directly measure normative attitudes toward youth voice and participation, but p41 and p47 shift focus to conditional participation scenarios and rights frameworks rather than attitudes about whether youth opinions should be heard.",
+    "items": [
+      {
+        "item": "p12",
+        "verdict": "OK",
+        "reason": "Directly measures normative belief about whether children's opinions should be considered in family decisions."
+      },
+      {
+        "item": "p13",
+        "verdict": "OK",
+        "reason": "Directly measures normative belief about whether children's opinions should be considered in school decisions."
+      },
+      {
+        "item": "p38",
+        "verdict": "OK",
+        "reason": "Directly measures normative belief about whether adolescents' opinions should be considered in family decisions."
+      },
+      {
+        "item": "p39",
+        "verdict": "OK",
+        "reason": "Directly measures normative belief about whether adolescents' opinions should be considered in school decisions."
+      },
+      {
+        "item": "p41",
+        "verdict": "FLAG",
+        "reason": "Measures conditional circumstances under which adolescents should participate in public mobilization rather than normative attitudes about whether their voice should be heard in decisions."
+      },
+      {
+        "item": "p47",
+        "verdict": "FLAG",
+        "reason": "Measures beliefs about the source and legitimacy of adolescent rights rather than attitudes about whether youth opinions should be considered in decisions affecting them."
+      }
+    ],
+    "_key": "NIN|youth_participation_and_voice",
+    "_items_reviewed": [
+      "p12",
+      "p13",
+      "p38",
+      "p39",
+      "p41",
+      "p47"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Items p25 and p26 directly measure perceived relationship quality, but p27, p52, and p53 measure beliefs about what determines or sustains family cohesion rather than the respondent's actual perception of their own family's cohesion quality.",
+    "items": [
+      {
+        "item": "p25",
+        "verdict": "OK",
+        "reason": "Directly measures perceived quality of relationships with co-resident family members, core to family cohesion quality."
+      },
+      {
+        "item": "p26",
+        "verdict": "OK",
+        "reason": "Directly measures perceived quality of relationships with non-resident family members, aligning with construct's inclusion of both co-resident and non-resident bonds."
+      },
+      {
+        "item": "p27",
+        "verdict": "FLAG",
+        "reason": "Measures respondent's beliefs about what determines good/bad family relations in general, not their perception of their own family's cohesion quality."
+      },
+      {
+        "item": "p52",
+        "verdict": "FLAG",
+        "reason": "Measures respondent's beliefs about what keeps families united in general, not their perception of their own family's actual cohesion or unity."
+      },
+      {
+        "item": "p53",
+        "verdict": "FLAG",
+        "reason": "Measures family values held by the respondent rather than perceived quality of family relationships or sense of unity."
+      }
+    ],
+    "_key": "FAM|family_cohesion_quality",
+    "_items_reviewed": [
+      "p25",
+      "p26",
+      "p27",
+      "p52",
+      "p53"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Items p13-p16 directly measure normative beliefs about ideal family structure and ideology, but p67-p68 measure descriptive observations about family change rather than normative beliefs about what should be ideal.",
+    "items": [
+      {
+        "item": "p13",
+        "verdict": "OK",
+        "reason": "Directly asks respondents to identify their conception of an ideal family structure, core to measuring family normativity."
+      },
+      {
+        "item": "p14",
+        "verdict": "OK",
+        "reason": "Asks about barriers to achieving the ideal family type, which reflects normative ideology about what prevents family ideals."
+      },
+      {
+        "item": "p15",
+        "verdict": "OK",
+        "reason": "Asks what actions could enable achievement of ideal family, reflecting normative beliefs about solutions and values."
+      },
+      {
+        "item": "p16",
+        "verdict": "OK",
+        "reason": "Directly measures acceptance or rejection of non-traditional family arrangements, capturing traditionalism versus pluralism in family ideology."
+      },
+      {
+        "item": "p67",
+        "verdict": "FLAG",
+        "reason": "Measures descriptive observations about actual family changes across generations rather than normative beliefs about what constitutes an ideal family."
+      },
+      {
+        "item": "p68",
+        "verdict": "FLAG",
+        "reason": "Measures predictions about future family trends rather than normative beliefs about what family structure should ideally be."
+      }
+    ],
+    "_key": "FAM|ideal_family_normativity",
+    "_items_reviewed": [
+      "p13",
+      "p14",
+      "p15",
+      "p16",
+      "p67",
+      "p68"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Items p28-p29 and p64 measure normative beliefs about intergenerational obligations, while p62-p63 measure behavioral/actual coping strategies and current care arrangements, which are outcomes rather than attitudinal beliefs about obligations.",
+    "items": [
+      {
+        "item": "p28",
+        "verdict": "OK",
+        "reason": "Directly measures parental obligations toward children, a core component of intergenerational duty beliefs."
+      },
+      {
+        "item": "p29",
+        "verdict": "OK",
+        "reason": "Directly measures filial obligations toward parents, including elder care responsibility, a core component of the construct."
+      },
+      {
+        "item": "p62",
+        "verdict": "FLAG",
+        "reason": "Measures actual behavioral strategies and preparations for old age rather than beliefs about intergenerational obligations; conflates personal coping mechanisms with familial duty attitudes."
+      },
+      {
+        "item": "p63",
+        "verdict": "FLAG",
+        "reason": "Measures current or anticipated actual care arrangements and who will provide care, not beliefs about obligations; describes behavioral reality rather than normative attitudes toward intergenerational duty."
+      },
+      {
+        "item": "p64",
+        "verdict": "OK",
+        "reason": "Measures willingness to assume caregiving responsibility for family members, which reflects beliefs about filial and familial obligations toward dependent relatives."
+      }
+    ],
+    "_key": "FAM|intergenerational_obligations",
+    "_items_reviewed": [
+      "p28",
+      "p29",
+      "p62",
+      "p63",
+      "p64"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure attitudes toward conjugal unions, but p33 is a behavioral disclosure item that measures past conduct rather than attitudes or normative orientations.",
+    "items": [
+      {
+        "item": "p21",
+        "verdict": "OK",
+        "reason": "Directly measures criteria and motivations for selecting a conjugal partner, core to attitudes about forming unions."
+      },
+      {
+        "item": "p22",
+        "verdict": "OK",
+        "reason": "Measures family influence on partner selection, relevant to normative orientations toward conjugal union formation."
+      },
+      {
+        "item": "p23",
+        "verdict": "OK",
+        "reason": "Measures personal motivations for initiating a conjugal union, directly aligned with attitudes about forming partnerships."
+      },
+      {
+        "item": "p32",
+        "verdict": "OK",
+        "reason": "Measures perceived causes of extramarital relations, relevant to attitudes about conjugal union stability and maintenance."
+      },
+      {
+        "item": "p33",
+        "verdict": "FLAG",
+        "reason": "Measures actual past behavior (whether respondent has had affairs) rather than attitudes, normative orientations, or tolerance toward infidelity."
+      },
+      {
+        "item": "p35",
+        "verdict": "OK",
+        "reason": "Measures tolerance and conditions for accepting infidelity, directly relevant to attitudes about conjugal union stability and normative orientations."
+      },
+      {
+        "item": "p38",
+        "verdict": "OK",
+        "reason": "Measures perceived causes of divorce, directly aligned with attitudes about conjugal union dissolution and stability."
+      }
+    ],
+    "_key": "FAM|conjugal_union_attitudes",
+    "_items_reviewed": [
+      "p21",
+      "p22",
+      "p23",
+      "p32",
+      "p33",
+      "p35",
+      "p38"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Two items directly measure family value transmission, but one item measures religious influence on family life, which is a contextual factor rather than the values themselves.",
+    "items": [
+      {
+        "item": "p54",
+        "verdict": "OK",
+        "reason": "Directly measures values learned from family of origin and practiced daily, core to the construct."
+      },
+      {
+        "item": "p55",
+        "verdict": "OK",
+        "reason": "Directly measures fundamental values parents should transmit to children, core to the construct."
+      },
+      {
+        "item": "p57",
+        "verdict": "FLAG",
+        "reason": "Measures the influence of religion on family life rather than the values themselves or their transmission—a contextual factor distinct from the construct domain."
+      }
+    ],
+    "_key": "FAM|family_value_transmission",
+    "_items_reviewed": [
+      "p54",
+      "p55",
+      "p57"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All three items directly measure perceived competence and self-assessed ability to understand science and technology, which are core components of science-technology self-efficacy.",
+    "items": [
+      {
+        "item": "p16",
+        "verdict": "OK",
+        "reason": "Directly measures self-assessed knowledge of science on a 0-10 scale, a core indicator of perceived competence in the science domain."
+      },
+      {
+        "item": "p17",
+        "verdict": "OK",
+        "reason": "Directly measures self-assessed knowledge of technology on a 0-10 scale, a core indicator of perceived competence in the technology domain."
+      },
+      {
+        "item": "p45_1",
+        "verdict": "OK",
+        "reason": "Measures perceived ability to understand science by assessing disagreement with the statement that science is too specialized, capturing subjective sense of competence in scientific domains."
+      }
+    ],
+    "_key": "CIE|science_technology_self_efficacy",
+    "_items_reviewed": [
+      "p16",
+      "p17",
+      "p45_1"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items validly measure science and technology interest and engagement, but three items (p38_4, p38_5, p38_6) measure interest in specific science policy/environmental topics rather than general science-technology interest or media consumption behavior.",
+    "items": [
+      {
+        "item": "p11",
+        "verdict": "OK",
+        "reason": "Directly measures expressed interest in science, a core component of the construct."
+      },
+      {
+        "item": "p22",
+        "verdict": "OK",
+        "reason": "Directly measures expressed interest in technology, a core component of the construct."
+      },
+      {
+        "item": "p23",
+        "verdict": "OK",
+        "reason": "Measures frequency of media consumption about technology, explicitly included in the construct description."
+      },
+      {
+        "item": "p35",
+        "verdict": "OK",
+        "reason": "Measures desire to participate in science-related activities, a core engagement component of the construct."
+      },
+      {
+        "item": "p43",
+        "verdict": "OK",
+        "reason": "Measures desire to participate in technology-related activities, a core engagement component of the construct."
+      },
+      {
+        "item": "p38_4",
+        "verdict": "FLAG",
+        "reason": "Measures interest in a specific environmental policy topic (climate change) rather than general science-technology interest or engagement."
+      },
+      {
+        "item": "p38_5",
+        "verdict": "FLAG",
+        "reason": "Measures interest in a specific environmental policy topic (renewable energy) rather than general science-technology interest or engagement."
+      },
+      {
+        "item": "p38_6",
+        "verdict": "FLAG",
+        "reason": "Measures interest in a specific controversial science policy topic (transgenic crops) rather than general science-technology interest or engagement."
+      }
+    ],
+    "_key": "CIE|science_technology_interest_engagement",
+    "_items_reviewed": [
+      "p11",
+      "p22",
+      "p23",
+      "p35",
+      "p43",
+      "p38_4",
+      "p38_5",
+      "p38_6"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure institutional trust and perceived integrity of scientists, but p49_1 measures a normative belief about what universities should do rather than trust in or perception of scientific institutions.",
+    "items": [
+      {
+        "item": "p32_1",
+        "verdict": "OK",
+        "reason": "Directly measures perceived utility and societal value of scientific research, which reflects trust in scientists' commitment to producing socially relevant work."
+      },
+      {
+        "item": "p33",
+        "verdict": "OK",
+        "reason": "Directly measures perceived commitment of Mexican scientists to society, a core component of institutional trust as described."
+      },
+      {
+        "item": "p40_1",
+        "verdict": "OK",
+        "reason": "Measures skepticism about scientists' motivations (political interests), which is explicitly mentioned in the construct description as part of institutional trust assessment."
+      },
+      {
+        "item": "p50_1",
+        "verdict": "OK",
+        "reason": "Directly measures confidence in research conducted within a specific discipline (Medicine), which reflects trust in scientific institutions and their work."
+      },
+      {
+        "item": "p49_1",
+        "verdict": "FLAG",
+        "reason": "Measures a normative belief about what universities should prioritize rather than respondents' actual trust in or perception of scientific institutions' integrity or commitment."
+      }
+    ],
+    "_key": "CIE|institutional_trust_in_science",
+    "_items_reviewed": [
+      "p32_1",
+      "p33",
+      "p40_1",
+      "p50_1",
+      "p49_1"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure perceived societal value of science/technology, but two items measure evaluations of institutional efficiency and policy preferences rather than beliefs about practical contribution and importance.",
+    "items": [
+      {
+        "item": "p34",
+        "verdict": "OK",
+        "reason": "Directly measures perceived contribution of Mexican science to solving national problems, core to the construct."
+      },
+      {
+        "item": "p36",
+        "verdict": "OK",
+        "reason": "Measures perceived importance of scientific knowledge, a key component of societal value beliefs."
+      },
+      {
+        "item": "p44_1",
+        "verdict": "OK",
+        "reason": "Measures perceived importance of technology for learning, relevant to practical utility and value of technology."
+      },
+      {
+        "item": "p57",
+        "verdict": "FLAG",
+        "reason": "Measures perceived efficiency of technology utilization in Mexico, which is an evaluation of institutional performance rather than beliefs about science/technology's societal value or importance."
+      },
+      {
+        "item": "p58",
+        "verdict": "FLAG",
+        "reason": "Measures perceived government support for technology development, which is a policy/resource allocation assessment distinct from beliefs about science/technology's practical contribution to solving social problems."
+      },
+      {
+        "item": "p42_1",
+        "verdict": "OK",
+        "reason": "Measures perceived quality of science education, which relates to the construct's inclusion of science education quality as a component of societal value."
+      },
+      {
+        "item": "p39_1",
+        "verdict": "OK",
+        "reason": "Measures agreement that science education is indispensable, reflecting beliefs about the importance and value of science in society."
+      },
+      {
+        "item": "p51_1",
+        "verdict": "FLAG",
+        "reason": "Measures agreement with a technology import policy position, which is a normative policy preference rather than a belief about science/technology's practical contribution or importance to Mexico."
+      }
+    ],
+    "_key": "CIE|perceived_societal_value_of_science_technology",
+    "_items_reviewed": [
+      "p34",
+      "p36",
+      "p44_1",
+      "p57",
+      "p58",
+      "p42_1",
+      "p39_1",
+      "p51_1"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items validly measure scientific and educational cultural capital through books and digital infrastructure, but one item measures educational resources that are functional/curricular rather than cultural capital.",
+    "items": [
+      {
+        "item": "p3_2",
+        "verdict": "OK",
+        "reason": "Directly measures presence of scientific books, a core component of scientific cultural capital."
+      },
+      {
+        "item": "p3_3",
+        "verdict": "OK",
+        "reason": "Directly measures presence of technical books, a core component of scientific and technical cultural capital."
+      },
+      {
+        "item": "p3_6",
+        "verdict": "OK",
+        "reason": "Directly measures presence of encyclopedic books, explicitly mentioned in the construct description."
+      },
+      {
+        "item": "p3_8",
+        "verdict": "OK",
+        "reason": "Directly measures presence of history books, explicitly mentioned in the construct description."
+      },
+      {
+        "item": "p3_11",
+        "verdict": "FLAG",
+        "reason": "School textbooks measure functional educational resources for academic performance rather than cultural capital reflecting exposure to scientific and educational culture."
+      },
+      {
+        "item": "p4",
+        "verdict": "OK",
+        "reason": "Directly measures access to computers, a core digital infrastructure component of the construct."
+      },
+      {
+        "item": "p5",
+        "verdict": "OK",
+        "reason": "Directly measures access to internet, a core digital infrastructure component of the construct."
+      }
+    ],
+    "_key": "CIE|household_science_cultural_capital",
+    "_items_reviewed": [
+      "p3_2",
+      "p3_3",
+      "p3_6",
+      "p3_8",
+      "p3_11",
+      "p4",
+      "p5"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "Both items directly measure perceived education quality through complementary dimensions: trend perception and relevance evaluation.",
+    "items": [
+      {
+        "item": "p49",
+        "verdict": "OK",
+        "reason": "Directly measures perceived trend in education quality over time, a core component of overall quality evaluation."
+      },
+      {
+        "item": "p51",
+        "verdict": "OK",
+        "reason": "Directly measures perceived relevance of school content to real-life and work applications, a substantive dimension of education quality."
+      }
+    ],
+    "_key": "EDU|perceived_education_quality",
+    "_items_reviewed": [
+      "p49",
+      "p51"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All four items directly measure beliefs about the instrumental value (employment, income) and social value (societal well-being) of education, as well as overall perceived worthwhileness of studying.",
+    "items": [
+      {
+        "item": "p37",
+        "verdict": "OK",
+        "reason": "Directly measures overall belief in the worthwhileness of education, which is a core component of the construct."
+      },
+      {
+        "item": "p55_3",
+        "verdict": "OK",
+        "reason": "Measures belief that education improves employment prospects, a key instrumental value of education."
+      },
+      {
+        "item": "p55_4",
+        "verdict": "OK",
+        "reason": "Measures belief that education improves income, a key instrumental value of education."
+      },
+      {
+        "item": "p55_5",
+        "verdict": "OK",
+        "reason": "Measures belief that education contributes to societal well-being, a key social value of education."
+      }
+    ],
+    "_key": "EDU|educational_returns_belief",
+    "_items_reviewed": [
+      "p37",
+      "p55_3",
+      "p55_4",
+      "p55_5"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure technology access and reading habits as intended, but smartphone ownership (p47_6) is a tangential proxy for digital capital rather than a direct measure of access to or use of ICTs for learning.",
+    "items": [
+      {
+        "item": "p47_3",
+        "verdict": "OK",
+        "reason": "Directly measures access to computers/tablets, core ICT resources for informal learning."
+      },
+      {
+        "item": "p47_4",
+        "verdict": "OK",
+        "reason": "Directly measures internet access, essential infrastructure for digital capital and information access."
+      },
+      {
+        "item": "p47_6",
+        "verdict": "FLAG",
+        "reason": "Smartphone ownership is a consumer device measure that does not substantively reflect access to ICTs for learning or cultural participation as described in the construct."
+      },
+      {
+        "item": "p45_1",
+        "verdict": "OK",
+        "reason": "Measures newspaper reading frequency, a direct indicator of information consumption and cultural engagement habits."
+      },
+      {
+        "item": "p45_2",
+        "verdict": "OK",
+        "reason": "Measures book reading frequency, a direct indicator of reading habits and cultural participation."
+      }
+    ],
+    "_key": "EDU|digital_and_cultural_capital",
+    "_items_reviewed": [
+      "p47_3",
+      "p47_4",
+      "p47_6",
+      "p45_1",
+      "p45_2"
+    ]
+  },
+  {
+    "construct_verdict": "INCOHERENT",
+    "construct_verdict_reason": "The construct mixes computer use for information/education with museum/exhibition attendance, which are substantively distinct behaviors unrelated to social media engagement or account ownership.",
+    "items": [
+      {
+        "item": "p48_1",
+        "verdict": "FLAG",
+        "reason": "Measures general computer use for information retrieval, not social media engagement or account ownership specifically."
+      },
+      {
+        "item": "p48_3",
+        "verdict": "FLAG",
+        "reason": "Measures computer use for educational support, not social media engagement or internet-based social/communicative activity."
+      },
+      {
+        "item": "p44_5",
+        "verdict": "FLAG",
+        "reason": "Measures offline cultural attendance (museums/exhibitions), which is unrelated to social media engagement, account ownership, or internet use for news."
+      }
+    ],
+    "_key": "EDU|social_media_engagement",
+    "_items_reviewed": [
+      "p48_1",
+      "p48_3",
+      "p44_5"
+    ]
+  }
+]
