@@ -11,7 +11,8 @@
     "ECO|job_quality_and_labor_conditions":          "excluded_low_n",
     "SOC|media_consumption_breadth":                 "excluded_low_n",
     "SAL|healthcare_access_and_utilization":         "excluded_low_n",
-    "EDU|social_media_engagement":                   "audit_drop"
+    "EDU|social_media_engagement":                   "audit_drop",
+    "GEN|intimate_partner_power_dynamics":           "excluded_low_n"
   },
 
   "items_to_drop": {

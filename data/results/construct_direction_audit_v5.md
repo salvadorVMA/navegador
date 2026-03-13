@@ -1,18 +1,18 @@
 # Construct Direction & Sentinel Audit — V5
 
-Generated: 2026-03-13 21:22
+Generated: 2026-03-13 21:35
 
 ## Summary
 
 | Metric | Count |
 |--------|-------|
-| Constructs audited | 95 |
-| Constructs with ≥1 flag | 52 |
+| Constructs audited | 93 |
+| Constructs with ≥1 flag | 50 |
 | FLAG_DIRECTION (item r < −0.10) | 0 |
 | FLAG_WEAK (\|r\| < 0.05) | 0 |
-| FLAG_COVERAGE (n < 600) | 1 |
+| FLAG_COVERAGE (n < 600) | 0 |
 | FLAG_SENTINEL_PARTIAL | 0 |
-| FLAG_DOMINANCE (>50% one code) | 52 |
+| FLAG_DOMINANCE (>50% one code) | 50 |
 | FLAG_CARDINALITY (ratio >3×) | 1 |
 | FLAG_SCALE_RANGE | 0 |
 
@@ -50,7 +50,6 @@ Generated: 2026-03-13 21:22
 | `EDU|educational_returns_belief` | questionable | 0.607 | 1194 | FLAG_DOMINANCE: p37(80%@1.0), p55_3(81%@1.0), p55_4(80%@1.0), p55_5(78%@1.0) |
 | `EDU|perceived_education_quality` | tier3_caveat | 0.470 | 1199 | ✓ |
 | `EDU|school_environment_quality` | formative_index | — | 997 | ✓ |
-| `EDU|social_media_engagement` | new_construct | — | 1199 | FLAG_DOMINANCE: p48_1(52%@1.0), p48_3(55%@2.0), p44_5(61%@5.0) |
 | `ENV|ageism_and_negative_stereotypes` | questionable | 0.518 | 1200 | ✓ |
 | `ENV|assessment_of_older_adult_wellbeing_and_social_conditions` | questionable | 0.532 | 1200 | ✓ |
 | `ENV|state_and_family_responsibility_for_elder_care` | tier3_caveat | 0.452 | 1200 | FLAG_DOMINANCE: p44(84%@1.0) |
@@ -64,7 +63,6 @@ Generated: 2026-03-13 21:22
 | `FED|perceived_representativeness` | good | 0.916 | 1200 | ✓ |
 | `FED|political_interest_and_engagement` | questionable | 0.634 | 1200 | FLAG_DOMINANCE: p5(51%@2.0) |
 | `FED|security_governance_preferences` | questionable | 0.693 | 1200 | ✓ |
-| `GEN|intimate_partner_power_dynamics` | tier3_caveat | 0.407 | 427 | FLAG_COVERAGE(n=427); FLAG_DOMINANCE: p19(64%@3.0), p23_1(59%@3.0), p23_5(61%@3.0) |
 | `GEN|sexual_and_reproductive_attitudes` | single_item_tier2 | 0.353 | 1200 | ✓ |
 | `GEN|tolerance_of_gender_based_violence` | single_item_tier2 | 0.336 | 1200 | ✓ |
 | `GEN|traditional_gender_role_attitudes` | questionable | 0.506 | 1200 | ✓ |
@@ -116,7 +114,7 @@ Generated: 2026-03-13 21:22
 | `SOC|media_trust_and_quality_evaluation` | questionable | 0.587 | 1200 | ✓ |
 | `SOC|perceived_media_social_impact` | questionable | 0.587 | 1200 | FLAG_DOMINANCE: p60(68%@1.0) |
 
-## Flagged Constructs (52)
+## Flagged Constructs (50)
 
 ### `CIE|household_science_cultural_capital`
 
@@ -541,28 +539,6 @@ Generated: 2026-03-13 21:22
 
 ---
 
-### `EDU|social_media_engagement`
-
-**Type**: new_construct  |  **α**: —  |  **N**: 1199  |  **n_items**: 3
-
-**Flags**: FLAG_DOMINANCE: p48_1(52%@1.0), p48_3(55%@2.0), p44_5(61%@5.0)
-
-**Item–Aggregate Spearman r** (after reverse coding applied):
-
-| Item | r | n_pairs | Status |
-|------|---|---------|--------|
-| `p48_1` | 0.8515 | 1199 | OK |
-| `p48_3` | 0.8168 | 1199 | OK |
-| `p44_5` | 0.7541 | 1199 | OK |
-
-**Dominant-code items**:
-
-- `p48_1`: 52.1% at code 1.0 (n=1199)
-- `p48_3`: 55.3% at code 2.0 (n=1199)
-- `p44_5`: 60.7% at code 5.0 (n=1199)
-
----
-
 ### `ENV|state_and_family_responsibility_for_elder_care`
 
 **Type**: tier3_caveat  |  **α**: 0.452  |  **N**: 1200  |  **n_items**: 3
@@ -739,28 +715,6 @@ Generated: 2026-03-13 21:22
 **Dominant-code items**:
 
 - `p5`: 50.6% at code 2.0 (n=1200)
-
----
-
-### `GEN|intimate_partner_power_dynamics`
-
-**Type**: tier3_caveat  |  **α**: 0.407  |  **N**: 427  |  **n_items**: 3
-
-**Flags**: FLAG_COVERAGE(n=427); FLAG_DOMINANCE: p19(64%@3.0), p23_1(59%@3.0), p23_5(61%@3.0)
-
-**Item–Aggregate Spearman r** (after reverse coding applied):
-
-| Item | r | n_pairs | Status |
-|------|---|---------|--------|
-| `p19` | 0.3675 | 427 | OK |
-| `p23_1` | 0.8057 | 427 | OK |
-| `p23_5` | 0.8070 | 427 | OK |
-
-**Dominant-code items**:
-
-- `p19`: 64.4% at code 3.0 (n=637)
-- `p23_1`: 59.1% at code 3.0 (n=489)
-- `p23_5`: 61.3% at code 3.0 (n=496)
 
 ---
 

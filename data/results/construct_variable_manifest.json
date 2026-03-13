@@ -814,16 +814,11 @@
   },
   {
     "key": "GEN|intimate_partner_power_dynamics",
-    "column": "agg_intimate_partner_power_dynamics",
-    "var_id": "agg_intimate_partner_power_dynamics|GEN",
-    "type": "tier3_caveat",
-    "alpha": 0.4071,
-    "n_items": 3,
-    "n_valid": 427,
-    "reverse_coded": [
-      "p23_1",
-      "p23_5"
-    ]
+    "column": null,
+    "type": "excluded",
+    "reason": "excluded_low_n",
+    "alpha": null,
+    "n_valid": 0
   },
   {
     "key": "GEN|tolerance_of_gender_based_violence",
