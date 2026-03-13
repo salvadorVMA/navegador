@@ -73,3 +73,7 @@ test_agent_tracing.log
 
 # WVS processed data (generated locally from zips)
 data/wvs/wvs_mex_dict.json
+
+
+#Ignore vscode AI rules
+.github/instructions/codacy.instructions.md

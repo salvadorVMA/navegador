@@ -70,6 +70,58 @@ def _wvs_key(wave: int, alpha3: str) -> str:
     return f"WVS_W{wave}_{alpha3.upper()}"
 
 
+def _resolve_col(col: str, df: pd.DataFrame, equivalences: Optional[pd.DataFrame] = None) -> Optional[str]:
+    """Resolve a column identifier to the actual column name in df.
+
+    Wave 7 uses Q-codes (Q71), time-series waves 1-6 use A-codes (E069_11).
+    This function tries:
+      1. col itself (direct match in df)
+      2. If col is an A-code, look up wave Q-codes that might be in df
+      3. If col is a Wave 7 Q-code, find its A-code and check df
+
+    Important: Q-codes are NOT unique across variables — different variables can
+    share the same Q-code across different waves. To avoid mismatches, we first
+    check Wave 7 (the canonical convention), then A-code direct lookup.
+
+    Returns None if the variable is not available in df.
+    """
+    if col in df.columns:
+        return col
+
+    if equivalences is None:
+        return None
+
+    # Strategy 1: col is an A-code → look up wave-specific Q-codes in df
+    mask = equivalences["a_code"] == col
+    if mask.any():
+        row = equivalences[mask].iloc[0]
+        # Check A-code first (time-series data), then wave Q-codes
+        if col in df.columns:
+            return col
+        for w_col in ["w7", "w6", "w5", "w4", "w3", "w2", "w1"]:
+            qc = row[w_col]
+            if qc and qc in df.columns:
+                return qc
+        return None
+
+    # Strategy 2: col is a Wave 7 Q-code → find A-code via w7 column
+    # Only check w7 to avoid cross-wave Q-code collisions
+    w7_match = equivalences[equivalences["w7"] == col]
+    if not w7_match.empty:
+        a_code = w7_match.iloc[0]["a_code"]
+        if a_code in df.columns:
+            return a_code
+        # Check other wave Q-codes for this same variable
+        row = w7_match.iloc[0]
+        for w_col in ["w6", "w5", "w4", "w3", "w2", "w1"]:
+            qc = row[w_col]
+            if qc and qc in df.columns:
+                return qc
+        return None
+
+    return None
+
+
 # ---------------------------------------------------------------------------
 # SESHarmonizer
 # ---------------------------------------------------------------------------
@@ -371,6 +423,7 @@ class WVSBridgeEstimator:
         col_b: str,
         country: str = "MEX",
         ses_vars: Optional[List[str]] = None,
+        equivalences: Optional[pd.DataFrame] = None,
     ) -> Dict[int, Optional[Dict[str, Any]]]:
         """Compute γ(wave) for a variable pair within one country across all waves.
 
@@ -382,11 +435,17 @@ class WVSBridgeEstimator:
         wvs_enc_dict : dict
             The enc_dict portion of a wvs_dict.
         col_a, col_b : str
-            WVS Q-code column names (must be present after harmonization).
+            WVS variable identifiers — Q-code (e.g. 'Q71'), A-code (e.g.
+            'E069_11'), or any wave-specific code. Automatically resolved to
+            the actual column name present in each wave's DataFrame.
         country : str
             ISO alpha-3 country code (default 'MEX').
         ses_vars : list, optional
             Override SES vars.
+        equivalences : pd.DataFrame, optional
+            WVS variable equivalences (from wvs_metadata.load_equivalences).
+            Required when col_a/col_b are Q-codes but data uses A-codes (or
+            vice versa). Pass wvs_dict['var_equivalences'].
 
         Returns
         -------
@@ -394,8 +453,10 @@ class WVSBridgeEstimator:
 
         Example
         -------
-        γ_waves = estimator.temporal_sweep(wvs_enc_dict, 'Q6', 'Q173', country='MEX')
-        # {1: None, 2: None, ..., 6: {'gamma': 0.22, ...}, 7: {'gamma': 0.28, ...}}
+        γ_waves = estimator.temporal_sweep(
+            wvs_enc_dict, 'Q71', 'Q173', country='MEX',
+            equivalences=wvs_dict['var_equivalences'],
+        )
         """
         results: Dict[int, Optional[Dict[str, Any]]] = {}
         for wave in range(1, 8):
@@ -405,13 +466,16 @@ class WVSBridgeEstimator:
                 continue
 
             df = wvs_enc_dict[key]["dataframe"]
-            if col_a not in df.columns or col_b not in df.columns:
+            resolved_a = _resolve_col(col_a, df, equivalences)
+            resolved_b = _resolve_col(col_b, df, equivalences)
+
+            if resolved_a is None or resolved_b is None:
                 results[wave] = None
                 continue
 
             result = self.estimate_within_wvs(
-                df_a=df, col_a=col_a,
-                df_b=df, col_b=col_b,
+                df_a=df, col_a=resolved_a,
+                df_b=df, col_b=resolved_b,
                 var_id_a=f"{col_a}|W{wave}_{country}",
                 var_id_b=f"{col_b}|W{wave}_{country}",
                 ses_vars=ses_vars,
@@ -432,6 +496,7 @@ class WVSBridgeEstimator:
         wave: int = 7,
         zone: Optional[str] = None,
         ses_vars: Optional[List[str]] = None,
+        equivalences: Optional[pd.DataFrame] = None,
     ) -> Dict[str, Optional[Dict[str, Any]]]:
         """Compute γ(country) for a variable pair across countries in one wave.
 
@@ -440,13 +505,15 @@ class WVSBridgeEstimator:
         wvs_enc_dict : dict
             The enc_dict portion of a wvs_dict.
         col_a, col_b : str
-            WVS Q-code column names.
+            WVS variable identifiers (Q-code or A-code). Automatically resolved.
         wave : int
             WVS wave number (default 7).
         zone : str, optional
             Restrict to one Inglehart-Welzel cultural zone. None = all countries.
         ses_vars : list, optional
             Override SES vars.
+        equivalences : pd.DataFrame, optional
+            WVS variable equivalences for column name resolution.
 
         Returns
         -------
@@ -455,7 +522,8 @@ class WVSBridgeEstimator:
         Example
         -------
         γ_countries = estimator.geographic_sweep(
-            wvs_enc_dict, 'Q71', 'Q173', zone='Latin America'
+            wvs_enc_dict, 'Q71', 'Q173', zone='Latin America',
+            equivalences=wvs_dict['var_equivalences'],
         )
         """
         if zone is not None:
@@ -477,13 +545,16 @@ class WVSBridgeEstimator:
                 continue
 
             df = wvs_enc_dict[key]["dataframe"]
-            if col_a not in df.columns or col_b not in df.columns:
+            resolved_a = _resolve_col(col_a, df, equivalences)
+            resolved_b = _resolve_col(col_b, df, equivalences)
+
+            if resolved_a is None or resolved_b is None:
                 results[alpha3] = None
                 continue
 
             result = self.estimate_within_wvs(
-                df_a=df, col_a=col_a,
-                df_b=df, col_b=col_b,
+                df_a=df, col_a=resolved_a,
+                df_b=df, col_b=resolved_b,
                 var_id_a=f"{col_a}|W{wave}_{alpha3}",
                 var_id_b=f"{col_b}|W{wave}_{alpha3}",
                 ses_vars=ses_vars,

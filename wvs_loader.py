@@ -79,6 +79,20 @@ _COL_COUNTRY_ALPHA = "B_COUNTRY_ALPHA"
 _COL_COUNTRY_NUM = "B_COUNTRY"
 _COL_WAVE = "A_WAVE"
 
+# Time-series CSV uses different column names from Wave 7
+_TS_COL_WAVE = "S002VS"
+_TS_COL_COUNTRY_ALPHA = "COUNTRY_ALPHA"
+_TS_COL_COUNTRY_NUM = "S003"
+_TS_WEIGHT_COL = "S017"
+
+# Time-series SES column names (A-code equivalents of Wave 7 Q-codes)
+_TS_SES_RENAMES: dict[str, str] = {
+    "X001": "Q260",       # sex
+    "X003": "Q262",       # age (continuous)
+    "X025": "Q275",       # education ISCED
+    "X049": "G_TOWNSIZE", # settlement size
+}
+
 # SES column names produced by harmonization
 _HARMONIZED_SES_COLS = list(SES_VARS.keys())  # ['sexo', 'edad', 'escol', 'Tam_loc']
 
@@ -153,7 +167,7 @@ def _map_values(series: pd.Series, mapping: dict) -> pd.Series:
 
 
 def harmonize_ses(df: pd.DataFrame) -> pd.DataFrame:
-    """Add harmonized SES columns to a WVS DataFrame in-place.
+    """Add harmonized SES columns to a WVS DataFrame.
 
     Creates columns: sexo, edad, escol, Tam_loc
     matching the encoding used by los_mex SES variables.
@@ -167,22 +181,25 @@ def harmonize_ses(df: pd.DataFrame) -> pd.DataFrame:
     -------
     df with new SES columns added (originals preserved).
     """
+    new_cols: dict[str, pd.Series] = {}
     for los_mex_col, cfg in SES_VARS.items():
         wvs_col = cfg["wvs_col"]
         if wvs_col not in df.columns:
-            df[los_mex_col] = np.nan
+            new_cols[los_mex_col] = pd.Series(np.nan, index=df.index)
             continue
 
         src = df[wvs_col]
 
         if cfg["transform"] == "direct":
-            df[los_mex_col] = _map_values(src, cfg["values"])
+            new_cols[los_mex_col] = _map_values(src, cfg["values"])
         elif cfg["transform"] == "bin_age":
-            df[los_mex_col] = _bin_age(src)
+            new_cols[los_mex_col] = _bin_age(src)
         elif cfg["transform"] in ("isced_to_5", "collapse_4"):
-            df[los_mex_col] = _map_values(src.astype("Int64", errors="ignore"), cfg["values"])
+            new_cols[los_mex_col] = _map_values(
+                src.astype("Int64", errors="ignore"), cfg["values"]
+            )
 
-    return df
+    return pd.concat([df, pd.DataFrame(new_cols, index=df.index)], axis=1)
 
 
 # ---------------------------------------------------------------------------
@@ -198,6 +215,36 @@ def clean_sentinels(df: pd.DataFrame) -> pd.DataFrame:
     """
     num_cols = df.select_dtypes(include=[np.number]).columns
     df[num_cols] = df[num_cols].where(df[num_cols] >= WVS_SENTINEL_THRESHOLD, other=np.nan)
+    return df
+
+
+def _normalize_timeseries_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """Rename time-series CSV columns to match Wave 7 conventions.
+
+    The time-series CSV uses different column names:
+        S002VS → A_WAVE, COUNTRY_ALPHA → B_COUNTRY_ALPHA, S003 → B_COUNTRY,
+        S017 → W_WEIGHT, X001 → Q260, X003 → Q262, X025 → Q275, X049 → G_TOWNSIZE
+    """
+    renames: dict[str, str] = {}
+
+    # Administrative columns
+    if _TS_COL_WAVE in df.columns and _COL_WAVE not in df.columns:
+        renames[_TS_COL_WAVE] = _COL_WAVE
+    if _TS_COL_COUNTRY_ALPHA in df.columns and _COL_COUNTRY_ALPHA not in df.columns:
+        renames[_TS_COL_COUNTRY_ALPHA] = _COL_COUNTRY_ALPHA
+    if _TS_COL_COUNTRY_NUM in df.columns and _COL_COUNTRY_NUM not in df.columns:
+        renames[_TS_COL_COUNTRY_NUM] = _COL_COUNTRY_NUM
+    if _TS_WEIGHT_COL in df.columns and "W_WEIGHT" not in df.columns:
+        renames[_TS_WEIGHT_COL] = "W_WEIGHT"
+
+    # SES columns (A-code → Q-code)
+    for ts_col, w7_col in _TS_SES_RENAMES.items():
+        if ts_col in df.columns and w7_col not in df.columns:
+            renames[ts_col] = w7_col
+
+    if renames:
+        df = df.rename(columns=renames)
+
     return df
 
 
@@ -253,6 +300,7 @@ class WVSLoader:
 
     def __init__(self, wvs_dir: Optional[Path] = None):
         self.wvs_dir = Path(wvs_dir) if wvs_dir else _DEFAULT_WVS_DIR
+        self._timeseries_cache: Optional[pd.DataFrame] = None  # lazy-loaded, reused
 
         # Load metadata (always available — small XLSXs are committed)
         self.equivalences = load_equivalences(
@@ -292,7 +340,14 @@ class WVSLoader:
         return _load_csv_from_source(src)
 
     def _load_timeseries_raw(self) -> pd.DataFrame:
-        """Load the full WVS Time Series CSV (all waves, all countries)."""
+        """Load the full WVS Time Series CSV (all waves, all countries).
+
+        Caches the result in memory so multiple wave requests don't re-read
+        the 1.3GB CSV file.
+        """
+        if self._timeseries_cache is not None:
+            return self._timeseries_cache
+
         src = _find_wvs_file(self.wvs_dir, _TIMESERIES_ZIP_PATTERN)
         if src is None:
             raise FileNotFoundError(
@@ -300,7 +355,8 @@ class WVSLoader:
                 f"Expected a file matching '*{_TIMESERIES_ZIP_PATTERN}*.csv' or '*.zip'.\n"
                 "Download from https://www.worldvaluessurvey.org/WVSDocumentationWVL.jsp"
             )
-        return _load_csv_from_source(src)
+        self._timeseries_cache = _load_csv_from_source(src)
+        return self._timeseries_cache
 
     # ------------------------------------------------------------------
     # Single-wave / single-country slice
@@ -330,6 +386,7 @@ class WVSLoader:
             raw = self._load_wave7_raw()
         else:
             raw = self._load_timeseries_raw()
+            raw = _normalize_timeseries_columns(raw)
             raw = raw[raw[_COL_WAVE] == wave].copy()
 
         if countries is not None:
@@ -401,7 +458,12 @@ class WVSLoader:
             else:
                 present_countries = ["UNKNOWN"]
 
+            # For Wave 7: columns are Q-codes; for time-series: columns are A-codes.
+            # Build a unified column→title mapping for this wave.
             qcode_title = self._wave_qcode_title.get(wave, {})
+            # Also include A-code→title for time-series columns
+            col_title = dict(qcode_title)
+            col_title.update(self._acode_title)
 
             for alpha3 in present_countries:
                 alpha3 = str(alpha3).upper()
@@ -418,15 +480,15 @@ class WVSLoader:
 
                 enc_dict[survey_key] = {
                     "dataframe": df_country,
-                    "metadata": _build_survey_metadata(df_country, qcode_title),
+                    "metadata": _build_survey_metadata(df_country, col_title),
                 }
                 enc_nom_dict[survey_key] = short_id
 
-                # pregs_dict: one entry per substantive Q-code column
+                # pregs_dict: one entry per substantive column (Q-code or A-code)
                 for col in df_country.columns:
-                    if col in qcode_title:
+                    if col in col_title:
                         key = f"{col}|{short_id}"
-                        pregs_dict[key] = f"{survey_key}|{qcode_title[col]}"
+                        pregs_dict[key] = f"{survey_key}|{col_title[col]}"
 
                 # ses_dict: harmonized SES columns available in this survey
                 available_ses = [c for c in _HARMONIZED_SES_COLS if c in df_country.columns]
