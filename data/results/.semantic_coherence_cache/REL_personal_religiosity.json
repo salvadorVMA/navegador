@@ -1,0 +1,45 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure internalized religious practice and meaning-making, but one item measures a specific behavioral tendency that conflates religious practice with folk devotionalism in a way that may not reflect personal religiosity as defined.",
+  "items": [
+    {
+      "item": "p10",
+      "verdict": "OK",
+      "reason": "Directly measures prayer outside formal worship, a core indicator of personal religious practice."
+    },
+    {
+      "item": "p12",
+      "verdict": "OK",
+      "reason": "Directly measures finding comfort and strength in religion, a key aspect of personal meaningfulness."
+    },
+    {
+      "item": "p13_1",
+      "verdict": "OK",
+      "reason": "Directly measures using religious values to guide family behavior, explicitly mentioned in the construct description."
+    },
+    {
+      "item": "p14",
+      "verdict": "OK",
+      "reason": "Directly measures reliance on clergy for life decisions, explicitly mentioned in the construct description."
+    },
+    {
+      "item": "p25",
+      "verdict": "OK",
+      "reason": "Directly measures prayer, meditation, and contemplation practices, core indicators of personal religious practice."
+    },
+    {
+      "item": "p11",
+      "verdict": "FLAG",
+      "reason": "Measures willingness to petition specific saints/religious figures, which is a folk devotional practice distinct from internalized personal religiosity and may reflect cultural tradition rather than personal religious commitment."
+    }
+  ],
+  "_key": "REL|personal_religiosity",
+  "_items_reviewed": [
+    "p10",
+    "p12",
+    "p13_1",
+    "p14",
+    "p25",
+    "p11"
+  ]
+}

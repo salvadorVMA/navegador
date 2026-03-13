@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "All three items directly measure emigration intention and likelihood through complementary approaches: willingness for work-related emigration, general emigration preference, and prospective probability.",
+  "items": [
+    {
+      "item": "p15_1",
+      "verdict": "OK",
+      "reason": "Directly measures willingness to emigrate for work, capturing dispositional intent within a specific motivational context."
+    },
+    {
+      "item": "p17",
+      "verdict": "OK",
+      "reason": "Directly measures general emigration preference and desire, capturing the core attitudinal component of emigration intention."
+    },
+    {
+      "item": "p18",
+      "verdict": "OK",
+      "reason": "Directly measures perceived probability of emigration within a specific timeframe, capturing the likelihood/behavioral expectation dimension of the construct."
+    }
+  ],
+  "_key": "MIG|emigration_intention_likelihood",
+  "_items_reviewed": [
+    "p15_1",
+    "p17",
+    "p18"
+  ]
+}

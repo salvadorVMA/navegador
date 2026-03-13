@@ -1,0 +1,33 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "All items directly measure physical health limitations on everyday functioning within the specified domain of moderate physical effort, stair climbing, and activity/work reduction.",
+  "items": [
+    {
+      "item": "p2",
+      "verdict": "OK",
+      "reason": "Directly measures limitation in moderate physical effort (walking 30 minutes, household cleaning) as described in construct definition."
+    },
+    {
+      "item": "p3",
+      "verdict": "OK",
+      "reason": "Directly measures limitation in stair climbing, explicitly mentioned in construct definition."
+    },
+    {
+      "item": "p4",
+      "verdict": "OK",
+      "reason": "Measures reduced activity performance due to physical health in past four weeks, core to functional health status construct."
+    },
+    {
+      "item": "p5",
+      "verdict": "OK",
+      "reason": "Measures work and activity limitation due to physical health, directly aligned with construct's focus on reduced work performance."
+    }
+  ],
+  "_key": "SAL|functional_health_status",
+  "_items_reviewed": [
+    "p2",
+    "p3",
+    "p4",
+    "p5"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure normative commitment to democracy and satisfaction with democratic functioning, but p30 measures conceptual understanding of democracy rather than valuation or trust in it.",
+  "items": [
+    {
+      "item": "p30",
+      "verdict": "FLAG",
+      "reason": "Measures which aspect respondents consider most important to democracy (conceptual knowledge/priorities) rather than their valuation, trust, or satisfaction with democratic governance."
+    },
+    {
+      "item": "p31",
+      "verdict": "OK",
+      "reason": "Directly measures normative commitment to democracy as a preferred system of governance."
+    },
+    {
+      "item": "p32",
+      "verdict": "OK",
+      "reason": "Measures evaluation of Mexico's actual democratic functioning, a core component of assessing democratic legitimacy."
+    },
+    {
+      "item": "p35",
+      "verdict": "OK",
+      "reason": "Directly measures satisfaction with democracy in Mexico, a key indicator of democratic legitimacy support."
+    },
+    {
+      "item": "p36",
+      "verdict": "OK",
+      "reason": "Measures normative beliefs about the relationship between democracy and human rights, reflecting commitment to democratic principles."
+    }
+  ],
+  "_key": "CUL|democratic_legitimacy_support",
+  "_items_reviewed": [
+    "p30",
+    "p31",
+    "p32",
+    "p35",
+    "p36"
+  ]
+}

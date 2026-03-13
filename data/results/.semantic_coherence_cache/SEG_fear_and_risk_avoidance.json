@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure fear of crime victimization and avoidance behaviors, but two items measure fear of wrongful arrest and perceived probability of unjust imprisonment, which are substantively distinct constructs.",
+  "items": [
+    {
+      "item": "p11_1",
+      "verdict": "OK",
+      "reason": "Directly measures subjective fear of a specific crime (street robbery with violence), which is core to the construct."
+    },
+    {
+      "item": "p22_1",
+      "verdict": "OK",
+      "reason": "Directly measures avoidance of places due to crime fear, a key behavioral manifestation of the construct."
+    },
+    {
+      "item": "p23_1",
+      "verdict": "OK",
+      "reason": "Directly measures cessation of activities (going out at night) to reduce crime victimization risk, a core construct element."
+    },
+    {
+      "item": "p48",
+      "verdict": "FLAG",
+      "reason": "Measures fear of wrongful arrest by authorities, which is distinct from fear of crime victimization and not part of the described construct domain."
+    },
+    {
+      "item": "p49",
+      "verdict": "FLAG",
+      "reason": "Measures perceived probability of unjust imprisonment in the criminal justice system, which concerns institutional injustice rather than crime victimization fear or avoidance."
+    }
+  ],
+  "_key": "SEG|fear_and_risk_avoidance",
+  "_items_reviewed": [
+    "p11_1",
+    "p22_1",
+    "p23_1",
+    "p48",
+    "p49"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure traditional gender role attitudes, but two items measure gender stereotypes and ideological equivalence rather than endorsement of traditional role norms.",
+  "items": [
+    {
+      "item": "p11_1",
+      "verdict": "OK",
+      "reason": "Directly measures endorsement of male economic dominance, a core component of traditional gender role attitudes."
+    },
+    {
+      "item": "p26_1",
+      "verdict": "OK",
+      "reason": "Directly measures belief that household labor is women's responsibility, a central traditional gender role norm."
+    },
+    {
+      "item": "p61_1",
+      "verdict": "FLAG",
+      "reason": "Measures a gender stereotype about male sexual behavior rather than endorsement of traditional role divisions in domestic, economic, or social life."
+    },
+    {
+      "item": "p63_1",
+      "verdict": "FLAG",
+      "reason": "Measures a negative gender stereotype about female emotional manipulation rather than endorsement of traditional gender role norms."
+    },
+    {
+      "item": "p59_1",
+      "verdict": "FLAG",
+      "reason": "Measures ideological equivalence between feminism and machismo rather than direct endorsement of traditional gender roles."
+    }
+  ],
+  "_key": "GEN|traditional_gender_role_attitudes",
+  "_items_reviewed": [
+    "p11_1",
+    "p26_1",
+    "p61_1",
+    "p63_1",
+    "p59_1"
+  ]
+}

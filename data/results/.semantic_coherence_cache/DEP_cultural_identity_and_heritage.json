@@ -1,0 +1,45 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items validly measure cultural identity and heritage self-identification, but two items measuring indigenous language ability are tangentially related behavioral competencies rather than direct measures of cultural belonging or self-identification.",
+  "items": [
+    {
+      "item": "p48",
+      "verdict": "OK",
+      "reason": "Directly measures first language acquisition, a core component of cultural heritage and identity formation."
+    },
+    {
+      "item": "p49",
+      "verdict": "OK",
+      "reason": "Directly assesses self-perceived cultural distinctiveness and heritage recognition relative to the majority population."
+    },
+    {
+      "item": "p50",
+      "verdict": "OK",
+      "reason": "Directly measures self-identification as part of a discriminated ethnic/racial group, explicitly mentioned in the construct description."
+    },
+    {
+      "item": "p54",
+      "verdict": "OK",
+      "reason": "Directly measures ethnic/racial self-categorization and self-perception, a core component of cultural identity."
+    },
+    {
+      "item": "p34",
+      "verdict": "FLAG",
+      "reason": "Measures behavioral language competency (ability to converse) rather than cultural identity or belonging; someone may identify culturally with indigenous heritage without conversational ability."
+    },
+    {
+      "item": "p35",
+      "verdict": "FLAG",
+      "reason": "Measures literacy skill in indigenous languages rather than cultural identity or self-identification; literacy is a behavioral outcome distinct from cultural belonging."
+    }
+  ],
+  "_key": "DEP|cultural_identity_and_heritage",
+  "_items_reviewed": [
+    "p48",
+    "p49",
+    "p50",
+    "p54",
+    "p34",
+    "p35"
+  ]
+}

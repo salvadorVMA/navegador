@@ -1,0 +1,51 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items validly measure judicial institutional trust, but p43 measures normative preferences about judicial philosophy rather than perceived legitimacy or trustworthiness of institutions.",
+  "items": [
+    {
+      "item": "p22",
+      "verdict": "OK",
+      "reason": "Directly assesses perceived functional effectiveness of the justice system, a core component of institutional trust."
+    },
+    {
+      "item": "p41",
+      "verdict": "OK",
+      "reason": "Measures perceived judicial independence, a key dimension of institutional legitimacy and impartiality."
+    },
+    {
+      "item": "p42_1",
+      "verdict": "OK",
+      "reason": "Assesses belief that judges guarantee fair trials, directly measuring perceived fairness and trustworthiness."
+    },
+    {
+      "item": "p46",
+      "verdict": "OK",
+      "reason": "Measures perceived justice of Supreme Court decisions, capturing trust in judicial fairness and legitimacy."
+    },
+    {
+      "item": "p33",
+      "verdict": "OK",
+      "reason": "Assesses perceived equal treatment and impartiality in courts, a fundamental aspect of institutional fairness."
+    },
+    {
+      "item": "p50",
+      "verdict": "OK",
+      "reason": "Measures perceived accountability of judges, reflecting trust in institutional oversight and legitimacy."
+    },
+    {
+      "item": "p43",
+      "verdict": "FLAG",
+      "reason": "Measures respondent's normative preference between justice and legal adherence rather than perceived trustworthiness or legitimacy of judicial institutions."
+    }
+  ],
+  "_key": "JUS|judicial_institutional_trust",
+  "_items_reviewed": [
+    "p22",
+    "p41",
+    "p42_1",
+    "p46",
+    "p33",
+    "p50",
+    "p43"
+  ]
+}

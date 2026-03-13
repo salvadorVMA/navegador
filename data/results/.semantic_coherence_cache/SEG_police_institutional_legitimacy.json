@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "All three items measure distinct but semantically related dimensions of police institutional legitimacy: perceived corruption, human rights violations, and normative acceptance of police authority.",
+  "items": [
+    {
+      "item": "p28_1",
+      "verdict": "OK",
+      "reason": "Directly measures perceived corruption, a key component of institutional trustworthiness and legitimacy."
+    },
+    {
+      "item": "p29_1",
+      "verdict": "OK",
+      "reason": "Directly measures perceived human rights violations, a critical dimension of police legitimacy and trustworthiness."
+    },
+    {
+      "item": "p53",
+      "verdict": "OK",
+      "reason": "Directly measures normative acceptance of police authority and compliance with police decisions, a core element of institutional legitimacy."
+    }
+  ],
+  "_key": "SEG|police_institutional_legitimacy",
+  "_items_reviewed": [
+    "p28_1",
+    "p29_1",
+    "p53"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Three items directly measure ageist stereotypes and discriminatory attitudes, but one item measures perceived labor market conditions rather than personal stereotyping or discriminatory beliefs.",
+  "items": [
+    {
+      "item": "p13_1",
+      "verdict": "OK",
+      "reason": "Directly measures a negative stereotype about older adults' health status, a core component of ageist attitudes."
+    },
+    {
+      "item": "p14_1",
+      "verdict": "OK",
+      "reason": "Directly measures a negative stereotype about older adults' disengagement and loss of interest, explicitly mentioned in the construct description."
+    },
+    {
+      "item": "p26",
+      "verdict": "OK",
+      "reason": "Directly measures justification for age-based employment discrimination, explicitly mentioned in the construct description."
+    },
+    {
+      "item": "p27",
+      "verdict": "FLAG",
+      "reason": "Measures perceived labor market opportunities for older adults rather than personal ageist stereotypes or discriminatory attitudes, conflating a descriptive belief about structural conditions with normative stereotyping."
+    }
+  ],
+  "_key": "ENV|ageism_and_negative_stereotypes",
+  "_items_reviewed": [
+    "p13_1",
+    "p14_1",
+    "p26",
+    "p27"
+  ]
+}

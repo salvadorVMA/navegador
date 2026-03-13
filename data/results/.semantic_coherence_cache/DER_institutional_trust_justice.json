@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure trust and perceived legitimacy of justice institutions, but p19 shifts focus to victim treatment quality, which is a distinct outcome rather than institutional trust.",
+  "items": [
+    {
+      "item": "p18",
+      "verdict": "OK",
+      "reason": "Directly measures perceived effectiveness of prosecutor offices in fulfilling their core justice function, a key component of institutional trust."
+    },
+    {
+      "item": "p19",
+      "verdict": "FLAG",
+      "reason": "Measures quality of victim treatment rather than trust in or legitimacy of the institution itself; this is a service outcome distinct from institutional confidence."
+    },
+    {
+      "item": "p20",
+      "verdict": "OK",
+      "reason": "Directly measures confidence and trust in judges, the core construct of institutional trust."
+    },
+    {
+      "item": "p21",
+      "verdict": "OK",
+      "reason": "Measures perceived legitimacy and effectiveness of the Supreme Court in upholding human rights, consistent with the construct definition."
+    },
+    {
+      "item": "p34",
+      "verdict": "OK",
+      "reason": "Directly measures perceived effectiveness of human rights commissions in defending rights, consistent with institutional trust in formal justice institutions."
+    }
+  ],
+  "_key": "DER|institutional_trust_justice",
+  "_items_reviewed": [
+    "p18",
+    "p19",
+    "p20",
+    "p21",
+    "p34"
+  ]
+}

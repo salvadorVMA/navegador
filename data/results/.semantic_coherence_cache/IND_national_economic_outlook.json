@@ -1,0 +1,21 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "Both items directly measure the intended construct of national economic outlook through retrospective (p1) and prospective (p2) evaluations of Mexico's economic situation.",
+  "items": [
+    {
+      "item": "p1",
+      "verdict": "OK",
+      "reason": "Directly measures retrospective sociotropic economic assessment by comparing current national economic situation to one year ago."
+    },
+    {
+      "item": "p2",
+      "verdict": "OK",
+      "reason": "Directly measures prospective economic expectations by asking about anticipated changes in the country's economic situation over the next year."
+    }
+  ],
+  "_key": "IND|national_economic_outlook",
+  "_items_reviewed": [
+    "p1",
+    "p2"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Two items measure willingness/acceptance (on-target), but one item measures past behavior/experience rather than willingness or social distance.",
+  "items": [
+    {
+      "item": "p37_1",
+      "verdict": "OK",
+      "reason": "Directly measures willingness to engage in a professional/domestic relationship (hiring for childcare), reflecting behavioral acceptance and social distance."
+    },
+    {
+      "item": "p39_1",
+      "verdict": "FLAG",
+      "reason": "Measures past friendship experience rather than willingness or social distance; a behavioral outcome that may correlate with but is semantically distinct from the construct of social distance attitudes."
+    },
+    {
+      "item": "p40_1",
+      "verdict": "OK",
+      "reason": "Directly measures willingness to allow indigenous people into one's home, a core indicator of residential social distance and acceptance."
+    }
+  ],
+  "_key": "IND|social_distance_toward_indigenous_people",
+  "_items_reviewed": [
+    "p37_1",
+    "p39_1",
+    "p40_1"
+  ]
+}

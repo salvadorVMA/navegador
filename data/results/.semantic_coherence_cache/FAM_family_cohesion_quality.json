@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Items p25 and p26 directly measure perceived relationship quality, but p27, p52, and p53 measure beliefs about what determines or sustains family cohesion rather than the respondent's actual perception of their own family's cohesion quality.",
+  "items": [
+    {
+      "item": "p25",
+      "verdict": "OK",
+      "reason": "Directly measures perceived quality of relationships with co-resident family members, core to family cohesion quality."
+    },
+    {
+      "item": "p26",
+      "verdict": "OK",
+      "reason": "Directly measures perceived quality of relationships with non-resident family members, aligning with construct's inclusion of both co-resident and non-resident bonds."
+    },
+    {
+      "item": "p27",
+      "verdict": "FLAG",
+      "reason": "Measures respondent's beliefs about what determines good/bad family relations in general, not their perception of their own family's cohesion quality."
+    },
+    {
+      "item": "p52",
+      "verdict": "FLAG",
+      "reason": "Measures respondent's beliefs about what keeps families united in general, not their perception of their own family's actual cohesion or unity."
+    },
+    {
+      "item": "p53",
+      "verdict": "FLAG",
+      "reason": "Measures family values held by the respondent rather than perceived quality of family relationships or sense of unity."
+    }
+  ],
+  "_key": "FAM|family_cohesion_quality",
+  "_items_reviewed": [
+    "p25",
+    "p26",
+    "p27",
+    "p52",
+    "p53"
+  ]
+}

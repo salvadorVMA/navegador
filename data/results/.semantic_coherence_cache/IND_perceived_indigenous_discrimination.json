@@ -1,0 +1,33 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items directly measure perceived discrimination against indigenous people, but p20 measures general skin color discrimination without indigenous-specific focus, making it tangentially related rather than directly on-target.",
+  "items": [
+    {
+      "item": "p20",
+      "verdict": "FLAG",
+      "reason": "Measures perception of skin color discrimination in general society rather than discrimination specifically against indigenous people; conflates racial/colorism discrimination with indigenous-specific discrimination."
+    },
+    {
+      "item": "p21",
+      "verdict": "OK",
+      "reason": "Directly measures recognition of racism in Mexico, which is foundational to perceiving systemic discrimination against indigenous populations."
+    },
+    {
+      "item": "p25_1",
+      "verdict": "OK",
+      "reason": "Directly assesses whether employment discrimination against indigenous people is recognized as discriminatory, measuring attitudinal recognition of indigenous-specific discrimination."
+    },
+    {
+      "item": "p34_1",
+      "verdict": "OK",
+      "reason": "Directly measures perception that indigenous identity creates systemic barriers to employment, capturing assessment of structural inequality affecting indigenous people."
+    }
+  ],
+  "_key": "IND|perceived_indigenous_discrimination",
+  "_items_reviewed": [
+    "p20",
+    "p21",
+    "p25_1",
+    "p34_1"
+  ]
+}

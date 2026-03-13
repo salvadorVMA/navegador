@@ -1,0 +1,57 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure perceived societal value of science/technology, but two items measure evaluations of institutional efficiency and policy preferences rather than beliefs about practical contribution and importance.",
+  "items": [
+    {
+      "item": "p34",
+      "verdict": "OK",
+      "reason": "Directly measures perceived contribution of Mexican science to solving national problems, core to the construct."
+    },
+    {
+      "item": "p36",
+      "verdict": "OK",
+      "reason": "Measures perceived importance of scientific knowledge, a key component of societal value beliefs."
+    },
+    {
+      "item": "p44_1",
+      "verdict": "OK",
+      "reason": "Measures perceived importance of technology for learning, relevant to practical utility and value of technology."
+    },
+    {
+      "item": "p57",
+      "verdict": "FLAG",
+      "reason": "Measures perceived efficiency of technology utilization in Mexico, which is an evaluation of institutional performance rather than beliefs about science/technology's societal value or importance."
+    },
+    {
+      "item": "p58",
+      "verdict": "FLAG",
+      "reason": "Measures perceived government support for technology development, which is a policy/resource allocation assessment distinct from beliefs about science/technology's practical contribution to solving social problems."
+    },
+    {
+      "item": "p42_1",
+      "verdict": "OK",
+      "reason": "Measures perceived quality of science education, which relates to the construct's inclusion of science education quality as a component of societal value."
+    },
+    {
+      "item": "p39_1",
+      "verdict": "OK",
+      "reason": "Measures agreement that science education is indispensable, reflecting beliefs about the importance and value of science in society."
+    },
+    {
+      "item": "p51_1",
+      "verdict": "FLAG",
+      "reason": "Measures agreement with a technology import policy position, which is a normative policy preference rather than a belief about science/technology's practical contribution or importance to Mexico."
+    }
+  ],
+  "_key": "CIE|perceived_societal_value_of_science_technology",
+  "_items_reviewed": [
+    "p34",
+    "p36",
+    "p44_1",
+    "p57",
+    "p58",
+    "p42_1",
+    "p39_1",
+    "p51_1"
+  ]
+}

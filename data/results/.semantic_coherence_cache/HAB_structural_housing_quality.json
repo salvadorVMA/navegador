@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "All three items directly measure the physical material composition of core structural elements (walls, roof, floor) that collectively indicate structural adequacy and habitability.",
+  "items": [
+    {
+      "item": "p1",
+      "verdict": "OK",
+      "reason": "Directly measures wall material quality, a primary structural component of dwelling habitability."
+    },
+    {
+      "item": "p2",
+      "verdict": "OK",
+      "reason": "Directly measures roof material quality, a primary structural component essential for weather protection and structural integrity."
+    },
+    {
+      "item": "p3",
+      "verdict": "OK",
+      "reason": "Directly measures floor material quality, a primary structural component indicating habitability and material precariousness."
+    }
+  ],
+  "_key": "HAB|structural_housing_quality",
+  "_items_reviewed": [
+    "p1",
+    "p2",
+    "p3"
+  ]
+}

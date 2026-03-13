@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Two items directly measure family value transmission, but one item measures religious influence on family life, which is a contextual factor rather than the values themselves.",
+  "items": [
+    {
+      "item": "p54",
+      "verdict": "OK",
+      "reason": "Directly measures values learned from family of origin and practiced daily, core to the construct."
+    },
+    {
+      "item": "p55",
+      "verdict": "OK",
+      "reason": "Directly measures fundamental values parents should transmit to children, core to the construct."
+    },
+    {
+      "item": "p57",
+      "verdict": "FLAG",
+      "reason": "Measures the influence of religion on family life rather than the values themselves or their transmission—a contextual factor distinct from the construct domain."
+    }
+  ],
+  "_key": "FAM|family_value_transmission",
+  "_items_reviewed": [
+    "p54",
+    "p55",
+    "p57"
+  ]
+}

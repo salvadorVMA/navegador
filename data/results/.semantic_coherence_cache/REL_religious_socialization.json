@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "All three items directly measure core components of religious socialization: family religious homogeneity, formal religious education received, and intergenerational transmission of religious beliefs.",
+  "items": [
+    {
+      "item": "p5",
+      "verdict": "OK",
+      "reason": "Directly measures family religious homogeneity, a key indicator of the religious socialization environment."
+    },
+    {
+      "item": "p6",
+      "verdict": "OK",
+      "reason": "Directly measures receipt of formal religious education, a primary institutional mechanism of religious socialization."
+    },
+    {
+      "item": "p33_1",
+      "verdict": "OK",
+      "reason": "Directly measures alignment between respondent's and parents' religious thinking, capturing intergenerational transmission of religious identity."
+    }
+  ],
+  "_key": "REL|religious_socialization",
+  "_items_reviewed": [
+    "p5",
+    "p6",
+    "p33_1"
+  ]
+}

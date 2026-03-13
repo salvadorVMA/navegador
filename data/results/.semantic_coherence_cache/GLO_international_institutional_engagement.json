@@ -1,0 +1,45 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure support for international institutional engagement, but p58 measures behavioral intention/willingness to use institutions rather than support for institutional authority.",
+  "items": [
+    {
+      "item": "p52_1",
+      "verdict": "OK",
+      "reason": "Directly measures support for Mexico's involvement with the international community on a global issue."
+    },
+    {
+      "item": "p54_1",
+      "verdict": "OK",
+      "reason": "Measures preference for UN authority over national governments on international peace, core to institutional deference."
+    },
+    {
+      "item": "p57",
+      "verdict": "OK",
+      "reason": "Measures support for UN's active role in human rights promotion, directly assessing institutional authority."
+    },
+    {
+      "item": "p58",
+      "verdict": "FLAG",
+      "reason": "Measures personal behavioral intention to use international institutions rather than support for institutional engagement or authority."
+    },
+    {
+      "item": "p60_1",
+      "verdict": "OK",
+      "reason": "Measures support for UN authority to use military force, directly assessing deference to international institutional power."
+    },
+    {
+      "item": "p63_1",
+      "verdict": "OK",
+      "reason": "Measures support for Mexico's collaborative engagement with other countries on a multilateral issue."
+    }
+  ],
+  "_key": "GLO|international_institutional_engagement",
+  "_items_reviewed": [
+    "p52_1",
+    "p54_1",
+    "p57",
+    "p58",
+    "p60_1",
+    "p63_1"
+  ]
+}

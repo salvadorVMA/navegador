@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Items p34 and p35 directly measure alcohol consumption frequency and intensity as described, but p28 measures only lifetime smoking history without capturing current smoking intensity or frequency.",
+  "items": [
+    {
+      "item": "p28",
+      "verdict": "FLAG",
+      "reason": "Measures lifetime smoking history (yes/no) but does not capture current smoking status, intensity, or frequency as required by the construct description; a behavioral outcome indicator rather than engagement in the behavior."
+    },
+    {
+      "item": "p34",
+      "verdict": "OK",
+      "reason": "Directly measures frequency of alcohol consumption in the past 12 months, which aligns with the construct's focus on frequency and intensity of alcohol consumption."
+    },
+    {
+      "item": "p35",
+      "verdict": "OK",
+      "reason": "Directly measures intensity of alcohol consumption (maximum drinks per occasion in past 12 months), which aligns with the construct's focus on intensity of alcohol consumption."
+    }
+  ],
+  "_key": "SAL|health_risk_behaviors",
+  "_items_reviewed": [
+    "p28",
+    "p34",
+    "p35"
+  ]
+}

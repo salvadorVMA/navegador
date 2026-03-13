@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "All three items directly measure perceived competence and self-assessed ability to understand science and technology, which are core components of science-technology self-efficacy.",
+  "items": [
+    {
+      "item": "p16",
+      "verdict": "OK",
+      "reason": "Directly measures self-assessed knowledge of science on a 0-10 scale, a core indicator of perceived competence in the science domain."
+    },
+    {
+      "item": "p17",
+      "verdict": "OK",
+      "reason": "Directly measures self-assessed knowledge of technology on a 0-10 scale, a core indicator of perceived competence in the technology domain."
+    },
+    {
+      "item": "p45_1",
+      "verdict": "OK",
+      "reason": "Measures perceived ability to understand science by assessing disagreement with the statement that science is too specialized, capturing subjective sense of competence in scientific domains."
+    }
+  ],
+  "_key": "CIE|science_technology_self_efficacy",
+  "_items_reviewed": [
+    "p16",
+    "p17",
+    "p45_1"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items validly measure federalism preferences regarding distribution of responsibilities and resources, but p37_1 measures satisfaction with service delivery rather than preferences about how governance should be structured.",
+  "items": [
+    {
+      "item": "p31_1",
+      "verdict": "OK",
+      "reason": "Measures attribution of responsibility for a public service across government levels, relevant to understanding federalism preferences."
+    },
+    {
+      "item": "p32_1",
+      "verdict": "OK",
+      "reason": "Directly measures preference for which government level should manage a specific service, core to fiscal and service federalism."
+    },
+    {
+      "item": "p33",
+      "verdict": "OK",
+      "reason": "Measures general preference for which government level should address local problems, directly relevant to decentralization attitudes."
+    },
+    {
+      "item": "p34_1",
+      "verdict": "OK",
+      "reason": "Measures preference for which government level should manage education services, a key domain of federalism preferences."
+    },
+    {
+      "item": "p36",
+      "verdict": "OK",
+      "reason": "Directly measures preferences about fiscal distribution and resource allocation across government levels, core to fiscal federalism."
+    },
+    {
+      "item": "p37_1",
+      "verdict": "FLAG",
+      "reason": "Measures satisfaction with municipal service delivery relative to taxes paid, which is an outcome evaluation rather than a preference about how governance should be structured."
+    },
+    {
+      "item": "p38",
+      "verdict": "OK",
+      "reason": "Measures preference for how tax revenue should be distributed geographically, directly relevant to fiscal federalism preferences."
+    },
+    {
+      "item": "p60",
+      "verdict": "OK",
+      "reason": "Measures preference for centralization versus decentralization of decision-making authority, core to federalism preferences."
+    }
+  ],
+  "_key": "FED|fiscal_and_service_federalism_preferences",
+  "_items_reviewed": [
+    "p31_1",
+    "p32_1",
+    "p33",
+    "p34_1",
+    "p36",
+    "p37_1",
+    "p38",
+    "p60"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Two items measure general situation perception across age groups, but one item narrows focus specifically to economic situation, introducing a substantive domain distinction.",
+  "items": [
+    {
+      "item": "p5",
+      "verdict": "OK",
+      "reason": "Directly measures perceived change in general situation of children, aligned with construct definition."
+    },
+    {
+      "item": "p31",
+      "verdict": "OK",
+      "reason": "Directly measures perceived change in general situation of adolescents, aligned with construct definition."
+    },
+    {
+      "item": "p61",
+      "verdict": "FLAG",
+      "reason": "Narrows focus to economic situation specifically rather than general situation, measuring a distinct subdomain that may not be semantically equivalent to the broader evaluative orientation described."
+    }
+  ],
+  "_key": "NIN|perceived_situation_of_children_and_youth",
+  "_items_reviewed": [
+    "p5",
+    "p31",
+    "p61"
+  ]
+}

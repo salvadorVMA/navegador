@@ -1,0 +1,45 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Item p12_1 measures party representativeness rather than elected officials' representativeness, introducing a conceptually distinct element into a scale otherwise focused on multi-level political representation.",
+  "items": [
+    {
+      "item": "p12_1",
+      "verdict": "FLAG",
+      "reason": "Measures political parties' representativeness rather than elected officials' representativeness; parties are organizational entities distinct from the elected representatives (deputies, governors, presidents) that comprise the rest of the scale."
+    },
+    {
+      "item": "p12_2",
+      "verdict": "OK",
+      "reason": "Directly measures perceived representativeness of local deputies, consistent with the multi-level assessment of elected officials."
+    },
+    {
+      "item": "p12_3",
+      "verdict": "OK",
+      "reason": "Directly measures perceived representativeness of federal deputies, consistent with the multi-level assessment of elected officials."
+    },
+    {
+      "item": "p12_4",
+      "verdict": "OK",
+      "reason": "Directly measures perceived representativeness of state governors, consistent with the multi-level assessment of elected officials."
+    },
+    {
+      "item": "p12_5",
+      "verdict": "OK",
+      "reason": "Directly measures perceived representativeness of the national president, consistent with the multi-level assessment of elected officials."
+    },
+    {
+      "item": "p12_6",
+      "verdict": "OK",
+      "reason": "Directly measures perceived representativeness of municipal presidents, consistent with the multi-level assessment of elected officials."
+    }
+  ],
+  "_key": "FED|perceived_representativeness",
+  "_items_reviewed": [
+    "p12_1",
+    "p12_2",
+    "p12_3",
+    "p12_4",
+    "p12_5",
+    "p12_6"
+  ]
+}

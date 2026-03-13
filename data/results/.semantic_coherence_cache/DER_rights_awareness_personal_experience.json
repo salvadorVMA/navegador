@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "The construct targets personal experience with human rights and labor rights violations, but includes school bullying which is a distinct harm domain outside the rights violation framework.",
+  "items": [
+    {
+      "item": "p45",
+      "verdict": "OK",
+      "reason": "Directly measures personal experience with human rights violations, core to the construct's lived dimension."
+    },
+    {
+      "item": "p53",
+      "verdict": "FLAG",
+      "reason": "School bullying is a peer-to-peer harm distinct from human rights or labor rights violations and does not measure rights abuses by authority or institutional actors."
+    },
+    {
+      "item": "p54",
+      "verdict": "OK",
+      "reason": "Directly measures personal experience with labor rights abuse (workplace mobbing), aligned with the construct's focus on lived rights violations."
+    }
+  ],
+  "_key": "DER|rights_awareness_personal_experience",
+  "_items_reviewed": [
+    "p45",
+    "p53",
+    "p54"
+  ]
+}

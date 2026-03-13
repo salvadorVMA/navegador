@@ -1,0 +1,57 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items validly measure science and technology interest and engagement, but three items (p38_4, p38_5, p38_6) measure interest in specific science policy/environmental topics rather than general science-technology interest or media consumption behavior.",
+  "items": [
+    {
+      "item": "p11",
+      "verdict": "OK",
+      "reason": "Directly measures expressed interest in science, a core component of the construct."
+    },
+    {
+      "item": "p22",
+      "verdict": "OK",
+      "reason": "Directly measures expressed interest in technology, a core component of the construct."
+    },
+    {
+      "item": "p23",
+      "verdict": "OK",
+      "reason": "Measures frequency of media consumption about technology, explicitly included in the construct description."
+    },
+    {
+      "item": "p35",
+      "verdict": "OK",
+      "reason": "Measures desire to participate in science-related activities, a core engagement component of the construct."
+    },
+    {
+      "item": "p43",
+      "verdict": "OK",
+      "reason": "Measures desire to participate in technology-related activities, a core engagement component of the construct."
+    },
+    {
+      "item": "p38_4",
+      "verdict": "FLAG",
+      "reason": "Measures interest in a specific environmental policy topic (climate change) rather than general science-technology interest or engagement."
+    },
+    {
+      "item": "p38_5",
+      "verdict": "FLAG",
+      "reason": "Measures interest in a specific environmental policy topic (renewable energy) rather than general science-technology interest or engagement."
+    },
+    {
+      "item": "p38_6",
+      "verdict": "FLAG",
+      "reason": "Measures interest in a specific controversial science policy topic (transgenic crops) rather than general science-technology interest or engagement."
+    }
+  ],
+  "_key": "CIE|science_technology_interest_engagement",
+  "_items_reviewed": [
+    "p11",
+    "p22",
+    "p23",
+    "p35",
+    "p43",
+    "p38_4",
+    "p38_5",
+    "p38_6"
+  ]
+}

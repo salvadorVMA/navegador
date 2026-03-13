@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items directly measure church-state separation attitudes, but p58 conflates a descriptive premise (media currently broadcasts religious content) with an attitudinal question, making it semantically distinct from the normative boundary-setting focus of other items.",
+  "items": [
+    {
+      "item": "p52_1",
+      "verdict": "OK",
+      "reason": "Directly measures attitudes toward clergy political speech in religious settings, a core church-state boundary issue."
+    },
+    {
+      "item": "p55",
+      "verdict": "OK",
+      "reason": "Directly measures attitudes toward public resource allocation to religious events, a central church-state separation concern."
+    },
+    {
+      "item": "p56",
+      "verdict": "OK",
+      "reason": "Directly measures attitudes toward institutional religious political participation through party formation, a key church-state boundary."
+    },
+    {
+      "item": "p57",
+      "verdict": "OK",
+      "reason": "Directly measures attitudes toward tax treatment of religious institutions, reflecting their public-sphere status and secular governance principles."
+    },
+    {
+      "item": "p58",
+      "verdict": "FLAG",
+      "reason": "Embeds a factual premise about current media practices before asking about agreement, conflating descriptive reality with normative attitudes about religious content in media, which is tangentially related to institutional church-state boundaries rather than directly measuring them."
+    }
+  ],
+  "_key": "REL|church_state_separation",
+  "_items_reviewed": [
+    "p52_1",
+    "p55",
+    "p56",
+    "p57",
+    "p58"
+  ]
+}

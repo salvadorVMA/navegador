@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Items p28-p29 and p64 measure normative beliefs about intergenerational obligations, while p62-p63 measure behavioral/actual coping strategies and current care arrangements, which are outcomes rather than attitudinal beliefs about obligations.",
+  "items": [
+    {
+      "item": "p28",
+      "verdict": "OK",
+      "reason": "Directly measures parental obligations toward children, a core component of intergenerational duty beliefs."
+    },
+    {
+      "item": "p29",
+      "verdict": "OK",
+      "reason": "Directly measures filial obligations toward parents, including elder care responsibility, a core component of the construct."
+    },
+    {
+      "item": "p62",
+      "verdict": "FLAG",
+      "reason": "Measures actual behavioral strategies and preparations for old age rather than beliefs about intergenerational obligations; conflates personal coping mechanisms with familial duty attitudes."
+    },
+    {
+      "item": "p63",
+      "verdict": "FLAG",
+      "reason": "Measures current or anticipated actual care arrangements and who will provide care, not beliefs about obligations; describes behavioral reality rather than normative attitudes toward intergenerational duty."
+    },
+    {
+      "item": "p64",
+      "verdict": "OK",
+      "reason": "Measures willingness to assume caregiving responsibility for family members, which reflects beliefs about filial and familial obligations toward dependent relatives."
+    }
+  ],
+  "_key": "FAM|intergenerational_obligations",
+  "_items_reviewed": [
+    "p28",
+    "p29",
+    "p62",
+    "p63",
+    "p64"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure attitudes toward conjugal unions, but p33 is a behavioral disclosure item that measures past conduct rather than attitudes or normative orientations.",
+  "items": [
+    {
+      "item": "p21",
+      "verdict": "OK",
+      "reason": "Directly measures criteria and motivations for selecting a conjugal partner, core to attitudes about forming unions."
+    },
+    {
+      "item": "p22",
+      "verdict": "OK",
+      "reason": "Measures family influence on partner selection, relevant to normative orientations toward conjugal union formation."
+    },
+    {
+      "item": "p23",
+      "verdict": "OK",
+      "reason": "Measures personal motivations for initiating a conjugal union, directly aligned with attitudes about forming partnerships."
+    },
+    {
+      "item": "p32",
+      "verdict": "OK",
+      "reason": "Measures perceived causes of extramarital relations, relevant to attitudes about conjugal union stability and maintenance."
+    },
+    {
+      "item": "p33",
+      "verdict": "FLAG",
+      "reason": "Measures actual past behavior (whether respondent has had affairs) rather than attitudes, normative orientations, or tolerance toward infidelity."
+    },
+    {
+      "item": "p35",
+      "verdict": "OK",
+      "reason": "Measures tolerance and conditions for accepting infidelity, directly relevant to attitudes about conjugal union stability and normative orientations."
+    },
+    {
+      "item": "p38",
+      "verdict": "OK",
+      "reason": "Measures perceived causes of divorce, directly aligned with attitudes about conjugal union dissolution and stability."
+    }
+  ],
+  "_key": "FAM|conjugal_union_attitudes",
+  "_items_reviewed": [
+    "p21",
+    "p22",
+    "p23",
+    "p32",
+    "p33",
+    "p35",
+    "p38"
+  ]
+}

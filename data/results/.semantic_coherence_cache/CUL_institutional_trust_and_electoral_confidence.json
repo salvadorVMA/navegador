@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure electoral integrity perceptions and institutional trust in electoral bodies, but p71 and p72 shift focus to vote-buying behavior—a substantively distinct electoral malpractice rather than trust in institutions or confidence in process integrity.",
+  "items": [
+    {
+      "item": "p41",
+      "verdict": "OK",
+      "reason": "Directly measures confidence in electoral process integrity (freedom and fairness), a core component of electoral confidence."
+    },
+    {
+      "item": "p42",
+      "verdict": "OK",
+      "reason": "Directly measures trust in INE's ability to ensure clean elections, a key institutional trust component."
+    },
+    {
+      "item": "p43",
+      "verdict": "OK",
+      "reason": "Measures confidence in electoral reliability under expanded INE jurisdiction, assessing trust in institutional capacity."
+    },
+    {
+      "item": "p71",
+      "verdict": "FLAG",
+      "reason": "Measures perception of vote-buying prevalence, which is a specific electoral malpractice behavior rather than trust in institutions or confidence in process integrity."
+    },
+    {
+      "item": "p72",
+      "verdict": "FLAG",
+      "reason": "Measures personal experience with vote-buying offers, a behavioral outcome and individual victimization measure rather than institutional trust or electoral confidence."
+    }
+  ],
+  "_key": "CUL|institutional_trust_and_electoral_confidence",
+  "_items_reviewed": [
+    "p41",
+    "p42",
+    "p43",
+    "p71",
+    "p72"
+  ]
+}

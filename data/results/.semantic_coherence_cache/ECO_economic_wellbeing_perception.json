@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "All three items directly measure economic wellbeing perception across personal, national, and intergenerational dimensions as described in the construct definition.",
+  "items": [
+    {
+      "item": "p1",
+      "verdict": "OK",
+      "reason": "Directly measures satisfaction with the country's current economic situation, capturing the societal economic evaluation component of the construct."
+    },
+    {
+      "item": "p2",
+      "verdict": "OK",
+      "reason": "Directly measures personal satisfaction with one's own current economic situation, capturing the individual economic evaluation component of the construct."
+    },
+    {
+      "item": "p3",
+      "verdict": "OK",
+      "reason": "Directly measures perceived intergenerational economic mobility by comparing current living standards to parents' living standards at the same age, capturing the intergenerational comparison component of the construct."
+    }
+  ],
+  "_key": "ECO|economic_wellbeing_perception",
+  "_items_reviewed": [
+    "p1",
+    "p2",
+    "p3"
+  ]
+}

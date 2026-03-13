@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "All three items directly measure core dimensions of political interest and engagement: news consumption frequency, self-reported political interest, and perceived relevance of politics to daily life.",
+  "items": [
+    {
+      "item": "p5",
+      "verdict": "OK",
+      "reason": "Directly measures frequency of political news consumption, a key behavioral indicator of political engagement."
+    },
+    {
+      "item": "p6",
+      "verdict": "OK",
+      "reason": "Directly measures self-reported interest in politics, a core attitudinal component of the construct."
+    },
+    {
+      "item": "p7",
+      "verdict": "OK",
+      "reason": "Directly measures perceived relevance of politics to daily life, capturing the salience dimension of political engagement."
+    }
+  ],
+  "_key": "FED|political_interest_and_engagement",
+  "_items_reviewed": [
+    "p5",
+    "p6",
+    "p7"
+  ]
+}

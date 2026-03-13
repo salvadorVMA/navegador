@@ -1,0 +1,44 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "All items directly measure perceived political influence of specified actors using identical semantic framing and response scales.",
+  "items": [
+    {
+      "item": "p84_1",
+      "verdict": "OK"
+    },
+    {
+      "item": "p84_2",
+      "verdict": "OK"
+    },
+    {
+      "item": "p84_3",
+      "verdict": "OK"
+    },
+    {
+      "item": "p84_4",
+      "verdict": "OK"
+    },
+    {
+      "item": "p84_6",
+      "verdict": "OK"
+    },
+    {
+      "item": "p84_7",
+      "verdict": "OK"
+    },
+    {
+      "item": "p84_8",
+      "verdict": "OK"
+    }
+  ],
+  "_key": "CUL|perceived_political_influence_of_actors",
+  "_items_reviewed": [
+    "p84_1",
+    "p84_2",
+    "p84_3",
+    "p84_4",
+    "p84_6",
+    "p84_7",
+    "p84_8"
+  ]
+}

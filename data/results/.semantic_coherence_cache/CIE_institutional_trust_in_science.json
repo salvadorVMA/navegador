@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure institutional trust and perceived integrity of scientists, but p49_1 measures a normative belief about what universities should do rather than trust in or perception of scientific institutions.",
+  "items": [
+    {
+      "item": "p32_1",
+      "verdict": "OK",
+      "reason": "Directly measures perceived utility and societal value of scientific research, which reflects trust in scientists' commitment to producing socially relevant work."
+    },
+    {
+      "item": "p33",
+      "verdict": "OK",
+      "reason": "Directly measures perceived commitment of Mexican scientists to society, a core component of institutional trust as described."
+    },
+    {
+      "item": "p40_1",
+      "verdict": "OK",
+      "reason": "Measures skepticism about scientists' motivations (political interests), which is explicitly mentioned in the construct description as part of institutional trust assessment."
+    },
+    {
+      "item": "p50_1",
+      "verdict": "OK",
+      "reason": "Directly measures confidence in research conducted within a specific discipline (Medicine), which reflects trust in scientific institutions and their work."
+    },
+    {
+      "item": "p49_1",
+      "verdict": "FLAG",
+      "reason": "Measures a normative belief about what universities should prioritize rather than respondents' actual trust in or perception of scientific institutions' integrity or commitment."
+    }
+  ],
+  "_key": "CIE|institutional_trust_in_science",
+  "_items_reviewed": [
+    "p32_1",
+    "p33",
+    "p40_1",
+    "p50_1",
+    "p49_1"
+  ]
+}

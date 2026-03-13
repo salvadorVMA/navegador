@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "All items directly measure core dimensions of legal cynicism: tolerance for extrajudicial punishment, acceptance of lethal force outside due process, willingness to override judicial authority, belief in informal connections determining outcomes, and skepticism of judicial verdicts.",
+  "items": [
+    {
+      "item": "p17",
+      "verdict": "OK",
+      "reason": "Directly measures tolerance for community extrajudicial punishment when formal authorities fail, a core component of the construct."
+    },
+    {
+      "item": "p18",
+      "verdict": "OK",
+      "reason": "Directly measures acceptance of lethal force by security forces as substitute for due process and judicial proceedings, a key dimension of legal cynicism."
+    },
+    {
+      "item": "p44",
+      "verdict": "OK",
+      "reason": "Directly measures willingness to endorse executive override of judicial decisions, reflecting distrust of formal legal constraints on power."
+    },
+    {
+      "item": "p55",
+      "verdict": "OK",
+      "reason": "Directly measures belief that informal connections (knowing the judge) rather than legal merit determine judicial outcomes, a core cynicism dimension."
+    },
+    {
+      "item": "p45",
+      "verdict": "OK",
+      "reason": "Directly measures skepticism toward judicial verdicts and doubt in the legitimacy of judicial determinations of guilt, a key construct component."
+    }
+  ],
+  "_key": "JUS|legal_cynicism_extrajudicial_justice",
+  "_items_reviewed": [
+    "p17",
+    "p18",
+    "p44",
+    "p55",
+    "p45"
+  ]
+}

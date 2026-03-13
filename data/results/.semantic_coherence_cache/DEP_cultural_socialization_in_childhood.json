@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Two items measure parental cultural socialization behavior, but one item measures the child's own reading behavior, which is an outcome rather than exposure to parental cultural transmission.",
+  "items": [
+    {
+      "item": "p8",
+      "verdict": "OK",
+      "reason": "Directly measures parental communication about cultural topics during childhood, a core mechanism of cultural socialization."
+    },
+    {
+      "item": "p11",
+      "verdict": "OK",
+      "reason": "Directly measures parental/familial behavior of gifting books, a concrete cultural resource transmission practice."
+    },
+    {
+      "item": "p12_1",
+      "verdict": "FLAG",
+      "reason": "Measures the child's own reading frequency, which is a behavioral outcome of socialization rather than exposure to parental cultural practices or resources."
+    }
+  ],
+  "_key": "DEP|cultural_socialization_in_childhood",
+  "_items_reviewed": [
+    "p8",
+    "p11",
+    "p12_1"
+  ]
+}

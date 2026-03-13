@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Four items directly measure punitive and vigilante attitudes, but p72 measures approval of specific government anti-drug actions rather than endorsement of coercive or extralegal response principles.",
+  "items": [
+    {
+      "item": "p66",
+      "verdict": "OK",
+      "reason": "Directly measures endorsement of using violence to combat violence, a core component of the construct."
+    },
+    {
+      "item": "p67",
+      "verdict": "OK",
+      "reason": "Directly measures preference for security over liberty, explicitly mentioned in the construct description."
+    },
+    {
+      "item": "p68",
+      "verdict": "OK",
+      "reason": "Directly measures endorsement of community self-justice when authorities fail, a core vigilante attitude component."
+    },
+    {
+      "item": "p71",
+      "verdict": "OK",
+      "reason": "Directly measures support for capital punishment, explicitly mentioned in the construct description."
+    },
+    {
+      "item": "p72",
+      "verdict": "FLAG",
+      "reason": "Measures approval of specific government anti-drug policy implementation rather than endorsement of punitive/vigilante response principles, conflating policy evaluation with attitudinal construct."
+    }
+  ],
+  "_key": "SEG|punitive_and_vigilante_attitudes",
+  "_items_reviewed": [
+    "p66",
+    "p67",
+    "p68",
+    "p71",
+    "p72"
+  ]
+}

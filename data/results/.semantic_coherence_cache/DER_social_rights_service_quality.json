@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "All three items directly measure perceived quality/adequacy of distinct social rights domains (health services, housing, education) that align with the construct definition.",
+  "items": [
+    {
+      "item": "p30",
+      "verdict": "OK",
+      "reason": "Directly measures perceived efficiency of public health services, a core social right component."
+    },
+    {
+      "item": "p31",
+      "verdict": "OK",
+      "reason": "Directly measures perceived adequacy of housing as a dignified social right."
+    },
+    {
+      "item": "p32",
+      "verdict": "OK",
+      "reason": "Directly measures perceived quality of public education, a core social right component."
+    }
+  ],
+  "_key": "DER|social_rights_service_quality",
+  "_items_reviewed": [
+    "p30",
+    "p31",
+    "p32"
+  ]
+}

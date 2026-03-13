@@ -1,0 +1,33 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Three items directly measure perceived intergenerational mobility, but p36 measures beliefs about structural barriers (education-employment link) rather than perceived mobility outcomes or opportunities.",
+  "items": [
+    {
+      "item": "p22",
+      "verdict": "OK",
+      "reason": "Directly measures perceived personal economic mobility relative to parents at comparable life stage."
+    },
+    {
+      "item": "p23",
+      "verdict": "OK",
+      "reason": "Directly measures expected intergenerational mobility for next generation relative to respondent's current situation."
+    },
+    {
+      "item": "p24",
+      "verdict": "OK",
+      "reason": "Directly measures perceived structural opportunities for youth upward mobility relative to parental generation."
+    },
+    {
+      "item": "p36",
+      "verdict": "FLAG",
+      "reason": "Measures belief about the efficacy of education as a pathway to employment rather than perceived intergenerational mobility or structural opportunity."
+    }
+  ],
+  "_key": "POB|intergenerational_mobility_perception",
+  "_items_reviewed": [
+    "p22",
+    "p23",
+    "p24",
+    "p36"
+  ]
+}

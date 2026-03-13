@@ -1,0 +1,51 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items validly measure scientific and educational cultural capital through books and digital infrastructure, but one item measures educational resources that are functional/curricular rather than cultural capital.",
+  "items": [
+    {
+      "item": "p3_2",
+      "verdict": "OK",
+      "reason": "Directly measures presence of scientific books, a core component of scientific cultural capital."
+    },
+    {
+      "item": "p3_3",
+      "verdict": "OK",
+      "reason": "Directly measures presence of technical books, a core component of scientific and technical cultural capital."
+    },
+    {
+      "item": "p3_6",
+      "verdict": "OK",
+      "reason": "Directly measures presence of encyclopedic books, explicitly mentioned in the construct description."
+    },
+    {
+      "item": "p3_8",
+      "verdict": "OK",
+      "reason": "Directly measures presence of history books, explicitly mentioned in the construct description."
+    },
+    {
+      "item": "p3_11",
+      "verdict": "FLAG",
+      "reason": "School textbooks measure functional educational resources for academic performance rather than cultural capital reflecting exposure to scientific and educational culture."
+    },
+    {
+      "item": "p4",
+      "verdict": "OK",
+      "reason": "Directly measures access to computers, a core digital infrastructure component of the construct."
+    },
+    {
+      "item": "p5",
+      "verdict": "OK",
+      "reason": "Directly measures access to internet, a core digital infrastructure component of the construct."
+    }
+  ],
+  "_key": "CIE|household_science_cultural_capital",
+  "_items_reviewed": [
+    "p3_2",
+    "p3_3",
+    "p3_6",
+    "p3_8",
+    "p3_11",
+    "p4",
+    "p5"
+  ]
+}

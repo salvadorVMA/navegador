@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Items p4 and p7 align well with the construct, but p6 measures problem prioritization rather than perceived severity or personal relevance.",
+  "items": [
+    {
+      "item": "p4",
+      "verdict": "OK",
+      "reason": "Directly measures perceived severity of environmental conditions at the macro (national) level, core to environmental problem salience."
+    },
+    {
+      "item": "p6",
+      "verdict": "FLAG",
+      "reason": "Measures which environmental problem respondents rank as most important nationally, which is a prioritization judgment distinct from perceived severity or personal relevance of environmental problems."
+    },
+    {
+      "item": "p7",
+      "verdict": "OK",
+      "reason": "Directly measures personal relevance by asking which environmental problem most affects the respondent and family at the micro (household) level."
+    }
+  ],
+  "_key": "MED|environmental_problem_salience",
+  "_items_reviewed": [
+    "p4",
+    "p6",
+    "p7"
+  ]
+}

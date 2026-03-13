@@ -1,0 +1,33 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "All four items directly measure retrospective and prospective security trajectory assessments at both personal and national levels, with clear semantic alignment to the construct definition.",
+  "items": [
+    {
+      "item": "p3",
+      "verdict": "OK",
+      "reason": "Measures retrospective personal security trajectory (past 12 months), directly aligned with construct."
+    },
+    {
+      "item": "p4",
+      "verdict": "OK",
+      "reason": "Measures prospective personal security trajectory (next 12 months), directly aligned with construct."
+    },
+    {
+      "item": "p5",
+      "verdict": "OK",
+      "reason": "Measures retrospective national public security trajectory (past 12 months), directly aligned with construct."
+    },
+    {
+      "item": "p6",
+      "verdict": "OK",
+      "reason": "Measures prospective national public security trajectory (next 12 months), directly aligned with construct."
+    }
+  ],
+  "_key": "SEG|perceived_security_trajectory",
+  "_items_reviewed": [
+    "p3",
+    "p4",
+    "p5",
+    "p6"
+  ]
+}

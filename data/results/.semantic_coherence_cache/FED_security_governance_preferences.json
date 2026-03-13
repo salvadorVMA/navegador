@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure preferences and evaluations of security governance levels, but p47 measures performance satisfaction rather than governance preferences or coordination assessments.",
+  "items": [
+    {
+      "item": "p45",
+      "verdict": "OK",
+      "reason": "Directly measures evaluation of intergovernmental coordination between federal and state governments in security matters, a core component of security governance."
+    },
+    {
+      "item": "p46",
+      "verdict": "OK",
+      "reason": "Measures preference regarding police organizational structure and command authority, which is a substantive aspect of security governance preferences."
+    },
+    {
+      "item": "p47",
+      "verdict": "FLAG",
+      "reason": "Measures satisfaction with state government performance in security rather than preferences about which level should be responsible or how governance should be organized."
+    },
+    {
+      "item": "p48",
+      "verdict": "OK",
+      "reason": "Measures preference for which government level should assume emergency security response authority, directly addressing governance responsibility allocation."
+    },
+    {
+      "item": "p49",
+      "verdict": "OK",
+      "reason": "Directly measures preference regarding which government level should hold primary responsibility for public security, the core construct domain."
+    }
+  ],
+  "_key": "FED|security_governance_preferences",
+  "_items_reviewed": [
+    "p45",
+    "p46",
+    "p47",
+    "p48",
+    "p49"
+  ]
+}

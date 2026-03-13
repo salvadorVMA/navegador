@@ -1,0 +1,51 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure perceived societal consequences of media content, but p63_1 measures parental behavior/responsibility rather than beliefs about media's societal impact.",
+  "items": [
+    {
+      "item": "p60",
+      "verdict": "OK",
+      "reason": "Directly measures perceived change in media violence over time, a core aspect of media's societal consequences."
+    },
+    {
+      "item": "p61",
+      "verdict": "OK",
+      "reason": "Measures belief about how media violence portrayal relates to reality, assessing perceived accuracy and societal impact of media representation."
+    },
+    {
+      "item": "p62_1",
+      "verdict": "OK",
+      "reason": "Directly measures perceived representation of women in media, explicitly mentioned in construct description."
+    },
+    {
+      "item": "p59_1",
+      "verdict": "OK",
+      "reason": "Directly measures perceived influence of media on family relationships, explicitly mentioned in construct description."
+    },
+    {
+      "item": "p63_1",
+      "verdict": "FLAG",
+      "reason": "Measures parental supervisory responsibility and behavior rather than beliefs about media's societal consequences or impact."
+    },
+    {
+      "item": "p76",
+      "verdict": "OK",
+      "reason": "Measures perceived necessity of regulatory oversight, explicitly mentioned in construct description."
+    },
+    {
+      "item": "p77_1",
+      "verdict": "OK",
+      "reason": "Measures beliefs about government intervention in media regulation, aligned with perceived necessity of regulatory oversight."
+    }
+  ],
+  "_key": "SOC|perceived_media_social_impact",
+  "_items_reviewed": [
+    "p60",
+    "p61",
+    "p62_1",
+    "p59_1",
+    "p63_1",
+    "p76",
+    "p77_1"
+  ]
+}

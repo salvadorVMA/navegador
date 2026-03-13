@@ -1,0 +1,81 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "All items measure the presence of durable goods and domestic appliances in the household, directly operationalizing the construct of household asset endowment as a socioeconomic status proxy.",
+  "items": [
+    {
+      "item": "p36_1",
+      "verdict": "OK",
+      "reason": "Radio/radio recorder is a durable domestic appliance consistent with household asset endowment measurement."
+    },
+    {
+      "item": "p36_2",
+      "verdict": "OK",
+      "reason": "Television is a standard durable good included in asset endowment scales."
+    },
+    {
+      "item": "p36_4",
+      "verdict": "OK",
+      "reason": "Blender (licuadora) is a domestic appliance measuring household asset stock."
+    },
+    {
+      "item": "p36_5",
+      "verdict": "OK",
+      "reason": "Washing machine is a core durable appliance in household asset endowment measurement."
+    },
+    {
+      "item": "p36_6",
+      "verdict": "OK",
+      "reason": "Refrigerator is a fundamental durable appliance and standard asset endowment indicator."
+    },
+    {
+      "item": "p36_8",
+      "verdict": "OK",
+      "reason": "Mobile phone is a modern durable good appropriately included in contemporary asset endowment scales."
+    },
+    {
+      "item": "p36_9",
+      "verdict": "OK",
+      "reason": "Vehicle ownership is a durable asset directly measuring household socioeconomic status."
+    },
+    {
+      "item": "p36_10",
+      "verdict": "OK",
+      "reason": "Computer is a modern durable good consistent with household asset endowment measurement."
+    },
+    {
+      "item": "p36_18",
+      "verdict": "OK",
+      "reason": "Gas water heater/boiler is a durable household appliance measuring asset endowment."
+    },
+    {
+      "item": "p36_21",
+      "verdict": "OK",
+      "reason": "Heating system is a durable household asset appropriately included in endowment measurement."
+    },
+    {
+      "item": "p36_22",
+      "verdict": "OK",
+      "reason": "Solar panels are a modern durable asset reflecting household socioeconomic status and living standards."
+    },
+    {
+      "item": "p36_29",
+      "verdict": "OK",
+      "reason": "Air conditioning is a durable household appliance consistent with asset endowment measurement."
+    }
+  ],
+  "_key": "HAB|household_asset_endowment",
+  "_items_reviewed": [
+    "p36_1",
+    "p36_2",
+    "p36_4",
+    "p36_5",
+    "p36_6",
+    "p36_8",
+    "p36_9",
+    "p36_10",
+    "p36_18",
+    "p36_21",
+    "p36_22",
+    "p36_29"
+  ]
+}

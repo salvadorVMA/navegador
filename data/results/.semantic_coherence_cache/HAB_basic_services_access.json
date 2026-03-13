@@ -1,0 +1,45 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items directly measure basic service availability, but p8 conflates sanitation facility type with drainage access, and p36_30 is redundant with p10.",
+  "items": [
+    {
+      "item": "p7",
+      "verdict": "OK",
+      "reason": "Directly measures water supply frequency, a core component of basic services access."
+    },
+    {
+      "item": "p7_1",
+      "verdict": "OK",
+      "reason": "Directly measures water delivery adequacy (continuous vs. intermittent), complementing p7 to assess water service quality."
+    },
+    {
+      "item": "p8",
+      "verdict": "FLAG",
+      "reason": "Measures sanitation facility type rather than drainage infrastructure or public utility connection, conflating household sanitation with basic services access."
+    },
+    {
+      "item": "p10",
+      "verdict": "OK",
+      "reason": "Directly measures drainage/sewage disposal method and connection to public networks, a core component of basic services access."
+    },
+    {
+      "item": "p11",
+      "verdict": "OK",
+      "reason": "Directly measures electricity availability, a core component of basic services access."
+    },
+    {
+      "item": "p36_30",
+      "verdict": "FLAG",
+      "reason": "Redundant binary measure of drainage presence that duplicates p10's more detailed assessment of drainage infrastructure and connection type."
+    }
+  ],
+  "_key": "HAB|basic_services_access",
+  "_items_reviewed": [
+    "p7",
+    "p7_1",
+    "p8",
+    "p10",
+    "p11",
+    "p36_30"
+  ]
+}

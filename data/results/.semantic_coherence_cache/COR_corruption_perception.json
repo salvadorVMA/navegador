@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "All items measure subjective perceptions of corruption's prevalence, trajectory, or spatial location in Mexico, directly aligned with the construct definition.",
+  "items": [
+    {
+      "item": "p2",
+      "verdict": "OK",
+      "reason": "Measures temporal assessment of corruption trajectory by comparing current prevalence to childhood, directly capturing the 'past' dimension of the construct."
+    },
+    {
+      "item": "p3",
+      "verdict": "OK",
+      "reason": "Measures temporal assessment of corruption trajectory by asking about future prevalence in 5 years, directly capturing the 'future' dimension of the construct."
+    },
+    {
+      "item": "p15",
+      "verdict": "OK",
+      "reason": "Measures basic perception of corruption existence in Mexico, establishing the foundational prevalence assessment within the construct domain."
+    },
+    {
+      "item": "p16",
+      "verdict": "OK",
+      "reason": "Measures spatial attribution of corruption by asking respondents to identify the sector where corruption is most concentrated, directly capturing the 'location' dimension of the construct."
+    },
+    {
+      "item": "p17",
+      "verdict": "OK",
+      "reason": "Measures spatial attribution of corruption within government by hierarchical level, providing a refined geographic/organizational location assessment within the construct domain."
+    }
+  ],
+  "_key": "COR|corruption_perception",
+  "_items_reviewed": [
+    "p2",
+    "p3",
+    "p15",
+    "p16",
+    "p17"
+  ]
+}

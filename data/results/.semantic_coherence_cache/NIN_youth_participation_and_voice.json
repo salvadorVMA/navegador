@@ -1,0 +1,45 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items directly measure normative attitudes toward youth voice and participation, but p41 and p47 shift focus to conditional participation scenarios and rights frameworks rather than attitudes about whether youth opinions should be heard.",
+  "items": [
+    {
+      "item": "p12",
+      "verdict": "OK",
+      "reason": "Directly measures normative belief about whether children's opinions should be considered in family decisions."
+    },
+    {
+      "item": "p13",
+      "verdict": "OK",
+      "reason": "Directly measures normative belief about whether children's opinions should be considered in school decisions."
+    },
+    {
+      "item": "p38",
+      "verdict": "OK",
+      "reason": "Directly measures normative belief about whether adolescents' opinions should be considered in family decisions."
+    },
+    {
+      "item": "p39",
+      "verdict": "OK",
+      "reason": "Directly measures normative belief about whether adolescents' opinions should be considered in school decisions."
+    },
+    {
+      "item": "p41",
+      "verdict": "FLAG",
+      "reason": "Measures conditional circumstances under which adolescents should participate in public mobilization rather than normative attitudes about whether their voice should be heard in decisions."
+    },
+    {
+      "item": "p47",
+      "verdict": "FLAG",
+      "reason": "Measures beliefs about the source and legitimacy of adolescent rights rather than attitudes about whether youth opinions should be considered in decisions affecting them."
+    }
+  ],
+  "_key": "NIN|youth_participation_and_voice",
+  "_items_reviewed": [
+    "p12",
+    "p13",
+    "p38",
+    "p39",
+    "p41",
+    "p47"
+  ]
+}

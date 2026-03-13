@@ -1,0 +1,57 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure political interest, relevance, and efficacy as described, but p21 measures beliefs about political outcomes rather than personal efficacy or engagement, and p51 conflates satisfaction with participation opportunities with lack of interest.",
+  "items": [
+    {
+      "item": "p10",
+      "verdict": "OK",
+      "reason": "Directly measures subjective interest in politics, a core component of the construct."
+    },
+    {
+      "item": "p11",
+      "verdict": "OK",
+      "reason": "Directly measures perceived relevance of politics to daily life, a core component of the construct."
+    },
+    {
+      "item": "p20",
+      "verdict": "OK",
+      "reason": "Measures subjective comprehension/complexity of politics, a core component of the construct."
+    },
+    {
+      "item": "p21",
+      "verdict": "FLAG",
+      "reason": "Measures beliefs about whether politics improves citizens' welfare, which is a political attitude/outcome evaluation distinct from personal efficacy, relevance, or engagement."
+    },
+    {
+      "item": "p25",
+      "verdict": "OK",
+      "reason": "Measures perceived value of political participation, which relates to engagement and perceived relevance of politics."
+    },
+    {
+      "item": "p46",
+      "verdict": "OK",
+      "reason": "Directly measures perceived ability to influence government decisions, a core component of political efficacy."
+    },
+    {
+      "item": "p51",
+      "verdict": "FLAG",
+      "reason": "Conflates satisfaction with current participation opportunities with lack of interest; the response option 'no le interesa participar' measures disinterest rather than efficacy or engagement."
+    },
+    {
+      "item": "p52",
+      "verdict": "OK",
+      "reason": "Measures satisfaction that one's opinions are heard by government, which reflects perceived influence and efficacy."
+    }
+  ],
+  "_key": "CUL|political_efficacy_and_engagement",
+  "_items_reviewed": [
+    "p10",
+    "p11",
+    "p20",
+    "p21",
+    "p25",
+    "p46",
+    "p51",
+    "p52"
+  ]
+}

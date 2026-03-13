@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Two items directly measure union attitudes, but one item measures perceived labor rights respect, which is a contextual outcome rather than an evaluative orientation toward unions themselves.",
+  "items": [
+    {
+      "item": "p23",
+      "verdict": "OK",
+      "reason": "Directly measures perceived necessity of unions, a core normative orientation toward collective labor representation."
+    },
+    {
+      "item": "p24",
+      "verdict": "OK",
+      "reason": "Directly measures evaluative orientations toward unions' role and legitimacy across multiple dimensions (rights protection, corruption, efficiency, governance)."
+    },
+    {
+      "item": "p22",
+      "verdict": "FLAG",
+      "reason": "Measures perceived respect for worker rights in Mexico, which is a contextual outcome or labor market condition rather than a direct evaluative orientation toward unions as institutions."
+    }
+  ],
+  "_key": "ECO|labor_union_attitudes",
+  "_items_reviewed": [
+    "p23",
+    "p24",
+    "p22"
+  ]
+}

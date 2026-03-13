@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items validly measure perceived opportunity structure in Mexico, but p3_9 measures perceived opportunity to leave Mexico rather than opportunities within Mexico's structural context.",
+  "items": [
+    {
+      "item": "p3_1",
+      "verdict": "OK",
+      "reason": "Directly measures perceived access to educational opportunities, a core economic/social domain of opportunity structure."
+    },
+    {
+      "item": "p3_2",
+      "verdict": "OK",
+      "reason": "Directly measures perceived access to employment opportunities, a fundamental component of economic opportunity structure."
+    },
+    {
+      "item": "p3_3",
+      "verdict": "OK",
+      "reason": "Directly measures perceived access to entrepreneurial opportunities, a key economic domain of opportunity structure."
+    },
+    {
+      "item": "p3_4",
+      "verdict": "OK",
+      "reason": "Directly measures perceived access to financial resources/credit, an important structural enabler of economic mobility."
+    },
+    {
+      "item": "p3_9",
+      "verdict": "FLAG",
+      "reason": "Measures perceived opportunity to emigrate rather than perceived opportunities within Mexico's opportunity structure, representing a distinct construct of international mobility rather than domestic structural access."
+    }
+  ],
+  "_key": "MIG|perceived_opportunity_structure",
+  "_items_reviewed": [
+    "p3_1",
+    "p3_2",
+    "p3_3",
+    "p3_4",
+    "p3_9"
+  ]
+}

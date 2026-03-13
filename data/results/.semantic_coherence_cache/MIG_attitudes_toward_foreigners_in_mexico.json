@@ -1,0 +1,57 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure attitudes toward foreigners, but p44 is a behavioral/demographic item measuring actual contact rather than evaluative orientation.",
+  "items": [
+    {
+      "item": "p42",
+      "verdict": "OK",
+      "reason": "Directly measures general evaluative opinion toward foreigners in Mexico."
+    },
+    {
+      "item": "p43_1",
+      "verdict": "OK",
+      "reason": "Measures perceived economic contribution, an explicit component of the construct domain."
+    },
+    {
+      "item": "p44",
+      "verdict": "FLAG",
+      "reason": "Measures actual behavioral contact/cohabitation with foreigners rather than evaluative attitudes or opinions about them."
+    },
+    {
+      "item": "p45",
+      "verdict": "OK",
+      "reason": "Measures views on appropriate number of foreigners, an explicit component of the construct domain."
+    },
+    {
+      "item": "p47",
+      "verdict": "OK",
+      "reason": "Measures perceived respect for foreigners' rights, relevant to attitudes about their treatment and entitlements."
+    },
+    {
+      "item": "p48",
+      "verdict": "OK",
+      "reason": "Measures beliefs about rights entitlements for foreigners, an explicit component of the construct domain."
+    },
+    {
+      "item": "p51",
+      "verdict": "OK",
+      "reason": "Measures perceived discrimination against foreigners, an explicit component of the construct domain."
+    },
+    {
+      "item": "p52",
+      "verdict": "OK",
+      "reason": "Measures perceived differential treatment based on origin, relevant to attitudes about discrimination and fairness toward foreigners."
+    }
+  ],
+  "_key": "MIG|attitudes_toward_foreigners_in_mexico",
+  "_items_reviewed": [
+    "p42",
+    "p43_1",
+    "p44",
+    "p45",
+    "p47",
+    "p48",
+    "p51",
+    "p52"
+  ]
+}

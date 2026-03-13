@@ -1,0 +1,51 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure attitudes toward cultural openness and pluralism, but p29_1 measures behavioral preference for cultural preservation rather than attitudes toward openness/foreign influence.",
+  "items": [
+    {
+      "item": "p25",
+      "verdict": "OK",
+      "reason": "Directly measures preference for cultural homogeneity (singular culture) versus pluralism (multiple cultures), core to the construct."
+    },
+    {
+      "item": "p26",
+      "verdict": "OK",
+      "reason": "Measures perception of foreign cultural influence magnitude, directly relevant to attitudes toward external cultural impact."
+    },
+    {
+      "item": "p27",
+      "verdict": "OK",
+      "reason": "Measures evaluative orientation toward foreign cultural influence (harmful vs. beneficial), central to the construct domain."
+    },
+    {
+      "item": "p28",
+      "verdict": "OK",
+      "reason": "Directly measures preference for cultural homogeneity versus diversity as a normative position for the country."
+    },
+    {
+      "item": "p29_1",
+      "verdict": "FLAG",
+      "reason": "Measures which cultural elements respondents prioritize for preservation rather than attitudes toward openness to foreign influence or cultural pluralism."
+    },
+    {
+      "item": "p31_1",
+      "verdict": "OK",
+      "reason": "Measures perceived importance of teachers' exposure to foreign cultures, reflecting openness to external cultural knowledge in education."
+    },
+    {
+      "item": "p32",
+      "verdict": "OK",
+      "reason": "Measures support for multicultural education through indigenous language inclusion, consistent with openness to cultural pluralism in schools."
+    }
+  ],
+  "_key": "DEP|attitudes_toward_cultural_openness_and_foreign_influence",
+  "_items_reviewed": [
+    "p25",
+    "p26",
+    "p27",
+    "p28",
+    "p29_1",
+    "p31_1",
+    "p32"
+  ]
+}

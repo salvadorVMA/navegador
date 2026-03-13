@@ -1,0 +1,33 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "The construct mixes normative beliefs about responsibility allocation with behavioral outcomes and descriptive observations, creating semantic heterogeneity.",
+  "items": [
+    {
+      "item": "p42_1",
+      "verdict": "OK",
+      "reason": "Directly measures normative belief about state responsibility for elder care, core to the construct."
+    },
+    {
+      "item": "p44",
+      "verdict": "FLAG",
+      "reason": "Measures willingness to contribute financially (behavioral intention/outcome) rather than normative beliefs about who should bear responsibility."
+    },
+    {
+      "item": "p30",
+      "verdict": "FLAG",
+      "reason": "Measures perceived willingness of children to care for parents (descriptive observation of actual behavior/attitudes) rather than respondent's normative beliefs about responsibility allocation."
+    },
+    {
+      "item": "p31",
+      "verdict": "FLAG",
+      "reason": "Measures perceived change in actual caregiving frequency over time (behavioral trend observation) rather than normative beliefs about responsibility."
+    }
+  ],
+  "_key": "ENV|state_and_family_responsibility_for_elder_care",
+  "_items_reviewed": [
+    "p42_1",
+    "p44",
+    "p30",
+    "p31"
+  ]
+}

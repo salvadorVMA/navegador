@@ -1,0 +1,33 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Items p7 directly measures motivational basis for compliance, but p8, p9, and p10 measure perceived or self-assessed law-abidingness rather than the underlying reasons for compliance.",
+  "items": [
+    {
+      "item": "p7",
+      "verdict": "OK",
+      "reason": "Directly captures normative and instrumental motivations for obeying laws, which is the core of the construct."
+    },
+    {
+      "item": "p8",
+      "verdict": "FLAG",
+      "reason": "Measures perceived respect for laws by government officials, which is a behavioral outcome or perception of compliance rather than the motivational basis underlying compliance."
+    },
+    {
+      "item": "p9",
+      "verdict": "FLAG",
+      "reason": "Measures perceived respect for laws by citizens, which is a perception of compliance behavior rather than the motivational reasons for compliance."
+    },
+    {
+      "item": "p10",
+      "verdict": "FLAG",
+      "reason": "Measures self-assessed law-abidingness rather than the underlying normative or instrumental motivations that drive compliance behavior."
+    }
+  ],
+  "_key": "JUS|law_compliance_motivation",
+  "_items_reviewed": [
+    "p7",
+    "p8",
+    "p9",
+    "p10"
+  ]
+}

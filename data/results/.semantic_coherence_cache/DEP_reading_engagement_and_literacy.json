@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Items measure only one narrow subdomain (reading habits for newspapers/magazines) and omit key construct elements like access to books, reading ability, and barriers to reading.",
+  "items": [
+    {
+      "item": "p15a_1",
+      "verdict": "OK",
+      "reason": "Directly measures self-reported reading habits for a specific publication type, which is a core component of reading engagement."
+    },
+    {
+      "item": "p15a_2",
+      "verdict": "OK",
+      "reason": "Directly measures self-reported reading habits for a specific publication type, which is a core component of reading engagement."
+    },
+    {
+      "item": "p15a_3",
+      "verdict": "OK",
+      "reason": "Directly measures self-reported reading habits for a specific publication type, which is a core component of reading engagement."
+    }
+  ],
+  "_key": "DEP|reading_engagement_and_literacy",
+  "_items_reviewed": [
+    "p15a_1",
+    "p15a_2",
+    "p15a_3"
+  ]
+}

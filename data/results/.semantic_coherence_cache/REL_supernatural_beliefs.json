@@ -1,0 +1,93 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items validly measure supernatural and religious beliefs, but p17_15 measures a naturalistic psychological/cognitive phenomenon rather than a supernatural entity or force.",
+  "items": [
+    {
+      "item": "p17_1",
+      "verdict": "OK",
+      "reason": "Directly measures belief in God, a core supernatural entity central to the construct."
+    },
+    {
+      "item": "p17_2",
+      "verdict": "OK",
+      "reason": "Directly measures belief in afterlife, a fundamental supernatural/metaphysical belief."
+    },
+    {
+      "item": "p17_4",
+      "verdict": "OK",
+      "reason": "Directly measures belief in hell, an orthodox Christian supernatural entity."
+    },
+    {
+      "item": "p17_5",
+      "verdict": "OK",
+      "reason": "Directly measures belief in paradise, an orthodox Christian supernatural entity."
+    },
+    {
+      "item": "p17_6",
+      "verdict": "OK",
+      "reason": "Directly measures belief in sin, a core religious/supernatural concept."
+    },
+    {
+      "item": "p17_7",
+      "verdict": "OK",
+      "reason": "Directly measures belief in the soul, a fundamental supernatural entity."
+    },
+    {
+      "item": "p17_8",
+      "verdict": "OK",
+      "reason": "Directly measures belief in resurrection of the dead, an orthodox Christian supernatural belief."
+    },
+    {
+      "item": "p17_9",
+      "verdict": "OK",
+      "reason": "Directly measures belief in the devil, a core supernatural entity in Christian cosmology."
+    },
+    {
+      "item": "p17_10",
+      "verdict": "OK",
+      "reason": "Directly measures belief in reincarnation, a syncretic/folk supernatural belief."
+    },
+    {
+      "item": "p17_11",
+      "verdict": "OK",
+      "reason": "Directly measures belief in witchcraft, a folk supernatural belief explicitly mentioned in the construct description."
+    },
+    {
+      "item": "p17_12",
+      "verdict": "OK",
+      "reason": "Directly measures belief in karma, a metaphysical supernatural belief explicitly mentioned in the construct description."
+    },
+    {
+      "item": "p17_13",
+      "verdict": "OK",
+      "reason": "Directly measures belief in limpias, a folk/syncretic supernatural practice explicitly mentioned in the construct description."
+    },
+    {
+      "item": "p17_14",
+      "verdict": "OK",
+      "reason": "Directly measures belief in destiny/fate, a metaphysical supernatural force."
+    },
+    {
+      "item": "p17_15",
+      "verdict": "FLAG",
+      "reason": "Measures belief in the power of mind, a naturalistic psychological/cognitive phenomenon rather than a supernatural entity or metaphysical force."
+    }
+  ],
+  "_key": "REL|supernatural_beliefs",
+  "_items_reviewed": [
+    "p17_1",
+    "p17_2",
+    "p17_4",
+    "p17_5",
+    "p17_6",
+    "p17_7",
+    "p17_8",
+    "p17_9",
+    "p17_10",
+    "p17_11",
+    "p17_12",
+    "p17_13",
+    "p17_14",
+    "p17_15"
+  ]
+}

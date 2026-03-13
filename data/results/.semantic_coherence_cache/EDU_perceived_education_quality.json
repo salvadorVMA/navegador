@@ -1,0 +1,21 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "Both items directly measure perceived education quality through complementary dimensions: trend perception and relevance evaluation.",
+  "items": [
+    {
+      "item": "p49",
+      "verdict": "OK",
+      "reason": "Directly measures perceived trend in education quality over time, a core component of overall quality evaluation."
+    },
+    {
+      "item": "p51",
+      "verdict": "OK",
+      "reason": "Directly measures perceived relevance of school content to real-life and work applications, a substantive dimension of education quality."
+    }
+  ],
+  "_key": "EDU|perceived_education_quality",
+  "_items_reviewed": [
+    "p49",
+    "p51"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "All four items directly measure beliefs about the instrumental value (employment, income) and social value (societal well-being) of education, as well as overall perceived worthwhileness of studying.",
+  "items": [
+    {
+      "item": "p37",
+      "verdict": "OK",
+      "reason": "Directly measures overall belief in the worthwhileness of education, which is a core component of the construct."
+    },
+    {
+      "item": "p55_3",
+      "verdict": "OK",
+      "reason": "Measures belief that education improves employment prospects, a key instrumental value of education."
+    },
+    {
+      "item": "p55_4",
+      "verdict": "OK",
+      "reason": "Measures belief that education improves income, a key instrumental value of education."
+    },
+    {
+      "item": "p55_5",
+      "verdict": "OK",
+      "reason": "Measures belief that education contributes to societal well-being, a key social value of education."
+    }
+  ],
+  "_key": "EDU|educational_returns_belief",
+  "_items_reviewed": [
+    "p37",
+    "p55_3",
+    "p55_4",
+    "p55_5"
+  ]
+}

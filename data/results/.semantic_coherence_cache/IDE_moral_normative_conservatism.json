@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure moral conservatism on family and sexuality norms, but p57 measures political ideology which is conceptually distinct from moral normative conservatism.",
+  "items": [
+    {
+      "item": "p55",
+      "verdict": "OK",
+      "reason": "Directly measures conservative moral norm regarding corporal punishment of children, a core domain of the construct."
+    },
+    {
+      "item": "p56",
+      "verdict": "OK",
+      "reason": "Directly measures self-identified conservatism in family and household moral matters, which is central to the construct."
+    },
+    {
+      "item": "p57",
+      "verdict": "FLAG",
+      "reason": "Measures political ideology conservatism-liberalism, which is substantively distinct from moral normative conservatism on family, sexuality, and social conduct."
+    },
+    {
+      "item": "p58",
+      "verdict": "OK",
+      "reason": "Measures conservative moral norms regarding family autonomy and independence, relevant to traditional family structure values."
+    },
+    {
+      "item": "p60",
+      "verdict": "OK",
+      "reason": "Directly measures conservative moral norms regarding premarital sexual conduct, explicitly mentioned in the construct description."
+    }
+  ],
+  "_key": "IDE|moral_normative_conservatism",
+  "_items_reviewed": [
+    "p55",
+    "p56",
+    "p57",
+    "p58",
+    "p60"
+  ]
+}

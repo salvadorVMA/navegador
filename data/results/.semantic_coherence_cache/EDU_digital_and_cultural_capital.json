@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure technology access and reading habits as intended, but smartphone ownership (p47_6) is a tangential proxy for digital capital rather than a direct measure of access to or use of ICTs for learning.",
+  "items": [
+    {
+      "item": "p47_3",
+      "verdict": "OK",
+      "reason": "Directly measures access to computers/tablets, core ICT resources for informal learning."
+    },
+    {
+      "item": "p47_4",
+      "verdict": "OK",
+      "reason": "Directly measures internet access, essential infrastructure for digital capital and information access."
+    },
+    {
+      "item": "p47_6",
+      "verdict": "FLAG",
+      "reason": "Smartphone ownership is a consumer device measure that does not substantively reflect access to ICTs for learning or cultural participation as described in the construct."
+    },
+    {
+      "item": "p45_1",
+      "verdict": "OK",
+      "reason": "Measures newspaper reading frequency, a direct indicator of information consumption and cultural engagement habits."
+    },
+    {
+      "item": "p45_2",
+      "verdict": "OK",
+      "reason": "Measures book reading frequency, a direct indicator of reading habits and cultural participation."
+    }
+  ],
+  "_key": "EDU|digital_and_cultural_capital",
+  "_items_reviewed": [
+    "p47_3",
+    "p47_4",
+    "p47_6",
+    "p45_1",
+    "p45_2"
+  ]
+}

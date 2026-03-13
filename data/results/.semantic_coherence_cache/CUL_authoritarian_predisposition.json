@@ -1,0 +1,45 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure authoritarian predisposition coherently, but p60 measures democratic compliance behavior rather than authoritarian preference, and p23 measures pragmatic problem-solving rather than authoritarianism.",
+  "items": [
+    {
+      "item": "p17",
+      "verdict": "OK",
+      "reason": "Directly measures preference for security over freedom, a core component of authoritarian predisposition."
+    },
+    {
+      "item": "p61",
+      "verdict": "OK",
+      "reason": "Directly measures preference for strong executive leadership over legal constraints, a central element of the construct."
+    },
+    {
+      "item": "p64",
+      "verdict": "OK",
+      "reason": "Directly measures willingness to bypass legal rules to achieve justice, consistent with the construct's tolerance for rule-breaking."
+    },
+    {
+      "item": "p65",
+      "verdict": "OK",
+      "reason": "Directly measures agreement that breaking the law can be justified for moral ends, a key aspect of authoritarian predisposition."
+    },
+    {
+      "item": "p60",
+      "verdict": "FLAG",
+      "reason": "Measures compliance with majority decisions regardless of personal preference, which is democratic deference rather than authoritarian predisposition toward strong leadership or rule-breaking."
+    },
+    {
+      "item": "p23",
+      "verdict": "FLAG",
+      "reason": "Measures pragmatic willingness to implement effective solutions despite conflict, which is a general problem-solving orientation distinct from authoritarian preference for strong leadership or subordinating freedoms to order."
+    }
+  ],
+  "_key": "CUL|authoritarian_predisposition",
+  "_items_reviewed": [
+    "p17",
+    "p61",
+    "p64",
+    "p65",
+    "p60",
+    "p23"
+  ]
+}

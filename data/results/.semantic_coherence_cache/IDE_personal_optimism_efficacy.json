@@ -1,0 +1,33 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure personal agency and optimism about the future, but p24 measures retrospective life satisfaction rather than forward-looking efficacy or control.",
+  "items": [
+    {
+      "item": "p19",
+      "verdict": "OK",
+      "reason": "Directly measures perceived ability to secure economic future, a core component of personal efficacy and optimism about life outcomes."
+    },
+    {
+      "item": "p20",
+      "verdict": "OK",
+      "reason": "Directly measures confidence in achieving future goals and projects, a central element of personal agency and optimism."
+    },
+    {
+      "item": "p24",
+      "verdict": "FLAG",
+      "reason": "Measures retrospective satisfaction with past life rather than forward-looking sense of control, efficacy, or optimism about future outcomes."
+    },
+    {
+      "item": "p30_1",
+      "verdict": "OK",
+      "reason": "Directly measures perceived control over a specific life domain (economic situation), a core indicator of personal agency."
+    }
+  ],
+  "_key": "IDE|personal_optimism_efficacy",
+  "_items_reviewed": [
+    "p19",
+    "p20",
+    "p24",
+    "p30_1"
+  ]
+}

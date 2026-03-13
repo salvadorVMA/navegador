@@ -1,0 +1,45 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure tolerance attitudes, but p54_5, p54_6, and p54_8 measure actual social contact/friendship patterns rather than openness or acceptance beliefs.",
+  "items": [
+    {
+      "item": "p9",
+      "verdict": "OK",
+      "reason": "Directly measures opinion on how cultural differences should be managed in society, core to the construct."
+    },
+    {
+      "item": "p54_5",
+      "verdict": "FLAG",
+      "reason": "Measures actual friendship composition (behavioral outcome) rather than openness or acceptance toward religious diversity."
+    },
+    {
+      "item": "p54_6",
+      "verdict": "FLAG",
+      "reason": "Measures actual friendship composition based on political views rather than tolerance or acceptance attitudes."
+    },
+    {
+      "item": "p54_8",
+      "verdict": "FLAG",
+      "reason": "Measures actual friendship composition with homosexuals rather than acceptance or openness toward homosexuality."
+    },
+    {
+      "item": "p68",
+      "verdict": "OK",
+      "reason": "Directly measures acceptance and support for rights of homosexual couples, core attitudinal component of tolerance."
+    },
+    {
+      "item": "p73_1",
+      "verdict": "OK",
+      "reason": "Measures willingness to accept people of different religions in close proximity, reflecting openness to religious diversity."
+    }
+  ],
+  "_key": "IDE|tolerance_social_diversity",
+  "_items_reviewed": [
+    "p9",
+    "p54_5",
+    "p54_6",
+    "p54_8",
+    "p68",
+    "p73_1"
+  ]
+}

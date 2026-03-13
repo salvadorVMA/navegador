@@ -1,0 +1,45 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Items p13-p16 directly measure normative beliefs about ideal family structure and ideology, but p67-p68 measure descriptive observations about family change rather than normative beliefs about what should be ideal.",
+  "items": [
+    {
+      "item": "p13",
+      "verdict": "OK",
+      "reason": "Directly asks respondents to identify their conception of an ideal family structure, core to measuring family normativity."
+    },
+    {
+      "item": "p14",
+      "verdict": "OK",
+      "reason": "Asks about barriers to achieving the ideal family type, which reflects normative ideology about what prevents family ideals."
+    },
+    {
+      "item": "p15",
+      "verdict": "OK",
+      "reason": "Asks what actions could enable achievement of ideal family, reflecting normative beliefs about solutions and values."
+    },
+    {
+      "item": "p16",
+      "verdict": "OK",
+      "reason": "Directly measures acceptance or rejection of non-traditional family arrangements, capturing traditionalism versus pluralism in family ideology."
+    },
+    {
+      "item": "p67",
+      "verdict": "FLAG",
+      "reason": "Measures descriptive observations about actual family changes across generations rather than normative beliefs about what constitutes an ideal family."
+    },
+    {
+      "item": "p68",
+      "verdict": "FLAG",
+      "reason": "Measures predictions about future family trends rather than normative beliefs about what family structure should ideally be."
+    }
+  ],
+  "_key": "FAM|ideal_family_normativity",
+  "_items_reviewed": [
+    "p13",
+    "p14",
+    "p15",
+    "p16",
+    "p67",
+    "p68"
+  ]
+}

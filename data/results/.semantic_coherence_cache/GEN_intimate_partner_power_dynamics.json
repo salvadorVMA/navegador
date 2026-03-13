@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "All three items directly measure power imbalances and autonomy restrictions within intimate partnerships across distinct domains (financial control, movement freedom, and family contact).",
+  "items": [
+    {
+      "item": "p19",
+      "verdict": "OK",
+      "reason": "Directly measures financial control by partner, a core dimension of intimate partner power dynamics."
+    },
+    {
+      "item": "p23_1",
+      "verdict": "OK",
+      "reason": "Directly measures freedom of movement and autonomy by assessing whether permission-seeking is required for daytime activities."
+    },
+    {
+      "item": "p23_5",
+      "verdict": "OK",
+      "reason": "Directly measures autonomy and control over social/family relationships by assessing whether permission-seeking is required for family visits."
+    }
+  ],
+  "_key": "GEN|intimate_partner_power_dynamics",
+  "_items_reviewed": [
+    "p19",
+    "p23_1",
+    "p23_5"
+  ]
+}

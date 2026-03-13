@@ -1,0 +1,27 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "All three items directly measure acceptance of coercive state practices and rights violations framed as necessary for security purposes.",
+  "items": [
+    {
+      "item": "p9",
+      "verdict": "OK",
+      "reason": "Directly measures whether respondents view human rights protections as obstacles to public security, capturing the core tradeoff between rights and safety."
+    },
+    {
+      "item": "p16",
+      "verdict": "OK",
+      "reason": "Directly measures acceptance of post-submission harm by police/military, a specific coercive practice central to the construct definition."
+    },
+    {
+      "item": "p17",
+      "verdict": "OK",
+      "reason": "Directly measures acceptance of torture as an interrogation method, explicitly named in the construct description as a key rights violation."
+    }
+  ],
+  "_key": "DER|authoritarian_security_tradeoff",
+  "_items_reviewed": [
+    "p9",
+    "p16",
+    "p17"
+  ]
+}

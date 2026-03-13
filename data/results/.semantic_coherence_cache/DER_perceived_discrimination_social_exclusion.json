@@ -1,0 +1,45 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure perceived discrimination and attitudes toward vulnerable groups, but two items measure personal discriminatory intentions rather than perceptions of discrimination or social exclusion.",
+  "items": [
+    {
+      "item": "p35_1",
+      "verdict": "OK",
+      "reason": "Directly measures personal experience of rights violations based on physical appearance, core to the construct."
+    },
+    {
+      "item": "p36_1",
+      "verdict": "FLAG",
+      "reason": "Measures respondent's own discriminatory behavior/intentions (whether they would discriminate in housing) rather than perception of discrimination or attitudes toward discrimination against others."
+    },
+    {
+      "item": "p39",
+      "verdict": "OK",
+      "reason": "Measures perception of how dark-skinned people are treated in society, directly assessing perceived discrimination against a vulnerable group."
+    },
+    {
+      "item": "p40_1",
+      "verdict": "FLAG",
+      "reason": "Measures respondent's personal tolerance of their child's homosexuality rather than perception of discrimination or attitudes toward societal discrimination against LGBTQ+ individuals."
+    },
+    {
+      "item": "p41",
+      "verdict": "OK",
+      "reason": "Measures attitudes toward penalizing public expression of homosexuality, reflecting perception of and stance on discrimination against LGBTQ+ individuals."
+    },
+    {
+      "item": "p44",
+      "verdict": "OK",
+      "reason": "Measures attitudes toward discriminatory exclusion from public spaces based on appearance, assessing normative judgments about discrimination."
+    }
+  ],
+  "_key": "DER|perceived_discrimination_social_exclusion",
+  "_items_reviewed": [
+    "p35_1",
+    "p36_1",
+    "p39",
+    "p40_1",
+    "p41",
+    "p44"
+  ]
+}

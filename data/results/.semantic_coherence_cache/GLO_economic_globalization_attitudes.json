@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure attitudes toward economic globalization and trade, but p49_1 shifts focus to a specific sectoral foreign investment policy question that may reflect regulatory/nationalist concerns distinct from general trade attitudes.",
+  "items": [
+    {
+      "item": "p46_1",
+      "verdict": "OK",
+      "reason": "Directly measures evaluation of free trade agreements' impact on Mexican economy, core to economic globalization attitudes."
+    },
+    {
+      "item": "p47",
+      "verdict": "OK",
+      "reason": "Directly measures perspective on whether foreign trade benefits the Mexican economy, central to economic globalization attitudes."
+    },
+    {
+      "item": "p48",
+      "verdict": "OK",
+      "reason": "Directly measures agreement with free trade agreements, a key component of economic globalization attitudes."
+    },
+    {
+      "item": "p49_1",
+      "verdict": "FLAG",
+      "reason": "Measures approval of foreign investment in a specific strategic sector (telecommunications) rather than general attitudes toward foreign investment or economic globalization, conflating sectoral protectionism with broader trade orientation."
+    },
+    {
+      "item": "p31_1",
+      "verdict": "OK",
+      "reason": "Directly measures evaluation of bilateral trade relationship with the US, explicitly mentioned in construct description as part of economic globalization attitudes."
+    }
+  ],
+  "_key": "GLO|economic_globalization_attitudes",
+  "_items_reviewed": [
+    "p46_1",
+    "p47",
+    "p48",
+    "p49_1",
+    "p31_1"
+  ]
+}

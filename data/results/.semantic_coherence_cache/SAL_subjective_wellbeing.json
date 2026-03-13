@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items validly measure subjective wellbeing dimensions, but one item measures emotional state rather than self-assessed quality of life or satisfaction.",
+  "items": [
+    {
+      "item": "p37",
+      "verdict": "OK",
+      "reason": "Directly measures self-assessed quality of life, a core evaluative dimension of subjective wellbeing."
+    },
+    {
+      "item": "p38",
+      "verdict": "OK",
+      "reason": "Directly measures life satisfaction, a central evaluative component of subjective wellbeing."
+    },
+    {
+      "item": "p39",
+      "verdict": "OK",
+      "reason": "Directly measures enjoyment of life, an affective dimension of subjective wellbeing explicitly mentioned in the construct description."
+    },
+    {
+      "item": "p40",
+      "verdict": "OK",
+      "reason": "Directly measures sexual satisfaction, explicitly included in the construct description as part of subjective wellbeing."
+    },
+    {
+      "item": "p8_1",
+      "verdict": "FLAG",
+      "reason": "Measures momentary emotional state (feeling calm and tranquil) rather than self-assessed quality of life, life satisfaction, or enjoyment—a transient affective experience distinct from the evaluative wellbeing construct."
+    }
+  ],
+  "_key": "SAL|subjective_wellbeing",
+  "_items_reviewed": [
+    "p37",
+    "p38",
+    "p39",
+    "p40",
+    "p8_1"
+  ]
+}

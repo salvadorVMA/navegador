@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "MIXED",
+  "construct_verdict_reason": "Most items measure subjective economic wellbeing and agency as described, but p10 measures objective social class identification rather than subjective economic control or life satisfaction.",
+  "items": [
+    {
+      "item": "p13",
+      "verdict": "OK",
+      "reason": "Directly measures perceived resilience and personal strength in facing life adversities, a core component of subjective agency."
+    },
+    {
+      "item": "p14",
+      "verdict": "OK",
+      "reason": "Directly measures perceived influence of national economic conditions on personal welfare, a key element of the construct."
+    },
+    {
+      "item": "p15",
+      "verdict": "OK",
+      "reason": "Directly measures perceived personal agency and control over future economic outcomes."
+    },
+    {
+      "item": "p16",
+      "verdict": "OK",
+      "reason": "Measures overall life satisfaction, which is explicitly included in the construct description as part of subjective economic wellbeing."
+    },
+    {
+      "item": "p10",
+      "verdict": "FLAG",
+      "reason": "Measures objective social class self-identification rather than subjective economic control, resilience, or life satisfaction; it is a demographic proxy correlated with but semantically distinct from the construct."
+    }
+  ],
+  "_key": "POB|subjective_economic_wellbeing_and_agency",
+  "_items_reviewed": [
+    "p13",
+    "p14",
+    "p15",
+    "p16",
+    "p10"
+  ]
+}

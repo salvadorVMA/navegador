@@ -1,0 +1,39 @@
+{
+  "construct_verdict": "COHERENT",
+  "construct_verdict_reason": "All items consistently measure beliefs about appropriate sanctions for rule violations and personal behavioral responses to misconduct across different social contexts.",
+  "items": [
+    {
+      "item": "p20",
+      "verdict": "OK",
+      "reason": "Directly measures beliefs about appropriate sanctions for theft in an educational setting, core to civic enforcement norms."
+    },
+    {
+      "item": "p21",
+      "verdict": "OK",
+      "reason": "Directly measures beliefs about appropriate workplace sanctions for theft, consistent with the construct's focus on how violations should be sanctioned."
+    },
+    {
+      "item": "p22",
+      "verdict": "OK",
+      "reason": "Directly measures beliefs about appropriate managerial responses to theft in a commercial setting, aligned with accountability norms."
+    },
+    {
+      "item": "p23",
+      "verdict": "OK",
+      "reason": "Directly measures personal behavioral responses when witnessing academic misconduct, reflecting internalized enforcement norms and willingness to act."
+    },
+    {
+      "item": "p24",
+      "verdict": "OK",
+      "reason": "Directly measures personal behavioral responses when witnessing theft, reflecting internalized norms about social enforcement and accountability."
+    }
+  ],
+  "_key": "COR|civic_enforcement_norms",
+  "_items_reviewed": [
+    "p20",
+    "p21",
+    "p22",
+    "p23",
+    "p24"
+  ]
+}
