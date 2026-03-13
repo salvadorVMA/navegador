@@ -1152,12 +1152,10 @@
   },
   {
     "key": "EDU|social_media_engagement",
-    "column": "agg_social_media_engagement",
-    "var_id": "agg_social_media_engagement|EDU",
-    "type": "new_construct",
+    "column": null,
+    "type": "excluded",
+    "reason": "audit_drop",
     "alpha": null,
-    "n_items": 3,
-    "n_valid": 1199,
-    "description": "Social media account ownership and use of internet for news. Represents the social/communicative dimension of digital capital, split from device ownership via PCA (PC2 21.2% variance)."
+    "n_valid": 0
   }
 ]

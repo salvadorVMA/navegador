@@ -320,6 +320,11 @@ def build_v4_constructs(
         domain = nc.get("domain", "")
         cname = nc.get("name", "")
         key = f"{domain}|{cname}"
+        if key in excluded_keys:
+            manifest.append({"key": key, "column": None, "type": "excluded",
+                              "reason": ov.get("excluded", {}).get(key, "excluded"),
+                              "alpha": None, "n_valid": 0})
+            continue
         survey_name = enc_nom_dict_rev.get(domain)
         if not survey_name or survey_name not in enc_dict:
             manifest.append({"key": key, "column": None, "type": "no_survey", "n_valid": 0})
