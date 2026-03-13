@@ -25,7 +25,7 @@
     "var_id": "agg_personal_optimism_efficacy|IDE",
     "type": "tier3_caveat",
     "alpha": 0.4045,
-    "n_items": 3,
+    "n_items": 4,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -35,7 +35,7 @@
     "var_id": "agg_moral_normative_conservatism|IDE",
     "type": "questionable",
     "alpha": 0.5072,
-    "n_items": 4,
+    "n_items": 5,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -57,9 +57,7 @@
     "alpha": 0.5405,
     "n_items": 3,
     "n_valid": 1057,
-    "reverse_coded": [
-      "p28_1"
-    ]
+    "reverse_coded": null
   },
   {
     "key": "MED|pro_environmental_civic_engagement",
@@ -155,7 +153,7 @@
     "var_id": "agg_authoritarian_predisposition|CUL",
     "type": "tier3_caveat",
     "alpha": 0.4947,
-    "n_items": 4,
+    "n_items": 6,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -183,8 +181,8 @@
     "var_id": "agg_supernatural_beliefs|REL",
     "type": "good",
     "alpha": 0.9003,
-    "n_items": 13,
-    "n_valid": 1005,
+    "n_items": 14,
+    "n_valid": 993,
     "reverse_coded": [
       "p17_1",
       "p17_2",
@@ -209,8 +207,8 @@
     "var_id": "agg_personal_religiosity|REL",
     "type": "good",
     "alpha": 0.7318,
-    "n_items": 5,
-    "n_valid": 968,
+    "n_items": 6,
+    "n_valid": 953,
     "reverse_coded": [
       "p10",
       "p11",
@@ -349,7 +347,7 @@
     "var_id": "agg_health_risk_behaviors|SAL",
     "type": "questionable",
     "alpha": 0.539,
-    "n_items": 2,
+    "n_items": 3,
     "n_valid": 689,
     "reverse_coded": null
   },
@@ -359,8 +357,8 @@
     "var_id": "agg_perceived_indigenous_discrimination|IND",
     "type": "tier3_caveat",
     "alpha": 0.4011,
-    "n_items": 3,
-    "n_valid": 1174,
+    "n_items": 4,
+    "n_valid": 1166,
     "reverse_coded": null
   },
   {
@@ -448,7 +446,7 @@
     "var_id": "agg_state_and_family_responsibility_for_elder_care|ENV",
     "type": "tier3_caveat",
     "alpha": 0.4516,
-    "n_items": 1,
+    "n_items": 3,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -472,7 +470,6 @@
     "n_valid": 1200,
     "reverse_coded": [
       "p18",
-      "p19",
       "p34"
     ]
   },
@@ -492,7 +489,7 @@
     "var_id": "agg_perceived_discrimination_social_exclusion|DER",
     "type": "questionable",
     "alpha": 0.5814,
-    "n_items": 4,
+    "n_items": 5,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -502,7 +499,7 @@
     "var_id": "agg_rights_awareness_personal_experience|DER",
     "type": "questionable",
     "alpha": 0.5536,
-    "n_items": 2,
+    "n_items": 3,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -695,8 +692,8 @@
     "var_id": "agg_law_compliance_motivation|JUS",
     "type": "questionable",
     "alpha": 0.516,
-    "n_items": 1,
-    "n_valid": 1200,
+    "n_items": 2,
+    "n_valid": 1172,
     "reverse_coded": null
   },
   {
@@ -721,8 +718,7 @@
       "p3_1",
       "p3_2",
       "p3_3",
-      "p3_4",
-      "p3_9"
+      "p3_4"
     ]
   },
   {
@@ -749,7 +745,7 @@
     "var_id": "agg_perceived_representativeness|FED",
     "type": "good",
     "alpha": 0.9157,
-    "n_items": 5,
+    "n_items": 6,
     "n_valid": 1200,
     "reverse_coded": [
       "p12_1",
@@ -855,7 +851,7 @@
     "var_id": "agg_cultural_socialization_in_childhood|DEP",
     "type": "tier3_caveat",
     "alpha": 0.4802,
-    "n_items": 2,
+    "n_items": 3,
     "n_valid": 1188,
     "reverse_coded": null
   },
@@ -879,7 +875,7 @@
     "var_id": "agg_cultural_identity_and_heritage|DEP",
     "type": "tier3_caveat",
     "alpha": 0.4154,
-    "n_items": 4,
+    "n_items": 6,
     "n_valid": 1200,
     "reverse_coded": null
   },
@@ -932,7 +928,6 @@
     "n_items": 2,
     "n_valid": 1200,
     "reverse_coded": [
-      "p22",
       "p23"
     ]
   },
@@ -1057,10 +1052,7 @@
       "p22",
       "p23",
       "p35",
-      "p43",
-      "p38_4",
-      "p38_5",
-      "p38_6"
+      "p43"
     ]
   },
   {
@@ -1074,8 +1066,7 @@
     "reverse_coded": [
       "p32_1",
       "p33",
-      "p40_1",
-      "p49_1"
+      "p40_1"
     ]
   },
   {
@@ -1094,7 +1085,7 @@
     "var_id": "agg_household_science_cultural_capital|CIE",
     "type": "good",
     "alpha": 0.8043,
-    "n_items": 6,
+    "n_items": 7,
     "n_valid": 1200,
     "reverse_coded": [
       "p3_2",
@@ -1149,7 +1140,7 @@
     "var_id": "agg_digital_and_cultural_capital|EDU",
     "type": "good",
     "alpha": 0.745,
-    "n_items": 4,
+    "n_items": 5,
     "n_valid": 1199,
     "reverse_coded": [
       "p47_3",

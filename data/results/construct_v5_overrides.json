@@ -15,46 +15,37 @@
   },
 
   "items_to_drop": {
-    "_comment": "Items removed from question_cluster before aggregation. Sources: construct_code_audit.md (Phase 1), construct_low_n_investigation.md (Phase 2), construct_semantic_coherence_v5.md (Phase 3 semantic review).",
+    "_comment": "Items removed from question_cluster before aggregation. Sources: construct_code_audit.md (Phase 1), construct_low_n_investigation.md (Phase 2), construct_semantic_coherence_v5.md (Phase 3 semantic review — reverted where alpha test showed removal hurts scale or user annotated 'leave as is').",
 
-    "CIE|household_science_cultural_capital":                    ["p3_11"],
     "CIE|institutional_trust_in_science":                        ["p49_1"],
     "CIE|perceived_societal_value_of_science_technology":        ["p57", "p58", "p51_1"],
     "CIE|science_technology_interest_engagement":                ["p38_4", "p38_5", "p38_6"],
-    "CUL|authoritarian_predisposition":                          ["p60", "p23"],
     "CUL|democratic_legitimacy_support":                         ["p30"],
     "CUL|institutional_trust_and_electoral_confidence":          ["p71", "p72"],
     "CUL|political_efficacy_and_engagement":                     ["p21", "p51"],
     "DEP|attitudes_toward_cultural_openness_and_foreign_influence": ["p29_1"],
-    "DEP|cultural_identity_and_heritage":                        ["p34", "p35"],
-    "DEP|cultural_socialization_in_childhood":                   ["p12_1"],
     "DEP|reading_engagement_and_literacy":                       ["p15c_2", "p15c_3"],
     "DER|institutional_trust_justice":                           ["p33", "p19"],
-    "DER|perceived_discrimination_social_exclusion":             ["p36_1", "p40_1"],
-    "DER|rights_awareness_personal_experience":                  ["p53"],
+    "DER|perceived_discrimination_social_exclusion":             ["p36_1"],
     "ECO|labor_union_attitudes":                                 ["p22"],
-    "EDU|digital_and_cultural_capital":                          ["p48_1", "p48_3", "p44_5", "p47_6"],
+    "EDU|digital_and_cultural_capital":                          ["p48_1", "p48_3", "p44_5"],
     "ENV|ageism_and_negative_stereotypes":                       ["p27"],
-    "ENV|state_and_family_responsibility_for_elder_care":        ["p44", "p30", "p31"],
+    "ENV|state_and_family_responsibility_for_elder_care":        ["p31"],
     "FAM|conjugal_union_attitudes":                              ["p33"],
     "FAM|family_cohesion_quality":                               ["p27", "p52", "p53"],
     "FAM|family_value_transmission":                             ["p57"],
     "FAM|ideal_family_normativity":                              ["p67", "p68"],
     "FAM|intergenerational_obligations":                         ["p62", "p63"],
     "FED|fiscal_and_service_federalism_preferences":             ["p37_1"],
-    "FED|perceived_representativeness":                          ["p12_1"],
     "FED|security_governance_preferences":                       ["p47"],
     "GEN|traditional_gender_role_attitudes":                     ["p61_1", "p63_1", "p59_1"],
     "GLO|economic_globalization_attitudes":                      ["p49_1"],
     "GLO|international_institutional_engagement":                ["p58"],
     "HAB|basic_services_access":                                 ["p8", "p36_30"],
-    "IDE|moral_normative_conservatism":                          ["p57"],
-    "IDE|personal_optimism_efficacy":                            ["p24"],
     "IDE|tolerance_social_diversity":                            ["p54_5", "p54_6", "p54_8"],
-    "IND|perceived_indigenous_discrimination":                   ["p20"],
     "IND|social_distance_toward_indigenous_people":              ["p39_1"],
     "JUS|judicial_institutional_trust":                          ["p43"],
-    "JUS|law_compliance_motivation":                             ["p8", "p9", "p10"],
+    "JUS|law_compliance_motivation":                             ["p8", "p9"],
     "MED|environmental_knowledge_self_efficacy":                 ["p28_1", "p36_1"],
     "MED|environmental_problem_salience":                        ["p6"],
     "MED|pro_environmental_civic_engagement":                    ["p34_5"],
@@ -65,10 +56,7 @@
     "POB|intergenerational_mobility_perception":                 ["p36"],
     "POB|subjective_economic_wellbeing_and_agency":              ["p10"],
     "REL|church_state_separation":                               ["p58"],
-    "REL|personal_religiosity":                                  ["p11"],
     "REL|religious_socialization":                               ["p2", "p3", "p4"],
-    "REL|supernatural_beliefs":                                  ["p17_15"],
-    "SAL|health_risk_behaviors":                                 ["p28"],
     "SAL|subjective_wellbeing":                                  ["p8_1"],
     "SEG|fear_and_risk_avoidance":                               ["p48", "p49"],
     "SEG|punitive_and_vigilante_attitudes":                      ["p72"],
@@ -120,7 +108,7 @@
       "add": ["p84_1","p84_2","p84_3","p84_4","p84_6","p84_7","p84_8"]
     },
     "MIG|perceived_opportunity_structure": {
-      "add": ["p3_1","p3_2","p3_3","p3_4","p3_9"]
+      "add": ["p3_1","p3_2","p3_3","p3_4"]
     },
     "SEG|perceived_security_trajectory": {
       "add": ["p3","p4","p5","p6"]
@@ -129,19 +117,16 @@
       "add": ["p2","p3","p4","p5"]
     },
     "DER|institutional_trust_justice": {
-      "add": ["p18","p19","p34"]
+      "add": ["p18","p34"]
     },
     "CIE|institutional_trust_in_science": {
-      "add": ["p32_1","p33","p40_1","p49_1"]
+      "add": ["p32_1","p33","p40_1"]
     },
     "FED|political_interest_and_engagement": {
       "add": ["p5","p6","p7"]
     },
     "CIE|science_technology_interest_engagement": {
-      "add": ["p11","p22","p23","p35","p43","p38_4","p38_5","p38_6"]
-    },
-    "MED|environmental_knowledge_self_efficacy": {
-      "add": ["p28_1"]
+      "add": ["p11","p22","p23","p35","p43"]
     },
     "REL|church_state_separation": {
       "add": ["p57"]
@@ -150,7 +135,7 @@
       "add": ["p1","p2"]
     },
     "ECO|labor_union_attitudes": {
-      "add": ["p22","p23"]
+      "add": ["p23"]
     },
     "FED|fiscal_and_service_federalism_preferences": {
       "add": ["p38"]

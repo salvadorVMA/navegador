@@ -105,7 +105,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 | `SAL|functional_health_status` | COHERENT | — | All items directly measure physical health limitations on everyday functioning within the specified domain of moderate physical effort, stair climbing, and activity/work reduction. |
 | `SAL|subjective_wellbeing` | MIXED | `p8_1` | Most items validly measure subjective wellbeing dimensions, but one item measures emotional state rather than self-assessed quality of life or satisfaction. |
 | `SAL|health_risk_behaviors` | MIXED | `p28` | Items p34 and p35 directly measure alcohol consumption frequency and intensity as described, but p28 measures only lifetime smoking history without capturing current smoking intensity or frequency. |
-| `IND|perceived_indigenous_discrimination` | MIXED | `p20` | Most items directly measure perceived discrimination against indigenous people, but p20 measures general skin color discrimination without indigenous-specific focus, making it tangentially related rather than directly on-target. |
+| `IND|perceived_indigenous_discrimination` | MIXED | `p20` | Most items directly measure perceived discrimination against indigenous people, but p20 measures general skin color discrimination without indigenous-specific focus, making it tangentially related rather than directly on-target. |TODO leave as is
 | `IND|social_distance_toward_indigenous_people` | MIXED | `p39_1` | Two items measure willingness/acceptance (on-target), but one item measures past behavior/experience rather than willingness or social distance. |
 | `IND|national_economic_outlook` | COHERENT | — | Both items directly measure the intended construct of national economic outlook through retrospective (p1) and prospective (p2) evaluations of Mexico's economic situation. |
 | `SOC|media_trust_and_quality_evaluation` | MIXED | `p53_1` | Most items measure critical assessment of media quality and coverage, but p53_1 measures trust in family information sources, which is semantically distinct from evaluating media institutions. |
@@ -140,7 +140,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 | `GEN|intimate_partner_power_dynamics` | COHERENT | — | All three items directly measure power imbalances and autonomy restrictions within intimate partnerships across distinct domains (financial control, movement freedom, and family contact). |
 | `DEP|cultural_socialization_in_childhood` | MIXED | `p12_1` | Two items measure parental cultural socialization behavior, but one item measures the child's own reading behavior, which is an outcome rather than exposure to parental cultural transmission. |
 | `DEP|reading_engagement_and_literacy` | MIXED | — | Items measure only one narrow subdomain (reading habits for newspapers/magazines) and omit key construct elements like access to books, reading ability, and barriers to reading. |
-| `DEP|cultural_identity_and_heritage` | MIXED | `p34`, `p35` | Most items validly measure cultural identity and heritage self-identification, but two items measuring indigenous language ability are tangentially related behavioral competencies rather than direct measures of cultural belonging or self-identification. |
+| `DEP|cultural_identity_and_heritage` | MIXED | `p34`, `p35` | Most items validly measure cultural identity and heritage self-identification, but two items measuring indigenous language ability are tangentially related behavioral competencies rather than direct measures of cultural belonging or self-identification. | TODO leave as is
 | `DEP|attitudes_toward_cultural_openness_and_foreign_influence` | MIXED | `p29_1` | Most items measure attitudes toward cultural openness and pluralism, but p29_1 measures behavioral preference for cultural preservation rather than attitudes toward openness/foreign influence. |
 | `ECO|economic_wellbeing_perception` | COHERENT | — | All three items directly measure economic wellbeing perception across personal, national, and intergenerational dimensions as described in the construct definition. |
 | `ECO|labor_union_attitudes` | MIXED | `p22` | Two items directly measure union attitudes, but one item measures perceived labor rights respect, which is a contextual outcome rather than an evaluative orientation toward unions themselves. |
@@ -184,7 +184,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 |------|---------|--------|
 | `p19` | OK | Directly measures perceived ability to secure economic future, a core component of personal efficacy and optimism about life outcomes. |
 | `p20` | OK | Directly measures confidence in achieving future goals and projects, a central element of personal agency and optimism. |
-| `p24` | FLAG | Measures retrospective satisfaction with past life rather than forward-looking sense of control, efficacy, or optimism about future outcomes. |
+| `p24` | FLAG | Measures retrospective satisfaction with past life rather than forward-looking sense of control, efficacy, or optimism about future outcomes. |TODO test alphaotherwise drop
 | `p30_1` | OK | Directly measures perceived control over a specific life domain (economic situation), a core indicator of personal agency. |
 
 ### `IDE|moral_normative_conservatism`
@@ -195,7 +195,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 |------|---------|--------|
 | `p55` | OK | Directly measures conservative moral norm regarding corporal punishment of children, a core domain of the construct. |
 | `p56` | OK | Directly measures self-identified conservatism in family and household moral matters, which is central to the construct. |
-| `p57` | FLAG | Measures political ideology conservatism-liberalism, which is substantively distinct from moral normative conservatism on family, sexuality, and social conduct. |
+| `p57` | FLAG | Measures political ideology conservatism-liberalism, which is substantively distinct from moral normative conservatism on family, sexuality, and social conduct. |TODO test alpha
 | `p58` | OK | Measures conservative moral norms regarding family autonomy and independence, relevant to traditional family structure values. |
 | `p60` | OK | Directly measures conservative moral norms regarding premarital sexual conduct, explicitly mentioned in the construct description. |
 
@@ -231,7 +231,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 | `p34_2` | OK | Donating to environmental groups is a direct form of active collective environmental engagement. |
 | `p34_3` | OK | Participating in protests or demonstrations is a direct form of active civic environmental engagement. |
 | `p34_4` | OK | Reporting environmental damage to authorities is a direct form of active civic environmental engagement. |
-| `p34_5` | FLAG | Attending talks or conferences is passive information consumption rather than active civic or collective action in defense of the environment. |
+| `p34_5` | FLAG | Attending talks or conferences is passive information consumption rather than active civic or collective action in defense of the environment. |TODO test alpha
 
 ### `POB|intergenerational_mobility_perception`
 
@@ -242,7 +242,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 | `p22` | OK | Directly measures perceived personal economic mobility relative to parents at comparable life stage. |
 | `p23` | OK | Directly measures expected intergenerational mobility for next generation relative to respondent's current situation. |
 | `p24` | OK | Directly measures perceived structural opportunities for youth upward mobility relative to parental generation. |
-| `p36` | FLAG | Measures belief about the efficacy of education as a pathway to employment rather than perceived intergenerational mobility or structural opportunity. |
+| `p36` | FLAG | Measures belief about the efficacy of education as a pathway to employment rather than perceived intergenerational mobility or structural opportunity. | TODO test alpha
 
 ### `POB|subjective_economic_wellbeing_and_agency`
 
@@ -306,7 +306,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 | `p64` | OK | Directly measures willingness to bypass legal rules to achieve justice, consistent with the construct's tolerance for rule-breaking. |
 | `p65` | OK | Directly measures agreement that breaking the law can be justified for moral ends, a key aspect of authoritarian predisposition. |
 | `p60` | FLAG | Measures compliance with majority decisions regardless of personal preference, which is democratic deference rather than authoritarian predisposition toward strong leadership or rule-breaking. |
-| `p23` | FLAG | Measures pragmatic willingness to implement effective solutions despite conflict, which is a general problem-solving orientation distinct from authoritarian preference for strong leadership or subordinating freedoms to order. |
+| `p23` | FLAG | Measures pragmatic willingness to implement effective solutions despite conflict, which is a general problem-solving orientation distinct from authoritarian preference for strong leadership or subordinating freedoms to order. | TODO test alpha on both
 
 ### `REL|supernatural_beliefs`
 
@@ -327,7 +327,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 | `p17_12` | OK | Directly measures belief in karma, a metaphysical supernatural belief explicitly mentioned in the construct description. |
 | `p17_13` | OK | Directly measures belief in limpias, a folk/syncretic supernatural practice explicitly mentioned in the construct description. |
 | `p17_14` | OK | Directly measures belief in destiny/fate, a metaphysical supernatural force. |
-| `p17_15` | FLAG | Measures belief in the power of mind, a naturalistic psychological/cognitive phenomenon rather than a supernatural entity or metaphysical force. |
+| `p17_15` | FLAG | Measures belief in the power of mind, a naturalistic psychological/cognitive phenomenon rather than a supernatural entity or metaphysical force. | TODO leave as is
 
 ### `REL|personal_religiosity`
 
@@ -340,7 +340,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 | `p13_1` | OK | Directly measures using religious values to guide family behavior, explicitly mentioned in the construct description. |
 | `p14` | OK | Directly measures reliance on clergy for life decisions, explicitly mentioned in the construct description. |
 | `p25` | OK | Directly measures prayer, meditation, and contemplation practices, core indicators of personal religious practice. |
-| `p11` | FLAG | Measures willingness to petition specific saints/religious figures, which is a folk devotional practice distinct from internalized personal religiosity and may reflect cultural tradition rather than personal religious commitment. |
+| `p11` | FLAG | Measures willingness to petition specific saints/religious figures, which is a folk devotional practice distinct from internalized personal religiosity and may reflect cultural tradition rather than personal religious commitment. | TODO leave as is
 
 ### `REL|church_state_separation`
 
@@ -396,7 +396,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 
 | Item | Verdict | Reason |
 |------|---------|--------|
-| `p28` | FLAG | Measures lifetime smoking history (yes/no) but does not capture current smoking status, intensity, or frequency as required by the construct description; a behavioral outcome indicator rather than engagement in the behavior. |
+| `p28` | FLAG | Measures lifetime smoking history (yes/no) but does not capture current smoking status, intensity, or frequency as required by the construct description; a behavioral outcome indicator rather than engagement in the behavior. | TODO leave as is
 | `p34` | OK | Directly measures frequency of alcohol consumption in the past 12 months, which aligns with the construct's focus on frequency and intensity of alcohol consumption. |
 | `p35` | OK | Directly measures intensity of alcohol consumption (maximum drinks per occasion in past 12 months), which aligns with the construct's focus on intensity of alcohol consumption. |
 
@@ -406,7 +406,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 
 | Item | Verdict | Reason |
 |------|---------|--------|
-| `p20` | FLAG | Measures perception of skin color discrimination in general society rather than discrimination specifically against indigenous people; conflates racial/colorism discrimination with indigenous-specific discrimination. |
+| `p20` | FLAG | Measures perception of skin color discrimination in general society rather than discrimination specifically against indigenous people; conflates racial/colorism discrimination with indigenous-specific discrimination. | TODO leave as is
 | `p21` | OK | Directly measures recognition of racism in Mexico, which is foundational to perceiving systemic discrimination against indigenous populations. |
 | `p25_1` | OK | Directly assesses whether employment discrimination against indigenous people is recognized as discriminatory, measuring attitudinal recognition of indigenous-specific discrimination. |
 | `p34_1` | OK | Directly measures perception that indigenous identity creates systemic barriers to employment, capturing assessment of structural inequality affecting indigenous people. |
@@ -468,7 +468,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 | `p42_1` | OK | Directly measures normative belief about state responsibility for elder care, core to the construct. |
 | `p44` | FLAG | Measures willingness to contribute financially (behavioral intention/outcome) rather than normative beliefs about who should bear responsibility. |
 | `p30` | FLAG | Measures perceived willingness of children to care for parents (descriptive observation of actual behavior/attitudes) rather than respondent's normative beliefs about responsibility allocation. |
-| `p31` | FLAG | Measures perceived change in actual caregiving frequency over time (behavioral trend observation) rather than normative beliefs about responsibility. |
+| `p31` | FLAG | Measures perceived change in actual caregiving frequency over time (behavioral trend observation) rather than normative beliefs about responsibility. | TODO  drop only 31
 
 ### `DER|institutional_trust_justice`
 
@@ -491,7 +491,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 | `p35_1` | OK | Directly measures personal experience of rights violations based on physical appearance, core to the construct. |
 | `p36_1` | FLAG | Measures respondent's own discriminatory behavior/intentions (whether they would discriminate in housing) rather than perception of discrimination or attitudes toward discrimination against others. |
 | `p39` | OK | Measures perception of how dark-skinned people are treated in society, directly assessing perceived discrimination against a vulnerable group. |
-| `p40_1` | FLAG | Measures respondent's personal tolerance of their child's homosexuality rather than perception of discrimination or attitudes toward societal discrimination against LGBTQ+ individuals. |
+| `p40_1` | FLAG | Measures respondent's personal tolerance of their child's homosexuality rather than perception of discrimination or attiTOudes toward societal discrimination against LGBTQ+ individuals. |TODO leave as is
 | `p41` | OK | Measures attitudes toward penalizing public expression of homosexuality, reflecting perception of and stance on discrimination against LGBTQ+ individuals. |
 | `p44` | OK | Measures attitudes toward discriminatory exclusion from public spaces based on appearance, assessing normative judgments about discrimination. |
 
@@ -502,7 +502,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 | Item | Verdict | Reason |
 |------|---------|--------|
 | `p45` | OK | Directly measures personal experience with human rights violations, core to the construct's lived dimension. |
-| `p53` | FLAG | School bullying is a peer-to-peer harm distinct from human rights or labor rights violations and does not measure rights abuses by authority or institutional actors. |
+| `p53` | FLAG | School bullying is a peer-to-peer harm distinct from human rights or labor rights violations and does not measure rights abuses by authority or institutional actors. |tTODO leave as is
 | `p54` | OK | Directly measures personal experience with labor rights abuse (workplace mobbing), aligned with the construct's focus on lived rights violations. |
 
 ### `HAB|basic_services_access`
@@ -566,7 +566,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 | `p7` | OK | Directly captures normative and instrumental motivations for obeying laws, which is the core of the construct. |
 | `p8` | FLAG | Measures perceived respect for laws by government officials, which is a behavioral outcome or perception of compliance rather than the motivational basis underlying compliance. |
 | `p9` | FLAG | Measures perceived respect for laws by citizens, which is a perception of compliance behavior rather than the motivational reasons for compliance. |
-| `p10` | FLAG | Measures self-assessed law-abidingness rather than the underlying normative or instrumental motivations that drive compliance behavior. |
+| `p10` | FLAG | Measures self-assessed law-abidingness rather than the underlying normative or instrumental motivations that drivTODO leave as ise compliance behavior. |TODO. leave as is
 
 ### `MIG|perceived_opportunity_structure`
 
@@ -601,7 +601,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 
 | Item | Verdict | Reason |
 |------|---------|--------|
-| `p12_1` | FLAG | Measures political parties' representativeness rather than elected officials' representativeness; parties are organizational entities distinct from the elected representatives (deputies, governors, presidents) that comprise the rest of the scale. |
+| `p12_1` | FLAG | Measures political parties' representativeness rather than elected officials' representativeness; parties are organizational entities distinct from the elected representatives (deputies, governors, presidents) that comprise the rest of the scale. | TODO. leave as is
 | `p12_2` | OK | Directly measures perceived representativeness of local deputies, consistent with the multi-level assessment of elected officials. |
 | `p12_3` | OK | Directly measures perceived representativeness of federal deputies, consistent with the multi-level assessment of elected officials. |
 | `p12_4` | OK | Directly measures perceived representativeness of state governors, consistent with the multi-level assessment of elected officials. |
@@ -655,12 +655,12 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 |------|---------|--------|
 | `p8` | OK | Directly measures parental communication about cultural topics during childhood, a core mechanism of cultural socialization. |
 | `p11` | OK | Directly measures parental/familial behavior of gifting books, a concrete cultural resource transmission practice. |
-| `p12_1` | FLAG | Measures the child's own reading frequency, which is a behavioral outcome of socialization rather than exposure to parental cultural practices or resources. |
+| `p12_1` | FLAG | Measures the child's own reading frequency, which is a behavioral outcome of socialization rather than exposure to parental cultural practices or resources. |TODO LEAVE AS IS
 
 ### `DEP|reading_engagement_and_literacy`
 
 **Verdict**: MIXED — Items measure only one narrow subdomain (reading habits for newspapers/magazines) and omit key construct elements like access to books, reading ability, and barriers to reading.
-
+<!-- NOTE: MIXED verdict reflects narrow construct coverage given available items (only acostumbra newspaper/magazine items), not off-target items. No items flagged for removal — construct is what the survey allows. -->
 | Item | Verdict | Reason |
 |------|---------|--------|
 | `p15a_1` | OK | Directly measures self-reported reading habits for a specific publication type, which is a core component of reading engagement. |
@@ -678,7 +678,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 | `p50` | OK | Directly measures self-identification as part of a discriminated ethnic/racial group, explicitly mentioned in the construct description. |
 | `p54` | OK | Directly measures ethnic/racial self-categorization and self-perception, a core component of cultural identity. |
 | `p34` | FLAG | Measures behavioral language competency (ability to converse) rather than cultural identity or belonging; someone may identify culturally with indigenous heritage without conversational ability. |
-| `p35` | FLAG | Measures literacy skill in indigenous languages rather than cultural identity or self-identification; literacy is a behavioral outcome distinct from cultural belonging. |
+| `p35` | FLAG | Measures literacy skill in indigenous languages rather than cultural identity or self-identification; literacy is a behavioral outcome distinct from cultural belonging. |TODO leave as is
 
 ### `DEP|attitudes_toward_cultural_openness_and_foreign_influence`
 
@@ -840,7 +840,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 | `p3_3` | OK | Directly measures presence of technical books, a core component of scientific and technical cultural capital. |
 | `p3_6` | OK | Directly measures presence of encyclopedic books, explicitly mentioned in the construct description. |
 | `p3_8` | OK | Directly measures presence of history books, explicitly mentioned in the construct description. |
-| `p3_11` | FLAG | School textbooks measure functional educational resources for academic performance rather than cultural capital reflecting exposure to scientific and educational culture. |
+| `p3_11` | FLAG | School textbooks measure functional educational resources for academic performance rather than cultural capital reflecting exposure to scientific and educational culture. |GTODO leave as is
 | `p4` | OK | Directly measures access to computers, a core digital infrastructure component of the construct. |
 | `p5` | OK | Directly measures access to internet, a core digital infrastructure component of the construct. |
 
@@ -852,7 +852,7 @@ Paste into `construct_v5_overrides.json` → `items_to_drop`:
 |------|---------|--------|
 | `p47_3` | OK | Directly measures access to computers/tablets, core ICT resources for informal learning. |
 | `p47_4` | OK | Directly measures internet access, essential infrastructure for digital capital and information access. |
-| `p47_6` | FLAG | Smartphone ownership is a consumer device measure that does not substantively reflect access to ICTs for learning or cultural participation as described in the construct. |
+| `p47_6` | FLAG | Smartphone ownership is a consumer device measure that does not substantively reflect access to ICTs for learning or cultural participation as described in the construct. | TODO leave as is
 | `p45_1` | OK | Measures newspaper reading frequency, a direct indicator of information consumption and cultural engagement habits. |
 | `p45_2` | OK | Measures book reading frequency, a direct indicator of reading habits and cultural participation. |
 
