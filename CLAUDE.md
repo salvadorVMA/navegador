@@ -338,3 +338,92 @@ See `docs/` folder for detailed guides:
 - `SANDBOX_README.md` - Docker sandbox usage
 - `SECURITY_TOOLS.md` - Security tools and scanning procedures
 - `WVS_INTEGRATION_PLAN.md` - World Values Survey integration plan (branch `wvs`)
+
+
+## Julia Bridge (branch: julia_bridge)
+
+### Location
+
+```
+../navegador_julia_bridge/julia/
+```
+
+The `julia_bridge` branch is a git worktree of this repository.
+All Julia source files live in the `julia/` subdirectory of that worktree.
+
+### Module Structure
+
+| File | Purpose |
+|------|---------|
+| `src/NavegadorBridge.jl` | Main module (all exports) |
+| `src/gamma_nmi.jl` | `goodman_kruskal_gamma`, `normalized_mutual_information` |
+| `src/cronbach.jl` | `cronbach_alpha`, `scale_to_output`, `reverse_code`, `build_construct_scale` |
+| `src/ordinal_model.jl` | `fit_ordered_logit`, `predict_proba`, `fit_logistic`, `predict_logistic` |
+| `src/ses_encoder.jl` | `encode_ses`, `drop_sentinel_rows`, `is_sentinel`, `SES_VARS` |
+| `src/dr_estimator.jl` | `dr_estimate`, `DRResult` |
+| `src/sweep.jl` | `run_sweep`, `load_checkpoint`, `save_checkpoint` |
+| `test/runtests.jl` | 66 unit tests (all pass) |
+| `examples/demo_dr.jl` | End-to-end demo: 1200 synthetic respondents, 50 bootstrap, ~5s |
+| `docs/JULIA_BRIDGE_PRIMER.md` | Full technical primer (Python↔Julia side-by-side) |
+
+### Key Functions
+
+- **`dr_estimate(df_a, col_a, df_b, col_b; ses_vars, n_sim, n_bootstrap, seed)`**
+  Main DR bridge estimator. Returns `DRResult` with γ, 95% CI, NMI, Cramér's V,
+  and KS propensity overlap. Mirrors `DoublyRobustBridgeEstimator` from `ses_regression.py`.
+
+- **`goodman_kruskal_gamma(joint_table)`** — Goodman-Kruskal γ ∈ [-1, 1]
+- **`normalized_mutual_information(joint_table)`** — NMI ∈ [0, 1]
+- **`cronbach_alpha(X)`** — Cronbach's α for item matrix
+
+### How to Run Tests
+
+```bash
+export PATH="$HOME/.juliaup/bin:$PATH"
+cd /path/to/navegador_julia_bridge/julia
+julia --project=. test/runtests.jl
+```
+
+Expected: 66 tests pass in ~7 seconds. Test coverage:
+1. `goodman_kruskal_gamma` — analytic answers (perfect concordance = ±1, independence = 0)
+2. `normalized_mutual_information` — independence → NMI=0, perfect correlation → NMI=1
+3. `cronbach_alpha` — known high/low alpha inputs, scale/reverse helpers
+4. `fit_ordered_logit` — recovers β=1.5 on N=600 synthetic data, thresholds ordered
+5. `dr_estimate` — valid γ ∈ [-1,1], CI ≥ 0 width, expected positive γ for escol-driven attitudes
+
+### Performance Note
+
+Expected **5–10× speedup** on bootstrap loops vs. Python+statsmodels:
+
+| Operation | Python | Julia |
+|-----------|--------|-------|
+| Single ordered logit fit (n=1200, K=5) | ~0.5s | ~0.01s |
+| 200 bootstrap iterations | ~120s | ~4s |
+| Demo (n=1200, n_boot=50) | ~40-60s | **4.7s** |
+| 4979-pair sweep (n_boot=200, estimated) | 11.1h | **~1-2h** |
+
+### Output Format
+
+Same JSON schema as Python `construct_dr_sweep.json`:
+```json
+{
+  "metadata": {"n_sim": 2000, "n_bootstrap": 200, "ses_vars": [...], ...},
+  "estimates": {
+    "agg_col_a|DOMAIN_A::agg_col_b|DOMAIN_B": {
+      "dr_gamma": 0.1332, "dr_ci_lo": 0.0891, "dr_ci_hi": 0.1773,
+      "dr_nmi": 0.0087, "dr_v": 0.0621, "ci_width": 0.0882,
+      "excl_zero": true, "n_a": 1200, "n_b": 1200
+    }
+  }
+}
+```
+
+### Installation
+
+Julia 1.12.5 installed via juliaup. To reinstall:
+```bash
+curl -fsSL https://install.julialang.org | sh -s -- --yes
+export PATH="$HOME/.juliaup/bin:$PATH"
+# Then install packages:
+julia --project=julia/ -e 'using Pkg; Pkg.add(["DataFrames","CSV","JSON","GLM","Distributions","StatsBase","CategoricalArrays","Optim","ForwardDiff"]); Pkg.add(["LinearAlgebra","Statistics","Random","Dates","Printf","Test"])'
+```
