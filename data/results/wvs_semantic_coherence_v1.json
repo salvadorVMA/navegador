@@ -1,0 +1,1157 @@
+[
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure unwillingness to have outgroups as neighbors (social intolerance), but Q20 (people with AIDS) and Q25 (unmarried cohabiting couples) measure disease-related stigma and moral disapproval of lifestyle rather than prejudice against social identity groups.",
+    "items": [
+      {
+        "item": "Q19",
+        "verdict": "OK",
+        "reason": "Directly measures social distance from racial/ethnic outgroups, core to social intolerance construct."
+      },
+      {
+        "item": "Q20",
+        "verdict": "FLAG",
+        "reason": "Measures health-related stigma and fear of contagion rather than prejudice against a social identity group or outgroup."
+      },
+      {
+        "item": "Q21",
+        "verdict": "OK",
+        "reason": "Directly measures social distance from immigrants/foreign workers, a classic outgroup in intolerance research."
+      },
+      {
+        "item": "Q22",
+        "verdict": "OK",
+        "reason": "Directly measures social distance from homosexuals based on sexual orientation, a key outgroup in social intolerance."
+      },
+      {
+        "item": "Q23",
+        "verdict": "OK",
+        "reason": "Directly measures social distance from religious outgroups, core to social intolerance construct."
+      },
+      {
+        "item": "Q25",
+        "verdict": "FLAG",
+        "reason": "Measures moral disapproval of a lifestyle choice rather than prejudice against a social identity group or demographic outgroup."
+      },
+      {
+        "item": "Q26",
+        "verdict": "OK",
+        "reason": "Directly measures social distance from linguistic outgroups, consistent with ethnic/cultural intolerance."
+      }
+    ],
+    "_key": "WVS_A|social_intolerance_outgroups",
+    "_items_reviewed": [
+      "Q19",
+      "Q20",
+      "Q21",
+      "Q22",
+      "Q23",
+      "Q25",
+      "Q26"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Q48 and Q49 directly measure the construct, but Q46 is vague and all three items have mismatched scale labels that do not align with their question text.",
+    "items": [
+      {
+        "item": "Q46",
+        "verdict": "FLAG",
+        "reason": "Question text is incomplete/unclear ('¿usted diría que es...?') and scale labels (Bueno/Le da igual/Malo) do not semantically match subjective wellbeing dimensions; unclear what is being evaluated."
+      },
+      {
+        "item": "Q48",
+        "verdict": "OK",
+        "reason": "Directly measures perceived freedom of choice and control over life, a core component of subjective wellbeing, despite scale label mismatch in documentation."
+      },
+      {
+        "item": "Q49",
+        "verdict": "OK",
+        "reason": "Directly measures life satisfaction on a 1-10 scale, a core component of subjective wellbeing, despite scale label mismatch in documentation."
+      }
+    ],
+    "_key": "WVS_A|subjective_wellbeing",
+    "_items_reviewed": [
+      "Q46",
+      "Q48",
+      "Q49"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "Both items directly measure endorsement of gender-based employment prioritization when jobs are scarce, with identical semantic content across language versions.",
+    "items": [
+      {
+        "item": "Q33",
+        "verdict": "OK",
+        "reason": "Directly measures agreement with prioritizing men's employment rights over women's during job scarcity."
+      },
+      {
+        "item": "Q33_3",
+        "verdict": "OK",
+        "reason": "Semantically identical to Q33, measuring the same gender-based labor market prioritization construct with a simplified 3-category response format."
+      }
+    ],
+    "_key": "WVS_C|job_scarcity_gender_discrimination",
+    "_items_reviewed": [
+      "Q33",
+      "Q33_3"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "Both items directly measure preference for national workers over immigrants in employment contexts with job scarcity, capturing the same ethnocentric labor market attitude.",
+    "items": [
+      {
+        "item": "Q34",
+        "verdict": "OK",
+        "reason": "Directly measures nativist employment preference by asking whether employers should prioritize Mexicans over immigrants when jobs are scarce."
+      },
+      {
+        "item": "Q34_3",
+        "verdict": "OK",
+        "reason": "Semantically identical to Q34, measuring the same construct of national priority in employment under job scarcity conditions, with a simplified 3-category response format."
+      }
+    ],
+    "_key": "WVS_C|job_scarcity_nativist_preference",
+    "_items_reviewed": [
+      "Q34",
+      "Q34_3"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All three items directly measure core dimensions of work ethic: negative views of idleness, work as social duty, and prioritization of work over leisure.",
+    "items": [
+      {
+        "item": "Q39",
+        "verdict": "OK",
+        "reason": "Directly measures the belief that idleness leads to moral degradation (laziness), a core component of work ethic."
+      },
+      {
+        "item": "Q40",
+        "verdict": "OK",
+        "reason": "Directly measures the normative belief that work is a societal obligation, central to work ethic ideology."
+      },
+      {
+        "item": "Q41",
+        "verdict": "OK",
+        "reason": "Directly measures prioritization of work over other life domains (leisure), a key behavioral manifestation of work ethic values."
+      }
+    ],
+    "_key": "WVS_C|work_ethic",
+    "_items_reviewed": [
+      "Q39",
+      "Q40",
+      "Q41"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Three items directly measure belief in male superiority in specific domains, but Q28 measures a distinct concern about maternal employment's effects on children rather than male superiority.",
+    "items": [
+      {
+        "item": "Q28",
+        "verdict": "FLAG",
+        "reason": "Measures concern about child welfare outcomes from maternal employment rather than belief in male superiority or male advantage in public roles; substantively distinct from the gender hierarchy dimension."
+      },
+      {
+        "item": "Q29",
+        "verdict": "OK",
+        "reason": "Directly measures belief in male superiority in political leadership, a core public-role domain of the construct."
+      },
+      {
+        "item": "Q30",
+        "verdict": "FLAG",
+        "reason": "Item text is incomplete (cuts off mid-sentence); cannot assess whether it measures male superiority in education or a different concept entirely."
+      },
+      {
+        "item": "Q31",
+        "verdict": "OK",
+        "reason": "Directly measures belief in male superiority in business leadership, a core public-role domain of the construct."
+      }
+    ],
+    "_key": "WVS_D|gender_role_traditionalism",
+    "_items_reviewed": [
+      "Q28",
+      "Q29",
+      "Q30",
+      "Q31"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Q35 directly measures perceived threat to marriage from female income superiority, but Q35_3 appears to be a recoded or collapsed version of the same item rather than a distinct measure, creating redundancy rather than construct validation.",
+    "items": [
+      {
+        "item": "Q35",
+        "verdict": "OK",
+        "reason": "Directly measures perception that a wife earning more than her husband causes relational problems (threat to marriage), aligned with the construct definition."
+      },
+      {
+        "item": "Q35_3",
+        "verdict": "FLAG",
+        "reason": "Appears to be a recoded version of Q35 rather than a separate item; using the same source item in different categorical formats does not provide independent construct validation."
+      }
+    ],
+    "_key": "WVS_D|female_income_threat_to_marriage",
+    "_items_reviewed": [
+      "Q35",
+      "Q35_3"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure confidence in domestic governmental and political institutions, but several items (churches, media, unions, universities, large companies, banks) measure confidence in non-governmental or civil society institutions that fall outside the core construct definition.",
+    "items": [
+      {
+        "item": "Q64",
+        "verdict": "FLAG",
+        "reason": "Churches are religious institutions, not domestic governmental or political institutions."
+      },
+      {
+        "item": "Q65",
+        "verdict": "OK",
+        "reason": "The military is a key domestic governmental institution."
+      },
+      {
+        "item": "Q66",
+        "verdict": "FLAG",
+        "reason": "The press is a media institution, not a governmental or political institution per se."
+      },
+      {
+        "item": "Q67",
+        "verdict": "FLAG",
+        "reason": "Television is a media institution, not a governmental or political institution per se."
+      },
+      {
+        "item": "Q68",
+        "verdict": "FLAG",
+        "reason": "Labor unions are civil society organizations, not domestic governmental or political institutions."
+      },
+      {
+        "item": "Q69",
+        "verdict": "OK",
+        "reason": "The police are a key domestic governmental institution."
+      },
+      {
+        "item": "Q70",
+        "verdict": "OK",
+        "reason": "Courts and judges are core domestic governmental institutions."
+      },
+      {
+        "item": "Q71",
+        "verdict": "OK",
+        "reason": "The government is a central domestic governmental institution."
+      },
+      {
+        "item": "Q72",
+        "verdict": "OK",
+        "reason": "Political parties are core domestic political institutions."
+      },
+      {
+        "item": "Q73",
+        "verdict": "OK",
+        "reason": "Congress is a central domestic political institution."
+      },
+      {
+        "item": "Q74",
+        "verdict": "OK",
+        "reason": "Public bureaucracy is a key domestic governmental institution."
+      },
+      {
+        "item": "Q75",
+        "verdict": "FLAG",
+        "reason": "Universities are educational institutions, not domestic governmental or political institutions."
+      },
+      {
+        "item": "Q76",
+        "verdict": "OK",
+        "reason": "Elections are a core domestic political institution."
+      },
+      {
+        "item": "Q77",
+        "verdict": "FLAG",
+        "reason": "Large companies are private sector entities, not domestic governmental or political institutions."
+      },
+      {
+        "item": "Q78",
+        "verdict": "FLAG",
+        "reason": "Banks are private financial institutions, not domestic governmental or political institutions."
+      }
+    ],
+    "_key": "WVS_E|confidence_in_domestic_institutions",
+    "_items_reviewed": [
+      "Q64",
+      "Q65",
+      "Q66",
+      "Q67",
+      "Q68",
+      "Q69",
+      "Q70",
+      "Q71",
+      "Q72",
+      "Q73",
+      "Q74",
+      "Q75",
+      "Q76",
+      "Q77",
+      "Q78"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Q79 is too vague to reliably measure confidence in civil society organizations, while Q80 and Q81 are appropriately specific.",
+    "items": [
+      {
+        "item": "Q79",
+        "verdict": "FLAG",
+        "reason": "Question text 'Las organizaciones' is incomplete and ambiguous—it does not specify which organizations are being asked about, making it impossible to confirm it measures confidence in civil society organizations specifically."
+      },
+      {
+        "item": "Q80",
+        "verdict": "OK",
+        "reason": "Directly measures confidence in women's organizations, a clear subset of civil society organizations."
+      },
+      {
+        "item": "Q81",
+        "verdict": "OK",
+        "reason": "Directly measures confidence in charitable and humanitarian organizations, a clear subset of civil society organizations."
+      }
+    ],
+    "_key": "WVS_E|confidence_in_civil_society_organizations",
+    "_items_reviewed": [
+      "Q79",
+      "Q80",
+      "Q81"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure confidence in international organizations, but Q82 (NAFTA/TLCAN) and Q89 (INE) are off-target: TLCAN is a trade agreement rather than an organization, and INE is a domestic Mexican institution, not an international organization.",
+    "items": [
+      {
+        "item": "Q82",
+        "verdict": "FLAG",
+        "reason": "TLCAN is a trade agreement, not an international organization; measures confidence in a bilateral/regional trade regime rather than supranational institutional confidence."
+      },
+      {
+        "item": "Q83",
+        "verdict": "OK",
+        "reason": "UN is a core international organization matching the construct definition."
+      },
+      {
+        "item": "Q84",
+        "verdict": "OK",
+        "reason": "IMF is a major international financial organization matching the construct definition."
+      },
+      {
+        "item": "Q85",
+        "verdict": "OK",
+        "reason": "International Criminal Court is an international judicial organization matching the construct definition."
+      },
+      {
+        "item": "Q86",
+        "verdict": "OK",
+        "reason": "NATO is an international military alliance organization matching the construct definition."
+      },
+      {
+        "item": "Q87",
+        "verdict": "OK",
+        "reason": "World Bank is a major international financial organization matching the construct definition."
+      },
+      {
+        "item": "Q88",
+        "verdict": "OK",
+        "reason": "WHO is a major international health organization matching the construct definition."
+      },
+      {
+        "item": "Q89",
+        "verdict": "FLAG",
+        "reason": "INE is Mexico's domestic electoral institute, not an international or supranational organization; measures confidence in a national institution."
+      }
+    ],
+    "_key": "WVS_E|confidence_in_international_organizations",
+    "_items_reviewed": [
+      "Q82",
+      "Q83",
+      "Q84",
+      "Q85",
+      "Q86",
+      "Q87",
+      "Q88",
+      "Q89"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items measure electoral integrity directly, but Q233 on gender equality in candidacy is tangentially related to electoral fairness rather than core integrity concerns.",
+    "items": [
+      {
+        "item": "Q224",
+        "verdict": "OK",
+        "reason": "Directly measures vote counting integrity, a core component of electoral process fairness."
+      },
+      {
+        "item": "Q225",
+        "verdict": "OK",
+        "reason": "Directly measures opposition candidate exclusion, a fundamental electoral integrity violation."
+      },
+      {
+        "item": "Q226",
+        "verdict": "OK",
+        "reason": "Directly measures media bias toward ruling party, a key threat to fair electoral competition."
+      },
+      {
+        "item": "Q227",
+        "verdict": "OK",
+        "reason": "Directly measures vote buying, a classic electoral integrity violation."
+      },
+      {
+        "item": "Q228",
+        "verdict": "OK",
+        "reason": "Directly measures objective media coverage, essential to fair electoral information environment."
+      },
+      {
+        "item": "Q229",
+        "verdict": "OK",
+        "reason": "Directly measures fairness of electoral authorities, central to process integrity."
+      },
+      {
+        "item": "Q230",
+        "verdict": "OK",
+        "reason": "Directly measures wealth-based electoral manipulation, a key integrity concern."
+      },
+      {
+        "item": "Q231",
+        "verdict": "OK",
+        "reason": "Directly measures voter intimidation at polling sites, a critical electoral integrity violation."
+      },
+      {
+        "item": "Q232",
+        "verdict": "OK",
+        "reason": "Directly measures meaningful electoral choice availability, fundamental to electoral integrity."
+      },
+      {
+        "item": "Q233",
+        "verdict": "FLAG",
+        "reason": "Measures gender representation opportunity in candidacy, which is electoral inclusion/equality rather than process integrity or fairness of vote counting and competition."
+      }
+    ],
+    "_key": "WVS_E|electoral_integrity",
+    "_items_reviewed": [
+      "Q224",
+      "Q225",
+      "Q226",
+      "Q227",
+      "Q228",
+      "Q229",
+      "Q230",
+      "Q231",
+      "Q232",
+      "Q233"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All four items directly measure preference for distinct non-democratic governance forms (strongman, technocracy, military, theocracy) that align with the construct definition.",
+    "items": [
+      {
+        "item": "Q235",
+        "verdict": "OK",
+        "reason": "Directly measures strongman/autocratic rule preference by asking about a strong leader unconstrained by congress and elections."
+      },
+      {
+        "item": "Q236",
+        "verdict": "OK",
+        "reason": "Directly measures technocratic governance preference by asking about expert rule replacing democratic government."
+      },
+      {
+        "item": "Q237",
+        "verdict": "OK",
+        "reason": "Directly measures military rule preference as a non-democratic governance form."
+      },
+      {
+        "item": "Q239",
+        "verdict": "OK",
+        "reason": "Directly measures theocratic governance preference by asking about religious law-based government systems."
+      }
+    ],
+    "_key": "WVS_E|autocracy_support",
+    "_items_reviewed": [
+      "Q235",
+      "Q236",
+      "Q237",
+      "Q239"
+    ]
+  },
+  {
+    "construct_verdict": "INCOHERENT",
+    "construct_verdict_reason": "Items conflate perceived frequency of government actions with importance of democratic values, and mix redistributive policy outcomes with fundamental democratic principles.",
+    "items": [
+      {
+        "item": "Q241",
+        "verdict": "FLAG",
+        "reason": "Measures perceived frequency of redistributive taxation, not importance of democratic values; conflates policy outcome with democratic principle."
+      },
+      {
+        "item": "Q244",
+        "verdict": "FLAG",
+        "reason": "Measures perceived frequency of unemployment assistance provision, not importance of democratic values; conflates welfare policy outcome with democratic principle."
+      },
+      {
+        "item": "Q246",
+        "verdict": "OK",
+        "reason": "Directly addresses importance of civil rights protection from state oppression, a core democratic value."
+      },
+      {
+        "item": "Q247",
+        "verdict": "FLAG",
+        "reason": "Measures perceived frequency of state income equalization, not importance of democratic values; conflates redistributive outcome with democratic principle."
+      },
+      {
+        "item": "Q249",
+        "verdict": "OK",
+        "reason": "Addresses importance of gender equality rights, a fundamental democratic value."
+      }
+    ],
+    "_key": "WVS_E|democratic_values_importance",
+    "_items_reviewed": [
+      "Q241",
+      "Q244",
+      "Q246",
+      "Q247",
+      "Q249"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "Both items directly measure self-reported voting frequency at different political levels (local and national), which are semantically aligned manifestations of the same voting participation construct.",
+    "items": [
+      {
+        "item": "Q221",
+        "verdict": "OK",
+        "reason": "Directly measures frequency of voting participation at the local level using a standard frequency scale."
+      },
+      {
+        "item": "Q222",
+        "verdict": "OK",
+        "reason": "Directly measures frequency of voting participation at the national level using an identical frequency scale."
+      }
+    ],
+    "_key": "WVS_E|voting_participation",
+    "_items_reviewed": [
+      "Q221",
+      "Q222"
+    ]
+  },
+  {
+    "construct_verdict": "INCOHERENT",
+    "construct_verdict_reason": "Items Q158 and Q159 are incomplete/truncated in the provided text, making semantic assessment impossible; Q163's scale (frequency anchors) is semantically mismatched to a comparative judgment question about world improvement.",
+    "items": [
+      {
+        "item": "Q158",
+        "verdict": "FLAG",
+        "reason": "Question text is incomplete ('La ciencia y la tecnología están haciendo que nuestras vidas sean...'); cannot assess semantic validity without full item wording."
+      },
+      {
+        "item": "Q159",
+        "verdict": "FLAG",
+        "reason": "Question text is incomplete ('Gracias a la ciencia y la tecnología habrá más oportunidades para...'); cannot assess semantic validity without full item wording."
+      },
+      {
+        "item": "Q163",
+        "verdict": "FLAG",
+        "reason": "Scale uses frequency anchors (Muy frecuentemente/Algo frecuente/Poco frecuente/Nada frecuente) but question asks for comparative judgment ('mejor o peor'), creating a mismatch between construct response mode and scale semantics."
+      }
+    ],
+    "_key": "WVS_E|science_technology_optimism",
+    "_items_reviewed": [
+      "Q158",
+      "Q159",
+      "Q163"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All four items directly measure core dimensions of economic ideology along the left-right spectrum.",
+    "items": [
+      {
+        "item": "Q106",
+        "verdict": "OK",
+        "reason": "Income equality is a fundamental left-right economic ideology dimension."
+      },
+      {
+        "item": "Q107",
+        "verdict": "OK",
+        "reason": "Private vs. state ownership of business is a core economic ideology distinction."
+      },
+      {
+        "item": "Q108",
+        "verdict": "OK",
+        "reason": "Government responsibility for welfare is a central economic ideology construct."
+      },
+      {
+        "item": "Q109",
+        "verdict": "OK",
+        "reason": "Attitudes toward competition reflect market-oriented vs. regulated economy ideology."
+      }
+    ],
+    "_key": "WVS_E|economic_ideology",
+    "_items_reviewed": [
+      "Q106",
+      "Q107",
+      "Q108",
+      "Q109"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Most items validly measure religious belief content, but Q164 measures importance/salience rather than belief itself, creating a semantic distinction between attitudinal centrality and propositional belief.",
+    "items": [
+      {
+        "item": "Q164",
+        "verdict": "FLAG",
+        "reason": "Measures importance of God in life (salience/centrality) rather than belief in God's existence; these are conceptually distinct dimensions."
+      },
+      {
+        "item": "Q165",
+        "verdict": "OK",
+        "reason": "Directly measures belief in God, core component of religious belief construct."
+      },
+      {
+        "item": "Q166",
+        "verdict": "OK",
+        "reason": "Directly measures belief in afterlife, a central supernatural belief within the construct."
+      },
+      {
+        "item": "Q167",
+        "verdict": "OK",
+        "reason": "Directly measures belief in hell, a core religious/supernatural belief."
+      },
+      {
+        "item": "Q168",
+        "verdict": "OK",
+        "reason": "Directly measures belief in heaven, a core religious/supernatural belief."
+      }
+    ],
+    "_key": "WVS_F|religious_belief",
+    "_items_reviewed": [
+      "Q164",
+      "Q165",
+      "Q166",
+      "Q167",
+      "Q168"
+    ]
+  },
+  {
+    "construct_verdict": "INCOHERENT",
+    "construct_verdict_reason": "Items Q171 and Q172 appear to measure service attendance frequency but use agreement scales inappropriate for frequency questions, while Q173 text is incomplete making assessment impossible; scale-question mismatches undermine construct validity.",
+    "items": [
+      {
+        "item": "Q171",
+        "verdict": "FLAG",
+        "reason": "Question asks about frequency of religious service attendance ('¿Con qué frecuencia...?') but uses agreement scale (Muy de acuerdo/En desacuerdo) rather than frequency scale; semantic mismatch between question and response options."
+      },
+      {
+        "item": "Q172",
+        "verdict": "FLAG",
+        "reason": "Question text is incomplete ('Sin considerar bodas o funerales, ¿con qué...') making it impossible to assess whether it measures the intended construct; appears to be a frequency question with agreement scale mismatch."
+      },
+      {
+        "item": "Q173",
+        "verdict": "FLAG",
+        "reason": "Question text is incomplete ('Independientemente de si va o no a la iglesia,') preventing assessment of whether it measures self-identified religiousness or another construct; cannot evaluate semantic validity."
+      }
+    ],
+    "_key": "WVS_F|religious_practice_and_self_identification",
+    "_items_reviewed": [
+      "Q171",
+      "Q172",
+      "Q173"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "Both items directly measure privileging one's own religion over competing worldviews and authorities, with Q169 addressing religion vs. science and Q170 addressing religious exclusivity.",
+    "items": [
+      {
+        "item": "Q169",
+        "verdict": "OK",
+        "reason": "Directly measures prioritization of religion over science in cases of conflict, a core component of religious exclusivism."
+      },
+      {
+        "item": "Q170",
+        "verdict": "OK",
+        "reason": "Directly measures exclusivist belief that only one's own religion is acceptable, the defining characteristic of religious exclusivism."
+      }
+    ],
+    "_key": "WVS_F|religious_exclusivism",
+    "_items_reviewed": [
+      "Q169",
+      "Q170"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Four items clearly measure tolerance for civic/economic dishonesty, but Q179 shifts from behavioral/attitudinal frequency to abstract justifiability judgment, creating semantic inconsistency.",
+    "items": [
+      {
+        "item": "Q177",
+        "verdict": "OK",
+        "reason": "Directly measures frequency of claiming undeserved government benefits, a core civic dishonesty behavior."
+      },
+      {
+        "item": "Q178",
+        "verdict": "OK",
+        "reason": "Directly measures frequency of fare evasion, a prototypical economic dishonesty behavior."
+      },
+      {
+        "item": "Q179",
+        "verdict": "FLAG",
+        "reason": "Asks about justifiability of stealing (abstract moral judgment) rather than frequency of behavior/tolerance, creating scale inconsistency with other items."
+      },
+      {
+        "item": "Q180",
+        "verdict": "OK",
+        "reason": "Directly measures frequency of tax evasion, a core economic dishonesty behavior."
+      },
+      {
+        "item": "Q181",
+        "verdict": "OK",
+        "reason": "Directly measures frequency of accepting bribes, a prototypical civic dishonesty behavior."
+      }
+    ],
+    "_key": "WVS_F|civic_dishonesty_tolerance",
+    "_items_reviewed": [
+      "Q177",
+      "Q178",
+      "Q179",
+      "Q180",
+      "Q181"
+    ]
+  },
+  {
+    "construct_verdict": "INCOHERENT",
+    "construct_verdict_reason": "Items measure frequency of occurrence or acceptability of behaviors, but the scale labels ('Muy frecuentemente' to 'Nada frecuente') are ambiguous regarding whether they assess personal moral permissiveness, perceived social prevalence, or personal engagement.",
+    "items": [
+      {
+        "item": "Q182",
+        "verdict": "FLAG",
+        "reason": "Scale measures frequency of occurrence (how often homosexuality happens), not tolerance or moral permissiveness toward it."
+      },
+      {
+        "item": "Q183",
+        "verdict": "FLAG",
+        "reason": "Scale measures frequency of occurrence (how often prostitution happens), not tolerance or moral permissiveness toward it."
+      },
+      {
+        "item": "Q184",
+        "verdict": "FLAG",
+        "reason": "Scale measures frequency of occurrence (how often abortion happens), not tolerance or moral permissiveness toward it."
+      },
+      {
+        "item": "Q186",
+        "verdict": "FLAG",
+        "reason": "Scale measures frequency of occurrence (how often premarital sex happens), not tolerance or moral permissiveness toward it."
+      },
+      {
+        "item": "Q193",
+        "verdict": "FLAG",
+        "reason": "Scale measures frequency of occurrence (how often casual sex happens), not tolerance or moral permissiveness toward it."
+      }
+    ],
+    "_key": "WVS_F|sexual_and_reproductive_morality_permissiveness",
+    "_items_reviewed": [
+      "Q182",
+      "Q183",
+      "Q184",
+      "Q186",
+      "Q193"
+    ]
+  },
+  {
+    "construct_verdict": "INCOHERENT",
+    "construct_verdict_reason": "Items measure frequency of occurrence or discussion rather than moral permissiveness toward these life-course decisions.",
+    "items": [
+      {
+        "item": "Q185",
+        "verdict": "FLAG",
+        "reason": "Scale measures how frequently divorce occurs, not respondent's moral permissiveness toward divorce as a personal choice."
+      },
+      {
+        "item": "Q187",
+        "verdict": "FLAG",
+        "reason": "Scale measures how frequently suicide occurs, not respondent's moral permissiveness toward suicide as a personal decision."
+      },
+      {
+        "item": "Q188",
+        "verdict": "FLAG",
+        "reason": "Scale measures how frequently euthanasia occurs, not respondent's moral permissiveness toward euthanasia as a personal choice."
+      }
+    ],
+    "_key": "WVS_F|life_autonomy_morality_permissiveness",
+    "_items_reviewed": [
+      "Q185",
+      "Q187",
+      "Q188"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Items Q189-Q191 measure tolerance for interpersonal violence, while Q192 measures justifiability of political violence as a means to an end—a conceptually distinct dimension.",
+    "items": [
+      {
+        "item": "Q189",
+        "verdict": "OK",
+        "reason": "Directly measures moral justifiability of domestic violence (interpersonal)."
+      },
+      {
+        "item": "Q190",
+        "verdict": "OK",
+        "reason": "Directly measures moral justifiability of parental corporal punishment (interpersonal)."
+      },
+      {
+        "item": "Q191",
+        "verdict": "OK",
+        "reason": "Directly measures moral justifiability of general interpersonal violence."
+      },
+      {
+        "item": "Q192",
+        "verdict": "FLAG",
+        "reason": "Measures justifiability of violence as instrumental political/ideological means, which is conceptually distinct from tolerance for interpersonal violence and conflates means-justification reasoning with violence tolerance."
+      }
+    ],
+    "_key": "WVS_F|violence_tolerance",
+    "_items_reviewed": [
+      "Q189",
+      "Q190",
+      "Q191",
+      "Q192"
+    ]
+  },
+  {
+    "construct_verdict": "INCOHERENT",
+    "construct_verdict_reason": "Q175 measures religious practice frequency (behavioral), not orientation toward religion versus secularism (attitudinal), creating a fundamental semantic mismatch with the construct definition.",
+    "items": [
+      {
+        "item": "Q174",
+        "verdict": "OK",
+        "reason": "Agreement scale directly measures attitudinal orientation on religion-secular reasoning tension as described."
+      },
+      {
+        "item": "Q175",
+        "verdict": "FLAG",
+        "reason": "Frequency scale (daily to never) measures behavioral religious practice, not orientation or belief about whether religion should guide life versus secular reasoning."
+      }
+    ],
+    "_key": "WVS_F|religion_versus_secularism_orientation",
+    "_items_reviewed": [
+      "Q174",
+      "Q175"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Q60 measures trust in acquaintances (ingroup), which is conceptually distinct from outgroup trust; the remaining three items validly measure generalized trust toward outgroups.",
+    "items": [
+      {
+        "item": "Q60",
+        "verdict": "FLAG",
+        "reason": "Acquaintances (conocidos) represent an established ingroup rather than outgroup; this measures ingroup trust, not generalized trust toward strangers or those outside one's social circle."
+      },
+      {
+        "item": "Q61",
+        "verdict": "OK",
+        "reason": "People met for the first time are genuine strangers and represent outgroup trust as defined."
+      },
+      {
+        "item": "Q62",
+        "verdict": "OK",
+        "reason": "People of different religions represent a key outgroup dimension specified in the construct definition."
+      },
+      {
+        "item": "Q63",
+        "verdict": "OK",
+        "reason": "People of different nationalities represent a key outgroup dimension specified in the construct definition."
+      }
+    ],
+    "_key": "WVS_G|outgroup_trust",
+    "_items_reviewed": [
+      "Q60",
+      "Q61",
+      "Q62",
+      "Q63"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All four items directly measure beliefs about specific beneficial outcomes of immigration aligned with the construct definition.",
+    "items": [
+      {
+        "item": "Q122",
+        "verdict": "OK",
+        "reason": "Directly measures belief that immigrants fill important job vacancies, a core economic benefit of immigration."
+      },
+      {
+        "item": "Q123",
+        "verdict": "OK",
+        "reason": "Directly measures belief that immigration strengthens cultural diversity, a stated positive effect in the construct description."
+      },
+      {
+        "item": "Q125",
+        "verdict": "OK",
+        "reason": "Directly measures belief that immigration provides asylum to political refugees, a humanitarian benefit aligned with the construct."
+      },
+      {
+        "item": "Q127",
+        "verdict": "OK",
+        "reason": "Directly measures belief that immigration improves lives of people from poorer countries, explicitly mentioned in the construct description."
+      }
+    ],
+    "_key": "WVS_G|perceived_positive_effects_of_immigration",
+    "_items_reviewed": [
+      "Q122",
+      "Q123",
+      "Q125",
+      "Q127"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All four items directly measure perceived negative consequences of immigration across the specific domains (crime, terrorism, unemployment, social conflict) explicitly named in the construct definition.",
+    "items": [
+      {
+        "item": "Q124",
+        "verdict": "OK",
+        "reason": "Directly measures perceived link between immigration and crime rates, a core negative effect in the construct."
+      },
+      {
+        "item": "Q126",
+        "verdict": "OK",
+        "reason": "Directly measures perceived link between immigration and terrorism risk, a core negative effect in the construct."
+      },
+      {
+        "item": "Q128",
+        "verdict": "OK",
+        "reason": "Directly measures perceived link between immigration and unemployment, a core negative effect in the construct."
+      },
+      {
+        "item": "Q129",
+        "verdict": "OK",
+        "reason": "Directly measures perceived link between immigration and social conflict, a core negative effect in the construct."
+      }
+    ],
+    "_key": "WVS_G|perceived_negative_effects_of_immigration",
+    "_items_reviewed": [
+      "Q124",
+      "Q126",
+      "Q128",
+      "Q129"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All three items directly measure frequency of experiencing deprivation across core basic needs (food, income, shelter) with consistent response scales.",
+    "items": [
+      {
+        "item": "Q51",
+        "verdict": "OK",
+        "reason": "Directly measures food deprivation, a fundamental basic need."
+      },
+      {
+        "item": "Q54",
+        "verdict": "OK",
+        "reason": "Directly measures income deprivation, essential for meeting basic needs."
+      },
+      {
+        "item": "Q55",
+        "verdict": "OK",
+        "reason": "Directly measures shelter deprivation, a core basic human need."
+      }
+    ],
+    "_key": "WVS_H|basic_needs_deprivation",
+    "_items_reviewed": [
+      "Q51",
+      "Q54",
+      "Q55"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All items measure perceived frequency of specific antisocial behaviors and crime in the neighborhood, directly aligned with the construct definition.",
+    "items": [
+      {
+        "item": "Q132",
+        "verdict": "OK",
+        "reason": "Robberies and assaults are core crime behaviors central to neighborhood disorder perception."
+      },
+      {
+        "item": "Q133",
+        "verdict": "OK",
+        "reason": "Street alcohol consumption is a visible antisocial behavior indicative of neighborhood disorder."
+      },
+      {
+        "item": "Q136",
+        "verdict": "OK",
+        "reason": "Drug dealing on streets is a primary indicator of neighborhood crime and disorder."
+      },
+      {
+        "item": "Q137",
+        "verdict": "OK",
+        "reason": "Street violence and fights are direct manifestations of neighborhood disorder and crime."
+      },
+      {
+        "item": "Q138",
+        "verdict": "OK",
+        "reason": "Sexual harassment is an antisocial behavior and crime that contributes to perceived neighborhood disorder."
+      }
+    ],
+    "_key": "WVS_H|neighborhood_disorder_and_crime",
+    "_items_reviewed": [
+      "Q132",
+      "Q133",
+      "Q136",
+      "Q137",
+      "Q138"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "Both items directly measure worry about distinct but related dimensions of socioeconomic insecurity: employment stability and educational provision for children.",
+    "items": [
+      {
+        "item": "Q142",
+        "verdict": "OK",
+        "reason": "Directly measures worry about employment loss or job-finding difficulty, a core component of socioeconomic insecurity."
+      },
+      {
+        "item": "Q143",
+        "verdict": "OK",
+        "reason": "Directly measures worry about inability to provide children with good education, a key dimension of socioeconomic insecurity and family welfare concerns."
+      }
+    ],
+    "_key": "WVS_H|socioeconomic_insecurity_worry",
+    "_items_reviewed": [
+      "Q142",
+      "Q143"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All three items directly measure worry about distinct large-scale violent threats (war involving Mexico, terrorism, civil conflict) that constitute existential threats.",
+    "items": [
+      {
+        "item": "Q146",
+        "verdict": "OK",
+        "reason": "Directly measures worry about war involving Mexico, a core existential threat."
+      },
+      {
+        "item": "Q147",
+        "verdict": "OK",
+        "reason": "Directly measures worry about terrorist attacks, a core existential threat."
+      },
+      {
+        "item": "Q148",
+        "verdict": "OK",
+        "reason": "Directly measures worry about civil conflict, a core existential threat."
+      }
+    ],
+    "_key": "WVS_H|existential_threat_worry",
+    "_items_reviewed": [
+      "Q146",
+      "Q147",
+      "Q148"
+    ]
+  },
+  {
+    "construct_verdict": "COHERENT",
+    "construct_verdict_reason": "All three items directly measure acceptance of distinct government surveillance modalities (video monitoring, digital communication monitoring, and data collection) that collectively operationalize the construct of state surveillance acceptance.",
+    "items": [
+      {
+        "item": "Q196",
+        "verdict": "OK",
+        "reason": "Directly measures acceptance of video surveillance in public spaces, a core surveillance mechanism."
+      },
+      {
+        "item": "Q197",
+        "verdict": "OK",
+        "reason": "Directly measures acceptance of digital surveillance through email and internet monitoring, a distinct surveillance modality."
+      },
+      {
+        "item": "Q198",
+        "verdict": "OK",
+        "reason": "Directly measures acceptance of broad data collection on residents, a foundational surveillance practice."
+      }
+    ],
+    "_key": "WVS_H|acceptance_of_state_surveillance",
+    "_items_reviewed": [
+      "Q196",
+      "Q197",
+      "Q198"
+    ]
+  },
+  {
+    "construct_verdict": "INCOHERENT",
+    "construct_verdict_reason": "Both items are incomplete/truncated in the provided text, making it impossible to assess whether they measure complementary vs. competing values perceptions, and they appear to measure different directional claims about the freedom-security relationship.",
+    "items": [
+      {
+        "item": "Q149",
+        "verdict": "FLAG",
+        "reason": "Item text is incomplete ('tanto la libertad como la' cuts off mid-sentence), preventing assessment of whether it measures complementarity or tradeoff perception."
+      },
+      {
+        "item": "Q150",
+        "verdict": "FLAG",
+        "reason": "Item text is incomplete ('la libertad y la seguridad' cuts off mid-sentence), preventing assessment of the specific directional claim about the freedom-security relationship."
+      }
+    ],
+    "_key": "WVS_H|freedom_security_tradeoff_perception",
+    "_items_reviewed": [
+      "Q149",
+      "Q150"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Q134 directly measures institutional intrusion threat perception, but Q135 measures racist conduct as a social threat rather than institutional threat to private life.",
+    "items": [
+      {
+        "item": "Q134",
+        "verdict": "OK",
+        "reason": "Directly measures perceived frequency of police/military intrusion into private life, the core institutional threat component."
+      },
+      {
+        "item": "Q135",
+        "verdict": "FLAG",
+        "reason": "Racist conduct is a social/interpersonal threat distinct from institutional intrusion; it does not measure police/military threat to private life specifically."
+      }
+    ],
+    "_key": "WVS_H|institutional_threat_perception",
+    "_items_reviewed": [
+      "Q134",
+      "Q135"
+    ]
+  },
+  {
+    "construct_verdict": "MIXED",
+    "construct_verdict_reason": "Q161 measures perceived negative consequences of science (outcome evaluation), while Q162 measures perceived personal relevance of science knowledge (utility judgment)—related but semantically distinct dimensions.",
+    "items": [
+      {
+        "item": "Q161",
+        "verdict": "FLAG",
+        "reason": "Measures belief in negative consequences of science rather than skepticism toward science itself; conflates science criticism with science skepticism."
+      },
+      {
+        "item": "Q162",
+        "verdict": "OK",
+        "reason": "Directly measures dismissive attitude toward science's relevance in everyday life, core to science skepticism."
+      }
+    ],
+    "_key": "WVS_I|science_skepticism",
+    "_items_reviewed": [
+      "Q161",
+      "Q162"
+    ]
+  }
+]

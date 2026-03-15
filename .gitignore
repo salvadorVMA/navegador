@@ -74,6 +74,12 @@ test_agent_tracing.log
 # WVS processed data (generated locally from zips)
 data/wvs/wvs_mex_dict.json
 
+# Build/run logs and caches
+data/results/build_wvs_svs.log
+data/results/.wvs_coherence_cache/
+data/results/.wvs_svs_cache/
+.claude/scheduled_tasks.lock
+
 
 #Ignore vscode AI rules
 .github/instructions/codacy.instructions.md

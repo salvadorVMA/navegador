@@ -342,6 +342,8 @@ See `docs/` folder for detailed guides:
 
 ## Julia Bridge (branch: julia_bridge)
 
+> **Architecture decision (2026-03-14):** Julia is the **primary numeric processing engine** for the DR bridge. All ordered-logit fitting, bootstrap CI estimation, and construct-level sweeps are performed in Julia. Python handles data I/O, LLM calls, visualization, and orchestration. Python's `DoublyRobustBridgeEstimator` remains as a reference implementation and for one-off estimates, but Julia's `run_sweep` is the canonical sweep engine.
+
 ### Location
 
 ```
@@ -360,8 +362,9 @@ All Julia source files live in the `julia/` subdirectory of that worktree.
 | `src/cronbach.jl` | `cronbach_alpha`, `scale_to_output`, `reverse_code`, `build_construct_scale` |
 | `src/ordinal_model.jl` | `fit_ordered_logit`, `predict_proba`, `fit_logistic`, `predict_logistic` |
 | `src/ses_encoder.jl` | `encode_ses`, `drop_sentinel_rows`, `is_sentinel`, `SES_VARS` |
-| `src/dr_estimator.jl` | `dr_estimate`, `DRResult` |
+| `src/dr_estimator.jl` | `dr_estimate`, `DRResult`, `_rank_normalize`, `_bin_to_5`, `_find_bin` |
 | `src/sweep.jl` | `run_sweep`, `load_checkpoint`, `save_checkpoint` |
+| `scripts/run_v5_sweep.jl` | **Current sweep script** — v4 (rank-norm + K<3 guard, 8 threads) |
 | `test/runtests.jl` | 66 unit tests (all pass) |
 | `examples/demo_dr.jl` | End-to-end demo: 1200 synthetic respondents, 50 bootstrap, ~5s |
 | `docs/JULIA_BRIDGE_PRIMER.md` | Full technical primer (Python↔Julia side-by-side) |
@@ -375,6 +378,51 @@ All Julia source files live in the `julia/` subdirectory of that worktree.
 - **`goodman_kruskal_gamma(joint_table)`** — Goodman-Kruskal γ ∈ [-1, 1]
 - **`normalized_mutual_information(joint_table)`** — NMI ∈ [0, 1]
 - **`cronbach_alpha(X)`** — Cronbach's α for item matrix
+- **`_rank_normalize(v)`** — midrank transform → uniform [1,10] before qcut (v4)
+
+### Binning Pipeline (v4, canonical)
+
+1. **`_rank_normalize`**: Convert raw construct scores to fractional midranks scaled to [1,10].
+   Tied observations get average of positional ranks. Guarantees uniform distribution regardless of skew.
+2. **`_bin_to_5`**: Equal-frequency quantile cut (qcut) → 5 edges. Applied after rank normalization.
+3. **`_find_bin`**: Return integer bin index 1..K via `searchsortedlast`. Fixed K=6 bug (prior versions
+   returned edge Float64 values as category labels, producing spurious 6th category).
+4. **K<3 guard**: Constructs collapsing to ≤2 categories raise an error → recorded as `skipped` in JSON.
+
+### Julia Sweep Version History
+
+| Version | Binning | Bug status | sig% | Notes |
+|---------|---------|------------|------|-------|
+| v1 | Raw values, float labels | K=6 bug | ~30%+ | Single-thread, wrong binning |
+| v2 | qcut (equal-freq) | K=6 bug present | 24.8% | Newton+LBFGS, K<2 guard only |
+| v3 | qcut, integer bin index | K=6 fixed | 18.9% | `searchsortedlast` fix |
+| **v4** | **rank-norm → qcut** | **K<3 guard** | **25.4%** | Canonical; 266 degenerate pairs skipped |
+
+**v4 sweep results** (completed 2026-03-14, `construct_dr_sweep_v5_julia_v4.json`):
+- 3869 done + 266 skipped (K<3 or error) = 4135 total pairs
+- **984/3869 (25.4%) CIs exclude zero**
+- Median |γ| = 0.0063, mean |γ| = 0.013, max |γ| = 0.2886
+- Network plot: `data/results/domain_circle_network_v5_julia_v4.png`
+
+**Why Julia sig% > Python (25.4% vs 7.2%):**
+- Julia |γ| point estimates are ~2× larger (med 0.0063 vs 0.0030)
+- CIs only ~1.26× wider → SNR higher → nonlinear more threshold crossings
+- Root cause: Newton solver reliably converges on bootstrap resamples where Python BFGS
+  hits maxiter=100 cap → Julia has wider, more honest bootstrap distributions
+- K=6 bug (v1/v2) added ~5-6% artificial significance; rank normalization is a calibration
+  improvement but did not reduce significance rate (K=3 constructs just get skipped)
+- Some gap may reflect genuine Python underestimation due to bootstrap underconvergence
+- Top hubs in Julia (HAB, REL, CIE, FED) match Python top-4 exactly — core signal confirmed
+
+### How to Run Sweep
+
+```bash
+export PATH="$HOME/.juliaup/bin:$PATH"
+cd /path/to/navegador_julia_bridge/julia
+julia -t 8 --project=. scripts/run_v5_sweep.jl
+# Outputs: ../navegador/data/results/construct_dr_sweep_v5_julia_v4.json
+# Expected: ~40-45 min (8 threads, 4135 pairs)
+```
 
 ### How to Run Tests
 
@@ -384,27 +432,20 @@ cd /path/to/navegador_julia_bridge/julia
 julia --project=. test/runtests.jl
 ```
 
-Expected: 66 tests pass in ~7 seconds. Test coverage:
-1. `goodman_kruskal_gamma` — analytic answers (perfect concordance = ±1, independence = 0)
-2. `normalized_mutual_information` — independence → NMI=0, perfect correlation → NMI=1
-3. `cronbach_alpha` — known high/low alpha inputs, scale/reverse helpers
-4. `fit_ordered_logit` — recovers β=1.5 on N=600 synthetic data, thresholds ordered
-5. `dr_estimate` — valid γ ∈ [-1,1], CI ≥ 0 width, expected positive γ for escol-driven attitudes
+Expected: 66 tests pass in ~7 seconds.
 
-### Performance Note
+### Performance
 
-Expected **5–10× speedup** on bootstrap loops vs. Python+statsmodels:
+Realized speedup vs. Python+statsmodels (measured):
 
 | Operation | Python | Julia |
 |-----------|--------|-------|
 | Single ordered logit fit (n=1200, K=5) | ~0.5s | ~0.01s |
 | 200 bootstrap iterations | ~120s | ~4s |
-| Demo (n=1200, n_boot=50) | ~40-60s | **4.7s** |
-| 4979-pair sweep (n_boot=200, estimated) | 11.1h | **~1-2h** |
+| 4135-pair sweep (n_boot=200, 8 threads) | ~11h (est.) | **~40-45 min** |
 
 ### Output Format
 
-Same JSON schema as Python `construct_dr_sweep.json`:
 ```json
 {
   "metadata": {"n_sim": 2000, "n_bootstrap": 200, "ses_vars": [...], ...},
@@ -414,9 +455,13 @@ Same JSON schema as Python `construct_dr_sweep.json`:
       "dr_nmi": 0.0087, "dr_v": 0.0621, "ci_width": 0.0882,
       "excl_zero": true, "n_a": 1200, "n_b": 1200
     }
-  }
+  },
+  "skipped": {"agg_col|DOMAIN::agg_col|DOMAIN": "error message", ...}
 }
 ```
+
+Python normalization helper in `scripts/debug/plot_domain_circle_network.py`:
+`normalize_julia_estimates()` converts Julia key format → Python `construct_a/b` + `dr_gamma_ci` list.
 
 ### Installation
 

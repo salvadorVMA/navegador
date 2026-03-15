@@ -6,10 +6,45 @@
       "Bash(NAVEGADOR_ENCUESTAS_PATH=/workspaces/navegador/data/encuestas python -:*)",
       "Bash(tail -20 /tmp/bridge_comparison*.log)",
       "Read(//workspaces/navegador/**)",
-      "Bash(NAVEGADOR_LOS_MEX_DICT_PATH=/workspaces/navegador/data/encuestas/los_mex_dict.json python -c \":*)"
+      "Bash(NAVEGADOR_LOS_MEX_DICT_PATH=/workspaces/navegador/data/encuestas/los_mex_dict.json python -c \":*)",
+      "Bash(gh codespace list --repo salvadorVMA/navegador)",
+      "Bash(brew list gh)",
+      "Bash(brew install gh)",
+      "Bash(gh auth status)",
+      "Bash(gh auth login --hostname github.com --git-protocol https --web)",
+      "Bash(gh auth refresh -h github.com -s codespace)",
+      "Bash(gh codespace ssh --codespace fantastic-guide-7wr9r99j5wv2x469 -- \"cat data/results/dr_sweep_results_v2.json | python3 -c ''import json,sys; d=json.load\\(sys.stdin\\); print\\(\"\"Completed:\"\", d[\"\"metadata\"\"][\"\"n_completed\"\"]\\); print\\(\"\"n_bootstrap:\"\", d[\"\"metadata\"\"][\"\"n_bootstrap\"\"]\\); print\\(\"\"Elapsed:\"\", d[\"\"metadata\"\"].get\\(\"\"elapsed_seconds\"\",\"\"?\"\"\\)\\)''\")",
+      "Bash(gh codespace --help)",
+      "Bash(gh codespace ssh --codespace fantastic-guide-7wr9r99j5wv2x469 -- \"echo hello\")",
+      "Bash(gh codespace cp \"remote:data/results/dr_sweep_results_v2.json\" \"/tmp/dr_sweep_results_v2_codespace.json\" --codespace fantastic-guide-7wr9r99j5wv2x469)",
+      "Bash(conda info --envs)",
+      "Bash(ps -o pid,ppid,state,etime,command -p 71514,71515,71516,71517,71519,71521,71522,71523)",
+      "Bash(kill -9 71514 71515 71516 71517 71519 71521 71522 71523)",
+      "Bash(kill 85873 85841)",
+      "Bash(kill -9 71518 71520)",
+      "Bash(sysctl -n hw.ncpu)",
+      "Bash(sysctl -n hw.physicalcpu)",
+      "Bash(sysctl -n hw.memsize)",
+      "Read(//Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/{print $0/**)",
+      "Bash(conda run -p /Users/salvadorVMA/miniforge3/envs/nvg_py13_env --no-capture-output python scripts/debug/test_dr_diagnostic.py)",
+      "Bash(kill -9 91615 91599)",
+      "Bash(conda run -p /Users/salvadorVMA/miniforge3/envs/nvg_py13_env --no-capture-output python3 -W ignore scripts/debug/sweep_dr_highci.py --n-bootstrap 200 --pair-timeout 120 --gamma-threshold 0.25)",
+      "Bash(kill 33800)",
+      "Bash(python3:*)",
+      "Bash(export PATH=\"$HOME/.juliaup/bin:$PATH\")",
+      "Bash(julia --project=. test/runtests.jl)",
+      "Bash(ps -p 67026 -o %cpu,vsz,rss,state)",
+      "Bash(ps -p 67026 -o %cpu,etime,state)",
+      "Bash(python3 -c \":*)",
+      "Read(//Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/**)",
+      "Bash(kill 8322)"
     ],
     "additionalDirectories": [
-      "/workspaces/navegador/.claude/worktrees/knowledge-graph"
+      "/workspaces/navegador/.claude/worktrees/knowledge-graph",
+      "/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador_julia_bridge/julia/src",
+      "/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador_julia_bridge/julia/examples",
+      "/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador_julia_bridge/docs",
+      "/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador_julia_bridge/julia/scripts"
     ]
   }
 }

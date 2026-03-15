@@ -1,0 +1,1888 @@
+[
+  {
+    "key": "WVS_A|importance_of_life_domains",
+    "column": "wvs_agg_importance_of_life_domains",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 5,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 6.853,
+      "std": 2.164,
+      "skew": -0.278,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.052,
+        "p": 0.0305
+      },
+      "escol": {
+        "rho": -0.033,
+        "p": 0.1694
+      },
+      "Tam_loc": {
+        "rho": -0.094,
+        "p": 0.0001
+      }
+    },
+    "wvs_domain": "WVS_A"
+  },
+  {
+    "key": "WVS_A|child_qualities_autonomy_self_expression",
+    "column": "wvs_agg_child_qualities_autonomy_self_expression",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 3,
+    "validated_index": "EVI Autonomy",
+    "has_validated_equivalent": true,
+    "convergent_validity": [
+      {
+        "index": "EVI_Autonomy",
+        "available": true,
+        "rho": -0.059,
+        "p": 0.0131,
+        "n": 1741,
+        "verdict": "poor"
+      }
+    ],
+    "descriptive": {
+      "mean": 4.577,
+      "std": 2.227,
+      "skew": 0.393,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.004,
+        "p": 0.8607
+      },
+      "escol": {
+        "rho": 0.103,
+        "p": 0.0
+      },
+      "Tam_loc": {
+        "rho": -0.052,
+        "p": 0.0305
+      }
+    },
+    "wvs_domain": "WVS_A"
+  },
+  {
+    "key": "WVS_A|child_qualities_conformity_tradition",
+    "column": "wvs_agg_child_qualities_conformity_tradition",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 4,
+    "validated_index": "Traditional/Secular-Rational",
+    "has_validated_equivalent": true,
+    "convergent_validity": [
+      {
+        "index": "SecularRationalValues",
+        "available": true,
+        "rho": -0.039,
+        "p": 0.0999,
+        "n": 1741,
+        "verdict": "poor"
+      }
+    ],
+    "descriptive": {
+      "mean": 6.425,
+      "std": 1.931,
+      "skew": -0.171,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.009,
+        "p": 0.7183
+      },
+      "escol": {
+        "rho": -0.073,
+        "p": 0.0022
+      },
+      "Tam_loc": {
+        "rho": -0.054,
+        "p": 0.0247
+      }
+    },
+    "wvs_domain": "WVS_A"
+  },
+  {
+    "key": "WVS_A|child_qualities_prosocial_diligence",
+    "column": "wvs_agg_child_qualities_prosocial_diligence",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 3,
+    "validated_index": "EVI Autonomy",
+    "has_validated_equivalent": true,
+    "convergent_validity": [
+      {
+        "index": "EVI_Autonomy",
+        "available": true,
+        "rho": -0.088,
+        "p": 0.0003,
+        "n": 1741,
+        "verdict": "poor"
+      }
+    ],
+    "descriptive": {
+      "mean": 3.959,
+      "std": 2.359,
+      "skew": 0.493,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.033,
+        "p": 0.1697
+      },
+      "escol": {
+        "rho": 0.043,
+        "p": 0.0744
+      },
+      "Tam_loc": {
+        "rho": -0.028,
+        "p": 0.239
+      }
+    },
+    "wvs_domain": "WVS_A"
+  },
+  {
+    "key": "WVS_A|social_intolerance_outgroups",
+    "column": "wvs_agg_social_intolerance_outgroups",
+    "type": "good",
+    "alpha": 0.8118,
+    "n_items": 7,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 8.625,
+      "std": 2.222,
+      "skew": -1.989,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.024,
+        "p": 0.3211
+      },
+      "escol": {
+        "rho": 0.102,
+        "p": 0.0
+      },
+      "Tam_loc": {
+        "rho": -0.024,
+        "p": 0.3282
+      }
+    },
+    "wvs_domain": "WVS_A"
+  },
+  {
+    "key": "WVS_A|social_intolerance_deviant_behavior",
+    "column": "wvs_agg_social_intolerance_deviant_behavior",
+    "type": "single_item_tier2",
+    "alpha": null,
+    "n_items": 1,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 3.039,
+      "std": 3.769,
+      "skew": 1.308,
+      "n_valid": 1739
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.045,
+        "p": 0.0634
+      },
+      "escol": {
+        "rho": -0.016,
+        "p": 0.5173
+      },
+      "Tam_loc": {
+        "rho": -0.042,
+        "p": 0.0788
+      }
+    },
+    "wvs_domain": "WVS_A"
+  },
+  {
+    "key": "WVS_A|subjective_wellbeing",
+    "column": "wvs_agg_subjective_wellbeing",
+    "type": "tier3_caveat",
+    "alpha": 0.2899,
+    "n_items": 3,
+    "validated_index": "Subjective Well-Being",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 7.656,
+      "std": 1.531,
+      "skew": -1.038,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.007,
+        "p": 0.7806
+      },
+      "escol": {
+        "rho": 0.019,
+        "p": 0.424
+      },
+      "Tam_loc": {
+        "rho": -0.014,
+        "p": 0.5592
+      }
+    },
+    "wvs_domain": "WVS_A"
+  },
+  {
+    "key": "WVS_A|voluntary_association_active_membership",
+    "column": "wvs_agg_voluntary_association_active_membership",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 12,
+    "validated_index": "Social Capital",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 2.169,
+      "std": 2.181,
+      "skew": 2.414,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.005,
+        "p": 0.8205
+      },
+      "escol": {
+        "rho": 0.006,
+        "p": 0.7994
+      },
+      "Tam_loc": {
+        "rho": 0.02,
+        "p": 0.4159
+      }
+    },
+    "wvs_domain": "WVS_A"
+  },
+  {
+    "key": "WVS_A|voluntary_association_belonging",
+    "column": "wvs_agg_voluntary_association_belonging",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 12,
+    "validated_index": "Social Capital",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 2.892,
+      "std": 2.702,
+      "skew": 1.759,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.003,
+        "p": 0.9032
+      },
+      "escol": {
+        "rho": 0.05,
+        "p": 0.0391
+      },
+      "Tam_loc": {
+        "rho": 0.025,
+        "p": 0.3072
+      }
+    },
+    "wvs_domain": "WVS_A"
+  },
+  {
+    "key": "WVS_C|job_scarcity_gender_discrimination",
+    "column": "wvs_agg_job_scarcity_gender_discrimination",
+    "type": "questionable",
+    "alpha": 0.5529,
+    "n_items": 2,
+    "validated_index": "EVI Equality; Gender Egalitarianism",
+    "has_validated_equivalent": true,
+    "convergent_validity": [
+      {
+        "index": "EVI_Equality",
+        "available": true,
+        "rho": 0.405,
+        "p": 0.0,
+        "n": 1736,
+        "verdict": "poor"
+      },
+      {
+        "index": "GenderEgalitarianism",
+        "available": true,
+        "rho": 0.317,
+        "p": 0.0,
+        "n": 1736,
+        "verdict": "poor"
+      }
+    ],
+    "descriptive": {
+      "mean": 6.932,
+      "std": 2.831,
+      "skew": -1.053,
+      "n_valid": 1736
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.008,
+        "p": 0.7374
+      },
+      "escol": {
+        "rho": 0.096,
+        "p": 0.0001
+      },
+      "Tam_loc": {
+        "rho": 0.008,
+        "p": 0.7297
+      }
+    },
+    "wvs_domain": "WVS_C"
+  },
+  {
+    "key": "WVS_C|job_scarcity_nativist_preference",
+    "column": "wvs_agg_job_scarcity_nativist_preference",
+    "type": "good",
+    "alpha": 0.7355,
+    "n_items": 2,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 5.197,
+      "std": 3.284,
+      "skew": -0.055,
+      "n_valid": 1727
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.019,
+        "p": 0.4307
+      },
+      "escol": {
+        "rho": 0.075,
+        "p": 0.0019
+      },
+      "Tam_loc": {
+        "rho": 0.07,
+        "p": 0.0036
+      }
+    },
+    "wvs_domain": "WVS_C"
+  },
+  {
+    "key": "WVS_C|work_ethic",
+    "column": "wvs_agg_work_ethic",
+    "type": "questionable",
+    "alpha": 0.6195,
+    "n_items": 3,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 3.446,
+      "std": 1.91,
+      "skew": 0.655,
+      "n_valid": 1740
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.009,
+        "p": 0.6997
+      },
+      "escol": {
+        "rho": 0.149,
+        "p": 0.0
+      },
+      "Tam_loc": {
+        "rho": 0.05,
+        "p": 0.0368
+      }
+    },
+    "wvs_domain": "WVS_C"
+  },
+  {
+    "key": "WVS_D|gender_role_traditionalism",
+    "column": "wvs_agg_gender_role_traditionalism",
+    "type": "good",
+    "alpha": 0.7044,
+    "n_items": 4,
+    "validated_index": "Gender Egalitarianism",
+    "has_validated_equivalent": true,
+    "convergent_validity": [
+      {
+        "index": "GenderEgalitarianism",
+        "available": true,
+        "rho": 0.146,
+        "p": 0.0,
+        "n": 1741,
+        "verdict": "poor"
+      }
+    ],
+    "descriptive": {
+      "mean": 6.622,
+      "std": 1.909,
+      "skew": -0.468,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.06,
+        "p": 0.0119
+      },
+      "escol": {
+        "rho": 0.137,
+        "p": 0.0
+      },
+      "Tam_loc": {
+        "rho": -0.021,
+        "p": 0.3769
+      }
+    },
+    "wvs_domain": "WVS_D"
+  },
+  {
+    "key": "WVS_D|female_income_threat_to_marriage",
+    "column": "wvs_agg_female_income_threat_to_marriage",
+    "type": "good",
+    "alpha": 0.7427,
+    "n_items": 2,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 4.966,
+      "std": 3.305,
+      "skew": 0.075,
+      "n_valid": 1725
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.084,
+        "p": 0.0005
+      },
+      "escol": {
+        "rho": 0.07,
+        "p": 0.0035
+      },
+      "Tam_loc": {
+        "rho": 0.029,
+        "p": 0.2255
+      }
+    },
+    "wvs_domain": "WVS_D"
+  },
+  {
+    "key": "WVS_D|familial_duty_obligations",
+    "column": "wvs_agg_familial_duty_obligations",
+    "type": "single_item_tier2",
+    "alpha": null,
+    "n_items": 1,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 3.463,
+      "std": 2.426,
+      "skew": 0.809,
+      "n_valid": 1731
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.022,
+        "p": 0.3698
+      },
+      "escol": {
+        "rho": 0.072,
+        "p": 0.0029
+      },
+      "Tam_loc": {
+        "rho": 0.065,
+        "p": 0.0071
+      }
+    },
+    "wvs_domain": "WVS_D"
+  },
+  {
+    "key": "WVS_E|confidence_in_domestic_institutions",
+    "column": "wvs_agg_confidence_in_domestic_institutions",
+    "type": "good",
+    "alpha": 0.8905,
+    "n_items": 15,
+    "validated_index": "Confidence in Institutions",
+    "has_validated_equivalent": true,
+    "convergent_validity": [
+      {
+        "index": "InstitutionalTrust",
+        "available": true,
+        "rho": -0.944,
+        "p": 0.0,
+        "n": 1741,
+        "verdict": "good"
+      }
+    ],
+    "descriptive": {
+      "mean": 7.029,
+      "std": 1.733,
+      "skew": -0.625,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.017,
+        "p": 0.4859
+      },
+      "escol": {
+        "rho": -0.019,
+        "p": 0.4191
+      },
+      "Tam_loc": {
+        "rho": 0.047,
+        "p": 0.0524
+      }
+    },
+    "wvs_domain": "WVS_E"
+  },
+  {
+    "key": "WVS_E|confidence_in_civil_society_organizations",
+    "column": "wvs_agg_confidence_in_civil_society_organizations",
+    "type": "good",
+    "alpha": 0.7696,
+    "n_items": 3,
+    "validated_index": "Confidence in Institutions",
+    "has_validated_equivalent": true,
+    "convergent_validity": [
+      {
+        "index": "InstitutionalTrust",
+        "available": true,
+        "rho": -0.731,
+        "p": 0.0,
+        "n": 1735,
+        "verdict": "good"
+      }
+    ],
+    "descriptive": {
+      "mean": 5.905,
+      "std": 2.535,
+      "skew": -0.136,
+      "n_valid": 1735
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.017,
+        "p": 0.4672
+      },
+      "escol": {
+        "rho": -0.095,
+        "p": 0.0001
+      },
+      "Tam_loc": {
+        "rho": -0.026,
+        "p": 0.2755
+      }
+    },
+    "wvs_domain": "WVS_E"
+  },
+  {
+    "key": "WVS_E|confidence_in_international_organizations",
+    "column": "wvs_agg_confidence_in_international_organizations",
+    "type": "good",
+    "alpha": 0.9119,
+    "n_items": 8,
+    "validated_index": "Confidence in Institutions",
+    "has_validated_equivalent": true,
+    "convergent_validity": [
+      {
+        "index": "InstitutionalTrust",
+        "available": true,
+        "rho": -0.759,
+        "p": 0.0,
+        "n": 1701,
+        "verdict": "good"
+      }
+    ],
+    "descriptive": {
+      "mean": 6.607,
+      "std": 2.329,
+      "skew": -0.304,
+      "n_valid": 1701
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.003,
+        "p": 0.9062
+      },
+      "escol": {
+        "rho": -0.093,
+        "p": 0.0001
+      },
+      "Tam_loc": {
+        "rho": -0.03,
+        "p": 0.2113
+      }
+    },
+    "wvs_domain": "WVS_E"
+  },
+  {
+    "key": "WVS_E|perceived_corruption",
+    "column": "wvs_agg_perceived_corruption",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 8,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 1.578,
+      "std": 1.019,
+      "skew": 3.006,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.01,
+        "p": 0.672
+      },
+      "escol": {
+        "rho": -0.008,
+        "p": 0.7418
+      },
+      "Tam_loc": {
+        "rho": -0.024,
+        "p": 0.313
+      }
+    },
+    "wvs_domain": "WVS_E"
+  },
+  {
+    "key": "WVS_E|electoral_integrity",
+    "column": "wvs_agg_electoral_integrity",
+    "type": "tier3_caveat",
+    "alpha": 0.3483,
+    "n_items": 10,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 4.993,
+      "std": 1.264,
+      "skew": 0.109,
+      "n_valid": 1729
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.028,
+        "p": 0.2366
+      },
+      "escol": {
+        "rho": -0.067,
+        "p": 0.0053
+      },
+      "Tam_loc": {
+        "rho": -0.055,
+        "p": 0.0232
+      }
+    },
+    "wvs_domain": "WVS_E"
+  },
+  {
+    "key": "WVS_E|postmaterialist_values",
+    "column": "wvs_agg_postmaterialist_values",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 6,
+    "validated_index": "Post-Materialist (Inglehart 4-item / 12-item index)",
+    "has_validated_equivalent": true,
+    "convergent_validity": [
+      {
+        "index": "Y001",
+        "available": true,
+        "rho": -0.527,
+        "p": 0.0,
+        "n": 1729,
+        "verdict": "partial"
+      }
+    ],
+    "descriptive": {
+      "mean": 7.234,
+      "std": 2.425,
+      "skew": -0.548,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.072,
+        "p": 0.0027
+      },
+      "escol": {
+        "rho": 0.044,
+        "p": 0.0661
+      },
+      "Tam_loc": {
+        "rho": 0.002,
+        "p": 0.9271
+      }
+    },
+    "wvs_domain": "WVS_E"
+  },
+  {
+    "key": "WVS_E|autocracy_support",
+    "column": "wvs_agg_autocracy_support",
+    "type": "tier3_caveat",
+    "alpha": 0.4995,
+    "n_items": 4,
+    "validated_index": "Autocracy Support (Foa & Mounk)",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 5.121,
+      "std": 1.858,
+      "skew": 0.128,
+      "n_valid": 1736
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.005,
+        "p": 0.8458
+      },
+      "escol": {
+        "rho": 0.101,
+        "p": 0.0
+      },
+      "Tam_loc": {
+        "rho": 0.025,
+        "p": 0.3051
+      }
+    },
+    "wvs_domain": "WVS_E"
+  },
+  {
+    "key": "WVS_E|democratic_values_importance",
+    "column": "wvs_agg_democratic_values_importance",
+    "type": "questionable",
+    "alpha": 0.6698,
+    "n_items": 5,
+    "validated_index": "Autocracy Support (Foa & Mounk) — pro-democratic pole",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 5.77,
+      "std": 2.053,
+      "skew": -0.061,
+      "n_valid": 1727
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.011,
+        "p": 0.6393
+      },
+      "escol": {
+        "rho": -0.013,
+        "p": 0.5826
+      },
+      "Tam_loc": {
+        "rho": -0.034,
+        "p": 0.1562
+      }
+    },
+    "wvs_domain": "WVS_E"
+  },
+  {
+    "key": "WVS_E|democratic_system_evaluation",
+    "column": "wvs_agg_democratic_system_evaluation",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 5,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 3.108,
+      "std": 2.141,
+      "skew": 0.776,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.062,
+        "p": 0.0091
+      },
+      "escol": {
+        "rho": 0.047,
+        "p": 0.0516
+      },
+      "Tam_loc": {
+        "rho": 0.01,
+        "p": 0.6746
+      }
+    },
+    "wvs_domain": "WVS_E"
+  },
+  {
+    "key": "WVS_E|offline_political_participation",
+    "column": "wvs_agg_offline_political_participation",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 8,
+    "validated_index": "EVI Voice; Social Capital",
+    "has_validated_equivalent": true,
+    "convergent_validity": [
+      {
+        "index": "EVI_Voice",
+        "available": true,
+        "rho": 0.793,
+        "p": 0.0,
+        "n": 1741,
+        "verdict": "good"
+      }
+    ],
+    "descriptive": {
+      "mean": 1.571,
+      "std": 1.205,
+      "skew": 2.822,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.058,
+        "p": 0.0154
+      },
+      "escol": {
+        "rho": 0.113,
+        "p": 0.0
+      },
+      "Tam_loc": {
+        "rho": 0.046,
+        "p": 0.0537
+      }
+    },
+    "wvs_domain": "WVS_E"
+  },
+  {
+    "key": "WVS_E|online_political_participation",
+    "column": "wvs_agg_online_political_participation",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 4,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 1.547,
+      "std": 1.442,
+      "skew": 3.276,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.062,
+        "p": 0.0097
+      },
+      "escol": {
+        "rho": 0.174,
+        "p": 0.0
+      },
+      "Tam_loc": {
+        "rho": 0.064,
+        "p": 0.0078
+      }
+    },
+    "wvs_domain": "WVS_E"
+  },
+  {
+    "key": "WVS_E|political_information_sources",
+    "column": "wvs_agg_political_information_sources",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 8,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 3.702,
+      "std": 2.268,
+      "skew": 0.705,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.048,
+        "p": 0.0436
+      },
+      "escol": {
+        "rho": 0.25,
+        "p": 0.0
+      },
+      "Tam_loc": {
+        "rho": 0.04,
+        "p": 0.0997
+      }
+    },
+    "wvs_domain": "WVS_E"
+  },
+  {
+    "key": "WVS_E|voting_participation",
+    "column": "wvs_agg_voting_participation",
+    "type": "good",
+    "alpha": 0.8693,
+    "n_items": 2,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 2.455,
+      "std": 2.118,
+      "skew": 1.434,
+      "n_valid": 1737
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.026,
+        "p": 0.2768
+      },
+      "escol": {
+        "rho": -0.011,
+        "p": 0.6333
+      },
+      "Tam_loc": {
+        "rho": 0.026,
+        "p": 0.2868
+      }
+    },
+    "wvs_domain": "WVS_E"
+  },
+  {
+    "key": "WVS_E|science_technology_optimism",
+    "column": "wvs_agg_science_technology_optimism",
+    "type": "questionable",
+    "alpha": 0.5983,
+    "n_items": 3,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 6.935,
+      "std": 2.063,
+      "skew": -0.534,
+      "n_valid": 1737
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.08,
+        "p": 0.0008
+      },
+      "escol": {
+        "rho": 0.125,
+        "p": 0.0
+      },
+      "Tam_loc": {
+        "rho": 0.043,
+        "p": 0.0758
+      }
+    },
+    "wvs_domain": "WVS_E"
+  },
+  {
+    "key": "WVS_E|economic_ideology",
+    "column": "wvs_agg_economic_ideology",
+    "type": "tier3_caveat",
+    "alpha": 0.4284,
+    "n_items": 4,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 5.252,
+      "std": 1.859,
+      "skew": -0.079,
+      "n_valid": 1734
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.012,
+        "p": 0.6215
+      },
+      "escol": {
+        "rho": 0.018,
+        "p": 0.4474
+      },
+      "Tam_loc": {
+        "rho": -0.038,
+        "p": 0.1177
+      }
+    },
+    "wvs_domain": "WVS_E"
+  },
+  {
+    "key": "WVS_E|societal_change_attitudes",
+    "column": "wvs_agg_societal_change_attitudes",
+    "type": "single_item_tier2",
+    "alpha": null,
+    "n_items": 1,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 5.767,
+      "std": 3.938,
+      "skew": -0.115,
+      "n_valid": 1734
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.047,
+        "p": 0.0514
+      },
+      "escol": {
+        "rho": 0.039,
+        "p": 0.1063
+      },
+      "Tam_loc": {
+        "rho": -0.049,
+        "p": 0.043
+      }
+    },
+    "wvs_domain": "WVS_E"
+  },
+  {
+    "key": "WVS_E|international_organization_knowledge",
+    "column": "wvs_agg_international_organization_knowledge",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 3,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 2.42,
+      "std": 2.136,
+      "skew": 1.405,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.022,
+        "p": 0.3632
+      },
+      "escol": {
+        "rho": 0.069,
+        "p": 0.0043
+      },
+      "Tam_loc": {
+        "rho": -0.033,
+        "p": 0.1769
+      }
+    },
+    "wvs_domain": "WVS_E"
+  },
+  {
+    "key": "WVS_E|authoritarian_governance_tolerance",
+    "column": "wvs_agg_authoritarian_governance_tolerance",
+    "type": "single_item_tier2",
+    "alpha": null,
+    "n_items": 1,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 4.136,
+      "std": 2.742,
+      "skew": 0.454,
+      "n_valid": 1691
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.019,
+        "p": 0.4344
+      },
+      "escol": {
+        "rho": -0.064,
+        "p": 0.0085
+      },
+      "Tam_loc": {
+        "rho": -0.041,
+        "p": 0.0921
+      }
+    },
+    "wvs_domain": "WVS_E"
+  },
+  {
+    "key": "WVS_F|religious_belief",
+    "column": "wvs_agg_religious_belief",
+    "type": "tier3_caveat",
+    "alpha": -0.2496,
+    "n_items": 5,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 4.442,
+      "std": 0.938,
+      "skew": -0.572,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.019,
+        "p": 0.4237
+      },
+      "escol": {
+        "rho": -0.115,
+        "p": 0.0
+      },
+      "Tam_loc": {
+        "rho": -0.032,
+        "p": 0.1789
+      }
+    },
+    "wvs_domain": "WVS_F"
+  },
+  {
+    "key": "WVS_F|religious_practice_and_self_identification",
+    "column": "wvs_agg_religious_practice_and_self_identification",
+    "type": "questionable",
+    "alpha": 0.6079,
+    "n_items": 3,
+    "validated_index": "Religiosity (Norris & Inglehart); CRS (approx)",
+    "has_validated_equivalent": true,
+    "convergent_validity": [
+      {
+        "index": "Religiosity",
+        "available": true,
+        "rho": -0.791,
+        "p": 0.0,
+        "n": 1740,
+        "verdict": "good"
+      }
+    ],
+    "descriptive": {
+      "mean": 3.875,
+      "std": 2.313,
+      "skew": 0.98,
+      "n_valid": 1740
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.157,
+        "p": 0.0
+      },
+      "escol": {
+        "rho": 0.15,
+        "p": 0.0
+      },
+      "Tam_loc": {
+        "rho": 0.043,
+        "p": 0.075
+      }
+    },
+    "wvs_domain": "WVS_F"
+  },
+  {
+    "key": "WVS_F|religious_exclusivism",
+    "column": "wvs_agg_religious_exclusivism",
+    "type": "questionable",
+    "alpha": 0.6911,
+    "n_items": 2,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 6.114,
+      "std": 2.593,
+      "skew": -0.224,
+      "n_valid": 1725
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.076,
+        "p": 0.0015
+      },
+      "escol": {
+        "rho": 0.233,
+        "p": 0.0
+      },
+      "Tam_loc": {
+        "rho": 0.036,
+        "p": 0.1387
+      }
+    },
+    "wvs_domain": "WVS_F"
+  },
+  {
+    "key": "WVS_F|civic_dishonesty_tolerance",
+    "column": "wvs_agg_civic_dishonesty_tolerance",
+    "type": "questionable",
+    "alpha": 0.6526,
+    "n_items": 5,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 3.392,
+      "std": 1.781,
+      "skew": 0.674,
+      "n_valid": 1738
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.056,
+        "p": 0.0202
+      },
+      "escol": {
+        "rho": -0.027,
+        "p": 0.2701
+      },
+      "Tam_loc": {
+        "rho": 0.069,
+        "p": 0.0044
+      }
+    },
+    "wvs_domain": "WVS_F"
+  },
+  {
+    "key": "WVS_F|sexual_and_reproductive_morality_permissiveness",
+    "column": "wvs_agg_sexual_and_reproductive_morality_permissiveness",
+    "type": "good",
+    "alpha": 0.7514,
+    "n_items": 5,
+    "validated_index": "Survival/Self-Expression Values; Emancipative Values Index (Choice sub-dimension); Traditional/Secular-Rational Values",
+    "has_validated_equivalent": true,
+    "convergent_validity": [
+      {
+        "index": "EVI_Total",
+        "available": true,
+        "rho": 0.401,
+        "p": 0.0,
+        "n": 1735,
+        "verdict": "poor"
+      },
+      {
+        "index": "SecularRationalValues",
+        "available": true,
+        "rho": 0.059,
+        "p": 0.014,
+        "n": 1735,
+        "verdict": "poor"
+      },
+      {
+        "index": "SelfExpressionValues",
+        "available": true,
+        "rho": 0.33,
+        "p": 0.0,
+        "n": 1735,
+        "verdict": "poor"
+      }
+    ],
+    "descriptive": {
+      "mean": 3.853,
+      "std": 2.127,
+      "skew": 0.549,
+      "n_valid": 1735
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.042,
+        "p": 0.0819
+      },
+      "escol": {
+        "rho": 0.16,
+        "p": 0.0
+      },
+      "Tam_loc": {
+        "rho": 0.106,
+        "p": 0.0
+      }
+    },
+    "wvs_domain": "WVS_F"
+  },
+  {
+    "key": "WVS_F|life_autonomy_morality_permissiveness",
+    "column": "wvs_agg_life_autonomy_morality_permissiveness",
+    "type": "questionable",
+    "alpha": 0.5799,
+    "n_items": 3,
+    "validated_index": "Emancipative Values Index (Choice sub-dimension)",
+    "has_validated_equivalent": true,
+    "convergent_validity": [
+      {
+        "index": "EVI_Total",
+        "available": true,
+        "rho": 0.366,
+        "p": 0.0,
+        "n": 1732,
+        "verdict": "poor"
+      }
+    ],
+    "descriptive": {
+      "mean": 3.869,
+      "std": 2.25,
+      "skew": 0.526,
+      "n_valid": 1732
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.044,
+        "p": 0.0689
+      },
+      "escol": {
+        "rho": 0.136,
+        "p": 0.0
+      },
+      "Tam_loc": {
+        "rho": 0.11,
+        "p": 0.0
+      }
+    },
+    "wvs_domain": "WVS_F"
+  },
+  {
+    "key": "WVS_F|violence_tolerance",
+    "column": "wvs_agg_violence_tolerance",
+    "type": "good",
+    "alpha": 0.7706,
+    "n_items": 4,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 2.504,
+      "std": 1.814,
+      "skew": 1.457,
+      "n_valid": 1734
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.037,
+        "p": 0.123
+      },
+      "escol": {
+        "rho": -0.018,
+        "p": 0.4669
+      },
+      "Tam_loc": {
+        "rho": 0.041,
+        "p": 0.0916
+      }
+    },
+    "wvs_domain": "WVS_F"
+  },
+  {
+    "key": "WVS_F|religion_versus_secularism_orientation",
+    "column": "wvs_agg_religion_versus_secularism_orientation",
+    "type": "tier3_caveat",
+    "alpha": 0.3612,
+    "n_items": 2,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 8.836,
+      "std": 2.369,
+      "skew": -1.937,
+      "n_valid": 1736
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.014,
+        "p": 0.5653
+      },
+      "escol": {
+        "rho": 0.087,
+        "p": 0.0003
+      },
+      "Tam_loc": {
+        "rho": 0.005,
+        "p": 0.821
+      }
+    },
+    "wvs_domain": "WVS_F"
+  },
+  {
+    "key": "WVS_G|outgroup_trust",
+    "column": "wvs_agg_outgroup_trust",
+    "type": "good",
+    "alpha": 0.7686,
+    "n_items": 4,
+    "validated_index": "mean of reverse-coded Q60–Q63; report Cronbach's alpha",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 3.854,
+      "std": 2.005,
+      "skew": 0.659,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.028,
+        "p": 0.2468
+      },
+      "escol": {
+        "rho": 0.101,
+        "p": 0.0
+      },
+      "Tam_loc": {
+        "rho": 0.03,
+        "p": 0.213
+      }
+    },
+    "wvs_domain": "WVS_G"
+  },
+  {
+    "key": "WVS_G|perceived_positive_effects_of_immigration",
+    "column": "wvs_agg_perceived_positive_effects_of_immigration",
+    "type": "questionable",
+    "alpha": 0.5177,
+    "n_items": 4,
+    "validated_index": "mean of reverse-coded Q122, Q123, Q125, Q127; report Cronbach's alpha",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 4.845,
+      "std": 2.429,
+      "skew": 0.273,
+      "n_valid": 1732
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.027,
+        "p": 0.2603
+      },
+      "escol": {
+        "rho": -0.012,
+        "p": 0.6229
+      },
+      "Tam_loc": {
+        "rho": 0.012,
+        "p": 0.6315
+      }
+    },
+    "wvs_domain": "WVS_G"
+  },
+  {
+    "key": "WVS_G|perceived_negative_effects_of_immigration",
+    "column": "wvs_agg_perceived_negative_effects_of_immigration",
+    "type": "good",
+    "alpha": 0.7441,
+    "n_items": 4,
+    "validated_index": "mean of Q124, Q126, Q128, Q129; report Cronbach's alpha",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 5.648,
+      "std": 2.941,
+      "skew": -0.098,
+      "n_valid": 1729
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.006,
+        "p": 0.8033
+      },
+      "escol": {
+        "rho": -0.084,
+        "p": 0.0005
+      },
+      "Tam_loc": {
+        "rho": -0.029,
+        "p": 0.2261
+      }
+    },
+    "wvs_domain": "WVS_G"
+  },
+  {
+    "key": "WVS_G|multilevel_place_attachment",
+    "column": "wvs_agg_multilevel_place_attachment",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 5,
+    "validated_index": "sum or mean of reverse-coded Q255–Q259; do NOT report alpha as reliability metric—use variance-inflation-factor (VIF) diagnostics for formative indicators instead",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 4.968,
+      "std": 3.141,
+      "skew": 0.153,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.071,
+        "p": 0.003
+      },
+      "escol": {
+        "rho": 0.017,
+        "p": 0.472
+      },
+      "Tam_loc": {
+        "rho": -0.13,
+        "p": 0.0
+      }
+    },
+    "wvs_domain": "WVS_G"
+  },
+  {
+    "key": "WVS_G|immigrant_origin_status",
+    "column": "wvs_agg_immigrant_origin_status",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 3,
+    "validated_index": "derive categorical typology: 0 = native-born respondent with native-born parents, 1 = second-generation (respondent native-born, ≥1 parent foreign-born), 2 = first-generation (respondent foreign-born). Alternatively, count of foreign-born members (respondent + mother + father, range 0–3).",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 1.0,
+      "std": 0.0,
+      "skew": 0.0,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": NaN,
+        "p": NaN
+      },
+      "escol": {
+        "rho": NaN,
+        "p": NaN
+      },
+      "Tam_loc": {
+        "rho": NaN,
+        "p": NaN
+      }
+    },
+    "wvs_domain": "WVS_G"
+  },
+  {
+    "key": "WVS_H|basic_needs_deprivation",
+    "column": "wvs_agg_basic_needs_deprivation",
+    "type": "questionable",
+    "alpha": 0.6257,
+    "n_items": 3,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 2.913,
+      "std": 1.939,
+      "skew": 0.888,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.085,
+        "p": 0.0004
+      },
+      "escol": {
+        "rho": -0.213,
+        "p": 0.0
+      },
+      "Tam_loc": {
+        "rho": -0.024,
+        "p": 0.3276
+      }
+    },
+    "wvs_domain": "WVS_H"
+  },
+  {
+    "key": "WVS_H|neighborhood_disorder_and_crime",
+    "column": "wvs_agg_neighborhood_disorder_and_crime",
+    "type": "good",
+    "alpha": 0.8267,
+    "n_items": 5,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 5.171,
+      "std": 2.531,
+      "skew": 0.037,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.014,
+        "p": 0.5719
+      },
+      "escol": {
+        "rho": 0.01,
+        "p": 0.6708
+      },
+      "Tam_loc": {
+        "rho": -0.159,
+        "p": 0.0
+      }
+    },
+    "wvs_domain": "WVS_H"
+  },
+  {
+    "key": "WVS_H|crime_victimization",
+    "column": "wvs_agg_crime_victimization",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 2,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 3.916,
+      "std": 3.647,
+      "skew": 0.724,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.038,
+        "p": 0.1102
+      },
+      "escol": {
+        "rho": 0.155,
+        "p": 0.0
+      },
+      "Tam_loc": {
+        "rho": 0.086,
+        "p": 0.0004
+      }
+    },
+    "wvs_domain": "WVS_H"
+  },
+  {
+    "key": "WVS_H|precautionary_security_behaviors",
+    "column": "wvs_agg_precautionary_security_behaviors",
+    "type": "formative_index",
+    "alpha": null,
+    "n_items": 3,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 5.725,
+      "std": 2.591,
+      "skew": -0.618,
+      "n_valid": 1741
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.004,
+        "p": 0.8827
+      },
+      "escol": {
+        "rho": 0.057,
+        "p": 0.0168
+      },
+      "Tam_loc": {
+        "rho": 0.112,
+        "p": 0.0
+      }
+    },
+    "wvs_domain": "WVS_H"
+  },
+  {
+    "key": "WVS_H|socioeconomic_insecurity_worry",
+    "column": "wvs_agg_socioeconomic_insecurity_worry",
+    "type": "questionable",
+    "alpha": 0.6829,
+    "n_items": 2,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 2.184,
+      "std": 2.169,
+      "skew": 1.977,
+      "n_valid": 1739
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.016,
+        "p": 0.4944
+      },
+      "escol": {
+        "rho": -0.035,
+        "p": 0.144
+      },
+      "Tam_loc": {
+        "rho": 0.042,
+        "p": 0.0813
+      }
+    },
+    "wvs_domain": "WVS_H"
+  },
+  {
+    "key": "WVS_H|existential_threat_worry",
+    "column": "wvs_agg_existential_threat_worry",
+    "type": "good",
+    "alpha": 0.9092,
+    "n_items": 3,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 2.337,
+      "std": 2.428,
+      "skew": 1.838,
+      "n_valid": 1739
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": -0.084,
+        "p": 0.0004
+      },
+      "escol": {
+        "rho": 0.063,
+        "p": 0.0089
+      },
+      "Tam_loc": {
+        "rho": 0.029,
+        "p": 0.2316
+      }
+    },
+    "wvs_domain": "WVS_H"
+  },
+  {
+    "key": "WVS_H|acceptance_of_state_surveillance",
+    "column": "wvs_agg_acceptance_of_state_surveillance",
+    "type": "good",
+    "alpha": 0.7072,
+    "n_items": 3,
+    "validated_index": "Survival/Self-Expression",
+    "has_validated_equivalent": true,
+    "convergent_validity": [
+      {
+        "index": "SelfExpressionValues",
+        "available": true,
+        "rho": 0.035,
+        "p": 0.1467,
+        "n": 1738,
+        "verdict": "poor"
+      }
+    ],
+    "descriptive": {
+      "mean": 3.819,
+      "std": 2.55,
+      "skew": 0.671,
+      "n_valid": 1738
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.026,
+        "p": 0.2845
+      },
+      "escol": {
+        "rho": -0.102,
+        "p": 0.0
+      },
+      "Tam_loc": {
+        "rho": 0.007,
+        "p": 0.7659
+      }
+    },
+    "wvs_domain": "WVS_H"
+  },
+  {
+    "key": "WVS_H|freedom_security_tradeoff_perception",
+    "column": "wvs_agg_freedom_security_tradeoff_perception",
+    "type": "tier3_caveat",
+    "alpha": 0.1895,
+    "n_items": 2,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 6.276,
+      "std": 3.173,
+      "skew": -0.257,
+      "n_valid": 1739
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.05,
+        "p": 0.0374
+      },
+      "escol": {
+        "rho": 0.044,
+        "p": 0.0647
+      },
+      "Tam_loc": {
+        "rho": -0.018,
+        "p": 0.4506
+      }
+    },
+    "wvs_domain": "WVS_H"
+  },
+  {
+    "key": "WVS_H|institutional_threat_perception",
+    "column": "wvs_agg_institutional_threat_perception",
+    "type": "questionable",
+    "alpha": 0.6626,
+    "n_items": 2,
+    "validated_index": "",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 7.581,
+      "std": 2.62,
+      "skew": -0.919,
+      "n_valid": 1735
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.008,
+        "p": 0.7521
+      },
+      "escol": {
+        "rho": -0.005,
+        "p": 0.85
+      },
+      "Tam_loc": {
+        "rho": -0.099,
+        "p": 0.0
+      }
+    },
+    "wvs_domain": "WVS_H"
+  },
+  {
+    "key": "WVS_I|science_skepticism",
+    "column": "wvs_agg_science_skepticism",
+    "type": "tier3_caveat",
+    "alpha": 0.3333,
+    "n_items": 2,
+    "validated_index": "mean(Q161, Q162); report Spearman-Brown coefficient given two-item scale (Cronbach's alpha is equivalent but Spearman-Brown is the preferred reliability estimate for two-item measures)",
+    "has_validated_equivalent": false,
+    "convergent_validity": [],
+    "descriptive": {
+      "mean": 6.095,
+      "std": 2.298,
+      "skew": -0.208,
+      "n_valid": 1735
+    },
+    "ses_gradient": {
+      "sexo": {
+        "rho": 0.061,
+        "p": 0.0117
+      },
+      "escol": {
+        "rho": -0.062,
+        "p": 0.0101
+      },
+      "Tam_loc": {
+        "rho": -0.075,
+        "p": 0.002
+      }
+    },
+    "wvs_domain": "WVS_I"
+  }
+]

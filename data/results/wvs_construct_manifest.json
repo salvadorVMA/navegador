@@ -1,0 +1,974 @@
+[
+  {
+    "key": "WVS_A|importance_of_life_domains",
+    "column": "wvs_agg_importance_of_life_domains",
+    "type": "formative_index",
+    "alpha": null,
+    "n_valid": 1741,
+    "n_items": 5,
+    "items": [
+      "Q1",
+      "Q2",
+      "Q3",
+      "Q5",
+      "Q6"
+    ],
+    "reverse_coded": [],
+    "validated_index": null
+  },
+  {
+    "key": "WVS_A|child_qualities_autonomy_self_expression",
+    "column": "wvs_agg_child_qualities_autonomy_self_expression",
+    "type": "formative_index",
+    "alpha": null,
+    "n_valid": 1741,
+    "n_items": 3,
+    "items": [
+      "Q8",
+      "Q11",
+      "Q12"
+    ],
+    "reverse_coded": [],
+    "validated_index": "EVI Autonomy"
+  },
+  {
+    "key": "WVS_A|child_qualities_conformity_tradition",
+    "column": "wvs_agg_child_qualities_conformity_tradition",
+    "type": "formative_index",
+    "alpha": null,
+    "n_valid": 1741,
+    "n_items": 4,
+    "items": [
+      "Q7",
+      "Q10",
+      "Q15",
+      "Q17"
+    ],
+    "reverse_coded": [],
+    "validated_index": "Traditional/Secular-Rational"
+  },
+  {
+    "key": "WVS_A|child_qualities_prosocial_diligence",
+    "column": "wvs_agg_child_qualities_prosocial_diligence",
+    "type": "formative_index",
+    "alpha": null,
+    "n_valid": 1741,
+    "n_items": 3,
+    "items": [
+      "Q13",
+      "Q14",
+      "Q16"
+    ],
+    "reverse_coded": [],
+    "validated_index": "EVI Autonomy"
+  },
+  {
+    "key": "WVS_A|social_intolerance_outgroups",
+    "column": "wvs_agg_social_intolerance_outgroups",
+    "type": "good",
+    "alpha": 0.8118,
+    "n_valid": 1741,
+    "n_items": 7,
+    "items": [
+      "Q19",
+      "Q20",
+      "Q21",
+      "Q22",
+      "Q23",
+      "Q25",
+      "Q26"
+    ],
+    "reverse_coded": [],
+    "validated_index": null,
+    "notes": "Good coherence. Binary mention items (mentioned = intolerant) that are interchangeable indicators of a latent social-distance/prejudice trait toward ascriptive outgroups. Compute mean (or sum) and report Cronbach's alpha or KR-20 given binary format. All items are coded in the same direction: mention = higher intolerance. No reverse coding needed."
+  },
+  {
+    "key": "WVS_A|social_intolerance_deviant_behavior",
+    "column": "wvs_agg_social_intolerance_deviant_behavior",
+    "type": "single_item_tier2",
+    "alpha": null,
+    "n_valid": 1739,
+    "n_items": 1,
+    "items": [
+      "Q18",
+      "Q24"
+    ],
+    "reverse_coded": [],
+    "validated_index": null
+  },
+  {
+    "key": "WVS_A|subjective_wellbeing",
+    "column": "wvs_agg_subjective_wellbeing",
+    "type": "tier3_caveat",
+    "alpha": 0.2899,
+    "n_valid": 1741,
+    "n_items": 3,
+    "items": [
+      "Q46",
+      "Q48",
+      "Q49"
+    ],
+    "reverse_coded": [],
+    "validated_index": "Subjective Well-Being",
+    "notes": "Aligns with established Subjective Well-Being index used in WVS/EVS literature (Inglehart et al.). Items are interchangeable reflections of a latent well-being factor. Compute mean and report Cronbach's alpha. All items scaled so higher values = greater well-being; confirm coding direction in your dataset (WVS sometimes codes happiness 1=very happy to 4=not at all happy, requiring reversal). Acceptable coherence with three items; consider adding Q47 (state of health) if theoretically justified."
+  },
+  {
+    "key": "WVS_A|voluntary_association_active_membership",
+    "column": "wvs_agg_voluntary_association_active_membership",
+    "type": "formative_index",
+    "alpha": null,
+    "n_valid": 1740,
+    "n_items": 12,
+    "items": [
+      "Q94",
+      "Q95",
+      "Q96",
+      "Q97",
+      "Q98",
+      "Q99",
+      "Q100",
+      "Q101",
+      "Q102",
+      "Q103",
+      "Q104",
+      "Q105"
+    ],
+    "reverse_coded": [],
+    "validated_index": "Social Capital"
+  },
+  {
+    "key": "WVS_A|voluntary_association_belonging",
+    "column": "wvs_agg_voluntary_association_belonging",
+    "type": "formative_index",
+    "alpha": null,
+    "n_valid": 1740,
+    "n_items": 12,
+    "items": [
+      "Q94R",
+      "Q95R",
+      "Q96R",
+      "Q97R",
+      "Q98R",
+      "Q99R",
+      "Q100R",
+      "Q101R",
+      "Q102R",
+      "Q103R",
+      "Q104R",
+      "Q105R"
+    ],
+    "reverse_coded": [],
+    "validated_index": "Social Capital"
+  },
+  {
+    "key": "WVS_C|job_scarcity_gender_discrimination",
+    "column": "wvs_agg_job_scarcity_gender_discrimination",
+    "type": "questionable",
+    "alpha": 0.5529,
+    "n_valid": 1736,
+    "n_items": 2,
+    "items": [
+      "Q33",
+      "Q33_3"
+    ],
+    "reverse_coded": [],
+    "validated_index": "EVI Equality; Gender Egalitarianism",
+    "notes": "Q33 is typically the standard WVS item (agree/disagree/neither) and Q33_3 appears to be a recoded or follow-up variant capturing the same attitude on a different response format. With only two items, Spearman-Brown reliability is more appropriate than Cronbach's alpha. Both items reflect the same latent attitude toward gendered job prioritization, supporting a reflective model. If Q33_3 is a recoded version of Q33 rather than a truly separate item, consider collapsing to single_item_tier2 to avoid redundancy."
+  },
+  {
+    "key": "WVS_C|job_scarcity_nativist_preference",
+    "column": "wvs_agg_job_scarcity_nativist_preference",
+    "type": "good",
+    "alpha": 0.7355,
+    "n_valid": 1727,
+    "n_items": 2,
+    "items": [
+      "Q34",
+      "Q34_3"
+    ],
+    "reverse_coded": [],
+    "validated_index": null,
+    "notes": "Parallel structure to job_scarcity_gender_discrimination. Q34 is the standard WVS item and Q34_3 appears to be a recoded or alternate-format variant. Both items reflect the same latent nativist labor market attitude. Use Spearman-Brown for two-item reliability. Same caveat applies: if Q34_3 is merely a recoding of Q34 (e.g., dichotomized from a 3-point scale), treat as single_item_tier2 to avoid artificial inflation of reliability."
+  },
+  {
+    "key": "WVS_C|work_ethic",
+    "column": "wvs_agg_work_ethic",
+    "type": "questionable",
+    "alpha": 0.6195,
+    "n_valid": 1740,
+    "n_items": 3,
+    "items": [
+      "Q39",
+      "Q40",
+      "Q41"
+    ],
+    "reverse_coded": [],
+    "validated_index": null,
+    "notes": "Q39 ('People who don't work become lazy'), Q40 ('Work is a duty towards society'), and Q41 ('Work should come first even if it means less leisure') are classic WVS work ethic items. All are agree-disagree scales where higher agreement = stronger work ethic, so no reverse coding is needed. These items are interchangeable indicators of a latent work ethic trait. Report Cronbach's alpha; coherence rated 'acceptable' suggests alpha may be moderate (~0.55–0.65). Consider item-total correlations to verify all three contribute adequately. This cluster aligns conceptually with Weber/Inglehart work values dimensions though no single validated index name is standard."
+  },
+  {
+    "key": "WVS_D|gender_role_traditionalism",
+    "column": "wvs_agg_gender_role_traditionalism",
+    "type": "good",
+    "alpha": 0.7044,
+    "n_valid": 1741,
+    "n_items": 4,
+    "items": [
+      "Q28",
+      "Q29",
+      "Q30",
+      "Q31"
+    ],
+    "reverse_coded": [],
+    "validated_index": "Gender Egalitarianism",
+    "notes": "All four items tap interchangeable manifestations of a single latent traditional-gender-ideology dimension. WVS literature consistently treats these as a reflective scale (e.g., Inglehart & Norris gender egalitarianism battery). Score as mean of items; report Cronbach's alpha. Higher scores = more traditionalist. Note that the validated 'Gender Egalitarianism' index is typically scored in the egalitarian direction; if replicating that index, all four items would need to be reverse-coded so that high = egalitarian. As named here (traditionalism), no reversal is needed assuming raw coding already runs low-egalitarian to high-traditionalist. Verify directionality against WVS codebook (1 = Agree strongly … 4 = Strongly disagree for Q28-Q31) and recode so that high values consistently equal high traditionalism before averaging."
+  },
+  {
+    "key": "WVS_D|female_income_threat_to_marriage",
+    "column": "wvs_agg_female_income_threat_to_marriage",
+    "type": "good",
+    "alpha": 0.7427,
+    "n_valid": 1725,
+    "n_items": 2,
+    "items": [
+      "Q35",
+      "Q35_3"
+    ],
+    "reverse_coded": [],
+    "validated_index": null,
+    "notes": "Two items both reflect the same latent belief that female breadwinning threatens marital harmony. With only two indicators, a reflective model is identified but alpha will be unstable; report Spearman-Brown reliability (preferred for two-item scales) and inter-item correlation (r ≥ .40 acceptable). If inter-item r falls below .30, consider treating each as a single-item measure. No established validated index exists; treat as an exploratory reflective scale. Confirm both items are scaled in the same direction (high = greater perceived threat)."
+  },
+  {
+    "key": "WVS_D|familial_duty_obligations",
+    "column": "wvs_agg_familial_duty_obligations",
+    "type": "single_item_tier2",
+    "alpha": null,
+    "n_valid": 1731,
+    "n_items": 1,
+    "items": [
+      "Q38"
+    ],
+    "reverse_coded": [],
+    "validated_index": null
+  },
+  {
+    "key": "WVS_E|confidence_in_domestic_institutions",
+    "column": "wvs_agg_confidence_in_domestic_institutions",
+    "type": "good",
+    "alpha": 0.8905,
+    "n_valid": 1741,
+    "n_items": 15,
+    "items": [
+      "Q64",
+      "Q65",
+      "Q66",
+      "Q67",
+      "Q68",
+      "Q69",
+      "Q70",
+      "Q71",
+      "Q72",
+      "Q73",
+      "Q74",
+      "Q75",
+      "Q76",
+      "Q77",
+      "Q78"
+    ],
+    "reverse_coded": [],
+    "validated_index": "Confidence in Institutions",
+    "notes": "All items use the same 4-point confidence response scale and are interchangeable indicators of a latent institutional trust trait. Compute mean and report Cronbach's alpha. With 15 items, consider subscale analysis (e.g., security vs. political vs. public service institutions) if alpha is inflated or inter-item correlations are heterogeneous."
+  },
+  {
+    "key": "WVS_E|confidence_in_civil_society_organizations",
+    "column": "wvs_agg_confidence_in_civil_society_organizations",
+    "type": "good",
+    "alpha": 0.7696,
+    "n_valid": 1735,
+    "n_items": 3,
+    "items": [
+      "Q79",
+      "Q80",
+      "Q81"
+    ],
+    "reverse_coded": [],
+    "validated_index": "Confidence in Institutions",
+    "notes": "Three items sharing the same confidence response format reflecting a latent trust-in-civil-society trait. Compute mean and report alpha. Good coherence supports reflective treatment."
+  },
+  {
+    "key": "WVS_E|confidence_in_international_organizations",
+    "column": "wvs_agg_confidence_in_international_organizations",
+    "type": "good",
+    "alpha": 0.9119,
+    "n_valid": 1701,
+    "n_items": 8,
+    "items": [
+      "Q82",
+      "Q83",
+      "Q84",
+      "Q85",
+      "Q86",
+      "Q87",
+      "Q88",
+      "Q89"
+    ],
+    "reverse_coded": [],
+    "validated_index": "Confidence in Institutions",
+    "notes": "Eight items with identical confidence response scale. Items are interchangeable reflections of latent trust in international governance. Compute mean and report alpha. Some organizations (e.g., NATO) may have high non-response in Mexico; monitor missingness."
+  },
+  {
+    "key": "WVS_E|perceived_corruption",
+    "column": "wvs_agg_perceived_corruption",
+    "type": "formative_index",
+    "alpha": null,
+    "n_valid": 1740,
+    "n_items": 8,
+    "items": [
+      "Q112",
+      "Q113",
+      "Q114",
+      "Q115",
+      "Q116",
+      "Q117",
+      "Q118",
+      "Q120"
+    ],
+    "reverse_coded": [],
+    "validated_index": null
+  },
+  {
+    "key": "WVS_E|electoral_integrity",
+    "column": "wvs_agg_electoral_integrity",
+    "type": "tier3_caveat",
+    "alpha": 0.3483,
+    "n_valid": 1729,
+    "n_items": 10,
+    "items": [
+      "Q224",
+      "Q225",
+      "Q226",
+      "Q227",
+      "Q228",
+      "Q229",
+      "Q230",
+      "Q231",
+      "Q232",
+      "Q233"
+    ],
+    "reverse_coded": [
+      "Q224",
+      "Q228",
+      "Q232",
+      "Q233",
+      "Q229"
+    ],
+    "validated_index": null,
+    "notes": "Items reflect a latent perception of electoral integrity. Five items are reverse-coded: high raw scores on Q224, Q228, Q229, Q232, Q233 indicate low electoral integrity and must be reversed before averaging. Good coherence supports reflective treatment. Compute mean after reverse-coding and report alpha."
+  },
+  {
+    "key": "WVS_E|postmaterialist_values",
+    "column": "wvs_agg_postmaterialist_values",
+    "type": "formative_index",
+    "alpha": null,
+    "n_valid": 1739,
+    "n_items": 6,
+    "items": [
+      "Q152",
+      "Q153",
+      "Q154",
+      "Q155",
+      "Q156",
+      "Q157"
+    ],
+    "reverse_coded": [],
+    "validated_index": "Post-Materialist (Inglehart 4-item / 12-item index)"
+  },
+  {
+    "key": "WVS_E|autocracy_support",
+    "column": "wvs_agg_autocracy_support",
+    "type": "tier3_caveat",
+    "alpha": 0.4995,
+    "n_valid": 1736,
+    "n_items": 4,
+    "items": [
+      "Q235",
+      "Q236",
+      "Q237",
+      "Q239"
+    ],
+    "reverse_coded": [],
+    "validated_index": "Autocracy Support (Foa & Mounk)",
+    "notes": "Items are interchangeable indicators of a latent preference for authoritarian governance, consistent with Foa & Mounk's operationalization. All items scaled so that higher values = more support for autocratic alternatives. Compute mean and report alpha."
+  },
+  {
+    "key": "WVS_E|democratic_values_importance",
+    "column": "wvs_agg_democratic_values_importance",
+    "type": "questionable",
+    "alpha": 0.6698,
+    "n_valid": 1727,
+    "n_items": 5,
+    "items": [
+      "Q241",
+      "Q244",
+      "Q246",
+      "Q247",
+      "Q249"
+    ],
+    "reverse_coded": [],
+    "validated_index": "Autocracy Support (Foa & Mounk) — pro-democratic pole",
+    "notes": "Items rate the essentialness of democratic characteristics (e.g., free elections, civil rights, gender equality). These reflect a latent valuation of democratic governance. Compute mean and report alpha. Acceptable coherence; inspect inter-item correlations to confirm unidimensionality."
+  },
+  {
+    "key": "WVS_E|democratic_system_evaluation",
+    "column": "wvs_agg_democratic_system_evaluation",
+    "type": "formative_index",
+    "alpha": null,
+    "n_valid": 1739,
+    "n_items": 5,
+    "items": [
+      "Q238",
+      "Q250",
+      "Q251",
+      "Q252",
+      "Q253"
+    ],
+    "reverse_coded": [],
+    "validated_index": null
+  },
+  {
+    "key": "WVS_E|offline_political_participation",
+    "column": "wvs_agg_offline_political_participation",
+    "type": "formative_index",
+    "alpha": null,
+    "n_valid": 1738,
+    "n_items": 8,
+    "items": [
+      "Q209",
+      "Q210",
+      "Q211",
+      "Q212",
+      "Q213",
+      "Q214",
+      "Q215",
+      "Q216"
+    ],
+    "reverse_coded": [],
+    "validated_index": "EVI Voice; Social Capital"
+  },
+  {
+    "key": "WVS_E|online_political_participation",
+    "column": "wvs_agg_online_political_participation",
+    "type": "formative_index",
+    "alpha": null,
+    "n_valid": 1665,
+    "n_items": 4,
+    "items": [
+      "Q217",
+      "Q218",
+      "Q219",
+      "Q220"
+    ],
+    "reverse_coded": [],
+    "validated_index": null
+  },
+  {
+    "key": "WVS_E|political_information_sources",
+    "column": "wvs_agg_political_information_sources",
+    "type": "formative_index",
+    "alpha": null,
+    "n_valid": 1741,
+    "n_items": 8,
+    "items": [
+      "Q201",
+      "Q202",
+      "Q203",
+      "Q204",
+      "Q205",
+      "Q206",
+      "Q207",
+      "Q208"
+    ],
+    "reverse_coded": [],
+    "validated_index": null
+  },
+  {
+    "key": "WVS_E|voting_participation",
+    "column": "wvs_agg_voting_participation",
+    "type": "good",
+    "alpha": 0.8693,
+    "n_valid": 1737,
+    "n_items": 2,
+    "items": [
+      "Q221",
+      "Q222"
+    ],
+    "reverse_coded": [],
+    "validated_index": null,
+    "notes": "Two items (local and national voting) are interchangeable reflections of a latent voting propensity. Compute mean. With only two items, report Spearman-Brown reliability rather than alpha. Good coherence supports reflective treatment."
+  },
+  {
+    "key": "WVS_E|science_technology_optimism",
+    "column": "wvs_agg_science_technology_optimism",
+    "type": "questionable",
+    "alpha": 0.5983,
+    "n_valid": 1737,
+    "n_items": 3,
+    "items": [
+      "Q158",
+      "Q159",
+      "Q163"
+    ],
+    "reverse_coded": [],
+    "validated_index": null,
+    "notes": "Three items reflecting a latent optimism toward science and technology. Compute mean and report alpha. Acceptable coherence; verify all items are scaled in the same direction (higher = more optimistic)."
+  },
+  {
+    "key": "WVS_E|economic_ideology",
+    "column": "wvs_agg_economic_ideology",
+    "type": "tier3_caveat",
+    "alpha": 0.4284,
+    "n_valid": 1734,
+    "n_items": 4,
+    "items": [
+      "Q106",
+      "Q107",
+      "Q108",
+      "Q109"
+    ],
+    "reverse_coded": [],
+    "validated_index": null,
+    "notes": "Items use 10-point bipolar scales capturing positions on the economic left-right dimension. Treated as reflective indicators of a latent economic ideology. Compute mean and report alpha. Acceptable coherence; verify all items are oriented so that higher values consistently indicate the same ideological pole (e.g., pro-market). If Q106 or Q109 run in the opposite direction, add to reverse_coded_items."
+  },
+  {
+    "key": "WVS_E|societal_change_attitudes",
+    "column": "wvs_agg_societal_change_attitudes",
+    "type": "single_item_tier2",
+    "alpha": null,
+    "n_valid": 1734,
+    "n_items": 1,
+    "items": [
+      "Q43",
+      "Q44"
+    ],
+    "reverse_coded": [],
+    "validated_index": null
+  },
+  {
+    "key": "WVS_E|international_organization_knowledge",
+    "column": "wvs_agg_international_organization_knowledge",
+    "type": "formative_index",
+    "alpha": null,
+    "n_valid": 1163,
+    "n_items": 3,
+    "items": [
+      "Q91",
+      "Q92",
+      "Q93"
+    ],
+    "reverse_coded": [],
+    "validated_index": null
+  },
+  {
+    "key": "WVS_E|authoritarian_governance_tolerance",
+    "column": "wvs_agg_authoritarian_governance_tolerance",
+    "type": "single_item_tier2",
+    "alpha": null,
+    "n_valid": 1691,
+    "n_items": 1,
+    "items": [
+      "Q242",
+      "Q248"
+    ],
+    "reverse_coded": [],
+    "validated_index": null
+  },
+  {
+    "key": "WVS_F|religious_belief",
+    "column": "wvs_agg_religious_belief",
+    "type": "tier3_caveat",
+    "alpha": -0.2496,
+    "n_valid": 1741,
+    "n_items": 5,
+    "items": [
+      "Q164",
+      "Q165",
+      "Q166",
+      "Q167",
+      "Q168"
+    ],
+    "reverse_coded": [],
+    "validated_index": null,
+    "notes": "Q164 (belief in God) is the most general item and could serve as a gateway in some designs, but in WVS all items are asked independently regardless of Q164 response. All items are dichotomous or near-dichotomous (yes/no) indicators of a common latent religiosity-belief factor. Treat as reflective scale; compute mean and report Cronbach's alpha / KR-20. High internal consistency expected given strong common factor in cross-national religiosity research."
+  },
+  {
+    "key": "WVS_F|religious_practice_and_self_identification",
+    "column": "wvs_agg_religious_practice_and_self_identification",
+    "type": "questionable",
+    "alpha": 0.6079,
+    "n_valid": 1740,
+    "n_items": 3,
+    "items": [
+      "Q171",
+      "Q172",
+      "Q173"
+    ],
+    "reverse_coded": [],
+    "validated_index": "Religiosity (Norris & Inglehart); CRS (approx)",
+    "notes": "Q173 (religious denomination/affiliation) functions as a gateway item: it determines whether a respondent identifies with any religion and gates interpretation of attendance and self-rated religiousness. Q173 should be retained as a covariate or stratification variable but NOT averaged into the scale score. The operational scale is computed from Q171 (attendance frequency) and Q172 (self-described religious person). With only two substantive items after gateway exclusion, alpha will be limited; report inter-item correlation. Both items reflect a common latent religiosity dimension with different metrics (frequency vs. self-rating), justifying reflective treatment. Consider supplementing with religious_belief items for a broader religiosity composite if needed."
+  },
+  {
+    "key": "WVS_F|religious_exclusivism",
+    "column": "wvs_agg_religious_exclusivism",
+    "type": "questionable",
+    "alpha": 0.6911,
+    "n_valid": 1725,
+    "n_items": 2,
+    "items": [
+      "Q169",
+      "Q170"
+    ],
+    "reverse_coded": [],
+    "validated_index": null,
+    "notes": "Two-item reflective scale. Q169 (only acceptable religion is my religion) and Q170 (when science and religion conflict, religion is always right) both reflect a latent exclusivist orientation. Report inter-item correlation (Spearman-Brown prophecy formula for two-item reliability). No reverse coding needed; higher scores = greater exclusivism on both items. Coherence is acceptable; the items tap slightly different facets (in-group supremacy vs. epistemic authority) but share a common exclusivist core."
+  },
+  {
+    "key": "WVS_F|civic_dishonesty_tolerance",
+    "column": "wvs_agg_civic_dishonesty_tolerance",
+    "type": "questionable",
+    "alpha": 0.6526,
+    "n_valid": 1738,
+    "n_items": 5,
+    "items": [
+      "Q177",
+      "Q178",
+      "Q179",
+      "Q180",
+      "Q181"
+    ],
+    "reverse_coded": [],
+    "validated_index": null,
+    "notes": "All items use the same 1-10 justifiability scale and are interchangeable indicators of a latent tolerance-for-civic-dishonesty factor. Strong reflective structure expected. Compute mean and report alpha. No reverse coding: higher scores = greater tolerance for dishonesty on all items. Floor effects common (most respondents cluster at 'never justifiable'); consider distributional diagnostics."
+  },
+  {
+    "key": "WVS_F|sexual_and_reproductive_morality_permissiveness",
+    "column": "wvs_agg_sexual_and_reproductive_morality_permissiveness",
+    "type": "good",
+    "alpha": 0.7514,
+    "n_valid": 1735,
+    "n_items": 5,
+    "items": [
+      "Q182",
+      "Q183",
+      "Q184",
+      "Q186",
+      "Q193"
+    ],
+    "reverse_coded": [],
+    "validated_index": "Survival/Self-Expression Values; Emancipative Values Index (Choice sub-dimension); Traditional/Secular-Rational Values",
+    "notes": "Core reflective scale for sexual-reproductive permissiveness. All items on the 1-10 justifiability scale. High alpha expected; this cluster is one of the strongest factors in WVS moral values batteries. No reverse coding: higher = more permissive. Items map onto Welzel's Choice sub-index and Inglehart's Traditional/Secular-Rational dimension. Q193 (casual sex) added in Wave 7; check missingness in earlier waves if pooling."
+  },
+  {
+    "key": "WVS_F|life_autonomy_morality_permissiveness",
+    "column": "wvs_agg_life_autonomy_morality_permissiveness",
+    "type": "questionable",
+    "alpha": 0.5799,
+    "n_valid": 1732,
+    "n_items": 3,
+    "items": [
+      "Q185",
+      "Q187",
+      "Q188"
+    ],
+    "reverse_coded": [],
+    "validated_index": "Emancipative Values Index (Choice sub-dimension)",
+    "notes": "Three-item reflective scale on the 1-10 justifiability metric. All items reflect latent tolerance for personal autonomy over life decisions. No reverse coding; higher = more permissive. Conceptually adjacent to sexual_and_reproductive_morality_permissiveness but empirically separable (divorce/suicide/euthanasia load on a distinct sub-factor in CFA). Report alpha; consider CFA to confirm discriminant validity from the sexual-reproductive cluster. Maps onto Welzel's Choice sub-index."
+  },
+  {
+    "key": "WVS_F|violence_tolerance",
+    "column": "wvs_agg_violence_tolerance",
+    "type": "good",
+    "alpha": 0.7706,
+    "n_valid": 1734,
+    "n_items": 4,
+    "items": [
+      "Q189",
+      "Q190",
+      "Q191",
+      "Q192"
+    ],
+    "reverse_coded": [],
+    "validated_index": null,
+    "notes": "Four-item reflective scale on the 1-10 justifiability metric. Items cover domestic violence (Q189), violence against other people (Q190), and political violence/terrorism (Q191, Q192). All share a common latent tolerance-for-violence factor, though political violence items may form a sub-facet. No reverse coding; higher = more tolerant of violence. Extreme floor effects expected (most respondents say 'never justifiable'). Report alpha and inspect item-total correlations; if political violence items diverge, consider bifactor or two-sub-scale approach."
+  },
+  {
+    "key": "WVS_F|religion_versus_secularism_orientation",
+    "column": "wvs_agg_religion_versus_secularism_orientation",
+    "type": "tier3_caveat",
+    "alpha": 0.3612,
+    "n_valid": 1736,
+    "n_items": 2,
+    "items": [
+      "Q174",
+      "Q175"
+    ],
+    "reverse_coded": [],
+    "validated_index": null,
+    "notes": "Two-item reflective scale. Q174 (meaning of religion vs. meaning from elsewhere) and Q175 (role of religion in society) both reflect a latent pro-religion vs. pro-secular orientation. Report inter-item correlation and Spearman-Brown reliability. No reverse coding needed assuming both items are keyed so that higher values = stronger pro-religion orientation; verify original WVS coding direction. Conceptually related to religious_exclusivism but focuses on the societal role of religion rather than in-group supremacy. Consider merging with religious_exclusivism if discriminant validity is insufficient in CFA."
+  },
+  {
+    "key": "WVS_G|outgroup_trust",
+    "column": "wvs_agg_outgroup_trust",
+    "type": "good",
+    "alpha": 0.7686,
+    "n_valid": 1741,
+    "n_items": 4,
+    "items": [
+      "Q60",
+      "Q61",
+      "Q62",
+      "Q63"
+    ],
+    "reverse_coded": [
+      "Q63",
+      "Q60",
+      "Q61",
+      "Q62"
+    ],
+    "validated_index": "mean of reverse-coded Q60–Q63; report Cronbach's alpha",
+    "notes": "Q59 (trust in people you know personally / most people) was listed as reverse-coded in the input but is NOT in the item pool; it likely serves as a general interpersonal trust single item and should not be mixed into this outgroup-specific scale. All four retained items use a 1 'trust completely' to 4 'do not trust at all' scale, so all require reverse-coding so that high score = high outgroup trust. Coherence rated good; expect alpha ≥ .75."
+  },
+  {
+    "key": "WVS_G|perceived_positive_effects_of_immigration",
+    "column": "wvs_agg_perceived_positive_effects_of_immigration",
+    "type": "questionable",
+    "alpha": 0.5177,
+    "n_valid": 1732,
+    "n_items": 4,
+    "items": [
+      "Q122",
+      "Q123",
+      "Q125",
+      "Q127"
+    ],
+    "reverse_coded": [
+      "Q123",
+      "Q125",
+      "Q122",
+      "Q127"
+    ],
+    "validated_index": "mean of reverse-coded Q122, Q123, Q125, Q127; report Cronbach's alpha",
+    "notes": "WVS-7 immigration items use a scale where 1 = positive endpoint and higher values = negative endpoint (e.g., 1 'fills useful jobs' … 10 'takes jobs away'). For a 'positive effects' construct all items must be reverse-coded so that high score = stronger belief in positive effects. Acceptable coherence; verify alpha ≥ .65 and inspect inter-item correlations."
+  },
+  {
+    "key": "WVS_G|perceived_negative_effects_of_immigration",
+    "column": "wvs_agg_perceived_negative_effects_of_immigration",
+    "type": "good",
+    "alpha": 0.7441,
+    "n_valid": 1729,
+    "n_items": 4,
+    "items": [
+      "Q124",
+      "Q126",
+      "Q128",
+      "Q129"
+    ],
+    "reverse_coded": [],
+    "validated_index": "mean of Q124, Q126, Q128, Q129; report Cronbach's alpha",
+    "notes": "These items are already keyed so that higher values indicate stronger perceived negative effects; no reverse-coding needed. Acceptable coherence; verify alpha ≥ .65. Keeping positive and negative immigration perceptions as separate constructs is justified because they are not simply bipolar opposites—respondents can endorse both simultaneously."
+  },
+  {
+    "key": "WVS_G|multilevel_place_attachment",
+    "column": "wvs_agg_multilevel_place_attachment",
+    "type": "formative_index",
+    "alpha": null,
+    "n_valid": 1739,
+    "n_items": 5,
+    "items": [
+      "Q255",
+      "Q256",
+      "Q257",
+      "Q258",
+      "Q259"
+    ],
+    "reverse_coded": [],
+    "validated_index": "sum or mean of reverse-coded Q255–Q259; do NOT report alpha as reliability metric—use variance-inflation-factor (VIF) diagnostics for formative indicators instead"
+  },
+  {
+    "key": "WVS_G|immigrant_origin_status",
+    "column": "wvs_agg_immigrant_origin_status",
+    "type": "formative_index",
+    "alpha": null,
+    "n_valid": 1741,
+    "n_items": 3,
+    "items": [
+      "Q263",
+      "Q264",
+      "Q265"
+    ],
+    "reverse_coded": [],
+    "validated_index": "derive categorical typology: 0 = native-born respondent with native-born parents, 1 = second-generation (respondent native-born, ≥1 parent foreign-born), 2 = first-generation (respondent foreign-born). Alternatively, count of foreign-born members (respondent + mother + father, range 0–3)."
+  },
+  {
+    "key": "WVS_H|basic_needs_deprivation",
+    "column": "wvs_agg_basic_needs_deprivation",
+    "type": "questionable",
+    "alpha": 0.6257,
+    "n_valid": 1741,
+    "n_items": 3,
+    "items": [
+      "Q51",
+      "Q54",
+      "Q55"
+    ],
+    "reverse_coded": [
+      "Q55",
+      "Q54",
+      "Q51"
+    ],
+    "validated_index": null,
+    "notes": "Q53 appeared in the original reverse_coded_items list but is absent from the item pool — dropped. Remaining three items (Q51, Q54, Q55) are all reverse-coded, meaning higher raw scores indicate LESS deprivation; after recoding, high = high deprivation. Items reflect a common latent deprivation experience; use mean score with Cronbach's alpha."
+  },
+  {
+    "key": "WVS_H|neighborhood_disorder_and_crime",
+    "column": "wvs_agg_neighborhood_disorder_and_crime",
+    "type": "good",
+    "alpha": 0.8267,
+    "n_valid": 1741,
+    "n_items": 5,
+    "items": [
+      "Q132",
+      "Q133",
+      "Q136",
+      "Q137",
+      "Q138"
+    ],
+    "reverse_coded": [],
+    "validated_index": null,
+    "notes": "Five interchangeable perceptual indicators of a latent neighborhood-disorder factor. All coded in the same direction (higher = more disorder). Use mean score with Cronbach's alpha."
+  },
+  {
+    "key": "WVS_H|crime_victimization",
+    "column": "wvs_agg_crime_victimization",
+    "type": "formative_index",
+    "alpha": null,
+    "n_valid": 1741,
+    "n_items": 2,
+    "items": [
+      "Q144",
+      "Q145"
+    ],
+    "reverse_coded": [],
+    "validated_index": null
+  },
+  {
+    "key": "WVS_H|precautionary_security_behaviors",
+    "column": "wvs_agg_precautionary_security_behaviors",
+    "type": "formative_index",
+    "alpha": null,
+    "n_valid": 1741,
+    "n_items": 3,
+    "items": [
+      "Q139",
+      "Q140",
+      "Q141"
+    ],
+    "reverse_coded": [],
+    "validated_index": null
+  },
+  {
+    "key": "WVS_H|socioeconomic_insecurity_worry",
+    "column": "wvs_agg_socioeconomic_insecurity_worry",
+    "type": "questionable",
+    "alpha": 0.6829,
+    "n_valid": 1739,
+    "n_items": 2,
+    "items": [
+      "Q142",
+      "Q143"
+    ],
+    "reverse_coded": [],
+    "validated_index": null,
+    "notes": "Two-item reflective scale tapping a latent socioeconomic anxiety. Both items reflect worry about future socioeconomic standing. With only two items, report Spearman-Brown coefficient rather than alpha. Coherence rated acceptable — interpret with caution and consider single-item fallback if inter-item correlation is low."
+  },
+  {
+    "key": "WVS_H|existential_threat_worry",
+    "column": "wvs_agg_existential_threat_worry",
+    "type": "good",
+    "alpha": 0.9092,
+    "n_valid": 1739,
+    "n_items": 3,
+    "items": [
+      "Q146",
+      "Q147",
+      "Q148"
+    ],
+    "reverse_coded": [],
+    "validated_index": null,
+    "notes": "Three interchangeable indicators of a latent macro-level threat anxiety. All coded in the same direction (higher = more worry). Use mean score with Cronbach's alpha."
+  },
+  {
+    "key": "WVS_H|acceptance_of_state_surveillance",
+    "column": "wvs_agg_acceptance_of_state_surveillance",
+    "type": "good",
+    "alpha": 0.7072,
+    "n_valid": 1738,
+    "n_items": 3,
+    "items": [
+      "Q196",
+      "Q197",
+      "Q198"
+    ],
+    "reverse_coded": [
+      "Q197",
+      "Q198",
+      "Q196"
+    ],
+    "validated_index": "Survival/Self-Expression",
+    "notes": "All three items are reverse-coded: higher raw scores indicate LESS acceptance of surveillance. After recoding, high = high acceptance. Items are interchangeable reflections of a latent pro-surveillance attitude. Conceptually linked to the Survival pole of Inglehart's Survival/Self-Expression dimension. Use mean score with Cronbach's alpha."
+  },
+  {
+    "key": "WVS_H|freedom_security_tradeoff_perception",
+    "column": "wvs_agg_freedom_security_tradeoff_perception",
+    "type": "tier3_caveat",
+    "alpha": 0.1895,
+    "n_valid": 1739,
+    "n_items": 2,
+    "items": [
+      "Q149",
+      "Q150"
+    ],
+    "reverse_coded": [],
+    "validated_index": null,
+    "notes": "Two-item scale capturing perceived tension between freedom and security. Coherence rated acceptable — report Spearman-Brown coefficient. If inter-item correlation is weak, consider treating each item as a single-item measure representing distinct facets (complementarity vs. trade-off framing). No reverse coding needed as both items are oriented in the same conceptual direction."
+  },
+  {
+    "key": "WVS_H|institutional_threat_perception",
+    "column": "wvs_agg_institutional_threat_perception",
+    "type": "questionable",
+    "alpha": 0.6626,
+    "n_valid": 1735,
+    "n_items": 2,
+    "items": [
+      "Q134",
+      "Q135"
+    ],
+    "reverse_coded": [],
+    "validated_index": null,
+    "notes": "Two-item reflective scale tapping a latent perception of institutional/authority-based threats. Both items reflect state or societal actors as sources of insecurity. Report Spearman-Brown coefficient. Coherence rated acceptable — if inter-item correlation is low, consider single-item fallback."
+  },
+  {
+    "key": "WVS_I|science_skepticism",
+    "column": "wvs_agg_science_skepticism",
+    "type": "tier3_caveat",
+    "alpha": 0.3333,
+    "n_valid": 1735,
+    "n_items": 2,
+    "items": [
+      "Q161",
+      "Q162"
+    ],
+    "reverse_coded": [],
+    "validated_index": "mean(Q161, Q162); report Spearman-Brown coefficient given two-item scale (Cronbach's alpha is equivalent but Spearman-Brown is the preferred reliability estimate for two-item measures)",
+    "notes": "Q161 ('Science and technology are making our lives healthier, easier, and more comfortable') and Q162 ('Because of science and technology, there will be more opportunities for the next generation') are both typically scored so that higher values indicate greater agreement with pro-science statements. If the raw WVS coding runs in that direction (high = pro-science), BOTH items must be reverse-coded before computing the skepticism index so that high scores reflect greater skepticism. Verify the original response scale direction in the WVS codebook. With only two items the construct sits at the minimum threshold for a reflective scale; inter-item correlation (r) should be reported alongside Spearman-Brown reliability. If r < .30, consider treating each item as a single-item tier-2 indicator instead."
+  }
+]

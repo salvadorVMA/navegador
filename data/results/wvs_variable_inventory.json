@@ -1,0 +1,5431 @@
+{
+  "source": "WVS Wave 7 — Mexico (2018)",
+  "n_respondents": 1741,
+  "n_substantive_cols": 297,
+  "domains": {
+    "A": {
+      "label": "Social Values, Attitudes & Stereotypes",
+      "items": [
+        {
+          "qcode": "Q1",
+          "acode": "A001",
+          "domain_prefix": "A",
+          "title_en": "Important in life: Family",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": [
+            "Survival/Self-Expression"
+          ]
+        },
+        {
+          "qcode": "Q2",
+          "acode": "A002",
+          "domain_prefix": "A",
+          "title_en": "Important in life: Friends",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q3",
+          "acode": "A003",
+          "domain_prefix": "A",
+          "title_en": "Important in life: Leisure time",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q4",
+          "acode": "A004",
+          "domain_prefix": "A",
+          "title_en": "Important in life: Politics",
+          "title_es": "La política",
+          "scale_text": "1=Muy importante 2=Algo importante; 3=Poco importante; 4=Nada importante",
+          "n_valid": 1737,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q5",
+          "acode": "A005",
+          "domain_prefix": "A",
+          "title_en": "Important in life: Work",
+          "title_es": "El trabajo",
+          "scale_text": "1=Muy importante 2=Algo importante; 3=Poco importante; 4=Nada importante",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q6",
+          "acode": "A006",
+          "domain_prefix": "A",
+          "title_en": "Important in life: Religion",
+          "title_es": "La religión",
+          "scale_text": "1=Muy importante 2=Algo importante; 3=Poco importante; 4=Nada importante",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": [
+            "Traditional/Secular-Rational",
+            "Religiosity (Norris & Inglehart)"
+          ]
+        },
+        {
+          "qcode": "Q7",
+          "acode": "A027",
+          "domain_prefix": "A",
+          "title_en": "Important child qualities: Good manners",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q8",
+          "acode": "A029",
+          "domain_prefix": "A",
+          "title_en": "Important child qualities: independence",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "EVI Autonomy"
+          ]
+        },
+        {
+          "qcode": "Q9",
+          "acode": "A030",
+          "domain_prefix": "A",
+          "title_en": "Important child qualities: Hard work",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q10",
+          "acode": "A032",
+          "domain_prefix": "A",
+          "title_en": "Important child qualities: feeling of responsibility",
+          "title_es": "Sentido de responsabilidad",
+          "scale_text": "1=Sí mencionó; 2=No mencionó",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q11",
+          "acode": "A034",
+          "domain_prefix": "A",
+          "title_en": "Important child qualities: imagination",
+          "title_es": "Imaginación",
+          "scale_text": "1=Sí mencionó; 2=No mencionó",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q12",
+          "acode": "A035",
+          "domain_prefix": "A",
+          "title_en": "Important child qualities: tolerance and respect for other people",
+          "title_es": "Tolerancia y respeto hacia a otros",
+          "scale_text": "1=Sí mencionó; 2=No mencionó",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q13",
+          "acode": "A038",
+          "domain_prefix": "A",
+          "title_en": "Important child qualities: thrift saving money and things",
+          "title_es": "Ser ahorrativo con el dinero",
+          "scale_text": "1=Sí mencionó; 2=No mencionó",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "EVI Autonomy"
+          ]
+        },
+        {
+          "qcode": "Q14",
+          "acode": "A039",
+          "domain_prefix": "A",
+          "title_en": "Important child qualities: determination perseverance",
+          "title_es": "Determinación, perseverancia",
+          "scale_text": "1=Sí mencionó; 2=No mencionó",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q15",
+          "acode": "A040",
+          "domain_prefix": "A",
+          "title_en": "Important child qualities: religious faith",
+          "title_es": "Fe religiosa",
+          "scale_text": "1=Sí mencionó; 2=No mencionó",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "EVI Autonomy"
+          ]
+        },
+        {
+          "qcode": "Q16",
+          "acode": "A041",
+          "domain_prefix": "A",
+          "title_en": "Important child qualities: unselfishness",
+          "title_es": "No ser egoísta, altruismo",
+          "scale_text": "1=Sí mencionó; 2=No mencionó",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q17",
+          "acode": "A042",
+          "domain_prefix": "A",
+          "title_en": "Important child qualities: obedience",
+          "title_es": "Obediencia",
+          "scale_text": "1=Sí mencionó; 2=No mencionó",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Traditional/Secular-Rational",
+            "RWA (proxy)"
+          ]
+        },
+        {
+          "qcode": "Q18",
+          "acode": "A124_08",
+          "domain_prefix": "A",
+          "title_en": "Neighbours: Drug addicts",
+          "title_es": "Drogadictos",
+          "scale_text": "1=Sí mencionó; 2=No mencionó",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q19",
+          "acode": "A124_02",
+          "domain_prefix": "A",
+          "title_en": "Neighbours: People of a different race",
+          "title_es": "Personas de una raza o etnia distinta",
+          "scale_text": "1=Sí mencionó; 2=No mencionó",
+          "n_valid": 1737,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q20",
+          "acode": "A124_07",
+          "domain_prefix": "A",
+          "title_en": "Neighbours: People who have AIDS",
+          "title_es": "Personas que tienen SIDA",
+          "scale_text": "1=Sí mencionó; 2=No mencionó",
+          "n_valid": 1734,
+          "n_pct_valid": 99.6,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q21",
+          "acode": "A124_06",
+          "domain_prefix": "A",
+          "title_en": "Neighbours: Immigrants/foreign workers",
+          "title_es": "Inmigrantes o trabajadores extranjeros",
+          "scale_text": "1=Sí mencionó; 2=No mencionó",
+          "n_valid": 1736,
+          "n_pct_valid": 99.7,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q22",
+          "acode": "A124_09",
+          "domain_prefix": "A",
+          "title_en": "Neighbours: Homosexuals",
+          "title_es": "Homosexuales",
+          "scale_text": "1=Sí mencionó; 2=No mencionó",
+          "n_valid": 1736,
+          "n_pct_valid": 99.7,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q23",
+          "acode": "A124_12",
+          "domain_prefix": "A",
+          "title_en": "Neighbours: People of a different religion",
+          "title_es": "Gente de una religión distinta",
+          "scale_text": "1=Sí mencionó; 2=No mencionó",
+          "n_valid": 1737,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q24",
+          "acode": "A124_03",
+          "domain_prefix": "A",
+          "title_en": "Neighbours: Heavy drinkers",
+          "title_es": "Bebedores empedernidos",
+          "scale_text": "1=Sí mencionó; 2=No mencionó",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q25",
+          "acode": "A124_42",
+          "domain_prefix": "A",
+          "title_en": "Neighbours: Unmarried couples living together",
+          "title_es": "Parejas no casadas que viven juntos",
+          "scale_text": "1=Sí mencionó; 2=No mencionó",
+          "n_valid": 1738,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q26",
+          "acode": "A124_43",
+          "domain_prefix": "A",
+          "title_en": "Neighbours: People who speak a different language",
+          "title_es": "Gente que habla un idioma o lengua diferente",
+          "scale_text": "1=Sí mencionó; 2=No mencionó",
+          "n_valid": 1738,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q46",
+          "acode": "A008",
+          "domain_prefix": "A",
+          "title_en": "Feeling of happiness",
+          "title_es": "En general, ¿usted diría que es...? (Leer y codificar una respuesta):",
+          "scale_text": "1=Bueno; 2=Le da igual; 3=Malo",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Subjective Well-Being"
+          ]
+        },
+        {
+          "qcode": "Q47",
+          "acode": "A009",
+          "domain_prefix": "A",
+          "title_en": "State of health (subjective)",
+          "title_es": "En general, ¿cómo describiría su estado de salud hoy en día? (Leer)",
+          "scale_text": "1=Bueno; 2=Le da igual; 3=Malo",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q48",
+          "acode": "A173",
+          "domain_prefix": "A",
+          "title_en": "How much freedom of choice and control",
+          "title_es": "Algunas personas sienten que tienen total libertad de elegir y control sobre sus vidas, mientras que otras sienten que lo que hacen no tiene un impacto real en lo que les ocurre. En esta escala, indique cuánta libertad de elección y control siente que tiene sobre la manera en la que le resulta la vida. El 1 significa “ninguna posibilidad de elegir” y el 10 significa",
+          "scale_text": "1=Bueno; 2=Le da igual; 3=Malo",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q49",
+          "acode": "A170",
+          "domain_prefix": "A",
+          "title_en": "Satisfaction with your life",
+          "title_es": "(TARJETA 5) Considerando todas las cosas, ¿qué tan satisfecho está usted con su vida en este momento? Utilice esta tarjeta en la que el 1 significa que está “completamente insatisfecho” y el 10 significa que está “completamente satisfecho” con su vida en general? (Codificar una respuesta)",
+          "scale_text": "1=Bueno; 2=Le da igual; 3=Malo",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Subjective Well-Being"
+          ]
+        },
+        {
+          "qcode": "Q57",
+          "acode": "A165",
+          "domain_prefix": "A",
+          "title_en": "Most people can be trusted",
+          "title_es": "En términos generales, ¿diría usted que se puede confiar en la mayoría de las personas o que se tiene que ser muy cuidadoso al tratar con la gente? (Codificar una respuesta)",
+          "scale_text": "1=Frecuentemente; 2=A veces; 3=Rara vez; 4=Nunca",
+          "n_valid": 1738,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Survival/Self-Expression",
+            "Social Capital",
+            "Political Trust (Zmerli)"
+          ]
+        },
+        {
+          "qcode": "Q94",
+          "acode": "A098",
+          "domain_prefix": "A",
+          "title_en": "Active/Inactive membership of church or religious organization",
+          "title_es": "Iglesia u organización religiosa",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            3,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": [
+            "Social Capital"
+          ]
+        },
+        {
+          "qcode": "Q95",
+          "acode": "A099",
+          "domain_prefix": "A",
+          "title_en": "Active/Inactive membership of sport or recreation",
+          "title_es": "Organización deportiva o de recreación",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            3,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 4,
+          "validated_indices": [
+            "Social Capital"
+          ]
+        },
+        {
+          "qcode": "Q96",
+          "acode": "A100",
+          "domain_prefix": "A",
+          "title_en": "Active/Inactive membership of art, music, educational",
+          "title_es": "Organización artística, musical o educativa",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            3,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": [
+            "Social Capital"
+          ]
+        },
+        {
+          "qcode": "Q97",
+          "acode": "A101",
+          "domain_prefix": "A",
+          "title_en": "Active/Inactive membership of labour unions",
+          "title_es": "Sindicato",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            3,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": [
+            "Social Capital"
+          ]
+        },
+        {
+          "qcode": "Q98",
+          "acode": "A102",
+          "domain_prefix": "A",
+          "title_en": "Active/Inactive membership of political party",
+          "title_es": "Partido político",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            3,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": [
+            "Social Capital"
+          ]
+        },
+        {
+          "qcode": "Q99",
+          "acode": "A103",
+          "domain_prefix": "A",
+          "title_en": "Active/Inactive membership of environmental organization",
+          "title_es": "Organización ambientalista o ecológica",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1738,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            1,
+            3,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": [
+            "Social Capital"
+          ]
+        },
+        {
+          "qcode": "Q100",
+          "acode": "A104",
+          "domain_prefix": "A",
+          "title_en": "Active/Inactive membership of professional organization",
+          "title_es": "Asociación profesional",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1737,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            1,
+            3,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": [
+            "Social Capital"
+          ]
+        },
+        {
+          "qcode": "Q101",
+          "acode": "A105",
+          "domain_prefix": "A",
+          "title_en": "Active/Inactive membership of charitable/humanitarian organization",
+          "title_es": "Organización humanitaria o de caridad",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1738,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            1,
+            3,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": [
+            "Social Capital"
+          ]
+        },
+        {
+          "qcode": "Q102",
+          "acode": "A106B",
+          "domain_prefix": "A",
+          "title_en": "Active/Inactive membership: Consumer organization",
+          "title_es": "Organización de consumidores",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q103",
+          "acode": "A106C",
+          "domain_prefix": "A",
+          "title_en": "Active/Inactive membership: Self-help group, mutual aid group",
+          "title_es": "Grupo de auto-ayuda o de ayuda mutua",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q104",
+          "acode": "A106D",
+          "domain_prefix": "A",
+          "title_en": "Active/Inactive membership: Women’s group",
+          "title_es": "Grupo de mujeres",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q105",
+          "acode": "A106",
+          "domain_prefix": "A",
+          "title_en": "Active/Inactive membership of any other organization",
+          "title_es": "Otra organización",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            3,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 4,
+          "validated_indices": [
+            "Social Capital"
+          ]
+        },
+        {
+          "qcode": "Q200",
+          "acode": "A062",
+          "domain_prefix": "A",
+          "title_en": "How often discusses political matters with friends",
+          "title_es": "Cuando está con sus amigos, ¿diría que discuten asuntos políticos frecuentemente, ocasionalmente o nunca?",
+          "scale_text": "1=Muy de acuerdo 2=De acuerdo; 3=En desacuerdo; 4=Muy en desacuerdo",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q94R",
+          "acode": "A065",
+          "domain_prefix": "A",
+          "title_en": "Member: Belong to religious organization",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            2,
+            4,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q95R",
+          "acode": "A074",
+          "domain_prefix": "A",
+          "title_en": "Member: Belong to sports or recreation",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            2,
+            4,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q96R",
+          "acode": "A066",
+          "domain_prefix": "A",
+          "title_en": "Member: Belong to education, arts, music or cultural activities",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            2,
+            4,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q97R",
+          "acode": "A067",
+          "domain_prefix": "A",
+          "title_en": "Member: Belong to labour unions",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            2,
+            4,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q98R",
+          "acode": "A068",
+          "domain_prefix": "A",
+          "title_en": "Member: Belong to political parties",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            2,
+            4,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q99R",
+          "acode": "A071",
+          "domain_prefix": "A",
+          "title_en": "Member: Belong to conservation, the environment, ecology, animal rights",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1738,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            4,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q100R",
+          "acode": "A072",
+          "domain_prefix": "A",
+          "title_en": "Member: Belong to professional associations",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1737,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            2,
+            4,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q101R",
+          "acode": "A080_01",
+          "domain_prefix": "A",
+          "title_en": "Member: Humanitarian or charitable organization",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1738,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q102R",
+          "acode": "A078",
+          "domain_prefix": "A",
+          "title_en": "Belong: Consumer groups",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q103R",
+          "acode": "A080_02",
+          "domain_prefix": "A",
+          "title_en": "Member:  Self-help group, mutual aid group",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q104R",
+          "acode": "A075",
+          "domain_prefix": "A",
+          "title_en": "Member: Belong to women´s group",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            2,
+            4,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q105R",
+          "acode": "A079",
+          "domain_prefix": "A",
+          "title_en": "Member: Belong to other groups",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            2,
+            4,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        }
+      ]
+    },
+    "B": {
+      "label": "Environment",
+      "items": [
+        {
+          "qcode": "Q111",
+          "acode": "B008",
+          "domain_prefix": "B",
+          "title_en": "Protecting environment vs. Economic growth",
+          "title_es": "Aquí hay dos frases que la gente suele utilizar cuando habla",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1705,
+          "n_pct_valid": 97.9,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": []
+        }
+      ]
+    },
+    "C": {
+      "label": "Work & Employment",
+      "items": [
+        {
+          "qcode": "Q33",
+          "acode": "C001_01",
+          "domain_prefix": "C",
+          "title_en": "Jobs scarce: Men should have more right to a job than women (5 categories)",
+          "title_es": "Cuando hay escasez de trabajos, los hombres tienen más derecho",
+          "scale_text": "1=Muy de acuerdo; 2=De acuerdo; 3=Ni de acuerdo ni en desacuerdo;",
+          "n_valid": 1736,
+          "n_pct_valid": 99.7,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q34",
+          "acode": "C002_01",
+          "domain_prefix": "C",
+          "title_en": "Jobs scarce: Employers should give priority to (nation) people than immigrants (5 categories)",
+          "title_es": "Cuando hay escasez de trabajos, los patrones deben dar prioridad a los mexicanos sobre los inmigrantes",
+          "scale_text": "1=Muy de acuerdo; 2=De acuerdo; 3=Ni de acuerdo ni en desacuerdo;",
+          "n_valid": 1727,
+          "n_pct_valid": 99.2,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q39",
+          "acode": "C038",
+          "domain_prefix": "C",
+          "title_en": "People who don´t work turn lazy",
+          "title_es": "La gente que no trabaja se hace floja",
+          "scale_text": "1=Muy de acuerdo; 2=De acuerdo;",
+          "n_valid": 1735,
+          "n_pct_valid": 99.7,
+          "wave_coverage": [
+            4,
+            5,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q40",
+          "acode": "C039",
+          "domain_prefix": "C",
+          "title_en": "Work is a duty towards society",
+          "title_es": "El trabajo es un deber para con la sociedad",
+          "scale_text": "1=Muy de acuerdo; 2=De acuerdo;",
+          "n_valid": 1732,
+          "n_pct_valid": 99.5,
+          "wave_coverage": [
+            4,
+            5,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q41",
+          "acode": "C041",
+          "domain_prefix": "C",
+          "title_en": "Work should come first even if it means less spare time",
+          "title_es": "El trabajo siempre es lo primero, aunque signifique",
+          "scale_text": "1=Muy de acuerdo; 2=De acuerdo;",
+          "n_valid": 1734,
+          "n_pct_valid": 99.6,
+          "wave_coverage": [
+            4,
+            5,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q50",
+          "acode": "C006",
+          "domain_prefix": "C",
+          "title_en": "Satisfaction with financial situation of household",
+          "title_es": "(TARJETA 6) ¿Qué tan satisfecho está usted con la situación",
+          "scale_text": "1=Muy de acuerdo; 2=De acuerdo; 3=Ni de acuerdo ni en desacuerdo;",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q33_3",
+          "acode": "C001",
+          "domain_prefix": "C",
+          "title_en": "Jobs scarce: Men should have more right to a job than women (3 categories)",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1736,
+          "n_pct_valid": 99.7,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": [
+            "EVI Equality",
+            "Gender Egalitarianism"
+          ]
+        },
+        {
+          "qcode": "Q34_3",
+          "acode": "C002",
+          "domain_prefix": "C",
+          "title_en": "Jobs scarce: Employers should give priority to (nation) people than immigrants (3 categories)",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1727,
+          "n_pct_valid": 99.2,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        }
+      ]
+    },
+    "D": {
+      "label": "Family",
+      "items": [
+        {
+          "qcode": "Q27",
+          "acode": "D054",
+          "domain_prefix": "D",
+          "title_en": "One of main goals in life has been to make my parents proud",
+          "title_es": "Uno de mis principales objetivos en la vida ha sido hacer que mis",
+          "scale_text": "1=Muy de acuerdo; 2=De acuerdo; 3=En desacuerdo; 4=Muy en desacuerdo",
+          "n_valid": 1737,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q28",
+          "acode": "D061",
+          "domain_prefix": "D",
+          "title_en": "Pre-school child suffers with working mother",
+          "title_es": "Cuando una madre tiene un trabajo pagado, los hijos sufren",
+          "scale_text": "1=Muy de acuerdo; 2=De acuerdo; 3=En desacuerdo; 4=Muy en desacuerdo",
+          "n_valid": 1731,
+          "n_pct_valid": 99.4,
+          "wave_coverage": [
+            2,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": [
+            "Gender Egalitarianism"
+          ]
+        },
+        {
+          "qcode": "Q29",
+          "acode": "D059",
+          "domain_prefix": "D",
+          "title_en": "Men make better political leaders than women do",
+          "title_es": "En general, los hombres son mejores líderes políticos",
+          "scale_text": "1=Muy de acuerdo; 2=De acuerdo; 3=En desacuerdo; 4=Muy en desacuerdo",
+          "n_valid": 1730,
+          "n_pct_valid": 99.4,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": [
+            "EVI Equality",
+            "Gender Egalitarianism",
+            "RWA (proxy)"
+          ]
+        },
+        {
+          "qcode": "Q30",
+          "acode": "D060",
+          "domain_prefix": "D",
+          "title_en": "University is more important for a boy than for a girl",
+          "title_es": "Una educación universitaria es más importante para un",
+          "scale_text": "1=Muy de acuerdo; 2=De acuerdo; 3=En desacuerdo; 4=Muy en desacuerdo",
+          "n_valid": 1733,
+          "n_pct_valid": 99.5,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": [
+            "EVI Equality",
+            "Gender Egalitarianism"
+          ]
+        },
+        {
+          "qcode": "Q31",
+          "acode": "D078",
+          "domain_prefix": "D",
+          "title_en": "Men make better business executives than women do",
+          "title_es": "En general, los hombres son mejores ejecutivos de empresas",
+          "scale_text": "1=Muy de acuerdo; 2=De acuerdo; 3=En desacuerdo; 4=Muy en desacuerdo",
+          "n_valid": 1725,
+          "n_pct_valid": 99.1,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": [
+            "Gender Egalitarianism"
+          ]
+        },
+        {
+          "qcode": "Q32",
+          "acode": "D057",
+          "domain_prefix": "D",
+          "title_en": "Being a housewife just as fulfilling",
+          "title_es": "Ser ama de casa es tan satisfactorio como tener un empleo pagado",
+          "scale_text": "1=Muy de acuerdo; 2=De acuerdo; 3=En desacuerdo; 4=Muy en desacuerdo",
+          "n_valid": 1707,
+          "n_pct_valid": 98.0,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q35",
+          "acode": "D066_01",
+          "domain_prefix": "D",
+          "title_en": "Problem if women have more income than husband (5 categories)",
+          "title_es": "Si una mujer gana más que su marido, es casi seguro que eso le",
+          "scale_text": "1=Muy de acuerdo; 2=De acuerdo; 3=Ni de acuerdo ni en desacuerdo;",
+          "n_valid": 1725,
+          "n_pct_valid": 99.1,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q36",
+          "acode": "D081",
+          "domain_prefix": "D",
+          "title_en": "Homosexual couples are as good parents as other couples",
+          "title_es": "Las parejas homosexuales son tan buenos padres",
+          "scale_text": "1=Muy de acuerdo; 2=De acuerdo;",
+          "n_valid": 1663,
+          "n_pct_valid": 95.5,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q37",
+          "acode": "D026_03",
+          "domain_prefix": "D",
+          "title_en": "Duty towards society to have children",
+          "title_es": "Tener hijos es un deber para con la sociedad",
+          "scale_text": "1=Muy de acuerdo; 2=De acuerdo;",
+          "n_valid": 1725,
+          "n_pct_valid": 99.1,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q38",
+          "acode": "D026_05",
+          "domain_prefix": "D",
+          "title_en": "It is childs duty to take care of ill parent",
+          "title_es": "Los hijos adultos tienen el deber de proporcionar un cuidado",
+          "scale_text": "1=Muy de acuerdo; 2=De acuerdo;",
+          "n_valid": 1731,
+          "n_pct_valid": 99.4,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q58",
+          "acode": "D001_B",
+          "domain_prefix": "D",
+          "title_en": "How much you trust: Your family (B)",
+          "title_es": "Su familia",
+          "scale_text": "1=Confía completamente; 2=Confía algo; 3=Confía poco; 4=No confía nada",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q35_3",
+          "acode": "D066_B",
+          "domain_prefix": "D",
+          "title_en": "Problem if women have more income than husband (3 categories)",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1725,
+          "n_pct_valid": 99.1,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        }
+      ]
+    },
+    "E": {
+      "label": "Politics & Society",
+      "items": [
+        {
+          "qcode": "Q42",
+          "acode": "E034",
+          "domain_prefix": "E",
+          "title_en": "Basic kinds of attitudes concerning society",
+          "title_es": "(TARJETA 4) En esta tarjeta puede ver tres tipos fundamentales",
+          "scale_text": "1=Muy de acuerdo; 2=De acuerdo;",
+          "n_valid": 1708,
+          "n_pct_valid": 98.1,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q43",
+          "acode": "E015",
+          "domain_prefix": "E",
+          "title_en": "Future changes: Less importance placed on work",
+          "title_es": "Menos importancia al trabajo en nuestras vidas",
+          "scale_text": "1=Bueno; 2=Le da igual; 3=Malo",
+          "n_valid": 1734,
+          "n_pct_valid": 99.6,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q44",
+          "acode": "E016",
+          "domain_prefix": "E",
+          "title_en": "Future changes: More emphasis on technology",
+          "title_es": "Mayor énfasis al desarrollo de la tecnología",
+          "scale_text": "1=Bueno; 2=Le da igual; 3=Malo",
+          "n_valid": 1721,
+          "n_pct_valid": 98.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q45",
+          "acode": "E018",
+          "domain_prefix": "E",
+          "title_en": "Future changes: Greater respect for authority",
+          "title_es": "Mayor respeto por la autoridad",
+          "scale_text": "1=Bueno; 2=Le da igual; 3=Malo",
+          "n_valid": 1727,
+          "n_pct_valid": 99.2,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Traditional/Secular-Rational",
+            "RWA (proxy)"
+          ]
+        },
+        {
+          "qcode": "Q56",
+          "acode": "E277",
+          "domain_prefix": "E",
+          "title_en": "Standard of living comparing with your parents",
+          "title_es": "Comparando su nivel de vida con el nivel de vida de sus padres cuando tenían su edad, ¿diría que las condiciones de usted son mejores, son peores o más o menos iguales?",
+          "scale_text": "1=Frecuentemente; 2=A veces; 3=Rara vez; 4=Nunca",
+          "n_valid": 1734,
+          "n_pct_valid": 99.6,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q64",
+          "acode": "E069_01",
+          "domain_prefix": "E",
+          "title_en": "Confidence: Churches",
+          "title_es": "Las iglesias",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1736,
+          "n_pct_valid": 99.7,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Confidence in Institutions"
+          ]
+        },
+        {
+          "qcode": "Q65",
+          "acode": "E069_02",
+          "domain_prefix": "E",
+          "title_en": "Confidence: Armed Forces",
+          "title_es": "El ejército",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1728,
+          "n_pct_valid": 99.3,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Confidence in Institutions"
+          ]
+        },
+        {
+          "qcode": "Q66",
+          "acode": "E069_04",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The Press",
+          "title_es": "La prensa",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1727,
+          "n_pct_valid": 99.2,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Confidence in Institutions"
+          ]
+        },
+        {
+          "qcode": "Q67",
+          "acode": "E069_10",
+          "domain_prefix": "E",
+          "title_en": "Confidence: Television",
+          "title_es": "La televisión",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1737,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q68",
+          "acode": "E069_05",
+          "domain_prefix": "E",
+          "title_en": "Confidence: Labour Unions",
+          "title_es": "Los sindicatos",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1703,
+          "n_pct_valid": 97.8,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Confidence in Institutions",
+            "Political Trust (Zmerli)"
+          ]
+        },
+        {
+          "qcode": "Q69",
+          "acode": "E069_06",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The Police",
+          "title_es": "La policía",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1737,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Confidence in Institutions",
+            "Political Trust (Zmerli)"
+          ]
+        },
+        {
+          "qcode": "Q70",
+          "acode": "E069_17",
+          "domain_prefix": "E",
+          "title_en": "Confidence: Justice System/Courts",
+          "title_es": "Los tribunales y juzgados",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1717,
+          "n_pct_valid": 98.6,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": [
+            "Confidence in Institutions",
+            "Political Trust (Zmerli)"
+          ]
+        },
+        {
+          "qcode": "Q71",
+          "acode": "E069_11",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The Government",
+          "title_es": "El gobierno",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1738,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": [
+            "Confidence in Institutions"
+          ]
+        },
+        {
+          "qcode": "Q72",
+          "acode": "E069_12",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The Political Parties",
+          "title_es": "Los partidos políticos",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": [
+            "Confidence in Institutions"
+          ]
+        },
+        {
+          "qcode": "Q73",
+          "acode": "E069_07",
+          "domain_prefix": "E",
+          "title_en": "Confidence: Parliament",
+          "title_es": "El Congreso",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1720,
+          "n_pct_valid": 98.8,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Confidence in Institutions"
+          ]
+        },
+        {
+          "qcode": "Q74",
+          "acode": "E069_08",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The Civil Services",
+          "title_es": "La burocracia pública",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1697,
+          "n_pct_valid": 97.5,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Confidence in Institutions"
+          ]
+        },
+        {
+          "qcode": "Q75",
+          "acode": "E069_54",
+          "domain_prefix": "E",
+          "title_en": "Confidence: Universities",
+          "title_es": "Las universidades",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1721,
+          "n_pct_valid": 98.9,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q76",
+          "acode": "E069_64",
+          "domain_prefix": "E",
+          "title_en": "Confidence: Elections",
+          "title_es": "Las elecciones",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1729,
+          "n_pct_valid": 99.3,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q77",
+          "acode": "E069_13",
+          "domain_prefix": "E",
+          "title_en": "Confidence: Major Companies",
+          "title_es": "Las grandes empresas",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1713,
+          "n_pct_valid": 98.4,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Confidence in Institutions"
+          ]
+        },
+        {
+          "qcode": "Q78",
+          "acode": "E069_41",
+          "domain_prefix": "E",
+          "title_en": "Confidence: Banks",
+          "title_es": "Los bancos",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1720,
+          "n_pct_valid": 98.8,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q79",
+          "acode": "E069_14",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The Environmental Protection Movement",
+          "title_es": "Las organizaciones",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1696,
+          "n_pct_valid": 97.4,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": [
+            "Confidence in Institutions"
+          ]
+        },
+        {
+          "qcode": "Q80",
+          "acode": "E069_15",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The Women´s Movement",
+          "title_es": "Las organizaciones de mujeres",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1693,
+          "n_pct_valid": 97.2,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q81",
+          "acode": "E069_40",
+          "domain_prefix": "E",
+          "title_en": "Confidence: Charitable or humanitarian organizations",
+          "title_es": "Las organizaciones de caridad o humanitarias",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1691,
+          "n_pct_valid": 97.1,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q82",
+          "acode": "E069_18A",
+          "domain_prefix": "E",
+          "title_en": "Confidence: Major regional organization (combined from country-specific)",
+          "title_es": "El Tratado de Libre Comercio de América del Norte, TLCAN",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1589,
+          "n_pct_valid": 91.3,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q83",
+          "acode": "E069_20",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The United Nations",
+          "title_es": "La Organización de las Naciones Unidas, ONU",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1600,
+          "n_pct_valid": 91.9,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q84",
+          "acode": "E069_45",
+          "domain_prefix": "E",
+          "title_en": "Confidence: International Monetary Found (IMF)",
+          "title_es": "El Fondo Monetario Internacional, FMI",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1540,
+          "n_pct_valid": 88.5,
+          "wave_coverage": [
+            5,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q85",
+          "acode": "E069_65",
+          "domain_prefix": "E",
+          "title_en": "Confidence: International Criminal Court (ICC)",
+          "title_es": "La Corte Penal Internacional",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1551,
+          "n_pct_valid": 89.1,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q86",
+          "acode": "E069_19",
+          "domain_prefix": "E",
+          "title_en": "Confidence: NATO",
+          "title_es": "La Organización del Tratado del Atlántico Norte (OTAN)",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1495,
+          "n_pct_valid": 85.9,
+          "wave_coverage": [
+            2,
+            4,
+            5,
+            7
+          ],
+          "n_waves": 4,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q87",
+          "acode": "E069_63",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The World Bank",
+          "title_es": "El Banco Mundial",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1604,
+          "n_pct_valid": 92.1,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": [
+            "Confidence in Institutions"
+          ]
+        },
+        {
+          "qcode": "Q88",
+          "acode": "E069_62",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The World Health Organization (WHO)",
+          "title_es": "La Organización Mundial de la Salud",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1666,
+          "n_pct_valid": 95.7,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": [
+            "Confidence in Institutions"
+          ]
+        },
+        {
+          "qcode": "Q89",
+          "acode": "E069_61",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The World Trade Organization (WTO)",
+          "title_es": "La Organización Mundial del Comercio M89 El Instituto NacionalElectoral, INE",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1627,
+          "n_pct_valid": 93.5,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": [
+            "Confidence in Institutions"
+          ]
+        },
+        {
+          "qcode": "Q90",
+          "acode": "E278",
+          "domain_prefix": "E",
+          "title_en": "Should international organizations prioritize, being effective or being democratic",
+          "title_es": "(TARJETA 7) Algunas personas dicen que las organizaciones internacionales",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1714,
+          "n_pct_valid": 98.4,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q91",
+          "acode": "E279",
+          "domain_prefix": "E",
+          "title_en": "Five countries have permanent seats on the Security Council of the United Nations. Which ones of the following is not a member?",
+          "title_es": "Cinco países tienen asientos permanentes en el Consejo de",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 910,
+          "n_pct_valid": 52.3,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q92",
+          "acode": "E280",
+          "domain_prefix": "E",
+          "title_en": "Where are the headquarters of the International Monetary Fund (IMF) located?",
+          "title_es": "¿Dónde está la sede del Fondo Monetario Internacional, FMI?",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 894,
+          "n_pct_valid": 51.3,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q93",
+          "acode": "E281",
+          "domain_prefix": "E",
+          "title_en": "Which of the following problems does the organization Amnesty International deal with?",
+          "title_es": "¿Con cuál de los siguientes asuntos trabaja la organización",
+          "scale_text": "1=Frecuentemente; 2=A veces; 3=Rara vez; 4=Nunca",
+          "n_valid": 1054,
+          "n_pct_valid": 60.5,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q106",
+          "acode": "E035",
+          "domain_prefix": "E",
+          "title_en": "Income equality",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1728,
+          "n_pct_valid": 99.3,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q107",
+          "acode": "E036",
+          "domain_prefix": "E",
+          "title_en": "Private vs state ownership of business",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1670,
+          "n_pct_valid": 95.9,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q108",
+          "acode": "E037",
+          "domain_prefix": "E",
+          "title_en": "Government responsibility",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1729,
+          "n_pct_valid": 99.3,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q109",
+          "acode": "E039",
+          "domain_prefix": "E",
+          "title_en": "Competition good or harmful",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1729,
+          "n_pct_valid": 99.3,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q110",
+          "acode": "E040",
+          "domain_prefix": "E",
+          "title_en": "Hard work brings success",
+          "title_es": "A la larga, trabajar duro generalmente",
+          "scale_text": "1=Mucha; 2=Algo; 3=Poca; 4=Nada",
+          "n_valid": 1726,
+          "n_pct_valid": 99.1,
+          "wave_coverage": [
+            2,
+            3,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q112",
+          "acode": "E268",
+          "domain_prefix": "E",
+          "title_en": "Scale corruption in [my country] - pay a bribe, give a gift, do a favor to other to get things",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q113",
+          "acode": "E269",
+          "domain_prefix": "E",
+          "title_en": "Groups of people involved in corruption: State authorities",
+          "title_es": "Autoridades del Gobierno",
+          "scale_text": "1=Sí; 2=No",
+          "n_valid": 1724,
+          "n_pct_valid": 99.0,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q114",
+          "acode": "E270",
+          "domain_prefix": "E",
+          "title_en": "Groups of people involved in corruption: Business executives",
+          "title_es": "Ejecutivos de empresas",
+          "scale_text": "1=Sí; 2=No",
+          "n_valid": 1703,
+          "n_pct_valid": 97.8,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q115",
+          "acode": "E271",
+          "domain_prefix": "E",
+          "title_en": "Groups of people involved in corruption: Local authorities",
+          "title_es": "Autoridades locales",
+          "scale_text": "1=Sí; 2=No",
+          "n_valid": 1710,
+          "n_pct_valid": 98.2,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q116",
+          "acode": "E272",
+          "domain_prefix": "E",
+          "title_en": "Groups of people involved in corruption: Civil service providers (police, judiciary, civil servants, doctors, teachers)",
+          "title_es": "Los prestadores de servicios públicos (policía, juzgados, -",
+          "scale_text": "1=Sí; 2=No",
+          "n_valid": 1716,
+          "n_pct_valid": 98.6,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q117",
+          "acode": "E273",
+          "domain_prefix": "E",
+          "title_en": "Groups of people involved in corruption: Journalists and media",
+          "title_es": "Periodistas y medios de comunicación",
+          "scale_text": "1=Sí; 2=No",
+          "n_valid": 1695,
+          "n_pct_valid": 97.4,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q118",
+          "acode": "E274",
+          "domain_prefix": "E",
+          "title_en": "Frequency ordinary people pay a bribe, give a gift or do a favor to local officials/service providers in order to get services",
+          "title_es": "Queremos saber acerca de su experiencia con funcionarios locales",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1721,
+          "n_pct_valid": 98.9,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q119",
+          "acode": "E275",
+          "domain_prefix": "E",
+          "title_en": "Degree of agreement: On the whole, women are less corrupt than men",
+          "title_es": "¿Qué tan de acuerdo o en desacuerdo está usted con la siguiente",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1727,
+          "n_pct_valid": 99.2,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q120",
+          "acode": "E276",
+          "domain_prefix": "E",
+          "title_en": "Risk in this country to be held accountable for giving or receiving a bribe, gift or favor in return for public service",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1727,
+          "n_pct_valid": 99.2,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q130",
+          "acode": "E143",
+          "domain_prefix": "E",
+          "title_en": "Immigrant policy",
+          "title_es": "Respecto a las personas de otros países que vienen a trabajar aquí, ¿qué cree usted que debería hacer el gobierno? (Leer)",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1722,
+          "n_pct_valid": 98.9,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            7
+          ],
+          "n_waves": 4,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q151",
+          "acode": "E012",
+          "domain_prefix": "E",
+          "title_en": "Willingness to fight for country",
+          "title_es": "Todos esperamos que no haya una guerra, pero si la hubiera,",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1697,
+          "n_pct_valid": 97.5,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q152",
+          "acode": "E001",
+          "domain_prefix": "E",
+          "title_en": "Aims of country: first choice",
+          "title_es": "¿Cuál sería para usted el objetivo más importante? (Leer 1 a 4)",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1735,
+          "n_pct_valid": 99.7,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": [
+            "Post-Materialist"
+          ]
+        },
+        {
+          "qcode": "Q153",
+          "acode": "E002",
+          "domain_prefix": "E",
+          "title_en": "Aims of country: second choice",
+          "title_es": "¿Y cuál sería para usted el segundo más importante? (Leer 1 a 4)",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1729,
+          "n_pct_valid": 99.3,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": [
+            "Post-Materialist"
+          ]
+        },
+        {
+          "qcode": "Q154",
+          "acode": "E003",
+          "domain_prefix": "E",
+          "title_en": "Aims of respondent: first choice",
+          "title_es": "(TARJETA 14) Si tuviera que escoger, ¿cuál de las cosas que",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1737,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Post-Materialist"
+          ]
+        },
+        {
+          "qcode": "Q155",
+          "acode": "E004",
+          "domain_prefix": "E",
+          "title_en": "Aims of respondent: second choice",
+          "title_es": "¿Y cuál sería para usted el segundo más importante? (Leer 1 a 4)",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1734,
+          "n_pct_valid": 99.6,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Post-Materialist"
+          ]
+        },
+        {
+          "qcode": "Q156",
+          "acode": "E005",
+          "domain_prefix": "E",
+          "title_en": "Most important: first choice",
+          "title_es": "(TARJETA 15) De esta otra lista, ¿qué es lo más importante?",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1735,
+          "n_pct_valid": 99.7,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q157",
+          "acode": "E006",
+          "domain_prefix": "E",
+          "title_en": "Most important: second choice",
+          "title_es": "¿Y qué sería lo segundo más importante? (Leer 1 a 4)",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1734,
+          "n_pct_valid": 99.6,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q158",
+          "acode": "E217",
+          "domain_prefix": "E",
+          "title_en": "Science and technology are making our lives healthier, easier, and more comfortable",
+          "title_es": "La ciencia y la tecnología están haciendo que nuestras vidas sean",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1733,
+          "n_pct_valid": 99.5,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q159",
+          "acode": "E218",
+          "domain_prefix": "E",
+          "title_en": "Because of science and technology, there will be more opportunities for the next generation",
+          "title_es": "Gracias a la ciencia y la tecnología habrá más oportunidades para",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1730,
+          "n_pct_valid": 99.4,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q160",
+          "acode": "E220",
+          "domain_prefix": "E",
+          "title_en": "We depend too much on science and not enough on faith",
+          "title_es": "Dependemos demasiado de la ciencia y no lo suficiente de la fe.",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1726,
+          "n_pct_valid": 99.1,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q163",
+          "acode": "E234",
+          "domain_prefix": "E",
+          "title_en": "The world is better off, or worse off, because of science and technology",
+          "title_es": "En general, ¿diría usted que el mundo está mejor o peor a causa de",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1733,
+          "n_pct_valid": 99.5,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q194",
+          "acode": "E290",
+          "domain_prefix": "E",
+          "title_en": "Justifiable: Political violence",
+          "title_es": "La violencia política",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1712,
+          "n_pct_valid": 98.3,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q199",
+          "acode": "E023",
+          "domain_prefix": "E",
+          "title_en": "Interest in politics",
+          "title_es": "¿Qué tan interesado está usted en la política? (LEER)",
+          "scale_text": "1=Muy de acuerdo 2=De acuerdo; 3=En desacuerdo; 4=Muy en desacuerdo",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q201",
+          "acode": "E248B",
+          "domain_prefix": "E",
+          "title_en": "Information source: Daily newspaper (B)",
+          "title_es": "Periódico",
+          "scale_text": "1=Diario;2=Semanalmente; 3=1 vez al mes; 4=Menos de una vez al mes; 5=Nunca",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q202",
+          "acode": "E258B",
+          "domain_prefix": "E",
+          "title_en": "Information source: TV news (B)",
+          "title_es": "Noticiarios en televisión",
+          "scale_text": "1=Diario;2=Semanalmente; 3=1 vez al mes; 4=Menos de una vez al mes; 5=Nunca",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q203",
+          "acode": "E259B",
+          "domain_prefix": "E",
+          "title_en": "Information source: Radio news (B)",
+          "title_es": "Noticiarios de radio",
+          "scale_text": "1=Diario;2=Semanalmente; 3=1 vez al mes; 4=Menos de una vez al mes; 5=Nunca",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q204",
+          "acode": "E260B",
+          "domain_prefix": "E",
+          "title_en": "Information source: Mobile phone (B)",
+          "title_es": "Teléfono móvil",
+          "scale_text": "1=Diario;2=Semanalmente; 3=1 vez al mes; 4=Menos de una vez al mes; 5=Nunca",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q205",
+          "acode": "E261B",
+          "domain_prefix": "E",
+          "title_en": "Information source: Email (B)",
+          "title_es": "Correo electrónico",
+          "scale_text": "1=Diario;2=Semanalmente; 3=1 vez al mes; 4=Menos de una vez al mes; 5=Nunca",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q206",
+          "acode": "E262B",
+          "domain_prefix": "E",
+          "title_en": "Information source: Internet (B)",
+          "title_es": "Internet",
+          "scale_text": "1=Diario;2=Semanalmente; 3=1 vez al mes; 4=Menos de una vez al mes; 5=Nunca",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q207",
+          "acode": "E253B",
+          "domain_prefix": "E",
+          "title_en": "Information source: Social media (Facebook, Twitter, etc.)",
+          "title_es": "Redes sociales (Facebook, Twitter, etc)",
+          "scale_text": "1=Diario;2=Semanalmente; 3=1 vez al mes; 4=Menos de una vez al mes; 5=Nunca",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q208",
+          "acode": "E254B",
+          "domain_prefix": "E",
+          "title_en": "Information source: Talk with friends or colleagues (B)",
+          "title_es": "Hablando con amigos o compañeros",
+          "scale_text": "1=Diario;2=Semanalmente; 3=1 vez al mes; 4=Menos de una vez al mes; 5=Nunca",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q209",
+          "acode": "E025",
+          "domain_prefix": "E",
+          "title_en": "Political action: Signing a petition",
+          "title_es": "Firmar una petición o iniciativa",
+          "scale_text": "1=La ha hecho; 2=La podría hacer; 3=Nunca lo haría",
+          "n_valid": 1733,
+          "n_pct_valid": 99.5,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Survival/Self-Expression",
+            "EVI Voice",
+            "Social Capital"
+          ]
+        },
+        {
+          "qcode": "Q210",
+          "acode": "E026",
+          "domain_prefix": "E",
+          "title_en": "Political action: joining in boycotts",
+          "title_es": "Unirse a boicots",
+          "scale_text": "1=La ha hecho; 2=La podría hacer; 3=Nunca lo haría",
+          "n_valid": 1718,
+          "n_pct_valid": 98.7,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "EVI Voice",
+            "Social Capital"
+          ]
+        },
+        {
+          "qcode": "Q211",
+          "acode": "E027",
+          "domain_prefix": "E",
+          "title_en": "Political action: attending lawful/peaceful demonstrations",
+          "title_es": "Asistir a manifestaciones pacíficas",
+          "scale_text": "1=La ha hecho; 2=La podría hacer; 3=Nunca lo haría",
+          "n_valid": 1733,
+          "n_pct_valid": 99.5,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "EVI Voice",
+            "Social Capital"
+          ]
+        },
+        {
+          "qcode": "Q212",
+          "acode": "E028",
+          "domain_prefix": "E",
+          "title_en": "Political action: joining unofficial strikes",
+          "title_es": "Unirse a huelgas M212 Asistir a una protesta o evento político convocado por",
+          "scale_text": "1=La ha hecho; 2=La podría hacer; 3=Nunca lo haría",
+          "n_valid": 1729,
+          "n_pct_valid": 99.3,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q213",
+          "acode": "E286",
+          "domain_prefix": "E",
+          "title_en": "Social activism: Donating to a group or campaign",
+          "title_es": "Hacer donaciones a un partido o campaña",
+          "scale_text": "1=Ha hecho; 2=Podría hacer; 3=Nunca lo haría",
+          "n_valid": 1725,
+          "n_pct_valid": 99.1,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q214",
+          "acode": "E287",
+          "domain_prefix": "E",
+          "title_en": "Social activism: Contacting a government official",
+          "title_es": "Contactar a un funcionario del gobierno",
+          "scale_text": "1=Ha hecho; 2=Podría hacer; 3=Nunca lo haría",
+          "n_valid": 1725,
+          "n_pct_valid": 99.1,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q215",
+          "acode": "E288",
+          "domain_prefix": "E",
+          "title_en": "Social activism: Encouraging others to take action about political issues",
+          "title_es": "Alentar a otros a actuar en asuntos políticos",
+          "scale_text": "1=Ha hecho; 2=Podría hacer; 3=Nunca lo haría",
+          "n_valid": 1724,
+          "n_pct_valid": 99.0,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q216",
+          "acode": "E289",
+          "domain_prefix": "E",
+          "title_en": "Social activism: Encouraging others to vote",
+          "title_es": "Alentar a otros a votar",
+          "scale_text": "1=Ha hecho; 2=Podría hacer; 3=Nunca lo haría",
+          "n_valid": 1726,
+          "n_pct_valid": 99.1,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q217",
+          "acode": "E282",
+          "domain_prefix": "E",
+          "title_en": "Political actions using Internet: Searching information about politics and political events",
+          "title_es": "Buscar información sobre política y eventos políticos",
+          "scale_text": "1=Ha hecho; 2=Podría hacer; 3=Nunca lo haría",
+          "n_valid": 1663,
+          "n_pct_valid": 95.5,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q218",
+          "acode": "E283",
+          "domain_prefix": "E",
+          "title_en": "Political actions using Internet: Signing an electronic petition",
+          "title_es": "Firmar una petición electrónica",
+          "scale_text": "1=Ha hecho; 2=Podría hacer; 3=Nunca lo haría",
+          "n_valid": 1657,
+          "n_pct_valid": 95.2,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q219",
+          "acode": "E284",
+          "domain_prefix": "E",
+          "title_en": "Political actions using Internet: Encouraging other people to take any form of political action",
+          "title_es": "Alentar a otros a tomar alguna acción política",
+          "scale_text": "1=Ha hecho; 2=Podría hacer; 3=Nunca lo haría",
+          "n_valid": 1658,
+          "n_pct_valid": 95.2,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q220",
+          "acode": "E285",
+          "domain_prefix": "E",
+          "title_en": "Political actions using Internet: Organizing political activities, events, protests",
+          "title_es": "Organizar actividades, eventos o protestas políticas",
+          "scale_text": "1=Ha hecho; 2=Podría hacer; 3=Nunca lo haría",
+          "n_valid": 1658,
+          "n_pct_valid": 95.2,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q221",
+          "acode": "E263",
+          "domain_prefix": "E",
+          "title_en": "Vote in elections: local level",
+          "title_es": "A nivel local",
+          "scale_text": "1=Siempre; 2=A veces; 3=Nunca; 4=No se les permite",
+          "n_valid": 1736,
+          "n_pct_valid": 99.7,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q222",
+          "acode": "E264",
+          "domain_prefix": "E",
+          "title_en": "Vote in elections: National level",
+          "title_es": "A nivel nacional",
+          "scale_text": "1=Siempre; 2=A veces; 3=Nunca; 4=No se les permite",
+          "n_valid": 1717,
+          "n_pct_valid": 98.6,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q223",
+          "acode": "E179WVS",
+          "domain_prefix": "E",
+          "title_en": "Which party would you vote for: first choice (WVS)",
+          "title_es": "(TARJETA 24) Si mañana hubiera elecciones, ¿por cuál partido",
+          "scale_text": "1=Siempre; 2=A veces; 3=Nunca; 4=No se les permite",
+          "n_valid": 1630,
+          "n_pct_valid": 93.6,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q224",
+          "acode": "E265_01",
+          "domain_prefix": "E",
+          "title_en": "How often in country's elections: Votes are counted fairly",
+          "title_es": "Los votos se cuentan limpiamente",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1706,
+          "n_pct_valid": 98.0,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q225",
+          "acode": "E265_02",
+          "domain_prefix": "E",
+          "title_en": "How often in country's elections: Opposition candidates are prevented from running",
+          "title_es": "Se prohíbe competir a candidatos de la oposición",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1668,
+          "n_pct_valid": 95.8,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q226",
+          "acode": "E265_03",
+          "domain_prefix": "E",
+          "title_en": "How often in country's elections: TV news favors the governing party",
+          "title_es": "Los noticieros de televisión favorecen al partido gobernante",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1696,
+          "n_pct_valid": 97.4,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q227",
+          "acode": "E265_04",
+          "domain_prefix": "E",
+          "title_en": "How often in country's elections: Voters are bribed",
+          "title_es": "Hay compra de votos",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1703,
+          "n_pct_valid": 97.8,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q228",
+          "acode": "E265_05",
+          "domain_prefix": "E",
+          "title_en": "How often in country's elections: Journalists provide fair coverage of elections",
+          "title_es": "Los medios hacen una cobertura objetiva de las elecciones",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1687,
+          "n_pct_valid": 96.9,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q229",
+          "acode": "E265_06",
+          "domain_prefix": "E",
+          "title_en": "How often in country's elections: Election officials are fair",
+          "title_es": "Las autoridades electorales son justas",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1702,
+          "n_pct_valid": 97.8,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q230",
+          "acode": "E265_07",
+          "domain_prefix": "E",
+          "title_en": "How often in country's elections: Rich people buy elections",
+          "title_es": "Los ricos compran las elecciones",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1677,
+          "n_pct_valid": 96.3,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q231",
+          "acode": "E265_08",
+          "domain_prefix": "E",
+          "title_en": "How often in country's elections: Voters are threatened with  violence at the polls",
+          "title_es": "Se amenaza a los votantes con violencia en las urnas",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1686,
+          "n_pct_valid": 96.8,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q232",
+          "acode": "E265_09",
+          "domain_prefix": "E",
+          "title_en": "How often in country's elections: Voters are offered a genuine choice in the elections",
+          "title_es": "Los votantes tienen opciones reales entre las cuales elegir",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1692,
+          "n_pct_valid": 97.2,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q233",
+          "acode": "E265_10",
+          "domain_prefix": "E",
+          "title_en": "How often in country´s elections: Women have equal opportunities to run the office",
+          "title_es": "Las mujeres tienen igualdad de oportunidades para ser",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1707,
+          "n_pct_valid": 98.0,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q234",
+          "acode": "E266",
+          "domain_prefix": "E",
+          "title_en": "Some people think that having honest elections makes a lot of difference in their lives;  other people think that it doesn’t matter much",
+          "title_es": "Algunas personas piensan que tener elecciones limpias hace",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1737,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q235",
+          "acode": "E114",
+          "domain_prefix": "E",
+          "title_en": "Political system: Having a strong leader",
+          "title_es": "Tener un líder fuerte que no se moleste por el congreso y las elecciones",
+          "scale_text": "1=Muy buena; 2=Algo buena; 3=Algo mala; 4=Muy mala",
+          "n_valid": 1693,
+          "n_pct_valid": 97.2,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": [
+            "Autocracy Support (Foa & Mounk)"
+          ]
+        },
+        {
+          "qcode": "Q236",
+          "acode": "E115",
+          "domain_prefix": "E",
+          "title_en": "Political system: Having experts make decisions",
+          "title_es": "Tener expertos, no un gobierno, que tomen decisiones de",
+          "scale_text": "1=Muy buena; 2=Algo buena; 3=Algo mala; 4=Muy mala",
+          "n_valid": 1695,
+          "n_pct_valid": 97.4,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": [
+            "Autocracy Support (Foa & Mounk)"
+          ]
+        },
+        {
+          "qcode": "Q237",
+          "acode": "E116",
+          "domain_prefix": "E",
+          "title_en": "Political system: Having the army rule",
+          "title_es": "Tener un gobierno militar",
+          "scale_text": "1=Muy buena; 2=Algo buena; 3=Algo mala; 4=Muy mala",
+          "n_valid": 1694,
+          "n_pct_valid": 97.3,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": [
+            "Autocracy Support (Foa & Mounk)"
+          ]
+        },
+        {
+          "qcode": "Q238",
+          "acode": "E117",
+          "domain_prefix": "E",
+          "title_en": "Political system: Having a democratic political system",
+          "title_es": "Tener un sistema político democrático",
+          "scale_text": "1=Muy buena; 2=Algo buena; 3=Algo mala; 4=Muy mala",
+          "n_valid": 1704,
+          "n_pct_valid": 97.9,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": [
+            "Autocracy Support (Foa & Mounk)"
+          ]
+        },
+        {
+          "qcode": "Q239",
+          "acode": "E117B",
+          "domain_prefix": "E",
+          "title_en": "Political system: Having a system governed by religious law in which there are no political parties or elections",
+          "title_es": "Tener un sistema de gobierno con base a leyes religiosas",
+          "scale_text": "1=Muy buena; 2=Algo buena; 3=Algo mala; 4=Muy mala",
+          "n_valid": 1679,
+          "n_pct_valid": 96.4,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q240",
+          "acode": "E033",
+          "domain_prefix": "E",
+          "title_en": "Self positioning in political scale",
+          "title_es": "(TARJETA 25) En temas políticos la gente habla de “la izquierda” y “la derecha”. En general, ¿cómo colocaría usted sus puntos de vista en esta escala?",
+          "scale_text": "1=Muy buena; 2=Algo buena; 3=Algo mala; 4=Muy mala",
+          "n_valid": 1586,
+          "n_pct_valid": 91.1,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q241",
+          "acode": "E224",
+          "domain_prefix": "E",
+          "title_en": "Democracy: Governments tax the rich and subsidize the poor.",
+          "title_es": "Los gobiernos cobran impuestos a los ricos y subsidian a los pobres",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1704,
+          "n_pct_valid": 97.9,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q242",
+          "acode": "E225",
+          "domain_prefix": "E",
+          "title_en": "Democracy: Religious authorities interpret the laws.",
+          "title_es": "Las leyes son interpretadas al final por las autoridades religiosas",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1691,
+          "n_pct_valid": 97.1,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q243",
+          "acode": "E226",
+          "domain_prefix": "E",
+          "title_en": "Democracy: People choose their leaders in free elections.",
+          "title_es": "La gente elige a sus líderes a través de elecciones libres",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1703,
+          "n_pct_valid": 97.8,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": [
+            "Autocracy Support (Foa & Mounk)"
+          ]
+        },
+        {
+          "qcode": "Q244",
+          "acode": "E227",
+          "domain_prefix": "E",
+          "title_en": "Democracy: People receive state aid for unemployment.",
+          "title_es": "La gente recibe asistencia del gobierno por desempleo",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1697,
+          "n_pct_valid": 97.5,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": [
+            "Autocracy Support (Foa & Mounk)"
+          ]
+        },
+        {
+          "qcode": "Q245",
+          "acode": "E228",
+          "domain_prefix": "E",
+          "title_en": "Democracy: The army takes over when government is incompetent.",
+          "title_es": "El ejército toma el poder cuando el gobierno es incompetente",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1684,
+          "n_pct_valid": 96.7,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q246",
+          "acode": "E229",
+          "domain_prefix": "E",
+          "title_en": "Democracy: Civil rights protect people’s liberty against oppression.",
+          "title_es": "Los derechos civiles protegen a la gente de la opresión del Estado",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1669,
+          "n_pct_valid": 95.9,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q247",
+          "acode": "E233A",
+          "domain_prefix": "E",
+          "title_en": "Democracy: The state makes people's incomes equal",
+          "title_es": "El Estado procura la igualdad de ingresos de la gente",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1691,
+          "n_pct_valid": 97.1,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q248",
+          "acode": "E233B",
+          "domain_prefix": "E",
+          "title_en": "Democracy: People obey their rulers",
+          "title_es": "Las personas obedecen a sus gobernantes",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1686,
+          "n_pct_valid": 96.8,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q249",
+          "acode": "E233",
+          "domain_prefix": "E",
+          "title_en": "Democracy: Women have the same rights as men.",
+          "title_es": "Las mujeres tienen los mismos derechos que los hombres",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1702,
+          "n_pct_valid": 97.8,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q250",
+          "acode": "E235",
+          "domain_prefix": "E",
+          "title_en": "Importance of democracy",
+          "title_es": "(TARJETA 27) ¿Qué tan importante es para usted vivir en un país que es gobernado democráticamente? En esta escala donde 1 significa que \"no es nada importante\" y 10 significa \"absolutamente importante\", ¿qué postura tomaría usted?",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1731,
+          "n_pct_valid": 99.4,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q251",
+          "acode": "E236",
+          "domain_prefix": "E",
+          "title_en": "Democraticness in own country",
+          "title_es": "(TARJETA 28) ¿Qué tan democrático es el gobierno de México hoy en día?",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1722,
+          "n_pct_valid": 98.9,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q252",
+          "acode": "E111_01",
+          "domain_prefix": "E",
+          "title_en": "Satisfaction with the political system performance",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1730,
+          "n_pct_valid": 99.4,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q253",
+          "acode": "E124",
+          "domain_prefix": "E",
+          "title_en": "Respect for individual human rights nowadays",
+          "title_es": "¿Cuánto respeto considera usted que hay a los derechos",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1731,
+          "n_pct_valid": 99.4,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q82_AFRICANUNION",
+          "acode": "E069_67",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The African Union (AU)",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 0,
+          "n_pct_valid": 0.0,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q82_APEC",
+          "acode": "E069_29",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The APEC",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 0,
+          "n_pct_valid": 0.0,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q82_ARABLEAGUE",
+          "acode": "E069_21",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The Arab League",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 0,
+          "n_pct_valid": 0.0,
+          "wave_coverage": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 4,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q82_ASEAN",
+          "acode": "E069_22",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The Association of South East Asian Nations -ASEAN",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 0,
+          "n_pct_valid": 0.0,
+          "wave_coverage": [
+            3,
+            4,
+            6,
+            7
+          ],
+          "n_waves": 4,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q82_CIS",
+          "acode": "E069_43",
+          "domain_prefix": "E",
+          "title_en": "Confidence: CIS",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 0,
+          "n_pct_valid": 0.0,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q82_EU",
+          "acode": "E069_18",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The European Union",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 0,
+          "n_pct_valid": 0.0,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": [
+            "Confidence in Institutions"
+          ]
+        },
+        {
+          "qcode": "Q82_GULFCOOP",
+          "acode": "E069_59",
+          "domain_prefix": "E",
+          "title_en": "Confidence: Cooperation Council for the Arab states of Gulf (GCC)",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 0,
+          "n_pct_valid": 0.0,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q82_ISLCOOP",
+          "acode": "E069_55",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The Organization of the Islamic World",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 0,
+          "n_pct_valid": 0.0,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q82_MERCOSUR",
+          "acode": "E069_26",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The Mercosur",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 0,
+          "n_pct_valid": 0.0,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q82_NAFTA",
+          "acode": "E069_24",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The NAFTA",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 0,
+          "n_pct_valid": 0.0,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q82_OAS",
+          "acode": "E069_56",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The Organization of American States (OAE)",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 0,
+          "n_pct_valid": 0.0,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q82_SAARC",
+          "acode": "E069_27",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The SAARC",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 0,
+          "n_pct_valid": 0.0,
+          "wave_coverage": [
+            3,
+            4,
+            6,
+            7
+          ],
+          "n_waves": 4,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q82_TLC",
+          "acode": "E069_30",
+          "domain_prefix": "E",
+          "title_en": "Confidence: The Free Commerce Treaty (Tratado de libre comercio)",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1589,
+          "n_pct_valid": 91.3,
+          "wave_coverage": [
+            3,
+            4,
+            6,
+            7
+          ],
+          "n_waves": 4,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q82_UNDP",
+          "acode": "E069_66",
+          "domain_prefix": "E",
+          "title_en": "Confidence: UNDP United Nations Development Programme",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 0,
+          "n_pct_valid": 0.0,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q223_LOCAL",
+          "acode": "E179_WVS7LOC",
+          "domain_prefix": "E",
+          "title_en": "Which party would you vote for if there were a national election tomorrow (Local names)",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1630,
+          "n_pct_valid": 93.6,
+          "wave_coverage": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q234A",
+          "acode": "E291",
+          "domain_prefix": "E",
+          "title_en": "How much would you say the political system in your country allows people like you to have a say in what the government does?",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        }
+      ]
+    },
+    "F": {
+      "label": "Religion & Morale",
+      "items": [
+        {
+          "qcode": "Q164",
+          "acode": "F063",
+          "domain_prefix": "F",
+          "title_en": "How important is God in your life",
+          "title_es": "(TARJETA 17) ¿Qué tan importante es Dios en su vida? Indique en una esta tarjeta: el 10 significa muy importante y el 1 nada importante.",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q165",
+          "acode": "F050",
+          "domain_prefix": "F",
+          "title_en": "Believe in: God",
+          "title_es": "Dios",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q166",
+          "acode": "F051",
+          "domain_prefix": "F",
+          "title_en": "Believe in: life after death",
+          "title_es": "La vida después de la muerte",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1716,
+          "n_pct_valid": 98.6,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q167",
+          "acode": "F053",
+          "domain_prefix": "F",
+          "title_en": "Believe in: hell",
+          "title_es": "El infierno",
+          "scale_text": "1=Sí; 2=No",
+          "n_valid": 1728,
+          "n_pct_valid": 99.3,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ],
+          "n_waves": 6,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q168",
+          "acode": "F054",
+          "domain_prefix": "F",
+          "title_en": "Believe in: heaven",
+          "title_es": "El cielo",
+          "scale_text": "1=Sí; 2=No",
+          "n_valid": 1734,
+          "n_pct_valid": 99.6,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q169",
+          "acode": "F202",
+          "domain_prefix": "F",
+          "title_en": "Whenever science and religion conflict,  religion is always right",
+          "title_es": "Cuando la ciencia y la religión entran en conflicto, la religión",
+          "scale_text": "1=Muy de acuerdo 2=De acuerdo; 3=En desacuerdo; 4=Muy en desacuerdo",
+          "n_valid": 1700,
+          "n_pct_valid": 97.6,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q170",
+          "acode": "F203",
+          "domain_prefix": "F",
+          "title_en": "The only acceptable religion  is my religion",
+          "title_es": "La única religión aceptable es mi religión",
+          "scale_text": "1=Muy de acuerdo 2=De acuerdo; 3=En desacuerdo; 4=Muy en desacuerdo",
+          "n_valid": 1712,
+          "n_pct_valid": 98.3,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q171",
+          "acode": "F028",
+          "domain_prefix": "F",
+          "title_en": "How often do you attend religious services",
+          "title_es": "(TARJETA 18) Dejando aparte bodas, funerales, bautismos, etc. ¿Con qué frecuencia asiste usted a servicios religiosos?",
+          "scale_text": "1=Muy de acuerdo 2=De acuerdo; 3=En desacuerdo; 4=Muy en desacuerdo",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Religiosity (Norris & Inglehart)",
+            "CRS (approx)"
+          ]
+        },
+        {
+          "qcode": "Q172",
+          "acode": "F028B",
+          "domain_prefix": "F",
+          "title_en": "How often to you pray",
+          "title_es": "(TARJETA 19) Sin considerar bodas o funerales, ¿con qué",
+          "scale_text": "1=Muy de acuerdo 2=De acuerdo; 3=En desacuerdo; 4=Muy en desacuerdo",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q173",
+          "acode": "F034",
+          "domain_prefix": "F",
+          "title_en": "Religious person",
+          "title_es": "Independientemente de si va o no a la iglesia,",
+          "scale_text": "1=Muy de acuerdo 2=De acuerdo; 3=En desacuerdo; 4=Muy en desacuerdo",
+          "n_valid": 1738,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Traditional/Secular-Rational",
+            "Religiosity (Norris & Inglehart)"
+          ]
+        },
+        {
+          "qcode": "Q174",
+          "acode": "F200",
+          "domain_prefix": "F",
+          "title_en": "Meaning of religion: To follow religious norms and ceremonies vs To do good to other people",
+          "title_es": "¿Con cual de las siguientes frases está más de acuerdo?",
+          "scale_text": "1=Muy de acuerdo 2=De acuerdo; 3=En desacuerdo; 4=Muy en desacuerdo",
+          "n_valid": 1730,
+          "n_pct_valid": 99.4,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q175",
+          "acode": "F201",
+          "domain_prefix": "F",
+          "title_en": "Meaning of religion: To make sense of life after death vs To make sense of life in this world",
+          "title_es": "Y ¿con cual de las siguientes frases está usted más de acuerdo?",
+          "scale_text": "1=Diario;2=Semanalmente; 3=1 vez al mes; 4=Menos de una vez al mes; 5=Nunca",
+          "n_valid": 1724,
+          "n_pct_valid": 99.0,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q176",
+          "acode": "F206",
+          "domain_prefix": "F",
+          "title_en": "Degree of agreement: Nowadays one often has trouble deciding which moral rules are the right ones to follow",
+          "title_es": "En una escala del 1 al 10, donde 1 es completamente de acuerdo y 10",
+          "scale_text": "1=La ha hecho; 2=La podría hacer; 3=Nunca lo haría",
+          "n_valid": 1724,
+          "n_pct_valid": 99.0,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q177",
+          "acode": "F114A",
+          "domain_prefix": "F",
+          "title_en": "Justifiable: Claiming government benefits to which you are not entitled",
+          "title_es": "Exigir beneficios del gobierno a los que no se tiene derecho",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1719,
+          "n_pct_valid": 98.7,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q178",
+          "acode": "F115",
+          "domain_prefix": "F",
+          "title_en": "Justifiable: Avoiding a fare on public transport",
+          "title_es": "Evitar el pago de pasaje en el transporte público",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1721,
+          "n_pct_valid": 98.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q179",
+          "acode": "F114B",
+          "domain_prefix": "F",
+          "title_en": "Justifiable: Stealing property",
+          "title_es": "Robar",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1733,
+          "n_pct_valid": 99.5,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q180",
+          "acode": "F116",
+          "domain_prefix": "F",
+          "title_en": "Justifiable: Cheating on taxes",
+          "title_es": "Evadir impuestos si hay la oportunidad",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1722,
+          "n_pct_valid": 98.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q181",
+          "acode": "F117",
+          "domain_prefix": "F",
+          "title_en": "Justifiable: Someone accepting a bribe",
+          "title_es": "Aceptar un soborno o mordida en el cumplimiento de sus deberes",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1719,
+          "n_pct_valid": 98.7,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q182",
+          "acode": "F118",
+          "domain_prefix": "F",
+          "title_en": "Justifiable: Homosexuality",
+          "title_es": "La homosexualidad",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1689,
+          "n_pct_valid": 97.0,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Survival/Self-Expression",
+            "EVI Choice"
+          ]
+        },
+        {
+          "qcode": "Q183",
+          "acode": "F119",
+          "domain_prefix": "F",
+          "title_en": "Justifiable: Prostitution",
+          "title_es": "La prostitución",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1706,
+          "n_pct_valid": 98.0,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q184",
+          "acode": "F120",
+          "domain_prefix": "F",
+          "title_en": "Justifiable: Abortion",
+          "title_es": "El aborto",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1712,
+          "n_pct_valid": 98.3,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Traditional/Secular-Rational"
+          ]
+        },
+        {
+          "qcode": "Q185",
+          "acode": "F121",
+          "domain_prefix": "F",
+          "title_en": "Justifiable: Divorce",
+          "title_es": "El divorcio",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1724,
+          "n_pct_valid": 99.0,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "EVI Choice"
+          ]
+        },
+        {
+          "qcode": "Q186",
+          "acode": "F135A",
+          "domain_prefix": "F",
+          "title_en": "Justifiable: Sex before marriage",
+          "title_es": "Tener relaciones sexuales antes del matrimonio",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1707,
+          "n_pct_valid": 98.0,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q187",
+          "acode": "F123",
+          "domain_prefix": "F",
+          "title_en": "Justifiable: Suicide",
+          "title_es": "El suicidio",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1717,
+          "n_pct_valid": 98.6,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q188",
+          "acode": "F122",
+          "domain_prefix": "F",
+          "title_en": "Justifiable: Euthanasia",
+          "title_es": "La eutanasia",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1693,
+          "n_pct_valid": 97.2,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q189",
+          "acode": "F199",
+          "domain_prefix": "F",
+          "title_en": "Justifiable: For a man to beat his wife",
+          "title_es": "Que un hombre le pegue a su esposa",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1730,
+          "n_pct_valid": 99.4,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q190",
+          "acode": "F114C",
+          "domain_prefix": "F",
+          "title_en": "Justifiable: Parents beating children",
+          "title_es": "Que los padres le peguen a sus hijos",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1725,
+          "n_pct_valid": 99.1,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q191",
+          "acode": "F114D",
+          "domain_prefix": "F",
+          "title_en": "Justifiable: Violence against other people",
+          "title_es": "La violencia contra otras personas",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1723,
+          "n_pct_valid": 99.0,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q192",
+          "acode": "F114E",
+          "domain_prefix": "F",
+          "title_en": "Justifiable: Terrorism as a political, ideological or religious mean",
+          "title_es": "El terrorismo como un medio político, ideológico o religioso",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1706,
+          "n_pct_valid": 98.0,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q193",
+          "acode": "F132",
+          "domain_prefix": "F",
+          "title_en": "Justifiable: Having casual sex",
+          "title_es": "Tener sexo informal",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1692,
+          "n_pct_valid": 97.2,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q195",
+          "acode": "F144_02",
+          "domain_prefix": "F",
+          "title_en": "Justifiable: Death penalty",
+          "title_es": "La pena de muerte",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1712,
+          "n_pct_valid": 98.3,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q289",
+          "acode": "F025",
+          "domain_prefix": "F",
+          "title_en": "Religious denominations - major groups",
+          "title_es": "¿Pertenece usted a alguna religión o denominación religiosa?",
+          "scale_text": "1=Nació en el país; 2=Es inmigrante",
+          "n_valid": 1657,
+          "n_pct_valid": 95.2,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Religiosity (Norris & Inglehart)",
+            "CRS (approx)"
+          ]
+        },
+        {
+          "qcode": "Q289CS9",
+          "acode": "F025_WVS",
+          "domain_prefix": "F",
+          "title_en": "Religious denomination - detailed list",
+          "title_es": "",
+          "scale_text": "",
+          "n_valid": 1657,
+          "n_pct_valid": 95.2,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": []
+        }
+      ]
+    },
+    "G": {
+      "label": "National Identity",
+      "items": [
+        {
+          "qcode": "Q59",
+          "acode": "G007_18_B",
+          "domain_prefix": "G",
+          "title_en": "Trust: Your neighborhood (B)",
+          "title_es": "Sus vecinos",
+          "scale_text": "1=Confía completamente; 2=Confía algo; 3=Confía poco; 4=No confía nada",
+          "n_valid": 1738,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q60",
+          "acode": "G007_33_B",
+          "domain_prefix": "G",
+          "title_en": "Trust: People you know personally (B)",
+          "title_es": "Sus conocidos",
+          "scale_text": "1=Confía completamente; 2=Confía algo; 3=Confía poco; 4=No confía nada",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q61",
+          "acode": "G007_34_B",
+          "domain_prefix": "G",
+          "title_en": "Trust: People you meet for the first time (B)",
+          "title_es": "Gente a la que conoce por primera vez",
+          "scale_text": "1=Confía completamente; 2=Confía algo; 3=Confía poco; 4=No confía nada",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q62",
+          "acode": "G007_35_B",
+          "domain_prefix": "G",
+          "title_en": "Trust: People of another religion (B)",
+          "title_es": "Gente de otra religión",
+          "scale_text": "1=Confía completamente; 2=Confía algo; 3=Confía poco; 4=No confía nada",
+          "n_valid": 1721,
+          "n_pct_valid": 98.9,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q63",
+          "acode": "G007_36_B",
+          "domain_prefix": "G",
+          "title_en": "Trust: People of another nationality (B)",
+          "title_es": "Gente de otra nacionalidad",
+          "scale_text": "1=Confía completamente; 2=Confía algo; 3=Confía poco; 4=No confía nada",
+          "n_valid": 1719,
+          "n_pct_valid": 98.7,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q121",
+          "acode": "G052",
+          "domain_prefix": "G",
+          "title_en": "Evaluate the impact of immigrants on the development of [your country]",
+          "title_es": "Ahora nos gustaría conocer su opinión acerca de las personas de",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1708,
+          "n_pct_valid": 98.1,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q122",
+          "acode": "G053",
+          "domain_prefix": "G",
+          "title_en": "Effects of immigrants on the development of [your country]: Fill useful jobs in the workforce",
+          "title_es": "Los inmigrantes llenan vacantes importantes de empleo",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1720,
+          "n_pct_valid": 98.8,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q123",
+          "acode": "G054",
+          "domain_prefix": "G",
+          "title_en": "Effects of immigrants on the development of [your country]: Strengthen cultural diversity",
+          "title_es": "La inmigración fortalece la diversidad cultural",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1708,
+          "n_pct_valid": 98.1,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q124",
+          "acode": "G055",
+          "domain_prefix": "G",
+          "title_en": "Effects of immigrants on the development of [your country]: Increase the crime rate",
+          "title_es": "La inmigración aumenta la tasa de criminalidad",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1714,
+          "n_pct_valid": 98.4,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q125",
+          "acode": "G056",
+          "domain_prefix": "G",
+          "title_en": "Effects of immigrants on the development of [your country]: Give asylum to political refugees",
+          "title_es": "La inmigración permite asilo a refugiados políticos de otros lugares",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1697,
+          "n_pct_valid": 97.5,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q126",
+          "acode": "G057",
+          "domain_prefix": "G",
+          "title_en": "Effects of immigrants on the development of [your country]: Increase the risks of terrorism",
+          "title_es": "La inmigración aumenta los riesgos de terrorismo",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1700,
+          "n_pct_valid": 97.6,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q127",
+          "acode": "G058",
+          "domain_prefix": "G",
+          "title_en": "Effects of immigrants on the development of [your country]: Help poor people establish new lives",
+          "title_es": "La inmigración ofrece a personas de países pobres una vida mejor",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1719,
+          "n_pct_valid": 98.7,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q128",
+          "acode": "G059",
+          "domain_prefix": "G",
+          "title_en": "Effects of immigrants on the development of [your country]: Increase unemployment",
+          "title_es": "La inmigración aumenta el desempleo",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1710,
+          "n_pct_valid": 98.2,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q129",
+          "acode": "G060",
+          "domain_prefix": "G",
+          "title_en": "Effects of immigrants on the development of [your country]: Lead to social conflict",
+          "title_es": "La inmigración genera conflictos sociales",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1703,
+          "n_pct_valid": 97.8,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q254",
+          "acode": "G006",
+          "domain_prefix": "G",
+          "title_en": "How proud of nationality",
+          "title_es": "¿Qué tan orgulloso está usted de ser mexicano? (LEER)",
+          "scale_text": "1=Muy frecuente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 7,
+          "validated_indices": [
+            "Traditional/Secular-Rational"
+          ]
+        },
+        {
+          "qcode": "Q255",
+          "acode": "G255",
+          "domain_prefix": "G",
+          "title_en": "How close you feel: Your [village, town or city]",
+          "title_es": "Su pueblo o ciudad",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q256",
+          "acode": "G256",
+          "domain_prefix": "G",
+          "title_en": "Feel close to your district, region",
+          "title_es": "Su región o estado",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1738,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q257",
+          "acode": "G257",
+          "domain_prefix": "G",
+          "title_en": "Feel close to your country",
+          "title_es": "México",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1737,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q258",
+          "acode": "G062",
+          "domain_prefix": "G",
+          "title_en": "How close you feel: Continent; e.g. Europe, Asia etc.]",
+          "title_es": "Latinoamérica M258 Norteamérica",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1713,
+          "n_pct_valid": 98.4,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q259",
+          "acode": "G063",
+          "domain_prefix": "G",
+          "title_en": "How close you feel: World",
+          "title_es": "El mundo",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1724,
+          "n_pct_valid": 99.0,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q263",
+          "acode": "G027A",
+          "domain_prefix": "G",
+          "title_en": "Respondent immigrant",
+          "title_es": "¿Nació usted en este país o llegó como inmigrante?",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q264",
+          "acode": "G026",
+          "domain_prefix": "G",
+          "title_en": "Mother immigrant",
+          "title_es": "Padre",
+          "scale_text": "1=Nació en el país; 2=Es inmigrante",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q265",
+          "acode": "G027",
+          "domain_prefix": "G",
+          "title_en": "Father immigrant",
+          "title_es": "Madre",
+          "scale_text": "1=Nació en el país; 2=Es inmigrante",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            5,
+            6,
+            7
+          ],
+          "n_waves": 3,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q269",
+          "acode": "G027B",
+          "domain_prefix": "G",
+          "title_en": "Respondent citizen",
+          "title_es": "¿Es usted ciudadano de este país?",
+          "scale_text": "1=Nació en el país; 2=Es inmigrante",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q272",
+          "acode": "G016",
+          "domain_prefix": "G",
+          "title_en": "Language at home",
+          "title_es": "¿Qué idioma o lengua habla normalmente en su hogar?",
+          "scale_text": "1=Nació en el país; 2=Es inmigrante",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n_waves": 5,
+          "validated_indices": []
+        }
+      ]
+    },
+    "H": {
+      "label": "Security",
+      "items": [
+        {
+          "qcode": "Q51",
+          "acode": "H008_01",
+          "domain_prefix": "H",
+          "title_en": "Frequency you/family (last 12 month): Gone without enough food to eat",
+          "title_es": "Se quedaron sin suficientes alimentos para comer",
+          "scale_text": "1=Frecuentemente; 2=A veces; 3=Rara vez; 4=Nunca",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q52",
+          "acode": "H008_02",
+          "domain_prefix": "H",
+          "title_en": "Frequency you/family (last 12 month): Felt unsafe from crime in your own home",
+          "title_es": "Se sintieron inseguros en casa debido a la delincuencia",
+          "scale_text": "1=Frecuentemente; 2=A veces; 3=Rara vez; 4=Nunca",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q53",
+          "acode": "H008_03",
+          "domain_prefix": "H",
+          "title_en": "Frequency you/family (last 12 month): Gone without needed medicine or treatment that you needed",
+          "title_es": "Se quedaron sin algún tratamiento médico o medicamentos",
+          "scale_text": "1=Frecuentemente; 2=A veces; 3=Rara vez; 4=Nunca",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q54",
+          "acode": "H008_04",
+          "domain_prefix": "H",
+          "title_en": "Frequency you/family (last 12 month): Gone without a cash income",
+          "title_es": "Se quedaron sin ingresos de dinero",
+          "scale_text": "1=Frecuentemente; 2=A veces; 3=Rara vez; 4=Nunca",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q55",
+          "acode": "H008_09",
+          "domain_prefix": "H",
+          "title_en": "In the last 12 month, how often have you or your family: Gone without a safe shelter over your head",
+          "title_es": "Se quedó sin un techo seguro donde habitar",
+          "scale_text": "1=Frecuentemente; 2=A veces; 3=Rara vez; 4=Nunca",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q131",
+          "acode": "H001",
+          "domain_prefix": "H",
+          "title_en": "Secure in neighborhood",
+          "title_es": "En general, ¿qué tan seguro se siente usted actualmente? (Leer)",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q132",
+          "acode": "H002_01",
+          "domain_prefix": "H",
+          "title_en": "Frequency in your neighborhood: Robberies",
+          "title_es": "Robos o asaltos",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1738,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q133",
+          "acode": "H002_02",
+          "domain_prefix": "H",
+          "title_en": "Frequency in your neighborhood: Alcohol consumed in the streets",
+          "title_es": "Consumo de alcohol en las calles",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q134",
+          "acode": "H002_03",
+          "domain_prefix": "H",
+          "title_en": "Frequency in your neighborhood: Police or military interfere with people’s private life",
+          "title_es": "Que la policía o los militares se metan en la vida privada de la gente",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1728,
+          "n_pct_valid": 99.3,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q135",
+          "acode": "H002_04",
+          "domain_prefix": "H",
+          "title_en": "Frequency in your neighborhood: Racist behavior",
+          "title_es": "Conductas racistas",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1728,
+          "n_pct_valid": 99.3,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q136",
+          "acode": "H002_05",
+          "domain_prefix": "H",
+          "title_en": "Frequency in your neighborhood: Drug sale in streets",
+          "title_es": "Venta de droga en las calles",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1699,
+          "n_pct_valid": 97.6,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q137",
+          "acode": "H008_05",
+          "domain_prefix": "H",
+          "title_en": "How frequently do the following things occur in your neighborhood: Street violence and fights",
+          "title_es": "Violencia callejera y peleas",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1730,
+          "n_pct_valid": 99.4,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q138",
+          "acode": "H008_06",
+          "domain_prefix": "H",
+          "title_en": "How frequently do the following things occur in your neighborhood: Sexual harassment",
+          "title_es": "Acoso sexual",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1715,
+          "n_pct_valid": 98.5,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q139",
+          "acode": "H003_01",
+          "domain_prefix": "H",
+          "title_en": "Things done for reasons of security: Didn’t carry much money",
+          "title_es": "No cargar mucho dinero",
+          "scale_text": "1=Ninguno; 2=Unos cuantos/Pocos; 3=La mayoría; 4=Todos",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q140",
+          "acode": "H003_02",
+          "domain_prefix": "H",
+          "title_en": "Things done for reasons of security: Preferred not to go out at night",
+          "title_es": "No salir de noche",
+          "scale_text": "1=Ninguno; 2=Unos cuantos/Pocos; 3=La mayoría; 4=Todos",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q141",
+          "acode": "H003_03",
+          "domain_prefix": "H",
+          "title_en": "Things done for reasons of security: Carried a knife, gun or other weapon",
+          "title_es": "Portar un cuchillo, pistola u otra arma",
+          "scale_text": "1=Ninguno; 2=Unos cuantos/Pocos; 3=La mayoría; 4=Todos",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q142",
+          "acode": "H006_01",
+          "domain_prefix": "H",
+          "title_en": "Worries: Losing my job or not finding a job",
+          "title_es": "Perder su trabajo o no encontrar un empleo",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1735,
+          "n_pct_valid": 99.7,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q143",
+          "acode": "H006_02",
+          "domain_prefix": "H",
+          "title_en": "Worries: Not being able to give one's children a good education",
+          "title_es": "No poder dar a sus hijos una buena educación",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1726,
+          "n_pct_valid": 99.1,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q144",
+          "acode": "H004",
+          "domain_prefix": "H",
+          "title_en": "Respondent was victim of a crime during the past year",
+          "title_es": "¿Ha sido usted víctima de algún delito durante el último año?",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1741,
+          "n_pct_valid": 100.0,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q145",
+          "acode": "H005",
+          "domain_prefix": "H",
+          "title_en": "Respondent's family was victim of a crime during last year",
+          "title_es": "¿Y alguien de su familia cercana ha sido víctima de algún delito",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1740,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q146",
+          "acode": "H006_03",
+          "domain_prefix": "H",
+          "title_en": "Worries: A war involving my country",
+          "title_es": "Una guerra que involucre a México",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q147",
+          "acode": "H006_04",
+          "domain_prefix": "H",
+          "title_en": "Worries: A terrorist attack",
+          "title_es": "Un atentado terrorista",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1739,
+          "n_pct_valid": 99.9,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q148",
+          "acode": "H006_05",
+          "domain_prefix": "H",
+          "title_en": "Worries: A civil war",
+          "title_es": "Una guerra civil",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1737,
+          "n_pct_valid": 99.8,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q149",
+          "acode": "H008_07",
+          "domain_prefix": "H",
+          "title_en": "Freedom and Equality - Which more important",
+          "title_es": "La mayoría de la gente considera que tanto la libertad como la",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1735,
+          "n_pct_valid": 99.7,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q150",
+          "acode": "H008_08",
+          "domain_prefix": "H",
+          "title_en": "Freedom and securiy - Which more important",
+          "title_es": "La mayoría de la gente considera que la libertad y la seguridad",
+          "scale_text": "1=Mucho; 2=Algo; 3=Poco; 4=Nada",
+          "n_valid": 1736,
+          "n_pct_valid": 99.7,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q196",
+          "acode": "H009",
+          "domain_prefix": "H",
+          "title_en": "Government has the right: Keep people under video surveillance in public areas",
+          "title_es": "Mantener a las personas bajo video vigilancia en áreas públicas",
+          "scale_text": "1=Muy de acuerdo 2=De acuerdo; 3=En desacuerdo; 4=Muy en desacuerdo",
+          "n_valid": 1734,
+          "n_pct_valid": 99.6,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q197",
+          "acode": "H010",
+          "domain_prefix": "H",
+          "title_en": "Government has the right: Monitor all e-mails and any other information exchanged on the Internet",
+          "title_es": "Monitorear todos los correos electrónicos y cualquier otro intercambio de información en Internet",
+          "scale_text": "1=Muy de acuerdo 2=De acuerdo; 3=En desacuerdo; 4=Muy en desacuerdo",
+          "n_valid": 1730,
+          "n_pct_valid": 99.4,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": [
+            "Survival/Self-Expression"
+          ]
+        },
+        {
+          "qcode": "Q198",
+          "acode": "H011",
+          "domain_prefix": "H",
+          "title_en": "Government has the right: Collect information about anyone living in [COUNTRY] without their knowledge",
+          "title_es": "Recopilar información de cualquier persona que vive en México",
+          "scale_text": "1=Muy de acuerdo 2=De acuerdo; 3=En desacuerdo; 4=Muy en desacuerdo",
+          "n_valid": 1732,
+          "n_pct_valid": 99.5,
+          "wave_coverage": [
+            7
+          ],
+          "n_waves": 1,
+          "validated_indices": []
+        }
+      ]
+    },
+    "I": {
+      "label": "Science & Technology",
+      "items": [
+        {
+          "qcode": "Q161",
+          "acode": "I001",
+          "domain_prefix": "I",
+          "title_en": "One of the bad effects of science is that it breaks down people’s ideas of right and wrong",
+          "title_es": "Una de las malas consecuencias de la ciencia es que la gente",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1727,
+          "n_pct_valid": 99.2,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        },
+        {
+          "qcode": "Q162",
+          "acode": "I002",
+          "domain_prefix": "I",
+          "title_en": "It is not important for me to know about science in my daily life",
+          "title_es": "Para mí no es importante saber de ciencia en mi vida diaria",
+          "scale_text": "1=Muy frecuentemente; 2=Algo frecuente; 3=Poco frecuente; 4=Nada frecuente",
+          "n_valid": 1731,
+          "n_pct_valid": 99.4,
+          "wave_coverage": [
+            6,
+            7
+          ],
+          "n_waves": 2,
+          "validated_indices": []
+        }
+      ]
+    }
+  },
+  "y_indices_available": [
+    {
+      "ycode": "Y001",
+      "n_valid": 1729,
+      "title": "Post-Materialist index 12-item"
+    },
+    {
+      "ycode": "Y002",
+      "n_valid": 1734,
+      "title": "Post-Materialist index 4-item"
+    },
+    {
+      "ycode": "Y003",
+      "n_valid": 954,
+      "title": "Autonomy Index"
+    }
+  ]
+}
