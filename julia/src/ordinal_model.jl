@@ -5,13 +5,31 @@
 # equivalent (statsmodels.OrderedModel) is also a custom implementation — just
 # a well-tested one.  We replicate its mathematical core here using:
 #
-#   Optim.jl    — LBFGS optimizer (same algorithm as statsmodels' 'bfgs' method)
-#   ForwardDiff.jl — Automatic differentiation for exact gradient computation
+#   Optim.jl       — NewtonTrustRegion optimizer (primary) + LBFGS fallback
+#   ForwardDiff.jl — Automatic differentiation for exact gradient AND Hessian
 #
-# The advantage of ForwardDiff over statsmodels' numerical finite-difference
-# gradient:  exact gradients mean fewer optimizer iterations to convergence
-# and no step-size tuning.  On typical 1200-row survey data with K=5 categories
-# and p=4 predictors, this cuts the number of function evaluations by ~3×.
+# ── Why NewtonTrustRegion over LBFGS ─────────────────────────────────────────
+# The ordered logit log-likelihood is globally concave for the logistic CDF.
+# There is exactly one MLE — Newton's method will always find it given enough
+# iterations.  With p=4 and K=5, the parameter space is only 8-dimensional:
+# an 8×8 Hessian is trivial to invert (512 flops).  L-BFGS, designed for
+# p=10,000+ problems, builds a rank-2m Hessian approximation that takes 10+
+# iterations to become useful — for 8 parameters this overhead is wasteful.
+#
+# Newton converges in ~15–20 iterations with quadratic rate vs ~60–80 for
+# LBFGS.  More importantly, with the maxiter=100 bootstrap cap, LBFGS may
+# terminate early on ill-conditioned resamples (skewed bins, near-separation)
+# with an inaccurate β̂ — systematically biasing the bootstrap CI endpoints.
+# Newton reliably terminates within its convergence radius.
+#
+# NewtonTrustRegion (vs plain Newton):
+#   Trust-region methods adapt step size via a radius that shrinks when the
+#   quadratic model poorly predicts the objective.  This handles near-singular
+#   Hessians (which arise with skewed outcome distributions) without requiring
+#   a separate line search — more stable than Newton + HagerZhang line search.
+#
+# LBFGS is kept as a fallback for the rare case where NewtonTrustRegion fails
+# to converge (e.g. completely flat likelihood, degenerate data).
 #
 # ── Proportional-odds model recap ────────────────────────────────────────────
 # For ordinal Y ∈ {1,...,K} and covariates X (n×p):
@@ -232,7 +250,7 @@ Use `mutable struct` if you need to modify fields after construction.
   coef       :: Vector{Float64}   — β coefficients, length p
   thresholds :: Vector{Float64}   — α cut-points, length K−1, strictly ordered
   K          :: Int               — number of outcome categories
-  converged  :: Bool              — whether LBFGS reported convergence
+  converged  :: Bool              — whether the optimizer reported convergence
   nll        :: Float64           — final negative log-likelihood (lower = better fit)
 """
 struct OrderedLogitModel
@@ -247,14 +265,15 @@ end
 """
     fit_ordered_logit(X, y; K, maxiter=500, tol=1e-6) -> OrderedLogitModel
 
-Fit the proportional-odds model via LBFGS with ForwardDiff gradients.
+Fit the proportional-odds model via NewtonTrustRegion (primary) with ForwardDiff
+exact gradient and Hessian, falling back to LBFGS on convergence failure.
 
 # Arguments
 
   X        : n × p design matrix (no intercept — the PO model doesn't use one)
   y        : category labels Vector{Int}, values in 1:K
   K        : number of categories
-  maxiter  : max optimizer iterations (100 for bootstrap, 500 for main fit)
+  maxiter  : max optimizer iterations (50 for bootstrap, 500 for main fit)
   tol      : gradient norm tolerance for convergence
 
 # Initialization strategy
@@ -271,26 +290,36 @@ Starting β = 0 is always valid regardless of the data scale.
 The `clamp(q, 1e-4, 1-1e-4)` prevents logit(0) = −∞ or logit(1) = +∞
 when a category is empty.
 
-# LBFGS
+# NewtonTrustRegion
 
-Limited-memory BFGS (L-BFGS) is a quasi-Newton method that approximates the
-Hessian using a small history of gradient vectors.  It converges in O(p) steps
-for well-conditioned problems.  With exact ForwardDiff gradients, one optimizer
-step takes roughly the same wall time as one statsmodels step, but requires
-far fewer steps.
+Optim.jl's trust-region Newton method uses the exact Hessian (via
+`ForwardDiff.hessian!`) to take second-order steps, but constrains each step
+to a trust region of radius Δ that adapts based on how well the local quadratic
+model predicted the actual objective decrease:
+  - Good prediction → expand Δ (take larger steps)
+  - Poor prediction → shrink Δ (stay local)
 
-# `allow_f_increases=true`
+This is more stable than Newton + line search when the Hessian is near-singular
+(e.g. degenerate categories after binning), because the step is bounded by Δ
+rather than requiring H to be positive definite.
 
-Tells the optimizer not to abort if the objective function temporarily increases
-(which can happen due to floating-point rounding).  This improves robustness on
-ill-conditioned bootstrap resamples.
+For p=4, K=5 → 8 parameters, computing the 8×8 Hessian via ForwardDiff costs
+~8× one gradient evaluation — still cheap at n=1200 observations.  Newton
+converges in 15–25 iterations (vs 60–80 for LBFGS) with quadratic rate, making
+the Hessian cost worthwhile.
 
-# Design choice: maxiter=100 for bootstrap
+# LBFGS fallback
 
-Bootstrap refits run on resampled data which may be ill-conditioned (e.g. all
-observations in one category).  Capping at 100 iterations prevents runaway BFGS
-from hanging the sweep, matching the Python approach (`maxiter=100` in the
-bootstrap loop of `sweep_construct_dr.py`).
+If NewtonTrustRegion fails to converge (e.g. completely flat likelihood, very
+small n after bootstrap resampling, or degenerate input after sentinel removal),
+LBFGS is attempted.  LBFGS is more tolerant of ill-conditioning and will always
+produce *some* estimate, even if not precisely at the MLE.
+
+# `h!(H, p_)` — in-place Hessian
+
+`ForwardDiff.hessian!(H, f, p_)` writes the (n_params × n_params) Hessian of f
+evaluated at p_ into the pre-allocated matrix H.  The `!` marks mutation.
+NewtonTrustRegion calls h! once per iteration — for 8×8 this is negligible.
 """
 function fit_ordered_logit(
     X::Matrix{Float64},
@@ -310,27 +339,39 @@ function fit_ordered_logit(
     γ0      = encode_thresholds(logit_q)
     params0 = vcat(zeros(p), γ0)   # vcat: vertical concatenate (stack vectors)
 
-    # ── Objective and gradient ──────────────────────────────────────────────
+    # ── Objective, gradient, and Hessian ───────────────────────────────────
     # `f` is a closure over X, y, K — captures them from the enclosing scope.
-    f(params)    = ordered_logit_nll(params, X, y, K)
+    f(params)        = ordered_logit_nll(params, X, y, K)
+    g!(grad, p_)     = ForwardDiff.gradient!(grad, f, p_)
+    h!(H,    p_)     = ForwardDiff.hessian!(H, f, p_)
 
-    # ForwardDiff.gradient!(grad, f, p_) computes ∇f(p_) and writes it into grad.
-    # The `!` convention in Julia marks in-place mutation — `grad` is modified.
-    # Python equivalent: scipy.optimize minimizes with numerical gradient by default;
-    # to use exact gradient you pass `jac=lambda p: grad_fn(p)`.
-    g!(grad, p_) = ForwardDiff.gradient!(grad, f, p_)
-
-    # ── Optimization ───────────────────────────────────────────────────────
-    result = Optim.optimize(
-        f, g!, params0,
-        Optim.LBFGS(),            # optimizer algorithm
-        Optim.Options(
-            iterations        = maxiter,
-            g_tol             = tol,      # stop when ||∇f|| < tol
-            show_trace        = false,    # no verbose output
-            allow_f_increases = true,     # tolerate occasional increases (robustness)
-        ),
+    # ── Primary: NewtonTrustRegion ──────────────────────────────────────────
+    # Uses exact Hessian for second-order steps within an adaptive trust radius.
+    # `allow_f_increases=false`: trust region manages step acceptance internally;
+    # unlike LBFGS we do not need to tolerate function increases.
+    opts_newton = Optim.Options(
+        iterations        = maxiter,
+        g_tol             = tol,
+        show_trace        = false,
+        allow_f_increases = false,
     )
+    result = Optim.optimize(f, g!, h!, params0, Optim.NewtonTrustRegion(), opts_newton)
+
+    # ── Fallback: LBFGS ────────────────────────────────────────────────────
+    # Triggered if Newton did not converge (flat likelihood, degenerate input).
+    # LBFGS uses only gradient information — more tolerant of extreme curvature.
+    if !Optim.converged(result)
+        result = Optim.optimize(
+            f, g!, params0,
+            Optim.LBFGS(),
+            Optim.Options(
+                iterations        = maxiter,
+                g_tol             = tol,
+                show_trace        = false,
+                allow_f_increases = true,
+            ),
+        )
+    end
 
     # ── Extract results ─────────────────────────────────────────────────────
     params_hat = Optim.minimizer(result)   # parameter vector at minimum

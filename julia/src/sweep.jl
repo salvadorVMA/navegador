@@ -1,13 +1,50 @@
-# sweep.jl — DR sweep over construct pairs with atomic checkpointing
+# sweep.jl — Multi-threaded DR sweep over construct pairs with atomic checkpointing
 #
 # Mirrors sweep_construct_dr.py.  Reads a CSV of construct pairs, runs
-# dr_estimate on each, saves results atomically to JSON.  Supports resume
-# (skips already-computed pairs).
+# dr_estimate on each pair in parallel, saves results atomically to JSON.
+# Supports resume (skips already-computed pairs).
 #
-# ── Design goals ─────────────────────────────────────────────────────────────
-# 1. Resilience: a crash or interrupt loses at most `save_every` pairs.
-# 2. Resume: re-running the same command continues from where it left off.
-# 3. Observability: periodic progress lines with rate and ETA.
+# ── Multi-threading design ────────────────────────────────────────────────────
+# Julia's threading model:
+#   - `julia -t N` (or `JULIA_NUM_THREADS=N`) spawns N OS threads.
+#   - `Threads.@threads :dynamic for item in collection` distributes work
+#     dynamically across all threads.  `:dynamic` (Julia 1.8+) schedules work
+#     items lazily rather than statically splitting the range upfront —
+#     better when individual pair costs vary (some pairs converge fast, others
+#     hit the BFGS iteration limit).
+#   - `Threads.nthreads()` reports how many threads are active at runtime.
+#
+# ── Thread safety ─────────────────────────────────────────────────────────────
+# Three resources are shared across threads and must be protected:
+#
+#   results :: Dict         — written by every thread (one entry per pair)
+#   gammas  :: Vector       — appended by every thread that succeeds
+#   n_done, n_err :: Ref    — counters incremented by every thread
+#
+# Protection strategy: a single `ReentrantLock` guards all four.  The lock is
+# held only for the Dict update + counter increment + optional checkpoint —
+# the heavy `dr_estimate` computation runs OUTSIDE the lock, in parallel.
+#
+# `ReentrantLock` vs `SpinLock`:
+#   - `SpinLock` is faster for very short critical sections (microseconds).
+#   - `ReentrantLock` allows the same thread to re-acquire the lock (needed if
+#     `save_checkpoint` ever calls back into locked code — defensive choice).
+#   - With dr_estimate taking ~4s, the lock wait fraction is negligible.
+#
+# ── Why dr_estimate is thread-safe ───────────────────────────────────────────
+# Each call to `dr_estimate(...; seed=N)` creates its own `MersenneTwister(N)`
+# internally.  Julia's MersenneTwister is NOT thread-safe if shared, but since
+# each call gets its own seeded instance there is no shared state.
+# We use `seed = pair_idx` (the 1-based row index in the original pairs CSV)
+# so results are reproducible regardless of thread execution order.
+#
+# ── `Ref(0)` — mutable scalar ─────────────────────────────────────────────────
+# Julia's `Int` is immutable (like Python's `int`).  To mutate a counter inside
+# a closure or across function calls, wrap it in `Ref{Int}`:
+#   n = Ref(0)      # create a mutable box containing 0
+#   n[] += 1        # read and update: `n[]` dereferences the Ref
+# Python equivalent: `n = [0]; n[0] += 1` (mutable list trick) or
+#   `n = {'v': 0}; n['v'] += 1`.
 #
 # ── Atomic save pattern ───────────────────────────────────────────────────────
 # Writing JSON directly to the output file risks partial writes (truncated file)
@@ -16,7 +53,6 @@
 #   2. `mv(tmp, output)`           (atomic rename on POSIX filesystems)
 # Because rename is atomic, any reader of `output.json` sees either the
 # complete old file or the complete new file — never a partial write.
-# This is the same pattern used in sweep_construct_dr.py and sweep_dr_highci.py.
 #
 # ── `Function` type ──────────────────────────────────────────────────────────
 # `data_loader::Function` means the argument must be callable.
@@ -30,6 +66,7 @@ using JSON
 using Dates
 using Statistics: median, quantile
 using Printf
+using Base.Threads
 
 
 """
@@ -117,7 +154,9 @@ _pair_id(a::AbstractString, b::AbstractString) = "$(a)::$(b)"
 """
     run_sweep(pairs_csv, output_json; data_loader, n_sim, n_bootstrap, resume, save_every)
 
-Batch DR sweep over all pairs in a CSV file.
+Multi-threaded batch DR sweep over all pairs in a CSV file.
+
+Launch with `julia -t 8 --project=. scripts/run_v5_sweep.jl` for 8 threads.
 
 # Arguments
 
@@ -131,6 +170,14 @@ Batch DR sweep over all pairs in a CSV file.
   n_bootstrap : bootstrap iterations (default 200)
   resume      : if true, skip already-computed pairs (default true)
   save_every  : save checkpoint every N pairs (default 1 = after every pair)
+
+# Threading model
+
+  All pairs not yet in the checkpoint are collected into a `todo` Vector.
+  `Threads.@threads :dynamic` distributes them across available threads.
+  `dr_estimate` runs in the thread's own stack, fully parallel.
+  A `ReentrantLock` serializes Dict updates, counter increments, and saves.
+  Lock hold time is O(μs); dr_estimate takes O(seconds) — near-linear scaling.
 
 # `data_loader` design
 
@@ -212,18 +259,54 @@ function run_sweep(
         "ses_vars"    => ["sexo","edad","escol","Tam_loc"],
     )
     results = Dict{String,Any}(existing)   # start with existing, add new results to it
-    n_done  = 0
-    n_err   = 0
-    gammas  = Float64[]
 
-    # ── Main loop ─────────────────────────────────────────────────────────────
-    for row in eachrow(pairs_df)
-        var_a = string(row.var_a)   # convert to String (CSV may load as InlineString)
-        var_b = string(row.var_b)
-        key   = _pair_id(var_a, var_b)
-        haskey(results, key) && continue   # resume: skip already-computed pair
+    # ── Build todo list (pairs not yet computed) ───────────────────────────────
+    # Pre-collect all pending pairs into a Vector before launching threads.
+    # Each element is a NamedTuple: (var_a, var_b, pair_idx).
+    # `pair_idx` = 1-based row index in the original pairs CSV — used as the
+    # RNG seed for dr_estimate so results are reproducible regardless of thread
+    # execution order.
+    #
+    # Why pre-collect instead of filtering inside @threads?
+    # `@threads` needs a concrete indexable collection to distribute work.
+    # Computing the todo list upfront also makes `n_todo` available for ETA.
+    todo = NamedTuple{(:var_a, :var_b, :pair_idx), Tuple{String,String,Int}}[]
+    for (i, row) in enumerate(eachrow(pairs_df))
+        key = _pair_id(string(row.var_a), string(row.var_b))
+        haskey(results, key) || push!(todo, (var_a=string(row.var_a),
+                                             var_b=string(row.var_b),
+                                             pair_idx=i))
+    end
+    n_todo = length(todo)
+
+    # ── Threading setup ────────────────────────────────────────────────────────
+    # `Threads.nthreads()` returns the number of threads available at runtime.
+    # Set by `julia -t N` or `JULIA_NUM_THREADS=N` at launch.
+    @printf("  Threads: %d  Pending: %d\n\n", Threads.nthreads(), n_todo)
+
+    # Shared mutable state — all protected by `lk`:
+    lk     = ReentrantLock()    # mutual exclusion for Dict + counters + checkpoint
+    n_done = Ref(0)             # `Ref{Int}` is a mutable box; `n_done[]` dereferences
+    n_err  = Ref(0)
+    gammas = Float64[]          # growing list of γ values (for final stats)
+
+    # ── Multi-threaded main loop ───────────────────────────────────────────────
+    # `Threads.@threads :dynamic` is a macro that transforms the for loop into
+    # a parallel task distribution.  `:dynamic` (Julia 1.8+) schedules work
+    # items dynamically — a thread that finishes early picks up the next item
+    # rather than waiting for its pre-assigned block to complete.
+    #
+    # All variables captured from the outer scope (domain_dfs, n_sim, etc.) are
+    # read-only from the threads' perspective.  Only `results`, `gammas`,
+    # `n_done`, `n_err` are written — always under `lk`.
+    Threads.@threads :dynamic for item in todo
+
+        var_a    = item.var_a
+        var_b    = item.var_b
+        pair_idx = item.pair_idx   # used as RNG seed → reproducible results
 
         # Parse "agg_colname|DOMAIN" format.
+        # This runs in the thread, no lock needed (read-only data).
         parts_a  = split(var_a, "|")
         parts_b  = split(var_b, "|")
         col_a    = Symbol(parts_a[1])   # column name as Symbol for DataFrame access
@@ -231,20 +314,26 @@ function run_sweep(
         domain_a = length(parts_a) > 1 ? string(parts_a[2]) : ""
         domain_b = length(parts_b) > 1 ? string(parts_b[2]) : ""
 
-        df_a = get(domain_dfs, domain_a, nothing)   # returns nothing if domain not found
+        # `get(dict, key, nothing)` is thread-safe for reads on an immutable dict.
+        # `domain_dfs` is built once before threading and never mutated.
+        df_a = get(domain_dfs, domain_a, nothing)
         df_b = get(domain_dfs, domain_b, nothing)
 
-        entry = Dict{String,Any}()   # result entry for this pair
+        # ── Compute result (runs in parallel, no lock) ─────────────────────────
+        entry = Dict{String,Any}()   # local to this thread iteration
 
         if isnothing(df_a) || isnothing(df_b)
-            # `$var` inside double-quoted strings is Julia's string interpolation.
             entry["error"] = "DataFrame not found: $domain_a or $domain_b"
         elseif col_a ∉ propertynames(df_a) || col_b ∉ propertynames(df_b)
             entry["error"] = "Column not found: $col_a or $col_b"
         else
             try
+                # dr_estimate creates its own MersenneTwister(seed) internally —
+                # it is fully thread-safe when each call uses a unique seed.
+                # seed = pair_idx ensures reproducibility across runs.
                 r    = dr_estimate(df_a, col_a, df_b, col_b;
-                                   n_sim=n_sim, n_bootstrap=n_bootstrap)
+                                   n_sim=n_sim, n_bootstrap=n_bootstrap,
+                                   seed=pair_idx)
                 ci_w = r.gamma_ci_hi - r.gamma_ci_lo
                 # `round(x, digits=4)` rounds to 4 decimal places.
                 entry = Dict(
@@ -255,41 +344,64 @@ function run_sweep(
                     "dr_v"      => round(r.cramers_v,    digits=4),
                     "dr_ks"     => round(r.ks_overlap,   digits=4),
                     "ci_width"  => round(ci_w,           digits=4),
-                    # Boolean expression: CI excludes zero means it's statistically significant.
+                    # CI excludes zero = statistically significant monotonic co-variation.
                     "excl_zero" => r.gamma_ci_lo > 0.0 || r.gamma_ci_hi < 0.0,
                     "n_a"       => r.n_a,
                     "n_b"       => r.n_b,
                 )
-                push!(gammas, r.gamma)
             catch e
                 entry["error"] = string(e)   # convert exception to string for JSON
-                n_err += 1
             end
         end
 
-        results[key] = entry
-        n_done += 1
-        # `%` is the modulo operator (same as Python).
-        n_done % save_every == 0 && save_checkpoint(results, metadata, output_json)
+        # ── Lock: update shared state ──────────────────────────────────────────
+        # `lock(lk) do ... end` acquires the lock, runs the block, releases it.
+        # This is Julia's idiomatic RAII pattern for locks (like Python's
+        # `with lock: ...`).  The lock is held only for microseconds — the
+        # heavy dr_estimate computation ran outside.
+        lock(lk) do
+            key = _pair_id(var_a, var_b)
+            results[key] = entry
 
-        # Progress report every 50 pairs.
-        if n_done % 50 == 0
-            elapsed = time() - t0
-            rate    = n_done / elapsed            # pairs per second
-            remain  = (total - length(existing) - n_done) / max(rate, 1e-6)
-            @printf("  [%d/%d] done=%d err=%d  %.1f/s  ETA=%.0fs\n",
-                n_done + length(existing), total, n_done, n_err, rate, remain)
-        end
-    end
+            if haskey(entry, "error")
+                n_err[] += 1
+            elseif haskey(entry, "dr_gamma")
+                push!(gammas, entry["dr_gamma"])
+            end
 
-    # Final save.
+            # `n_done[]` reads the Ref; `n_done[] += 1` is `n_done[] = n_done[] + 1`
+            n_done[] += 1
+            done = n_done[]   # capture current value for modulo checks below
+
+            # `%` is the modulo operator (same as Python).
+            if done % save_every == 0
+                save_checkpoint(results, metadata, output_json)
+            end
+
+            # Progress report every 50 pairs.
+            if done % 50 == 0
+                elapsed  = time() - t0
+                rate     = done / max(elapsed, 1e-6)   # pairs per second
+                remain   = (n_todo - done) / max(rate, 1e-6)
+                all_done = done + length(existing)
+                @printf("  [%d/%d] done=%d err=%d  %.1f/s  ETA=%.0fs\n",
+                    all_done, total, done, n_err[], rate, remain)
+            end
+        end   # lock released here
+
+    end   # @threads loop — all threads finish before execution continues here
+
+    # ── Final save ────────────────────────────────────────────────────────────
+    # After @threads, all pairs are done.  Save once more to catch any pairs
+    # not saved by the `save_every` checkpoint inside the loop.
     save_checkpoint(results, metadata, output_json)
     elapsed = time() - t0
     @printf("\nSweep complete in %.1fs\n", elapsed)
-    @printf("  Total: %d  Errors: %d\n", length(results), n_err)
+    @printf("  Total: %d  Errors: %d\n", length(results), n_err[])
     if !isempty(gammas)
-        @printf("  Median |γ|: %.4f\n", median(abs.(gammas)))
-        n_sig = count(k -> get(get(results, k, Dict()), "excl_zero", false), collect(keys(results)))
+        @printf("  Median |gamma|: %.4f\n", median(abs.(gammas)))
+        n_sig = count(k -> get(get(results, k, Dict()), "excl_zero", false),
+                      collect(keys(results)))
         # `collect(keys(results))` converts the Dict key view to a Vector.
         # `count(predicate, collection)` counts elements satisfying predicate.
         @printf("  Significant (CI excl 0): %d\n", n_sig)

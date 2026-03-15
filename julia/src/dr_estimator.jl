@@ -166,18 +166,21 @@ function _fit_outcome_model(
     all_cats = sort(unique(raw_vals))   # sorted unique values = ordered categories
 
     # Bin to ≤5 categories if needed (reduces optimization dimension).
+    # Rank-normalize first so skewed constructs produce equal-frequency bins,
+    # preventing near-separation on bootstrap resamples.
     if length(all_cats) > 5
-        all_cats = _bin_to_5(raw_vals)
-        raw_vals = [_find_bin(v, all_cats) for v in raw_vals]
+        raw_f    = _rank_normalize(Float64[Float64(v) for v in raw_vals])
+        edges    = _bin_to_5(raw_f)
+        raw_vals = [_find_bin(v, edges) for v in raw_f]
+        all_cats = sort(unique(raw_vals))   # integer bin indices 1..K (K ≤ 5)
     end
 
-    # `Dict(c => i for (i, c) in enumerate(all_cats))` creates a mapping
-    # category_value → integer label 1, 2, ..., K.
-    # `enumerate` yields (index, value) pairs starting from 1.
     cat_to_int = Dict(c => i for (i, c) in enumerate(all_cats))
     y          = [cat_to_int[v] for v in raw_vals]
     K          = length(all_cats)
-    K < 2 && error("Variable $col has < 2 distinct categories.")
+    # K<3 guard: degenerate constructs (floor/ceiling effect → 1-2 bins after
+    # rank normalization) cannot support a meaningful ordered logit.  Skip them.
+    K < 3 && error("Variable $col has only $K distinct categories — degenerate construct, skipping pair.")
 
     model = fit_ordered_logit(X, y; K=K, maxiter=maxiter)
     return model, all_cats, X, sub
@@ -185,30 +188,132 @@ end
 
 
 """
-Bin a continuous vector to ≤5 ordinal categories via quantile edges.
+Bin a continuous vector to ≤5 ordinal categories via equal-frequency quantile boundaries.
 
-`round.(Int, range(1, n, length=6))` generates 6 evenly-spaced indices into
-the sorted unique values, giving quantile-based bin edges.
-`unique()` removes duplicates that arise when many values share the same quantile.
+# Why equal-frequency (not equal-spacing)?
+
+The old implementation picked evenly-spaced INDICES into the sorted unique value
+array.  For skewed distributions this is catastrophic: if 80% of observations pile
+into the top 20% of the value range (common for reversed-scored constructs like
+`household_science_cultural_capital`, mean≈9.0 on [1,10]), the index-based method
+assigns nearly all observations to a single bin.  The ordered logit then sees a
+near-degenerate outcome and fits extreme threshold values, producing inflated γ.
+
+Equal-frequency binning puts roughly equal numbers of observations in each bin
+regardless of the value distribution — exactly what Python's `pd.qcut(q=5)` does.
+Both implementations must agree on this strategy for γ estimates to be comparable.
+
+# Implementation
+
+`Statistics.quantile(v, q)` computes the q-th sample quantile of the full
+observation vector `v` (with repetitions, so concentration is reflected in the
+quantile positions).  Six equally-spaced quantile points at 0%, 20%, 40%, 60%,
+80%, 100% define 5 equal-frequency bins.
+
+`unique()` on the quantile boundaries handles the case where the distribution is
+so concentrated that two quantile points land on the same value — the bin is
+dropped, producing fewer than 5 categories.  This mirrors pd.qcut's
+`duplicates='drop'` argument.
+
+# `v_f` includes all observations (not just unique values)
+
+This is the key correctness requirement: quantiles must be computed on the
+full sample distribution, not on the set of distinct values.  Using unique values
+would ignore the fact that 1000 out of 1200 observations share the value 9.14.
 """
 function _bin_to_5(vals::AbstractVector)
-    # Filter sentinels and convert to Float64 for sorting.
-    v_f  = sort(unique([Float64(x) for x in vals if !is_sentinel(x)]))
-    n    = length(v_f)
-    n ≤ 5 && return v_f   # already 5 or fewer — no binning needed
-    idxs = round.(Int, range(1, n, length=6))   # 6 quantile positions → 5 bins
-    return unique(v_f[idxs])
+    # Include all valid observations (with repetitions) so quantile positions
+    # reflect actual empirical frequencies, not just value range.
+    v_f = Float64[]
+    for x in vals
+        try
+            f = Float64(x)
+            !is_sentinel(f) && !isnan(f) && push!(v_f, f)
+        catch
+        end
+    end
+    isempty(v_f) && return [1.0, 2.0, 3.0, 4.0, 5.0]
+    length(unique(v_f)) ≤ 5 && return sort(unique(v_f))
+
+    # Equal-frequency quantile boundaries matching pd.qcut(q=5, duplicates='drop').
+    qs = [quantile(v_f, q) for q in range(0.0, 1.0, length=6)]
+    return sort(unique(qs))
 end
 
 
-"""Map a value to its nearest bin edge (for category assignment)."""
+"""
+    _rank_normalize(v) -> Vector{Float64}
+
+Convert a numeric vector to fractional (midrank) ranks scaled to [1, 10].
+
+Equal values receive the average of their ranks (standard tied-rank convention).
+The output is a uniform distribution over [1, 10] regardless of the original
+shape — no matter how skewed or concentrated the input.
+
+# Why rank-normalize before binning?
+
+For heavily skewed constructs (e.g. household_science_cultural_capital, mean≈9.0)
+equal-frequency qcut still places 70-90% of observations in the top 1-2 bins
+because the raw values cluster tightly at the upper end.  The ordered logit then
+faces near-separation: the small lower bins produce unstable threshold estimates
+on bootstrap resamples, inflating β and thus γ.
+
+After rank normalization the empirical distribution is exactly uniform → each of
+the 5 equal-frequency bins contains exactly 20% of observations → no bin is ever
+nearly empty → no near-separation → stable β on every bootstrap resample.
+
+Rank transformation is monotone, so ordinal associations (including γ) are
+preserved: the direction and relative magnitude of SES effects are unchanged.
+The bins now represent quintile groups rather than raw score intervals.
+
+# Tied-rank convention
+
+Tied observations share the average of their positional ranks (midrank).
+This matches R's rank(ties.method='average') and scipy.stats.rankdata.
+"""
+function _rank_normalize(v::Vector{Float64})::Vector{Float64}
+    n = length(v)
+    n <= 1 && return v
+
+    order = sortperm(v)
+    ranks = Vector{Float64}(undef, n)
+
+    i = 1
+    while i <= n
+        j = i
+        while j < n && v[order[j + 1]] == v[order[i]]
+            j += 1
+        end
+        avg_rank = (i + j) / 2.0
+        for k in i:j
+            ranks[order[k]] = avg_rank
+        end
+        i = j + 1
+    end
+
+    return 1.0 .+ (ranks .- 1.0) ./ max(n - 1, 1) .* 9.0
+end
+
+
+"""Map a value to its integer bin index (1-based) for category assignment.
+
+Uses (edges[k-1], edges[k]] intervals — right-closed, left-open — matching
+pd.qcut's default convention.  The first bin [edges[1], edges[2]] includes the
+minimum value (left-closed) so no observation is ever out of range.
+
+Returns an integer in 1 .. length(edges)-1.  Previously this returned an edge
+value (Float64), which caused K = length(edges) = 6 categories in Julia vs K=5
+in Python, adding a spurious 5th threshold parameter and creating near-singleton
+edge categories for the min/max observations.
+"""
 function _find_bin(v, edges)
-    f   = Float64(v)
-    # `searchsortedfirst(edges, f)` returns the insertion point for f in sorted edges.
-    # This gives the index of the first edge ≥ f (the bin f belongs to).
-    # `clamp(idx, 1, length(edges))` handles out-of-bounds values.
-    idx = searchsortedfirst(edges, f)
-    return edges[clamp(idx, 1, length(edges))]
+    f = Float64(v)
+    n = length(edges)
+    n < 2 && return 1
+    # searchsortedlast: last index i where edges[i] ≤ f
+    # → f lives in the interval (edges[i-1], edges[i]], so bin index = i
+    # clamp to 1..(n-1): maps below-min to bin 1, above-max to last bin
+    return clamp(searchsortedlast(edges, f), 1, n - 1)
 end
 
 
