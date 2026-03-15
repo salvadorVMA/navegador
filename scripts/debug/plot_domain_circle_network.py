@@ -169,13 +169,19 @@ def plot_network(
     # ── Filter significant pairs ──────────────────────────────────────────
     sig = []
     for k, v in estimates.items():
-        ci = v.get("dr_gamma_ci")
         g = v.get("dr_gamma")
-        if not (ci and g is not None):
+        if g is None:
             continue
-        if ci[0] is None or ci[1] is None:
-            continue
-        if (ci[0] > 0 or ci[1] < 0) and abs(g) >= gamma_thresh:
+        # Prefer excl_zero flag (Julia sets this from full-precision floats;
+        # JSON serialization can round CI endpoints to ±0.0000 falsely)
+        if "excl_zero" in v:
+            is_sig = bool(v["excl_zero"])
+        else:
+            ci = v.get("dr_gamma_ci")
+            if not ci or ci[0] is None or ci[1] is None:
+                continue
+            is_sig = (ci[0] > 0 or ci[1] < 0)
+        if is_sig and abs(g) >= gamma_thresh:
             sig.append(v)
 
     # ── Build node set — ALL constructs (manifest + estimates) ────────────
