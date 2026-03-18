@@ -17,7 +17,9 @@
     "alpha": 0.5883,
     "n_items": 3,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p68"
+    ]
   },
   {
     "key": "IDE|personal_optimism_efficacy",
@@ -27,7 +29,11 @@
     "alpha": 0.4045,
     "n_items": 4,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p20",
+      "p24",
+      "p30_1"
+    ]
   },
   {
     "key": "IDE|moral_normative_conservatism",
@@ -47,7 +53,9 @@
     "alpha": 0.4666,
     "n_items": 2,
     "n_valid": 1171,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p4"
+    ]
   },
   {
     "key": "MED|environmental_knowledge_self_efficacy",
@@ -93,7 +101,11 @@
     "alpha": 0.537,
     "n_items": 3,
     "n_valid": 1097,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p22",
+      "p23",
+      "p24"
+    ]
   },
   {
     "key": "POB|social_policy_preferences",
@@ -125,7 +137,9 @@
     "alpha": 0.5821,
     "n_items": 4,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p35"
+    ]
   },
   {
     "key": "CUL|institutional_trust_and_electoral_confidence",
@@ -145,7 +159,12 @@
     "alpha": 0.5935,
     "n_items": 6,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p10",
+      "p11",
+      "p46",
+      "p52"
+    ]
   },
   {
     "key": "CUL|authoritarian_predisposition",
@@ -155,7 +174,9 @@
     "alpha": 0.4947,
     "n_items": 6,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p65"
+    ]
   },
   {
     "key": "CUL|perceived_political_influence_of_actors",
@@ -237,6 +258,9 @@
     "n_items": 4,
     "n_valid": 1045,
     "reverse_coded": [
+      "p52_1",
+      "p55",
+      "p56",
       "p57"
     ]
   },
@@ -273,7 +297,9 @@
     "alpha": 0.4812,
     "n_items": 3,
     "n_valid": 1008,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p53"
+    ]
   },
   {
     "key": "SEG|crime_victimization_exposure",
@@ -296,7 +322,9 @@
     "alpha": 0.5676,
     "n_items": 3,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p11_1"
+    ]
   },
   {
     "key": "SEG|punitive_and_vigilante_attitudes",
@@ -306,7 +334,10 @@
     "alpha": 0.528,
     "n_items": 4,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p66",
+      "p71"
+    ]
   },
   {
     "key": "SAL|functional_health_status",
@@ -417,7 +448,10 @@
     "n_items": 5,
     "n_valid": 1200,
     "reverse_coded": [
-      "p53_1"
+      "p53_1",
+      "p54",
+      "p55",
+      "p69_1"
     ]
   },
   {
@@ -438,7 +472,11 @@
     "alpha": 0.5177,
     "n_items": 3,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p13_1",
+      "p14_1",
+      "p26"
+    ]
   },
   {
     "key": "ENV|state_and_family_responsibility_for_elder_care",
@@ -448,7 +486,10 @@
     "alpha": 0.4516,
     "n_items": 3,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p30",
+      "p42_1"
+    ]
   },
   {
     "key": "ENV|assessment_of_older_adult_wellbeing_and_social_conditions",
@@ -458,7 +499,9 @@
     "alpha": 0.5319,
     "n_items": 3,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p38"
+    ]
   },
   {
     "key": "DER|institutional_trust_justice",
@@ -470,6 +513,7 @@
     "n_valid": 1200,
     "reverse_coded": [
       "p18",
+      "p20",
       "p34"
     ]
   },
@@ -481,7 +525,10 @@
     "alpha": 0.5404,
     "n_items": 3,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p16",
+      "p17"
+    ]
   },
   {
     "key": "DER|perceived_discrimination_social_exclusion",
@@ -491,7 +538,9 @@
     "alpha": 0.5814,
     "n_items": 5,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p41"
+    ]
   },
   {
     "key": "DER|rights_awareness_personal_experience",
@@ -636,7 +685,9 @@
     "alpha": 0.6936,
     "n_items": 4,
     "n_valid": 1123,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p48"
+    ]
   },
   {
     "key": "GLO|international_institutional_engagement",
@@ -656,7 +707,9 @@
     "alpha": 0.6491,
     "n_items": 6,
     "n_valid": 804,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p42_1"
+    ]
   },
   {
     "key": "JUS|legal_cynicism_extrajudicial_justice",
@@ -666,7 +719,9 @@
     "alpha": 0.519,
     "n_items": 5,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p18"
+    ]
   },
   {
     "key": "JUS|police_trust_and_legitimacy",
@@ -737,7 +792,12 @@
     "alpha": 0.5688,
     "n_items": 7,
     "n_valid": 1199,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p42",
+      "p43_1",
+      "p47",
+      "p51"
+    ]
   },
   {
     "key": "FED|perceived_representativeness",
@@ -786,7 +846,9 @@
     "alpha": 0.6933,
     "n_items": 4,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p45"
+    ]
   },
   {
     "key": "FED|political_interest_and_engagement",
@@ -810,7 +872,9 @@
     "alpha": 0.5063,
     "n_items": 2,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p11_1"
+    ]
   },
   {
     "key": "GEN|intimate_partner_power_dynamics",
@@ -892,7 +956,10 @@
     "alpha": 0.4895,
     "n_items": 3,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p1",
+      "p2"
+    ]
   },
   {
     "key": "ECO|job_quality_and_labor_conditions",
@@ -962,7 +1029,12 @@
     "alpha": 0.5462,
     "n_items": 4,
     "n_valid": 1200,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p12",
+      "p13",
+      "p38",
+      "p39"
+    ]
   },
   {
     "key": "NIN|youth_educational_opportunity_and_labor_prospects",
@@ -1032,7 +1104,9 @@
     "alpha": 0.6992,
     "n_items": 3,
     "n_valid": 1104,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p45_1"
+    ]
   },
   {
     "key": "CIE|science_technology_interest_engagement",
@@ -1061,7 +1135,8 @@
     "reverse_coded": [
       "p32_1",
       "p33",
-      "p40_1"
+      "p40_1",
+      "p50_1"
     ]
   },
   {
@@ -1072,7 +1147,11 @@
     "alpha": 0.5085,
     "n_items": 5,
     "n_valid": 1110,
-    "reverse_coded": null
+    "reverse_coded": [
+      "p34",
+      "p39_1",
+      "p44_1"
+    ]
   },
   {
     "key": "CIE|household_science_cultural_capital",

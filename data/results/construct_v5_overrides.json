@@ -1,197 +1,704 @@
 {
   "_comment": "V5 construct overrides — applied on top of semantic_variable_selection_v4.json by build_construct_variables.py. Sources: construct_code_audit.md (Stream 2), construct_low_n_investigation.md (Stream 4), construct_dimensionality_review.md (Stream 3). Keys are 'DOMAIN|construct_name'.",
-
   "excluded": {
     "_comment": "Constructs skipped entirely. Values: excluded_low_n (N<400 bootstrap unreliable), audit_drop (structural defect).",
-    "SOC|digital_technology_access_and_ownership":   "excluded_low_n",
-    "MIG|transnational_social_ties":                 "excluded_low_n",
-    "SOC|internet_engagement_and_digital_literacy":  "excluded_low_n",
-    "JUS|legal_self_efficacy_and_access":            "excluded_low_n",
-    "ECO|human_capital_and_employment_preparation":  "audit_drop",
-    "ECO|job_quality_and_labor_conditions":          "excluded_low_n",
-    "SOC|media_consumption_breadth":                 "excluded_low_n",
-    "SAL|healthcare_access_and_utilization":         "excluded_low_n",
-    "EDU|social_media_engagement":                   "audit_drop",
-    "GEN|intimate_partner_power_dynamics":           "excluded_low_n"
+    "SOC|digital_technology_access_and_ownership": "excluded_low_n",
+    "MIG|transnational_social_ties": "excluded_low_n",
+    "SOC|internet_engagement_and_digital_literacy": "excluded_low_n",
+    "JUS|legal_self_efficacy_and_access": "excluded_low_n",
+    "ECO|human_capital_and_employment_preparation": "audit_drop",
+    "ECO|job_quality_and_labor_conditions": "excluded_low_n",
+    "SOC|media_consumption_breadth": "excluded_low_n",
+    "SAL|healthcare_access_and_utilization": "excluded_low_n",
+    "EDU|social_media_engagement": "audit_drop",
+    "GEN|intimate_partner_power_dynamics": "excluded_low_n"
   },
-
   "items_to_drop": {
     "_comment": "Items removed from question_cluster before aggregation. Sources: construct_code_audit.md (Phase 1), construct_low_n_investigation.md (Phase 2), construct_semantic_coherence_v5.md (Phase 3 semantic review — reverted where alpha test showed removal hurts scale or user annotated 'leave as is').",
-
-    "CIE|institutional_trust_in_science":                        ["p49_1"],
-    "CIE|perceived_societal_value_of_science_technology":        ["p57", "p58", "p51_1"],
-    "CIE|science_technology_interest_engagement":                ["p38_4", "p38_5", "p38_6"],
-    "CUL|democratic_legitimacy_support":                         ["p30"],
-    "CUL|institutional_trust_and_electoral_confidence":          ["p71", "p72"],
-    "CUL|political_efficacy_and_engagement":                     ["p21", "p51"],
-    "DEP|attitudes_toward_cultural_openness_and_foreign_influence": ["p29_1"],
-    "DEP|reading_engagement_and_literacy":                       ["p15c_2", "p15c_3"],
-    "DER|institutional_trust_justice":                           ["p33", "p19"],
-    "DER|perceived_discrimination_social_exclusion":             ["p36_1"],
-    "ECO|labor_union_attitudes":                                 ["p22"],
-    "EDU|digital_and_cultural_capital":                          ["p48_1", "p48_3", "p44_5"],
-    "ENV|ageism_and_negative_stereotypes":                       ["p27"],
-    "ENV|state_and_family_responsibility_for_elder_care":        ["p31"],
-    "FAM|conjugal_union_attitudes":                              ["p33"],
-    "FAM|family_cohesion_quality":                               ["p27", "p52", "p53"],
-    "FAM|family_value_transmission":                             ["p57"],
-    "FAM|ideal_family_normativity":                              ["p67", "p68"],
-    "FAM|intergenerational_obligations":                         ["p62", "p63"],
-    "FED|fiscal_and_service_federalism_preferences":             ["p37_1"],
-    "FED|security_governance_preferences":                       ["p47"],
-    "GEN|traditional_gender_role_attitudes":                     ["p61_1", "p63_1", "p59_1"],
-    "GLO|economic_globalization_attitudes":                      ["p49_1"],
-    "GLO|international_institutional_engagement":                ["p58"],
-    "HAB|basic_services_access":                                 ["p8", "p36_30"],
-    "IDE|tolerance_social_diversity":                            ["p54_5", "p54_6", "p54_8"],
-    "IND|social_distance_toward_indigenous_people":              ["p39_1"],
-    "JUS|judicial_institutional_trust":                          ["p43"],
-    "JUS|law_compliance_motivation":                             ["p8", "p9"],
-    "MED|environmental_knowledge_self_efficacy":                 ["p28_1", "p36_1"],
-    "MED|environmental_problem_salience":                        ["p6"],
-    "MED|pro_environmental_civic_engagement":                    ["p34_5"],
-    "MIG|attitudes_toward_foreigners_in_mexico":                 ["p44"],
-    "MIG|perceived_opportunity_structure":                       ["p3_9"],
-    "NIN|perceived_situation_of_children_and_youth":             ["p61"],
-    "NIN|youth_participation_and_voice":                         ["p41", "p47"],
-    "POB|intergenerational_mobility_perception":                 ["p36"],
-    "POB|subjective_economic_wellbeing_and_agency":              ["p10"],
-    "REL|church_state_separation":                               ["p58"],
-    "REL|religious_socialization":                               ["p2", "p3", "p4"],
-    "SAL|subjective_wellbeing":                                  ["p8_1"],
-    "SEG|fear_and_risk_avoidance":                               ["p48", "p49"],
-    "SEG|punitive_and_vigilante_attitudes":                      ["p72"],
-    "SOC|media_trust_and_quality_evaluation":                    ["p53_1"],
-    "SOC|perceived_media_social_impact":                         ["p63_1"]
+    "CIE|institutional_trust_in_science": [
+      "p49_1"
+    ],
+    "CIE|perceived_societal_value_of_science_technology": [
+      "p57",
+      "p58",
+      "p51_1"
+    ],
+    "CIE|science_technology_interest_engagement": [
+      "p38_4",
+      "p38_5",
+      "p38_6"
+    ],
+    "CUL|democratic_legitimacy_support": [
+      "p30"
+    ],
+    "CUL|institutional_trust_and_electoral_confidence": [
+      "p71",
+      "p72"
+    ],
+    "CUL|political_efficacy_and_engagement": [
+      "p21",
+      "p51"
+    ],
+    "DEP|attitudes_toward_cultural_openness_and_foreign_influence": [
+      "p29_1"
+    ],
+    "DEP|reading_engagement_and_literacy": [
+      "p15c_2",
+      "p15c_3"
+    ],
+    "DER|institutional_trust_justice": [
+      "p33",
+      "p19"
+    ],
+    "DER|perceived_discrimination_social_exclusion": [
+      "p36_1"
+    ],
+    "ECO|labor_union_attitudes": [
+      "p22"
+    ],
+    "EDU|digital_and_cultural_capital": [
+      "p48_1",
+      "p48_3",
+      "p44_5"
+    ],
+    "ENV|ageism_and_negative_stereotypes": [
+      "p27"
+    ],
+    "ENV|state_and_family_responsibility_for_elder_care": [
+      "p31"
+    ],
+    "FAM|conjugal_union_attitudes": [
+      "p33"
+    ],
+    "FAM|family_cohesion_quality": [
+      "p27",
+      "p52",
+      "p53"
+    ],
+    "FAM|family_value_transmission": [
+      "p57"
+    ],
+    "FAM|ideal_family_normativity": [
+      "p67",
+      "p68"
+    ],
+    "FAM|intergenerational_obligations": [
+      "p62",
+      "p63"
+    ],
+    "FED|fiscal_and_service_federalism_preferences": [
+      "p37_1"
+    ],
+    "FED|security_governance_preferences": [
+      "p47"
+    ],
+    "GEN|traditional_gender_role_attitudes": [
+      "p61_1",
+      "p63_1",
+      "p59_1"
+    ],
+    "GLO|economic_globalization_attitudes": [
+      "p49_1"
+    ],
+    "GLO|international_institutional_engagement": [
+      "p58"
+    ],
+    "HAB|basic_services_access": [
+      "p8",
+      "p36_30"
+    ],
+    "IDE|tolerance_social_diversity": [
+      "p54_5",
+      "p54_6",
+      "p54_8"
+    ],
+    "IND|social_distance_toward_indigenous_people": [
+      "p39_1"
+    ],
+    "JUS|judicial_institutional_trust": [
+      "p43"
+    ],
+    "JUS|law_compliance_motivation": [
+      "p8",
+      "p9"
+    ],
+    "MED|environmental_knowledge_self_efficacy": [
+      "p28_1",
+      "p36_1"
+    ],
+    "MED|environmental_problem_salience": [
+      "p6"
+    ],
+    "MED|pro_environmental_civic_engagement": [
+      "p34_5"
+    ],
+    "MIG|attitudes_toward_foreigners_in_mexico": [
+      "p44"
+    ],
+    "MIG|perceived_opportunity_structure": [
+      "p3_9"
+    ],
+    "NIN|perceived_situation_of_children_and_youth": [
+      "p61"
+    ],
+    "NIN|youth_participation_and_voice": [
+      "p41",
+      "p47"
+    ],
+    "POB|intergenerational_mobility_perception": [
+      "p36"
+    ],
+    "POB|subjective_economic_wellbeing_and_agency": [
+      "p10"
+    ],
+    "REL|church_state_separation": [
+      "p58"
+    ],
+    "REL|religious_socialization": [
+      "p2",
+      "p3",
+      "p4"
+    ],
+    "SAL|subjective_wellbeing": [
+      "p8_1"
+    ],
+    "SEG|fear_and_risk_avoidance": [
+      "p48",
+      "p49"
+    ],
+    "SEG|punitive_and_vigilante_attitudes": [
+      "p72"
+    ],
+    "SOC|media_trust_and_quality_evaluation": [
+      "p53_1"
+    ],
+    "SOC|perceived_media_social_impact": [
+      "p63_1"
+    ]
   },
-
   "items_to_add": {
     "_comment": "Items appended to question_cluster before aggregation. Allows redesign without editing the SVS v4 JSON.",
-    "DEP|reading_engagement_and_literacy": ["p15a_2", "p15a_3"]
+    "DEP|reading_engagement_and_literacy": [
+      "p15a_2",
+      "p15a_3"
+    ]
   },
-
   "item_sentinel_overrides": {
     "_comment": "Per-item extra sentinel codes (beyond >=97 or <0). Captures 'depende'/'otra' codes that pollute ordinal means.",
     "JUS|judicial_institutional_trust": {
-      "p41": [6],
-      "p46": [5],
-      "p50": [3]
+      "p41": [
+        6
+      ],
+      "p46": [
+        5
+      ],
+      "p50": [
+        3
+      ]
     },
     "GLO|economic_globalization_attitudes": {
-      "p48":   [4],
-      "p31_1": [4]
+      "p48": [
+        4
+      ],
+      "p31_1": [
+        4
+      ]
     },
     "REL|supernatural_beliefs": {
-      "p17_1":  [4], "p17_2":  [4], "p17_3":  [4], "p17_4":  [4],
-      "p17_5":  [4], "p17_6":  [4], "p17_7":  [4], "p17_8":  [4],
-      "p17_9":  [4], "p17_10": [4], "p17_11": [4], "p17_12": [4],
-      "p17_13": [4], "p17_14": [4], "p17_15": [4]
+      "p17_1": [
+        4
+      ],
+      "p17_2": [
+        4
+      ],
+      "p17_3": [
+        4
+      ],
+      "p17_4": [
+        4
+      ],
+      "p17_5": [
+        4
+      ],
+      "p17_6": [
+        4
+      ],
+      "p17_7": [
+        4
+      ],
+      "p17_8": [
+        4
+      ],
+      "p17_9": [
+        4
+      ],
+      "p17_10": [
+        4
+      ],
+      "p17_11": [
+        4
+      ],
+      "p17_12": [
+        4
+      ],
+      "p17_13": [
+        4
+      ],
+      "p17_14": [
+        4
+      ],
+      "p17_15": [
+        4
+      ]
     },
     "REL|personal_religiosity": {
-      "p12": [4]
+      "p12": [
+        4
+      ]
     },
     "EDU|educational_returns_belief": {
-      "p37": [4]
+      "p37": [
+        4
+      ]
     },
     "GEN|intimate_partner_power_dynamics": {
-      "p23_1": [2],
-      "p23_5": [2]
+      "p23_1": [
+        2
+      ],
+      "p23_5": [
+        2
+      ]
     }
   },
-
   "reverse_coded_overrides": {
     "_comment": "Items that need direction reversal so higher agg score = more of construct. Extends SVS v4 reverse_coded_items.",
-
     "FED|perceived_representativeness": {
-      "add": ["p12_1","p12_2","p12_3","p12_4","p12_5","p12_6"]
+      "add": [
+        "p12_1",
+        "p12_2",
+        "p12_3",
+        "p12_4",
+        "p12_5",
+        "p12_6"
+      ]
     },
     "CUL|perceived_political_influence_of_actors": {
-      "add": ["p84_1","p84_2","p84_3","p84_4","p84_6","p84_7","p84_8"]
+      "add": [
+        "p84_1",
+        "p84_2",
+        "p84_3",
+        "p84_4",
+        "p84_6",
+        "p84_7",
+        "p84_8"
+      ]
     },
     "MIG|perceived_opportunity_structure": {
-      "add": ["p3_1","p3_2","p3_3","p3_4"]
+      "add": [
+        "p3_1",
+        "p3_2",
+        "p3_3",
+        "p3_4"
+      ]
     },
     "SEG|perceived_security_trajectory": {
-      "add": ["p3","p4","p5","p6"]
+      "add": [
+        "p3",
+        "p4",
+        "p5",
+        "p6"
+      ]
     },
     "SAL|functional_health_status": {
-      "add": ["p2","p3","p4","p5"]
+      "add": [
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ]
     },
     "DER|institutional_trust_justice": {
-      "add": ["p18","p34"]
+      "add": [
+        "p18",
+        "p20",
+        "p34"
+      ]
     },
     "CIE|institutional_trust_in_science": {
-      "add": ["p32_1","p33","p40_1"]
+      "add": [
+        "p32_1",
+        "p33",
+        "p40_1",
+        "p50_1"
+      ]
     },
     "FED|political_interest_and_engagement": {
-      "add": ["p5","p6","p7"]
+      "add": [
+        "p5",
+        "p6",
+        "p7"
+      ]
     },
     "CIE|science_technology_interest_engagement": {
-      "add": ["p11","p22","p23","p35","p43"]
+      "add": [
+        "p11",
+        "p22",
+        "p23",
+        "p35",
+        "p43"
+      ]
     },
     "REL|church_state_separation": {
-      "add": ["p57"]
+      "add": [
+        "p52_1",
+        "p55",
+        "p56",
+        "p57"
+      ]
     },
     "IND|national_economic_outlook": {
-      "add": ["p1","p2"]
+      "add": [
+        "p1",
+        "p2"
+      ]
     },
     "ECO|labor_union_attitudes": {
-      "add": ["p23"]
+      "add": [
+        "p23"
+      ]
     },
     "FED|fiscal_and_service_federalism_preferences": {
-      "add": ["p38"]
+      "add": [
+        "p38"
+      ]
     },
     "REL|supernatural_beliefs": {
-      "add": ["p17_1","p17_2","p17_3","p17_4","p17_5","p17_6","p17_7",
-              "p17_8","p17_9","p17_10","p17_11","p17_12","p17_13","p17_14","p17_15"]
+      "add": [
+        "p17_1",
+        "p17_2",
+        "p17_3",
+        "p17_4",
+        "p17_5",
+        "p17_6",
+        "p17_7",
+        "p17_8",
+        "p17_9",
+        "p17_10",
+        "p17_11",
+        "p17_12",
+        "p17_13",
+        "p17_14",
+        "p17_15"
+      ]
     },
     "REL|personal_religiosity": {
-      "add": ["p10","p11","p12","p13_1","p14","p25"]
+      "add": [
+        "p10",
+        "p11",
+        "p12",
+        "p13_1",
+        "p14",
+        "p25"
+      ]
     },
     "HAB|household_asset_endowment": {
-      "add": ["p36_1","p36_2","p36_4","p36_5","p36_6","p36_8","p36_9",
-              "p36_10","p36_18","p36_21","p36_22","p36_29"]
+      "add": [
+        "p36_1",
+        "p36_2",
+        "p36_4",
+        "p36_5",
+        "p36_6",
+        "p36_8",
+        "p36_9",
+        "p36_10",
+        "p36_18",
+        "p36_21",
+        "p36_22",
+        "p36_29"
+      ]
     },
     "MED|pro_environmental_civic_engagement": {
-      "add": ["p34_1","p34_2","p34_3","p34_4","p34_5"]
+      "add": [
+        "p34_1",
+        "p34_2",
+        "p34_3",
+        "p34_4",
+        "p34_5"
+      ]
     },
     "CIE|household_science_cultural_capital": {
-      "add": ["p3_2","p3_3","p3_6","p3_8","p3_11","p4","p5"]
+      "add": [
+        "p3_2",
+        "p3_3",
+        "p3_6",
+        "p3_8",
+        "p3_11",
+        "p4",
+        "p5"
+      ]
     },
     "EDU|digital_and_cultural_capital": {
-      "add": ["p47_3","p47_4","p47_6","p45_1","p45_2"]
+      "add": [
+        "p47_3",
+        "p47_4",
+        "p47_6",
+        "p45_1",
+        "p45_2"
+      ]
     },
     "EDU|educational_returns_belief": {
-      "add": ["p37","p55_3","p55_4","p55_5"]
+      "add": [
+        "p37",
+        "p55_3",
+        "p55_4",
+        "p55_5"
+      ]
     },
     "DER|social_rights_service_quality": {
-      "add": ["p30","p31","p32"]
+      "add": [
+        "p30",
+        "p31",
+        "p32"
+      ]
     },
     "DEP|reading_engagement_and_literacy": {
-      "add": ["p15a_1","p15a_2","p15a_3"]
+      "add": [
+        "p15a_1",
+        "p15a_2",
+        "p15a_3"
+      ]
     },
     "GEN|intimate_partner_power_dynamics": {
-      "add": ["p23_1","p23_5"]
+      "add": [
+        "p23_1",
+        "p23_5"
+      ]
     },
     "EDU|social_media_engagement": {
-      "add": ["p48_1","p48_3","p44_5"]
+      "add": [
+        "p48_1",
+        "p48_3",
+        "p44_5"
+      ]
+    },
+    "IDE|national_identity_pride": {
+      "add": [
+        "p3_2",
+        "p6",
+        "p8"
+      ]
+    },
+    "IDE|tolerance_social_diversity": {
+      "add": [
+        "p68"
+      ]
+    },
+    "IDE|personal_optimism_efficacy": {
+      "add": [
+        "p20",
+        "p24",
+        "p30_1"
+      ]
+    },
+    "MED|environmental_problem_salience": {
+      "add": [
+        "p4"
+      ]
+    },
+    "POB|intergenerational_mobility_perception": {
+      "add": [
+        "p22",
+        "p23",
+        "p24"
+      ]
+    },
+    "POB|social_policy_preferences": {
+      "add": [
+        "p43"
+      ]
+    },
+    "CUL|democratic_legitimacy_support": {
+      "add": [
+        "p35"
+      ]
+    },
+    "CUL|political_efficacy_and_engagement": {
+      "add": [
+        "p10",
+        "p11",
+        "p46",
+        "p52"
+      ]
+    },
+    "CUL|authoritarian_predisposition": {
+      "add": [
+        "p65"
+      ]
+    },
+    "REL|religious_tolerance": {
+      "add": [
+        "p47"
+      ]
+    },
+    "SEG|police_institutional_legitimacy": {
+      "add": [
+        "p53"
+      ]
+    },
+    "SEG|fear_and_risk_avoidance": {
+      "add": [
+        "p11_1"
+      ]
+    },
+    "SEG|punitive_and_vigilante_attitudes": {
+      "add": [
+        "p66",
+        "p71"
+      ]
+    },
+    "SOC|media_trust_and_quality_evaluation": {
+      "add": [
+        "p54",
+        "p55",
+        "p69_1"
+      ]
+    },
+    "ENV|ageism_and_negative_stereotypes": {
+      "add": [
+        "p13_1",
+        "p14_1",
+        "p26"
+      ]
+    },
+    "ENV|state_and_family_responsibility_for_elder_care": {
+      "add": [
+        "p30",
+        "p42_1"
+      ]
+    },
+    "ENV|assessment_of_older_adult_wellbeing_and_social_conditions": {
+      "add": [
+        "p38"
+      ]
+    },
+    "DER|authoritarian_security_tradeoff": {
+      "add": [
+        "p16",
+        "p17"
+      ]
+    },
+    "DER|perceived_discrimination_social_exclusion": {
+      "add": [
+        "p41"
+      ]
+    },
+    "COR|tolerance_of_corrupt_behavior": {
+      "add": [
+        "p10_1",
+        "p13_1"
+      ]
+    },
+    "COR|reporting_behavior_and_barriers": {
+      "add": [
+        "p31"
+      ]
+    },
+    "GLO|economic_globalization_attitudes": {
+      "add": [
+        "p48"
+      ]
+    },
+    "JUS|judicial_institutional_trust": {
+      "add": [
+        "p42_1"
+      ]
+    },
+    "JUS|legal_cynicism_extrajudicial_justice": {
+      "add": [
+        "p18"
+      ]
+    },
+    "JUS|police_trust_and_legitimacy": {
+      "add": [
+        "p24_1"
+      ]
+    },
+    "MIG|attitudes_toward_foreigners_in_mexico": {
+      "add": [
+        "p42",
+        "p43_1",
+        "p47",
+        "p51"
+      ]
+    },
+    "FED|security_governance_preferences": {
+      "add": [
+        "p45"
+      ]
+    },
+    "GEN|traditional_gender_role_attitudes": {
+      "add": [
+        "p11_1"
+      ]
+    },
+    "ECO|economic_wellbeing_perception": {
+      "add": [
+        "p1",
+        "p2"
+      ]
+    },
+    "NIN|children_rights_recognition_and_respect": {
+      "add": [
+        "p22"
+      ]
+    },
+    "NIN|youth_participation_and_voice": {
+      "add": [
+        "p12",
+        "p13",
+        "p38",
+        "p39"
+      ]
+    },
+    "CIE|science_technology_self_efficacy": {
+      "add": [
+        "p45_1"
+      ]
+    },
+    "CIE|perceived_societal_value_of_science_technology": {
+      "add": [
+        "p34",
+        "p39_1",
+        "p44_1"
+      ]
+    },
+    "EDU|school_environment_quality": {
+      "add": [
+        "p30_1"
+      ]
     }
   },
-
   "construct_type_overrides": {
     "_comment": "Force a specific construct_type, bypassing alpha-based tier selection.",
     "DEP|reading_engagement_and_literacy": "reflective_scale"
   },
-
   "new_constructs": [
     {
       "_comment": "Split from EDU|digital_and_cultural_capital (PCA PC2+ dimension). Source: construct_dimensionality_review.md.",
       "domain": "EDU",
       "name": "social_media_engagement",
       "description": "Social media account ownership and use of internet for news. Represents the social/communicative dimension of digital capital, split from device ownership via PCA (PC2 21.2% variance).",
-      "question_cluster": ["p48_1", "p48_3", "p44_5"],
+      "question_cluster": [
+        "p48_1",
+        "p48_3",
+        "p44_5"
+      ],
       "construct_type": "reflective_scale",
-      "reverse_coded_items": ["p48_1", "p48_3", "p44_5"]
+      "reverse_coded_items": [
+        "p48_1",
+        "p48_3",
+        "p44_5"
+      ]
     }
   ]
 }

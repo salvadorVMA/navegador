@@ -428,6 +428,229 @@ def main():
         manifest_constructs=manifest_constructs,
     )
 
+    # Focus plot: youth participation and voice
+    plot_youth_participation_focus(
+        estimates=e5j4,
+        manifest_constructs=manifest_constructs,
+        output_path=ROOT / "data" / "results" / "domain_circle_network_focus_youth.png",
+    )
+
+
+def plot_network_focus(
+    estimates: dict,
+    title: str,
+    output_path: Path,
+    manifest_constructs: list[str] | None = None,
+    focus_node: str | None = None,
+    neighbor_edges: list[dict] | None = None,   # [{to, gamma, shared_dim}, ...]
+    path_edges: list[dict] | None = None,        # [{from, to, gamma}, ...]
+    path_label: str = "",
+    figsize: tuple = (22, 22),
+):
+    """Plot the full network with a focal construct and highlighted edges overlaid.
+
+    The regular network is drawn first (all significant edges, dimmed).
+    Overlays are drawn on top:
+      - focus_node: gold star, large, always visible
+      - neighbor_edges: thick green edges with γ labels
+      - path_edges: thick magenta edges with γ labels
+    """
+    # ── Build construct set and layout (mirrors plot_network) ──────────────
+    constructs: set[str] = set()
+    if manifest_constructs:
+        constructs.update(manifest_constructs)
+    for v in estimates.values():
+        ca, cb = v.get("construct_a"), v.get("construct_b")
+        if ca: constructs.add(ca)
+        if cb: constructs.add(cb)
+    if not constructs:
+        print("No constructs found"); return
+    constructs = sorted(constructs)
+    domains = sorted(set(c.split("|")[0] for c in constructs))
+    n_dom = len(domains)
+    domain_colors = {d: _CMAP24[i % len(_CMAP24)] for i, d in enumerate(domains)}
+    node_colors   = {c: domain_colors[c.split("|")[0]] for c in constructs}
+
+    # ── Significance filter ────────────────────────────────────────────────
+    sig = []
+    for v in estimates.values():
+        g = v.get("dr_gamma")
+        if g is None: continue
+        if "excl_zero" in v:
+            if not v["excl_zero"]: continue
+        else:
+            ci = v.get("dr_gamma_ci")
+            if not ci or not (ci[0] > 0 or ci[1] < 0): continue
+        sig.append(v)
+
+    degree: dict[str, int] = defaultdict(int)
+    for v in sig:
+        degree[v["construct_a"]] += 1
+        degree[v["construct_b"]] += 1
+    sig_nodes = set(degree.keys())
+
+    dam = domain_angles(domains)
+    pos = layout_nodes(constructs, dam, n_dom, node_radius=3.4)
+
+    # ── Figure ─────────────────────────────────────────────────────────────
+    fig, ax = plt.subplots(figsize=figsize)
+    ax.set_aspect("equal"); ax.axis("off")
+    lim = 6.5
+    ax.set_xlim(-lim, lim); ax.set_ylim(-lim, lim)
+
+    draw_sector_backgrounds(ax, domains, dam, n_dom,
+                            inner_r=2.7, outer_r=4.1,
+                            domain_colors=domain_colors)
+
+    # ── Background network edges (dimmed) ──────────────────────────────────
+    gamma_vals = [abs(v["dr_gamma"]) for v in sig]
+    g_max = max(gamma_vals) if gamma_vals else 1.0
+    g_min = min(gamma_vals) if gamma_vals else 0.0
+    g_range = g_max - g_min if g_max > g_min else 1.0
+
+    # Collect highlight node set for dimming logic
+    highlight_nodes: set[str] = set()
+    if focus_node: highlight_nodes.add(focus_node)
+    for e in (neighbor_edges or []):
+        highlight_nodes.add(e["to"])
+    for e in (path_edges or []):
+        highlight_nodes.add(e["from"]); highlight_nodes.add(e["to"])
+
+    for v in sorted(sig, key=lambda x: abs(x["dr_gamma"])):
+        ca, cb = v["construct_a"], v["construct_b"]
+        if ca not in pos or cb not in pos: continue
+        g = v["dr_gamma"]
+        abs_g = abs(g)
+        color = "#d62728" if g > 0 else "#1f77b4"
+        norm_g = (abs_g - g_min) / g_range
+        # Dim edges that are not connected to highlight nodes
+        if ca in highlight_nodes or cb in highlight_nodes:
+            alpha = 0.10 + 0.30 * norm_g
+            lw    = 0.3  + 1.2  * norm_g
+        else:
+            alpha = 0.06 + 0.18 * norm_g
+            lw    = 0.2  + 0.7  * norm_g
+        curved_edge(ax, pos[ca], pos[cb], color=color, alpha=alpha, lw=lw, rad=0.18)
+
+    # ── Background nodes ───────────────────────────────────────────────────
+    for c in constructs:
+        x, y = pos[c]
+        deg = degree.get(c, 0)
+        is_sig = c in sig_nodes
+        if c in highlight_nodes:
+            size = 55 + min(deg * 14, 200)
+            color = node_colors[c]; alpha = 0.92
+            ec = "white"; lw = 0.8; zorder = 4
+        elif is_sig:
+            size = 40 + min(deg * 14, 200)
+            color = node_colors[c]; alpha = 0.45
+            ec = "white"; lw = 0.5; zorder = 3
+        else:
+            size = 10; color = "#cccccc"; alpha = 0.25
+            ec = "#aaaaaa"; lw = 0.3; zorder = 2
+        ax.scatter(x, y, s=size, c=color, zorder=zorder,
+                   edgecolors=ec, linewidths=lw, alpha=alpha)
+
+    # ── Overlay: neighbor edges (green, thick) ─────────────────────────────
+    for e in (neighbor_edges or []):
+        src = focus_node
+        tgt = e["to"]
+        if src not in pos or tgt not in pos: continue
+        g = e["gamma"]
+        curved_edge(ax, pos[src], pos[tgt],
+                    color="#2ca02c", alpha=0.88, lw=3.2, rad=0.22)
+        # γ label at midpoint
+        mx = (pos[src][0] + pos[tgt][0]) / 2
+        my = (pos[src][1] + pos[tgt][1]) / 2
+        dim = e.get("shared_dim", "?")
+        ax.text(mx, my, f"γ={g:+.3f}\n({dim})",
+                ha="center", va="center", fontsize=6.5, zorder=9,
+                color="#145a14", fontweight="bold",
+                path_effects=[pe.withStroke(linewidth=1.8, foreground="white")])
+
+    # ── Overlay: path edges (magenta, thick) ──────────────────────────────
+    for e in (path_edges or []):
+        src = e["from"]; tgt = e["to"]
+        if src not in pos or tgt not in pos: continue
+        g = e["gamma"]
+        curved_edge(ax, pos[src], pos[tgt],
+                    color="#9467bd", alpha=0.90, lw=3.6, rad=0.30)
+        mx = (pos[src][0] + pos[tgt][0]) / 2
+        my = (pos[src][1] + pos[tgt][1]) / 2
+        ax.text(mx, my, f"PATH\nγ={g:+.3f}",
+                ha="center", va="center", fontsize=6.5, zorder=9,
+                color="#4c1480", fontweight="bold",
+                path_effects=[pe.withStroke(linewidth=1.8, foreground="white")])
+
+    # ── Overlay: focus node (gold star) ───────────────────────────────────
+    if focus_node and focus_node in pos:
+        x, y = pos[focus_node]
+        ax.scatter(x, y, s=400, c="#FFD700", marker="*", zorder=10,
+                   edgecolors="#8B6914", linewidths=1.2)
+        name = focus_node.split("|")[-1].replace("_", " ")
+        ax.text(x, y + 0.32, name, ha="center", va="bottom",
+                fontsize=7, fontweight="bold", zorder=11, color="#8B6914",
+                path_effects=[pe.withStroke(linewidth=2.0, foreground="white")])
+
+    # Labels on highlighted neighbor/path nodes
+    all_overlay_nodes: set[str] = set()
+    for e in (neighbor_edges or []): all_overlay_nodes.add(e["to"])
+    for e in (path_edges or []):
+        all_overlay_nodes.add(e["from"]); all_overlay_nodes.add(e["to"])
+    if focus_node: all_overlay_nodes.discard(focus_node)
+
+    for c in all_overlay_nodes:
+        if c not in pos: continue
+        x, y = pos[c]
+        name = c.split("|")[-1].replace("_", " ")
+        # determine offset direction (away from origin)
+        angle = np.arctan2(y, x)
+        ox = 0.28 * np.cos(angle); oy = 0.28 * np.sin(angle)
+        ax.text(x + ox, y + oy, name, ha="center", va="center",
+                fontsize=6.5, zorder=11, fontweight="bold",
+                color=node_colors.get(c, "#333333"),
+                path_effects=[pe.withStroke(linewidth=2.0, foreground="white")])
+
+    # ── Domain labels ──────────────────────────────────────────────────────
+    label_radius = 4.75
+    for dom in domains:
+        angle = dam[dom]
+        lx = label_radius * np.cos(angle)
+        ly = label_radius * np.sin(angle)
+        label = DOMAIN_LABELS.get(dom, dom)
+        color = domain_colors[dom]
+        ha = "center"
+        if lx > 0.3: ha = "left"
+        elif lx < -0.3: ha = "right"
+        ax.text(lx, ly, f"{dom}\n{label}", ha=ha, va="center",
+                fontsize=8.5, fontweight="bold", color=color,
+                path_effects=[pe.withStroke(linewidth=2.0, foreground="white")], zorder=6)
+
+    # ── Legend ─────────────────────────────────────────────────────────────
+    legend_elements = [
+        mpatches.Patch(facecolor="#d62728", alpha=0.5, label="γ > 0  (positive co-variation)"),
+        mpatches.Patch(facecolor="#1f77b4", alpha=0.5, label="γ < 0  (negative co-variation)"),
+        mpatches.Patch(facecolor="#2ca02c", alpha=0.8, label="Top-3 neighbors of focus node"),
+        mpatches.Patch(facecolor="#9467bd", alpha=0.8, label=f"Path: {path_label}"),
+        ax.scatter([], [], s=200, c="#FFD700", marker="*", label="Focus construct"),
+    ]
+    ax.legend(handles=legend_elements, loc="lower left",
+              bbox_to_anchor=(0.01, 0.01), fontsize=9, framealpha=0.88,
+              title="Edge type / Focus", title_fontsize=9)
+
+    n_sig = len(sig)
+    ax.text(0, -lim + 0.3,
+            f"{n_sig} significant edges  |  {len(sig_nodes)}/{len(constructs)} constructs connected  |  max |γ|={g_max:.3f}",
+            ha="center", va="bottom", fontsize=9, color="#444444",
+            path_effects=[pe.withStroke(linewidth=1.5, foreground="white")])
+
+    ax.set_title(title, fontsize=15, fontweight="bold", pad=16, y=0.98)
+    fig.tight_layout()
+    fig.savefig(output_path, dpi=180, bbox_inches="tight",
+                facecolor="white", edgecolor="none")
+    plt.close(fig)
+    print(f"Saved: {output_path}")
+
 
 def normalize_julia_estimates(raw: dict) -> dict:
     """
@@ -463,6 +686,42 @@ def normalize_julia_estimates(raw: dict) -> dict:
 
         out[key] = entry
     return out
+
+
+def plot_youth_participation_focus(
+    estimates: dict,
+    manifest_constructs: list[str],
+    output_path: Path,
+):
+    """Overlay: top-3 neighbors and democracy path for NIN|youth_participation_and_voice."""
+    focus = "NIN|youth_participation_and_voice"
+
+    neighbor_edges = [
+        {"to": "HAB|structural_housing_quality",        "gamma": -0.0978, "shared_dim": "Tam_loc"},
+        {"to": "CIE|household_science_cultural_capital", "gamma": -0.0945, "shared_dim": "escol"},
+        {"to": "EDU|digital_and_cultural_capital",       "gamma": -0.0934, "shared_dim": "escol"},
+    ]
+
+    # Direct bridge (1 hop) to CUL|democratic_legitimacy_support
+    path_edges = [
+        {"from": "NIN|youth_participation_and_voice",
+         "to":   "CUL|democratic_legitimacy_support",
+         "gamma": -0.0133},
+    ]
+
+    plot_network_focus(
+        estimates=estimates,
+        title=(
+            "SES Bridge — Focus: Youth Participation & Voice (NIN)\n"
+            "Top-3 neighbors (green) · Path to Democratic Legitimacy Support (purple)"
+        ),
+        output_path=output_path,
+        manifest_constructs=manifest_constructs,
+        focus_node=focus,
+        neighbor_edges=neighbor_edges,
+        path_edges=path_edges,
+        path_label="→ CUL|democratic_legitimacy_support",
+    )
 
 
 if __name__ == "__main__":

@@ -243,7 +243,7 @@ python -m pytest tests/unit/test_ses_regression.py tests/unit/test_bridge_estima
 - **102 constructs built** across 24 domains: 16 good (α≥0.7), 49 questionable (α 0.5-0.7), 20 tier3_caveat (α<0.5), 12 single_item_tier2, 5 formative_index.
 - **Construct Validation** (`scripts/debug/validate_constructs.py`, `optimize_constructs.py`): Structural audit, alpha fixes, optimization log.
 
-### SES Fingerprint & Ontology Pipeline (as of 2026-03-18)
+### SES Fingerprint & Ontology Pipeline (as of 2026-03-17, extended 2026-03-18)
 
 #### SES Foundation
 
@@ -291,13 +291,108 @@ signal = loading_gamma_A × γ(A→B) × loading_gamma_B
 - Double negatives cancel correctly (both items RC → positive prediction)
 - Bridge γ is the dominant bottleneck; item loadings are typically 0.5–0.99
 
+#### Orphan Item Loading (approximate, 2026-03-18)
+
+5,877 of 6,359 L0 items have no parent construct. For these orphans, `compute_ses_fingerprints.py` now computes:
+- `candidate_construct`: L1 construct in same domain with highest fingerprint cosine similarity
+- `candidate_loading`: Spearman ρ(item, agg_candidate) from actual survey data
+- `candidate_loading_gamma`: `clip(ρ × 1.14, -1, 1)` — approximate γ via empirical scaling factor
+- `loading_type`: `"exact"` | `"approximate"` | `"none"` (JUE/CON have no constructs)
+
+**ρ→γ scaling factor (1.14):** Derived from 474 construct-member items with both measurements.
+Pearson r(ρ,γ)=0.9765, sign agreement=99.8%, median |γ|/|ρ|=1.14. GK γ exceeds Spearman ρ
+because γ excludes tied pairs from its denominator while ρ averages tied ranks — for 5-point
+Likert items with ~30–50% ties, this produces ~14% systematic inflation.
+
+Coverage: 482 exact + 5,307 approximate + 570 none (JUE=331, CON=239).
+
+Run: `python scripts/debug/compute_ses_fingerprints.py --enrich-only`
+
+#### OntologyQuery — Network Traversal API (2026-03-18)
+
+`opinion_ontology.OntologyQuery` now supports item-level input and graph traversal:
+
+**`_lift_to_construct(key)`** — resolves any L0/L1/L2 key to an L1 anchor construct:
+- exact: item with parent_construct, or L1 construct itself
+- approximate: orphan item with candidate_construct (uses candidate_loading_gamma)
+- domain_fallback: item/domain with no construct (no bridge queries possible)
+- none: unresolvable
+
+**Use-case 1 — `get_neighborhood(key, min_abs_gamma, top_n)`**
+Lifts item → anchor construct → `get_neighbors`. Returns neighbors list + summary
+(domain distribution, positive/negative γ counts, dominant shared dim, strongest edge)
++ narrative. Flags lift type and loading_gamma in output.
+
+**Use-case 2 — `find_path(key_a, key_b)`**
+Dijkstra on bridge adjacency with weight = `-log(|γ|)`, equivalent to maximising the
+product of |γ| values along the path (strongest SES-mediated chain).
+Returns: path, edges (γ/CI per hop), signal_chain (∏|γᵢ|), total_cost (Σ-log|γᵢ|),
+direct_edge (if exists), attenuation_warning (signal_chain < 0.001), narrative.
+Both endpoints are lifted via `_lift_to_construct`; lift metadata included in output.
+
+**Integration note:** Current analysis pipelines do not yet call OntologyQuery.
+Integration point: after `variable_selector.py` returns `(col_name, survey_name)`,
+construct `item_key = f"{col}|{enc_nom_dict[survey_name]}"` then call `_lift_to_construct`.
+
+#### Scale Direction Audit & RC Fix (2026-03-18)
+
+Systematic audit of all 93 constructs detected **37 with scale inversion** (value 1 = positive label, e.g. "Mucho", "Muy de acuerdo", "Siempre", "Muy buena" but item was not reverse-coded). Without RC, higher construct score = LESS of the implied concept.
+
+**Fix pipeline:**
+1. `scripts/debug/audit_scale_direction.py` — detects scale-inverted items by checking `variable_value_labels["1.0"]` against positive-intensity keyword patterns; writes `data/results/scale_audit_v1.json`; `--apply` flag writes proposed overrides to `construct_v5_overrides.json`
+2. `scripts/debug/build_construct_variables.py` — rebuilds all `agg_*` columns with corrected RC
+3. `scripts/debug/compute_ses_fingerprints.py` (full recompute) — recomputes all ρ values and fingerprint vectors
+4. `scripts/debug/patch_kg_ontology_bridges.py` — recomputes `fingerprint_cos` and flips bridge γ signs where `sign(cos_new) ≠ sign(γ_old)` (caused by RC'ing exactly one side of the pair); 265/984 edges flipped
+
+**65 new RC items** added across 37 constructs. All construct fingerprints, bridge γ signs, and `fingerprint_cos` values are now correct.
+
+**Detection keywords** (value 1 label containing): mucho/mucha, bastante, muy de acuerdo, totalmente de acuerdo, siempre, excelente, muy buena/bueno, muy satisfecho, muy confiado, mucha confianza, totalmente de acuerdo/cierto/correcto/seguro, de acuerdo, se justifica mucho.
+
 #### Output Files
 
 | File | Contents |
 |------|----------|
-| `data/results/ses_fingerprints.json` | L0/L1/L2 fingerprints; L0 items include `loading_gamma` |
-| `data/results/kg_ontology_v2.json` | 93 L1 constructs enriched with fingerprints + 984 bridge edges + self-documenting metadata |
+| `data/results/ses_fingerprints.json` | L0/L1/L2 fingerprints; L0 items include `loading_gamma` (exact) or `candidate_loading_gamma` (approximate) and `loading_type` |
+| `data/results/kg_ontology_v2.json` | 93 L1 constructs enriched with fingerprints + 984 bridge edges (γ signs corrected 2026-03-18) |
 | `data/results/kg_ontology.json` | Original v1 (stale; 176 old constructs) — do not use |
+| `data/results/scale_audit_v1.json` | Per-item scale direction audit; proposed RC overrides |
+| `data/results/network_topology_report.md` | Full topology & geometry report (867 lines) — global metrics, PCA, balance, community |
+
+#### Network Topology & Geometry (2026-03-18)
+
+Full analysis in `data/results/network_topology_report.md` (generated by `scripts/debug/analyze_network_topology.py` + `scripts/debug/analyze_item_network.py`).
+
+**Global metrics** (giant component, 71 nodes, 984 edges):
+
+| Metric | Value | Interpretation |
+|--------|-------|----------------|
+| Density | 23.0% | Pervasive SES connectivity (typical networks <5%) |
+| Diameter | 4 | Max 4 SES-mediated hops between any two constructs |
+| APL | 1.728 | < 2 hops on average — ultra-compact |
+| Avg clustering | 0.531 | 2.3× random expectation (0.230) — geometric transitivity |
+| Transitivity | 0.720 | |
+| Isolated nodes | 22 | SES-magnitude too small to clear significance threshold |
+| Sign split | 52% pos / 48% neg | Co-elevation and counter-variation in near-equal measure |
+| Structural balance | 94% | 94% of triangles are sign-consistent; clean two-camp bipartition |
+| Modularity Q | 0.089 | No community structure — continuous gradient, not modular |
+| σ (small-world) | 0.991 | Not small-world — geometric graph, not sparse random graph |
+
+**PCA of 4D fingerprint space:**
+- PC1 = **78% of variance** — education-vs-tradition axis (escol + Tam_loc on one end; sexo + edad on the other)
+- PC2 = **12% of variance** — age-vs-urbanization axis
+- Effective dimensionality ≈ 1.5D; the 4D space is nearly collinear
+
+**Fingerprint dot product → bridge γ:**
+- `dot(fingerprint_A, fingerprint_B)` predicts γ **sign** at 99.4% accuracy
+- `dot` predicts γ **magnitude** at r = 0.685 (47% variance explained)
+- 53% unexplained: education × gender interactions, bootstrap noise, non-linear SES effects
+
+**Network archetype:** Signed thresholded inner-product graph in R⁴. Not scale-free, not small-world, not modular. Structure is a projection of SES geometry onto a discrete edge set (significance test as threshold). The bipartition of the 94%-balanced sign structure corresponds exactly to the two halves of the PC1 axis (cosmopolitan–education camp vs. tradition–locality camp).
+
+**Item-level signal chains** (from `analyze_item_network.py`):
+- 3.9M item→item paths evaluated; 2.4% reach |signal| ≥ 0.01
+- Prediction chain: `signal = loading_γ_A × γ_bridge × loading_γ_B`; `loading_γ` = γ(raw item, bin5(agg_construct))
+- ρ → γ scaling factor: **1.14** (empirically derived from 474 construct-member items)
 
 ### Sweep Scripts
 

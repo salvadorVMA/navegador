@@ -1,0 +1,3854 @@
+{
+  "proposed_overrides": {
+    "IDE|national_identity_pride": [
+      "p3_2",
+      "p6",
+      "p8"
+    ],
+    "IDE|tolerance_social_diversity": [
+      "p68"
+    ],
+    "IDE|personal_optimism_efficacy": [
+      "p20",
+      "p24",
+      "p30_1"
+    ],
+    "MED|environmental_problem_salience": [
+      "p4"
+    ],
+    "POB|intergenerational_mobility_perception": [
+      "p22",
+      "p23",
+      "p24"
+    ],
+    "POB|social_policy_preferences": [
+      "p43"
+    ],
+    "CUL|democratic_legitimacy_support": [
+      "p35"
+    ],
+    "CUL|political_efficacy_and_engagement": [
+      "p10",
+      "p11",
+      "p46",
+      "p52"
+    ],
+    "CUL|authoritarian_predisposition": [
+      "p65"
+    ],
+    "REL|church_state_separation": [
+      "p52_1",
+      "p55",
+      "p56"
+    ],
+    "REL|religious_tolerance": [
+      "p47"
+    ],
+    "SEG|police_institutional_legitimacy": [
+      "p53"
+    ],
+    "SEG|fear_and_risk_avoidance": [
+      "p11_1"
+    ],
+    "SEG|punitive_and_vigilante_attitudes": [
+      "p66",
+      "p71"
+    ],
+    "SOC|media_trust_and_quality_evaluation": [
+      "p54",
+      "p55",
+      "p69_1"
+    ],
+    "ENV|ageism_and_negative_stereotypes": [
+      "p13_1",
+      "p14_1",
+      "p26"
+    ],
+    "ENV|state_and_family_responsibility_for_elder_care": [
+      "p42_1",
+      "p30"
+    ],
+    "ENV|assessment_of_older_adult_wellbeing_and_social_conditions": [
+      "p38"
+    ],
+    "DER|institutional_trust_justice": [
+      "p20"
+    ],
+    "DER|authoritarian_security_tradeoff": [
+      "p16",
+      "p17"
+    ],
+    "DER|perceived_discrimination_social_exclusion": [
+      "p41"
+    ],
+    "COR|tolerance_of_corrupt_behavior": [
+      "p10_1",
+      "p13_1"
+    ],
+    "COR|reporting_behavior_and_barriers": [
+      "p31"
+    ],
+    "GLO|economic_globalization_attitudes": [
+      "p48"
+    ],
+    "JUS|judicial_institutional_trust": [
+      "p42_1"
+    ],
+    "JUS|legal_cynicism_extrajudicial_justice": [
+      "p18"
+    ],
+    "JUS|police_trust_and_legitimacy": [
+      "p24_1"
+    ],
+    "MIG|attitudes_toward_foreigners_in_mexico": [
+      "p42",
+      "p43_1",
+      "p47",
+      "p51"
+    ],
+    "FED|security_governance_preferences": [
+      "p45"
+    ],
+    "GEN|traditional_gender_role_attitudes": [
+      "p11_1"
+    ],
+    "ECO|economic_wellbeing_perception": [
+      "p1",
+      "p2"
+    ],
+    "NIN|children_rights_recognition_and_respect": [
+      "p22"
+    ],
+    "NIN|youth_participation_and_voice": [
+      "p12",
+      "p13",
+      "p38",
+      "p39"
+    ],
+    "CIE|science_technology_self_efficacy": [
+      "p45_1"
+    ],
+    "CIE|institutional_trust_in_science": [
+      "p50_1"
+    ],
+    "CIE|perceived_societal_value_of_science_technology": [
+      "p34",
+      "p44_1",
+      "p39_1"
+    ],
+    "EDU|school_environment_quality": [
+      "p30_1"
+    ]
+  },
+  "audit": {
+    "IDE|national_identity_pride": {
+      "survey": "IDENTIDAD_Y_VALORES",
+      "n_items": 3,
+      "n_inverted_unhandled": 3,
+      "proposed_add_rc": [
+        "p3_2",
+        "p6",
+        "p8"
+      ],
+      "items": [
+        {
+          "col": "p3_2",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p6",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p8",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        }
+      ]
+    },
+    "IDE|tolerance_social_diversity": {
+      "survey": "IDENTIDAD_Y_VALORES",
+      "n_items": 3,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p68"
+      ],
+      "items": [
+        {
+          "col": "p9",
+          "label_1": " Procurar que adopten nuestra cultura y nuestras costumbres",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p68",
+          "label_1": " Muy de acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p73_1",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "IDE|personal_optimism_efficacy": {
+      "survey": "IDENTIDAD_Y_VALORES",
+      "n_items": 4,
+      "n_inverted_unhandled": 3,
+      "proposed_add_rc": [
+        "p20",
+        "p24",
+        "p30_1"
+      ],
+      "items": [
+        {
+          "col": "p19",
+          "label_1": " Sí podrá",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p20",
+          "label_1": " Muy confiado(a)",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p24",
+          "label_1": " Muy satisfecho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p30_1",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        }
+      ]
+    },
+    "IDE|moral_normative_conservatism": {
+      "survey": "IDENTIDAD_Y_VALORES",
+      "n_items": 5,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p55",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p56",
+          "label_1": " Muy conservador",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p57",
+          "label_1": " Muy conservador",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p58",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p60",
+          "label_1": " Bien",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "MED|environmental_problem_salience": {
+      "survey": "MEDIO_AMBIENTE",
+      "n_items": 2,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p4"
+      ],
+      "items": [
+        {
+          "col": "p4",
+          "label_1": "Muy buena",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p7",
+          "label_1": "Contaminación del aire",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "MED|environmental_knowledge_self_efficacy": {
+      "survey": "MEDIO_AMBIENTE",
+      "n_items": 3,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p8",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p9",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p29",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        }
+      ]
+    },
+    "MED|pro_environmental_civic_engagement": {
+      "survey": "MEDIO_AMBIENTE",
+      "n_items": 4,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p34_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p34_2",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p34_3",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p34_4",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        }
+      ]
+    },
+    "MED|climate_change_risk_perception": {
+      "survey": "MEDIO_AMBIENTE",
+      "n_items": 4,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p37",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p38_1",
+          "label_1": "De  acuerdo",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p39",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p10_1",
+          "label_1": "Muy",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "POB|intergenerational_mobility_perception": {
+      "survey": "POBREZA",
+      "n_items": 3,
+      "n_inverted_unhandled": 3,
+      "proposed_add_rc": [
+        "p22",
+        "p23",
+        "p24"
+      ],
+      "items": [
+        {
+          "col": "p22",
+          "label_1": "Mucho mejor",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p23",
+          "label_1": "Mucho mejor",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p24",
+          "label_1": "Mucho mejor",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        }
+      ]
+    },
+    "POB|social_policy_preferences": {
+      "survey": "POBREZA",
+      "n_items": 4,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p43"
+      ],
+      "items": [
+        {
+          "col": "p41",
+          "label_1": "Buscar satisfacer las necesidades básicas de todas las personas",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p42",
+          "label_1": "Subir los impuestos a los ricos",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p43",
+          "label_1": "Totalmente cierto",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p44",
+          "label_1": "Las ayudas del gobierno hacen que las personas realmente progresen",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "POB|subjective_economic_wellbeing_and_agency": {
+      "survey": "POBREZA",
+      "n_items": 4,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p13",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p14",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p15",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p16",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        }
+      ]
+    },
+    "CUL|democratic_legitimacy_support": {
+      "survey": "CULTURA_POLITICA",
+      "n_items": 4,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p35"
+      ],
+      "items": [
+        {
+          "col": "p31",
+          "label_1": " La democracia es preferible a cualquier otra forma de gobie",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p32",
+          "label_1": " Es una democracia plena",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p35",
+          "label_1": " Muy satisfecho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p36",
+          "label_1": " Puede haber democracia aunque no se respeten los derechos h",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "CUL|institutional_trust_and_electoral_confidence": {
+      "survey": "CULTURA_POLITICA",
+      "n_items": 3,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p41",
+          "label_1": " Completamente libres y equitativas",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p42",
+          "label_1": " Sí garantiza",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p43",
+          "label_1": " Más",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "CUL|political_efficacy_and_engagement": {
+      "survey": "CULTURA_POLITICA",
+      "n_items": 6,
+      "n_inverted_unhandled": 4,
+      "proposed_add_rc": [
+        "p10",
+        "p11",
+        "p46",
+        "p52"
+      ],
+      "items": [
+        {
+          "col": "p10",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p11",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p20",
+          "label_1": " Muy complicada",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p25",
+          "label_1": " Vale la pena",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p46",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p52",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        }
+      ]
+    },
+    "CUL|authoritarian_predisposition": {
+      "survey": "CULTURA_POLITICA",
+      "n_items": 6,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p65"
+      ],
+      "items": [
+        {
+          "col": "p17",
+          "label_1": " Libertad",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p61",
+          "label_1": " Verdadera",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p64",
+          "label_1": " Deben romper las leyes con tal de aplicar la justicia",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p65",
+          "label_1": " Muy de acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p60",
+          "label_1": " Usted la obedece aunque no le guste  o",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p23",
+          "label_1": " Aplicarla",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "CUL|perceived_political_influence_of_actors": {
+      "survey": "CULTURA_POLITICA",
+      "n_items": 7,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p84_1",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p84_2",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p84_3",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p84_4",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p84_6",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p84_7",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p84_8",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        }
+      ]
+    },
+    "REL|supernatural_beliefs": {
+      "survey": "RELIGION_SECULARIZACION_Y_LAICIDAD",
+      "n_items": 14,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p17_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p17_2",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p17_4",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p17_5",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p17_6",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p17_7",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p17_8",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p17_9",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p17_10",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p17_11",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p17_12",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p17_13",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p17_14",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p17_15",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        }
+      ]
+    },
+    "REL|personal_religiosity": {
+      "survey": "RELIGION_SECULARIZACION_Y_LAICIDAD",
+      "n_items": 6,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p10",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p12",
+          "label_1": "Sí encuentro confort",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p13_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p14",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p25",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p11",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        }
+      ]
+    },
+    "REL|religious_socialization": {
+      "survey": "RELIGION_SECULARIZACION_Y_LAICIDAD",
+      "n_items": 3,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p5",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p6",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p33_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "REL|church_state_separation": {
+      "survey": "RELIGION_SECULARIZACION_Y_LAICIDAD",
+      "n_items": 4,
+      "n_inverted_unhandled": 3,
+      "proposed_add_rc": [
+        "p52_1",
+        "p55",
+        "p56"
+      ],
+      "items": [
+        {
+          "col": "p52_1",
+          "label_1": "De acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p55",
+          "label_1": "De acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p56",
+          "label_1": "De acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p57",
+          "label_1": "Sí deben pagar impuestos",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        }
+      ]
+    },
+    "REL|religious_tolerance": {
+      "survey": "RELIGION_SECULARIZACION_Y_LAICIDAD",
+      "n_items": 3,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p47"
+      ],
+      "items": [
+        {
+          "col": "p44_1",
+          "label_1": "Tolerante",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p47",
+          "label_1": "Se justifica mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p48",
+          "label_1": "Obedecer lo que decidió la mayoría y  sacar a los protestan",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "SEG|perceived_security_trajectory": {
+      "survey": "SEGURIDAD_PUBLICA",
+      "n_items": 4,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p3",
+          "label_1": "Mucho más seguro",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p4",
+          "label_1": " Mucho mejor",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p5",
+          "label_1": " Mucho mejor",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p6",
+          "label_1": " Mucho mejor",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        }
+      ]
+    },
+    "SEG|police_institutional_legitimacy": {
+      "survey": "SEGURIDAD_PUBLICA",
+      "n_items": 3,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p53"
+      ],
+      "items": [
+        {
+          "col": "p28_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p29_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p53",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        }
+      ]
+    },
+    "SEG|crime_victimization_exposure": {
+      "survey": "SEGURIDAD_PUBLICA",
+      "n_items": 13,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p56",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p56_1",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p57",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p57_1",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p58_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p58a_1",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p58a_2",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p58a_3",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p58a_5",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p58a_7",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p58a_8",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p58a_9",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p60",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "SEG|fear_and_risk_avoidance": {
+      "survey": "SEGURIDAD_PUBLICA",
+      "n_items": 3,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p11_1"
+      ],
+      "items": [
+        {
+          "col": "p11_1",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p22_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p23_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "SEG|punitive_and_vigilante_attitudes": {
+      "survey": "SEGURIDAD_PUBLICA",
+      "n_items": 4,
+      "n_inverted_unhandled": 2,
+      "proposed_add_rc": [
+        "p66",
+        "p71"
+      ],
+      "items": [
+        {
+          "col": "p66",
+          "label_1": " Muy de acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p67",
+          "label_1": "Libertad",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p68",
+          "label_1": "Sí tienen el derecho",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p71",
+          "label_1": "De acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        }
+      ]
+    },
+    "SAL|functional_health_status": {
+      "survey": "SALUD",
+      "n_items": 4,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p2",
+          "label_1": " Sí, me limita mucho",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p3",
+          "label_1": " Sí, me limita mucho",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p4",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p5",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        }
+      ]
+    },
+    "SAL|subjective_wellbeing": {
+      "survey": "SALUD",
+      "n_items": 4,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p37",
+          "label_1": "Muy mala",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p38",
+          "label_1": "Totalmente insatisfecho",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p39",
+          "label_1": "Nada",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p40",
+          "label_1": "Totalmente insatisfecho",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "SAL|health_risk_behaviors": {
+      "survey": "SALUD",
+      "n_items": 3,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p28",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p34",
+          "label_1": " A diario",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p35",
+          "label_1": " 24 ó más copas",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "IND|perceived_indigenous_discrimination": {
+      "survey": "INDIGENAS",
+      "n_items": 4,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p20",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p21",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p25_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p34_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "IND|social_distance_toward_indigenous_people": {
+      "survey": "INDIGENAS",
+      "n_items": 2,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p37_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p40_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "IND|national_economic_outlook": {
+      "survey": "INDIGENAS",
+      "n_items": 2,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p1",
+          "label_1": "Mejor",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p2",
+          "label_1": "Va a mejorar",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        }
+      ]
+    },
+    "SOC|media_trust_and_quality_evaluation": {
+      "survey": "SOCIEDAD_DE_LA_INFORMACION",
+      "n_items": 5,
+      "n_inverted_unhandled": 3,
+      "proposed_add_rc": [
+        "p54",
+        "p55",
+        "p69_1"
+      ],
+      "items": [
+        {
+          "col": "p54",
+          "label_1": "Muy buena",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p55",
+          "label_1": "Muy de acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p66",
+          "label_1": "Muy fácil",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p69_1",
+          "label_1": "Muy de acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p67",
+          "label_1": "Suficiente",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "SOC|perceived_media_social_impact": {
+      "survey": "SOCIEDAD_DE_LA_INFORMACION",
+      "n_items": 6,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p60",
+          "label_1": "Mayor que antes",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p61",
+          "label_1": "Exagera lo que vivimos en realidad",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p62_1",
+          "label_1": "Positiva",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p59_1",
+          "label_1": "Positiva",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p76",
+          "label_1": "Muy necesario",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p77_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "ENV|ageism_and_negative_stereotypes": {
+      "survey": "ENVEJECIMIENTO",
+      "n_items": 3,
+      "n_inverted_unhandled": 3,
+      "proposed_add_rc": [
+        "p13_1",
+        "p14_1",
+        "p26"
+      ],
+      "items": [
+        {
+          "col": "p13_1",
+          "label_1": "De acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p14_1",
+          "label_1": "De acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p26",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        }
+      ]
+    },
+    "ENV|state_and_family_responsibility_for_elder_care": {
+      "survey": "ENVEJECIMIENTO",
+      "n_items": 3,
+      "n_inverted_unhandled": 2,
+      "proposed_add_rc": [
+        "p42_1",
+        "p30"
+      ],
+      "items": [
+        {
+          "col": "p42_1",
+          "label_1": "De acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p44",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p30",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        }
+      ]
+    },
+    "ENV|assessment_of_older_adult_wellbeing_and_social_conditions": {
+      "survey": "ENVEJECIMIENTO",
+      "n_items": 3,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p38"
+      ],
+      "items": [
+        {
+          "col": "p9",
+          "label_1": "Ha mejorado",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p10",
+          "label_1": "Mejor",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p38",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        }
+      ]
+    },
+    "DER|institutional_trust_justice": {
+      "survey": "DERECHOS_HUMANOS_DISCRIMINACION_Y_GRUPOS_VULNERABLES",
+      "n_items": 4,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p20"
+      ],
+      "items": [
+        {
+          "col": "p18",
+          "label_1": "Muy bueno",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p20",
+          "label_1": " Mucha",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p21",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p34",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        }
+      ]
+    },
+    "DER|authoritarian_security_tradeoff": {
+      "survey": "DERECHOS_HUMANOS_DISCRIMINACION_Y_GRUPOS_VULNERABLES",
+      "n_items": 3,
+      "n_inverted_unhandled": 2,
+      "proposed_add_rc": [
+        "p16",
+        "p17"
+      ],
+      "items": [
+        {
+          "col": "p9",
+          "label_1": "Sí es un obstáculo",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p16",
+          "label_1": "Muy de acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p17",
+          "label_1": "Muy de acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        }
+      ]
+    },
+    "DER|perceived_discrimination_social_exclusion": {
+      "survey": "DERECHOS_HUMANOS_DISCRIMINACION_Y_GRUPOS_VULNERABLES",
+      "n_items": 5,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p41"
+      ],
+      "items": [
+        {
+          "col": "p35_1",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p39",
+          "label_1": "Mejor que las demás",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p40_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p41",
+          "label_1": "Muy de acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p44",
+          "label_1": "Correcto",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "DER|rights_awareness_personal_experience": {
+      "survey": "DERECHOS_HUMANOS_DISCRIMINACION_Y_GRUPOS_VULNERABLES",
+      "n_items": 3,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p45",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p53",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p54",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "DER|social_rights_service_quality": {
+      "survey": "DERECHOS_HUMANOS_DISCRIMINACION_Y_GRUPOS_VULNERABLES",
+      "n_items": 3,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p30",
+          "label_1": "Muy eficientes",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p31",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p32",
+          "label_1": "Muy buena",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        }
+      ]
+    },
+    "COR|corruption_perception": {
+      "survey": "CORRUPCION_Y_CULTURA_DE_LA_LEGALIDAD",
+      "n_items": 5,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p2",
+          "label_1": "Mayor",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p3",
+          "label_1": "Mayor",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p15",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p16",
+          "label_1": "Sector público",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p17",
+          "label_1": "Niveles bajos",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "COR|tolerance_of_corrupt_behavior": {
+      "survey": "CORRUPCION_Y_CULTURA_DE_LA_LEGALIDAD",
+      "n_items": 3,
+      "n_inverted_unhandled": 2,
+      "proposed_add_rc": [
+        "p10_1",
+        "p13_1"
+      ],
+      "items": [
+        {
+          "col": "p10_1",
+          "label_1": "Totalmente de acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p13_1",
+          "label_1": "Totalmente de acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p12",
+          "label_1": "Qué usted ofrezca dinero",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "COR|civic_enforcement_norms": {
+      "survey": "CORRUPCION_Y_CULTURA_DE_LA_LEGALIDAD",
+      "n_items": 5,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p20",
+          "label_1": "Hablar en privado",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p21",
+          "label_1": "El jefe debe llamar la atención al trabajador",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p22",
+          "label_1": "Obligarlo a devolver o pagar  lo que no pretendía pagar",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p23",
+          "label_1": "Me retiro y hago como que no pasa nada",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p24",
+          "label_1": "Me retiro y hago como que no pasa nada",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "COR|reporting_behavior_and_barriers": {
+      "survey": "CORRUPCION_Y_CULTURA_DE_LA_LEGALIDAD",
+      "n_items": 7,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p31"
+      ],
+      "items": [
+        {
+          "col": "p27",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p28",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p29",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p30",
+          "label_1": "No podía probar nada",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p31",
+          "label_1": "Siempre me quedo callado",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p32",
+          "label_1": "De nada sirve denunciar",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p33",
+          "label_1": "Normalmente procede mi queja",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "HAB|structural_housing_quality": {
+      "survey": "LA_CONDICION_DE_HABITABILIDAD_DE_VIVIENDA_EN_MEXICO",
+      "n_items": 3,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p1",
+          "label_1": " Material de desecho",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p2",
+          "label_1": " Material de desecho",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p3",
+          "label_1": "Tierra",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "HAB|basic_services_access": {
+      "survey": "LA_CONDICION_DE_HABITABILIDAD_DE_VIVIENDA_EN_MEXICO",
+      "n_items": 4,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p7",
+          "label_1": "Diario",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p7_1",
+          "label_1": "Todo el día",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p10",
+          "label_1": "A la red pública",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p11",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "HAB|household_asset_endowment": {
+      "survey": "LA_CONDICION_DE_HABITABILIDAD_DE_VIVIENDA_EN_MEXICO",
+      "n_items": 12,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p36_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p36_2",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p36_4",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p36_5",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p36_6",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p36_8",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p36_9",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p36_10",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p36_18",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p36_21",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p36_22",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p36_29",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        }
+      ]
+    },
+    "HAB|housing_tenure_security": {
+      "survey": "LA_CONDICION_DE_HABITABILIDAD_DE_VIVIENDA_EN_MEXICO",
+      "n_items": 7,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p13",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p14",
+          "label_1": "Es de mi propiedad",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p15",
+          "label_1": "Propia y totalmente pagada",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p15_1",
+          "label_1": "Un familiar",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p16",
+          "label_1": "Ya construida",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p17",
+          "label_1": "La compró usted",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p18",
+          "label_1": "Fideicomiso Fondo Nacional Habitaciones Populares",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "GLO|transnational_exposure": {
+      "survey": "GLOBALIZACION",
+      "n_items": 4,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p2",
+          "label_1": " Uno",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p3",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p8_2",
+          "label_1": "Muy frecuentemente",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p7",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "GLO|economic_globalization_attitudes": {
+      "survey": "GLOBALIZACION",
+      "n_items": 4,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p48"
+      ],
+      "items": [
+        {
+          "col": "p46_1",
+          "label_1": "Positivo",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p47",
+          "label_1": " El comercio exterior es benéfico para la economía  mexicana",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p48",
+          "label_1": "De acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p31_1",
+          "label_1": " Positiva",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "GLO|international_institutional_engagement": {
+      "survey": "GLOBALIZACION",
+      "n_items": 5,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p52_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p54_1",
+          "label_1": " Gobiernos Nacionales",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p57",
+          "label_1": "Sí debe",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p60_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p63_1",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "JUS|judicial_institutional_trust": {
+      "survey": "JUSTICIA",
+      "n_items": 6,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p42_1"
+      ],
+      "items": [
+        {
+          "col": "p22",
+          "label_1": "Funciona bien",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p41",
+          "label_1": "Muy independientes",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p42_1",
+          "label_1": "De acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p46",
+          "label_1": "Muy justas",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p33",
+          "label_1": "Todas las personas reciben igual trato",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p50",
+          "label_1": "Recibe un castigo",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "JUS|legal_cynicism_extrajudicial_justice": {
+      "survey": "JUSTICIA",
+      "n_items": 5,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p18"
+      ],
+      "items": [
+        {
+          "col": "p17",
+          "label_1": " Sí tienen el derecho",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p18",
+          "label_1": "Muy de acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p44",
+          "label_1": "Construir el aeropuerto",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p55",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p45",
+          "label_1": "Considera que la persona es efectivamente culpable",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "JUS|police_trust_and_legitimacy": {
+      "survey": "JUSTICIA",
+      "n_items": 4,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p24_1"
+      ],
+      "items": [
+        {
+          "col": "p24_1",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p25a_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p59",
+          "label_1": "Con mayor preparación y capacitación",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p40_2_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "JUS|law_compliance_motivation": {
+      "survey": "JUSTICIA",
+      "n_items": 2,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p7",
+          "label_1": "Porque cumplir la ley nos beneficia a todos",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p10",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        }
+      ]
+    },
+    "MIG|emigration_intention_likelihood": {
+      "survey": "MIGRACION",
+      "n_items": 3,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p15_1",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p17",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p18",
+          "label_1": " Muy probable",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "MIG|perceived_opportunity_structure": {
+      "survey": "MIGRACION",
+      "n_items": 4,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p3_1",
+          "label_1": " Muchas",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p3_2",
+          "label_1": " Muchas",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p3_3",
+          "label_1": " Muchas",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p3_4",
+          "label_1": " Muchas",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        }
+      ]
+    },
+    "MIG|attitudes_toward_foreigners_in_mexico": {
+      "survey": "MIGRACION",
+      "n_items": 7,
+      "n_inverted_unhandled": 4,
+      "proposed_add_rc": [
+        "p42",
+        "p43_1",
+        "p47",
+        "p51"
+      ],
+      "items": [
+        {
+          "col": "p42",
+          "label_1": "Muy buena",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p43_1",
+          "label_1": " De acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p45",
+          "label_1": " Son demasiados",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p47",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p48",
+          "label_1": " Menos derechos que los mexicanos",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p51",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p52",
+          "label_1": "Se les trata igual",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "FED|perceived_representativeness": {
+      "survey": "FEDERALISMO",
+      "n_items": 6,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p12_1",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p12_2",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p12_3",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p12_4",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p12_5",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p12_6",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        }
+      ]
+    },
+    "FED|fiscal_and_service_federalism_preferences": {
+      "survey": "FEDERALISMO",
+      "n_items": 7,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p31_1",
+          "label_1": "Gobierno Municipal",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p32_1",
+          "label_1": " El municipio",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p33",
+          "label_1": " Las autoridades de su municipio",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p34_1",
+          "label_1": "Gobierno Municipal",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p36",
+          "label_1": "El gobierno federal debería tener la mayor parte",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p38",
+          "label_1": "Que los impuestos que se recauden en su estado se inviertan totalmente en su estado",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p60",
+          "label_1": "Que las decisiones se concentren en el gobierno federal",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "FED|legal_uniformity_preference": {
+      "survey": "FEDERALISMO",
+      "n_items": 6,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p53_1",
+          "label_1": " Una sola ley",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p53_2",
+          "label_1": " Una sola ley",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p53_3",
+          "label_1": " Una sola ley",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p53_4",
+          "label_1": " Una sola ley",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p53_5",
+          "label_1": " Una sola ley",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p53_6",
+          "label_1": " Una sola ley",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "FED|security_governance_preferences": {
+      "survey": "FEDERALISMO",
+      "n_items": 4,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p45"
+      ],
+      "items": [
+        {
+          "col": "p45",
+          "label_1": "Muy buena",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p46",
+          "label_1": "Que haya un solo mando sobre todos los cuerpos policiales",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p48",
+          "label_1": "Que se haga cargo el gobierno estatal",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p49",
+          "label_1": "El gobierno federal",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "FED|political_interest_and_engagement": {
+      "survey": "FEDERALISMO",
+      "n_items": 3,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p5",
+          "label_1": " Siempre",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p6",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p7",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        }
+      ]
+    },
+    "GEN|traditional_gender_role_attitudes": {
+      "survey": "GENERO",
+      "n_items": 2,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p11_1"
+      ],
+      "items": [
+        {
+          "col": "p11_1",
+          "label_1": " De acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p26_1",
+          "label_1": " Acuerdo",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "GEN|tolerance_of_gender_based_violence": {
+      "survey": "GENERO",
+      "n_items": 4,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p31",
+          "label_1": " Que es intolerable que él grite a su esposa",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p32",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p33",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p65",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "GEN|sexual_and_reproductive_attitudes": {
+      "survey": "GENERO",
+      "n_items": 5,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p45",
+          "label_1": " Mal",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p46_1",
+          "label_1": " Lo usa frecuentemente",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p47",
+          "label_1": " Cree que es víctima de trata",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p50",
+          "label_1": " Continuar el embarazo y asumirlo",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p51",
+          "label_1": " La adolescente embarazada",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "DEP|cultural_socialization_in_childhood": {
+      "survey": "CULTURA_LECTURA_Y_DEPORTE",
+      "n_items": 3,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p8",
+          "label_1": " Nada",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p11",
+          "label_1": "No, nunca",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p12_1",
+          "label_1": " Nunca",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "DEP|reading_engagement_and_literacy": {
+      "survey": "CULTURA_LECTURA_Y_DEPORTE",
+      "n_items": 1,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p15a_1",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        }
+      ]
+    },
+    "DEP|cultural_identity_and_heritage": {
+      "survey": "CULTURA_LECTURA_Y_DEPORTE",
+      "n_items": 6,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p48",
+          "label_1": " Español",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p49",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p50",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p54",
+          "label_1": " Indígena",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p34",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p35",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "DEP|attitudes_toward_cultural_openness_and_foreign_influence": {
+      "survey": "CULTURA_LECTURA_Y_DEPORTE",
+      "n_items": 6,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p25",
+          "label_1": " Hablar de una cultura mexicana",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p26",
+          "label_1": " Menos",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p27",
+          "label_1": "Nos perjudica",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p28",
+          "label_1": " Que todos tengamos la misma cultura y los mismos valores",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p31_1",
+          "label_1": " Nada importante",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p32",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "ECO|economic_wellbeing_perception": {
+      "survey": "ECONOMIA_Y_EMPLEO",
+      "n_items": 3,
+      "n_inverted_unhandled": 2,
+      "proposed_add_rc": [
+        "p1",
+        "p2"
+      ],
+      "items": [
+        {
+          "col": "p1",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p2",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p3",
+          "label_1": " Mejor",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "ECO|job_search_and_employment_precarity": {
+      "survey": "ECONOMIA_Y_EMPLEO",
+      "n_items": 9,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p48",
+          "label_1": " Muy probable",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p49",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p50",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p56",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p57",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p58",
+          "label_1": " Muy probable",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p59_1",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p59_3",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p59_4",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "ECO|labor_union_attitudes": {
+      "survey": "ECONOMIA_Y_EMPLEO",
+      "n_items": 2,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p23",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p24",
+          "label_1": "Sirven para hacer respetar los derechos de los trabajadores",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "NIN|perceived_situation_of_children_and_youth": {
+      "survey": "NINOS_ADOLESCENTES_Y_JOVENES",
+      "n_items": 2,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p5",
+          "label_1": "Ha mejorado",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p31",
+          "label_1": "Ha mejorado",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "NIN|children_rights_recognition_and_respect": {
+      "survey": "NINOS_ADOLESCENTES_Y_JOVENES",
+      "n_items": 6,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p22"
+      ],
+      "items": [
+        {
+          "col": "p17_1",
+          "label_1": "Acuerdo",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p19",
+          "label_1": " Los derechos que sus padres les quieran dar",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p20",
+          "label_1": " Ciudadanos",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p21_2",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p22",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p73_3",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "NIN|youth_participation_and_voice": {
+      "survey": "NINOS_ADOLESCENTES_Y_JOVENES",
+      "n_items": 4,
+      "n_inverted_unhandled": 4,
+      "proposed_add_rc": [
+        "p12",
+        "p13",
+        "p38",
+        "p39"
+      ],
+      "items": [
+        {
+          "col": "p12",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p13",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p38",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p39",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        }
+      ]
+    },
+    "NIN|youth_educational_opportunity_and_labor_prospects": {
+      "survey": "NINOS_ADOLESCENTES_Y_JOVENES",
+      "n_items": 3,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p28_1",
+          "label_1": " Más",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p81_2",
+          "label_1": " Más",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p83_1",
+          "label_1": " Mejor /Más",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "FAM|family_cohesion_quality": {
+      "survey": "FAMILIA",
+      "n_items": 2,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p25",
+          "label_1": " Excelentes",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p26",
+          "label_1": " Excelentes",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "FAM|ideal_family_normativity": {
+      "survey": "FAMILIA",
+      "n_items": 4,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p13",
+          "label_1": " Una familia integrada por la madre,  el padre y los hijos.",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p14",
+          "label_1": "Que se carece de estabilidad económica.",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p15",
+          "label_1": "Resolver los problemas económicos",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p16",
+          "label_1": " Es aceptable",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "FAM|intergenerational_obligations": {
+      "survey": "FAMILIA",
+      "n_items": 3,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p28",
+          "label_1": " Orientarlos",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p29",
+          "label_1": " Respetarlos",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p64",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "FAM|conjugal_union_attitudes": {
+      "survey": "FAMILIA",
+      "n_items": 6,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p21",
+          "label_1": " Que este enamorad@ de uno",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p22",
+          "label_1": "Ninguna",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p23",
+          "label_1": "Porque estaba enamorada",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p32",
+          "label_1": " Por querer romper con la rutina",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p35",
+          "label_1": " En ninguna",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p38",
+          "label_1": " A una mayor incidencia de infidelidades.",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "FAM|family_value_transmission": {
+      "survey": "FAMILIA",
+      "n_items": 2,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p54",
+          "label_1": " La honradez",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p55",
+          "label_1": " La honradez",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "CIE|science_technology_self_efficacy": {
+      "survey": "CIENCIA_Y_TECNOLOGIA",
+      "n_items": 3,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p45_1"
+      ],
+      "items": [
+        {
+          "col": "p16",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p17",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p45_1",
+          "label_1": "Totalmente de acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        }
+      ]
+    },
+    "CIE|science_technology_interest_engagement": {
+      "survey": "CIENCIA_Y_TECNOLOGIA",
+      "n_items": 5,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p11",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p22",
+          "label_1": "Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p23",
+          "label_1": "Siempre",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p35",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p43",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        }
+      ]
+    },
+    "CIE|institutional_trust_in_science": {
+      "survey": "CIENCIA_Y_TECNOLOGIA",
+      "n_items": 4,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p50_1"
+      ],
+      "items": [
+        {
+          "col": "p32_1",
+          "label_1": "Muy de acuerdo",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p33",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p40_1",
+          "label_1": "Muy de acuerdo",
+          "inverted": true,
+          "already_rc": true,
+          "flag": "inverted_already_rc"
+        },
+        {
+          "col": "p50_1",
+          "label_1": "Mucha",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        }
+      ]
+    },
+    "CIE|perceived_societal_value_of_science_technology": {
+      "survey": "CIENCIA_Y_TECNOLOGIA",
+      "n_items": 5,
+      "n_inverted_unhandled": 3,
+      "proposed_add_rc": [
+        "p34",
+        "p44_1",
+        "p39_1"
+      ],
+      "items": [
+        {
+          "col": "p34",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p36",
+          "label_1": " Muy importante",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p44_1",
+          "label_1": " Mucho",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p42_1",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        },
+        {
+          "col": "p39_1",
+          "label_1": "Totalmente de acuerdo",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        }
+      ]
+    },
+    "CIE|household_science_cultural_capital": {
+      "survey": "CIENCIA_Y_TECNOLOGIA",
+      "n_items": 7,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p3_2",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p3_3",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p3_6",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p3_8",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p3_11",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p4",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p5",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        }
+      ]
+    },
+    "EDU|perceived_education_quality": {
+      "survey": "EDUCACION",
+      "n_items": 2,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p49",
+          "label_1": " Ha mejorado",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p51",
+          "label_1": "Sí",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        }
+      ]
+    },
+    "EDU|educational_returns_belief": {
+      "survey": "EDUCACION",
+      "n_items": 4,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p37",
+          "label_1": "Sí vale la pena",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p55_3",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p55_4",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p55_5",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        }
+      ]
+    },
+    "EDU|school_environment_quality": {
+      "survey": "EDUCACION",
+      "n_items": 6,
+      "n_inverted_unhandled": 1,
+      "proposed_add_rc": [
+        "p30_1"
+      ],
+      "items": [
+        {
+          "col": "p12",
+          "label_1": " Buen estado",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p13",
+          "label_1": " Segura",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p14_4",
+          "label_1": " Adecuados",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p30_1",
+          "label_1": " Siempre",
+          "inverted": true,
+          "already_rc": false,
+          "flag": "NEEDS_RC"
+        },
+        {
+          "col": "p18",
+          "label_1": "No se enteran",
+          "inverted": false,
+          "already_rc": false,
+          "flag": "ok"
+        },
+        {
+          "col": "p16_6",
+          "label_1": null,
+          "inverted": false,
+          "already_rc": false,
+          "flag": "no_label"
+        }
+      ]
+    },
+    "EDU|digital_and_cultural_capital": {
+      "survey": "EDUCACION",
+      "n_items": 5,
+      "n_inverted_unhandled": 0,
+      "proposed_add_rc": [],
+      "items": [
+        {
+          "col": "p47_3",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p47_4",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p47_6",
+          "label_1": " Sí",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p45_1",
+          "label_1": " Varias veces por semana",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        },
+        {
+          "col": "p45_2",
+          "label_1": " Varias veces por semana",
+          "inverted": false,
+          "already_rc": true,
+          "flag": "rc_but_not_inverted"
+        }
+      ]
+    }
+  }
+}
