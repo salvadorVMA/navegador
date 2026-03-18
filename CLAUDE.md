@@ -232,7 +232,7 @@ python -m pytest tests/unit/test_ses_regression.py tests/unit/test_bridge_estima
   1. **Monte Carlo** (n_sim): ∝ 1/√n_sim, negligible at n_sim=2000
   2. **Bootstrap resampling** (n_bootstrap): stabilizes CI endpoints, diminishing returns beyond ~200
   3. **Sampling noise** (n ≈ 1200 per survey): irreducible floor at ~0.2-0.3 CI width. This is the dominant wall.
-- **Causal interpretation**: γ measures "how much shared SES drives monotonic co-variation between attitudes across survey domains." Under CIA (conditional independence given SES), γ captures only SES-mediated association. Pairs with γ ≈ 0 indicate SES-independent or orthogonally-SES-driven attitudes.
+- **Causal interpretation**: γ measures "how much shared sociodemographic position drives monotonic co-variation between attitudes across survey domains." The 4 SES dimensions — escol (education), Tam_loc (location/urban-rural), sexo (gender), edad (age/cohort) — are treated with equal standing; none is a "demographic control" subordinate to the others. Under CIA (conditional independence given SES), γ captures only SES-mediated association. Pairs with γ ≈ 0 indicate SES-independent or orthogonally-SES-driven attitudes.
 - **γ detects monotonic relationships only**: Goodman-Kruskal γ = (C−D)/(C+D) based on concordant/discordant pairs. Cannot detect U-shaped or other non-monotonic SES-attitude relationships.
 - **Normalized MI added**: `normalized_mutual_information(joint_table)` computes NMI ∈ [0,1] from the same joint table γ uses — zero additional model fitting. Detects any statistical dependence regardless of shape. Pairs with |γ| ≈ 0 but NMI >> 0 reveal non-monotonic SES structuring (U-shaped, crossover patterns). Sweep log flags these with `NM!`.
 
@@ -242,6 +242,62 @@ python -m pytest tests/unit/test_ses_regression.py tests/unit/test_bridge_estima
 - **Construct Variable Builder** (`scripts/debug/build_construct_variables.py`): Reads v4 SVS and creates `agg_{construct_name}` columns in each survey DataFrame, scaled to [1,10]. Handles: reflective scales (mean of items with reverse coding), tier 2 constructs (single best item by item-total correlation), formative indices (additive count of gateway items). Sentinel filtering before aggregation.
 - **102 constructs built** across 24 domains: 16 good (α≥0.7), 49 questionable (α 0.5-0.7), 20 tier3_caveat (α<0.5), 12 single_item_tier2, 5 formative_index.
 - **Construct Validation** (`scripts/debug/validate_constructs.py`, `optimize_constructs.py`): Structural audit, alpha fixes, optimization log.
+
+### SES Fingerprint & Ontology Pipeline (as of 2026-03-18)
+
+#### SES Foundation
+
+All bridge estimates are conditioned on 4 sociodemographic (SES) dimensions:
+
+| Variable | Dimension |
+|----------|-----------|
+| `escol` | Education level |
+| `Tam_loc` | Town size / urban-rural axis |
+| `sexo` | Gender |
+| `edad` | Age / cohort |
+
+All four are SES dimensions with equal standing. Gender and age/cohort structure attitudes, access, and life trajectories in ways inseparable from class in Mexican society. The DR bridge conditions on all 4 simultaneously; γ(A,B) measures covariation mediated by the full sociodemographic position, not education alone.
+
+**Bridge CIA limitation**: γ captures ONLY SES-mediated covariation. It cannot detect: direct A→B links independent of SES, confounders outside the 4-var set, reverse causation, or non-monotonic SES patterns (use NMI for the last).
+
+#### Level Hierarchy (bottom-up)
+
+| Level | Unit | Count | Notes |
+|-------|------|-------|-------|
+| L0 | Questions (raw survey items) | 6 359 | Use with caution — check `reverse_coded` flag |
+| L1 | Constructs (agg_* aggregates) | 93 | Authoritative; signed in conceptual direction |
+| L2 | Domains | 24 | Coarse fallback only; averaging cancels within-domain opposing signals |
+
+Lookup priority: **L1 construct → L0 item (rc-checked) → L2 domain (fallback)**
+
+#### SES Fingerprint
+
+Each L1 construct carries a 4D fingerprint vector `[rho_escol, rho_Tam_loc, rho_sexo, rho_edad]`:
+- `ses_magnitude` = RMS of the 4 ρ values (overall SES stratification intensity)
+- `dominant_dim` = SES dimension with highest |ρ| (may be any of the 4)
+- **Bridge sign prediction**: `dot(fingerprint_A, fingerprint_B)` predicts sign of γ(A,B) at **99.4% accuracy** across 984 significant bridges. Two constructs whose SES profiles point in the same 4D direction are co-elevated by the same sociodemographic position → γ > 0.
+
+Distribution of `dominant_dim` across 93 constructs: escol=37, Tam_loc=23, edad=22, sexo=11. More than half are primarily structured by age, location, or gender rather than education — treating those as secondary would misrepresent the SES geometry.
+
+#### Prediction Chain (item → construct → bridge → construct → item)
+
+```
+signal = loading_gamma_A × γ(A→B) × loading_gamma_B
+```
+
+- `loading_gamma` = γ(raw_item, bin5(agg_construct)): signed, same estimand as Julia DR bridge
+- All terms are γ-scale → dimensionally consistent
+- Sign travels through the chain: negative loading_gamma = reverse-coded item
+- Double negatives cancel correctly (both items RC → positive prediction)
+- Bridge γ is the dominant bottleneck; item loadings are typically 0.5–0.99
+
+#### Output Files
+
+| File | Contents |
+|------|----------|
+| `data/results/ses_fingerprints.json` | L0/L1/L2 fingerprints; L0 items include `loading_gamma` |
+| `data/results/kg_ontology_v2.json` | 93 L1 constructs enriched with fingerprints + 984 bridge edges + self-documenting metadata |
+| `data/results/kg_ontology.json` | Original v1 (stale; 176 old constructs) — do not use |
 
 ### Sweep Scripts
 
@@ -300,6 +356,7 @@ python -m pytest tests/unit/test_ses_regression.py tests/unit/test_bridge_estima
 - **`Tam_loc`**: clipped to 1–4; values outside range → NaN.
 - **NaN indices** in `df_tables`: represent conditional/skip-pattern questions (not applicable to subgroups). Filter and renormalize before passing to LLM.
 - **Label resolution** for cross-tab profiles uses `variable_value_labels` from `enc_dict[survey_name]['metadata']`. Verified to be present in the JSON data structure.
+- **`ses_sign` on construct nodes** = sign(rho_escol) only — a single-axis summary. Use the full fingerprint vector (`[rho_escol, rho_Tam_loc, rho_sexo, rho_edad]` in `ses_fingerprints.json`) for SES direction analysis.
 
 ## Quick Start
 
