@@ -98,6 +98,159 @@ class OntologyQuery:
                 self._bridges.setdefault(src, []).append(fwd)
                 self._bridges.setdefault(tgt, []).append(rev)
 
+        # Bipartition: signed Laplacian Fiedler vector → camp assignments
+        self._camp: Dict[str, int] = {}            # +1 = cosmopolitan, -1 = tradition
+        self._camp_confidence: Dict[str, float] = {}  # |fiedler_i| / max, 0–1
+        self._frustrated_ratio: Dict[str, float] = {}  # fraction of triangles frustrated
+        self._n_triangles: Dict[str, int] = {}         # total triangles per node
+        self._empty_domains: set = set()               # domains with items but no constructs
+        self._compute_empty_domains()
+        self._compute_bipartition()
+
+    # ─────────────────────────────────────────────────────────
+    # Bipartition — signed Laplacian Fiedler decomposition
+    # ─────────────────────────────────────────────────────────
+
+    def _compute_empty_domains(self) -> None:
+        """Identify survey domains that have items but no L1 constructs.
+
+        Domains such as JUE and CON contain items in the fingerprint store
+        but were never assigned constructs during the construct-building phase.
+        Items from these domains cannot be lifted to a bridge-capable anchor.
+        """
+        construct_domains = {k.split("|")[0] for k in self._constructs}
+        item_domains = {
+            v.get("domain", k.split("|")[0] if "|" in k else "")
+            for k, v in self._items.items()
+        }
+        all_referenced = construct_domains | item_domains | set(self._domains.keys())
+        self._empty_domains = all_referenced - construct_domains
+
+    def _compute_bipartition(self) -> None:
+        """Assign each bridge-connected construct to a camp via the signed Laplacian.
+
+        Computes the Fiedler vector of the balanced Laplacian
+            L_s = D_|A| - A_s
+        where A_s[i,j] = γ (signed, weighted) and D_|A|[i,i] = Σ_j |γ_ij|.
+
+        The Fiedler vector (second-smallest eigenvector of L_s) bipartitions the
+        signed graph: sign(fiedler_i) = camp assignment.  The vector is oriented
+        so that camp +1 contains constructs with positive rho_escol (cosmopolitan:
+        elevated by education and urbanisation) and camp -1 contains constructs
+        with positive rho_edad / rho_Tam_loc (tradition: elevated by rural
+        residence and older age).
+
+        Confidence = |fiedler_i| / max|fiedler|: distance from the bipartition
+        boundary.  Because this graph has near-zero modularity (Q=0.089), most
+        nodes sit close to the boundary — low confidence is the expected, correct
+        outcome, not a bug.
+
+        Isolated nodes (no bridge edges) receive a fingerprint-based fallback:
+        camp = sign(rho_escol), confidence = 0.0.
+
+        Also calls _compute_frustrated_ratio() to populate triangle statistics.
+        """
+        connected = sorted(k for k in self._constructs if k in self._bridges)
+
+        if not connected:
+            # Fingerprint-only fallback for all constructs
+            for k, fp in self._constructs.items():
+                self._camp[k] = 1 if fp.get("rho_escol", 0.0) >= 0 else -1
+                self._camp_confidence[k] = 0.0
+            self._compute_frustrated_ratio({})
+            return
+
+        idx = {k: i for i, k in enumerate(connected)}
+        n = len(connected)
+
+        # Signed weighted adjacency (undirected — store both directions)
+        A = np.zeros((n, n), dtype=float)
+        for src in connected:
+            i = idx[src]
+            for e in self._bridges.get(src, []):
+                nbr = e["neighbor"]
+                if nbr in idx:
+                    A[i, idx[nbr]] = e["gamma"]
+
+        # Signed Laplacian
+        L_s = np.diag(np.abs(A).sum(axis=1)) - A
+
+        eigenvalues, eigenvectors = np.linalg.eigh(L_s)
+        fiedler = eigenvectors[:, 1].copy()
+
+        # Orient: median rho_escol of positive-fiedler nodes should be higher
+        pos_mask = fiedler > 0
+        if pos_mask.any() and (~pos_mask).any():
+            escol_pos = np.median(
+                [self._constructs[connected[i]].get("rho_escol", 0.0)
+                 for i in range(n) if pos_mask[i]]
+            )
+            escol_neg = np.median(
+                [self._constructs[connected[i]].get("rho_escol", 0.0)
+                 for i in range(n) if not pos_mask[i]]
+            )
+            if escol_neg > escol_pos:
+                fiedler = -fiedler
+
+        fiedler_max = float(np.max(np.abs(fiedler))) or 1.0
+
+        for i, node in enumerate(connected):
+            self._camp[node] = 1 if fiedler[i] >= 0 else -1
+            self._camp_confidence[node] = float(abs(fiedler[i]) / fiedler_max)
+
+        # Isolated constructs: fingerprint-based fallback
+        for k, fp in self._constructs.items():
+            if k not in self._camp:
+                self._camp[k] = 1 if fp.get("rho_escol", 0.0) >= 0 else -1
+                self._camp_confidence[k] = 0.0
+
+        self._compute_frustrated_ratio(idx)
+
+    def _compute_frustrated_ratio(self, idx: Dict[str, int]) -> None:
+        """Count frustrated triangles per node.
+
+        A triangle (u, v, w) is frustrated when the product of its three edge
+        signs is negative — i.e., the three constructs cannot be consistently
+        assigned to two camps.  Nodes with high frustrated_ratio straddle the
+        bipartition boundary and carry higher interpretive uncertainty.
+
+        Args:
+            idx: node→index map from _compute_bipartition (may be empty for
+                 degenerate graphs with no connected constructs).
+        """
+        if not idx:
+            return
+
+        # Signed adjacency lookup: (src, tgt) → sign
+        gamma_sign: Dict[Tuple[str, str], int] = {}
+        adj_nbrs: Dict[str, set] = {}
+        for src in idx:
+            adj_nbrs[src] = set()
+            for e in self._bridges.get(src, []):
+                nbr = e["neighbor"]
+                if nbr in idx:
+                    adj_nbrs[src].add(nbr)
+                    s = 1 if e["gamma"] > 0 else -1
+                    gamma_sign[(src, nbr)] = s
+                    gamma_sign[(nbr, src)] = s
+
+        for node in idx:
+            nbrs = list(adj_nbrs.get(node, set()))
+            total = 0
+            frustrated = 0
+            for a_i, nbr_a in enumerate(nbrs):
+                for nbr_b in nbrs[a_i + 1:]:
+                    if nbr_b not in adj_nbrs.get(nbr_a, set()):
+                        continue
+                    total += 1
+                    s1 = gamma_sign.get((node, nbr_a), 0)
+                    s2 = gamma_sign.get((node, nbr_b), 0)
+                    s3 = gamma_sign.get((nbr_a, nbr_b), 0)
+                    if s1 * s2 * s3 < 0:
+                        frustrated += 1
+            self._n_triangles[node] = total
+            self._frustrated_ratio[node] = frustrated / total if total > 0 else 0.0
+
     # ─────────────────────────────────────────────────────────
     # Public API
     # ─────────────────────────────────────────────────────────
@@ -232,6 +385,155 @@ class OntologyQuery:
             })
         return result
 
+    def get_camp(self, key: str) -> Dict:
+        """Return camp membership for any key (L0/L1/L2).
+
+        Camp +1 = cosmopolitan: elevated by education and urbanisation
+                  (science, digital capital, political engagement, cultural consumption)
+        Camp -1 = tradition: elevated by rural residence and older age
+                  (religiosity, traditional gender roles, community attachment)
+
+        A construct is a boundary node if confidence < 0.2 or
+        frustrated_ratio > 0.15.  Because the network has near-zero modularity
+        (Q=0.089), boundary flags are common and expected — they reflect the
+        graph's continuous geometry, not measurement error.
+
+        Returns:
+            key, anchor_construct, lift_type, loading_gamma,
+            camp_id (+1 / -1 / None), camp_name, confidence (0–1),
+            frustrated_ratio, n_triangles, is_boundary, narrative, error.
+        """
+        lift = self._lift_to_construct(key)
+        anchor = lift["construct_key"]
+        lift_type = lift["lift_type"]
+
+        base: Dict = {
+            "key": key,
+            "anchor_construct": anchor,
+            "lift_type": lift_type,
+            "loading_gamma": lift["loading_gamma"],
+            "camp_id": None,
+            "camp_name": None,
+            "confidence": 0.0,
+            "frustrated_ratio": 0.0,
+            "n_triangles": 0,
+            "is_boundary": False,
+            "narrative": "",
+            "error": None,
+        }
+
+        if anchor is None or lift_type == "none":
+            base["error"] = f"No anchor found for '{key}'."
+            base["narrative"] = base["error"]
+            return base
+
+        if lift_type in ("domain_fallback", "no_constructs_in_domain"):
+            base["error"] = (
+                f"'{anchor}' is a domain-level key — camp assignment requires "
+                f"an L1 construct anchor."
+            )
+            base["narrative"] = base["error"]
+            return base
+
+        camp_id = self._camp.get(anchor)
+        if camp_id is None:
+            base["error"] = f"Camp not computed for '{anchor}'."
+            base["narrative"] = base["error"]
+            return base
+
+        confidence = self._camp_confidence.get(anchor, 0.0)
+        frust_ratio = self._frustrated_ratio.get(anchor, 0.0)
+        n_tri = self._n_triangles.get(anchor, 0)
+        is_boundary = confidence < 0.2 or frust_ratio > 0.15
+
+        camp_name = "cosmopolitan" if camp_id == 1 else "tradition"
+        _CAMP_DESC = {
+            "cosmopolitan": (
+                "elevated by education and urbanisation "
+                "(science curiosity, digital capital, political engagement)"
+            ),
+            "tradition": (
+                "elevated by rural residence and older age "
+                "(religiosity, traditional gender roles, community attachment)"
+            ),
+        }
+
+        anchor_name = anchor.split("|")[-1].replace("_", " ") if "|" in anchor else anchor
+        lift_note = (
+            ""
+            if lift_type == "exact"
+            else (
+                f" [approximate lift from '{key}'"
+                + (
+                    f", loading_γ≈{lift['loading_gamma']:.3f}"
+                    if lift["loading_gamma"] is not None
+                    else ""
+                )
+                + "]"
+            )
+        )
+        boundary_note = (
+            " This construct sits near the camp boundary — assignment has lower confidence."
+            if is_boundary
+            else ""
+        )
+
+        narrative = (
+            f"'{anchor_name}'{lift_note} is assigned to the {camp_name} camp: "
+            f"{_CAMP_DESC[camp_name]}. "
+            f"Confidence: {confidence:.3f} (Fiedler distance from boundary).{boundary_note} "
+            f"Frustrated triangle ratio: {frust_ratio:.3f} ({n_tri} total triangles)."
+        )
+
+        base.update({
+            "camp_id": camp_id,
+            "camp_name": camp_name,
+            "confidence": round(confidence, 3),
+            "frustrated_ratio": round(frust_ratio, 3),
+            "n_triangles": n_tri,
+            "is_boundary": is_boundary,
+            "narrative": narrative,
+        })
+        return base
+
+    def get_frustrated_nodes(self, min_frustrated_ratio: float = 0.10) -> List[Dict]:
+        """Return constructs with high frustrated triangle ratios, sorted descending.
+
+        Frustrated nodes straddle the camp boundary.  They are not noise —
+        they are the constructs where SES creates genuinely non-transitive sign
+        patterns, often because their fingerprint sits between the two halves of
+        the PC1 axis.  Bridge paths through frustrated nodes carry higher
+        interpretive uncertainty.
+
+        Args:
+            min_frustrated_ratio: minimum ratio to include (default 0.10).
+
+        Returns:
+            List of dicts: construct, camp_id, camp_name, confidence,
+            frustrated_ratio, n_triangles, is_boundary.
+        """
+        results = []
+        for node, ratio in self._frustrated_ratio.items():
+            if ratio < min_frustrated_ratio:
+                continue
+            camp_id = self._camp.get(node)
+            camp_name = (
+                "cosmopolitan" if camp_id == 1
+                else "tradition" if camp_id == -1
+                else None
+            )
+            confidence = self._camp_confidence.get(node, 0.0)
+            results.append({
+                "construct": node,
+                "camp_id": camp_id,
+                "camp_name": camp_name,
+                "confidence": round(confidence, 3),
+                "frustrated_ratio": round(ratio, 3),
+                "n_triangles": self._n_triangles.get(node, 0),
+                "is_boundary": confidence < 0.2 or ratio > 0.15,
+            })
+        return sorted(results, key=lambda x: -x["frustrated_ratio"])
+
     def get_network(
         self,
         key: str,
@@ -301,20 +603,20 @@ class OntologyQuery:
         Returns:
             {
                 "construct_key":  str | None,
-                "lift_type":      "exact" | "approximate" | "domain_fallback" | "none",
+                "lift_type":      "exact" | "approximate" | "domain_fallback"
+                                  | "no_constructs_in_domain" | "none",
                 "loading_gamma":  float | None,
                 "loading_type":   str | None,
             }
 
         Priority:
-          1. Key is already an L1 construct           → exact, loading_gamma=1.0
-          2. L0 item with parent_construct             → exact, use item's loading_gamma
-          3. L0 item with candidate_construct          → approximate, use candidate_loading_gamma
-          4. L0 item or L2 domain, no construct found  → domain_fallback (no bridge queries)
-          5. Unresolvable                              → none
-
-        Note: domain_fallback anchor keys are L2 codes (e.g. "JUE").  These are
-        NOT in _bridges — bridge queries will return empty results.
+          1. Key is already an L1 construct                → exact, loading_gamma=1.0
+          2. L0 item with parent_construct                  → exact, item's loading_gamma
+          3. L0 item with candidate_construct               → approximate, candidate_loading_gamma
+          4. L0 item in a domain that has constructs        → domain_fallback (no bridge queries)
+          5. L0 item in a domain with NO constructs (e.g. JUE, CON)
+                                                            → no_constructs_in_domain
+          6. Unresolvable                                   → none
         """
         if key in self._constructs:
             return {"construct_key": key, "lift_type": "exact",
@@ -332,8 +634,12 @@ class OntologyQuery:
                 return {"construct_key": candidate, "lift_type": "approximate",
                         "loading_gamma": item.get("candidate_loading_gamma"),
                         "loading_type": item.get("loading_type", "approximate")}
-            # domain fallback
+            # Domain fallback — distinguish structural deadend from ordinary fallback
             domain = item.get("domain", key.split("|")[0] if "|" in key else key)
+            if domain in self._empty_domains:
+                return {"construct_key": domain,
+                        "lift_type": "no_constructs_in_domain",
+                        "loading_gamma": None, "loading_type": item.get("loading_type")}
             if domain in self._domains:
                 return {"construct_key": domain, "lift_type": "domain_fallback",
                         "loading_gamma": None, "loading_type": item.get("loading_type")}
@@ -341,14 +647,23 @@ class OntologyQuery:
                     "loading_gamma": None, "loading_type": None}
 
         if key in self._domains:
-            return {"construct_key": key, "lift_type": "domain_fallback",
+            lt = (
+                "no_constructs_in_domain"
+                if key in self._empty_domains
+                else "domain_fallback"
+            )
+            return {"construct_key": key, "lift_type": lt,
                     "loading_gamma": None, "loading_type": None}
 
         # bare domain prefix (e.g. "FAM")
-        if key in self._domains or ("|" not in key and len(key) <= 5):
-            if key in self._domains:
-                return {"construct_key": key, "lift_type": "domain_fallback",
-                        "loading_gamma": None, "loading_type": None}
+        if "|" not in key and len(key) <= 5 and key in self._domains:
+            lt = (
+                "no_constructs_in_domain"
+                if key in self._empty_domains
+                else "domain_fallback"
+            )
+            return {"construct_key": key, "lift_type": lt,
+                    "loading_gamma": None, "loading_type": None}
 
         return {"construct_key": None, "lift_type": "none",
                 "loading_gamma": None, "loading_type": None}
@@ -442,32 +757,94 @@ class OntologyQuery:
     # Use-case 2 — directed path (Dijkstra)
     # ─────────────────────────────────────────────────────────
 
-    def find_path(self, key_a: str, key_b: str) -> Dict:
+    def find_path(
+        self,
+        key_a: str,
+        key_b: str,
+        prefer_sign_consistent: bool = False,
+    ) -> Dict:
         """Find the strongest SES-bridge path between two items or constructs.
 
         Uses Dijkstra with edge weight = -log(|gamma|), which minimises cumulative
         weight ≡ maximises the product of |gamma| values along the path.
         All bridge edges have excl_zero=True — gamma is never zero.
 
+        Args:
+            key_a, key_b: L0/L1/L2 keys for the two endpoints.
+            prefer_sign_consistent: if True, add a penalty (0.3 in log-space,
+                roughly 26% reduction in effective |γ|) each time consecutive
+                edges flip sign.  This nudges the router toward all-positive or
+                all-negative paths, which are easier to explain narratively.
+                The penalty is soft — it does not prevent crossing if no
+                sign-consistent path exists.
+
         Returns dict with:
             key_a, key_b, anchor_a, anchor_b, lift_a, lift_b,
-            path (list of construct keys), edges (per-hop details),
-            signal_chain (product of |gamma|), total_cost (sum of -log|gamma|),
-            direct_edge (if a direct bridge exists regardless of path),
-            attenuation_warning (True if signal_chain < 0.001),
-            narrative, error
+            camp_a, camp_b,                    ← NEW: camp dicts for each endpoint
+            expected_sign (+1/-1/None),        ← NEW: predicted from camp membership
+            expected_sign_note,                ← NEW: human-readable prediction
+            signal_chain_confidence,           ← NEW: "high"/"medium"/"low"
+            sign_matches_prediction (bool),    ← NEW: if direct edge exists
+            path, edges, signal_chain, total_cost,
+            direct_edge, attenuation_warning, narrative, error
         """
         lift_a = self._lift_to_construct(key_a)
         lift_b = self._lift_to_construct(key_b)
         anchor_a = lift_a["construct_key"]
         anchor_b = lift_b["construct_key"]
 
-        base = {"key_a": key_a, "key_b": key_b,
-                "anchor_a": anchor_a, "anchor_b": anchor_b,
-                "lift_a": lift_a, "lift_b": lift_b,
-                "path": None, "edges": None, "signal_chain": None,
-                "total_cost": None, "direct_edge": None,
-                "attenuation_warning": False, "narrative": "", "error": None}
+        # ── Camp metadata ──────────────────────────────────────
+        def _camp_dict(anchor: Optional[str]) -> Dict:
+            if anchor is None:
+                return {"camp_id": None, "camp_name": None, "confidence": None}
+            cid = self._camp.get(anchor)
+            return {
+                "camp_id": cid,
+                "camp_name": "cosmopolitan" if cid == 1
+                             else "tradition" if cid == -1
+                             else None,
+                "confidence": self._camp_confidence.get(anchor),
+            }
+
+        camp_a = _camp_dict(anchor_a)
+        camp_b = _camp_dict(anchor_b)
+
+        cid_a = camp_a["camp_id"]
+        cid_b = camp_b["camp_id"]
+        if cid_a is not None and cid_b is not None:
+            expected_sign = cid_a * cid_b          # +1 same camp, -1 opposite
+            expected_sign_note = (
+                f"positive (both in {camp_a['camp_name']} camp)"
+                if cid_a == cid_b
+                else f"negative ({camp_a['camp_name']} × {camp_b['camp_name']})"
+            )
+        else:
+            expected_sign = None
+            expected_sign_note = "unknown (one or both endpoints isolated from bridge network)"
+
+        # Signal-chain confidence from lift types
+        lt_a, lt_b = lift_a["lift_type"], lift_b["lift_type"]
+        _low = {"no_constructs_in_domain", "domain_fallback", "none"}
+        if lt_a == "exact" and lt_b == "exact":
+            sig_conf = "high"
+        elif lt_a in _low or lt_b in _low:
+            sig_conf = "low"
+        else:
+            sig_conf = "medium"
+
+        base = {
+            "key_a": key_a, "key_b": key_b,
+            "anchor_a": anchor_a, "anchor_b": anchor_b,
+            "lift_a": lift_a, "lift_b": lift_b,
+            "camp_a": camp_a, "camp_b": camp_b,
+            "expected_sign": expected_sign,
+            "expected_sign_note": expected_sign_note,
+            "signal_chain_confidence": sig_conf,
+            "sign_matches_prediction": None,
+            "path": None, "edges": None, "signal_chain": None,
+            "total_cost": None, "direct_edge": None,
+            "attenuation_warning": False, "narrative": "", "error": None,
+        }
 
         if anchor_a is None or anchor_b is None:
             missing = key_a if anchor_a is None else key_b
@@ -509,9 +886,11 @@ class OntologyQuery:
             base["narrative"] = base["error"]
             return base
 
-        # Dijkstra: weight = -log(|gamma|)
+        # Dijkstra: weight = -log(|gamma|); optional sign-consistency penalty
+        _SIGN_PENALTY = 0.3   # ≈ 26% reduction in effective |γ| per sign flip
         cost_so_far: Dict[str, float] = {anchor_a: 0.0}
         prev: Dict[str, Optional[str]] = {anchor_a: None}
+        prev_sign: Dict[str, int] = {anchor_a: 0}    # last edge sign entering node
         heap: list = [(0.0, anchor_a)]
 
         while heap:
@@ -520,13 +899,18 @@ class OntologyQuery:
                 break
             if cost > cost_so_far.get(node, math.inf):
                 continue
+            last_sign = prev_sign.get(node, 0)
             for edge in self._bridges.get(node, []):
                 nbr = edge["neighbor"]
+                edge_sign = 1 if edge["gamma"] > 0 else -1
                 weight = -math.log(abs(edge["gamma"]))
+                if prefer_sign_consistent and last_sign != 0 and edge_sign != last_sign:
+                    weight += _SIGN_PENALTY
                 new_cost = cost + weight
                 if new_cost < cost_so_far.get(nbr, math.inf):
                     cost_so_far[nbr] = new_cost
                     prev[nbr] = node
+                    prev_sign[nbr] = edge_sign
                     heapq.heappush(heap, (new_cost, nbr))
 
         if anchor_b not in prev:
@@ -562,14 +946,33 @@ class OntologyQuery:
             signal_chain *= abs(e["gamma"])
         total_cost = cost_so_far.get(anchor_b, math.inf)
 
+        # Compare signal sign to camp prediction
+        sign_matches: Optional[bool] = None
+        if expected_sign is not None and path_edges:
+            actual_sign = 1 if signal_chain >= 0 else -1
+            # Recompute signed product (signal_chain above used abs)
+            signed_product = 1.0
+            for e in path_edges:
+                signed_product *= e["gamma"]
+            actual_sign = 1 if signed_product >= 0 else -1
+            sign_matches = actual_sign == expected_sign
+        # If direct edge exists, use its sign for the match check
+        if expected_sign is not None and base.get("direct_edge"):
+            direct_sign = 1 if base["direct_edge"]["gamma"] >= 0 else -1
+            sign_matches = direct_sign == expected_sign
+
         base.update({
-            "path":               path,
-            "edges":              path_edges,
-            "signal_chain":       round(signal_chain, 6),
-            "total_cost":         round(total_cost, 4),
-            "attenuation_warning": signal_chain < 0.001,
-            "narrative":          self._path_narrative(path, path_edges, lift_a, lift_b,
-                                                        signal_chain),
+            "path":                   path,
+            "edges":                  path_edges,
+            "signal_chain":           round(signal_chain, 6),
+            "total_cost":             round(total_cost, 4),
+            "attenuation_warning":    signal_chain < 0.001,
+            "sign_matches_prediction": sign_matches,
+            "narrative":              self._path_narrative(
+                path, path_edges, lift_a, lift_b, signal_chain,
+                camp_a["camp_name"], camp_b["camp_name"],
+                expected_sign, sign_matches,
+            ),
         })
         return base
 
@@ -626,6 +1029,10 @@ class OntologyQuery:
         lift_a: Dict,
         lift_b: Dict,
         signal_chain: float,
+        camp_name_a: Optional[str] = None,
+        camp_name_b: Optional[str] = None,
+        expected_sign: Optional[int] = None,
+        sign_matches: Optional[bool] = None,
     ) -> str:
         """Human-readable description of a Dijkstra bridge path."""
         if len(path) == 1:
@@ -648,17 +1055,14 @@ class OntologyQuery:
 
         n_hops = len(edges)
         lift_notes: List[str] = []
-        for lift, orig_key in ((lift_a, lift_a), (lift_b, lift_b)):
+        for lift in (lift_a, lift_b):
             if lift.get("lift_type") == "approximate":
                 lg = lift.get("loading_gamma")
-                note = (f"approximate anchor '{lift['construct_key']}'"
-                        + (f" (loading_γ≈{lg:.3f})" if lg is not None else ""))
+                note = (
+                    f"approximate anchor '{lift['construct_key']}'"
+                    + (f" (loading_γ≈{lg:.3f})" if lg is not None else "")
+                )
                 lift_notes.append(note)
-
-        attenuation = (
-            " WARNING: signal chain < 0.001 — chain too attenuated for substantive interpretation."
-            if signal_chain < 0.001 else ""
-        )
 
         lines = [
             f"'{name_a}' connects to '{name_b}' through SES mediation ({n_hops} hop(s)).",
@@ -667,8 +1071,31 @@ class OntologyQuery:
         ]
         if lift_notes:
             lines.append("Lift notes: " + "; ".join(lift_notes) + ".")
-        if attenuation:
-            lines.append(attenuation)
+        if signal_chain < 0.001:
+            lines.append(
+                "WARNING: signal chain < 0.001 — chain too attenuated for "
+                "substantive interpretation."
+            )
+
+        # Camp context line
+        if camp_name_a and camp_name_b:
+            if camp_name_a == camp_name_b:
+                camp_line = (
+                    f"Camp: both endpoints are in the {camp_name_a} camp — "
+                    f"positive bridge signal expected."
+                )
+            else:
+                camp_line = (
+                    f"Camp: {camp_name_a} → {camp_name_b} (opposite camps) — "
+                    f"negative bridge signal expected."
+                )
+            if sign_matches is False:
+                camp_line += (
+                    " WARNING: observed signal sign contradicts camp prediction — "
+                    "path likely crosses camp boundary at an intermediate node."
+                )
+            lines.append(camp_line)
+
         return " ".join(lines)
 
     def _ses_summary(self, fp: Optional[Dict]) -> Dict:
