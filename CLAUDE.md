@@ -215,18 +215,24 @@ Julia-powered γ-surface across 66 countries and 7 Mexico waves. All computation
 | `scripts/debug/plot_ses_signature_3d.py` | Interactive 3D Plotly scatter of SES signatures |
 | `scripts/debug/build_wvs_losmex_construct_map.py` | WVS↔los_mex construct cross-map |
 
-**Output files:**
+**Output files (large JSON data in `navegador_data` repo, reports/code in main repo):**
 
-| File | Contents |
-|------|----------|
-| `data/results/wvs_mex_w7_within_sweep.json` | MEX W7 within-survey (982 est) |
-| `data/results/wvs_geographic_sweep_w7.json` | 66-country geographic (68K est) |
-| `data/results/wvs_temporal_sweep_mex.json` | Mexico temporal W3-W7 (2.3K est) |
-| `data/results/gamma_surface.json` | Unified γ-surface (72.7K entries) |
-| `data/results/ses_signatures_all.json` | Per-country 4D SES signatures |
-| `data/results/ses_signature_3d.html` | Interactive 3D signature plot |
-| `data/results/wvs_geographic_report.md` | Geographic analysis report |
-| `data/results/wvs_temporal_report.md` | Temporal analysis report |
+| File | Contents | Repo |
+|------|----------|------|
+| `data/results/wvs_mex_w7_within_sweep.json` | MEX W7 within-survey (982 est, 13K lines) | navegador_data |
+| `data/results/wvs_geographic_sweep_w7.json` | 66-country geographic (68K est, 900K lines) | navegador_data |
+| `data/results/wvs_temporal_sweep_mex.json` | Mexico temporal W3-W7 (2.3K est, 31K lines) | navegador_data |
+| `data/results/gamma_surface.json` | Unified γ-surface (72.7K entries, 1M lines) | navegador_data |
+| `data/results/ses_signatures_all.json` | Per-country 4D SES signatures (67 countries) | navegador_data |
+| `data/results/ses_signature_3d.html` | Interactive 3D Plotly signature scatter | navegador_data |
+| `data/results/wvs_geo_construct_manifest.json` | Per-country construct metadata (66 contexts) | navegador_data |
+| `data/results/wvs_temporal_construct_manifest.json` | Per-wave construct metadata (7 waves) | navegador_data |
+| `data/results/wvs_losmex_construct_map.json` | WVS↔los_mex construct cross-map | navegador_data |
+| `data/results/wvs_geographic_report.md` | Geographic analysis report | main |
+| `data/results/wvs_temporal_report.md` | Temporal analysis report | main |
+| `data/results/wvs_mex_validation_report.md` | MEX validation report | main |
+| `data/julia_bridge_wvs/wvs_manifest.json` | Julia CSV manifest (absolute paths, 66+7 contexts) | navegador_data |
+| `data/julia_bridge_wvs/WVS_W7_*.csv` | Per-country construct CSVs for Julia | navegador_data |
 
 **JAX GPU Bridge (`jax_dr_bridge.py`):**
 - Manual Cholesky solver bypasses Metal's missing `triangular_solve` XLA op
