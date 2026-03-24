@@ -164,17 +164,76 @@ registry = disc.build_registry(load_equivalences(), wave=7, n_candidates=5)
 disc.save(registry, Path('data/wvs/anchor_registry.json'))
 ```
 
-> ⚠️ **ACTION REQUIRED (Mac):** WVS CSV/zip files are NOT present in the Codespace. They must be added to the `navegador_data` repo (or uploaded to `data/wvs/`) from the local Mac before `wvs_loader.py` can process data. Files needed:
-> - `F00011356-WVS_Cross-National_Wave_7_csv_v6_0.zip` (~20MB)
-> - `F00011931-WVS_Time_Series_1981-2022_csv_v5_0.zip` (~118MB)
-> Once present, run: `python wvs_loader.py --waves 7 --output data/wvs/wvs_w7_dict.json`
->
-> 📋 **Analysis pipeline ready to run** (committed 2026-03-12, branch `wvs`): All Phase 1–3 modules are complete and tested (135 unit tests pass). Once CSV files are uploaded, the full pipeline runs end-to-end: `wvs_loader.py` → `wvs_ses_bridge.py` → `wvs_anchor_discovery.py`.
+> WVS CSV/zip files are present on local Mac (`data/wvs/`). Not in Codespace.
 
 - **γ-surface concept**: γ(variable_pair, country, wave, SES_reference) — the bridge "travels" across contexts
 - **Anchor questions**: Shared questions between WVS and los_mex for bridge validation
 - **SES harmonization**: WVS Q260/Q262/Q275/G_TOWNSIZE → los_mex sexo/edad/escol/Tam_loc
 - **Mexico in all 7 WVS waves**: 11,714 total respondents (1,741 in Wave 7, fielded 2018)
+
+#### WVS γ-Surface Pipeline ✅ COMPLETE (2026-03-23)
+
+Julia-powered γ-surface across 66 countries and 7 Mexico waves. All computations in Julia 8-thread; Python handles data prep, analysis, and visualization.
+
+**Infrastructure (Phase 0):**
+
+| Module | Purpose |
+|--------|---------|
+| `scripts/debug/build_wvs_constructs_multi.py` | Multi-context construct builder (any wave×country) |
+| `scripts/debug/export_wvs_for_julia.py` | CSV exporter for Julia (one CSV per context, absolute paths) |
+| `julia/src/wvs_sweep.jl` | Julia WVS within-survey sweep module |
+| `julia/scripts/run_wvs_geographic_fast.jl` | Flat-parallel geographic sweep (all pairs across all countries in one thread pool) |
+| `julia/scripts/run_wvs_temporal.jl` | Temporal sweep (Mexico, 7 waves) |
+
+**Sweep Results:**
+
+| Sweep | Contexts | Estimates | Sig% | Med|γ| | Runtime |
+|-------|----------|-----------|------|--------|---------|
+| MEX W7 within-survey | 1 | 982 | 40.2% | 0.008 | 10 min |
+| Geographic (W7, 66 countries) | 66 | 68,174 | 39.3% | 0.012 | 9.7 hr |
+| Temporal (MEX, W3-W7) | 5 | 2,334 | 41.5% | 0.013 | 42 min |
+
+**Key findings:**
+- SES stratification varies by cultural zone: Catholic/English-speaking (med|γ|=0.026) >> African-Islamic (0.010)
+- Mexico PC1=70% (WVS) / 78% (los_mex) — above global median of 61% but not extreme
+- Most collinear: Mongolia (90%), Singapore (85%), Taiwan (84%)
+- Most multi-dimensional: Jordan (38%), Turkey (46%), India (47%)
+- Top 3 cross-country variance dimensions: Age/Cohort > Education > Urbanization (Gender has least variance)
+- Temporal structural stability: Spearman ρ = 0.63–0.75 between adjacent Mexico waves (1996–2018)
+- Within-survey CIs 29% tighter than cross-survey (0.022 vs 0.031)
+
+**Analysis & Visualization:**
+
+| File | Contents |
+|------|----------|
+| `scripts/debug/analyze_wvs_mex_validation.py` | Phase 1.4: MEX within vs cross validation |
+| `scripts/debug/analyze_wvs_geographic.py` | Geographic analysis by country and cultural zone |
+| `scripts/debug/analyze_wvs_temporal.py` | Temporal trends, structural stability |
+| `scripts/debug/build_gamma_surface.py` | Unified γ-surface (72,756 entries from 4 sources) |
+| `scripts/debug/visualize_gamma_surface.py` | PCA, heatmaps, ribbon plots, Mexico trajectory |
+| `scripts/debug/plot_ses_signatures.py` | Per-country SES signatures (scatter, radar, bars) |
+| `scripts/debug/plot_ses_signature_3d.py` | Interactive 3D Plotly scatter of SES signatures |
+| `scripts/debug/build_wvs_losmex_construct_map.py` | WVS↔los_mex construct cross-map |
+
+**Output files:**
+
+| File | Contents |
+|------|----------|
+| `data/results/wvs_mex_w7_within_sweep.json` | MEX W7 within-survey (982 est) |
+| `data/results/wvs_geographic_sweep_w7.json` | 66-country geographic (68K est) |
+| `data/results/wvs_temporal_sweep_mex.json` | Mexico temporal W3-W7 (2.3K est) |
+| `data/results/gamma_surface.json` | Unified γ-surface (72.7K entries) |
+| `data/results/ses_signatures_all.json` | Per-country 4D SES signatures |
+| `data/results/ses_signature_3d.html` | Interactive 3D signature plot |
+| `data/results/wvs_geographic_report.md` | Geographic analysis report |
+| `data/results/wvs_temporal_report.md` | Temporal analysis report |
+
+**JAX GPU Bridge (`jax_dr_bridge.py`):**
+- Manual Cholesky solver bypasses Metal's missing `triangular_solve` XLA op
+- Works on Apple Metal GPU for single pairs and point-estimate batches (100× faster)
+- Metal crashes on double-vmap (pairs × bootstrap) due to buffer allocator limits
+- Colab notebook ready for CUDA/TPU: `notebooks/colab_jax_gamma_surface.ipynb`
+- TPU v5e (free Colab tier) has native `triangular_solve` and would complete full 3D surface in ~5-15 min
 
 ### Key Modules Added / Significantly Changed
 
