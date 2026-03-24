@@ -65,6 +65,7 @@ include("ordinal_model.jl") # Step 3: PO model, depends on Optim + ForwardDiff
 include("ses_encoder.jl")   # Step 4: SES encoding, depends on DataFrames
 include("dr_estimator.jl")  # Step 5: DR estimator, depends on all of the above
 include("sweep.jl")         # Step 6: batch sweep, depends on dr_estimator + CSV/JSON
+include("wvs_sweep.jl")    # Step 7: WVS multi-context sweep (within/cross modes)
 
 # ── Public API ────────────────────────────────────────────────────────────────
 # `export` makes these symbols available with bare names after `using NavegadorBridge`.
@@ -78,5 +79,6 @@ export fit_ordered_logit, predict_proba, fit_logistic, predict_logistic
 export encode_ses, drop_sentinel_rows, is_sentinel, SES_VARS
 export DRResult, dr_estimate
 export run_sweep, load_checkpoint, save_checkpoint
+export run_wvs_sweep
 
 end # module NavegadorBridge
