@@ -83,3 +83,20 @@ data/results/.wvs_svs_cache/
 
 #Ignore vscode AI rules
 .github/instructions/codacy.instructions.md
+
+# WVS large data files (stored in navegador_data repo)
+data/julia_bridge_wvs/
+data/results/wvs_*_sweep*.json
+data/results/wvs_*_manifest.json
+data/results/wvs_*_stats.json
+data/results/wvs_losmex_construct_map.json
+data/results/gamma_surface.json
+data/results/ses_signatures_all.json
+data/results/ses_drivers_data.json
+data/results/ses_signature_3d.html
+data/results/bipartite_per_country.json
+data/results/bipartite_ses_drivers.json
+data/results/*.log
+
+# WVS construct caches
+data/results/wvs_*_cache.pkl
