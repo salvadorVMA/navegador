@@ -106,16 +106,18 @@ SES_VARS: dict[str, dict] = {
     },
     "edad": {
         "wvs_col": "Q262",          # continuous age 18–90+
-        "transform": "bin_age",     # applied via _bin_age() in wvs_loader
-        # Bins match ses_analysis.categorize_age:
-        # <=18 → '0-18', <=24 → '19-24', <=34 → '25-34', <=44 → '35-44',
-        # <=54 → '45-54', <=64 → '55-64', else → '65+'
+        "transform": "continuous_age",  # pass numeric age directly
+        # Q262 is continuous year-of-age. Passed through as-is for the
+        # ordered logit (handles continuous predictors natively).
+        # Values outside 15-100 → NaN.
     },
     "escol": {
         "wvs_col": "Q275",          # ISCED 0-8
-        "transform": "isced_to_5",  # applied via _isced_to_5() in wvs_loader
-        # Mapping: 0-1 → 1, 2 → 2, 3-4 → 3, 5 → 4, 6-8 → 5
-        "values": {0: 1, 1: 1, 2: 2, 3: 3, 4: 3, 5: 4, 6: 5, 7: 5, 8: 5},
+        "transform": "isced_to_5",  # applied via _map_values() in wvs_loader
+        # Aligned to Mexican education levels:
+        # 0 → 1 (Ninguna), 1 → 2 (Primaria), 2 → 3 (Secundaria),
+        # 3-4 → 4 (Preparatoria), 5-8 → 5 (Universidad/Posgrado)
+        "values": {0: 1, 1: 2, 2: 3, 3: 4, 4: 4, 5: 5, 6: 5, 7: 5, 8: 5},
     },
     "Tam_loc": {
         "wvs_col": "G_TOWNSIZE",    # 1-8 town size scale

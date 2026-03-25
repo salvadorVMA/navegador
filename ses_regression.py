@@ -325,22 +325,25 @@ class SESEncoder:
                 .rename('sexo').astype(float)
             )
 
-        # edad — ordinal int
-        # Most surveys store edad as pre-binned strings ('25-34', '45-54', etc.).
-        # FAMILIA and a few others store raw numeric ages (15.0, 47.0, …).
-        # Detect the format by attempting string-map first; if >50% map to NaN
-        # fall back to numeric age binning.
+        # edad — continuous numeric or ordinal int
+        # After SES realignment, edad is raw continuous age (15-100) from sd2
+        # in most los_mex surveys and from Q262 in WVS. JUE/CON have
+        # pre-binned ordinal (1-6). Legacy data may still have string bins
+        # ('25-34', etc.). Detect format and handle all three cases.
         if 'edad' in df.columns:
-            mapped_edad = df['edad'].map(_EDAD_ORDER)
-            if mapped_edad.isna().mean() > 0.5:
-                # Numeric raw-age fallback: bin into the same ordinal brackets
-                numeric_age = pd.to_numeric(df['edad'], errors='coerce')
-                mapped_edad = pd.cut(
-                    numeric_age,
-                    bins=[-1, 18, 24, 34, 44, 54, 64, 999],
-                    labels=[0, 1, 2, 3, 4, 5, 6],
-                ).astype(float)
-            parts.append(mapped_edad.rename('edad').astype(float))
+            numeric_edad = pd.to_numeric(df['edad'], errors='coerce')
+            n_valid = numeric_edad.notna().sum()
+            n_unique = numeric_edad.nunique()
+            if n_valid > 0 and n_unique > 20:
+                # Continuous raw age (most common after realignment)
+                parts.append(numeric_edad.rename('edad').astype(float))
+            elif n_valid > 0 and n_unique <= 20:
+                # Ordinal integers (pre-binned, e.g. JUE/CON 1-6)
+                parts.append(numeric_edad.rename('edad').astype(float))
+            else:
+                # Legacy string bins fallback ('25-34', etc.)
+                mapped_edad = df['edad'].map(_EDAD_ORDER)
+                parts.append(mapped_edad.rename('edad').astype(float))
 
         # region — one-hot (drop first category to avoid multicollinearity).
         # Skip when region_x_Tam_loc is present: the interaction encodes all
@@ -370,7 +373,7 @@ class SESEncoder:
                 pd.to_numeric(df['escol'], errors='coerce').rename('escol')
             )
 
-        # Tam_loc — ordinal int (locality size: 1=≥100k urban → 4=rural).
+        # Tam_loc — ordinal int (locality size: 1=rural → 4=urban/≥100k).
         # Present in 24/26 surveys; absent in JUEGOS_DE_AZAR and CULTURA_CONSTITUCIONAL.
         # Skip when region_x_Tam_loc is present (same collinearity reason as region).
         if 'Tam_loc' in df.columns and not self._has_region_x_tam:

@@ -32,7 +32,7 @@ def _make_ses_df(n: int = 400, seed: int = 0) -> pd.DataFrame:
     rng = np.random.default_rng(seed)
 
     sexo      = rng.choice(['01', '02'], n)
-    edad      = rng.choice(['19-24', '25-34', '35-44', '45-54', '55-64', '65+'], n)
+    edad      = rng.uniform(18, 80, n).round(0)  # continuous numeric age
     region    = rng.choice(['01', '02', '03', '04'], n)
     empleo    = rng.choice(['01', '02', '03', '04', '05'], n)
     escol     = rng.choice([1.0, 2.0, 3.0, 4.0, 5.0], n)
@@ -84,11 +84,11 @@ class TestSESEncoder(unittest.TestCase):
         self.assertIn('sexo', X.columns)
         self.assertTrue(X['sexo'].isin([0.0, 1.0]).all())
 
-    def test_edad_ordinal_range(self):
+    def test_edad_numeric_range(self):
         X = self.enc.fit_transform(self.df)
         self.assertIn('edad', X.columns)
-        self.assertTrue((X['edad'] >= 0).all())
-        self.assertTrue((X['edad'] <= 6).all())
+        self.assertTrue((X['edad'] >= 15).all())
+        self.assertTrue((X['edad'] <= 100).all())
 
     def test_region_one_hot_columns(self):
         X = self.enc.fit_transform(self.df)
@@ -337,7 +337,7 @@ def _make_noisy_df(n: int = 500, seed: int = 20) -> pd.DataFrame:
     rng = np.random.default_rng(seed)
     return pd.DataFrame({
         'sexo'     : rng.choice(['01', '02'], n),
-        'edad'     : rng.choice(['19-24', '25-34', '35-44', '45-54'], n),
+        'edad'     : rng.uniform(18, 80, n).round(0),
         'region'   : rng.choice(['01', '02', '03'], n),
         'empleo'   : rng.choice(['01', '02', '03', '04'], n),
         'Pondi2'   : rng.uniform(0.5, 2.0, n),
@@ -355,7 +355,7 @@ def _make_signal_df(n: int = 700, seed: int = 30, p_signal: float = 0.90) -> pd.
     """
     rng = np.random.default_rng(seed)
     sexo = rng.choice(['01', '02'], n)
-    age  = rng.choice(['19-24', '25-34', '35-44', '45-54'], n)
+    age  = rng.uniform(18, 80, n).round(0)
     reg  = rng.choice(['01', '02', '03'], n)
     emp  = rng.choice(['01', '02', '03', '04'], n)
     weight = rng.uniform(0.5, 2.0, n)
@@ -526,8 +526,14 @@ class TestSurveyVarModelDiagnostics(unittest.TestCase):
     def test_dominant_ses_group_in_ses_vars(self):
         """dominant_ses_group should be one of the known SES variable roots."""
         diag = self._fit_model(_make_noisy_df()).diagnostics()
-        self.assertIn(diag['dominant_ses_group'], self.SES_VARS,
-                      f"Unexpected dominant_ses_group: {diag['dominant_ses_group']}")
+        # Accept any SES root (including one-hot parents not in SES_REGRESSION_VARS)
+        all_ses_roots = set(self.SES_VARS) | {'escol', 'Tam_loc', 'est_civil'}
+        dom = diag['dominant_ses_group']
+        # Strip one-hot suffix to get root
+        root = dom.split('_')[0] if '_' in dom else dom
+        is_known = dom in all_ses_roots or root in all_ses_roots
+        self.assertTrue(is_known,
+                        f"Unexpected dominant_ses_group: {dom}")
 
     def test_top_predictor_is_sexo_with_injected_signal(self):
         """When sexo is the sole strong predictor, dominant_ses_group must be 'sexo'."""
@@ -755,23 +761,23 @@ class TestEcologicalBridgeEstimator(unittest.TestCase):
             self.assertEqual(result['cell_cols_used'], ['edo'])
 
     def test_demographic_cell_cols(self):
-        """cell_cols=['escol', 'edad'] uses the SES fixture directly."""
+        """cell_cols=['escol', 'Tam_loc'] uses the SES fixture directly."""
         ses_est = EcologicalBridgeEstimator(
             min_cell_n=5, min_merged_cells=10, n_bootstrap=20
         )
-        # _make_ses_df has escol and edad — 5×7=35 possible cells
+        # _make_ses_df has escol (5 levels) and Tam_loc (4 levels) — 20 cells
         df_a = _make_ses_df(n=600, seed=80)
         df_b = _make_ses_df(n=600, seed=81)
         result = ses_est.estimate(
             var_id_a='p1|AAA', var_id_b='p1|BBB',
             df_a=df_a, df_b=df_b,
             col_a='p_nominal', col_b='p_nominal',
-            cell_cols=['escol', 'edad'],
+            cell_cols=['escol', 'Tam_loc'],
         )
         self.assertIsNotNone(result)
         self.assertEqual(result['method'], 'ecological_bridge')
         self.assertIn('escol', result['cell_cols_used'])
-        self.assertIn('edad', result['cell_cols_used'])
+        self.assertIn('Tam_loc', result['cell_cols_used'])
 
 
 # ---------------------------------------------------------------------------

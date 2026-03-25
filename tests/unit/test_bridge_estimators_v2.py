@@ -31,7 +31,7 @@ def _make_ses_df(n: int = 400, seed: int = 0) -> pd.DataFrame:
     rng = np.random.default_rng(seed)
 
     sexo      = rng.choice(['01', '02'], n)
-    edad      = rng.choice(['19-24', '25-34', '35-44', '45-54', '55-64', '65+'], n)
+    edad      = rng.uniform(18, 80, n).round(0)  # continuous numeric age
     region    = rng.choice(['01', '02', '03', '04'], n)
     empleo    = rng.choice(['01', '02', '03', '04', '05'], n)
     escol     = rng.choice([1.0, 2.0, 3.0, 4.0, 5.0], n)

@@ -39,7 +39,7 @@ def _make_signal_df(n: int = 700, seed: int = 30, p_signal: float = 0.90):
     """sexo is a strong predictor of target. Reused from test_ses_regression."""
     rng = np.random.default_rng(seed)
     sexo = rng.choice(['01', '02'], n)
-    age = rng.choice(['19-24', '25-34', '35-44', '45-54'], n)
+    age = rng.uniform(18, 70, n).round(0)
     reg = rng.choice(['01', '02', '03'], n)
     emp = rng.choice(['01', '02', '03', '04'], n)
     weight = rng.uniform(0.5, 2.0, n)
@@ -59,7 +59,7 @@ def _make_noisy_df(n: int = 500, seed: int = 20):
     rng = np.random.default_rng(seed)
     return pd.DataFrame({
         'sexo': rng.choice(['01', '02'], n),
-        'edad': rng.choice(['19-24', '25-34', '35-44', '45-54'], n),
+        'edad': rng.uniform(18, 70, n).round(0),
         'region': rng.choice(['01', '02', '03'], n),
         'empleo': rng.choice(['01', '02', '03', '04'], n),
         'Pondi2': rng.uniform(0.5, 2.0, n),
@@ -75,7 +75,7 @@ def _make_correlated_pair_df(
     rng = np.random.default_rng(seed)
 
     sexo = rng.choice(['01', '02'], n)
-    edad = rng.choice(['19-24', '25-34', '35-44', '45-54', '55-64', '65+'], n)
+    edad = rng.uniform(18, 80, n).round(0)
     region = rng.choice(['01', '02', '03', '04'], n)
     empleo = rng.choice(['01', '02', '03', '04', '05'], n)
     escol = rng.choice([1.0, 2.0, 3.0, 4.0, 5.0], n)
@@ -118,7 +118,7 @@ def _make_independent_pair_df(
     rng = np.random.default_rng(seed)
     return pd.DataFrame({
         'sexo': rng.choice(['01', '02'], n),
-        'edad': rng.choice(['19-24', '25-34', '35-44', '45-54', '55-64', '65+'], n),
+        'edad': rng.uniform(18, 80, n).round(0),
         'region': rng.choice(['01', '02', '03', '04'], n),
         'empleo': rng.choice(['01', '02', '03', '04', '05'], n),
         'escol': rng.choice([1.0, 2.0, 3.0, 4.0, 5.0], n),
@@ -560,7 +560,7 @@ class TestCrossSurveyRobustness(unittest.TestCase):
         n = 400
         df = pd.DataFrame({
             'sexo': rng.choice(['01', '02'], n),
-            'edad': rng.choice(['19-24', '25-34', '35-44'], n),
+            'edad': rng.uniform(20, 60, n).round(0),
             'region': rng.choice(['01', '02'], n),
             'empleo': rng.choice(['01', '02'], n),
             'Pondi2': rng.uniform(0.5, 2.0, n),
@@ -607,7 +607,7 @@ class TestCrossSurveyRobustness(unittest.TestCase):
         n = 400
         base = {
             'sexo': rng.choice(['01', '02'], n),
-            'edad': rng.choice(['19-24', '25-34'], n),
+            'edad': rng.uniform(20, 50, n).round(0),
             'escol': rng.choice([1.0, 2.0, 3.0], n),
             'Pondi2': np.ones(n),
             'col_a': rng.choice([1.0, 2.0, 3.0], n),

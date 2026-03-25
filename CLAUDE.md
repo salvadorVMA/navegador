@@ -227,12 +227,48 @@ Julia-powered γ-surface across 66 countries and 7 Mexico waves. All computation
 | `data/results/ses_signature_3d.html` | Interactive 3D Plotly signature scatter | navegador_data |
 | `data/results/wvs_geo_construct_manifest.json` | Per-country construct metadata (66 contexts) | navegador_data |
 | `data/results/wvs_temporal_construct_manifest.json` | Per-wave construct metadata (7 waves) | navegador_data |
-| `data/results/wvs_losmex_construct_map.json` | WVS↔los_mex construct cross-map | navegador_data |
+| `data/results/wvs_losmex_construct_map.json` | WVS↔los_mex construct cross-map (v1 Jaccard) | navegador_data |
+| `data/results/wvs_losmex_construct_map_v2.json` | WVS↔los_mex construct cross-map (v2 LLM) | main |
+| `data/results/wvs_ses_fingerprints.json` | WVS W7 MEX per-construct SES fingerprints | main |
 | `data/results/wvs_geographic_report.md` | Geographic analysis report | main |
 | `data/results/wvs_temporal_report.md` | Temporal analysis report | main |
 | `data/results/wvs_mex_validation_report.md` | MEX validation report | main |
+| `data/results/wvs_mex_validation_report_v2.md` | MEX validation report v2 (LLM-matched) | main |
 | `data/julia_bridge_wvs/wvs_manifest.json` | Julia CSV manifest (absolute paths, 66+7 contexts) | navegador_data |
 | `data/julia_bridge_wvs/WVS_W7_*.csv` | Per-country construct CSVs for Julia | navegador_data |
+
+#### WVS ↔ los_mex Construct Matching & Cross-Study Validation (2026-03-24)
+
+**LLM-based construct matching (v2)** replaces v1 Jaccard/TF-IDF heuristic:
+
+| Module | Purpose |
+|--------|---------|
+| `scripts/debug/build_wvs_losmex_construct_map_v2.py` | Claude Sonnet 4 semantic grading (0-3 scale) of 56 WVS × 93 los_mex constructs |
+| `scripts/debug/analyze_wvs_mex_validation_v2.py` | Cross-dataset validation with polarity correction (needs WVS sweep JSON) |
+
+**Matching results:** 48 grade-3 (near-identical), 77 grade-2 (same concept), 10 reversed-polarity pairs detected. 46/56 WVS constructs (82%) have grade-3 matches. Cache: `data/results/.construct_map_v2_cache/`.
+
+**WVS SES fingerprints** computed from `julia_bridge_wvs/WVS_W7_MEX.csv` (Spearman ρ per construct × 4 SES dims). Saved to `data/results/wvs_ses_fingerprints.json`.
+
+**Cross-study fingerprint comparison (grade-3 pairs):**
+- Median cosine similarity: **0.195** (low)
+- Dominant dimension agreement: **13%** (6/46)
+- 41% of pairs have **negative cosine** (opposite SES profile despite same concept)
+
+**Cross-study driver comparison (significant pairs):**
+
+| Dimension | WVS driver % | los_mex driver % | Delta |
+|-----------|-------------|-----------------|-------|
+| escol | 59.7% | 65.9% | -6 |
+| Tam_loc | 7.6% | 23.0% | **-15** |
+| sexo | 0.5% | 4.9% | -4 |
+| edad | **32.2%** | 6.3% | **+26** |
+
+**Key finding:** Age is 5× more important in WVS; urbanization is 3× more important in los_mex. Education is stable (~50-65%). Root causes: different age binning (WVS continuous→7 vs los_mex pre-binned), different urbanization classifications (WVS G_TOWNSIZE vs Mexican Tam_loc), and sampling differences (WVS omnibus vs los_mex domain-specific). **SES fingerprints are survey-specific, not construct-specific.**
+
+**Validation sign agreement** (~50%) is a noise-floor artifact: median |γ| = 0.008, CI width = 0.022 → SNR < 1. Among high-magnitude pairs (both constructs SES mag ≥ 0.05), fingerprint dot product predicts γ sign at **98.7% accuracy** (sig pairs). At mag ≥ 0.10: **100%** (12/12).
+
+**navegador_data repo:** `https://github.com/salvadorVMA/navegador_data` — large JSON sweep files, Julia CSVs, construct manifests.
 
 **JAX GPU Bridge (`jax_dr_bridge.py`):**
 - Manual Cholesky solver bypasses Metal's missing `triangular_solve` XLA op

@@ -194,6 +194,9 @@ def harmonize_ses(df: pd.DataFrame) -> pd.DataFrame:
             new_cols[los_mex_col] = _map_values(src, cfg["values"])
         elif cfg["transform"] == "bin_age":
             new_cols[los_mex_col] = _bin_age(src)
+        elif cfg["transform"] == "continuous_age":
+            age = pd.to_numeric(src, errors="coerce")
+            new_cols[los_mex_col] = age.where(age.between(15, 100))
         elif cfg["transform"] in ("isced_to_5", "collapse_4"):
             new_cols[los_mex_col] = _map_values(
                 src.astype("Int64", errors="ignore"), cfg["values"]

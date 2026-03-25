@@ -130,9 +130,13 @@ class AnalysisConfig:
                 changes_made.append('region')
                 mapping_stats['region_created'] += 1
             
-            # 2. Create 'edad' from 'sd2' (with categorization)
+            # 2. Create 'edad' from 'sd2' (continuous numeric age).
+            # sd2 is raw age in years (15-97) in 24/26 surveys. Pass through
+            # directly instead of binning — the ordered logit handles
+            # continuous predictors natively with higher resolution.
             if 'sd2' in df.columns and 'edad' not in df.columns:
-                df['edad'] = df['sd2'].apply(AnalysisConfig.categorize_age)
+                age_raw = pd.to_numeric(df['sd2'], errors='coerce')
+                df['edad'] = age_raw.where(age_raw.between(15, 100))
                 changes_made.append('edad')
                 mapping_stats['edad_created'] += 1
             
@@ -169,13 +173,14 @@ class AnalysisConfig:
                 changes_made.append('escol_normalized')
 
             # 5. Normalise 'Tam_loc' (locality size / urban-rural proxy).
-            # Values 1.0–4.0: 1=≥100k inhabitants (large urban) → 4=<2,500 (rural).
-            # Present in 24/26 surveys; gracefully absent in JUEGOS_DE_AZAR and
-            # CULTURA_CONSTITUCIONAL (older survey format).  Anything outside 1–4
-            # is treated as an invalid/sentinel code and remapped to NaN.
+            # Raw los_mex coding: 1=≥100k (urban) → 4=<2,500 (rural).
+            # Reversed here to match WVS convention: 1=rural → 4=urban.
+            # Present in 24/26 surveys; absent in JUEGOS_DE_AZAR and
+            # CULTURA_CONSTITUCIONAL.  Anything outside 1–4 → NaN.
             if 'Tam_loc' in df.columns:
                 s = pd.to_numeric(df['Tam_loc'], errors='coerce')
                 s = s.where(s.between(1.0, 4.0), other=float('nan'))
+                s = 5.0 - s  # Reverse: 1=urban→4=rural becomes 1=rural→4=urban
                 df['Tam_loc'] = s
                 changes_made.append('Tam_loc_normalized')
                 mapping_stats['tam_loc_normalized'] += 1

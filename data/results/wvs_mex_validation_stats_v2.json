@@ -1,0 +1,110 @@
+{
+  "v1_baseline": {
+    "overall": {
+      "n_matched_pairs": 142,
+      "sign_agreement_pct": 52.1,
+      "median_gamma_diff": 0.0166,
+      "mean_gamma_diff": 0.027,
+      "median_wvs_ci": 0.0252,
+      "median_losmex_ci": 0.0353,
+      "ci_ratio": 0.71
+    },
+    "stratified_by_quality": {
+      "strong": {
+        "n_pairs": 12,
+        "sign_agreement_pct": 50.0,
+        "median_gamma_diff": 0.0087
+      },
+      "moderate": {
+        "n_pairs": 130,
+        "sign_agreement_pct": 52.3,
+        "median_gamma_diff": 0.0168
+      }
+    },
+    "significant_only": {
+      "n_pairs": 94,
+      "sign_agreement_pct": 55.3
+    }
+  },
+  "v2_threshold_030": {
+    "overall": {
+      "n_matched_pairs": 146,
+      "sign_agreement_pct": 45.9,
+      "median_gamma_diff": 0.0147,
+      "mean_gamma_diff": 0.025,
+      "median_wvs_ci": 0.0249,
+      "median_losmex_ci": 0.0328,
+      "ci_ratio": 0.76
+    },
+    "stratified_by_quality": {
+      "strong": {
+        "n_pairs": 17,
+        "sign_agreement_pct": 35.3,
+        "median_gamma_diff": 0.0056
+      },
+      "moderate": {
+        "n_pairs": 129,
+        "sign_agreement_pct": 47.3,
+        "median_gamma_diff": 0.0152
+      }
+    },
+    "significant_only": {
+      "n_pairs": 93,
+      "sign_agreement_pct": 50.5
+    }
+  },
+  "v2_threshold_045": {
+    "overall": {
+      "n_matched_pairs": 17,
+      "sign_agreement_pct": 35.3,
+      "median_gamma_diff": 0.0056,
+      "mean_gamma_diff": 0.014,
+      "median_wvs_ci": 0.0214,
+      "median_losmex_ci": 0.0252,
+      "ci_ratio": 0.85
+    },
+    "stratified_by_quality": {
+      "strong": {
+        "n_pairs": 17,
+        "sign_agreement_pct": 35.3,
+        "median_gamma_diff": 0.0056
+      }
+    },
+    "significant_only": {
+      "n_pairs": 8,
+      "sign_agreement_pct": 50.0
+    }
+  },
+  "v2_threshold_020": {
+    "overall": {
+      "n_matched_pairs": 561,
+      "sign_agreement_pct": 49.6,
+      "median_gamma_diff": 0.0126,
+      "mean_gamma_diff": 0.0192,
+      "median_wvs_ci": 0.0232,
+      "median_losmex_ci": 0.0267,
+      "ci_ratio": 0.87
+    },
+    "stratified_by_quality": {
+      "strong": {
+        "n_pairs": 17,
+        "sign_agreement_pct": 35.3,
+        "median_gamma_diff": 0.0056
+      },
+      "moderate": {
+        "n_pairs": 129,
+        "sign_agreement_pct": 47.3,
+        "median_gamma_diff": 0.0152
+      },
+      "weak": {
+        "n_pairs": 415,
+        "sign_agreement_pct": 50.8,
+        "median_gamma_diff": 0.0115
+      }
+    },
+    "significant_only": {
+      "n_pairs": 331,
+      "sign_agreement_pct": 51.1
+    }
+  }
+}
