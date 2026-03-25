@@ -78,6 +78,7 @@ data/wvs/wvs_mex_dict.json
 data/results/build_wvs_svs.log
 data/results/.wvs_coherence_cache/
 data/results/.wvs_svs_cache/
+data/results/.construct_map_v2_cache/
 .claude/scheduled_tasks.lock
 
 

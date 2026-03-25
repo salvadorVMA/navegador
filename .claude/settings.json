@@ -37,14 +37,16 @@
       "Bash(ps -p 67026 -o %cpu,etime,state)",
       "Bash(python3 -c \":*)",
       "Read(//Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/**)",
-      "Bash(kill 8322)"
+      "Bash(kill 8322)",
+      "Read(//workspaces/navegador_julia_bridge/julia/**)"
     ],
     "additionalDirectories": [
       "/workspaces/navegador/.claude/worktrees/knowledge-graph",
       "/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador_julia_bridge/julia/src",
       "/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador_julia_bridge/julia/examples",
       "/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador_julia_bridge/docs",
-      "/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador_julia_bridge/julia/scripts"
+      "/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador_julia_bridge/julia/scripts",
+      "/home/vscode/.claude/plans"
     ]
   }
 }
