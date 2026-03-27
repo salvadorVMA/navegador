@@ -5,7 +5,7 @@
 #
 # Variable semantics and encoding:
 #   sexo    : binary sex (1=Male, 2=Female) → 0.0 / 1.0
-#   edad    : age in 7 ordinal bins         → 0–6  (interval-like ordinal)
+#   edad    : age — continuous numeric or ordinal bins → Float64
 #   escol   : education 1–5 ordinal scale   → 1.0–5.0
 #   Tam_loc : locality size 1–4 ordinal     → 1.0–4.0
 #
@@ -103,32 +103,54 @@ end
 """
     encode_edad(col::AbstractVector) -> Vector{Float64}
 
-Encode age as ordinal rank 0–6.
+Encode age variable — handles three data formats:
 
-Two-pass strategy:
-  Pass 1: Match string bins directly via EDAD_ORDER dict ("25-34" → 2, etc.)
-  Pass 2: If > 50% of values are unmapped (numeric raw ages), bin continuous ages.
+  Pass 1 (legacy): String bins ("25-34") → ordinal rank 0–6 via EDAD_ORDER dict.
+  Pass 2 (continuous): Numeric ages with >20 unique values → pass through as Float64.
+          The ordered logit handles continuous predictors natively; binning would
+          discard within-bin variance and inflate Goodman-Kruskal γ by creating
+          artificial tied pairs.
+  Pass 3 (pre-binned): Numeric ages with ≤20 unique values → bin to 7 ordinal ranks.
+          Used for JUE/CON surveys where edad arrives as ordinal integers (1–6).
 
-# Fallback to numeric binning
+# Three-pass detection logic
 
-Los_mex stores edad as pre-binned strings ("25-34").  Other datasets may store
-raw ages (35.0).  The `n_mapped < length(col) ÷ 2` heuristic detects numeric
-data and switches to interval binning automatically.
+The function first tries string lookup (Pass 1).  If most values don't match
+known string bins, it falls back to numeric parsing.  Among numeric values,
+the number of unique ages distinguishes continuous (>20 unique, e.g. 18–90)
+from pre-binned (≤20 unique, e.g. 1–6).
 
-`÷` is integer division (floor division) in Julia, equivalent to Python's `//`.
+# Why >20 unique as the threshold?
+
+Pre-binned edad has at most 7 categories (string bins) or 6 (JUE/CON ordinals).
+Continuous age has 60+ unique values.  The threshold of 20 sits safely between
+these ranges and matches the Python SESEncoder detection logic in ses_regression.py.
+
+# `÷` (integer division)
+
+`÷` is floor division in Julia, equivalent to Python's `//`.
+`length(col) ÷ 2` → half the column length (used as the Pass 1 threshold).
+
+# `unique(collection)`
+
+Returns a vector of distinct elements.  `length(unique(vals))` counts how many
+unique numeric ages are present — the key heuristic for continuous vs. pre-binned.
 
 # `findfirst(predicate, collection)`
 
 Returns the index of the first element satisfying `predicate`, or `nothing`.
-`age > bins[k] && age <= bins[k+1]` checks if age falls in interval (bins[k], bins[k+1]].
-`isnothing(bin)` handles the case where age is outside all bins → NaN.
+Used in Pass 3 to find which bin interval contains each age value.
 """
 function encode_edad(col::AbstractVector)::Vector{Float64}
     result   = Vector{Float64}(undef, length(col))
     n_mapped = 0
+
+    # ── Pass 1: try string-bin lookup ────────────────────────────────────────
+    # Legacy los_mex data stores edad as pre-binned strings like "25-34".
+    # `haskey(dict, key)` is Julia's equivalent of Python's `key in dict`.
     for (i, v) in enumerate(col)
         s = strip(string(v))
-        if haskey(EDAD_ORDER, s)   # `haskey(dict, key)` = Python's `key in dict`
+        if haskey(EDAD_ORDER, s)
             result[i] = Float64(EDAD_ORDER[s])
             n_mapped += 1
         else
@@ -136,20 +158,45 @@ function encode_edad(col::AbstractVector)::Vector{Float64}
         end
     end
 
-    # If the majority of values were unmapped, try numeric age binning.
-    if n_mapped < length(col) ÷ 2
+    # If the majority of values matched string bins, Pass 1 succeeded → return.
+    n_mapped >= length(col) ÷ 2 && return result
+
+    # ── Passes 2 & 3: numeric edad ──────────────────────────────────────────
+    # Parse all values as Float64 first, then decide continuous vs. pre-binned.
+    numeric_vals = Vector{Float64}(undef, length(col))
+    for (i, v) in enumerate(col)
+        try
+            f = v isa AbstractString ? parse(Float64, v) : Float64(v)
+            # Sentinel codes (≥97 or <0) are invalid survey responses.
+            numeric_vals[i] = is_sentinel(f) ? NaN : f
+        catch
+            numeric_vals[i] = NaN   # unparseable → missing
+        end
+    end
+
+    # Count unique non-NaN values to distinguish continuous from pre-binned.
+    valid_vals = filter(!isnan, numeric_vals)
+    n_unique = length(unique(valid_vals))
+
+    if n_unique > 20
+        # ── Pass 2: continuous age ───────────────────────────────────────
+        # Raw numeric ages (e.g. 18.0, 35.0, 72.0) pass through directly.
+        # The ordered logit and logistic regression in dr_estimator.jl
+        # handle continuous predictors natively — no binning needed.
+        # This preserves within-bin variance that 7-bin discretization
+        # would discard, and avoids inflating γ via artificial ties.
+        result .= numeric_vals
+    else
+        # ── Pass 3: pre-binned ordinal ───────────────────────────────────
+        # Small number of unique values (e.g. 1–6 in JUE/CON) indicates
+        # edad is already discretized.  Bin to standard 7 ordinal ranks
+        # for consistency with legacy string-bin data.
         bins  = [-1.0, 18.0, 24.0, 34.0, 44.0, 54.0, 64.0, 999.0]
         ranks = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
-        for (i, v) in enumerate(col)
-            try
-                age = v isa AbstractString ? parse(Float64, v) : Float64(v)
-                isnan(age) && continue   # skip already-NaN entries
-                # `findfirst` returns the first matching index or `nothing`.
-                bin = findfirst(k -> age > bins[k] && age <= bins[k+1], 1:length(ranks))
-                result[i] = isnothing(bin) ? NaN : ranks[bin]
-            catch
-                result[i] = NaN
-            end
+        for (i, v) in enumerate(numeric_vals)
+            isnan(v) && (result[i] = NaN; continue)
+            bin = findfirst(k -> v > bins[k] && v <= bins[k+1], 1:length(ranks))
+            result[i] = isnothing(bin) ? NaN : ranks[bin]
         end
     end
     return result
