@@ -101,3 +101,6 @@ data/results/*.log
 
 # WVS construct caches
 data/results/wvs_*_cache.pkl
+data/results/wvs_multi_construct_manifest_*.json
+data/results/wvs_multi_construct_cache_*.pkl
+data/results/sign_flip_data.json

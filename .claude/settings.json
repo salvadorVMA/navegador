@@ -38,7 +38,13 @@
       "Bash(python3 -c \":*)",
       "Read(//Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/**)",
       "Bash(kill 8322)",
-      "Read(//workspaces/navegador_julia_bridge/julia/**)"
+      "Read(//workspaces/navegador_julia_bridge/julia/**)",
+      "Bash(gh api:*)",
+      "Bash(git clone:*)",
+      "WebSearch",
+      "Bash(curl -s 'http://localhost:4200/api/flow_runs/filter' -H 'Content-Type: application/json' -d '{\"\"\"\"sort\"\"\"\":\"\"\"\"EXPECTED_START_TIME_DESC\"\"\"\",\"\"\"\"limit\"\"\"\":5}')",
+      "Bash(for f:*)",
+      "Bash(do du:*)"
     ],
     "additionalDirectories": [
       "/workspaces/navegador/.claude/worktrees/knowledge-graph",

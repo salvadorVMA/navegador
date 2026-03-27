@@ -268,7 +268,92 @@ Julia-powered γ-surface across 66 countries and 7 Mexico waves. All computation
 
 **Validation sign agreement** (~50%) is a noise-floor artifact: median |γ| = 0.008, CI width = 0.022 → SNR < 1. Among high-magnitude pairs (both constructs SES mag ≥ 0.05), fingerprint dot product predicts γ sign at **98.7% accuracy** (sig pairs). At mag ≥ 0.10: **100%** (12/12).
 
-**navegador_data repo:** `https://github.com/salvadorVMA/navegador_data` — large JSON sweep files, Julia CSVs, construct manifests.
+**navegador_data repo:** `https://github.com/salvadorVMA/navegador_data` — large JSON sweep files, Julia CSVs, construct manifests. Los_mex bridge CSVs also pushed here (`data/julia_bridge/`).
+
+**Colab notebook** (`notebooks/colab_jax_gamma_surface.ipynb`): Auto-clones both repos (navegador + navegador_data), no manual file upload. `DATASET = "los_mex" | "wvs"` toggle.
+
+#### SES Realignment ✅ COMPLETE (2026-03-26)
+
+Cross-study fingerprint comparison revealed WVS and los_mex SES fingerprints were nearly orthogonal (median cosine 0.195) due to 3 coding mismatches. All fixed:
+
+| Fix | File | Change |
+|-----|------|--------|
+| **Tam_loc reversed** | `ses_analysis.py` | `5 - s` → 1=rural, 4=urban (matching WVS) |
+| **Escol boundaries** | `wvs_metadata.py` | ISCED 0→1, 1→2 (Primary separate from Ninguna) |
+| **Continuous edad** | `ses_analysis.py`, `ses_regression.py`, `wvs_loader.py`, `julia/src/ses_encoder.jl` | Raw numeric age passed to ordered logit (no 7-bin discretization) |
+
+Julia `ses_encoder.jl`: 3-pass edad encoding — Pass 1: string bins (legacy), Pass 2: continuous (>20 unique values, pass-through), Pass 3: pre-binned (≤20 unique, bin to 7 ranks).
+
+**Prefect pipeline** (`scripts/pipeline/ses_realignment_pipeline.py`): Fully annotated orchestration for all sweeps. Subprocess-based (each task calls existing scripts). Real-time stdout streaming via `Popen` + line-by-line reading.
+
+```bash
+# CLI flags (nothing runs by default):
+--los-mex          # los_mex path (~40 min)
+--wvs-geographic   # WVS 66 countries, W7 (~11-14h)
+--wvs-temporal     # WVS Mexico 7 waves (~42 min)
+--all              # everything
+--fresh            # archive old sweep JSONs before starting (forces full recompute)
+--dry-run          # print task graph, no execution
+```
+
+Scope-specific build: `build_wvs_constructs_multi.py --scope geographic|temporal` → separate cache/manifest files, no overwrites.
+
+#### Post-Realignment Results (2026-03-26)
+
+**Los_Mex (post-realignment):**
+
+| Metric | Pre | Post |
+|--------|-----|------|
+| Significant edges | 984 | 879 |
+| Med \|γ\| (sig) | 0.024 | 0.030 |
+| Structural balance | 94% | **100%** |
+| SES dominance: Education | — | 73.2% |
+| SES dominance: Urbanization | — | 21.2% |
+| SES dominance: Age | — | 2.4% |
+| SES dominance: Gender | — | 3.3% |
+
+**WVS Geographic (post-realignment):**
+
+| Metric | Value |
+|--------|-------|
+| Estimates | 68,174 |
+| Significant | 26,870 (39.4%) |
+| Aggregate sig (>50% countries) | 206 edges |
+| Structural balance (aggregate) | 94.7% |
+| SES dominance: Education | 57.8% |
+| SES dominance: Age | 33.5% |
+| Sign consensus: 22% contested | 326 cross-zone sign flips |
+
+**Key difference los_mex vs WVS**: Age/cohort is 2.4% of bridges in Mexico but **33.5%** globally — cross-national generational value shifts are much larger than within-Mexico variation.
+
+**Country distance from average** (Spearman ρ with global median γ-vector):
+- Top 5: ROU (0.732), TWN (0.718), GRC (0.692), NIR (0.687), **MEX (0.669, rank 5)**
+- Bottom 5: THA (0.157), KAZ (0.155), UZB (0.141), MNG (0.128), PAK (0.089)
+- Mexico has lowest RMSE (0.011) — closest magnitudes to global median
+
+**Cross-zone sign flips**: South/Southeast Asia flips against global consensus on multiple pairs (work ethic, societal change, online participation). English-speaking uniquely decouples family obligation from moral permissiveness.
+
+**Analysis scripts:**
+
+| Script | Purpose |
+|--------|---------|
+| `scripts/debug/analyze_post_realignment.py` | Los_mex descriptives, circle networks, bipartite, SES dominance |
+| `scripts/debug/analyze_wvs_post_realignment.py` | WVS descriptives, aggregate network, regional patterns |
+| `scripts/debug/analyze_wvs_country_comparison.py` | Country distance from average, multi-country circle plots |
+
+**Output files:**
+
+| File | Contents |
+|------|----------|
+| `data/results/domain_circle_network_post_realignment.png` | Los_mex sign-colored network |
+| `data/results/domain_circle_network_ses_colored.png` | Los_mex SES-colored network |
+| `data/results/wvs_domain_circle_network_post_realignment.png` | WVS aggregate sign-colored network |
+| `data/results/wvs_domain_circle_network_ses_colored.png` | WVS aggregate SES-colored network |
+| `data/results/wvs_country_distance_from_average.png` | Country ranking bar chart |
+| `data/results/wvs_multicountry_circle_plots.png` | Small multiples (closest + MEX + distant) |
+| `data/results/post_realignment_report.md` | Los_mex report |
+| `data/results/wvs_post_realignment_report.md` | WVS report |
+| `data/results/wvs_country_comparison_report.md` | Country comparison report |
 
 **JAX GPU Bridge (`jax_dr_bridge.py`):**
 - Manual Cholesky solver bypasses Metal's missing `triangular_solve` XLA op

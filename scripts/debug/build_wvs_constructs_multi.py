@@ -39,6 +39,11 @@ from wvs_loader import WVSLoader
 
 SVS_PATH       = ROOT / "data" / "results" / "wvs_svs_v1.json"
 OVERRIDES_PATH = ROOT / "data" / "results" / "wvs_construct_overrides.json"
+
+# Default output paths (legacy, used when --scope is not specified).
+# When --scope is given (e.g., "geographic" or "temporal"), output files
+# become wvs_multi_construct_manifest_geographic.json and _cache_geographic.pkl.
+# This prevents geographic and temporal builds from overwriting each other.
 MANIFEST_PATH  = ROOT / "data" / "results" / "wvs_multi_construct_manifest.json"
 CACHE_PATH     = ROOT / "data" / "results" / "wvs_multi_construct_cache.pkl"
 
@@ -272,9 +277,34 @@ def main() -> None:
                         help="WVS waves to process (default: 7)")
     parser.add_argument("--countries", nargs="*", default=None,
                         help="ISO alpha-3 codes (default: all countries in each wave)")
-    parser.add_argument("--manifest-path", type=str, default=str(MANIFEST_PATH))
-    parser.add_argument("--cache-path", type=str, default=str(CACHE_PATH))
+    parser.add_argument("--scope", type=str, default=None,
+                        choices=["geographic", "temporal"],
+                        help="Scope label: appended to output filenames so "
+                             "geographic and temporal builds don't overwrite "
+                             "each other.  E.g. --scope geographic → "
+                             "wvs_multi_construct_cache_geographic.pkl")
+    parser.add_argument("--manifest-path", type=str, default=None)
+    parser.add_argument("--cache-path", type=str, default=None)
     args = parser.parse_args()
+
+    # Resolve output paths: explicit args > scope-derived > legacy defaults.
+    if args.manifest_path:
+        args.manifest_path = args.manifest_path
+    elif args.scope:
+        args.manifest_path = str(
+            ROOT / "data" / "results" / f"wvs_multi_construct_manifest_{args.scope}.json"
+        )
+    else:
+        args.manifest_path = str(MANIFEST_PATH)
+
+    if args.cache_path:
+        args.cache_path = args.cache_path
+    elif args.scope:
+        args.cache_path = str(
+            ROOT / "data" / "results" / f"wvs_multi_construct_cache_{args.scope}.pkl"
+        )
+    else:
+        args.cache_path = str(CACHE_PATH)
 
     if not SVS_PATH.exists():
         print(f"ERROR: {SVS_PATH} not found. Run build_wvs_svs.py first.")

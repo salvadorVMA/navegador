@@ -15959,6 +15959,30 @@
       "reason": "RC fix after scale_audit_v1 — fingerprint_cos + gamma signs corrected",
       "n_cos_updated": 978,
       "n_gamma_flipped": 265
+    },
+    {
+      "script": "patch_kg_ontology_bridges.py",
+      "reason": "RC fix after scale_audit_v1 — fingerprint_cos + gamma signs corrected",
+      "n_cos_updated": 0,
+      "n_gamma_flipped": 0
+    },
+    {
+      "script": "patch_kg_ontology_bridges.py",
+      "reason": "RC fix after scale_audit_v1 — fingerprint_cos + gamma signs corrected",
+      "n_cos_updated": 0,
+      "n_gamma_flipped": 0
+    },
+    {
+      "script": "patch_kg_ontology_bridges.py",
+      "reason": "RC fix after scale_audit_v1 — fingerprint_cos + gamma signs corrected",
+      "n_cos_updated": 0,
+      "n_gamma_flipped": 0
+    },
+    {
+      "script": "patch_kg_ontology_bridges.py",
+      "reason": "RC fix after scale_audit_v1 — fingerprint_cos + gamma signs corrected",
+      "n_cos_updated": 0,
+      "n_gamma_flipped": 0
     }
   ]
 }
