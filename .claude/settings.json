@@ -44,7 +44,13 @@
       "WebSearch",
       "Bash(curl -s 'http://localhost:4200/api/flow_runs/filter' -H 'Content-Type: application/json' -d '{\"\"\"\"sort\"\"\"\":\"\"\"\"EXPECTED_START_TIME_DESC\"\"\"\",\"\"\"\"limit\"\"\"\":5}')",
       "Bash(for f:*)",
-      "Bash(do du:*)"
+      "Bash(do du:*)",
+      "Bash(du -h data/results/wvs_multi_construct_cache_*.pkl)",
+      "Bash(pip list:*)",
+      "Bash(pip install:*)",
+      "Bash(julia --project=. -e 'using Pkg; Pkg.add\\([\"\"Graphs\"\", \"\"Distances\"\"]\\); println\\(\"\"Done\"\"\\)')",
+      "Bash(julia -t 8 --project=. scripts/tda_spectral_distances.jl)",
+      "Bash(while read:*)"
     ],
     "additionalDirectories": [
       "/workspaces/navegador/.claude/worktrees/knowledge-graph",

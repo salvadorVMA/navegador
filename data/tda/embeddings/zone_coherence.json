@@ -1,0 +1,84 @@
+{
+  "spectral": {
+    "observed_ratio": 0.9133,
+    "p_value": 0.0012,
+    "silhouette": -0.1167,
+    "n_permutations": 10000,
+    "interpretation": "significant",
+    "zone_within_distances": {
+      "African-Islamic": {
+        "mean_within_dist": 0.1293,
+        "n_countries": 14
+      },
+      "Catholic Europe": {
+        "mean_within_dist": 0.1533,
+        "n_countries": 3
+      },
+      "Confucian": {
+        "mean_within_dist": 0.1511,
+        "n_countries": 8
+      },
+      "English-speaking": {
+        "mean_within_dist": 0.1225,
+        "n_countries": 6
+      },
+      "Latin America": {
+        "mean_within_dist": 0.1473,
+        "n_countries": 13
+      },
+      "Orthodox/ex-Communist": {
+        "mean_within_dist": 0.1657,
+        "n_countries": 12
+      },
+      "Protestant Europe": {
+        "mean_within_dist": 0.1372,
+        "n_countries": 2
+      },
+      "South/Southeast Asian": {
+        "mean_within_dist": 0.1863,
+        "n_countries": 8
+      }
+    }
+  },
+  "bottleneck": {
+    "observed_ratio": 1.0238,
+    "p_value": 0.672,
+    "silhouette": -0.271,
+    "n_permutations": 10000,
+    "interpretation": "not significant",
+    "zone_within_distances": {
+      "African-Islamic": {
+        "mean_within_dist": 0.0165,
+        "n_countries": 14
+      },
+      "Catholic Europe": {
+        "mean_within_dist": 0.0093,
+        "n_countries": 3
+      },
+      "Confucian": {
+        "mean_within_dist": 0.0227,
+        "n_countries": 8
+      },
+      "English-speaking": {
+        "mean_within_dist": 0.0049,
+        "n_countries": 6
+      },
+      "Latin America": {
+        "mean_within_dist": 0.0221,
+        "n_countries": 13
+      },
+      "Orthodox/ex-Communist": {
+        "mean_within_dist": 0.0152,
+        "n_countries": 12
+      },
+      "Protestant Europe": {
+        "mean_within_dist": 0.0038,
+        "n_countries": 2
+      },
+      "South/Southeast Asian": {
+        "mean_within_dist": 0.0257,
+        "n_countries": 8
+      }
+    }
+  }
+}

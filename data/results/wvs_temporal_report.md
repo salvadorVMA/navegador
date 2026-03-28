@@ -4,11 +4,11 @@
 
 | Wave | Year | Pairs | Sig | %Sig | Med|γ| | Med CI_w |
 |------|------|-------|-----|------|--------|----------|
-| W3 | 1996 | 193 | 50 | 25.9% | 0.0073 | 0.0296 |
-| W4 | 2001 | 212 | 87 | 41.0% | 0.0158 | 0.0406 |
-| W5 | 2007 | 287 | 156 | 54.4% | 0.022 | 0.0407 |
-| W6 | 2012 | 660 | 280 | 42.4% | 0.0109 | 0.0284 |
-| W7 | 2018 | 982 | 395 | 40.2% | 0.008 | 0.0221 |
+| W3 | 1996 | 193 | 49 | 25.4% | 0.0065 | 0.0293 |
+| W4 | 2001 | 212 | 86 | 40.6% | 0.0149 | 0.0411 |
+| W5 | 2007 | 287 | 147 | 51.2% | 0.0196 | 0.0408 |
+| W6 | 2012 | 660 | 277 | 42.0% | 0.0107 | 0.0284 |
+| W7 | 2018 | 982 | 405 | 41.2% | 0.0078 | 0.0223 |
 
 ## Pairs with Trends (3+ waves): 288
 
@@ -16,35 +16,35 @@
 
 | Pair | Waves | Slope/decade | R² | Sign stable |
 |------|-------|-------------|-----|-------------|
-| wvs_agg_outgroup_trust|WVS_G::wvs_agg_social_intolerance_out | 3 | +0.10791 | 0.967 | No |
-| wvs_agg_child_qualities_autonomy_self_expression|WVS_A::wvs_ | 3 | -0.08169 | 0.797 | Yes |
-| wvs_agg_job_scarcity_gender_discrimination|WVS_C::wvs_agg_ou | 3 | -0.07335 | 0.827 | Yes |
-| wvs_agg_gender_role_traditionalism|WVS_D::wvs_agg_outgroup_t | 3 | -0.06709 | 0.912 | Yes |
-| wvs_agg_social_intolerance_outgroups|WVS_A::wvs_agg_work_eth | 3 | +0.06148 | 0.789 | No |
-| wvs_agg_authoritarian_governance_tolerance|WVS_E::wvs_agg_so | 3 | -0.06078 | 0.993 | No |
-| wvs_agg_outgroup_trust|WVS_G::wvs_agg_sexual_and_reproductiv | 3 | -0.05819 | 0.986 | Yes |
-| wvs_agg_outgroup_trust|WVS_G::wvs_agg_religious_practice_and | 3 | -0.05230 | 0.865 | Yes |
-| wvs_agg_authoritarian_governance_tolerance|WVS_E::wvs_agg_ch | 3 | +0.04910 | 0.847 | Yes |
-| wvs_agg_authoritarian_governance_tolerance|WVS_E::wvs_agg_ge | 3 | +0.04874 | 1.000 | Yes |
-| wvs_agg_confidence_in_international_organizations|WVS_E::wvs | 3 | +0.04685 | 0.976 | Yes |
-| wvs_agg_authoritarian_governance_tolerance|WVS_E::wvs_agg_ou | 3 | +0.04622 | 0.976 | Yes |
-| wvs_agg_civic_dishonesty_tolerance|WVS_F::wvs_agg_outgroup_t | 3 | +0.04259 | 0.926 | Yes |
-| wvs_agg_life_autonomy_morality_permissiveness|WVS_F::wvs_agg | 3 | -0.04143 | 0.878 | Yes |
-| wvs_agg_authoritarian_governance_tolerance|WVS_E::wvs_agg_jo | 3 | +0.04040 | 0.799 | Yes |
-| wvs_agg_outgroup_trust|WVS_G::wvs_agg_societal_change_attitu | 3 | -0.03695 | 0.808 | Yes |
-| wvs_agg_economic_ideology|WVS_E::wvs_agg_outgroup_trust|WVS_ | 3 | +0.03538 | 0.847 | No |
-| wvs_agg_confidence_in_civil_society_organizations|WVS_E::wvs | 3 | +0.03537 | 0.995 | Yes |
-| wvs_agg_autocracy_support|WVS_E::wvs_agg_outgroup_trust|WVS_ | 3 | -0.03486 | 0.806 | Yes |
-| wvs_agg_authoritarian_governance_tolerance|WVS_E::wvs_agg_se | 3 | +0.03447 | 0.987 | Yes |
+| wvs_agg_outgroup_trust|WVS_G::wvs_agg_social_intolerance_out | 3 | +0.10012 | 0.971 | No |
+| wvs_agg_child_qualities_autonomy_self_expression|WVS_A::wvs_ | 3 | -0.08017 | 0.793 | Yes |
+| wvs_agg_job_scarcity_gender_discrimination|WVS_C::wvs_agg_ou | 3 | -0.07360 | 0.837 | Yes |
+| wvs_agg_gender_role_traditionalism|WVS_D::wvs_agg_outgroup_t | 3 | -0.06441 | 0.900 | Yes |
+| wvs_agg_authoritarian_governance_tolerance|WVS_E::wvs_agg_so | 3 | -0.06170 | 1.000 | No |
+| wvs_agg_social_intolerance_outgroups|WVS_A::wvs_agg_work_eth | 3 | +0.05902 | 0.782 | No |
+| wvs_agg_outgroup_trust|WVS_G::wvs_agg_religious_practice_and | 3 | -0.05162 | 0.882 | Yes |
+| wvs_agg_authoritarian_governance_tolerance|WVS_E::wvs_agg_ge | 3 | +0.05089 | 1.000 | Yes |
+| wvs_agg_outgroup_trust|WVS_G::wvs_agg_sexual_and_reproductiv | 3 | -0.05078 | 0.989 | Yes |
+| wvs_agg_authoritarian_governance_tolerance|WVS_E::wvs_agg_ch | 3 | +0.05019 | 0.852 | Yes |
+| wvs_agg_confidence_in_international_organizations|WVS_E::wvs | 3 | +0.04914 | 0.980 | Yes |
+| wvs_agg_authoritarian_governance_tolerance|WVS_E::wvs_agg_ou | 3 | +0.04720 | 0.989 | Yes |
+| wvs_agg_authoritarian_governance_tolerance|WVS_E::wvs_agg_jo | 3 | +0.04567 | 0.846 | Yes |
+| wvs_agg_civic_dishonesty_tolerance|WVS_F::wvs_agg_outgroup_t | 3 | +0.04266 | 0.933 | Yes |
+| wvs_agg_confidence_in_civil_society_organizations|WVS_E::wvs | 3 | +0.03839 | 0.987 | Yes |
+| wvs_agg_outgroup_trust|WVS_G::wvs_agg_societal_change_attitu | 3 | -0.03761 | 0.823 | Yes |
+| wvs_agg_life_autonomy_morality_permissiveness|WVS_F::wvs_agg | 3 | -0.03586 | 0.837 | Yes |
+| wvs_agg_economic_ideology|WVS_E::wvs_agg_outgroup_trust|WVS_ | 3 | +0.03407 | 0.866 | No |
+| wvs_agg_autocracy_support|WVS_E::wvs_agg_outgroup_trust|WVS_ | 3 | -0.03176 | 0.842 | Yes |
+| wvs_agg_authoritarian_governance_tolerance|WVS_E::wvs_agg_se | 3 | +0.03060 | 0.990 | Yes |
 
 ## Structural Stability (γ rank correlation between adjacent waves)
 
 | Transition | Shared pairs | Spearman ρ | p-value |
 |-----------|-------------|-----------|---------|
-| W3→W4 | 177 | 0.72 | 0.0 |
-| W4→W5 | 193 | 0.745 | 0.0 |
-| W5→W6 | 262 | 0.675 | 0.0 |
-| W6→W7 | 571 | 0.63 | 0.0 |
+| W3→W4 | 177 | 0.744 | 0.0 |
+| W4→W5 | 193 | 0.711 | 0.0 |
+| W5→W6 | 262 | 0.643 | 0.0 |
+| W6→W7 | 571 | 0.624 | 0.0 |
 
 ---
 *Generated by analyze_wvs_temporal.py*
