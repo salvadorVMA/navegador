@@ -12,6 +12,7 @@ Usage (import):
 """
 
 import argparse
+import gc
 import json
 import os
 import sys
@@ -66,60 +67,91 @@ def run_sweep(
     remaining = [t for t in sweep_tasks if t["key"] not in done_keys]
     print(f"Remaining: {len(remaining)} / {len(sweep_tasks)}")
 
-    # Pre-process all remaining tasks
-    print("Pre-processing pair data...")
-    pair_data = []
+    # Sweep — lazy preparation (one pair at a time to avoid RAM blowup)
+    n_done = len(estimates)
+    n_sig = sum(1 for v in estimates.values() if v.get("excl_zero"))
+    batch_count = 0
+    t0 = time.time()
+
     for task in remaining:
         pair_key = task["key"]
         df_a = context_dfs.get(task["context_a"])
         df_b = context_dfs.get(task["context_b"])
         col_a, col_b = task["col_a"], task["col_b"]
+
         if df_a is None or df_b is None:
             skipped[pair_key] = "missing context"
             continue
         if col_a not in df_a.columns or col_b not in df_b.columns:
             skipped[pair_key] = f"missing column: {col_a} or {col_b}"
             continue
+
         try:
             data = prepare_pair_data(df_a, col_a, df_b, col_b)
             if data is None:
                 skipped[pair_key] = "K<3 or insufficient data"
                 continue
             X_a, y_a, X_b, y_b, X_ref, K = data
-            pair_data.append((pair_key, X_a, y_a, X_b, y_b, X_ref, K, hash(pair_key) % 10000))
         except Exception as e:
             skipped[pair_key] = str(e)[:200]
-    print(f"Valid pairs to estimate: {len(pair_data)}, pre-skipped: {len(skipped)}")
+            continue
 
-    # Sweep
-    n_done = len(estimates)
-    n_sig = sum(1 for v in estimates.values() if v.get("excl_zero"))
-    t0 = time.time()
+        try:
+            seed = hash(pair_key) % 10000
+            result = dr_estimate_single(
+                X_a, y_a, X_b, y_b, X_ref,
+                K=K, n_sim=n_sim, n_bootstrap=n_bootstrap,
+                seed=seed)
+            estimates[pair_key] = result
+            n_done += 1
+            if result["excl_zero"]:
+                n_sig += 1
+        except Exception as e:
+            skipped[pair_key] = str(e)[:200]
 
-    for batch_start in range(0, len(pair_data), batch_size):
-        batch = pair_data[batch_start:batch_start + batch_size]
-        for pair_key, X_a, y_a, X_b, y_b, X_ref, K, seed in batch:
-            try:
-                result = dr_estimate_single(
-                    X_a, y_a, X_b, y_b, X_ref,
-                    K=K, n_sim=n_sim, n_bootstrap=n_bootstrap, seed=seed)
-                estimates[pair_key] = result
-                n_done += 1
-                if result["excl_zero"]:
-                    n_sig += 1
-            except Exception as e:
-                skipped[pair_key] = str(e)[:200]
+        # Free numpy arrays immediately
+        del X_a, y_a, X_b, y_b, X_ref, data
+        batch_count += 1
 
-            total_processed = n_done + len(skipped)
-            if total_processed % 50 == 0:
-                elapsed = time.time() - t0
-                rate = n_done / max(elapsed, 1)
-                eta = (len(pair_data) - (total_processed - len(skipped))) / max(rate, 0.01)
-                print(f"  [{total_processed}/{len(sweep_tasks)}] "
-                      f"done={n_done} sig={n_sig} ({100*n_sig/max(n_done,1):.1f}%) "
-                      f"{rate:.1f}/s ETA={eta:.0f}s")
+        total_processed = n_done + len(skipped)
+        if total_processed % 50 == 0:
+            elapsed = time.time() - t0
+            rate = n_done / max(elapsed, 1)
+            left = len(remaining) - total_processed
+            eta = left / max(rate, 0.01)
+            print(
+                f"  [{total_processed}/{len(sweep_tasks)}] "
+                f"done={n_done} sig={n_sig} "
+                f"({100*n_sig/max(n_done,1):.1f}%) "
+                f"{rate:.1f}/s ETA={eta:.0f}s")
 
-        # Checkpoint after each batch
+        # Checkpoint + GC after each batch
+        if batch_count >= batch_size:
+            batch_count = 0
+            jax.clear_caches()
+            gc.collect()
+            ckpt = {
+                "metadata": {
+                    "dataset": dataset,
+                    "sweep_mode": sweep_mode,
+                    "n_sim": n_sim,
+                    "n_bootstrap": n_bootstrap,
+                    "timestamp": datetime.now().isoformat(),
+                },
+                "estimates": estimates,
+                "skipped": skipped,
+            }
+            with open(checkpoint_file, "w") as f:
+                json.dump(ckpt, f)
+            if push_fn is not None:
+                try:
+                    push_fn(checkpoint_file)
+                except Exception:
+                    pass
+
+    # Final checkpoint for last partial batch
+    if batch_count > 0:
+        gc.collect()
         ckpt = {
             "metadata": {
                 "dataset": dataset, "sweep_mode": sweep_mode,
@@ -134,7 +166,7 @@ def run_sweep(
             try:
                 push_fn(checkpoint_file)
             except Exception:
-                pass  # don't let push failures stop the sweep
+                pass
 
     elapsed = time.time() - t0
     print(f"\nDone: {n_done} estimates, {len(skipped)} skipped, "
