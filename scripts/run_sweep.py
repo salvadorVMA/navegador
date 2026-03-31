@@ -109,8 +109,9 @@ def run_sweep(
         except Exception as e:
             skipped[pair_key] = str(e)[:200]
 
-        # Free numpy arrays immediately
+        # Free numpy + JAX arrays immediately
         del X_a, y_a, X_b, y_b, X_ref, data
+        gc.collect()
         batch_count += 1
 
         total_processed = n_done + len(skipped)

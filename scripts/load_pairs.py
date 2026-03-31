@@ -82,21 +82,65 @@ def load_sweep_tasks(
         elif isinstance(val, dict) and "csv_path" in val:
             manifest[key] = os.path.join(data_dir, os.path.basename(val["csv_path"]))
 
-    # Load DataFrames
-    context_dfs = {}
-    total_rows = 0
+    # Build lazy loader — CSVs are read on demand and cached with LRU eviction
+    # to avoid holding all 72 DataFrames in RAM simultaneously.
+    context_csv_paths = {}
+    available_contexts = []
     for ctx, csv_path in manifest.items():
-        if not os.path.exists(csv_path):
-            continue
-        # wvs_temporal loads ALL contexts: 7 Mexico waves (W1-W7) + 65 W7 countries
-        # This enables temporal analysis (MEX across waves) AND geographic comparison
-        df = pd.read_csv(csv_path)
-        context_dfs[ctx] = df
-        total_rows += len(df)
+        if os.path.exists(csv_path):
+            context_csv_paths[ctx] = csv_path
+            available_contexts.append(ctx)
 
-    print(f"Loaded {len(context_dfs)} contexts, {total_rows:,} total rows.")
-    for d, df in sorted(context_dfs.items()):
-        print(f"  {d}: {len(df):,} rows x {len(df.columns)} cols")
+    class LazyContextDFs:
+        """Dict-like object that loads CSVs on demand with LRU cache."""
+        def __init__(self, paths, max_cached=8):
+            self._paths = paths
+            self._cache = {}
+            self._order = []
+            self._max = max_cached
+
+        def get(self, key, default=None):
+            if key not in self._paths:
+                return default
+            if key in self._cache:
+                self._order.remove(key)
+                self._order.append(key)
+                return self._cache[key]
+            df = pd.read_csv(self._paths[key])
+            self._cache[key] = df
+            self._order.append(key)
+            while len(self._cache) > self._max:
+                evict = self._order.pop(0)
+                del self._cache[evict]
+            return df
+
+        def __contains__(self, key):
+            return key in self._paths
+
+        def __len__(self):
+            return len(self._paths)
+
+        def items(self):
+            """Iterate all contexts (loads each once, evicts as needed)."""
+            for key in self._paths:
+                yield key, self.get(key)
+
+        @property
+        def columns_map(self):
+            """Load just column headers (cheap) for task building."""
+            if not hasattr(self, '_cols'):
+                self._cols = {}
+                for ctx, path in self._paths.items():
+                    cols = pd.read_csv(path, nrows=0).columns.tolist()
+                    self._cols[ctx] = set(cols)
+            return self._cols
+
+    context_dfs = LazyContextDFs(context_csv_paths)
+
+    print(f"Registered {len(context_dfs)} contexts (lazy loading, max 8 cached).")
+    for ctx in sorted(available_contexts):
+        cols = context_dfs.columns_map.get(ctx, set())
+        print(f"  {ctx}: {len(cols)} cols")
 
     # Load pairs
     pairs_path = os.path.join(data_dir, pairs_file)
@@ -121,8 +165,8 @@ def load_sweep_tasks(
                 })
 
     elif sweep_mode == "within_survey":
-        for ctx, df in context_dfs.items():
-            available_cols = set(df.columns)
+        for ctx in available_contexts:
+            available_cols = context_dfs.columns_map.get(ctx, set())
             for var_a, var_b in pairs_list:
                 col_a = var_a.rsplit("|", 1)[0] if "|" in var_a else var_a
                 col_b = var_b.rsplit("|", 1)[0] if "|" in var_b else var_b

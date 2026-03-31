@@ -14,7 +14,7 @@ from functools import partial
 import numpy as np
 import pandas as pd
 
-DTYPE = jnp.float64
+DTYPE = jnp.float32
 
 # ---------------------------------------------------------------------------
 # Threshold encoding/decoding (unconstrained parametrization)
@@ -82,8 +82,7 @@ def fit_ordered_logit_newton(X, y_onehot, params0, K, n_iter=30):
         g = grad_fn(params)
         H = hess_fn(params)
         H_reg = H + 1e-4 * jnp.eye(H.shape[0], dtype=H.dtype)
-        # TPU only supports f32 for LU decomposition; downcast solve, upcast result
-        delta = jnp.linalg.solve(H_reg.astype(jnp.float32), g.astype(jnp.float32)).astype(params.dtype)
+        delta = jnp.linalg.solve(H_reg, g)
         step_norm = jnp.sqrt(jnp.sum(delta ** 2))
         scale = jnp.minimum(1.0, 2.0 / jnp.maximum(step_norm, 1e-8))
         return params - scale * delta, None
@@ -155,16 +154,15 @@ def predict_logistic(beta, X):
 
 
 # ---------------------------------------------------------------------------
-# Goodman-Kruskal gamma from joint table (float64 precision)
+# Goodman-Kruskal gamma from joint table
 # ---------------------------------------------------------------------------
 
 @jit
 def goodman_kruskal_gamma(joint):
     """Goodman-Kruskal gamma from K_a x K_b joint probability table."""
-    joint = joint.astype(jnp.float64)
     Ka, Kb = joint.shape
-    concordant = jnp.float64(0.0)
-    discordant = jnp.float64(0.0)
+    concordant = 0.0
+    discordant = 0.0
 
     below_right = jnp.zeros_like(joint)
     below_left = jnp.zeros_like(joint)
@@ -190,7 +188,6 @@ def goodman_kruskal_gamma(joint):
 @jit
 def normalized_mutual_information(joint):
     """NMI from joint probability table."""
-    joint = joint.astype(jnp.float64)
     p = joint / jnp.maximum(jnp.sum(joint), 1e-12)
     p_a = jnp.sum(p, axis=1)
     p_b = jnp.sum(p, axis=0)
@@ -439,7 +436,7 @@ def rank_normalize(v):
     if n <= 1:
         return v.copy()
     order = np.argsort(v, kind='mergesort')
-    ranks = np.empty(n, dtype=np.float64)
+    ranks = np.empty(n, dtype=np.float32)
     i = 0
     while i < n:
         j = i
