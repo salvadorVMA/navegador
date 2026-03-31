@@ -300,7 +300,7 @@ def _bootstrap_iter(
 
 
 # ---------------------------------------------------------------------------
-# Vectorized bootstrap (vmap over bootstrap iterations)
+# Sequential bootstrap (scan — constant memory, ~15 MB per pair)
 # ---------------------------------------------------------------------------
 
 @partial(jit, static_argnums=(4, 5, 7))
@@ -310,14 +310,16 @@ def _bootstrap_all(
     n_bootstrap,
     rng_key,
 ):
-    """Run n_bootstrap iterations in parallel via vmap."""
+    """Run n_bootstrap iterations sequentially via scan (constant memory)."""
     keys = random.split(rng_key, n_bootstrap)
 
-    boot_fn = vmap(
-        lambda key: _bootstrap_iter(X_a, y_onehot_a, X_b, y_onehot_b,
-                                     K, n_sim, X_ref, key)
-    )
-    return boot_fn(keys)
+    def body(carry, key):
+        gamma = _bootstrap_iter(X_a, y_onehot_a, X_b, y_onehot_b,
+                                K, n_sim, X_ref, key)
+        return carry, gamma
+
+    _, gammas = jax.lax.scan(body, None, keys)
+    return gammas
 
 
 # ---------------------------------------------------------------------------
