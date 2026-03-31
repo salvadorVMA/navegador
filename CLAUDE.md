@@ -270,7 +270,7 @@ Julia-powered γ-surface across 66 countries and 7 Mexico waves. All computation
 
 **navegador_data repo:** `https://github.com/salvadorVMA/navegador_data` — large JSON sweep files, Julia CSVs, construct manifests. Los_mex bridge CSVs also pushed here (`data/julia_bridge/`).
 
-**Colab notebook** (`notebooks/colab_jax_gamma_surface.ipynb`): Auto-clones both repos (navegador + navegador_data), no manual file upload. `DATASET = "los_mex" | "wvs"` toggle.
+**Colab notebook** (`notebooks/colab_jax_gamma_surface.ipynb`): Auto-clones both repos (navegador + navegador_data), no manual file upload. `DATASET = "los_mex" | "wvs" | "wvs_temporal"` toggle. GitHub token auth cell for auto-pushing checkpoints.
 
 #### SES Realignment ✅ COMPLETE (2026-03-26)
 
@@ -360,7 +360,32 @@ Scope-specific build: `build_wvs_constructs_multi.py --scope geographic|temporal
 - Works on Apple Metal GPU for single pairs and point-estimate batches (100× faster)
 - Metal crashes on double-vmap (pairs × bootstrap) due to buffer allocator limits
 - Colab notebook ready for CUDA/TPU: `notebooks/colab_jax_gamma_surface.ipynb`
-- TPU v5e (free Colab tier) has native `triangular_solve` and would complete full 3D surface in ~5-15 min
+- **TPU f64 fix (2026-03-31):** TPU v2/v3/v5e only support f32 for LU decomposition (`jnp.linalg.solve`). Newton solver Hessian solve downcasts to f32, upcasts result back to f64. Matrices are small (6x6-8x8) so f32 precision is sufficient.
+
+#### JAX Colab Sweep Infrastructure (2026-03-31)
+
+| File | Purpose |
+|------|---------|
+| `scripts/jax_dr_bridge.py` | JAX DR estimator: Newton solver, vmap bootstrap, GK gamma, NMI |
+| `scripts/load_pairs.py` | Manifest/CSV loader + sweep task builder for all 3 datasets |
+| `scripts/run_sweep.py` | Batched sweep runner with checkpoint resume + optional `push_fn` callback |
+| `notebooks/colab_jax_gamma_surface.ipynb` | Colab notebook: clone repos, load data, run sweep, push checkpoints |
+
+**Sweep datasets:**
+
+| Dataset | Contexts | Pair templates | Total tasks | Notes |
+|---------|----------|---------------|-------------|-------|
+| `los_mex` | 24 domains | 1,271 | ~4,100 | Cross-domain |
+| `wvs` | 66 W7 countries | 1,271 | ~83,886 | Geographic only |
+| `wvs_temporal` | 72 (7 MEX waves + 66 W7 countries) | 1,271 | **85,807** | Full γ-surface |
+
+**wvs_temporal breakdown:** 66 W7 countries × 1,271 pairs = 83,886; Mexico W1-W6 = 1,921 (fewer constructs in early waves). ~16,281 pairs pre-skipped (K<3 or insufficient data), leaving ~69,526 valid pairs to estimate.
+
+**Resume-safe:** Checkpoint JSON saved after each batch (200 pairs). `push_fn` callback auto-commits and pushes checkpoint to `navegador_data` repo. On VM recycle (e.g., Colab tier switch), re-clone picks up checkpoint from GitHub and resumes.
+
+**Checkpoint file:** `jax_dr_sweep_{dataset}_checkpoint.json` in `/content/` (local) and `data/results/` (navegador_data repo).
+
+**Known TPU limitation:** `jnp.linalg.solve` requires f32 downcast on all current TPU generations (v2-v5e). CUDA GPUs support f64 natively — no downcast needed.
 
 ### Key Modules Added / Significantly Changed
 

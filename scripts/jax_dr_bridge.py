@@ -82,7 +82,8 @@ def fit_ordered_logit_newton(X, y_onehot, params0, K, n_iter=30):
         g = grad_fn(params)
         H = hess_fn(params)
         H_reg = H + 1e-4 * jnp.eye(H.shape[0], dtype=H.dtype)
-        delta = jnp.linalg.solve(H_reg, g)
+        # TPU only supports f32 for LU decomposition; downcast solve, upcast result
+        delta = jnp.linalg.solve(H_reg.astype(jnp.float32), g.astype(jnp.float32)).astype(params.dtype)
         step_norm = jnp.sqrt(jnp.sum(delta ** 2))
         scale = jnp.minimum(1.0, 2.0 / jnp.maximum(step_norm, 1e-8))
         return params - scale * delta, None
@@ -113,7 +114,8 @@ def fit_logistic_newton(X, y, beta0, n_iter=20):
         g = grad_fn(beta)
         H = hess_fn(beta)
         H_reg = H + 1e-4 * jnp.eye(H.shape[0], dtype=H.dtype)
-        delta = jnp.linalg.solve(H_reg, g)
+        # TPU only supports f32 for LU decomposition; downcast solve, upcast result
+        delta = jnp.linalg.solve(H_reg.astype(jnp.float32), g.astype(jnp.float32)).astype(beta.dtype)
         step_norm = jnp.sqrt(jnp.sum(delta ** 2))
         scale = jnp.minimum(1.0, 2.0 / jnp.maximum(step_norm, 1e-8))
         return beta - scale * delta, None

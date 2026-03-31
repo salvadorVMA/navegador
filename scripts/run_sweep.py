@@ -39,6 +39,7 @@ def run_sweep(
     n_bootstrap: int = 200,
     batch_size: int = 200,
     output_dir: str = "/content",
+    push_fn=None,
 ) -> dict:
     """Run the full sweep with checkpointing.
 
@@ -129,6 +130,11 @@ def run_sweep(
         }
         with open(checkpoint_file, "w") as f:
             json.dump(ckpt, f)
+        if push_fn is not None:
+            try:
+                push_fn(checkpoint_file)
+            except Exception:
+                pass  # don't let push failures stop the sweep
 
     elapsed = time.time() - t0
     print(f"\nDone: {n_done} estimates, {len(skipped)} skipped, "
