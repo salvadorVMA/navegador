@@ -479,13 +479,15 @@ def section_5_profiles(by_pair, power_df, report_lines):
 
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 5))
 
-        # ── Panel 1: Geographic (bar by country, colored by zone) ─────────
+        # ── Panel 1: Geographic (bar by country, SORTED by gamma) ────────
         country_gamma = defaultdict(list)
         for r in records:
             country_gamma[r["country"]].append(r["gamma"])
 
-        countries_sorted = sorted(country_gamma.keys())
-        mean_gammas = [np.mean(country_gamma[c]) for c in countries_sorted]
+        # Sort countries by mean gamma (descending) for visual clarity
+        country_mean = {c: np.mean(gs) for c, gs in country_gamma.items()}
+        countries_sorted = sorted(country_mean.keys(), key=lambda c: country_mean[c], reverse=True)
+        mean_gammas = [country_mean[c] for c in countries_sorted]
         colors = [ZONE_COLORS.get(COUNTRY_ZONE.get(c, "Unknown"), "#bdc3c7")
                   for c in countries_sorted]
 
@@ -494,7 +496,7 @@ def section_5_profiles(by_pair, power_df, report_lines):
         ax1.set_xticklabels(countries_sorted, rotation=90, fontsize=5)
         ax1.axhline(0, color="black", linewidth=0.5, linestyle="--")
         ax1.set_ylabel("Mean γ")
-        ax1.set_title(f"Geographic: mean γ per country")
+        ax1.set_title(f"Geographic: mean γ per country (sorted)")
 
         # ── Panel 2: Temporal (line per country, bold zone average) ───────
         wave_country = defaultdict(lambda: defaultdict(list))
@@ -504,10 +506,15 @@ def section_5_profiles(by_pair, power_df, report_lines):
         waves_present = sorted(wave_country.keys())
         years = [WAVE_YEARS.get(w, w) for w in waves_present]
 
-        # Per-country thin lines
+        # Per-country lines — visible with zone coloring
         all_countries = set()
         for w in waves_present:
             all_countries.update(wave_country[w].keys())
+
+        # Scale alpha by number of countries: fewer countries → more opaque
+        n_c = len(all_countries)
+        line_alpha = max(0.15, min(0.7, 8.0 / max(n_c, 1)))
+        line_width = max(0.8, min(2.0, 5.0 / max(n_c, 1)))
 
         for c in all_countries:
             c_years = []
@@ -520,17 +527,24 @@ def section_5_profiles(by_pair, power_df, report_lines):
                 zone = COUNTRY_ZONE.get(c, "Unknown")
                 ax2.plot(c_years, c_gammas,
                          color=ZONE_COLORS.get(zone, "#bdc3c7"),
-                         alpha=0.2, linewidth=0.5)
+                         alpha=line_alpha, linewidth=line_width,
+                         marker="o", markersize=2)
+            elif len(c_years) == 1:
+                # Single-wave: show as dot
+                zone = COUNTRY_ZONE.get(c, "Unknown")
+                ax2.scatter(c_years, c_gammas,
+                            color=ZONE_COLORS.get(zone, "#bdc3c7"),
+                            alpha=line_alpha, s=15, zorder=5)
 
         # Global average bold line
         global_means = [np.mean([np.mean(v) for v in wave_country[w].values()])
                         for w in waves_present]
         ax2.plot(years, global_means, color="black", linewidth=2.5,
-                 label="Global mean", zorder=10)
+                 marker="s", markersize=5, label="Global mean", zorder=10)
         ax2.axhline(0, color="gray", linewidth=0.5, linestyle="--")
         ax2.set_xlabel("Year")
         ax2.set_ylabel("γ")
-        ax2.set_title(f"Temporal: γ trajectory ({len(all_countries)} countries)")
+        ax2.set_title(f"Temporal: γ trajectory ({n_c} countries)")
         ax2.legend(fontsize=8)
 
         fig.suptitle(f"#{rank+1}: {ca} × {cb}\n"
