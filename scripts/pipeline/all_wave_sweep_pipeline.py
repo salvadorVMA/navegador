@@ -153,7 +153,10 @@ def sweep_one_wave(wave: int):
       C. julia run_wvs_geographic_wave.jl {wave}
     """
     logger = get_run_logger()
-    scope = f"geographic_w{wave}"
+    # Use "geographic" scope for all waves — the wave number is in --waves.
+    # The scope controls output filename suffix: cache_geographic.pkl, manifest_geographic.json.
+    # Since we run one wave at a time sequentially, there's no overlap risk.
+    scope = "geographic"
     output_json = RESULTS_DIR / f"wvs_geographic_sweep_w{wave}.json"
     timeout = WAVE_TIMEOUTS.get(wave, 36000)
 
@@ -166,7 +169,7 @@ def sweep_one_wave(wave: int):
             logger.info(f"W{wave}: {n_est} estimates already exist — Julia will resume from checkpoint")
 
     # ── Step A: Build constructs ──────────────────────────────────────────
-    logger.info(f"W{wave} Step A: Building constructs (scope={scope})")
+    logger.info(f"W{wave} Step A: Building constructs (--waves {wave} --scope {scope})")
     _run_python(
         "scripts/debug/build_wvs_constructs_multi.py",
         f"W{wave}-build",
@@ -177,11 +180,6 @@ def sweep_one_wave(wave: int):
     # ── Step B: Export CSVs ───────────────────────────────────────────────
     cache = RESULTS_DIR / f"wvs_multi_construct_cache_{scope}.pkl"
     manifest = RESULTS_DIR / f"wvs_multi_construct_manifest_{scope}.json"
-
-    if not cache.exists():
-        logger.warning(f"W{wave}: cache not found at {cache} — trying without scope suffix")
-        cache = RESULTS_DIR / "wvs_multi_construct_cache_geographic.pkl"
-        manifest = RESULTS_DIR / "wvs_multi_construct_manifest_geographic.json"
 
     logger.info(f"W{wave} Step B: Exporting CSVs for Julia")
     _run_python(
