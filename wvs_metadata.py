@@ -63,16 +63,43 @@ _WAVE_COL_NAMES: dict[int, str] = {
 }
 
 #: Inglehart-Welzel cultural zones (Wave 7 countries, ISO alpha-3)
+# Inglehart-Welzel cultural zones — expanded to cover all WVS waves (W1-W7).
+# Based on the Inglehart-Welzel Cultural Map of the World (2020 revision).
+# Original W7-only list extended with 34 countries from earlier waves.
+#
+# Zone assignments follow the standard WVS typology:
+#   - Protestant Europe: Nordic + Germanic Protestant-heritage countries
+#   - Catholic Europe: Romance + historically Catholic non-Latin-American countries
+#   - English-speaking: Anglosphere settler societies
+#   - Latin America: Spanish/Portuguese-speaking Americas + Caribbean
+#   - Orthodox/ex-Communist: post-Soviet + post-Yugoslav + ex-Warsaw Pact
+#   - Confucian: East Asian Confucian-heritage societies
+#   - South/Southeast Asian: South + Southeast Asian (non-Confucian)
+#   - African-Islamic: Sub-Saharan Africa + MENA Islamic-majority countries
+#
+# Borderline cases:
+#   - TUR: placed in African-Islamic (Islamic-majority, Inglehart maps it there)
+#   - CYP: Catholic Europe (Greek Orthodox but EU Mediterranean culture)
+#   - ZAF: African-Islamic (Sub-Saharan Africa, diverse but Inglehart groups it here)
+#   - TTO: Latin America (Caribbean, English-speaking but Latin cultural sphere)
+#   - GEO: Orthodox/ex-Communist (post-Soviet, Orthodox Christian)
+
 CULTURAL_ZONES: dict[str, list[str]] = {
     "Latin America": [
-        "ARG", "BOL", "BRA", "CHL", "COL", "ECU", "GTM", "MEX",
-        "NIC", "PER", "PRI", "URY", "VEN",
+        "ARG", "BOL", "BRA", "CHL", "COL", "DOM", "ECU", "GTM",
+        "HTI", "MEX", "NIC", "PER", "PRI", "TTO", "URY", "VEN",
     ],
     "English-speaking": ["AUS", "CAN", "GBR", "NIR", "NZL", "USA"],
-    "Protestant Europe": ["DEU", "NLD"],
-    "Catholic Europe": ["AND", "CYP", "GRC"],
+    "Protestant Europe": [
+        "CHE", "DEU", "EST", "LTU", "LVA", "NLD", "NOR", "SWE",
+    ],
+    "Catholic Europe": [
+        "AND", "CYP", "ESP", "FRA", "GRC", "HUN", "ITA", "POL",
+        "SVN",
+    ],
     "Orthodox/ex-Communist": [
-        "ARM", "CZE", "KAZ", "KGZ", "MNG", "ROU", "RUS",
+        "ALB", "ARM", "AZE", "BGR", "BIH", "BLR", "CZE", "GEO",
+        "KAZ", "KGZ", "MDA", "MKD", "MNE", "MNG", "ROU", "RUS",
         "SRB", "SVK", "TJK", "UKR", "UZB",
     ],
     "Confucian": ["CHN", "HKG", "JPN", "KOR", "MAC", "SGP", "TWN", "VNM"],
@@ -80,8 +107,9 @@ CULTURAL_ZONES: dict[str, list[str]] = {
         "BGD", "IDN", "IND", "MMR", "MYS", "PAK", "PHL", "THA",
     ],
     "African-Islamic": [
-        "EGY", "ETH", "IRN", "IRQ", "JOR", "KEN", "LBN", "LBY",
-        "MAR", "MDV", "NGA", "TUN", "TUR", "ZWE",
+        "BFA", "DZA", "EGY", "ETH", "GHA", "IRN", "IRQ", "JOR",
+        "KEN", "KWT", "LBN", "LBY", "MAR", "MDV", "MLI", "NGA",
+        "RWA", "SAU", "TUN", "TUR", "YEM", "ZAF", "ZMB", "ZWE",
     ],
 }
 

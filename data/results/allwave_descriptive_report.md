@@ -51,28 +51,27 @@
 
 | Zone | Countries | Avg waves | Avg %sig | Avg med|γ| | Avg stability ρ |
 |------|-----------|-----------|----------|-----------|----------------|
-| Catholic Europe | 3 | 2.0 | 48.9% | 0.0240 | 0.412 |
+| Catholic Europe | 9 | 2.0 | 54.4% | 0.0270 | 0.685 |
 | English-speaking | 6 | 2.7 | 54.9% | 0.0230 | 0.609 |
-| Protestant Europe | 2 | 3.0 | 58.5% | 0.0210 | 0.669 |
-| Unknown | 34 | 1.7 | 36.9% | 0.0180 | 0.521 |
+| Protestant Europe | 8 | 2.0 | 51.0% | 0.0210 | 0.723 |
+| Orthodox/ex-Communist | 21 | 2.2 | 38.5% | 0.0150 | 0.368 |
 | Confucian | 8 | 2.0 | 40.4% | 0.0130 | 0.306 |
-| Orthodox/ex-Communist | 12 | 2.3 | 38.6% | 0.0130 | 0.280 |
-| Latin America | 13 | 3.0 | 33.5% | 0.0110 | 0.468 |
+| African-Islamic | 24 | 1.9 | 27.7% | 0.0110 | 0.226 |
 | South/Southeast Asian | 8 | 3.1 | 36.8% | 0.0110 | 0.204 |
-| African-Islamic | 14 | 2.3 | 30.0% | 0.0100 | 0.253 |
+| Latin America | 16 | 2.6 | 29.4% | 0.0100 | 0.468 |
 
 ### Most structurally stable countries (cross-wave Spearman ρ)
 
-- **ESP** (Unknown): ρ=0.871, 2 waves
-- **SVN** (Unknown): ρ=0.846, 3 waves
-- **CHE** (Unknown): ρ=0.843, 2 waves
-- **NOR** (Unknown): ρ=0.830, 2 waves
-- **POL** (Unknown): ρ=0.820, 3 waves
-- **HUN** (Unknown): ρ=0.753, 2 waves
+- **ESP** (Catholic Europe): ρ=0.871, 2 waves
+- **SVN** (Catholic Europe): ρ=0.846, 3 waves
+- **CHE** (Protestant Europe): ρ=0.843, 2 waves
+- **NOR** (Protestant Europe): ρ=0.830, 2 waves
+- **POL** (Catholic Europe): ρ=0.820, 3 waves
+- **HUN** (Catholic Europe): ρ=0.753, 2 waves
 - **DEU** (Protestant Europe): ρ=0.708, 4 waves
 - **GBR** (English-speaking): ρ=0.706, 2 waves
 - **MEX** (Latin America): ρ=0.682, 5 waves
-- **BLR** (Unknown): ρ=0.680, 2 waves
+- **BLR** (Orthodox/ex-Communist): ρ=0.680, 2 waves
 
 ### Least stable
 
@@ -80,7 +79,7 @@
 - **THA** (South/Southeast Asian): ρ=0.039, 3 waves
 - **MYS** (South/Southeast Asian): ρ=0.023, 3 waves
 - **KAZ** (Orthodox/ex-Communist): ρ=-0.017, 2 waves
-- **RWA** (Unknown): ρ=-0.058, 2 waves
+- **RWA** (African-Islamic): ρ=-0.058, 2 waves
 
 ## 4. Temporal Dynamics (Global Trends)
 
@@ -256,8 +255,8 @@
 **Most structurally stable**: ESP (ρ=0.87), SVN (ρ=0.85), CHE (ρ=0.84)
 **Most volatile**: MYS (ρ=0.02), KAZ (ρ=-0.02), RWA (ρ=-0.06)
 
-**Highest SES stratification zone**: Protestant Europe (58.5% sig)
-**Lowest SES stratification zone**: African-Islamic (30.0% sig)
+**Highest SES stratification zone**: English-speaking (54.9% sig)
+**Lowest SES stratification zone**: African-Islamic (27.7% sig)
 
 **Pairs gaining SES power**:
   - immigrant_origin_status × job_scarcity_gender_discr: +0.0143/dec
