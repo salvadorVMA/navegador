@@ -55,6 +55,7 @@ Run:
 from __future__ import annotations
 
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -69,9 +70,13 @@ sys.path.insert(0, str(ROOT))
 
 from wvs_metadata import CULTURAL_ZONES, COUNTRY_ZONE
 
-MANIFEST_PATH = ROOT / "data" / "tda" / "matrices" / "manifest.json"
-FW_DIR        = ROOT / "data" / "tda" / "floyd_warshall"
-OUTPUT_DIR    = ROOT / "data" / "tda" / "persistence"
+# Allow env var overrides for allwave pipeline (default: v1 paths)
+MANIFEST_PATH = Path(os.environ.get("TDA_MANIFEST",
+                     str(ROOT / "data" / "tda" / "matrices" / "manifest.json")))
+FW_DIR        = Path(os.environ.get("TDA_FW_DIR",
+                     str(ROOT / "data" / "tda" / "floyd_warshall")))
+OUTPUT_DIR    = Path(os.environ.get("TDA_OUTPUT_DIR",
+                     str(ROOT / "data" / "tda" / "persistence")))
 
 # Persistence features with lifetime < threshold are considered noise.
 # 0.05 means only features persisting through >5% of the distance range are kept.

@@ -35,6 +35,7 @@ Run:
 from __future__ import annotations
 
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -50,13 +51,23 @@ sys.path.insert(0, str(ROOT))
 
 from wvs_metadata import CULTURAL_ZONES, COUNTRY_ZONE
 
-SPECTRAL_PATH  = ROOT / "data" / "tda" / "spectral" / "spectral_distance_matrix.csv"
-BOTTLENECK_PATH = ROOT / "data" / "tda" / "persistence" / "bottleneck_distances.csv"
-FEATURES_PATH  = ROOT / "data" / "tda" / "persistence" / "topological_features.csv"
-RICCI_PATH     = ROOT / "data" / "tda" / "ricci" / "ricci_summary.json"
-MEDIATOR_PATH  = ROOT / "data" / "tda" / "floyd_warshall" / "mediator_scores.json"
-SPECTRAL_FEAT  = ROOT / "data" / "tda" / "spectral" / "spectral_features.json"
-OUTPUT_DIR     = ROOT / "data" / "tda" / "embeddings"
+# Allow env var overrides for allwave pipeline (default: v1 paths)
+SPECTRAL_PATH  = Path(os.environ.get("TDA_SPECTRAL_PATH",
+                      str(ROOT / "data" / "tda" / "spectral" / "spectral_distance_matrix.csv")))
+BOTTLENECK_PATH = Path(os.environ.get("TDA_BOTTLENECK_PATH",
+                       str(ROOT / "data" / "tda" / "persistence" / "bottleneck_distances.csv")))
+FEATURES_PATH  = Path(os.environ.get("TDA_FEATURES_PATH",
+                      str(ROOT / "data" / "tda" / "persistence" / "topological_features.csv")))
+RICCI_PATH     = Path(os.environ.get("TDA_RICCI_PATH",
+                      str(ROOT / "data" / "tda" / "ricci" / "ricci_summary.json")))
+MEDIATOR_PATH  = Path(os.environ.get("TDA_MEDIATOR_PATH",
+                      str(ROOT / "data" / "tda" / "floyd_warshall" / "mediator_scores.json")))
+SPECTRAL_FEAT  = Path(os.environ.get("TDA_SPECTRAL_FEAT",
+                      str(ROOT / "data" / "tda" / "spectral" / "spectral_features.json")))
+OUTPUT_DIR     = Path(os.environ.get("TDA_OUTPUT_DIR",
+                      str(ROOT / "data" / "tda" / "embeddings")))
+MANIFEST_PATH  = Path(os.environ.get("TDA_MANIFEST",
+                      str(ROOT / "data" / "tda" / "matrices" / "manifest.json")))
 
 # Zone colors (consistent with existing navegador visualizations)
 ZONE_COLORS = {
