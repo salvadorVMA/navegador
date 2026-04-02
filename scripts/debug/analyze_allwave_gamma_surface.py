@@ -513,7 +513,7 @@ def section_5_profiles(by_pair, power_df, report_lines):
 
         # Scale alpha by number of countries: fewer countries → more opaque
         n_c = len(all_countries)
-        line_alpha = max(0.15, min(0.7, 8.0 / max(n_c, 1)))
+        line_alpha = max(0.6, min(0.8, 8.0 / max(n_c, 1)))
         line_width = max(0.8, min(2.0, 5.0 / max(n_c, 1)))
 
         for c in all_countries:
