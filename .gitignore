@@ -136,3 +136,5 @@ data/tda/ricci/*.json
 data/tda/spectral/*.json
 data/tda/embeddings/*.json
 data/tda/temporal/*.json
+data/tda/message_passing/*.json
+data/tda/message_passing/plots/

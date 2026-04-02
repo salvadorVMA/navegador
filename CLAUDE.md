@@ -948,3 +948,97 @@ export PATH="$HOME/.juliaup/bin:$PATH"
 # Then install packages:
 julia --project=julia/ -e 'using Pkg; Pkg.add(["DataFrames","CSV","JSON","GLM","Distributions","StatsBase","CategoricalArrays","Optim","ForwardDiff"]); Pkg.add(["LinearAlgebra","Statistics","Random","Dates","Printf","Test"])'
 ```
+
+## Message Passing Framework (2026-04-01)
+
+Propagation analysis on the WVS construct networks: how evidence at one construct implies distributions over others, how beliefs diffuse, and which constructs drive influence.
+
+### Architecture
+
+5 Python scripts in `scripts/debug/mp_*.py`, shared utilities in `mp_utils.py`. All output to `data/tda/message_passing/`.
+
+### Scripts
+
+| Script | Stage | Purpose |
+|--------|-------|---------|
+| `mp_utils.py` | — | Shared data loading, matrix ops, JSON serialization |
+| `mp_belief_propagation.py` | 1 | Loopy BP on Potts MRF (55×55, 5-state ordinal) |
+| `mp_spectral_diffusion.py` | 2 | Laplacian eigendecomposition, Fiedler partition, heat kernel |
+| `mp_ppr_influence.py` | 3 | Personalized PageRank, hub/sink/asymmetry analysis |
+| `mp_temporal_descriptive.py` | 5 | Velocity fields, equilibrium distance, 1-param forecast |
+| `mp_report.py` | — | Generate plots and markdown report |
+
+### CLI
+
+```bash
+# Single country
+python scripts/debug/mp_belief_propagation.py --country MEX
+python scripts/debug/mp_spectral_diffusion.py --country MEX
+python scripts/debug/mp_ppr_influence.py --country MEX
+
+# All 66 countries
+python scripts/debug/mp_belief_propagation.py --all          # ~20 min
+python scripts/debug/mp_spectral_diffusion.py --all          # ~2 sec
+python scripts/debug/mp_ppr_influence.py --all               # ~5 sec
+
+# Temporal (Mexico deep dive with real microdata)
+python scripts/debug/mp_temporal_descriptive.py --compute-means
+
+# Temporal (all 37 countries with multi-wave data)
+python scripts/debug/mp_temporal_descriptive.py --all-temporal
+
+# W7 descriptive (velocity + equilibrium for all 66)
+python scripts/debug/mp_temporal_descriptive.py --all-w7
+
+# Report + plots
+python scripts/debug/mp_report.py
+```
+
+### Key Results
+
+| Metric | Value |
+|--------|-------|
+| BP convergence | 100% (all 66 countries, all scenarios) |
+| Fiedler range | 0.61 (BGD) to 0.89 (MNG), median 0.705 |
+| Within-zone Fiedler ARI | 2.86× across-zone (English-speaking most coherent at 0.153) |
+| Universal PPR hubs | None — all hubs are zone-specific |
+| Most consistent hub | economic_ideology (median rank 7, top-10 in 6+ zones) |
+| PPR vs mediator ρ | Weak everywhere (-0.15 to +0.10) — genuinely different measures |
+| Temporal α range | 0.00 (EGY) to 0.40 (VNM), median ~0.14 |
+| Mexico α | 0.112 (89% inertial, 11% network-driven) |
+| Mexico equilibrium trend | Diverging (7.6→11.9 across 1996-2018) |
+| Top velocity construct | immigrant_origin_status (14/66 countries at W7) |
+
+### Stage 6 (Curvature) — Dropped
+
+Ollivier-Ricci curvature κ ≈ 1.0 uniformly (mean=0.9992, 0 negative edges). The curvature-weighted Laplacian reduces to 2L — a scalar multiple adding no information. Dense networks (23% density) lack the topological heterogeneity for meaningful curvature analysis.
+
+### Output Files
+
+All in `data/tda/message_passing/` (JSON outputs pushed to navegador_data):
+
+| Pattern | Count | Contents |
+|---------|-------|----------|
+| `{COUNTRY}_bp.json` | 66 | BP lift matrices, convergence stats |
+| `{COUNTRY}_spectral.json` | 66 | Eigenvalues, Fiedler partition, diffusion maps |
+| `{COUNTRY}_ppr.json` | 66 | Hub/sink scores, α sensitivity |
+| `{COUNTRY}_w7_descriptive.json` | 66 | W7 velocity field, equilibrium distance |
+| `{COUNTRY}_temporal.json` | 37 | Multi-wave velocity, residuals, α fit |
+| `mex_temporal.json` | 1 | Mexico detailed: forecast, trends, residuals |
+| `bp_all_summary.json` | 1 | Cross-country BP summary |
+| `spectral_all_summary.json` | 1 | Cross-country spectral summary |
+| `fiedler_comparison.json` | 1 | 66×66 Fiedler partition Rand index |
+| `ppr_hub_comparison.json` | 1 | 55×66 hub rank matrix |
+| `temporal_all_summary.json` | 1 | 37-country temporal summary |
+| `w7_descriptive_summary.json` | 1 | 66-country W7 snapshot summary |
+| `mex_wave_means.json` | 1 | Mexico per-wave construct means |
+| `plots/*.png` | 6 | Visualization plots |
+| **Total** | **~310** | |
+
+### Documentation
+
+| File | Contents |
+|------|----------|
+| `docs/MESSAGE_PASSING_SPEC.md` | Full technical spec: math, design choices, pitfalls, interpretation |
+| `docs/MESSAGE_PASSING_PLAN.md` | Scoping decisions and implementation plan |
+| `data/results/message_passing_report.md` | Findings report with plots |
