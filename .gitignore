@@ -105,6 +105,34 @@ data/results/wvs_multi_construct_manifest_*.json
 data/results/wvs_multi_construct_cache_*.pkl
 data/results/sign_flip_data.json
 
-# All-wave γ-surface and TDA outputs (stored in navegador_data repo)
+# Large data files (stored in navegador_data repo)
 data/results/wvs_all_wave_gamma_surface.json
+data/results/construct_dr_sweep*.json
+data/results/dr_sweep_results*.json
+data/results/bridge_comparison*.json
+data/results/cross_domain_sweep.json
+data/results/construct_network.json
+data/results/ses_fingerprints.json
+data/results/structured_summary_checkpoint.json
+data/results/causal_direction_map.json
+data/results/kg_ontology_v2.json
+data/results/semantic_variable_selection*.json
+data/cross_domain_sweep.json
+data/kg_ontology.json
+data/results/ses_variables_report_*.json
+data/results/agent_debug_results.json
+data/results/intent_debug_results.json
+data/results/state_construction*.json
+data/results/mini_sweep_new.json
+data/julia_bridge/*.json
+
+# TDA outputs (stored in navegador_data repo)
 data/tda/allwave/
+data/tda/alignment/*.json
+data/tda/persistence/*.json
+data/tda/floyd_warshall/*.json
+data/tda/matrices/*.json
+data/tda/ricci/*.json
+data/tda/spectral/*.json
+data/tda/embeddings/*.json
+data/tda/temporal/*.json
