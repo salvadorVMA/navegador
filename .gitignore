@@ -104,3 +104,7 @@ data/results/wvs_*_cache.pkl
 data/results/wvs_multi_construct_manifest_*.json
 data/results/wvs_multi_construct_cache_*.pkl
 data/results/sign_flip_data.json
+
+# All-wave γ-surface and TDA outputs (stored in navegador_data repo)
+data/results/wvs_all_wave_gamma_surface.json
+data/tda/allwave/
