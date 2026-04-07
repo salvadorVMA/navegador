@@ -362,6 +362,52 @@ Scope-specific build: `build_wvs_constructs_multi.py --scope geographic|temporal
 - Colab notebook ready for CUDA/TPU: `notebooks/colab_jax_gamma_surface.ipynb`
 - TPU v5e (free Colab tier) has native `triangular_solve` and would complete full 3D surface in ~5-15 min
 
+#### WVS Ontology & Cross-Country Prediction ✅ COMPLETE (2026-04-07)
+
+Full findings in `docs/WVS_ONTOLOGY_FINDINGS.md`.
+
+**OntologyQuery now supports WVS data** — 3-line change added `dataset` parameter + Path coercion. Load with:
+```python
+oq = OntologyQuery(
+    fp_path="data/results/wvs_ses_fingerprints_v2.json",
+    kg_path="data/results/wvs_kg_ontology.json",
+    dataset="wvs",
+)
+```
+
+**Per-country KGs** built dynamically from the geographic sweep (68,174 estimates) using `build_country_kg()` in `scripts/debug/demo_wvs_ontology.py`.
+
+| Module | Purpose |
+|--------|---------|
+| `scripts/debug/build_wvs_kg_ontology.py` | Build WVS KG + fingerprints v2 from sweep data |
+| `scripts/debug/diagnostic_wvs_ontology_readiness.py` | 5-section readiness diagnostic (84/100) |
+| `scripts/debug/demo_wvs_ontology.py` | Per-country network builder + circle-layout visualizations |
+| `scripts/debug/demo_wvs_ontology_capabilities.py` | 10 OntologyQuery operations across 6 countries |
+| `scripts/debug/test_wvs_prediction_scenarios.py` | 5 scenarios × 6 countries, DRPredictionEngine on real data |
+| `scripts/debug/test_wvs_profile_predictions.py` | 5 SES profiles × 5 scenarios × 6 countries |
+| `tests/unit/test_wvs_ontology_readiness.py` | 35 unit tests (data integrity + OntologyQuery integration) |
+
+**Key findings:**
+- WVS MEX network: 395 edges, 43.7% density, 100% fingerprint-γ sign consistency, 99.6% structural balance
+- 39/56 constructs **flip camp** across countries (education axis rotates by national context)
+- Cross-study fingerprint alignment still low (median cosine 0.238) — SES profiles are survey-specific
+- S2 (Participation→Security) shows clearest cross-country sign flip: MEX/NGA positive vs JPN/DEU negative
+- S4 (Morality→Change) shows **no** SES-mediated relationship in any country
+
+**Output files:**
+
+| File | Contents |
+|------|----------|
+| `data/results/wvs_kg_ontology.json` | WVS KG (56 constructs, 395 bridges, 8 domains) |
+| `data/results/wvs_ses_fingerprints_v2.json` | OntologyQuery-compatible fingerprints |
+| `data/results/wvs_ontology_readiness_report.md` | Diagnostic report |
+| `data/results/wvs_ontology_network_mex.png` | Mexico circle network |
+| `data/results/wvs_ontology_comparison.png` | 6-country circle comparison |
+| `data/results/wvs_prediction_scenarios_heatmap.png` | 5×6 γ heatmap |
+| `data/results/wvs_prediction_scenario_circles.png` | Per-country edge comparison |
+| `data/results/wvs_profile_prediction_heatmaps.png` | Profile shift heatmaps |
+| `data/results/wvs_profile_prediction_bars.png` | Baseline vs prediction bars |
+
 ### Key Modules Added / Significantly Changed
 
 | Module | Status | Purpose |

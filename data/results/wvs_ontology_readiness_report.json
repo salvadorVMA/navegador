@@ -1,0 +1,749 @@
+{
+  "construct_quality": {
+    "construct_coverage": {
+      "n_constructs": 56,
+      "type_distribution": {
+        "formative_index": 17,
+        "good": 15,
+        "single_item_tier2": 4,
+        "tier3_caveat": 8,
+        "questionable": 12
+      },
+      "n_with_alpha": 35,
+      "alpha_good_gte_0.7": 15,
+      "alpha_questionable_0.5_0.7": 12,
+      "alpha_poor_lt_0.5": 8,
+      "alpha_median": 0.67,
+      "domains": {
+        "WVS_E": 18,
+        "WVS_A": 9,
+        "WVS_H": 9,
+        "WVS_F": 8,
+        "WVS_G": 5,
+        "WVS_C": 3,
+        "WVS_D": 3,
+        "WVS_I": 1
+      },
+      "n_domains": 8,
+      "comparison_losmex": "los_mex has 93 constructs across 24 domains"
+    },
+    "fingerprint_quality": {
+      "wvs_n": 56,
+      "losmex_n": 93,
+      "wvs_ses_magnitude": {
+        "median": 0.0587,
+        "mean": 0.0659,
+        "max": 0.1576,
+        "p25": 0.044275,
+        "p75": 0.080525
+      },
+      "losmex_ses_magnitude": {
+        "median": 0.0603
+      },
+      "wvs_dominant_dim": {
+        "sexo": 23,
+        "Tam_loc": 20,
+        "edad": 8,
+        "escol": 5
+      },
+      "losmex_dominant_dim": {
+        "escol": 37,
+        "Tam_loc": 27,
+        "edad": 19,
+        "sexo": 10
+      }
+    },
+    "construct_map": {
+      "n_mappings": 56,
+      "grade_distribution": {
+        "near_identical": 46,
+        "same_concept": 9,
+        "no_match": 1
+      },
+      "grade3_fingerprint_cosines": {
+        "n_computable": 46,
+        "median": 0.2379,
+        "mean": 0.0889,
+        "min": -0.8304,
+        "max": 0.9453,
+        "negative_count": 17
+      },
+      "polarity_mismatches": [
+        "WVS_A|social_intolerance_outgroups",
+        "WVS_A|social_intolerance_deviant_behavior",
+        "WVS_C|job_scarcity_nativist_preference",
+        "WVS_F|religious_exclusivism",
+        "WVS_F|life_autonomy_morality_permissiveness",
+        "WVS_G|perceived_negative_effects_of_immigration",
+        "WVS_H|basic_needs_deprivation",
+        "WVS_H|institutional_threat_perception",
+        "WVS_I|science_skepticism"
+      ],
+      "n_divergence_risk_types": 473,
+      "top_divergence_risks": {
+        "Temporal gap between WVS 2018 and los_mex fielding periods": 3,
+        "Different response formats may affect SES gradients": 2,
+        "Temporal gap between WVS 2018 and los_mex fielding may capture different political contexts": 2,
+        "WVS uses binary mention format (pick important child qualities) vs los_mex likely uses Likert scales on moral attitudes": 1,
+        "WVS focuses specifically on child-rearing values while los_mex covers broader moral conservatism including sexuality and social conduct": 1
+      }
+    }
+  },
+  "bridge_network": {
+    "network_build": {
+      "n_total_pairs": 982,
+      "n_significant": 395,
+      "sig_rate": 0.4022,
+      "n_constructs_in_sweep": 49,
+      "n_connected": 43,
+      "n_isolated": 6,
+      "isolated_list": [
+        "wvs_agg_confidence_in_domestic_institutions",
+        "wvs_agg_democratic_values_importance",
+        "wvs_agg_economic_ideology",
+        "wvs_agg_perceived_positive_effects_of_immigration",
+        "wvs_agg_voluntary_association_active_membership",
+        "wvs_agg_voluntary_association_belonging"
+      ],
+      "n_components": 1,
+      "giant_component_size": 43,
+      "giant_component_edges": 395,
+      "density": 0.4374,
+      "diameter": 3,
+      "avg_path_length": 1.614,
+      "gamma_distribution": {
+        "all_pairs": {
+          "median_abs": 0.00795,
+          "mean_abs": 0.01136,
+          "p10": 0.0013,
+          "p25": 0.0031,
+          "p50": 0.00795,
+          "p75": 0.0157,
+          "p90": 0.0259,
+          "p95": 0.03299,
+          "p99": 0.054214
+        },
+        "significant_only": {
+          "n": 395,
+          "median_abs": 0.0188
+        }
+      },
+      "ci_width_median": 0.0221
+    },
+    "fingerprint_gamma_consistency": {
+      "total_tested": 395,
+      "sign_match": 395,
+      "sign_mismatch": 0,
+      "skipped": 0,
+      "accuracy": 1.0,
+      "comparison_losmex": "los_mex: 99.4% (984/984 edges)"
+    },
+    "camp_bipartition": {
+      "camp_distribution": {
+        "+1_cosmopolitan": 29,
+        "-1_tradition": 14
+      },
+      "confidence_stats": {
+        "median": 0.0272,
+        "mean": 0.0516,
+        "min": 0.001,
+        "fraction_below_0.1": 0.953
+      },
+      "cross_camp_edges": 182,
+      "within_camp_edges": 213,
+      "structural_balance": 0.9958,
+      "n_triangles": 1649,
+      "fiedler_eigenvalue": 0.020632
+    }
+  },
+  "cross_study": {
+    "geographic_consistency": {
+      "n_construct_pairs": 1224,
+      "universality": {
+        "universal_gte_33_countries": 97,
+        "widespread_10_32": 1075,
+        "rare_1_9": 52,
+        "never_significant": 0
+      },
+      "sig_countries_per_pair": {
+        "median": 21.0,
+        "mean": 21.9,
+        "max": 59
+      },
+      "sign_consensus_among_widespread": {
+        "n_pairs": 1172,
+        "median": 0.75,
+        "min": 0.5
+      }
+    },
+    "temporal_stability": {
+      "n_total_pairs": 1073,
+      "n_in_3_plus_waves": 288,
+      "sign_stability": {
+        "stable": 198,
+        "tested": 213
+      },
+      "trend_magnitude": {
+        "median_abs_slope": 0.00379,
+        "max_abs_slope": 0.06305
+      },
+      "tda_trajectory": {
+        "trajectory": [
+          {
+            "from_wave": "W3",
+            "to_wave": "W4",
+            "from_year": 1996,
+            "to_year": 2001,
+            "spectral_distance": 0.190458,
+            "years_apart": 5,
+            "distance_per_year": 0.038092
+          },
+          {
+            "from_wave": "W4",
+            "to_wave": "W5",
+            "from_year": 2001,
+            "to_year": 2007,
+            "spectral_distance": 0.132204,
+            "years_apart": 6,
+            "distance_per_year": 0.022034
+          },
+          {
+            "from_wave": "W5",
+            "to_wave": "W6",
+            "from_year": 2007,
+            "to_year": 2012,
+            "spectral_distance": 0.184535,
+            "years_apart": 5,
+            "distance_per_year": 0.036907
+          },
+          {
+            "from_wave": "W6",
+            "to_wave": "W7",
+            "from_year": 2012,
+            "to_year": 2018,
+            "spectral_distance": 0.102072,
+            "years_apart": 6,
+            "distance_per_year": 0.017012
+          }
+        ],
+        "total_spectral_distance": 0.236062,
+        "sum_stepwise_distance": 0.609269,
+        "path_direct_ratio": 2.581,
+        "mediator_timeline": {
+          "W3": {
+            "top_mediator": "gender_role_traditionalism|WVS_D",
+            "top_score": 1199105.07
+          },
+          "W4": {
+            "top_mediator": "gender_role_traditionalism|WVS_D",
+            "top_score": 1279747.77
+          },
+          "W5": {
+            "top_mediator": "outgroup_trust|WVS_G",
+            "top_score": 1828359.08
+          },
+          "W6": {
+            "top_mediator": "outgroup_trust|WVS_G",
+            "top_score": 3213019.75
+          },
+          "W7": {
+            "top_mediator": "gender_role_traditionalism|WVS_D",
+            "top_score": 3802107.62
+          }
+        },
+        "feature_evolution": {
+          "W3": {
+            "year": 1996,
+            "fiedler": 0.670117,
+            "spectral_entropy": 3.9253,
+            "spectral_radius": 1.4956,
+            "n_pairs": 193,
+            "n_constructs": 23,
+            "top_mediator": "gender_role_traditionalism|WVS_D"
+          },
+          "W4": {
+            "year": 2001,
+            "fiedler": 0.785526,
+            "spectral_entropy": 3.9277,
+            "spectral_radius": 1.4328,
+            "n_pairs": 212,
+            "n_constructs": 24,
+            "top_mediator": "gender_role_traditionalism|WVS_D"
+          },
+          "W5": {
+            "year": 2007,
+            "fiedler": 0.816309,
+            "spectral_entropy": 3.9285,
+            "spectral_radius": 1.386,
+            "n_pairs": 287,
+            "n_constructs": 28,
+            "top_mediator": "outgroup_trust|WVS_G"
+          },
+          "W6": {
+            "year": 2012,
+            "fiedler": 0.70499,
+            "spectral_entropy": 3.9269,
+            "spectral_radius": 1.4058,
+            "n_pairs": 660,
+            "n_constructs": 41,
+            "top_mediator": "outgroup_trust|WVS_G"
+          },
+          "W7": {
+            "year": 2018,
+            "fiedler": 0.725625,
+            "spectral_entropy": 3.9277,
+            "spectral_radius": 1.362,
+            "n_pairs": 982,
+            "n_constructs": 49,
+            "top_mediator": "gender_role_traditionalism|WVS_D"
+          }
+        },
+        "edge_confidence_summary": {
+          "n_pairs": 1073,
+          "n_sign_stable": 840,
+          "pct_sign_stable": 78.3,
+          "n_measured_3plus": 288
+        }
+      },
+      "spectral_features": {
+        "W5": {
+          "top_mediator": "outgroup_trust|WVS_G",
+          "spectral_gap": 0.816309,
+          "spectral_entropy": 3.9285,
+          "spectral_radius": 1.386,
+          "year": 2007,
+          "fiedler_value": 0.816309,
+          "n_pairs": 287,
+          "wave": 5,
+          "n_constructs_present": 28,
+          "spectrum": [
+            -0.0,
+            0.816309,
+            0.826315,
+            0.924875,
+            0.964371,
+            0.9807,
+            0.986264,
+            0.992201,
+            0.996925,
+            0.999213,
+            0.999608,
+            0.999938,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.002808,
+            1.006987,
+            1.010504,
+            1.015503,
+            1.019696,
+            1.024763,
+            1.037948,
+            1.046835,
+            1.058371,
+            1.075633,
+            1.088083,
+            1.137108,
+            1.148488,
+            1.204315,
+            1.250195,
+            1.386042
+          ]
+        },
+        "W3": {
+          "top_mediator": "gender_role_traditionalism|WVS_D",
+          "spectral_gap": 0.670117,
+          "spectral_entropy": 3.9253,
+          "spectral_radius": 1.4956,
+          "year": 1996,
+          "fiedler_value": 0.670117,
+          "n_pairs": 193,
+          "wave": 3,
+          "n_constructs_present": 23,
+          "spectrum": [
+            -0.0,
+            0.670117,
+            0.799168,
+            0.829527,
+            0.928252,
+            0.944504,
+            0.967253,
+            0.982203,
+            0.987645,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.005011,
+            1.00965,
+            1.018061,
+            1.025108,
+            1.041282,
+            1.052712,
+            1.062156,
+            1.110465,
+            1.120536,
+            1.158038,
+            1.162839,
+            1.22816,
+            1.401732,
+            1.495578
+          ]
+        },
+        "W4": {
+          "top_mediator": "gender_role_traditionalism|WVS_D",
+          "spectral_gap": 0.785526,
+          "spectral_entropy": 3.9277,
+          "spectral_radius": 1.4328,
+          "year": 2001,
+          "fiedler_value": 0.785526,
+          "n_pairs": 212,
+          "wave": 4,
+          "n_constructs_present": 24,
+          "spectrum": [
+            0.0,
+            0.785526,
+            0.835306,
+            0.914328,
+            0.933385,
+            0.976584,
+            0.986669,
+            0.993859,
+            0.998945,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.000662,
+            1.001792,
+            1.007524,
+            1.014813,
+            1.021363,
+            1.028526,
+            1.051016,
+            1.054976,
+            1.089254,
+            1.08957,
+            1.121156,
+            1.126846,
+            1.178753,
+            1.356299,
+            1.432848
+          ]
+        },
+        "W7": {
+          "top_mediator": "gender_role_traditionalism|WVS_D",
+          "spectral_gap": 0.725625,
+          "spectral_entropy": 3.9277,
+          "spectral_radius": 1.362,
+          "year": 2018,
+          "fiedler_value": 0.725625,
+          "n_pairs": 982,
+          "wave": 7,
+          "n_constructs_present": 49,
+          "spectrum": [
+            0.0,
+            0.725625,
+            0.803165,
+            0.861548,
+            0.932394,
+            0.948592,
+            0.96752,
+            0.9699,
+            0.98352,
+            0.98717,
+            0.988715,
+            0.99045,
+            0.991909,
+            0.995683,
+            0.996032,
+            0.996541,
+            0.998579,
+            0.999607,
+            0.999933,
+            1.0,
+            1.0,
+            1.0,
+            1.001849,
+            1.002307,
+            1.003514,
+            1.004838,
+            1.005576,
+            1.006491,
+            1.007325,
+            1.008195,
+            1.012393,
+            1.01397,
+            1.015283,
+            1.018166,
+            1.022759,
+            1.025116,
+            1.028999,
+            1.035777,
+            1.03704,
+            1.041949,
+            1.044826,
+            1.051121,
+            1.055361,
+            1.074549,
+            1.087863,
+            1.095023,
+            1.111607,
+            1.12415,
+            1.134071,
+            1.158444,
+            1.272594,
+            1.361961
+          ]
+        },
+        "W6": {
+          "top_mediator": "outgroup_trust|WVS_G",
+          "spectral_gap": 0.70499,
+          "spectral_entropy": 3.9269,
+          "spectral_radius": 1.4058,
+          "year": 2012,
+          "fiedler_value": 0.70499,
+          "n_pairs": 660,
+          "wave": 6,
+          "n_constructs_present": 41,
+          "spectrum": [
+            -0.0,
+            0.70499,
+            0.775211,
+            0.882541,
+            0.919219,
+            0.927207,
+            0.943443,
+            0.973065,
+            0.975884,
+            0.990295,
+            0.993877,
+            0.997459,
+            0.998447,
+            0.998675,
+            0.999166,
+            0.999818,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.000283,
+            1.00378,
+            1.005267,
+            1.009099,
+            1.009314,
+            1.010771,
+            1.012766,
+            1.015607,
+            1.022782,
+            1.026887,
+            1.033652,
+            1.034392,
+            1.037277,
+            1.041316,
+            1.056631,
+            1.065762,
+            1.071144,
+            1.076871,
+            1.086431,
+            1.104505,
+            1.120852,
+            1.16575,
+            1.217528,
+            1.286246,
+            1.405789
+          ]
+        }
+      }
+    },
+    "fingerprint_alignment": {
+      "n_grade3_pairs": 46,
+      "n_computable": 46,
+      "fingerprint_cosine": {
+        "median": 0.2379,
+        "mean": 0.0889,
+        "min": -0.8304,
+        "max": 0.9453,
+        "negative_count": 17,
+        "gte_0.5": 12
+      },
+      "dominant_dim_agreement": {
+        "agreed": 6,
+        "total": 46,
+        "rate": 0.13
+      },
+      "pre_realignment_reference": "median cosine was 0.195 before SES realignment"
+    }
+  },
+  "feasibility": {
+    "ontology_extension": {
+      "ready": [
+        "Fingerprint format compatible: same 4D structure (rho_escol, rho_Tam_loc, rho_sexo, rho_edad)",
+        "Bridge edge source: 395 significant edges from MEX W7 within-sweep",
+        "WVS KG ontology built (wvs_kg_ontology.json)",
+        "WVS fingerprints reformatted for OntologyQuery (wvs_ses_fingerprints_v2.json)",
+        "OntologyQuery accepts dataset parameter"
+      ],
+      "gaps": [
+        "No WVS item-level fingerprints (L0) \u2014 only L1 construct-level available"
+      ],
+      "effort_estimate": {
+        "build_wvs_kg_json": "DONE",
+        "parameterize_ontology_query": "DONE",
+        "compute_item_level_fingerprints": "~1 hour (if WVS CSVs available)"
+      }
+    },
+    "prediction_engine": {
+      "ses_var_compatibility": "Full \u2014 same 4 vars after SES harmonization",
+      "weight_variable": "W_WEIGHT (WVS) normalized to bridge_weight; same API as Pondi2",
+      "sample_sizes": {
+        "mex_w7": 1741,
+        "min_n_valid": 1163,
+        "median_n_valid": 1738
+      },
+      "feasibility": "HIGH \u2014 DRPredictionEngine can work with WVS data with minimal changes",
+      "required_changes": [
+        "Pass weight_col='bridge_weight' instead of 'Pondi2'",
+        "Ensure SES columns are harmonized via SESHarmonizer before calling fit()"
+      ]
+    },
+    "scaling": {
+      "current_scope": {
+        "countries": 66,
+        "constructs": 56,
+        "waves": 7,
+        "total_contexts": "66 countries \u00d7 1 wave + 7 Mexico waves = 73",
+        "pairs_per_context": "C(56,2) - skipped \u2248 982"
+      },
+      "full_surface": {
+        "total_estimates": "73 \u00d7 982 \u2248 71,686 (already computed: 72,756 in gamma_surface)",
+        "memory_estimate": "~30 MB JSON (already measured at 29 MB)"
+      },
+      "bottlenecks": [
+        "Geographic sweep: 11-14 hours on Julia 8-thread for 66 countries",
+        "No incremental update \u2014 adding a country/wave requires partial re-sweep",
+        "2-core VM: geographic sweep would take ~30-40 hours; use 8-core for sweeps"
+      ]
+    }
+  },
+  "ontology_query_e2e": {
+    "status": "OK",
+    "init_time_s": 0.007,
+    "n_constructs": 56,
+    "n_bridge_nodes": 43,
+    "methods": {
+      "get_profile": true,
+      "get_similar": true,
+      "get_neighbors": true,
+      "get_neighborhood": true,
+      "find_path": true,
+      "get_camp": true,
+      "get_network": true,
+      "get_frustrated_nodes": true
+    },
+    "all_methods_pass": true,
+    "benchmark": {
+      "find_path_100_calls_s": 0.025,
+      "find_path_mean_ms": 0.25
+    }
+  },
+  "readiness_score": {
+    "total": 84,
+    "breakdown": {
+      "construct_quality": 23,
+      "network_structure": 25,
+      "cross_study": 11,
+      "feasibility": 25
+    },
+    "max": 100
+  },
+  "metadata": {
+    "timestamp": "2026-04-07T20:07:04.557533",
+    "duration_s": 55.5,
+    "data_sources": {
+      "wvs_construct_manifest": "/workspaces/navegador/data/results/wvs_construct_manifest.json",
+      "wvs_ses_fingerprints": "/workspaces/navegador/data/results/wvs_ses_fingerprints.json",
+      "wvs_construct_map_v2": "/workspaces/navegador/data/results/wvs_losmex_construct_map_v2.json",
+      "wvs_mex_w7_within_sweep": "/workspaces/navegador_data/data/results/wvs_mex_w7_within_sweep.json",
+      "wvs_geographic_sweep_w7": "/workspaces/navegador_data/data/results/wvs_geographic_sweep_w7.json",
+      "wvs_temporal_sweep_mex": "/workspaces/navegador_data/data/results/wvs_temporal_sweep_mex.json"
+    }
+  }
+}

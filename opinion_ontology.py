@@ -60,7 +60,11 @@ class OntologyQuery:
         self,
         fp_path: Path = _FP_PATH,
         kg_path: Path = _KG_PATH,
+        dataset: str = "los_mex",
     ) -> None:
+        fp_path = Path(fp_path) if not isinstance(fp_path, Path) else fp_path
+        kg_path = Path(kg_path) if not isinstance(kg_path, Path) else kg_path
+        self._dataset = dataset
         with open(fp_path) as f:
             raw = json.load(f)
         self._constructs: Dict[str, Dict] = raw.get("constructs", {})
