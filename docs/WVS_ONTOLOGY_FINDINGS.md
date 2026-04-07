@@ -79,9 +79,24 @@ USA and Germany have the densest networks (~55%); Nigeria is sparsest (31%). Bal
 
 ## 4. Camp Structure: Cosmopolitan vs Tradition
 
+### Two Levels of SES Dominance (Important Distinction)
+
+The WVS data shows different SES dimensions dominating at different levels of analysis:
+
+**Per-construct level** — which dim has highest |ρ| for each construct:
+- sexo: 23/56, Tam_loc: 20/56, edad: 8/56, **escol: only 5/56**
+- Most WVS constructs have small SES effects (median magnitude 0.059), and gender/urbanization are slightly larger than education in most individual constructs
+
+**Bridge network level** — which dim drives construct-pair co-variation:
+- escol: **48.7%** of bridge dot-product contribution
+- edad: 32.6%, Tam_loc: 12.4%, sexo: 6.3%
+- Education has the largest *absolute magnitudes* (mean |ρ_escol| = 0.076 vs sexo's 0.035), so it dominates the products that determine bridge sign and strength
+
+**Why the difference**: Gender "wins" the per-construct count because it's the largest of four small numbers in 23 cases (mean |ρ_sexo| = 0.029 among those constructs). Education wins fewer constructs but has stronger effects where it does — and bridge co-variation is driven by products of magnitudes, not by which dim "wins" individually.
+
 ### What Drives Camp Assignment
 
-The Fiedler bipartition is driven primarily by **education** (Spearman ρ = +0.70, p < 0.0001) with a secondary **gender** axis (ρ = −0.42, p = 0.001). Age and urbanization are not significant drivers of the bipartition.
+The Fiedler bipartition is driven by **education at the bridge level** (Spearman ρ = +0.70, p < 0.0001) with a secondary **gender** axis (ρ = −0.42, p = 0.001). Age and urbanization are not significant drivers of the bipartition. This is consistent with education dominating the bridge dot-products even though it dominates few individual fingerprints.
 
 - **Cosmopolitan camp** (+Fiedler): Constructs where more educated people score higher — subjective wellbeing, postmaterialist values, outgroup trust, autonomy values, online participation, democratic evaluation.
 - **Tradition camp** (−Fiedler): Constructs where less educated people score higher — authoritarian governance tolerance, state surveillance acceptance, basic needs deprivation, conformity values, science skepticism, religious belief.
