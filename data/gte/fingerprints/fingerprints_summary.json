@@ -1,0 +1,342 @@
+{
+  "n_countries": 66,
+  "wave": 7,
+  "ses_dims": [
+    "escol",
+    "Tam_loc",
+    "sexo",
+    "edad"
+  ],
+  "countries": {
+    "AND": {
+      "fingerprints": 56,
+      "fiedler": 0.155692,
+      "balance": 0.6929
+    },
+    "ARG": {
+      "fingerprints": 56,
+      "fiedler": 0.08139,
+      "balance": 0.735
+    },
+    "ARM": {
+      "fingerprints": 56,
+      "fiedler": 0.161527,
+      "balance": 0.7047
+    },
+    "AUS": {
+      "fingerprints": 56,
+      "fiedler": 0.284118,
+      "balance": 0.7248
+    },
+    "BGD": {
+      "fingerprints": 56,
+      "fiedler": 0.088416,
+      "balance": 0.6957
+    },
+    "BOL": {
+      "fingerprints": 56,
+      "fiedler": 0.164036,
+      "balance": 0.6844
+    },
+    "BRA": {
+      "fingerprints": 56,
+      "fiedler": 0.118886,
+      "balance": 0.7185
+    },
+    "CAN": {
+      "fingerprints": 56,
+      "fiedler": 0.242491,
+      "balance": 0.6926
+    },
+    "CHL": {
+      "fingerprints": 56,
+      "fiedler": 0.076485,
+      "balance": 0.6944
+    },
+    "CHN": {
+      "fingerprints": 56,
+      "fiedler": 0.058374,
+      "balance": 0.7028
+    },
+    "COL": {
+      "fingerprints": 56,
+      "fiedler": 0.108309,
+      "balance": 0.7923
+    },
+    "CYP": {
+      "fingerprints": 56,
+      "fiedler": 0.232514,
+      "balance": 0.7784
+    },
+    "CZE": {
+      "fingerprints": 56,
+      "fiedler": 0.173405,
+      "balance": 0.7064
+    },
+    "DEU": {
+      "fingerprints": 56,
+      "fiedler": 0.137855,
+      "balance": 0.7412
+    },
+    "ECU": {
+      "fingerprints": 56,
+      "fiedler": 0.116561,
+      "balance": 0.7148
+    },
+    "EGY": {
+      "fingerprints": 56,
+      "fiedler": 0.185508,
+      "balance": 0.6648
+    },
+    "ETH": {
+      "fingerprints": 56,
+      "fiedler": 0.092567,
+      "balance": 0.74
+    },
+    "GBR": {
+      "fingerprints": 56,
+      "fiedler": 0.349205,
+      "balance": 0.7171
+    },
+    "GRC": {
+      "fingerprints": 56,
+      "fiedler": 0.286197,
+      "balance": 0.8209
+    },
+    "GTM": {
+      "fingerprints": 56,
+      "fiedler": 0.081837,
+      "balance": 0.6924
+    },
+    "HKG": {
+      "fingerprints": 56,
+      "fiedler": 0.142149,
+      "balance": 0.7667
+    },
+    "IDN": {
+      "fingerprints": 56,
+      "fiedler": 0.154788,
+      "balance": 0.8497
+    },
+    "IND": {
+      "fingerprints": 56,
+      "fiedler": 0.133541,
+      "balance": 0.6401
+    },
+    "IRN": {
+      "fingerprints": 56,
+      "fiedler": 0.209918,
+      "balance": 0.7376
+    },
+    "IRQ": {
+      "fingerprints": 56,
+      "fiedler": 0.144115,
+      "balance": 0.6822
+    },
+    "JOR": {
+      "fingerprints": 56,
+      "fiedler": 0.097199,
+      "balance": 0.6501
+    },
+    "JPN": {
+      "fingerprints": 56,
+      "fiedler": 0.09916,
+      "balance": 0.7364
+    },
+    "KAZ": {
+      "fingerprints": 56,
+      "fiedler": 0.074181,
+      "balance": 0.7086
+    },
+    "KEN": {
+      "fingerprints": 56,
+      "fiedler": 0.099157,
+      "balance": 0.7036
+    },
+    "KGZ": {
+      "fingerprints": 56,
+      "fiedler": 0.133068,
+      "balance": 0.7066
+    },
+    "KOR": {
+      "fingerprints": 56,
+      "fiedler": 0.128294,
+      "balance": 0.6986
+    },
+    "LBN": {
+      "fingerprints": 56,
+      "fiedler": 0.177294,
+      "balance": 0.6669
+    },
+    "LBY": {
+      "fingerprints": 56,
+      "fiedler": 0.098917,
+      "balance": 0.6586
+    },
+    "MAC": {
+      "fingerprints": 56,
+      "fiedler": 0.068094,
+      "balance": 0.7261
+    },
+    "MAR": {
+      "fingerprints": 56,
+      "fiedler": 0.116389,
+      "balance": 0.6792
+    },
+    "MDV": {
+      "fingerprints": 56,
+      "fiedler": 0.248012,
+      "balance": 0.729
+    },
+    "MEX": {
+      "fingerprints": 56,
+      "fiedler": 0.058495,
+      "balance": 0.7578
+    },
+    "MMR": {
+      "fingerprints": 56,
+      "fiedler": 0.169734,
+      "balance": 0.7261
+    },
+    "MNG": {
+      "fingerprints": 56,
+      "fiedler": 0.05748,
+      "balance": 0.8914
+    },
+    "MYS": {
+      "fingerprints": 56,
+      "fiedler": 0.181259,
+      "balance": 0.7441
+    },
+    "NGA": {
+      "fingerprints": 56,
+      "fiedler": 0.122777,
+      "balance": 0.6771
+    },
+    "NIC": {
+      "fingerprints": 56,
+      "fiedler": 0.105569,
+      "balance": 0.7256
+    },
+    "NIR": {
+      "fingerprints": 56,
+      "fiedler": 0.338838,
+      "balance": 0.7106
+    },
+    "NLD": {
+      "fingerprints": 56,
+      "fiedler": 0.220883,
+      "balance": 0.6973
+    },
+    "NZL": {
+      "fingerprints": 56,
+      "fiedler": 0.283678,
+      "balance": 0.6911
+    },
+    "PAK": {
+      "fingerprints": 56,
+      "fiedler": 0.157912,
+      "balance": 0.73
+    },
+    "PER": {
+      "fingerprints": 56,
+      "fiedler": 0.101879,
+      "balance": 0.7249
+    },
+    "PHL": {
+      "fingerprints": 56,
+      "fiedler": 0.090303,
+      "balance": 0.6662
+    },
+    "PRI": {
+      "fingerprints": 56,
+      "fiedler": 0.111651,
+      "balance": 0.7158
+    },
+    "ROU": {
+      "fingerprints": 56,
+      "fiedler": 0.088662,
+      "balance": 0.7415
+    },
+    "RUS": {
+      "fingerprints": 56,
+      "fiedler": 0.089112,
+      "balance": 0.7401
+    },
+    "SGP": {
+      "fingerprints": 56,
+      "fiedler": 0.235381,
+      "balance": 0.8939
+    },
+    "SRB": {
+      "fingerprints": 56,
+      "fiedler": 0.208379,
+      "balance": 0.7129
+    },
+    "SVK": {
+      "fingerprints": 56,
+      "fiedler": 0.207677,
+      "balance": 0.7809
+    },
+    "THA": {
+      "fingerprints": 56,
+      "fiedler": 0.189456,
+      "balance": 0.77
+    },
+    "TJK": {
+      "fingerprints": 56,
+      "fiedler": 0.167436,
+      "balance": 0.6611
+    },
+    "TUN": {
+      "fingerprints": 56,
+      "fiedler": 0.129851,
+      "balance": 0.6531
+    },
+    "TUR": {
+      "fingerprints": 56,
+      "fiedler": 0.037559,
+      "balance": 0.7109
+    },
+    "TWN": {
+      "fingerprints": 56,
+      "fiedler": 0.149571,
+      "balance": 0.7458
+    },
+    "UKR": {
+      "fingerprints": 56,
+      "fiedler": 0.109105,
+      "balance": 0.7013
+    },
+    "URY": {
+      "fingerprints": 56,
+      "fiedler": 0.369228,
+      "balance": 0.7714
+    },
+    "USA": {
+      "fingerprints": 56,
+      "fiedler": 0.2149,
+      "balance": 0.705
+    },
+    "UZB": {
+      "fingerprints": 56,
+      "fiedler": 0.051918,
+      "balance": 0.6834
+    },
+    "VEN": {
+      "fingerprints": 56,
+      "fiedler": 0.078136,
+      "balance": 0.6271
+    },
+    "VNM": {
+      "fingerprints": 56,
+      "fiedler": 0.124121,
+      "balance": 0.6674
+    },
+    "ZWE": {
+      "fingerprints": 56,
+      "fiedler": 0.093367,
+      "balance": 0.6654
+    }
+  }
+}

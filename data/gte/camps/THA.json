@@ -1,0 +1,452 @@
+{
+  "country": "THA",
+  "wave": 7,
+  "fiedler_value": 0.189456,
+  "n_cosmopolitan": 28,
+  "n_tradition": 27,
+  "n_triangles": 13820,
+  "n_frustrated": 3178,
+  "structural_balance": 0.77,
+  "constructs": {
+    "acceptance_of_state_surveillance|WVS_H": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0052,
+      "frustrated_ratio": 0.2667,
+      "n_triangles": 780,
+      "is_boundary": true
+    },
+    "authoritarian_governance_tolerance|WVS_E": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0189,
+      "frustrated_ratio": 0.1652,
+      "n_triangles": 557,
+      "is_boundary": true
+    },
+    "autocracy_support|WVS_E": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0277,
+      "frustrated_ratio": 0.2639,
+      "n_triangles": 557,
+      "is_boundary": true
+    },
+    "basic_needs_deprivation|WVS_H": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0012,
+      "frustrated_ratio": 0.2692,
+      "n_triangles": 780,
+      "is_boundary": true
+    },
+    "child_qualities_autonomy_self_expression|WVS_A": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0323,
+      "frustrated_ratio": 0.308,
+      "n_triangles": 776,
+      "is_boundary": true
+    },
+    "child_qualities_conformity_tradition|WVS_A": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0106,
+      "frustrated_ratio": 0.2025,
+      "n_triangles": 790,
+      "is_boundary": true
+    },
+    "child_qualities_prosocial_diligence|WVS_A": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0431,
+      "frustrated_ratio": 0.2564,
+      "n_triangles": 819,
+      "is_boundary": true
+    },
+    "civic_dishonesty_tolerance|WVS_F": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0101,
+      "frustrated_ratio": 0.2105,
+      "n_triangles": 817,
+      "is_boundary": true
+    },
+    "confidence_in_civil_society_organizations|WVS_E": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.078,
+      "frustrated_ratio": 0.2926,
+      "n_triangles": 557,
+      "is_boundary": true
+    },
+    "confidence_in_domestic_institutions|WVS_E": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0313,
+      "frustrated_ratio": 0.3052,
+      "n_triangles": 557,
+      "is_boundary": true
+    },
+    "confidence_in_international_organizations|WVS_E": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.1176,
+      "frustrated_ratio": 0.3429,
+      "n_triangles": 557,
+      "is_boundary": true
+    },
+    "crime_victimization|WVS_H": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.013,
+      "frustrated_ratio": 0.1487,
+      "n_triangles": 780,
+      "is_boundary": true
+    },
+    "democratic_system_evaluation|WVS_E": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 1.0,
+      "frustrated_ratio": 0.1921,
+      "n_triangles": 557,
+      "is_boundary": true
+    },
+    "democratic_values_importance|WVS_E": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0088,
+      "frustrated_ratio": 0.1921,
+      "n_triangles": 557,
+      "is_boundary": true
+    },
+    "economic_ideology|WVS_E": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0189,
+      "frustrated_ratio": 0.1562,
+      "n_triangles": 557,
+      "is_boundary": true
+    },
+    "electoral_integrity|WVS_E": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0151,
+      "frustrated_ratio": 0.1436,
+      "n_triangles": 557,
+      "is_boundary": true
+    },
+    "existential_threat_worry|WVS_H": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0191,
+      "frustrated_ratio": 0.1372,
+      "n_triangles": 780,
+      "is_boundary": true
+    },
+    "familial_duty_obligations|WVS_D": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0144,
+      "frustrated_ratio": 0.1599,
+      "n_triangles": 1032,
+      "is_boundary": true
+    },
+    "female_income_threat_to_marriage|WVS_D": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0214,
+      "frustrated_ratio": 0.25,
+      "n_triangles": 1032,
+      "is_boundary": true
+    },
+    "freedom_security_tradeoff_perception|WVS_H": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0139,
+      "frustrated_ratio": 0.1333,
+      "n_triangles": 780,
+      "is_boundary": true
+    },
+    "gender_role_traditionalism|WVS_D": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.011,
+      "frustrated_ratio": 0.1754,
+      "n_triangles": 1032,
+      "is_boundary": true
+    },
+    "immigrant_origin_status|WVS_G": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0048,
+      "frustrated_ratio": 0.266,
+      "n_triangles": 940,
+      "is_boundary": true
+    },
+    "importance_of_life_domains|WVS_A": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0283,
+      "frustrated_ratio": 0.188,
+      "n_triangles": 819,
+      "is_boundary": true
+    },
+    "institutional_threat_perception|WVS_H": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0024,
+      "frustrated_ratio": 0.2846,
+      "n_triangles": 780,
+      "is_boundary": true
+    },
+    "international_organization_knowledge|WVS_E": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0147,
+      "frustrated_ratio": 0.1436,
+      "n_triangles": 557,
+      "is_boundary": true
+    },
+    "job_scarcity_gender_discrimination|WVS_C": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0163,
+      "frustrated_ratio": 0.151,
+      "n_triangles": 1033,
+      "is_boundary": true
+    },
+    "job_scarcity_nativist_preference|WVS_C": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.026,
+      "frustrated_ratio": 0.3059,
+      "n_triangles": 1033,
+      "is_boundary": true
+    },
+    "life_autonomy_morality_permissiveness|WVS_F": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0241,
+      "frustrated_ratio": 0.1885,
+      "n_triangles": 817,
+      "is_boundary": true
+    },
+    "multilevel_place_attachment|WVS_G": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0215,
+      "frustrated_ratio": 0.2085,
+      "n_triangles": 940,
+      "is_boundary": true
+    },
+    "neighborhood_disorder_and_crime|WVS_H": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0446,
+      "frustrated_ratio": 0.3859,
+      "n_triangles": 780,
+      "is_boundary": true
+    },
+    "offline_political_participation|WVS_E": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.027,
+      "frustrated_ratio": 0.2083,
+      "n_triangles": 557,
+      "is_boundary": true
+    },
+    "online_political_participation|WVS_E": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0144,
+      "frustrated_ratio": 0.1724,
+      "n_triangles": 557,
+      "is_boundary": true
+    },
+    "outgroup_trust|WVS_G": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0167,
+      "frustrated_ratio": 0.1553,
+      "n_triangles": 940,
+      "is_boundary": true
+    },
+    "perceived_corruption|WVS_E": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0,
+      "frustrated_ratio": 0.0,
+      "n_triangles": 0,
+      "is_boundary": false
+    },
+    "perceived_negative_effects_of_immigration|WVS_G": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0384,
+      "frustrated_ratio": 0.2926,
+      "n_triangles": 940,
+      "is_boundary": true
+    },
+    "perceived_positive_effects_of_immigration|WVS_G": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0172,
+      "frustrated_ratio": 0.1553,
+      "n_triangles": 940,
+      "is_boundary": true
+    },
+    "political_information_sources|WVS_E": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0267,
+      "frustrated_ratio": 0.3465,
+      "n_triangles": 557,
+      "is_boundary": true
+    },
+    "postmaterialist_values|WVS_E": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.3239,
+      "frustrated_ratio": 0.2519,
+      "n_triangles": 528,
+      "is_boundary": true
+    },
+    "precautionary_security_behaviors|WVS_H": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0076,
+      "frustrated_ratio": 0.2192,
+      "n_triangles": 780,
+      "is_boundary": true
+    },
+    "religion_versus_secularism_orientation|WVS_F": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0383,
+      "frustrated_ratio": 0.3476,
+      "n_triangles": 817,
+      "is_boundary": true
+    },
+    "religious_belief|WVS_F": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0442,
+      "frustrated_ratio": 0.3562,
+      "n_triangles": 817,
+      "is_boundary": true
+    },
+    "religious_exclusivism|WVS_F": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0153,
+      "frustrated_ratio": 0.1151,
+      "n_triangles": 817,
+      "is_boundary": true
+    },
+    "religious_practice_and_self_identification|WVS_F": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.039,
+      "frustrated_ratio": 0.3892,
+      "n_triangles": 817,
+      "is_boundary": true
+    },
+    "science_skepticism|WVS_I": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0207,
+      "frustrated_ratio": 0.1625,
+      "n_triangles": 1132,
+      "is_boundary": true
+    },
+    "science_technology_optimism|WVS_E": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0129,
+      "frustrated_ratio": 0.1526,
+      "n_triangles": 557,
+      "is_boundary": true
+    },
+    "sexual_and_reproductive_morality_permissiveness|WVS_F": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.031,
+      "frustrated_ratio": 0.3097,
+      "n_triangles": 817,
+      "is_boundary": true
+    },
+    "social_intolerance_outgroups|WVS_A": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0183,
+      "frustrated_ratio": 0.1502,
+      "n_triangles": 819,
+      "is_boundary": true
+    },
+    "societal_change_attitudes|WVS_E": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0753,
+      "frustrated_ratio": 0.3627,
+      "n_triangles": 557,
+      "is_boundary": true
+    },
+    "socioeconomic_insecurity_worry|WVS_H": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0222,
+      "frustrated_ratio": 0.3462,
+      "n_triangles": 780,
+      "is_boundary": true
+    },
+    "subjective_wellbeing|WVS_A": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0328,
+      "frustrated_ratio": 0.3578,
+      "n_triangles": 819,
+      "is_boundary": true
+    },
+    "violence_tolerance|WVS_F": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0253,
+      "frustrated_ratio": 0.2778,
+      "n_triangles": 817,
+      "is_boundary": true
+    },
+    "voluntary_association_active_membership|WVS_A": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0138,
+      "frustrated_ratio": 0.1563,
+      "n_triangles": 819,
+      "is_boundary": true
+    },
+    "voluntary_association_belonging|WVS_A": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0144,
+      "frustrated_ratio": 0.1563,
+      "n_triangles": 819,
+      "is_boundary": true
+    },
+    "voting_participation|WVS_E": {
+      "camp_id": -1,
+      "camp_name": "tradition",
+      "confidence": 0.0057,
+      "frustrated_ratio": 0.2047,
+      "n_triangles": 557,
+      "is_boundary": true
+    },
+    "work_ethic|WVS_C": {
+      "camp_id": 1,
+      "camp_name": "cosmopolitan",
+      "confidence": 0.0228,
+      "frustrated_ratio": 0.1626,
+      "n_triangles": 990,
+      "is_boundary": true
+    }
+  }
+}

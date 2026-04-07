@@ -1042,3 +1042,80 @@ All in `data/tda/message_passing/` (JSON outputs pushed to navegador_data):
 | `docs/MESSAGE_PASSING_SPEC.md` | Full technical spec: math, design choices, pitfalls, interpretation |
 | `docs/MESSAGE_PASSING_PLAN.md` | Scoping decisions and implementation plan |
 | `data/results/message_passing_report.md` | Findings report with plots |
+
+## Graph Traversal Engine (2026-04-06, branch: traversal_engine)
+
+Context-aware query layer unifying Ontology + Message Passing + TDA into a single query path over the WVS γ-surface. Phase 1 (Structure Layer) complete.
+
+### Architecture
+
+Three layers: Structure (what is connected) → Dynamics (how signal flows, Phase 2) → Geometry (how structure varies across contexts, Phase 3). LLM at boundary only (parse input, narrate output); all computation deterministic. Pre-computed query layer — no DR bootstrap at query time.
+
+### Module Structure
+
+| Module | Purpose |
+|--------|---------|
+| `graph_traversal_engine/__init__.py` | Public exports |
+| `graph_traversal_engine/context.py` | `Context`, `ContextGraph`, `GraphFamily`, `Fingerprint`, `CampAssignment` dataclasses |
+| `graph_traversal_engine/data_loader.py` | Load weight matrices, fingerprints, camps, MP outputs, TDA features |
+| `graph_traversal_engine/wvs_ontology.py` | `WVSOntologyQuery`: context-aware profiles, paths, camps, neighborhoods, cross-country comparison |
+
+### Phase 0 Scripts
+
+| Script | Purpose | Runtime |
+|--------|---------|---------|
+| `scripts/debug/compute_wvs_country_fingerprints.py` | Per-country SES fingerprints + bipartitions (66 countries) | ~10s |
+| `scripts/debug/build_construct_corpus.py` | Extract 56 construct descriptions for semantic search | <1s |
+
+### Phase 0 Output Files
+
+| Path | Contents |
+|------|----------|
+| `data/gte/fingerprints/{ALPHA3}.json` | Per-construct 4D SES fingerprint (ρ_escol, ρ_Tam_loc, ρ_sexo, ρ_edad) |
+| `data/gte/fingerprints/fingerprints_summary.json` | Cross-country summary |
+| `data/gte/camps/{ALPHA3}.json` | Signed Laplacian bipartition: camps, confidence, frustrated triangles |
+| `data/gte/construct_descriptions.json` | 56 WVS construct labels + descriptions for semantic search |
+
+### WVSOntologyQuery API
+
+```python
+from graph_traversal_engine import WVSOntologyQuery
+from graph_traversal_engine.data_loader import load_graph_family
+
+family = load_graph_family(countries=["MEX", "USA"])
+oq = WVSOntologyQuery(family, country="MEX", wave=7)
+```
+
+| Method | Returns |
+|--------|---------|
+| `get_profile(key)` | `ConstructProfile`: fingerprint, camp, degree, hub rank, SES summary |
+| `get_similar(key, n)` | Cosine-ranked constructs by fingerprint similarity |
+| `get_neighbors(key, min_abs_gamma, top_n)` | `list[EdgeInfo]`: significant edges with γ, dominant dim, fp cosine |
+| `get_neighborhood(key)` | Rich summary: domain distribution, camp split, strongest edge |
+| `get_camp(key)` | `CampAssignment`: camp_id (+1/-1), confidence, frustrated_ratio |
+| `get_camp_members(camp_id)` | All constructs in a camp |
+| `get_frustrated_nodes(min_ratio)` | Boundary nodes with high frustrated triangle ratio |
+| `find_path(key_a, key_b)` | `PathResult`: Dijkstra path, signal chain, sign accumulation, per-hop SES dims |
+| `explain_pair(key_a, key_b)` | Full pair explanation: fp cosine, shared driver, direct γ, path, camps |
+| `compare_with(other_country, key)` | Cross-country: fp cosine, camp agreement, neighbor Jaccard, sign agreement |
+
+`GraphFamily` also provides: `spectral_neighbors(country, n)`, `countries(wave)`, `get(country, wave)`.
+
+### Key Design Decisions
+
+- **Context-indexed**: every query bound to (country, wave). Same construct has different fingerprints/camps/paths per country.
+- **Significant edges only**: weight matrix contains only γ values where 95% CI excludes zero.
+- **Fingerprint dot product → γ sign**: predicts sign at >85% accuracy per country (99.4% in los_mex).
+- **Camp bipartition is context-specific**: a construct may switch camps between countries.
+
+### Test Suite
+
+65 tests in `tests/unit/test_graph_traversal_engine.py`, ~0.7s runtime.
+
+### Documentation
+
+| File | Contents |
+|------|----------|
+| `docs/GRAPH_TRAVERSAL_ENGINE.md` | Architecture, user manual, examples, interpretation guide |
+| `docs/GRAPH_TRAVERSAL_ENGINE_SPEC.md` | Full technical specification (720 lines) |
+| `docs/GRAPH_TRAVERSAL_ENGINE_PLAN.md` | Implementation plan with mathematical foundations |

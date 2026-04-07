@@ -57,7 +57,11 @@
       "Read(//Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/data/tda/temporal/**)",
       "Bash(grep -E \"\\\\.\\(pkl|json|csv\\)$\")",
       "Bash(grep -r def.*mean scripts/debug/*wvs*.py scripts/debug/*sweep*.py)",
-      "Bash(wc -l scripts/debug/mp_*.py docs/MESSAGE_PASSING_PLAN.md docs/MESSAGE_PASSING_SPEC.md)"
+      "Bash(wc -l scripts/debug/mp_*.py docs/MESSAGE_PASSING_PLAN.md docs/MESSAGE_PASSING_SPEC.md)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:marketplace.visualstudio.com)",
+      "Bash(wc -l scripts/debug/mp_*.py scripts/debug/*gamma*.py)",
+      "Bash(grep -l \"country.*fingerprint\\\\|fingerprint.*country\\\\|per.country\" \"/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/data/results\"/*.json)"
     ],
     "additionalDirectories": [
       "/workspaces/navegador/.claude/worktrees/knowledge-graph",

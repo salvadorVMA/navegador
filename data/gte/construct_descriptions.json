@@ -1,0 +1,565 @@
+{
+  "n_constructs": 56,
+  "constructs": {
+    "importance_of_life_domains|WVS_A": {
+      "key": "importance_of_life_domains|WVS_A",
+      "name": "importance_of_life_domains",
+      "label": "Importance Of Life Domains",
+      "description": "Perceived importance of major life domains including family, friends, leisure, politics, work, and religion. Items tap conceptually distinct domains rather than a single latent trait.",
+      "domain_code": "WVS_A",
+      "domain_label": "Social Values, Attitudes & Stereotypes",
+      "construct_type": "formative_index",
+      "agg_column": "wvs_agg_importance_of_life_domains"
+    },
+    "child_qualities_autonomy_self_expression|WVS_A": {
+      "key": "child_qualities_autonomy_self_expression|WVS_A",
+      "name": "child_qualities_autonomy_self_expression",
+      "label": "Child Qualities Autonomy Self Expression",
+      "description": "Emphasis on child qualities reflecting autonomy, creativity, and self-direction such as independence, imagination, and tolerance.",
+      "domain_code": "WVS_A",
+      "domain_label": "Social Values, Attitudes & Stereotypes",
+      "construct_type": "formative_index",
+      "agg_column": "wvs_agg_child_qualities_autonomy_self_expression"
+    },
+    "child_qualities_conformity_tradition|WVS_A": {
+      "key": "child_qualities_conformity_tradition|WVS_A",
+      "name": "child_qualities_conformity_tradition",
+      "label": "Child Qualities Conformity Tradition",
+      "description": "Emphasis on child qualities reflecting conformity, obedience, religious faith, and good manners.",
+      "domain_code": "WVS_A",
+      "domain_label": "Social Values, Attitudes & Stereotypes",
+      "construct_type": "formative_index",
+      "agg_column": "wvs_agg_child_qualities_conformity_tradition"
+    },
+    "child_qualities_prosocial_diligence|WVS_A": {
+      "key": "child_qualities_prosocial_diligence|WVS_A",
+      "name": "child_qualities_prosocial_diligence",
+      "label": "Child Qualities Prosocial Diligence",
+      "description": "Emphasis on child qualities reflecting thrift, perseverance, and unselfishness.",
+      "domain_code": "WVS_A",
+      "domain_label": "Social Values, Attitudes & Stereotypes",
+      "construct_type": "formative_index",
+      "agg_column": "wvs_agg_child_qualities_prosocial_diligence"
+    },
+    "social_intolerance_outgroups|WVS_A": {
+      "key": "social_intolerance_outgroups|WVS_A",
+      "name": "social_intolerance_outgroups",
+      "label": "Social Intolerance Outgroups",
+      "description": "Unwillingness to have various social outgroups (e.g., immigrants, people of different race/religion, homosexuals) as neighbors, reflecting prejudice and social distance.",
+      "domain_code": "WVS_A",
+      "domain_label": "Social Values, Attitudes & Stereotypes",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_social_intolerance_outgroups"
+    },
+    "social_intolerance_deviant_behavior|WVS_A": {
+      "key": "social_intolerance_deviant_behavior|WVS_A",
+      "name": "social_intolerance_deviant_behavior",
+      "label": "Social Intolerance Deviant Behavior",
+      "description": "Unwillingness to have neighbors who engage in stigmatized behaviors such as drug use or heavy drinking.",
+      "domain_code": "WVS_A",
+      "domain_label": "Social Values, Attitudes & Stereotypes",
+      "construct_type": "single_item_tier2",
+      "agg_column": "wvs_agg_social_intolerance_deviant_behavior"
+    },
+    "subjective_wellbeing|WVS_A": {
+      "key": "subjective_wellbeing|WVS_A",
+      "name": "subjective_wellbeing",
+      "label": "Subjective Wellbeing",
+      "description": "Self-reported happiness, life satisfaction, and perceived freedom of choice/control over one's life.",
+      "domain_code": "WVS_A",
+      "domain_label": "Social Values, Attitudes & Stereotypes",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_subjective_wellbeing"
+    },
+    "voluntary_association_active_membership|WVS_A": {
+      "key": "voluntary_association_active_membership|WVS_A",
+      "name": "voluntary_association_active_membership",
+      "label": "Voluntary Association Active Membership",
+      "description": "Count of active memberships or participation across various voluntary organizations, reflecting civic engagement and social capital.",
+      "domain_code": "WVS_A",
+      "domain_label": "Social Values, Attitudes & Stereotypes",
+      "construct_type": "formative_index",
+      "agg_column": "wvs_agg_voluntary_association_active_membership"
+    },
+    "voluntary_association_belonging|WVS_A": {
+      "key": "voluntary_association_belonging|WVS_A",
+      "name": "voluntary_association_belonging",
+      "label": "Voluntary Association Belonging",
+      "description": "Count of voluntary organizations to which the respondent reports belonging (binary membership indicator), reflecting associational social capital breadth.",
+      "domain_code": "WVS_A",
+      "domain_label": "Social Values, Attitudes & Stereotypes",
+      "construct_type": "formative_index",
+      "agg_column": "wvs_agg_voluntary_association_belonging"
+    },
+    "job_scarcity_gender_discrimination|WVS_C": {
+      "key": "job_scarcity_gender_discrimination|WVS_C",
+      "name": "job_scarcity_gender_discrimination",
+      "label": "Job Scarcity Gender Discrimination",
+      "description": "Endorsement of prioritizing men over women in employment when jobs are scarce, reflecting gender-based labor market attitudes.",
+      "domain_code": "WVS_C",
+      "domain_label": "Work & Employment",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_job_scarcity_gender_discrimination"
+    },
+    "job_scarcity_nativist_preference|WVS_C": {
+      "key": "job_scarcity_nativist_preference|WVS_C",
+      "name": "job_scarcity_nativist_preference",
+      "label": "Job Scarcity Nativist Preference",
+      "description": "Endorsement of prioritizing nationals over immigrants in employment when jobs are scarce, reflecting ethnocentric labor market attitudes.",
+      "domain_code": "WVS_C",
+      "domain_label": "Work & Employment",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_job_scarcity_nativist_preference"
+    },
+    "work_ethic|WVS_C": {
+      "key": "work_ethic|WVS_C",
+      "name": "work_ethic",
+      "label": "Work Ethic",
+      "description": "Belief in the moral and social importance of work, including viewing idleness negatively, work as a societal duty, and prioritizing work over leisure.",
+      "domain_code": "WVS_C",
+      "domain_label": "Work & Employment",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_work_ethic"
+    },
+    "gender_role_traditionalism|WVS_D": {
+      "key": "gender_role_traditionalism|WVS_D",
+      "name": "gender_role_traditionalism",
+      "label": "Gender Role Traditionalism",
+      "description": "Belief that men are superior to women in public roles (politics, business, education) and that women's employment harms children, reflecting traditional gender ideology.",
+      "domain_code": "WVS_D",
+      "domain_label": "Family",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_gender_role_traditionalism"
+    },
+    "female_income_threat_to_marriage|WVS_D": {
+      "key": "female_income_threat_to_marriage|WVS_D",
+      "name": "female_income_threat_to_marriage",
+      "label": "Female Income Threat To Marriage",
+      "description": "Perception that a wife earning more than her husband causes relational problems, reflecting traditional gender-economic norms.",
+      "domain_code": "WVS_D",
+      "domain_label": "Family",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_female_income_threat_to_marriage"
+    },
+    "familial_duty_obligations|WVS_D": {
+      "key": "familial_duty_obligations|WVS_D",
+      "name": "familial_duty_obligations",
+      "label": "Familial Duty Obligations",
+      "description": "Normative beliefs about obligations within the family, including the duty to have children and to care for aging parents.",
+      "domain_code": "WVS_D",
+      "domain_label": "Family",
+      "construct_type": "single_item_tier2",
+      "agg_column": "wvs_agg_familial_duty_obligations"
+    },
+    "confidence_in_domestic_institutions|WVS_E": {
+      "key": "confidence_in_domestic_institutions|WVS_E",
+      "name": "confidence_in_domestic_institutions",
+      "label": "Confidence In Domestic Institutions",
+      "description": "Degree of confidence in key domestic governmental, political, and public institutions in Mexico.",
+      "domain_code": "WVS_E",
+      "domain_label": "Politics & Society",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_confidence_in_domestic_institutions"
+    },
+    "confidence_in_civil_society_organizations|WVS_E": {
+      "key": "confidence_in_civil_society_organizations|WVS_E",
+      "name": "confidence_in_civil_society_organizations",
+      "label": "Confidence In Civil Society Organizations",
+      "description": "Degree of confidence in non-governmental, charitable, and women's organizations.",
+      "domain_code": "WVS_E",
+      "domain_label": "Politics & Society",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_confidence_in_civil_society_organizations"
+    },
+    "confidence_in_international_organizations|WVS_E": {
+      "key": "confidence_in_international_organizations|WVS_E",
+      "name": "confidence_in_international_organizations",
+      "label": "Confidence In International Organizations",
+      "description": "Degree of confidence in international and supranational organizations such as the UN, IMF, World Bank, WHO, WTO, NATO, and ICC.",
+      "domain_code": "WVS_E",
+      "domain_label": "Politics & Society",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_confidence_in_international_organizations"
+    },
+    "perceived_corruption|WVS_E": {
+      "key": "perceived_corruption|WVS_E",
+      "name": "perceived_corruption",
+      "label": "Perceived Corruption",
+      "description": "Perceptions of the extent and actors involved in corruption, including bribery and gift-giving to obtain public services.",
+      "domain_code": "WVS_E",
+      "domain_label": "Politics & Society",
+      "construct_type": "formative_index",
+      "agg_column": "wvs_agg_perceived_corruption"
+    },
+    "electoral_integrity|WVS_E": {
+      "key": "electoral_integrity|WVS_E",
+      "name": "electoral_integrity",
+      "label": "Electoral Integrity",
+      "description": "Perceptions of the fairness, cleanliness, and integrity of the electoral process.",
+      "domain_code": "WVS_E",
+      "domain_label": "Politics & Society",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_electoral_integrity"
+    },
+    "postmaterialist_values|WVS_E": {
+      "key": "postmaterialist_values|WVS_E",
+      "name": "postmaterialist_values",
+      "label": "Postmaterialist Values",
+      "description": "Inglehart's materialist vs. post-materialist value priorities measured through paired forced-choice items.",
+      "domain_code": "WVS_E",
+      "domain_label": "Politics & Society",
+      "construct_type": "formative_index",
+      "agg_column": "wvs_agg_postmaterialist_values"
+    },
+    "autocracy_support|WVS_E": {
+      "key": "autocracy_support|WVS_E",
+      "name": "autocracy_support",
+      "label": "Autocracy Support",
+      "description": "Preference for non-democratic forms of governance including strongman rule, technocracy, military rule, and theocracy.",
+      "domain_code": "WVS_E",
+      "domain_label": "Politics & Society",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_autocracy_support"
+    },
+    "democratic_values_importance|WVS_E": {
+      "key": "democratic_values_importance|WVS_E",
+      "name": "democratic_values_importance",
+      "label": "Democratic Values Importance",
+      "description": "Ratings of how essential various democratic features are for a country's governance.",
+      "domain_code": "WVS_E",
+      "domain_label": "Politics & Society",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_democratic_values_importance"
+    },
+    "democratic_system_evaluation|WVS_E": {
+      "key": "democratic_system_evaluation|WVS_E",
+      "name": "democratic_system_evaluation",
+      "label": "Democratic System Evaluation",
+      "description": "Evaluations of the desirability of democracy, its importance, and the current democratic performance in Mexico.",
+      "domain_code": "WVS_E",
+      "domain_label": "Politics & Society",
+      "construct_type": "formative_index",
+      "agg_column": "wvs_agg_democratic_system_evaluation"
+    },
+    "offline_political_participation|WVS_E": {
+      "key": "offline_political_participation|WVS_E",
+      "name": "offline_political_participation",
+      "label": "Offline Political Participation",
+      "description": "Engagement in conventional and unconventional offline political actions such as petitions, boycotts, demonstrations, strikes, and donations.",
+      "domain_code": "WVS_E",
+      "domain_label": "Politics & Society",
+      "construct_type": "formative_index",
+      "agg_column": "wvs_agg_offline_political_participation"
+    },
+    "online_political_participation|WVS_E": {
+      "key": "online_political_participation|WVS_E",
+      "name": "online_political_participation",
+      "label": "Online Political Participation",
+      "description": "Engagement in political activities conducted through digital means including searching for political information, e-petitions, and organizing online.",
+      "domain_code": "WVS_E",
+      "domain_label": "Politics & Society",
+      "construct_type": "formative_index",
+      "agg_column": "wvs_agg_online_political_participation"
+    },
+    "political_information_sources|WVS_E": {
+      "key": "political_information_sources|WVS_E",
+      "name": "political_information_sources",
+      "label": "Political Information Sources",
+      "description": "Frequency of using various media sources to obtain political information.",
+      "domain_code": "WVS_E",
+      "domain_label": "Politics & Society",
+      "construct_type": "formative_index",
+      "agg_column": "wvs_agg_political_information_sources"
+    },
+    "voting_participation|WVS_E": {
+      "key": "voting_participation|WVS_E",
+      "name": "voting_participation",
+      "label": "Voting Participation",
+      "description": "Self-reported frequency of voting at local and national levels.",
+      "domain_code": "WVS_E",
+      "domain_label": "Politics & Society",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_voting_participation"
+    },
+    "science_technology_optimism|WVS_E": {
+      "key": "science_technology_optimism|WVS_E",
+      "name": "science_technology_optimism",
+      "label": "Science Technology Optimism",
+      "description": "Beliefs about whether science and technology improve life, create opportunities, and make the world better.",
+      "domain_code": "WVS_E",
+      "domain_label": "Politics & Society",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_science_technology_optimism"
+    },
+    "economic_ideology|WVS_E": {
+      "key": "economic_ideology|WVS_E",
+      "name": "economic_ideology",
+      "label": "Economic Ideology",
+      "description": "Preferences along the economic left-right spectrum including income equality, state vs. private ownership, government responsibility, and competition.",
+      "domain_code": "WVS_E",
+      "domain_label": "Politics & Society",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_economic_ideology"
+    },
+    "societal_change_attitudes|WVS_E": {
+      "key": "societal_change_attitudes|WVS_E",
+      "name": "societal_change_attitudes",
+      "label": "Societal Change Attitudes",
+      "description": "Attitudes toward broad societal changes including less emphasis on work and greater emphasis on technology.",
+      "domain_code": "WVS_E",
+      "domain_label": "Politics & Society",
+      "construct_type": "single_item_tier2",
+      "agg_column": "wvs_agg_societal_change_attitudes"
+    },
+    "international_organization_knowledge|WVS_E": {
+      "key": "international_organization_knowledge|WVS_E",
+      "name": "international_organization_knowledge",
+      "label": "International Organization Knowledge",
+      "description": "Factual knowledge questions about international organizations (UN Security Council, IMF headquarters, WHO mandate).",
+      "domain_code": "WVS_E",
+      "domain_label": "Politics & Society",
+      "construct_type": "formative_index",
+      "agg_column": "wvs_agg_international_organization_knowledge"
+    },
+    "authoritarian_governance_tolerance|WVS_E": {
+      "key": "authoritarian_governance_tolerance|WVS_E",
+      "name": "authoritarian_governance_tolerance",
+      "label": "Authoritarian Governance Tolerance",
+      "description": "Acceptance of authoritarian measures such as military takeover and religious law interpretation in governance.",
+      "domain_code": "WVS_E",
+      "domain_label": "Politics & Society",
+      "construct_type": "single_item_tier2",
+      "agg_column": "wvs_agg_authoritarian_governance_tolerance"
+    },
+    "religious_belief|WVS_F": {
+      "key": "religious_belief|WVS_F",
+      "name": "religious_belief",
+      "label": "Religious Belief",
+      "description": "Latent dimension capturing core supernatural and religious beliefs including belief in God, afterlife, heaven, and hell.",
+      "domain_code": "WVS_F",
+      "domain_label": "Religion & Morale",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_religious_belief"
+    },
+    "religious_practice_and_self_identification|WVS_F": {
+      "key": "religious_practice_and_self_identification|WVS_F",
+      "name": "religious_practice_and_self_identification",
+      "label": "Religious Practice And Self Identification",
+      "description": "Behavioral and self-identified religiosity including service attendance, self-described religiousness, and religious affiliation.",
+      "domain_code": "WVS_F",
+      "domain_label": "Religion & Morale",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_religious_practice_and_self_identification"
+    },
+    "religious_exclusivism|WVS_F": {
+      "key": "religious_exclusivism|WVS_F",
+      "name": "religious_exclusivism",
+      "label": "Religious Exclusivism",
+      "description": "Degree to which individuals privilege their own religion and religious authority over science and other worldviews.",
+      "domain_code": "WVS_F",
+      "domain_label": "Religion & Morale",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_religious_exclusivism"
+    },
+    "civic_dishonesty_tolerance|WVS_F": {
+      "key": "civic_dishonesty_tolerance|WVS_F",
+      "name": "civic_dishonesty_tolerance",
+      "label": "Civic Dishonesty Tolerance",
+      "description": "Moral permissiveness toward dishonest civic and economic behaviors such as claiming undeserved benefits, fare evasion, tax evasion, stealing, and bribery.",
+      "domain_code": "WVS_F",
+      "domain_label": "Religion & Morale",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_civic_dishonesty_tolerance"
+    },
+    "sexual_and_reproductive_morality_permissiveness|WVS_F": {
+      "key": "sexual_and_reproductive_morality_permissiveness|WVS_F",
+      "name": "sexual_and_reproductive_morality_permissiveness",
+      "label": "Sexual And Reproductive Morality Permissiveness",
+      "description": "Tolerance toward behaviors related to sexuality and reproduction including homosexuality, prostitution, abortion, premarital sex, and casual sex.",
+      "domain_code": "WVS_F",
+      "domain_label": "Religion & Morale",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_sexual_and_reproductive_morality_permissiveness"
+    },
+    "life_autonomy_morality_permissiveness|WVS_F": {
+      "key": "life_autonomy_morality_permissiveness|WVS_F",
+      "name": "life_autonomy_morality_permissiveness",
+      "label": "Life Autonomy Morality Permissiveness",
+      "description": "Moral permissiveness toward personal life-course decisions including divorce, suicide, and euthanasia.",
+      "domain_code": "WVS_F",
+      "domain_label": "Religion & Morale",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_life_autonomy_morality_permissiveness"
+    },
+    "violence_tolerance|WVS_F": {
+      "key": "violence_tolerance|WVS_F",
+      "name": "violence_tolerance",
+      "label": "Violence Tolerance",
+      "description": "Degree of moral justifiability attributed to various forms of interpersonal and political violence.",
+      "domain_code": "WVS_F",
+      "domain_label": "Religion & Morale",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_violence_tolerance"
+    },
+    "religion_versus_secularism_orientation|WVS_F": {
+      "key": "religion_versus_secularism_orientation|WVS_F",
+      "name": "religion_versus_secularism_orientation",
+      "label": "Religion Versus Secularism Orientation",
+      "description": "Orientation on whether religion or secular reasoning should guide personal and social life, capturing the religion-science and faith-reason tension.",
+      "domain_code": "WVS_F",
+      "domain_label": "Religion & Morale",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_religion_versus_secularism_orientation"
+    },
+    "outgroup_trust|WVS_G": {
+      "key": "outgroup_trust|WVS_G",
+      "name": "outgroup_trust",
+      "label": "Outgroup Trust",
+      "description": "Degree of generalized trust toward people outside one's immediate social circle, including strangers and those of different religions or nationalities.",
+      "domain_code": "WVS_G",
+      "domain_label": "National Identity",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_outgroup_trust"
+    },
+    "perceived_positive_effects_of_immigration|WVS_G": {
+      "key": "perceived_positive_effects_of_immigration|WVS_G",
+      "name": "perceived_positive_effects_of_immigration",
+      "label": "Perceived Positive Effects Of Immigration",
+      "description": "Belief that immigration brings beneficial outcomes such as filling jobs, strengthening cultural diversity, providing refuge, and improving lives of people from poorer countries.",
+      "domain_code": "WVS_G",
+      "domain_label": "National Identity",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_perceived_positive_effects_of_immigration"
+    },
+    "perceived_negative_effects_of_immigration|WVS_G": {
+      "key": "perceived_negative_effects_of_immigration|WVS_G",
+      "name": "perceived_negative_effects_of_immigration",
+      "label": "Perceived Negative Effects Of Immigration",
+      "description": "Belief that immigration produces harmful consequences including increased crime, terrorism, unemployment, and social conflict.",
+      "domain_code": "WVS_G",
+      "domain_label": "National Identity",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_perceived_negative_effects_of_immigration"
+    },
+    "multilevel_place_attachment|WVS_G": {
+      "key": "multilevel_place_attachment|WVS_G",
+      "name": "multilevel_place_attachment",
+      "label": "Multilevel Place Attachment",
+      "description": "Sense of belonging and emotional attachment across nested geographic levels from local community to the world.",
+      "domain_code": "WVS_G",
+      "domain_label": "National Identity",
+      "construct_type": "formative_index",
+      "agg_column": "wvs_agg_multilevel_place_attachment"
+    },
+    "immigrant_origin_status|WVS_G": {
+      "key": "immigrant_origin_status|WVS_G",
+      "name": "immigrant_origin_status",
+      "label": "Immigrant Origin Status",
+      "description": "Objective migration background of the respondent and their parents, indicating whether they or their parents were born in the country or are immigrants.",
+      "domain_code": "WVS_G",
+      "domain_label": "National Identity",
+      "construct_type": "formative_index",
+      "agg_column": "wvs_agg_immigrant_origin_status"
+    },
+    "basic_needs_deprivation|WVS_H": {
+      "key": "basic_needs_deprivation|WVS_H",
+      "name": "basic_needs_deprivation",
+      "label": "Basic Needs Deprivation",
+      "description": "Frequency of experiencing deprivation of basic human needs such as food, shelter, income, and medical care.",
+      "domain_code": "WVS_H",
+      "domain_label": "Security",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_basic_needs_deprivation"
+    },
+    "neighborhood_disorder_and_crime|WVS_H": {
+      "key": "neighborhood_disorder_and_crime|WVS_H",
+      "name": "neighborhood_disorder_and_crime",
+      "label": "Neighborhood Disorder And Crime",
+      "description": "Perceived frequency of crime, substance abuse, drug dealing, violence, and other antisocial behaviors in one's neighborhood.",
+      "domain_code": "WVS_H",
+      "domain_label": "Security",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_neighborhood_disorder_and_crime"
+    },
+    "crime_victimization|WVS_H": {
+      "key": "crime_victimization|WVS_H",
+      "name": "crime_victimization",
+      "label": "Crime Victimization",
+      "description": "Extent to which the respondent or close family members have been victims of crime in the past year.",
+      "domain_code": "WVS_H",
+      "domain_label": "Security",
+      "construct_type": "formative_index",
+      "agg_column": "wvs_agg_crime_victimization"
+    },
+    "precautionary_security_behaviors|WVS_H": {
+      "key": "precautionary_security_behaviors|WVS_H",
+      "name": "precautionary_security_behaviors",
+      "label": "Precautionary Security Behaviors",
+      "description": "Extent to which people in the respondent's environment adopt protective behaviors against crime such as not carrying cash, avoiding going out at night, or carrying weapons.",
+      "domain_code": "WVS_H",
+      "domain_label": "Security",
+      "construct_type": "formative_index",
+      "agg_column": "wvs_agg_precautionary_security_behaviors"
+    },
+    "socioeconomic_insecurity_worry|WVS_H": {
+      "key": "socioeconomic_insecurity_worry|WVS_H",
+      "name": "socioeconomic_insecurity_worry",
+      "label": "Socioeconomic Insecurity Worry",
+      "description": "Degree of worry about losing employment or being unable to provide children with a good education.",
+      "domain_code": "WVS_H",
+      "domain_label": "Security",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_socioeconomic_insecurity_worry"
+    },
+    "existential_threat_worry|WVS_H": {
+      "key": "existential_threat_worry|WVS_H",
+      "name": "existential_threat_worry",
+      "label": "Existential Threat Worry",
+      "description": "Degree of worry about large-scale violent threats including war, terrorism, and civil conflict.",
+      "domain_code": "WVS_H",
+      "domain_label": "Security",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_existential_threat_worry"
+    },
+    "acceptance_of_state_surveillance|WVS_H": {
+      "key": "acceptance_of_state_surveillance|WVS_H",
+      "name": "acceptance_of_state_surveillance",
+      "label": "Acceptance Of State Surveillance",
+      "description": "Degree of agreement with government surveillance measures including video monitoring, email monitoring, and data collection on residents.",
+      "domain_code": "WVS_H",
+      "domain_label": "Security",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_acceptance_of_state_surveillance"
+    },
+    "freedom_security_tradeoff_perception|WVS_H": {
+      "key": "freedom_security_tradeoff_perception|WVS_H",
+      "name": "freedom_security_tradeoff_perception",
+      "label": "Freedom Security Tradeoff Perception",
+      "description": "Perceptions about whether most people view freedom and security as complementary or as competing values.",
+      "domain_code": "WVS_H",
+      "domain_label": "Security",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_freedom_security_tradeoff_perception"
+    },
+    "institutional_threat_perception|WVS_H": {
+      "key": "institutional_threat_perception|WVS_H",
+      "name": "institutional_threat_perception",
+      "label": "Institutional Threat Perception",
+      "description": "Perceived frequency of police/military intrusion into private life and racist conduct as threats to personal security.",
+      "domain_code": "WVS_H",
+      "domain_label": "Security",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_institutional_threat_perception"
+    },
+    "science_skepticism|WVS_I": {
+      "key": "science_skepticism|WVS_I",
+      "name": "science_skepticism",
+      "label": "Science Skepticism",
+      "description": "Latent disposition reflecting negative or dismissive attitudes toward science and its relevance in everyday life.",
+      "domain_code": "WVS_I",
+      "domain_label": "Science & Technology",
+      "construct_type": "reflective_scale",
+      "agg_column": "wvs_agg_science_skepticism"
+    }
+  }
+}

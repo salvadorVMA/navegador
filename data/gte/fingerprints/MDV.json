@@ -1,0 +1,512 @@
+{
+  "country": "MDV",
+  "wave": 7,
+  "n_constructs": 56,
+  "n_respondents": 1039,
+  "constructs": {
+    "acceptance_of_state_surveillance": {
+      "rho_escol": 0.071201,
+      "rho_Tam_loc": 0.119506,
+      "rho_sexo": -0.035652,
+      "rho_edad": 0.039993,
+      "ses_magnitude": 0.074535,
+      "dominant_dim": "Tam_loc",
+      "n_valid": 1032
+    },
+    "authoritarian_governance_tolerance": {
+      "rho_escol": -0.113303,
+      "rho_Tam_loc": -0.03827,
+      "rho_sexo": 0.028674,
+      "rho_edad": 0.006278,
+      "ses_magnitude": 0.061571,
+      "dominant_dim": "escol",
+      "n_valid": 1001
+    },
+    "autocracy_support": {
+      "rho_escol": -0.088409,
+      "rho_Tam_loc": -0.215191,
+      "rho_sexo": 0.016066,
+      "rho_edad": 0.106739,
+      "ses_magnitude": 0.128233,
+      "dominant_dim": "Tam_loc",
+      "n_valid": 1029
+    },
+    "basic_needs_deprivation": {
+      "rho_escol": -0.055719,
+      "rho_Tam_loc": -0.076235,
+      "rho_sexo": -0.016717,
+      "rho_edad": -0.080995,
+      "ses_magnitude": 0.062762,
+      "dominant_dim": "edad",
+      "n_valid": 1037
+    },
+    "child_qualities_autonomy_self_expression": {
+      "rho_escol": 0.030822,
+      "rho_Tam_loc": 0.014158,
+      "rho_sexo": -0.001776,
+      "rho_edad": -0.021122,
+      "ses_magnitude": 0.019998,
+      "dominant_dim": "escol",
+      "n_valid": 1039
+    },
+    "child_qualities_conformity_tradition": {
+      "rho_escol": -0.032041,
+      "rho_Tam_loc": -0.147205,
+      "rho_sexo": 0.059068,
+      "rho_edad": 0.021373,
+      "ses_magnitude": 0.081612,
+      "dominant_dim": "Tam_loc",
+      "n_valid": 1039
+    },
+    "child_qualities_prosocial_diligence": {
+      "rho_escol": -0.0233,
+      "rho_Tam_loc": 0.062555,
+      "rho_sexo": 0.050146,
+      "rho_edad": -0.001347,
+      "ses_magnitude": 0.041751,
+      "dominant_dim": "Tam_loc",
+      "n_valid": 1039
+    },
+    "civic_dishonesty_tolerance": {
+      "rho_escol": 0.164692,
+      "rho_Tam_loc": 0.002447,
+      "rho_sexo": -0.082598,
+      "rho_edad": -0.259014,
+      "ses_magnitude": 0.158934,
+      "dominant_dim": "edad",
+      "n_valid": 1039
+    },
+    "confidence_in_civil_society_organizations": {
+      "rho_escol": 0.065369,
+      "rho_Tam_loc": -0.146433,
+      "rho_sexo": -0.038602,
+      "rho_edad": -0.063962,
+      "ses_magnitude": 0.088455,
+      "dominant_dim": "Tam_loc",
+      "n_valid": 1036
+    },
+    "confidence_in_domestic_institutions": {
+      "rho_escol": 0.125257,
+      "rho_Tam_loc": -0.009541,
+      "rho_sexo": -0.017036,
+      "rho_edad": -0.124622,
+      "ses_magnitude": 0.088884,
+      "dominant_dim": "escol",
+      "n_valid": 1038
+    },
+    "confidence_in_international_organizations": {
+      "rho_escol": -0.004139,
+      "rho_Tam_loc": -0.111386,
+      "rho_sexo": 0.022166,
+      "rho_edad": -0.046278,
+      "ses_magnitude": 0.061353,
+      "dominant_dim": "Tam_loc",
+      "n_valid": 1032
+    },
+    "crime_victimization": {
+      "rho_escol": 0.02841,
+      "rho_Tam_loc": 0.026854,
+      "rho_sexo": -0.054638,
+      "rho_edad": -0.075347,
+      "ses_magnitude": 0.050475,
+      "dominant_dim": "edad",
+      "n_valid": 1039
+    },
+    "democratic_system_evaluation": {
+      "rho_escol": -0.123122,
+      "rho_Tam_loc": 0.067485,
+      "rho_sexo": -0.032892,
+      "rho_edad": 0.104691,
+      "ses_magnitude": 0.0891,
+      "dominant_dim": "escol",
+      "n_valid": 1039
+    },
+    "democratic_values_importance": {
+      "rho_escol": -0.14507,
+      "rho_Tam_loc": -0.130409,
+      "rho_sexo": -0.01446,
+      "rho_edad": 0.072683,
+      "ses_magnitude": 0.104336,
+      "dominant_dim": "escol",
+      "n_valid": 1014
+    },
+    "economic_ideology": {
+      "rho_escol": 0.07077,
+      "rho_Tam_loc": 0.169207,
+      "rho_sexo": 0.014218,
+      "rho_edad": -0.052351,
+      "ses_magnitude": 0.095632,
+      "dominant_dim": "Tam_loc",
+      "n_valid": 1039
+    },
+    "electoral_integrity": {
+      "rho_escol": -0.033045,
+      "rho_Tam_loc": -0.231924,
+      "rho_sexo": -0.031329,
+      "rho_edad": 0.020163,
+      "ses_magnitude": 0.118605,
+      "dominant_dim": "Tam_loc",
+      "n_valid": 1029
+    },
+    "existential_threat_worry": {
+      "rho_escol": 0.222481,
+      "rho_Tam_loc": 0.130852,
+      "rho_sexo": -0.068552,
+      "rho_edad": -0.185144,
+      "ses_magnitude": 0.162479,
+      "dominant_dim": "escol",
+      "n_valid": 990
+    },
+    "familial_duty_obligations": {
+      "rho_escol": 0.04461,
+      "rho_Tam_loc": 0.029413,
+      "rho_sexo": -0.016969,
+      "rho_edad": 0.011058,
+      "ses_magnitude": 0.028572,
+      "dominant_dim": "escol",
+      "n_valid": 1034
+    },
+    "female_income_threat_to_marriage": {
+      "rho_escol": 0.160106,
+      "rho_Tam_loc": 0.142356,
+      "rho_sexo": 0.048233,
+      "rho_edad": -0.221414,
+      "ses_magnitude": 0.155924,
+      "dominant_dim": "edad",
+      "n_valid": 1032
+    },
+    "freedom_security_tradeoff_perception": {
+      "rho_escol": -0.021786,
+      "rho_Tam_loc": -0.047888,
+      "rho_sexo": 0.023608,
+      "rho_edad": -0.038925,
+      "ses_magnitude": 0.034786,
+      "dominant_dim": "Tam_loc",
+      "n_valid": 1039
+    },
+    "gender_role_traditionalism": {
+      "rho_escol": 0.206109,
+      "rho_Tam_loc": 0.049987,
+      "rho_sexo": 0.146791,
+      "rho_edad": -0.283185,
+      "ses_magnitude": 0.191521,
+      "dominant_dim": "edad",
+      "n_valid": 1037
+    },
+    "immigrant_origin_status": {
+      "rho_escol": -0.002267,
+      "rho_Tam_loc": 0.03167,
+      "rho_sexo": 0.018043,
+      "rho_edad": 0.034489,
+      "ses_magnitude": 0.025115,
+      "dominant_dim": "edad",
+      "n_valid": 1039
+    },
+    "importance_of_life_domains": {
+      "rho_escol": 0.07323,
+      "rho_Tam_loc": -0.019742,
+      "rho_sexo": -0.061302,
+      "rho_edad": -0.094308,
+      "ses_magnitude": 0.067831,
+      "dominant_dim": "edad",
+      "n_valid": 1039
+    },
+    "institutional_threat_perception": {
+      "rho_escol": -0.104431,
+      "rho_Tam_loc": -0.042775,
+      "rho_sexo": 0.057951,
+      "rho_edad": 0.178744,
+      "ses_magnitude": 0.109594,
+      "dominant_dim": "edad",
+      "n_valid": 1035
+    },
+    "international_organization_knowledge": {
+      "rho_escol": 0.071329,
+      "rho_Tam_loc": 0.020226,
+      "rho_sexo": 0.005828,
+      "rho_edad": -0.10139,
+      "ses_magnitude": 0.062871,
+      "dominant_dim": "edad",
+      "n_valid": 1039
+    },
+    "job_scarcity_gender_discrimination": {
+      "rho_escol": 0.24217,
+      "rho_Tam_loc": 0.10352,
+      "rho_sexo": 0.149924,
+      "rho_edad": -0.273562,
+      "ses_magnitude": 0.20413,
+      "dominant_dim": "edad",
+      "n_valid": 1038
+    },
+    "job_scarcity_nativist_preference": {
+      "rho_escol": 0.046034,
+      "rho_Tam_loc": 0.073318,
+      "rho_sexo": 0.026873,
+      "rho_edad": -0.128634,
+      "ses_magnitude": 0.078682,
+      "dominant_dim": "edad",
+      "n_valid": 1039
+    },
+    "life_autonomy_morality_permissiveness": {
+      "rho_escol": 0.270542,
+      "rho_Tam_loc": 0.156406,
+      "rho_sexo": 0.021776,
+      "rho_edad": -0.290543,
+      "ses_magnitude": 0.213626,
+      "dominant_dim": "edad",
+      "n_valid": 1039
+    },
+    "multilevel_place_attachment": {
+      "rho_escol": -0.105731,
+      "rho_Tam_loc": -0.014061,
+      "rho_sexo": 0.034278,
+      "rho_edad": 0.202346,
+      "ses_magnitude": 0.115646,
+      "dominant_dim": "edad",
+      "n_valid": 1039
+    },
+    "neighborhood_disorder_and_crime": {
+      "rho_escol": -0.098755,
+      "rho_Tam_loc": -0.398865,
+      "rho_sexo": 0.072446,
+      "rho_edad": 0.107252,
+      "ses_magnitude": 0.215405,
+      "dominant_dim": "Tam_loc",
+      "n_valid": 1037
+    },
+    "offline_political_participation": {
+      "rho_escol": 0.088763,
+      "rho_Tam_loc": -0.004441,
+      "rho_sexo": -0.073247,
+      "rho_edad": 0.038764,
+      "ses_magnitude": 0.060758,
+      "dominant_dim": "escol",
+      "n_valid": 1039
+    },
+    "online_political_participation": {
+      "rho_escol": 0.145645,
+      "rho_Tam_loc": 0.105289,
+      "rho_sexo": -0.154419,
+      "rho_edad": -0.030484,
+      "ses_magnitude": 0.119449,
+      "dominant_dim": "sexo",
+      "n_valid": 1039
+    },
+    "outgroup_trust": {
+      "rho_escol": 0.131721,
+      "rho_Tam_loc": 0.103315,
+      "rho_sexo": -0.09351,
+      "rho_edad": 0.047535,
+      "ses_magnitude": 0.098778,
+      "dominant_dim": "escol",
+      "n_valid": 1039
+    },
+    "perceived_corruption": {
+      "rho_escol": -0.092267,
+      "rho_Tam_loc": -0.083446,
+      "rho_sexo": 0.021219,
+      "rho_edad": 0.10472,
+      "ses_magnitude": 0.081995,
+      "dominant_dim": "edad",
+      "n_valid": 1039
+    },
+    "perceived_negative_effects_of_immigration": {
+      "rho_escol": -0.084868,
+      "rho_Tam_loc": -0.084977,
+      "rho_sexo": 0.001205,
+      "rho_edad": 0.107061,
+      "ses_magnitude": 0.080447,
+      "dominant_dim": "edad",
+      "n_valid": 1038
+    },
+    "perceived_positive_effects_of_immigration": {
+      "rho_escol": -0.036913,
+      "rho_Tam_loc": -0.089576,
+      "rho_sexo": -0.082873,
+      "rho_edad": 0.035428,
+      "ses_magnitude": 0.066162,
+      "dominant_dim": "Tam_loc",
+      "n_valid": 1039
+    },
+    "political_information_sources": {
+      "rho_escol": 0.07948,
+      "rho_Tam_loc": 0.102408,
+      "rho_sexo": -0.052597,
+      "rho_edad": -0.009718,
+      "ses_magnitude": 0.070117,
+      "dominant_dim": "Tam_loc",
+      "n_valid": 1039
+    },
+    "postmaterialist_values": {
+      "rho_escol": 0.057078,
+      "rho_Tam_loc": -0.048478,
+      "rho_sexo": -0.108378,
+      "rho_edad": 0.009826,
+      "ses_magnitude": 0.06605,
+      "dominant_dim": "sexo",
+      "n_valid": 1039
+    },
+    "precautionary_security_behaviors": {
+      "rho_escol": 0.040395,
+      "rho_Tam_loc": 0.097167,
+      "rho_sexo": 0.142658,
+      "rho_edad": 0.018857,
+      "ses_magnitude": 0.089135,
+      "dominant_dim": "sexo",
+      "n_valid": 1039
+    },
+    "religion_versus_secularism_orientation": {
+      "rho_escol": 0.013491,
+      "rho_Tam_loc": 0.064869,
+      "rho_sexo": -0.014032,
+      "rho_edad": -0.077909,
+      "ses_magnitude": 0.051616,
+      "dominant_dim": "edad",
+      "n_valid": 975
+    },
+    "religious_belief": {
+      "rho_escol": -0.046186,
+      "rho_Tam_loc": -0.037504,
+      "rho_sexo": 0.034487,
+      "rho_edad": 0.078134,
+      "ses_magnitude": 0.052043,
+      "dominant_dim": "edad",
+      "n_valid": 1039
+    },
+    "religious_exclusivism": {
+      "rho_escol": 0.146383,
+      "rho_Tam_loc": 0.135777,
+      "rho_sexo": -0.045693,
+      "rho_edad": -0.148903,
+      "ses_magnitude": 0.126613,
+      "dominant_dim": "edad",
+      "n_valid": 1038
+    },
+    "religious_practice_and_self_identification": {
+      "rho_escol": 0.051709,
+      "rho_Tam_loc": -0.100267,
+      "rho_sexo": -0.15769,
+      "rho_edad": -0.292011,
+      "ses_magnitude": 0.17526,
+      "dominant_dim": "edad",
+      "n_valid": 1038
+    },
+    "science_skepticism": {
+      "rho_escol": -0.246817,
+      "rho_Tam_loc": -0.114634,
+      "rho_sexo": 0.04631,
+      "rho_edad": 0.140431,
+      "ses_magnitude": 0.154859,
+      "dominant_dim": "escol",
+      "n_valid": 1038
+    },
+    "science_technology_optimism": {
+      "rho_escol": 0.037165,
+      "rho_Tam_loc": 0.032957,
+      "rho_sexo": -0.013953,
+      "rho_edad": -0.041665,
+      "ses_magnitude": 0.033159,
+      "dominant_dim": "edad",
+      "n_valid": 1039
+    },
+    "sexual_and_reproductive_morality_permissiveness": {
+      "rho_escol": 0.230974,
+      "rho_Tam_loc": 0.250764,
+      "rho_sexo": -0.0297,
+      "rho_edad": -0.203817,
+      "ses_magnitude": 0.199158,
+      "dominant_dim": "Tam_loc",
+      "n_valid": 1039
+    },
+    "social_intolerance_deviant_behavior": {
+      "rho_escol": 0.089247,
+      "rho_Tam_loc": 0.010262,
+      "rho_sexo": -0.034911,
+      "rho_edad": -0.116182,
+      "ses_magnitude": 0.075477,
+      "dominant_dim": "edad",
+      "n_valid": 1039
+    },
+    "social_intolerance_outgroups": {
+      "rho_escol": 0.263599,
+      "rho_Tam_loc": 0.025586,
+      "rho_sexo": -0.02236,
+      "rho_edad": -0.237746,
+      "ses_magnitude": 0.178299,
+      "dominant_dim": "escol",
+      "n_valid": 1039
+    },
+    "societal_change_attitudes": {
+      "rho_escol": -0.045756,
+      "rho_Tam_loc": -0.014898,
+      "rho_sexo": 0.020232,
+      "rho_edad": 0.171697,
+      "ses_magnitude": 0.089728,
+      "dominant_dim": "edad",
+      "n_valid": 1029
+    },
+    "socioeconomic_insecurity_worry": {
+      "rho_escol": 0.10186,
+      "rho_Tam_loc": -0.017868,
+      "rho_sexo": -0.004648,
+      "rho_edad": -0.055679,
+      "ses_magnitude": 0.058772,
+      "dominant_dim": "escol",
+      "n_valid": 1036
+    },
+    "subjective_wellbeing": {
+      "rho_escol": 0.027586,
+      "rho_Tam_loc": 0.045197,
+      "rho_sexo": -0.016882,
+      "rho_edad": 0.093246,
+      "ses_magnitude": 0.054276,
+      "dominant_dim": "edad",
+      "n_valid": 1039
+    },
+    "violence_tolerance": {
+      "rho_escol": 0.121394,
+      "rho_Tam_loc": 0.034337,
+      "rho_sexo": -0.0711,
+      "rho_edad": -0.173172,
+      "ses_magnitude": 0.112871,
+      "dominant_dim": "edad",
+      "n_valid": 1039
+    },
+    "voluntary_association_active_membership": {
+      "rho_escol": -0.005117,
+      "rho_Tam_loc": -0.070788,
+      "rho_sexo": -0.06051,
+      "rho_edad": 0.062774,
+      "ses_magnitude": 0.056212,
+      "dominant_dim": "Tam_loc",
+      "n_valid": 1039
+    },
+    "voluntary_association_belonging": {
+      "rho_escol": -0.004767,
+      "rho_Tam_loc": -0.092366,
+      "rho_sexo": -0.084549,
+      "rho_edad": 0.043089,
+      "ses_magnitude": 0.066256,
+      "dominant_dim": "Tam_loc",
+      "n_valid": 1039
+    },
+    "voting_participation": {
+      "rho_escol": 0.205202,
+      "rho_Tam_loc": 0.174146,
+      "rho_sexo": -0.015746,
+      "rho_edad": -0.334641,
+      "ses_magnitude": 0.214865,
+      "dominant_dim": "edad",
+      "n_valid": 1037
+    },
+    "work_ethic": {
+      "rho_escol": 0.316907,
+      "rho_Tam_loc": 0.173849,
+      "rho_sexo": 0.07548,
+      "rho_edad": -0.303727,
+      "ses_magnitude": 0.239061,
+      "dominant_dim": "escol",
+      "n_valid": 1038
+    }
+  }
+}
