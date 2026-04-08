@@ -57,7 +57,11 @@
       "Read(//Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/data/tda/temporal/**)",
       "Bash(grep -E \"\\\\.\\(pkl|json|csv\\)$\")",
       "Bash(grep -r def.*mean scripts/debug/*wvs*.py scripts/debug/*sweep*.py)",
-      "Bash(wc -l scripts/debug/mp_*.py docs/MESSAGE_PASSING_PLAN.md docs/MESSAGE_PASSING_SPEC.md)"
+      "Bash(wc -l scripts/debug/mp_*.py docs/MESSAGE_PASSING_PLAN.md docs/MESSAGE_PASSING_SPEC.md)",
+      "Bash(grep -c \"^\" \"/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/data/tda/message_passing/\"*\"_w7_descriptive.json\")",
+      "Bash(mkdir -p \"/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador_data/data/wvs\")",
+      "Bash(cp \"/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/data/wvs/F00011356-WVS_Cross-National_Wave_7_csv_v6_0.zip\" \"/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador_data/data/wvs/\")",
+      "Bash(cp \"/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador/data/wvs/F00011931-WVS_Time_Series_1981-2022_csv_v5_0.zip\" \"/Users/salvadorVMA/Google Drive/01 Proyectos/2025/navegador_data/data/wvs/\")"
     ],
     "additionalDirectories": [
       "/workspaces/navegador/.claude/worktrees/knowledge-graph",

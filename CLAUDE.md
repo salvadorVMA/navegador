@@ -410,6 +410,47 @@ oq = OntologyQuery(
 | `data/results/wvs_profile_prediction_heatmaps.png` | Profile shift heatmaps |
 | `data/results/wvs_profile_prediction_bars.png` | Baseline vs prediction bars |
 
+#### Macro-Indicator Analysis (2026-04-07)
+
+Tests whether country-level macro indicators predict variation in SES-attitude network structure across 66 WVS W7 countries.
+
+| Module | Purpose |
+|--------|---------|
+| `scripts/debug/analyze_macro_indicators.py` | Full pipeline: V-Dem + World Bank + UNDP indicators vs network metrics (bivariate Spearman, Mantel tests, OLS regression) |
+
+**V-Dem indicators (2018, matching WVS W7):**
+- `v2x_polyarchy` — Electoral Democracy Index (0-1)
+- `v2x_libdem` — Liberal Democracy Index (0-1)
+- `v2x_egaldem` — Egalitarian Democracy Index (0-1)
+
+**Other macro indicators:** GNI per capita (log, World Bank), Gini coefficient, Urban %, Mean years schooling (UNDP), HDI.
+
+**Network metrics predicted:** sig_pct, median |gamma|, Spearman rho with global median, Fiedler value, spectral entropy/radius, SES magnitude.
+
+**Analysis methods:**
+1. Bivariate Spearman correlations (8 indicators x 8 metrics)
+2. Mantel tests: |Delta_indicator| distance vs gamma-vector cosine distance (9999 permutations)
+3. OLS regression: baseline (GNI+Gini+Urban+Education) vs +V-Dem vs democracy-only
+4. Zone-stratified democracy analysis
+
+**V-Dem coverage:** 61/66 countries (AND, HKG, MAC, NIR, PRI lack V-Dem entries — territories/microstates).
+
+Values hardcoded from V-Dem v14 dataset (posterior medians, 2018). If future updates are needed, fetch from `vdemdata` R package or Our World in Data mirror.
+
+**Output files:**
+
+| File | Contents |
+|------|----------|
+| `data/results/macro_indicator_analysis.png` | V-Dem scatter panels (6 network metrics) |
+| `data/results/macro_indicator_correlations.png` | Spearman correlation heatmap |
+| `data/results/macro_indicator_mantel.png` | Mantel test bar chart |
+| `data/results/macro_indicator_democracy_fiedler.png` | Democracy x Fiedler deep dive |
+| `data/results/macro_indicator_report.md` | Full findings report |
+| `data/results/vdem_indicators.json` | V-Dem data cache |
+| `data/results/macro_indicator_data.json` | Full merged country-level dataset |
+
+**Run:** `conda run -n nvg_py13_env python scripts/debug/analyze_macro_indicators.py`
+
 ### Key Modules Added / Significantly Changed
 
 | Module | Status | Purpose |
@@ -1095,76 +1136,80 @@ All in `data/tda/message_passing/` (JSON outputs pushed to navegador_data):
 
 ## Current Development State (Handoff)
 
-> **Last updated: 2026-04-07** — Update this section at the end of every session.
+> **Last updated: 2026-04-08** — Update this section at the end of every session. **Drop all solved issues before adding new items.** The handoff should only contain current state and forward-looking items. Completed work belongs in the sections above, not here.
 
 ### What Was Just Done (this session)
 
-1. **WVS Ontology built end-to-end**: `OntologyQuery` now works with WVS data (56 constructs, 395 bridges). Only change to `opinion_ontology.py` was adding `dataset` param + `Path()` coercion (3 lines).
+1. **WVS L0 fingerprints computed**: `scripts/debug/compute_wvs_l0_fingerprints.py` — 320 item fingerprints for Mexico W7 (238 exact loading_gamma, 41 approximate, 41 none). Output: `data/results/wvs_l0_fingerprints.json`. Readiness now ~95/100. Raw WVS ZIPs pushed to navegador_data (`data/wvs/`).
 
-2. **Diagnostic framework**: `scripts/debug/diagnostic_wvs_ontology_readiness.py` scores the WVS ontology readiness at **84/100** (cross-study alignment is the bottleneck at 11/25).
+2. **Multi-hop prediction engine**: `multi_hop_prediction.py` — two predictor classes:
+   - `MultiHopPredictor`: point-estimate signal chain (loading_γ_A × γ-path × loading_γ_B)
+   - `BayesianMultiHopPredictor`: bootstrap-approximate Bayesian with **path sampling** — samples γ ~ N(point, σ²) per edge, runs Dijkstra per draw, produces posterior over signal with CIs, path diversity, P(positive). See module docstring for full methodology and limitations.
+   - 51 tests (32 point + 19 Bayesian), all pass in 0.22s.
+   - Future development roadmap at bottom of module: full Bayesian requires exporting ordered-logit θ/β from Julia sweep.
 
-3. **Cross-country prediction engine tested**: `DRPredictionEngine.fit()` runs on real WVS respondent data from `navegador_data/data/julia_bridge_wvs/WVS_W7_{COUNTRY}.csv`. 5 scenarios × 6 countries × 5 SES profiles tested. Key finding: S2 (Participation→Security) shows clearest cross-country sign flip.
+3. **Cross-country geometric analysis**: `scripts/debug/analyze_cross_country_geometry.py` — Mantel tests, Ward clustering, mediator decomposition. **Key finding: macro indicators (GNI, Gini, urbanization) do NOT predict network topology.** SES signature geometry (r=0.400) and Fiedler difference (r=0.589) dominate. Combined OLS R²=0.704. IW zones have ARI=0.097 (essentially random vs spectral clusters).
 
-4. **Circle-layout visualizations**: Per-country networks with canonical shared construct positions. 6-country comparison in `data/results/wvs_ontology_comparison.png`. Prediction scenario edges with per-country coloring.
-
-5. **All 10 OntologyQuery operations demonstrated** across 6 countries in `scripts/debug/demo_wvs_ontology_capabilities.py`. Finding: 39/56 constructs flip camp across countries.
-
-6. **35 unit tests** in `tests/unit/test_wvs_ontology_readiness.py` — all pass in <0.3s.
-
-7. **Findings doc**: `docs/WVS_ONTOLOGY_FINDINGS.md` — comprehensive write-up including camp structure analysis, prediction results, and cross-country patterns.
+4. **V-Dem democracy indices + interaction regressions**: `scripts/debug/analyze_macro_indicators.py` — all 5 V-Dem indices (Electoral, Liberal, Egalitarian, Participatory, Deliberative) + PCA composite (PC1=98.6% variance). **Key findings:**
+   - Democracy predicts network **intensity** (median |γ|: ρ=0.56-0.59) but NOT **topology** (Fiedler: ρ=0.03, ns)
+   - V-Dem Egalitarian is strongest single predictor of |γ| and SES magnitude
+   - All democracy-macro interactions are **additive, not synergistic** — except one: GNI×democracy on Fiedler (p=0.015, β=-0.06): income-connectivity relationship reverses by democracy level
+   - Statistical methodology documented: OLS t-tests (n-k-1 df), Mantel permutation (9999), Spearman asymptotic
 
 ### What's Next (suggested priorities)
 
-1. **WVS item-level fingerprints (L0)** — Only remaining gap (readiness 84→~95). Needs raw WVS CSVs with individual Q-code columns (~300 cols per respondent). These are **NOT** in navegador_data — the CSVs there only have 4 SES + 56 `wvs_agg_*` aggregate cols. Raw WVS ZIP files are stored locally on Mac (`data/wvs/`). **Next time Claude runs on Mac**: upload the raw WVS ZIPs (Wave 7 CSV + Time Series) to the navegador_data repo (as `data/wvs/WVS_Cross-National_Wave_7_csv_v5_0.zip` or similar), then push. Once available in Codespace, run fingerprint computation per Q-code → `_lift_to_construct()` works for individual WVS items.
+1. **Agent integration** — Wire `OntologyQuery` + `MultiHopPredictor` + `BayesianMultiHopPredictor` into `agent.py` as LangGraph tools. Methods are ready; just need tool wrappers.
 
-2. **Agent integration** — Wire OntologyQuery methods into `agent.py` tool list. The methods are ready; they just need to be exposed as LangGraph tools. `get_neighborhood()` and `find_path()` are the most useful for conversational queries.
+2. **Full Bayesian prediction** — Export ordered-logit θ (intercepts) and β (SES coefficients) from Julia `dr_estimator.jl` during sweep. This enables generative P(B|SES) at endpoints, replacing the softmax heuristic. See `multi_hop_prediction.py` bottom section for implementation plan. Estimated: ~1 week (Julia modifications + Python integration + re-sweep).
 
-3. **Cross-study bridge validation** — Cross-study fingerprint cosine is still low (0.238). Could improve by: (a) per-country fingerprints instead of MEX-only, (b) dimension weighting, (c) restricting to high-magnitude constructs.
+3. **Dashboard integration** — Construct network visualizations + prediction engine + cross-country geometry plots into `dashboard.py`.
 
-4. **Multi-hop prediction** — Phase 4 of ATTITUDE_PREDICTION_ENGINE.md. `find_path()` exists for navigation but chained P(C|A) via intermediate B is not implemented.
+4. **Cross-study bridge validation** — Cross-study fingerprint cosine still low (0.238). Could improve with per-country fingerprints, dimension weighting, or restricting to high-magnitude constructs.
 
-5. **Dashboard integration** — Construct network visualizations + prediction engine into `dashboard.py`.
+5. **GTE Phase 2-3** — Graph Traversal Engine dynamics (LocalPropagator) and geometry (cross-context projection). Phase 1 structure layer exists in `graph_traversal_engine/`.
 
 ### What's Blocked / Constraints
 
 - **2-core Codespace**: Geographic sweep (Julia 8-thread) takes ~30-40 hours on 2-core. Use 8-core for re-sweeps. All analysis/visualization runs fine on 2-core.
-- **No WVS raw ZIP files** in Codespace: `wvs_loader.py` cannot load from source. Pre-built aggregate CSVs in navegador_data are the workaround for construct-level work, but L0 fingerprints need the raw Q-code data. **Action for Mac session**: push raw WVS ZIPs to navegador_data repo (`data/wvs/`).
-- **Cross-study alignment ceiling**: Median fingerprint cosine 0.238 is likely a hard ceiling — SES profiles are survey-specific, not concept-inherent. This limits cross-study prediction reliability.
+- **Cross-study alignment ceiling**: Median fingerprint cosine 0.238 is likely a hard ceiling — SES profiles are survey-specific, not concept-inherent.
+- **Bootstrap samples not stored**: The Bayesian predictor derives σ from CIs. For correlated gamma sampling, the full 200 bootstrap draws per pair would need to be stored (~157 MB). Requires Julia sweep modification.
 
 ### Critical Data Locations
 
 | What | Where | Notes |
 |------|-------|-------|
-| WVS sweep results (68K estimates) | `/workspaces/navegador_data/data/results/wvs_geographic_sweep_w7.json` | 29 MB, always check navegador_data first |
-| Per-country respondent CSVs | `/workspaces/navegador_data/data/julia_bridge_wvs/WVS_W7_{ALPHA3}.csv` | 4 SES cols + 56 constructs, 1.2-2.6K rows |
-| WVS KG (built) | `data/results/wvs_kg_ontology.json` | 56 constructs, 395 bridges |
-| WVS fingerprints (OQ-compatible) | `data/results/wvs_ses_fingerprints_v2.json` | Use this for OntologyQuery, not the v1 |
+| WVS sweep results (68K estimates) | `navegador_data/data/results/wvs_geographic_sweep_w7.json` | 29 MB |
+| Per-country respondent CSVs | `navegador_data/data/julia_bridge_wvs/WVS_W7_{ALPHA3}.csv` | 4 SES + 56 constructs |
+| Raw WVS ZIPs | `navegador_data/data/wvs/` | W7 (20MB) + TimeSeries (118MB), just pushed |
+| WVS KG | `data/results/wvs_kg_ontology.json` | 56 constructs, 395 bridges |
+| WVS L0 fingerprints | `data/results/wvs_l0_fingerprints.json` | 320 items, MEX W7 |
+| WVS L1 fingerprints | `data/results/wvs_ses_fingerprints_v2.json` | OntologyQuery-compatible |
 | Los_mex KG | `data/results/kg_ontology_v2.json` | 93 constructs, 984 bridges |
-| Findings doc | `docs/WVS_ONTOLOGY_FINDINGS.md` | Camp structure, predictions, 10 operations |
-| Tests | `tests/unit/test_wvs_ontology_readiness.py` | 35 tests, <0.3s |
+| Cross-country geometry | `data/results/cross_country_geometry_report.md` | Mantel, clustering, mediators |
+| V-Dem + interactions | `data/results/macro_indicator_report.md` | Democracy, interactions, methodology |
+| V-Dem data cache | `data/results/vdem_indicators.json` | 61 countries, 5 indices |
+| World Bank data cache | `data/results/world_bank_indicators.json` | 7 indicators, ~64 countries |
 
 ### Quick Start for Next Instance
 
 ```bash
-# Verify data is available
-ls /workspaces/navegador_data/data/results/wvs_geographic_sweep_w7.json
+# Run all prediction tests (51 tests, 0.2s)
+python -m pytest tests/unit/test_multi_hop_prediction.py tests/unit/test_wvs_l0_fingerprints.py -v
 
-# Run tests
-python -m pytest tests/unit/test_wvs_ontology_readiness.py -v
-
-# Load WVS OntologyQuery
+# Load Bayesian predictor (los_mex)
 python -c "
 from opinion_ontology import OntologyQuery
-oq = OntologyQuery(
-    fp_path='data/results/wvs_ses_fingerprints_v2.json',
-    kg_path='data/results/wvs_kg_ontology.json',
-    dataset='wvs')
-print(f'{len(oq._constructs)} constructs, {sum(len(v) for v in oq._bridges.values())//2} bridges')
+from multi_hop_prediction import BayesianMultiHopPredictor
+oq = OntologyQuery()
+bp = BayesianMultiHopPredictor(oq, n_draws=500, seed=42)
+r = bp.predict('HAB|structural_housing_quality', 'REL|personal_religiosity')
+print(f'signal={r[\"signal_mean\"]:+.4f}, CI={r[\"signal_ci_95\"]}, P(+)={r[\"p_positive\"]:.3f}')
+print(f'paths={r[\"n_unique_paths\"]}, diversity={r[\"path_diversity\"]:.1%}')
 "
 
-# Run prediction on one country (needs navegador_data CSVs)
-python scripts/debug/test_wvs_prediction_scenarios.py  # ~100s on 2-core
+# Re-run cross-country geometry (uses cached WB data, ~3 min with Mantel)
+python scripts/debug/analyze_cross_country_geometry.py
 
-# Run full capabilities demo
-python scripts/debug/demo_wvs_ontology_capabilities.py  # ~2s
+# Re-run V-Dem + interactions (~5 min with Mantel)
+python scripts/debug/analyze_macro_indicators.py
 ```
