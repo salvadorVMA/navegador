@@ -1115,7 +1115,7 @@ All in `data/tda/message_passing/` (JSON outputs pushed to navegador_data):
 
 ### What's Next (suggested priorities)
 
-1. **WVS item-level fingerprints (L0)** — Only remaining gap (readiness 84→~95). Needs WVS CSVs (available in navegador_data). Run fingerprint computation per Q-code, then `_lift_to_construct()` works for individual WVS items.
+1. **WVS item-level fingerprints (L0)** — Only remaining gap (readiness 84→~95). Needs raw WVS CSVs with individual Q-code columns (~300 cols per respondent). These are **NOT** in navegador_data — the CSVs there only have 4 SES + 56 `wvs_agg_*` aggregate cols. Raw WVS ZIP files are stored locally on Mac (`data/wvs/`). **Next time Claude runs on Mac**: upload the raw WVS ZIPs (Wave 7 CSV + Time Series) to the navegador_data repo (as `data/wvs/WVS_Cross-National_Wave_7_csv_v5_0.zip` or similar), then push. Once available in Codespace, run fingerprint computation per Q-code → `_lift_to_construct()` works for individual WVS items.
 
 2. **Agent integration** — Wire OntologyQuery methods into `agent.py` tool list. The methods are ready; they just need to be exposed as LangGraph tools. `get_neighborhood()` and `find_path()` are the most useful for conversational queries.
 
@@ -1128,7 +1128,7 @@ All in `data/tda/message_passing/` (JSON outputs pushed to navegador_data):
 ### What's Blocked / Constraints
 
 - **2-core Codespace**: Geographic sweep (Julia 8-thread) takes ~30-40 hours on 2-core. Use 8-core for re-sweeps. All analysis/visualization runs fine on 2-core.
-- **No WVS raw ZIP files** in Codespace: `wvs_loader.py` cannot load from source. Pre-built CSVs in navegador_data are the workaround.
+- **No WVS raw ZIP files** in Codespace: `wvs_loader.py` cannot load from source. Pre-built aggregate CSVs in navegador_data are the workaround for construct-level work, but L0 fingerprints need the raw Q-code data. **Action for Mac session**: push raw WVS ZIPs to navegador_data repo (`data/wvs/`).
 - **Cross-study alignment ceiling**: Median fingerprint cosine 0.238 is likely a hard ceiling — SES profiles are survey-specific, not concept-inherent. This limits cross-study prediction reliability.
 
 ### Critical Data Locations
