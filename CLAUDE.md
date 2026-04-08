@@ -1,5 +1,7 @@
 # Navegador - AI Survey Analysis Platform
 
+> **IMPORTANT — Instance Handoff Protocol:** Before ending a session, update the `## Current Development State (Handoff)` section at the bottom of this file. The next Claude instance reads this first to pick up efficiently. Keep it concise: what was just done, what's next, what's blocked, and where the data lives.
+
 ## Overview
 
 Navegador is an AI-powered survey analysis platform that uses Large Language Models (LLMs) and intelligent agent systems to analyze and extract insights from survey data. The project focuses on Mexican survey data ("los_mex") and provides conversational interfaces for querying survey insights.
@@ -1088,3 +1090,81 @@ All in `data/tda/message_passing/` (JSON outputs pushed to navegador_data):
 | `docs/MESSAGE_PASSING_SPEC.md` | Full technical spec: math, design choices, pitfalls, interpretation |
 | `docs/MESSAGE_PASSING_PLAN.md` | Scoping decisions and implementation plan |
 | `data/results/message_passing_report.md` | Findings report with plots |
+
+---
+
+## Current Development State (Handoff)
+
+> **Last updated: 2026-04-07** — Update this section at the end of every session.
+
+### What Was Just Done (this session)
+
+1. **WVS Ontology built end-to-end**: `OntologyQuery` now works with WVS data (56 constructs, 395 bridges). Only change to `opinion_ontology.py` was adding `dataset` param + `Path()` coercion (3 lines).
+
+2. **Diagnostic framework**: `scripts/debug/diagnostic_wvs_ontology_readiness.py` scores the WVS ontology readiness at **84/100** (cross-study alignment is the bottleneck at 11/25).
+
+3. **Cross-country prediction engine tested**: `DRPredictionEngine.fit()` runs on real WVS respondent data from `navegador_data/data/julia_bridge_wvs/WVS_W7_{COUNTRY}.csv`. 5 scenarios × 6 countries × 5 SES profiles tested. Key finding: S2 (Participation→Security) shows clearest cross-country sign flip.
+
+4. **Circle-layout visualizations**: Per-country networks with canonical shared construct positions. 6-country comparison in `data/results/wvs_ontology_comparison.png`. Prediction scenario edges with per-country coloring.
+
+5. **All 10 OntologyQuery operations demonstrated** across 6 countries in `scripts/debug/demo_wvs_ontology_capabilities.py`. Finding: 39/56 constructs flip camp across countries.
+
+6. **35 unit tests** in `tests/unit/test_wvs_ontology_readiness.py` — all pass in <0.3s.
+
+7. **Findings doc**: `docs/WVS_ONTOLOGY_FINDINGS.md` — comprehensive write-up including camp structure analysis, prediction results, and cross-country patterns.
+
+### What's Next (suggested priorities)
+
+1. **WVS item-level fingerprints (L0)** — Only remaining gap (readiness 84→~95). Needs WVS CSVs (available in navegador_data). Run fingerprint computation per Q-code, then `_lift_to_construct()` works for individual WVS items.
+
+2. **Agent integration** — Wire OntologyQuery methods into `agent.py` tool list. The methods are ready; they just need to be exposed as LangGraph tools. `get_neighborhood()` and `find_path()` are the most useful for conversational queries.
+
+3. **Cross-study bridge validation** — Cross-study fingerprint cosine is still low (0.238). Could improve by: (a) per-country fingerprints instead of MEX-only, (b) dimension weighting, (c) restricting to high-magnitude constructs.
+
+4. **Multi-hop prediction** — Phase 4 of ATTITUDE_PREDICTION_ENGINE.md. `find_path()` exists for navigation but chained P(C|A) via intermediate B is not implemented.
+
+5. **Dashboard integration** — Construct network visualizations + prediction engine into `dashboard.py`.
+
+### What's Blocked / Constraints
+
+- **2-core Codespace**: Geographic sweep (Julia 8-thread) takes ~30-40 hours on 2-core. Use 8-core for re-sweeps. All analysis/visualization runs fine on 2-core.
+- **No WVS raw ZIP files** in Codespace: `wvs_loader.py` cannot load from source. Pre-built CSVs in navegador_data are the workaround.
+- **Cross-study alignment ceiling**: Median fingerprint cosine 0.238 is likely a hard ceiling — SES profiles are survey-specific, not concept-inherent. This limits cross-study prediction reliability.
+
+### Critical Data Locations
+
+| What | Where | Notes |
+|------|-------|-------|
+| WVS sweep results (68K estimates) | `/workspaces/navegador_data/data/results/wvs_geographic_sweep_w7.json` | 29 MB, always check navegador_data first |
+| Per-country respondent CSVs | `/workspaces/navegador_data/data/julia_bridge_wvs/WVS_W7_{ALPHA3}.csv` | 4 SES cols + 56 constructs, 1.2-2.6K rows |
+| WVS KG (built) | `data/results/wvs_kg_ontology.json` | 56 constructs, 395 bridges |
+| WVS fingerprints (OQ-compatible) | `data/results/wvs_ses_fingerprints_v2.json` | Use this for OntologyQuery, not the v1 |
+| Los_mex KG | `data/results/kg_ontology_v2.json` | 93 constructs, 984 bridges |
+| Findings doc | `docs/WVS_ONTOLOGY_FINDINGS.md` | Camp structure, predictions, 10 operations |
+| Tests | `tests/unit/test_wvs_ontology_readiness.py` | 35 tests, <0.3s |
+
+### Quick Start for Next Instance
+
+```bash
+# Verify data is available
+ls /workspaces/navegador_data/data/results/wvs_geographic_sweep_w7.json
+
+# Run tests
+python -m pytest tests/unit/test_wvs_ontology_readiness.py -v
+
+# Load WVS OntologyQuery
+python -c "
+from opinion_ontology import OntologyQuery
+oq = OntologyQuery(
+    fp_path='data/results/wvs_ses_fingerprints_v2.json',
+    kg_path='data/results/wvs_kg_ontology.json',
+    dataset='wvs')
+print(f'{len(oq._constructs)} constructs, {sum(len(v) for v in oq._bridges.values())//2} bridges')
+"
+
+# Run prediction on one country (needs navegador_data CSVs)
+python scripts/debug/test_wvs_prediction_scenarios.py  # ~100s on 2-core
+
+# Run full capabilities demo
+python scripts/debug/demo_wvs_ontology_capabilities.py  # ~2s
+```
