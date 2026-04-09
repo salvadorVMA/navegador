@@ -1,0 +1,247 @@
+{
+  "W3": {
+    "wave": 3,
+    "year": 1996,
+    "n_countries": 38,
+    "n_constructs": 24,
+    "camp": {
+      "median_fiedler": 0.0,
+      "mean_balance": 0.7557,
+      "fiedler_range": [
+        0.0,
+        0.0
+      ]
+    },
+    "fingerprint": {
+      "ses_dominance": {
+        "escol": 0.017,
+        "Tam_loc": 0.286,
+        "sexo": 0.257,
+        "edad": 0.44
+      },
+      "median_magnitude": 0.0792
+    },
+    "bp": {
+      "most_common_top_influencer": [
+        "job_scarcity_gender_discrimination|WVS_C",
+        7
+      ],
+      "n_unique_top_influencers": 15
+    },
+    "spectral": {
+      "median_fiedler": 0.7086
+    },
+    "ppr": {
+      "top3_hubs": [
+        [
+          "postmaterialist_values|WVS_E",
+          32
+        ],
+        [
+          "importance_of_life_domains|WVS_A",
+          32
+        ],
+        [
+          "child_qualities_prosocial_diligence|WVS_A",
+          30
+        ]
+      ]
+    }
+  },
+  "W4": {
+    "wave": 4,
+    "year": 2000,
+    "n_countries": 27,
+    "n_constructs": 25,
+    "camp": {
+      "median_fiedler": 0.0,
+      "mean_balance": 0.7342,
+      "fiedler_range": [
+        -0.0,
+        0.1636
+      ]
+    },
+    "fingerprint": {
+      "ses_dominance": {
+        "escol": 0.017,
+        "Tam_loc": 0.327,
+        "sexo": 0.298,
+        "edad": 0.358
+      },
+      "median_magnitude": 0.0746
+    },
+    "bp": {
+      "most_common_top_influencer": [
+        "gender_role_traditionalism|WVS_D",
+        7
+      ],
+      "n_unique_top_influencers": 12
+    },
+    "spectral": {
+      "median_fiedler": 0.707
+    },
+    "ppr": {
+      "top3_hubs": [
+        [
+          "economic_ideology|WVS_E",
+          23
+        ],
+        [
+          "child_qualities_prosocial_diligence|WVS_A",
+          21
+        ],
+        [
+          "importance_of_life_domains|WVS_A",
+          19
+        ]
+      ]
+    }
+  },
+  "W5": {
+    "wave": 5,
+    "year": 2007,
+    "n_countries": 43,
+    "n_constructs": 31,
+    "camp": {
+      "median_fiedler": 0.0,
+      "mean_balance": 0.7262,
+      "fiedler_range": [
+        -0.0,
+        0.026
+      ]
+    },
+    "fingerprint": {
+      "ses_dominance": {
+        "escol": 0.013,
+        "Tam_loc": 0.335,
+        "sexo": 0.254,
+        "edad": 0.398
+      },
+      "median_magnitude": 0.0705
+    },
+    "bp": {
+      "most_common_top_influencer": [
+        "immigrant_origin_status|WVS_G",
+        11
+      ],
+      "n_unique_top_influencers": 16
+    },
+    "spectral": {
+      "median_fiedler": 0.7226
+    },
+    "ppr": {
+      "top3_hubs": [
+        [
+          "democratic_values_importance|WVS_E",
+          31
+        ],
+        [
+          "economic_ideology|WVS_E",
+          31
+        ],
+        [
+          "postmaterialist_values|WVS_E",
+          28
+        ]
+      ]
+    }
+  },
+  "W6": {
+    "wave": 6,
+    "year": 2012,
+    "n_countries": 47,
+    "n_constructs": 44,
+    "camp": {
+      "median_fiedler": 0.0,
+      "mean_balance": 0.7106,
+      "fiedler_range": [
+        -0.0,
+        0.0645
+      ]
+    },
+    "fingerprint": {
+      "ses_dominance": {
+        "escol": 0.009,
+        "Tam_loc": 0.356,
+        "sexo": 0.264,
+        "edad": 0.371
+      },
+      "median_magnitude": 0.0694
+    },
+    "bp": {
+      "most_common_top_influencer": [
+        "immigrant_origin_status|WVS_G",
+        9
+      ],
+      "n_unique_top_influencers": 16
+    },
+    "spectral": {
+      "median_fiedler": 0.7051
+    },
+    "ppr": {
+      "top3_hubs": [
+        [
+          "democratic_values_importance|WVS_E",
+          32
+        ],
+        [
+          "autocracy_support|WVS_E",
+          28
+        ],
+        [
+          "economic_ideology|WVS_E",
+          27
+        ]
+      ]
+    }
+  },
+  "W7": {
+    "wave": 7,
+    "year": 2018,
+    "n_countries": 66,
+    "n_constructs": 55,
+    "camp": {
+      "median_fiedler": 0.1315,
+      "mean_balance": 0.7188,
+      "fiedler_range": [
+        0.0376,
+        0.3692
+      ]
+    },
+    "fingerprint": {
+      "ses_dominance": {
+        "escol": 0.355,
+        "Tam_loc": 0.222,
+        "sexo": 0.142,
+        "edad": 0.282
+      },
+      "median_magnitude": 0.0772
+    },
+    "bp": {
+      "most_common_top_influencer": [
+        "immigrant_origin_status|WVS_G",
+        14
+      ],
+      "n_unique_top_influencers": 20
+    },
+    "spectral": {
+      "median_fiedler": 0.7051
+    },
+    "ppr": {
+      "top3_hubs": [
+        [
+          "economic_ideology|WVS_E",
+          42
+        ],
+        [
+          "postmaterialist_values|WVS_E",
+          33
+        ],
+        [
+          "democratic_values_importance|WVS_E",
+          32
+        ]
+      ]
+    }
+  }
+}

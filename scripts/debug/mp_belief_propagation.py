@@ -383,6 +383,7 @@ def run_country(
     country: str,
     beta: float = 2.0,
     betas_sweep: list[float] | None = None,
+    wave: int = 7,
 ) -> dict:
     """
     Run belief propagation for one country.
@@ -411,7 +412,7 @@ def run_country(
         stats, and optionally beta_stability.
     """
     # ── Load data ───────────────────────────────────────────────────────────
-    W, labels = load_weight_matrix(country)
+    W, labels = load_weight_matrix(country, wave=wave)
     k = W.shape[0]
 
     print(f"\n{'='*60}")
@@ -574,23 +575,27 @@ def main() -> None:
         action="store_true",
         help="Run sensitivity analysis at beta = {0.5, 1.0, 2.0, 4.0}",
     )
+    parser.add_argument(
+        "--wave", type=int, default=7, choices=[3, 4, 5, 6, 7],
+        help="WVS wave number (default: 7)",
+    )
     args = parser.parse_args()
 
     betas_sweep = [0.5, 1.0, 2.0, 4.0] if args.beta_sweep else None
-    out_dir = get_output_dir()
+    out_dir = get_output_dir(wave=args.wave)
 
     t0 = time.time()
 
     if args.all:
         # ── Run all countries ───────────────────────────────────────────────
-        manifest = load_manifest()
+        manifest = load_manifest(wave=args.wave)
         countries = sorted(manifest["countries"])
-        print(f"Running BP for {len(countries)} countries...")
+        print(f"Running BP for {len(countries)} countries (W{args.wave})...")
 
         all_summaries = []
         for country in countries:
             try:
-                results = run_country(country, beta=args.beta, betas_sweep=betas_sweep)
+                results = run_country(country, beta=args.beta, betas_sweep=betas_sweep, wave=args.wave)
                 save_json(results, out_dir / f"{country}_bp.json")
                 all_summaries.append({
                     "country": country,
@@ -625,7 +630,7 @@ def main() -> None:
 
     else:
         # ── Single country ──────────────────────────────────────────────────
-        results = run_country(args.country, beta=args.beta, betas_sweep=betas_sweep)
+        results = run_country(args.country, beta=args.beta, betas_sweep=betas_sweep, wave=args.wave)
         save_json(results, out_dir / f"{args.country}_bp.json")
 
         elapsed = time.time() - t0

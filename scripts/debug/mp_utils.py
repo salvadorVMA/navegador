@@ -26,29 +26,68 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
-TDA_DIR    = ROOT / "data" / "tda"
+NAVEGADOR_DATA = Path("/workspaces/navegador_data")
+
+# Prefer navegador_data for TDA outputs (large files live there)
+if (NAVEGADOR_DATA / "data" / "tda").exists():
+    TDA_DIR = NAVEGADOR_DATA / "data" / "tda"
+else:
+    TDA_DIR = ROOT / "data" / "tda"
+
+GTE_DIR = NAVEGADOR_DATA / "data" / "gte"
+
+ALLWAVE_MATRIX_DIR = TDA_DIR / "allwave" / "matrices"
+VALID_WAVES = [3, 4, 5, 6, 7]
+DEFAULT_WAVE = 7
+
+# Legacy constants (W7 v1 paths — kept for backward compat)
 MATRIX_DIR = TDA_DIR / "matrices"
 OUTPUT_DIR = TDA_DIR / "message_passing"
 
 
 # ── Data loading ─────────────────────────────────────────────────────────────
 
-def load_manifest() -> dict:
-    """Load matrices/manifest.json — countries, construct_index, cultural_zones."""
-    with open(MATRIX_DIR / "manifest.json") as f:
-        return json.load(f)
+def load_manifest(wave: int = DEFAULT_WAVE) -> dict:
+    """Load manifest for a given wave.
 
-
-def load_weight_matrix(country: str) -> tuple[np.ndarray, list[str]]:
+    For wave 7 with legacy v1 matrices, falls back to matrices/manifest.json.
+    Otherwise reads from allwave/matrices/W{wave}/manifest.json.
     """
-    Load a 55×55 weight matrix CSV for one country.
+    if wave not in VALID_WAVES:
+        raise ValueError(f"wave must be one of {VALID_WAVES}, got {wave}")
+    # Prefer allwave directory (available for all waves)
+    allwave_path = ALLWAVE_MATRIX_DIR / f"W{wave}" / "manifest.json"
+    if allwave_path.exists():
+        with open(allwave_path) as f:
+            return json.load(f)
+    # Legacy fallback for W7
+    legacy_path = MATRIX_DIR / "manifest.json"
+    if legacy_path.exists():
+        with open(legacy_path) as f:
+            return json.load(f)
+    raise FileNotFoundError(
+        f"No manifest found for wave {wave}. "
+        f"Checked {allwave_path} and {legacy_path}"
+    )
+
+
+def load_weight_matrix(country: str, wave: int = DEFAULT_WAVE) -> tuple[np.ndarray, list[str]]:
+    """
+    Load a k×k weight matrix CSV for one country at a given wave.
 
     Returns
     -------
-    W : (55, 55) float array with np.nan for missing edges
-    labels : list of 55 construct label strings
+    W : (k, k) float array with np.nan for missing edges
+    labels : list of k construct label strings
     """
-    path = MATRIX_DIR / f"{country}.csv"
+    if wave not in VALID_WAVES:
+        raise ValueError(f"wave must be one of {VALID_WAVES}, got {wave}")
+    # Prefer allwave directory
+    allwave_path = ALLWAVE_MATRIX_DIR / f"W{wave}" / f"{country}.csv"
+    if allwave_path.exists():
+        path = allwave_path
+    else:
+        path = MATRIX_DIR / f"{country}.csv"
     df = pd.read_csv(path, index_col=0)
     labels = list(df.columns)
     # pd.read_csv leaves empty cells as NaN — exactly what we want
@@ -165,10 +204,22 @@ def save_json(data: dict, path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w") as f:
         json.dump(data, f, cls=_NumpyEncoder, indent=2)
-    print(f"  saved → {path.relative_to(ROOT)}")
+    try:
+        display = path.relative_to(ROOT)
+    except ValueError:
+        display = path
+    print(f"  saved → {display}")
 
 
-def get_output_dir() -> Path:
-    """Return the message passing output directory (creates if needed)."""
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    return OUTPUT_DIR
+def get_output_dir(wave: int = DEFAULT_WAVE) -> Path:
+    """Return the message passing output directory for a given wave.
+
+    W7 uses the legacy flat directory for backward compat.
+    W3-W6 use subdirectories: message_passing/W{n}/
+    """
+    if wave == DEFAULT_WAVE:
+        d = OUTPUT_DIR
+    else:
+        d = OUTPUT_DIR / f"W{wave}"
+    d.mkdir(parents=True, exist_ok=True)
+    return d

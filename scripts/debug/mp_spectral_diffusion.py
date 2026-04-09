@@ -668,7 +668,7 @@ def fiedler_comparison(
 # run_country() — Full spectral analysis for one country
 # ═════════════════════════════════════════════════════════════════════════════
 
-def run_country(country: str) -> dict:
+def run_country(country: str, wave: int = 7) -> dict:
     """
     Run complete spectral analysis for one country.
 
@@ -691,11 +691,11 @@ def run_country(country: str) -> dict:
         Serializable dict with all spectral analysis outputs.
     """
     # ── Load data ─────────────────────────────────────────────────────────
-    W, labels = load_weight_matrix(country)
+    W, labels = load_weight_matrix(country, wave=wave)
     k = W.shape[0]
 
     print(f"\n{'='*60}")
-    print(f"  Spectral Analysis: {country}")
+    print(f"  Spectral Analysis: {country} (W{wave})")
     print(f"  {k} constructs")
     print(f"{'='*60}")
 
@@ -847,25 +847,29 @@ def main() -> None:
     parser.add_argument(
         "--all",
         action="store_true",
-        help="Run spectral analysis for all 66 countries + Fiedler comparison",
+        help="Run spectral analysis for all countries + Fiedler comparison",
+    )
+    parser.add_argument(
+        "--wave", type=int, default=7, choices=[3, 4, 5, 6, 7],
+        help="WVS wave number (default: 7)",
     )
     args = parser.parse_args()
 
-    out_dir = get_output_dir()
+    out_dir = get_output_dir(wave=args.wave)
     t0 = time.time()
 
     if args.all:
         # ── Run all countries ─────────────────────────────────────────────
-        manifest = load_manifest()
+        manifest = load_manifest(wave=args.wave)
         countries = sorted(manifest["countries"])
-        print(f"Running spectral analysis for {len(countries)} countries...")
+        print(f"Running spectral analysis for {len(countries)} countries (W{args.wave})...")
 
         all_partitions: dict[str, dict] = {}
         all_summaries: list[dict] = []
 
         for country in countries:
             try:
-                results = run_country(country)
+                results = run_country(country, wave=args.wave)
                 save_json(results, out_dir / f"{country}_spectral.json")
 
                 # Store partition for cross-country comparison
@@ -908,7 +912,7 @@ def main() -> None:
 
     else:
         # ── Single country ────────────────────────────────────────────────
-        results = run_country(args.country)
+        results = run_country(args.country, wave=args.wave)
         save_json(results, out_dir / f"{args.country}_spectral.json")
 
         elapsed = time.time() - t0

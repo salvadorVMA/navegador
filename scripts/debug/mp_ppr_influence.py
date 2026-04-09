@@ -510,7 +510,7 @@ def alpha_sweep(W: np.ndarray, labels: list[str],
 # ═════════════════════════════════════════════════════════════════════════════
 
 def run_country(country: str, alpha: float = 0.20,
-                do_alpha_sweep: bool = True) -> dict:
+                do_alpha_sweep: bool = True, wave: int = 7) -> dict:
     """
     Run the full PPR influence analysis for one country.
 
@@ -541,9 +541,9 @@ def run_country(country: str, alpha: float = 0.20,
     print(f"{'='*70}")
 
     # ── Load data ────────────────────────────────────────────────────────
-    W, labels = load_weight_matrix(country)
+    W, labels = load_weight_matrix(country, wave=wave)
     k = W.shape[0]
-    print(f"  Loaded {k}x{k} weight matrix, {len(labels)} constructs")
+    print(f"  Loaded {k}x{k} weight matrix (W{wave}), {len(labels)} constructs")
 
     # ── Build mapper and compute full PPR matrix ─────────────────────────
     t0 = time.time()
@@ -753,7 +753,7 @@ def _validate_against_mediators(country: str, labels: list[str],
 # cross_country_comparison — Universal vs. zone-specific hubs across 66 countries
 # ═════════════════════════════════════════════════════════════════════════════
 
-def cross_country_comparison(all_results: dict) -> dict:
+def cross_country_comparison(all_results: dict, wave: int = 7) -> dict:
     """
     Compare PPR hub rankings across all countries.
 
@@ -778,7 +778,7 @@ def cross_country_comparison(all_results: dict) -> dict:
     # ── Collect all construct labels (union across countries) ─────────
     # In practice all countries use the same 55 constructs, but we handle
     # the general case.
-    manifest = load_manifest()
+    manifest = load_manifest(wave=wave)
     countries = sorted(all_results.keys())
     n_countries = len(countries)
 
@@ -905,16 +905,18 @@ def main():
                         help="Run all 66 countries + cross-country comparison")
     parser.add_argument("--alpha", type=float, default=0.20,
                         help="PPR teleportation probability (default: 0.20)")
+    parser.add_argument("--wave", type=int, default=7, choices=[3, 4, 5, 6, 7],
+                        help="WVS wave number (default: 7)")
     args = parser.parse_args()
 
-    out_dir = get_output_dir()
+    out_dir = get_output_dir(wave=args.wave)
 
     if args.all:
         # ── All-country mode ─────────────────────────────────────────────
-        manifest = load_manifest()
+        manifest = load_manifest(wave=args.wave)
         countries = sorted(manifest.get("countries", []))
         print(f"\nRunning PPR influence for {len(countries)} countries "
-              f"(alpha={args.alpha})")
+              f"(W{args.wave}, alpha={args.alpha})")
 
         all_results = {}
         t_total = time.time()
@@ -923,7 +925,7 @@ def main():
             print(f"\n[{i+1}/{len(countries)}]", end="")
             try:
                 result = run_country(country, alpha=args.alpha,
-                                     do_alpha_sweep=True)
+                                     do_alpha_sweep=True, wave=args.wave)
                 all_results[country] = result
 
                 # Save per-country JSON
@@ -941,13 +943,13 @@ def main():
         if len(all_results) > 1:
             print(f"\n  Cross-country comparison "
                   f"({len(all_results)} countries)...")
-            comparison = cross_country_comparison(all_results)
+            comparison = cross_country_comparison(all_results, wave=args.wave)
             save_json(comparison, out_dir / "ppr_hub_comparison.json")
 
     else:
         # ── Single-country mode ──────────────────────────────────────────
         result = run_country(args.country, alpha=args.alpha,
-                             do_alpha_sweep=True)
+                             do_alpha_sweep=True, wave=args.wave)
         save_json(result, out_dir / f"{args.country}_ppr.json")
 
 
