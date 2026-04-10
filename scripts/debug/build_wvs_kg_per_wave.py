@@ -1,33 +1,38 @@
 #!/usr/bin/env python3
 """
-Build per-wave WVS Knowledge Graph ontologies from the all-wave γ-surface.
+Build per-country per-wave WVS Knowledge Graph ontologies.
 
-For each wave, aggregates bridge estimates across countries:
-- A bridge exists if >50% of countries with that pair have excl_zero=True
-- Gamma is the median across significant countries
-- Fingerprints come from per-wave GTE fingerprints (country-median)
+Each (country, wave) pair gets its own KG + fingerprints, built from:
+  - That country's weight matrix (γ values from the allwave sweep)
+  - That country's SES fingerprints (Spearman ρ from respondent microdata)
+  - Significance from the all-wave γ-surface (excl_zero per estimate)
 
-Outputs per wave:
-  data/results/wvs_kg_ontology_w{N}.json
-  data/results/wvs_ses_fingerprints_v2_w{N}.json
+Outputs:
+  data/results/wvs_kg/W{N}/{COUNTRY}_kg.json
+  data/results/wvs_kg/W{N}/{COUNTRY}_fp.json
 
 Usage:
-    python scripts/debug/build_wvs_kg_per_wave.py             # all waves 3-7
-    python scripts/debug/build_wvs_kg_per_wave.py --waves 5 7  # specific waves
+    python scripts/debug/build_wvs_kg_per_wave.py                      # all waves, all countries
+    python scripts/debug/build_wvs_kg_per_wave.py --waves 5 7          # specific waves
+    python scripts/debug/build_wvs_kg_per_wave.py --waves 5 --country MEX  # single country
 """
 
 import argparse
 import json
-from collections import defaultdict
+import sys
 from datetime import datetime
 from pathlib import Path
 
 import numpy as np
+import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+
 DATA = ROOT / "data" / "results"
 NAVEGADOR_DATA = Path("/workspaces/navegador_data")
 GTE_DIR = NAVEGADOR_DATA / "data" / "gte"
+ALLWAVE_MATRIX_DIR = NAVEGADOR_DATA / "data" / "tda" / "allwave" / "matrices"
 
 ALL_DIMS = ("rho_escol", "rho_Tam_loc", "rho_sexo", "rho_edad")
 VALID_WAVES = [3, 4, 5, 6, 7]
@@ -56,111 +61,78 @@ def _cosine(a: np.ndarray, b: np.ndarray) -> float:
     return float(np.dot(a, b) / (na * nb))
 
 
-def _load_allwave_surface() -> dict:
-    path = NAVEGADOR_DATA / "data" / "results" / "wvs_all_wave_gamma_surface.json"
-    if not path.exists():
-        raise FileNotFoundError(f"All-wave surface not found: {path}")
-    return json.load(open(path))
+def _load_significance_index(surface: dict, wave: int, country: str) -> dict:
+    """Extract per-pair significance from the all-wave γ-surface.
 
-
-def _load_wave_fingerprints(wave: int) -> dict[str, dict]:
-    """Load per-country fingerprints and compute country-median per construct."""
-    fp_dir = GTE_DIR / f"W{wave}" / "fingerprints"
-    if not fp_dir.exists():
-        return {}
-
-    # Collect per-construct values across countries
-    construct_vals = defaultdict(lambda: {d: [] for d in ALL_DIMS})
-    n_respondents_total = 0
-
-    for f in fp_dir.glob("*.json"):
-        data = json.load(open(f))
-        n_respondents_total += data.get("n_respondents", 0)
-        for cname, cdata in data.get("constructs", {}).items():
-            for d in ALL_DIMS:
-                v = cdata.get(d, None)
-                if v is not None:
-                    construct_vals[cname][d].append(v)
-
-    # Compute median per construct
-    result = {}
-    for cname, dims in construct_vals.items():
-        fp = {}
-        for d in ALL_DIMS:
-            vals = dims[d]
-            fp[d] = round(float(np.median(vals)), 6) if vals else 0.0
-        mag = float(np.sqrt(np.mean([fp[d] ** 2 for d in ALL_DIMS])))
-        dominant = max(ALL_DIMS, key=lambda d: abs(fp[d]))
-        fp["ses_magnitude"] = round(mag, 6)
-        fp["dominant_dim"] = dominant.replace("rho_", "")
-        fp["n_countries"] = min(len(v) for v in dims.values())
-        result[cname] = fp
-
-    return result
-
-
-def _load_manifest(wave: int) -> list[str]:
-    """Get construct index from allwave TDA manifest."""
-    import sys
-    sys.path.insert(0, str(ROOT))
-    from scripts.debug.mp_utils import load_manifest
-    m = load_manifest(wave=wave)
-    return m.get("construct_index", [])
-
-
-def build_wave_kg(wave: int, surface: dict) -> tuple[dict, dict]:
-    """Build KG and fingerprints for one wave.
-
-    Returns (kg_dict, fp_v2_dict).
+    Returns {(col_a, col_b): {excl_zero, gamma, ci_lo, ci_hi, ci_width, nmi}}.
     """
-    construct_index = _load_manifest(wave)
-    if not construct_index:
-        print(f"  W{wave}: no construct index found")
-        return {}, {}
-
-    # Build construct key mapping
-    # Manifest format: "construct_name|WVS_DOM"
-    # Surface key format: "WVS_W{n}_{COUNTRY}::wvs_agg_{name}|WVS_{DOM}::..."
-    # We need: col_to_key mapping
-    key_set = set(construct_index)  # "name|WVS_DOM"
-    col_to_key = {}  # "wvs_agg_name" → "WVS_DOM|name"
-    for label in construct_index:
-        name, domain = label.split("|")
-        col = f"wvs_agg_{name}"
-        kg_key = f"{domain}|{name}"
-        col_to_key[col] = kg_key
-
-    # Filter surface to this wave
-    wave_prefix = f"WVS_W{wave}_"
-    wave_estimates = {}
+    prefix = f"WVS_W{wave}_{country}::"
+    pairs = {}
     for k, v in surface["estimates"].items():
-        ctx = v.get("context", k.split("::")[0])
-        if ctx.startswith(wave_prefix):
-            wave_estimates[k] = v
-
-    # Aggregate per construct pair across countries
-    # pair_key = "col_a::col_b" (sorted) → {gammas: [], excl_zeros: []}
-    pair_data = defaultdict(lambda: {"gammas": [], "excl_zeros": [], "cis": []})
-    for k, v in wave_estimates.items():
+        if not k.startswith(prefix):
+            continue
         parts = k.split("::")
         if len(parts) != 3:
             continue
-        col_a = parts[1].rsplit("|", 1)[0]
+        col_a = parts[1].rsplit("|", 1)[0]  # "wvs_agg_name"
         col_b = parts[2].rsplit("|", 1)[0]
-        pair_key = "::".join(sorted([col_a, col_b]))
-        pair_data[pair_key]["gammas"].append(v["dr_gamma"])
-        pair_data[pair_key]["excl_zeros"].append(v.get("excl_zero", False))
-        pair_data[pair_key]["cis"].append((v.get("dr_ci_lo", 0), v.get("dr_ci_hi", 0)))
+        pair = tuple(sorted([col_a, col_b]))
+        pairs[pair] = {
+            "excl_zero": v.get("excl_zero", False),
+            "gamma": v["dr_gamma"],
+            "ci_lo": v.get("dr_ci_lo", 0),
+            "ci_hi": v.get("dr_ci_hi", 0),
+            "ci_width": v.get("ci_width", 0),
+            "nmi": v.get("dr_nmi", 0),
+        }
+    return pairs
 
-    # Load country-median fingerprints
-    fp_median = _load_wave_fingerprints(wave)
+
+def build_country_kg(
+    wave: int,
+    country: str,
+    surface: dict,
+) -> tuple[dict, dict] | None:
+    """Build KG + fingerprints for one (country, wave) pair.
+
+    Returns (kg_dict, fp_v2_dict) or None if data is missing.
+    """
+    # Load weight matrix
+    matrix_path = ALLWAVE_MATRIX_DIR / f"W{wave}" / f"{country}.csv"
+    if not matrix_path.exists():
+        return None
+    df = pd.read_csv(matrix_path, index_col=0)
+    labels = list(df.columns)  # "name|WVS_DOM" format
+    W = df.values.astype(np.float64)
+    k = W.shape[0]
+
+    # Load fingerprints
+    fp_path = GTE_DIR / f"W{wave}" / "fingerprints" / f"{country}.json"
+    if not fp_path.exists():
+        return None
+    fp_raw = json.load(open(fp_path))
+    fp_constructs = fp_raw.get("constructs", {})
+
+    # Build col→key mappings
+    # Matrix labels: "name|WVS_DOM" → KG key: "WVS_DOM|name"
+    label_to_key = {}
+    label_to_col = {}
+    for label in labels:
+        name, domain = label.split("|")
+        kg_key = f"{domain}|{name}"
+        col = f"wvs_agg_{name}"
+        label_to_key[label] = kg_key
+        label_to_col[label] = col
+
+    # Build significance index from γ-surface
+    sig_index = _load_significance_index(surface, wave, country)
 
     # Build fingerprints v2 (OntologyQuery-compatible)
     constructs_fp = {}
-    for label in construct_index:
-        name, domain = label.split("|")
-        kg_key = f"{domain}|{name}"
-        fp = fp_median.get(name, {})
+    for label in labels:
+        kg_key = label_to_key[label]
+        name = label.split("|")[0]
+        fp = fp_constructs.get(name, {})
         constructs_fp[kg_key] = {
             "rho_escol": fp.get("rho_escol", 0.0),
             "rho_Tam_loc": fp.get("rho_Tam_loc", 0.0),
@@ -172,9 +144,10 @@ def build_wave_kg(wave: int, surface: dict) -> tuple[dict, dict]:
 
     fp_v2 = {
         "metadata": {
-            "source": f"WVS_W{wave}_aggregate",
-            "n_countries": len(list((GTE_DIR / f"W{wave}" / "fingerprints").glob("*.json")))
-                          if (GTE_DIR / f"W{wave}" / "fingerprints").exists() else 0,
+            "source": f"WVS_W{wave}_{country}",
+            "country": country,
+            "wave": wave,
+            "n_respondents": fp_raw.get("n_respondents", 0),
             "ses_vars": ["sexo", "edad", "escol", "Tam_loc"],
             "generated": datetime.now().isoformat(),
         },
@@ -184,21 +157,20 @@ def build_wave_kg(wave: int, surface: dict) -> tuple[dict, dict]:
     }
 
     # Build domain nodes
-    domain_set = sorted({label.split("|")[1] for label in construct_index})
+    domain_set = sorted({label.split("|")[1] for label in labels})
     domains = [{"id": d, "label": WVS_DOMAIN_LABELS.get(d, d)} for d in domain_set]
 
     # Build construct nodes
     constructs = []
-    for label in construct_index:
-        name, domain = label.split("|")
-        kg_key = f"{domain}|{name}"
+    for label in labels:
+        kg_key = label_to_key[label]
+        domain = label.split("|")[1]
         fp = constructs_fp.get(kg_key, {})
         constructs.append({
             "id": kg_key,
-            "label": name.replace("_", " ").title(),
+            "label": label.split("|")[0].replace("_", " ").title(),
             "domain": domain,
-            "manifest_key": label,
-            "column": f"wvs_agg_{name}",
+            "column": label_to_col[label],
             "rho_escol": fp.get("rho_escol", 0.0),
             "rho_Tam_loc": fp.get("rho_Tam_loc", 0.0),
             "rho_sexo": fp.get("rho_sexo", 0.0),
@@ -208,74 +180,71 @@ def build_wave_kg(wave: int, surface: dict) -> tuple[dict, dict]:
             "ses_sign": 1 if fp.get("rho_escol", 0) >= 0 else -1,
         })
 
-    # Build bridge edges (majority-vote aggregation)
+    # Build bridge edges from weight matrix + significance
     bridges = []
-    for pair_key, pd_ in pair_data.items():
-        cols = pair_key.split("::")
-        if len(cols) != 2:
-            continue
-        key_a = col_to_key.get(cols[0])
-        key_b = col_to_key.get(cols[1])
-        if not key_a or not key_b:
-            continue
+    for i in range(k):
+        for j in range(i + 1, k):
+            gamma = W[i, j]
+            if np.isnan(gamma) or gamma == 0.0:
+                continue
 
-        # Majority vote: >50% of countries must have excl_zero
-        n_sig = sum(pd_["excl_zeros"])
-        n_total = len(pd_["excl_zeros"])
-        if n_sig / max(n_total, 1) <= 0.5:
-            continue
+            col_a = label_to_col[labels[i]]
+            col_b = label_to_col[labels[j]]
+            pair = tuple(sorted([col_a, col_b]))
+            sig = sig_index.get(pair)
 
-        # Median gamma across significant countries only
-        sig_gammas = [g for g, e in zip(pd_["gammas"], pd_["excl_zeros"]) if e]
-        if not sig_gammas:
-            continue
-        gamma = float(np.median(sig_gammas))
+            # Use significance from γ-surface if available
+            excl_zero = sig["excl_zero"] if sig else False
+            ci_lo = sig["ci_lo"] if sig else 0.0
+            ci_hi = sig["ci_hi"] if sig else 0.0
+            ci_width = sig["ci_width"] if sig else 0.0
+            nmi = sig["nmi"] if sig else 0.0
 
-        # CI from all estimates
-        all_los = [c[0] for c in pd_["cis"]]
-        all_his = [c[1] for c in pd_["cis"]]
+            if not excl_zero:
+                continue
 
-        # Fingerprint alignment
-        fp_a = constructs_fp.get(key_a, {})
-        fp_b = constructs_fp.get(key_b, {})
-        vec_a, vec_b = _fp_vec(fp_a), _fp_vec(fp_b)
-        fp_dot = float(np.dot(vec_a, vec_b))
-        fp_cos = _cosine(vec_a, vec_b)
+            key_a = label_to_key[labels[i]]
+            key_b = label_to_key[labels[j]]
 
-        dot_consistent = True
-        if abs(fp_dot) > 1e-8 and abs(gamma) > 1e-8:
-            dot_consistent = np.sign(fp_dot) == np.sign(gamma)
+            # Fingerprint alignment
+            fp_a = constructs_fp.get(key_a, {})
+            fp_b = constructs_fp.get(key_b, {})
+            vec_a, vec_b = _fp_vec(fp_a), _fp_vec(fp_b)
+            fp_dot = float(np.dot(vec_a, vec_b))
+            fp_cos = _cosine(vec_a, vec_b)
 
-        bridges.append({
-            "from": key_a,
-            "to": key_b,
-            "gamma": round(gamma, 6),
-            "ci_lo": round(float(np.median(all_los)), 6),
-            "ci_hi": round(float(np.median(all_his)), 6),
-            "ci_width": round(float(np.median(all_his) - np.median(all_los)), 6),
-            "excl_zero": True,
-            "n_countries_sig": n_sig,
-            "n_countries_total": n_total,
-            "pct_sig": round(n_sig / n_total, 3),
-            "nmi": 0.0,
-            "fingerprint_dot": round(fp_dot, 6),
-            "fingerprint_cos": round(fp_cos, 6),
-            "dot_sign_consistent": bool(dot_consistent),
-        })
+            dot_consistent = True
+            if abs(fp_dot) > 1e-8 and abs(gamma) > 1e-8:
+                dot_consistent = np.sign(fp_dot) == np.sign(gamma)
+
+            bridges.append({
+                "from": key_a,
+                "to": key_b,
+                "gamma": round(float(gamma), 6),
+                "ci_lo": round(float(ci_lo), 6),
+                "ci_hi": round(float(ci_hi), 6),
+                "ci_width": round(float(ci_width), 6),
+                "excl_zero": True,
+                "nmi": round(float(nmi), 6),
+                "fingerprint_dot": round(fp_dot, 6),
+                "fingerprint_cos": round(fp_cos, 6),
+                "dot_sign_consistent": bool(dot_consistent),
+            })
 
     kg = {
-        "version": f"v1_wvs_w{wave}",
-        "dataset": f"wvs_w{wave}_aggregate",
-        "description": f"WVS Wave {wave} ({len(constructs)} constructs, "
-                       f"{len(bridges)} bridges, aggregate across countries)",
+        "version": f"v2_wvs_w{wave}_{country}",
+        "dataset": f"wvs_w{wave}_{country.lower()}",
+        "description": f"WVS Wave {wave} {country}: {len(constructs)} constructs, "
+                       f"{len(bridges)} bridges",
         "generated": datetime.now().isoformat(),
         "metadata": {
             "wave": wave,
+            "country": country,
             "year": {3: 1996, 4: 2000, 5: 2007, 6: 2012, 7: 2018}.get(wave),
             "n_constructs": len(constructs),
             "n_bridges": len(bridges),
             "n_domains": len(domains),
-            "aggregation": "majority_vote_excl_zero_gt50pct",
+            "n_respondents": fp_raw.get("n_respondents", 0),
             "ses_vars": ["sexo", "edad", "escol", "Tam_loc"],
         },
         "domains": domains,
@@ -287,46 +256,60 @@ def build_wave_kg(wave: int, surface: dict) -> tuple[dict, dict]:
     return kg, fp_v2
 
 
-def main():
-    parser = argparse.ArgumentParser(
-        description="Build per-wave WVS KG ontologies from all-wave γ-surface")
-    parser.add_argument("--waves", type=int, nargs="+", default=VALID_WAVES,
-                        help=f"Waves to build (default: {VALID_WAVES})")
-    args = parser.parse_args()
+def run_wave(wave: int, country: str | None, surface: dict) -> None:
+    """Build KGs for one wave (all countries or single)."""
+    manifest_path = ALLWAVE_MATRIX_DIR / f"W{wave}" / "manifest.json"
+    if not manifest_path.exists():
+        print(f"  W{wave}: no manifest found")
+        return
+    manifest = json.load(open(manifest_path))
+    all_countries = sorted(manifest["countries"])
+    countries = [country] if country else all_countries
 
-    print("Loading all-wave γ-surface...")
-    surface = _load_allwave_surface()
-    print(f"  {len(surface['estimates'])} estimates")
+    out_dir = DATA / "wvs_kg" / f"W{wave}"
+    out_dir.mkdir(parents=True, exist_ok=True)
 
-    for wave in sorted(args.waves):
-        print(f"\n{'='*60}")
-        print(f"  Building KG for Wave {wave}")
-        print(f"{'='*60}")
+    print(f"\n  W{wave}: {len(countries)} countries, {manifest['n_constructs']} constructs")
 
-        kg, fp_v2 = build_wave_kg(wave, surface)
-        if not kg:
+    n_ok = 0
+    total_bridges = 0
+    for i, c in enumerate(countries):
+        result = build_country_kg(wave, c, surface)
+        if result is None:
             continue
+        kg, fp_v2 = result
 
-        kg_path = DATA / f"wvs_kg_ontology_w{wave}.json"
-        fp_path = DATA / f"wvs_ses_fingerprints_v2_w{wave}.json"
-
-        with open(kg_path, "w") as f:
+        with open(out_dir / f"{c}_kg.json", "w") as f:
             json.dump(kg, f, indent=2)
-        with open(fp_path, "w") as f:
+        with open(out_dir / f"{c}_fp.json", "w") as f:
             json.dump(fp_v2, f, indent=2)
 
         n_bridges = kg["metadata"]["n_bridges"]
-        n_constructs = kg["metadata"]["n_constructs"]
-        consistent = sum(1 for b in kg["bridges"] if b["dot_sign_consistent"])
-        pct = consistent / n_bridges * 100 if n_bridges else 0
+        total_bridges += n_bridges
+        n_ok += 1
 
-        print(f"  Constructs: {n_constructs}")
-        print(f"  Bridges: {n_bridges}")
-        print(f"  Fingerprint-gamma consistency: {consistent}/{n_bridges} ({pct:.1f}%)")
-        if kg["bridges"]:
-            gammas = [abs(b["gamma"]) for b in kg["bridges"]]
-            print(f"  |gamma| median: {np.median(gammas):.4f}, max: {np.max(gammas):.4f}")
-        print(f"  Saved: {kg_path.name}, {fp_path.name}")
+        if (i + 1) % 10 == 0 or i == 0 or len(countries) <= 5:
+            print(f"    [{i+1}/{len(countries)}] {c}: {n_bridges} bridges")
+
+    print(f"  W{wave}: {n_ok}/{len(countries)} countries, {total_bridges} total bridges")
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Build per-country per-wave WVS KG ontologies")
+    parser.add_argument("--waves", type=int, nargs="+", default=VALID_WAVES,
+                        help=f"Waves to build (default: {VALID_WAVES})")
+    parser.add_argument("--country", default=None,
+                        help="Single country code (default: all)")
+    args = parser.parse_args()
+
+    print("Loading all-wave γ-surface...")
+    surface_path = NAVEGADOR_DATA / "data" / "results" / "wvs_all_wave_gamma_surface.json"
+    surface = json.load(open(surface_path))
+    print(f"  {len(surface['estimates'])} estimates")
+
+    for wave in sorted(args.waves):
+        run_wave(wave, args.country, surface)
 
     print("\nDone.")
 

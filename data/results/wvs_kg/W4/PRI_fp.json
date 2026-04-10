@@ -1,0 +1,219 @@
+{
+  "metadata": {
+    "source": "WVS_W4_PRI",
+    "country": "PRI",
+    "wave": 4,
+    "n_respondents": 720,
+    "ses_vars": [
+      "sexo",
+      "edad",
+      "escol",
+      "Tam_loc"
+    ],
+    "generated": "2026-04-10T00:18:51.407290"
+  },
+  "constructs": {
+    "WVS_E|autocracy_support": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": -0.011383,
+      "rho_sexo": -0.030795,
+      "rho_edad": 0.040841,
+      "ses_magnitude": 0.030254,
+      "dominant_dim": "edad"
+    },
+    "WVS_A|child_qualities_autonomy_self_expression": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": -0.092228,
+      "rho_sexo": 0.004186,
+      "rho_edad": -0.144876,
+      "ses_magnitude": 0.099184,
+      "dominant_dim": "edad"
+    },
+    "WVS_A|child_qualities_conformity_tradition": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": 0.013045,
+      "rho_sexo": 0.102423,
+      "rho_edad": 0.012772,
+      "ses_magnitude": 0.060066,
+      "dominant_dim": "sexo"
+    },
+    "WVS_A|child_qualities_prosocial_diligence": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": 0.020044,
+      "rho_sexo": -0.143705,
+      "rho_edad": -0.035458,
+      "ses_magnitude": 0.086236,
+      "dominant_dim": "sexo"
+    },
+    "WVS_F|civic_dishonesty_tolerance": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": 0.065672,
+      "rho_sexo": -0.020214,
+      "rho_edad": -0.26926,
+      "ses_magnitude": 0.160439,
+      "dominant_dim": "edad"
+    },
+    "WVS_E|confidence_in_civil_society_organizations": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": -0.023082,
+      "rho_sexo": 0.041361,
+      "rho_edad": 0.049951,
+      "ses_magnitude": 0.039743,
+      "dominant_dim": "edad"
+    },
+    "WVS_E|confidence_in_domestic_institutions": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": -0.009303,
+      "rho_sexo": -0.022842,
+      "rho_edad": -0.188463,
+      "ses_magnitude": 0.109737,
+      "dominant_dim": "edad"
+    },
+    "WVS_E|confidence_in_international_organizations": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": -0.074383,
+      "rho_sexo": 0.028742,
+      "rho_edad": -0.013189,
+      "ses_magnitude": 0.046665,
+      "dominant_dim": "Tam_loc"
+    },
+    "WVS_E|democratic_system_evaluation": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": 0.000641,
+      "rho_sexo": -0.082317,
+      "rho_edad": 0.102326,
+      "ses_magnitude": 0.075822,
+      "dominant_dim": "edad"
+    },
+    "WVS_E|economic_ideology": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": -0.046474,
+      "rho_sexo": 0.042493,
+      "rho_edad": 0.083921,
+      "ses_magnitude": 0.060576,
+      "dominant_dim": "edad"
+    },
+    "WVS_D|gender_role_traditionalism": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": 0.016836,
+      "rho_sexo": 0.103297,
+      "rho_edad": -0.129574,
+      "ses_magnitude": 0.096165,
+      "dominant_dim": "edad"
+    },
+    "WVS_A|importance_of_life_domains": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": -0.055796,
+      "rho_sexo": 0.035032,
+      "rho_edad": 0.090224,
+      "ses_magnitude": 0.0645,
+      "dominant_dim": "edad"
+    },
+    "WVS_C|job_scarcity_gender_discrimination": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": 0.037129,
+      "rho_sexo": -0.004221,
+      "rho_edad": -0.066932,
+      "ses_magnitude": 0.044258,
+      "dominant_dim": "edad"
+    },
+    "WVS_C|job_scarcity_nativist_preference": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": 0.022635,
+      "rho_sexo": -0.003101,
+      "rho_edad": -0.062539,
+      "ses_magnitude": 0.038441,
+      "dominant_dim": "edad"
+    },
+    "WVS_F|life_autonomy_morality_permissiveness": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": 0.064222,
+      "rho_sexo": -0.030664,
+      "rho_edad": -0.275086,
+      "ses_magnitude": 0.16405,
+      "dominant_dim": "edad"
+    },
+    "WVS_E|offline_political_participation": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": -0.028793,
+      "rho_sexo": -0.134776,
+      "rho_edad": 0.023771,
+      "ses_magnitude": 0.080744,
+      "dominant_dim": "sexo"
+    },
+    "WVS_E|postmaterialist_values": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": 0.066834,
+      "rho_sexo": -0.053668,
+      "rho_edad": 0.054051,
+      "ses_magnitude": 0.058505,
+      "dominant_dim": "Tam_loc"
+    },
+    "WVS_F|religious_belief": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": -0.06893,
+      "rho_sexo": 0.114399,
+      "rho_edad": 0.041717,
+      "ses_magnitude": 0.080785,
+      "dominant_dim": "sexo"
+    },
+    "WVS_F|religious_practice_and_self_identification": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": -0.052497,
+      "rho_sexo": -0.132534,
+      "rho_edad": -0.19832,
+      "ses_magnitude": 0.141011,
+      "dominant_dim": "edad"
+    },
+    "WVS_F|sexual_and_reproductive_morality_permissiveness": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": 0.069437,
+      "rho_sexo": 0.047021,
+      "rho_edad": -0.222878,
+      "ses_magnitude": 0.137486,
+      "dominant_dim": "edad"
+    },
+    "WVS_A|social_intolerance_outgroups": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": 0.032439,
+      "rho_sexo": -0.103605,
+      "rho_edad": 0.106265,
+      "ses_magnitude": 0.087709,
+      "dominant_dim": "edad"
+    },
+    "WVS_E|societal_change_attitudes": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": 0.031621,
+      "rho_sexo": 0.059813,
+      "rho_edad": 0.10324,
+      "ses_magnitude": 0.071265,
+      "dominant_dim": "edad"
+    },
+    "WVS_A|subjective_wellbeing": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": -0.060072,
+      "rho_sexo": 0.131738,
+      "rho_edad": 0.117505,
+      "ses_magnitude": 0.107658,
+      "dominant_dim": "sexo"
+    },
+    "WVS_A|voluntary_association_belonging": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": 0.121148,
+      "rho_sexo": -0.060872,
+      "rho_edad": 0.086019,
+      "ses_magnitude": 0.092703,
+      "dominant_dim": "Tam_loc"
+    },
+    "WVS_C|work_ethic": {
+      "rho_escol": 0.0,
+      "rho_Tam_loc": -0.021815,
+      "rho_sexo": 0.048915,
+      "rho_edad": -0.303319,
+      "ses_magnitude": 0.17783,
+      "dominant_dim": "edad"
+    }
+  },
+  "items": {},
+  "domains": {}
+}
