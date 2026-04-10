@@ -903,6 +903,9 @@ See `docs/` folder for detailed guides:
 - `SANDBOX_README.md` - Docker sandbox usage
 - `SECURITY_TOOLS.md` - Security tools and scanning procedures
 - `WVS_INTEGRATION_PLAN.md` - World Values Survey integration plan (branch `wvs`)
+- `GRAPH_TRAVERSAL_ENGINE_PLAN.md` - GTE spec (Phases 0-5 design)
+- `PROPAGATOR_PROJECTOR_METHODS.md` - Technical methods report: Propagator (BP, PPR, spectral) + Projector (zones, temporal, SES geometry)
+- `MESSAGE_PASSING_SPEC.md` - BP/spectral/PPR mathematical specifications
 
 
 ## Julia Bridge (branch: julia_bridge)
@@ -1214,6 +1217,78 @@ data/wvs/F00011931-WVS_Time_Series_1981-2022_csv_v5_0.zip → navegador_data
 
 The full WVS Time Series CSV is 1.38GB (1046 columns). `compute_gte_fingerprints.py` uses `_load_timeseries_slim()` which reads only needed A-codes (~240 columns, ~800MB) and renames SES columns (X001→Q260, X003→Q262, X025A_01→Q275, X049→G_TOWNSIZE) for `harmonize_ses()` compatibility. Processes all 155 country-wave pairs in ~2 minutes.
 
+## Graph Traversal Engine — Phases 1-4 ✅ COMPLETE (2026-04-09)
+
+Full query engine over the WVS γ-surface: Structure + Dynamics + Geometry + Narrative.
+
+### Package: `graph_traversal_engine/`
+
+| Module | Phase | Purpose |
+|--------|-------|---------|
+| `context.py` | 1 | Dataclasses: `Context`, `ContextGraph` (with `present_constructs`), `Fingerprint`, `CampAssignment`, `GraphFamily` |
+| `data_loader.py` | 1 | Wave-aware loading from `navegador_data` + `data/results/wvs_kg/` fallback. Handles 3 key formats (bare, domain-prefixed, domain-suffixed). Multi-wave manifest merging. |
+| `wvs_ontology.py` | 1 | `WVSOntologyQuery`: profiles, neighbors, Dijkstra paths, camps, cross-context comparison with construct-set intersection |
+| `propagator.py` | 2 | 3 methods: BP lift matrix, on-the-fly PPR (power iteration), on-the-fly spectral heat kernel. Consensus scoring across methods. |
+| `projector.py` | 3 | Spectral neighbors, zone aggregation, temporal trajectory (Fiedler trend), SES geometry characterization, transfer confidence scoring |
+| `synthesizer.py` | 4 | `NarrativeSynthesizer`: prompt builder, auto-caveats, optional LLM callout. Returns structured markdown without LLM. |
+| `engine.py` | All | `GraphTraversalEngine.query()` chains all 4 phases. `compare_countries()`, `compare_waves()` for batch queries. |
+
+### Quick Start
+
+```python
+from graph_traversal_engine import GraphTraversalEngine
+
+engine = GraphTraversalEngine(countries=["MEX", "USA", "JPN"])
+result = engine.query(
+    "gender_role_traditionalism|WVS_D",
+    "MEX", wave=7, direction=-1,
+)
+print(result.narrative)  # Structured markdown report
+for eff in result.propagation.consensus[:5]:
+    print(f"  {eff.construct}: dir={eff.direction:+d}, agreement={eff.agreement_score:.0%}")
+```
+
+### Propagator Methods (Phase 2)
+
+| Method | Data Source | On-the-fly? | Sign Restoration |
+|--------|------------|-------------|-----------------|
+| BP lift | Pre-computed `_bp.json` lift matrix | No | `sign(γ)` direct, Dijkstra path sign for multi-hop |
+| PPR | Weight matrix → power iteration (~2ms) | Yes | Dijkstra path sign accumulation |
+| Spectral | Normalized Laplacian eigendecomp → heat kernel H(t) (~1ms) | Yes | Dijkstra path sign accumulation |
+
+**Consensus**: top-N membership across methods → agreement score (0-1) → "high"/"medium"/"low" confidence.
+
+**Method agreement (MEX W7)**: BP-spectral r=0.97, BP-PPR r=0.91, PPR-spectral r=0.82.
+
+### Projector Components (Phase 3)
+
+| Component | Output |
+|-----------|--------|
+| Spectral neighbors | Nearest countries by Laplacian eigenvalue L2 distance |
+| Zone aggregation | Per-zone Fiedler stats, sign consistency |
+| Temporal trajectory | Fiedler trend (tightening/stable/loosening), mediator stability |
+| SES geometry | Mean fingerprint of top effects, dominant dimension, within-dim fraction |
+| Transfer confidence | 0-1 score: 50% spectral + 30% zone + 20% Fiedler stability |
+
+### Data Resolution (multi-wave)
+
+Weight matrices from `navegador_data/data/tda/allwave/matrices/W{n}/`. Fingerprints fall back through: (1) `navegador_data/data/gte/W{n}/fingerprints/`, (2) `navegador_data/data/gte/fingerprints/` (W7 legacy), (3) `data/results/wvs_kg/W{n}/{COUNTRY}_fp.json`. Per-wave KGs (221 total) at `data/results/wvs_kg/W{3-7}/`.
+
+W5 loads 31 fingerprints and 28 present constructs; W7 loads 55 fingerprints and 49 present. Cross-wave `compare_with()` restricts to shared construct intersection.
+
+### Tests
+
+```bash
+python -m pytest tests/unit/test_graph_traversal_engine.py -v  # 49 tests, ~2s
+```
+
+### Documentation
+
+| File | Contents |
+|------|----------|
+| `docs/PROPAGATOR_PROJECTOR_METHODS.md` | Technical report: mathematical formulations, method motivation, interpretation guide (~3800 words) |
+| `docs/GRAPH_TRAVERSAL_ENGINE_PLAN.md` | Original spec (Phases 0-5 design) |
+
 ---
 
 ## Current Development State (Handoff)
@@ -1222,25 +1297,29 @@ The full WVS Time Series CSV is 1.38GB (1046 columns). `compute_gte_fingerprints
 
 ### What Was Just Done (this session)
 
-1. **GTE all-waves pipeline**: Extended camps, fingerprints, and message passing (BP/spectral/PPR) from W7-only to **all 5 waves (W3-W7)**. 155 country-wave combinations now have full GTE data. See "GTE All-Waves Pipeline" section above.
+1. **GTE Phases 1-4 implemented** in `graph_traversal_engine/` package (7 modules, ~1960 lines). Full pipeline: Structure → Dynamics → Geometry → Narrative. Single entry point: `GraphTraversalEngine.query()`.
 
-2. **Wave-aware MP scripts**: `mp_utils.py`, `mp_belief_propagation.py`, `mp_spectral_diffusion.py`, `mp_ppr_influence.py` all accept `--wave` arg. Load from `allwave/matrices/W{n}/`.
+2. **Phase 2 Propagator**: Three methods (BP lift, on-the-fly PPR, on-the-fly spectral heat kernel) with consensus scoring. Method agreement BP-spectral r=0.97. Cross-country divergence validated (MEX vs USA vs JPN produce different top effects for same anchor).
 
-3. **New scripts**: `compute_gte_camps.py`, `compute_gte_fingerprints.py` (slim Time Series loader), `run_gte_allwaves.py` (orchestration), `analyze_gte_allwaves.py` (cross-wave analysis + 6 plots + report).
+3. **Phase 3 Projector**: Spectral distance projection, zone aggregation, temporal Fiedler trajectories, SES geometry characterization, transfer confidence scoring.
 
-4. **Cross-wave analysis findings**: Education (escol) <2% in W3-W6 but 35.5% in W7 — structural break. 1,447 camp flips across 68 countries. immigrant_origin_status emerges as dominant hub from W5.
+4. **Phase 4 Synthesizer + Engine**: Structured markdown narrative with auto-caveats. `compare_countries()` and `compare_waves()` batch APIs.
+
+5. **Multi-wave data loading**: Wave-aware path resolution for matrices, fingerprints, camps, MP. Three key format normalization (bare/prefixed/suffixed). Construct-set intersection for cross-wave comparison.
+
+6. **49 unit tests** covering all 4 phases + engine orchestration (1.9s).
+
+7. **Technical report**: `docs/PROPAGATOR_PROJECTOR_METHODS.md` — 353 lines, mathematical formulations for all methods, interpretation guide.
 
 ### What's Next (suggested priorities)
 
-1. **GTE Phases 1-4 implementation** — `WVSOntologyQuery`, `Propagator`, `Projector`, `NarrativeSynthesizer`. Phase 0 data complete for all waves.
+1. **Agent integration** — Wire `GraphTraversalEngine` + `OntologyQuery` + `BayesianMultiHopPredictor` into `agent.py` as LangGraph tools.
 
-2. **Per-wave KG ontology** — `build_wvs_kg_ontology.py` is still W7-only. Generalize for per-wave KGs.
+2. **Full Bayesian prediction** — Export ordered-logit θ/β from Julia sweep. See `multi_hop_prediction.py` roadmap.
 
-3. **Agent integration** — Wire OntologyQuery + MultiHopPredictor + BayesianMultiHopPredictor + GTE into `agent.py` as LangGraph tools.
+3. **Dashboard integration** — Network visualizations + prediction engine + cross-wave comparison.
 
-4. **Full Bayesian prediction** — Export ordered-logit θ/β from Julia sweep. See `multi_hop_prediction.py` roadmap.
-
-5. **Dashboard integration** — Network visualizations + prediction engine + cross-wave comparison.
+4. **Per-wave camps/fingerprints to navegador_data** — W3-W6 per-wave camps and MP are computed but not pushed to navegador_data (only W7 legacy flat dirs exist there). GTE loader falls back to `wvs_kg/W{n}/` fingerprints which work.
 
 ### What's Blocked / Constraints
 
@@ -1248,6 +1327,7 @@ The full WVS Time Series CSV is 1.38GB (1046 columns). `compute_gte_fingerprints
 - **Time Series CSV is 1.38GB**: `compute_gte_fingerprints.py` slim loader needs ~1GB free RAM.
 - **Construct set overlap**: W3=24, W7=55 constructs. Cross-wave comparisons use intersection (~20-24).
 - **Bootstrap samples not stored**: Bayesian predictor derives σ from CIs. Full 200 draws/pair (~157 MB) requires Julia sweep modification.
+- **Per-wave BP/PPR/spectral**: Only W7 has pre-computed MP in navegador_data. For other waves, Propagator computes PPR and spectral on-the-fly (fast: ~3ms for 55-node graph) but BP lift requires pre-computed data.
 
 ### Critical Data Locations
 
@@ -1256,19 +1336,15 @@ The full WVS Time Series CSV is 1.38GB (1046 columns). `compute_gte_fingerprints
 | All-wave γ-surface (123K est) | `navegador_data/data/results/wvs_all_wave_gamma_surface.json` | 49 MB, 225 contexts |
 | W7 geographic sweep (68K est) | `navegador_data/data/results/wvs_geographic_sweep_w7.json` | 29 MB |
 | Per-wave weight matrices | `navegador_data/data/tda/allwave/matrices/W{3-7}/` | Per-country CSVs + manifest |
-| Per-wave camps | `navegador_data/data/gte/W{3-7}/camps/` | W7 also in `gte/camps/` (legacy) |
-| Per-wave fingerprints | `navegador_data/data/gte/W{3-7}/fingerprints/` | W7 also in `gte/fingerprints/` (legacy) |
-| Per-wave MP (W3-W6) | `navegador_data/data/tda/message_passing/W{3-6}/` | BP, spectral, PPR per country |
-| W7 MP (legacy) | `navegador_data/data/tda/message_passing/` | Flat dir, 66 countries |
+| Per-wave camps (W7 only) | `navegador_data/data/gte/camps/` | W7 legacy flat dir |
+| Per-wave fingerprints (W7 only) | `navegador_data/data/gte/fingerprints/` | W7 legacy flat dir |
+| Per-country KGs (all waves) | `data/results/wvs_kg/W{3-7}/` | 221 `{COUNTRY}_kg.json` + `_fp.json` files |
+| W7 MP (legacy) | `navegador_data/data/tda/message_passing/` | Flat dir, 66 countries (BP, PPR, spectral) |
 | Cross-wave analysis | `data/results/gte_allwave_analysis_report.md` | Report + JSON + 6 plots |
-| WVS KG (W7) | `data/results/wvs_kg_ontology.json` | 56 constructs, 395 bridges |
-| WVS L0 fingerprints | `data/results/wvs_l0_fingerprints.json` | 320 items, MEX W7 |
-| WVS L1 fingerprints (OQ) | `data/results/wvs_ses_fingerprints_v2.json` | For OntologyQuery |
 | Los_mex KG | `data/results/kg_ontology_v2.json` | 93 constructs, 984 bridges |
 | Raw WVS ZIPs | `data/wvs/*.zip` (symlinks to navegador_data) | Wave 7 + Time Series |
-| Cross-country geometry | `data/results/cross_country_geometry_report.md` | Mantel, clustering, mediators |
-| V-Dem + interactions | `data/results/macro_indicator_report.md` | Democracy, interactions |
 | GTE spec | `docs/GRAPH_TRAVERSAL_ENGINE_PLAN.md` | Phases 0-5 design |
+| GTE methods report | `docs/PROPAGATOR_PROJECTOR_METHODS.md` | Propagator + Projector math |
 
 ### Quick Start for Next Instance
 
@@ -1276,26 +1352,29 @@ The full WVS Time Series CSV is 1.38GB (1046 columns). `compute_gte_fingerprints
 # Pull latest navegador_data
 cd /workspaces/navegador_data && git pull && cd /workspaces/navegador
 
-# Verify per-wave data
-for w in 3 4 5 6 7; do echo -n "W$w: camps="; ls /workspaces/navegador_data/data/gte/W${w}/camps/ 2>/dev/null | wc -l; done
+# Run GTE engine (loads in ~1s, query in ~0.1s)
+python -c "
+from graph_traversal_engine import GraphTraversalEngine
+engine = GraphTraversalEngine(countries=['MEX','USA','JPN'])
+r = engine.query('gender_role_traditionalism|WVS_D', 'MEX', direction=-1)
+print(r.narrative[:500])
+for e in r.propagation.consensus[:5]:
+    print(f'  {e.construct}: dir={e.direction:+d}, agree={e.agreement_score:.0%}')
+"
 
-# Run cross-wave analysis (reads existing JSONs, ~30s)
-python scripts/debug/analyze_gte_allwaves.py
+# Run GTE tests (49 tests, ~2s)
+python -m pytest tests/unit/test_graph_traversal_engine.py -v
 
 # Run all prediction tests (51 tests, 0.2s)
 python -m pytest tests/unit/test_multi_hop_prediction.py tests/unit/test_wvs_l0_fingerprints.py -v
 
-# Load Bayesian predictor (los_mex)
+# Cross-country comparison
 python -c "
-from opinion_ontology import OntologyQuery
-from multi_hop_prediction import BayesianMultiHopPredictor
-oq = OntologyQuery()
-bp = BayesianMultiHopPredictor(oq, n_draws=500, seed=42)
-r = bp.predict('HAB|structural_housing_quality', 'REL|personal_religiosity')
-print(f'signal={r[\"signal_mean\"]:+.4f}, CI={r[\"signal_ci_95\"]}, P(+)={r[\"p_positive\"]:.3f}')
-print(f'paths={r[\"n_unique_paths\"]}, diversity={r[\"path_diversity\"]:.1%}')
+from graph_traversal_engine import GraphTraversalEngine
+engine = GraphTraversalEngine(countries=['MEX','USA','JPN','DEU','BRA'])
+results = engine.compare_countries('gender_role_traditionalism|WVS_D', ['MEX','USA','JPN'], direction=-1)
+for c, r in results.items():
+    top3 = [e.construct.split('|')[0] for e in r.propagation.consensus[:3]]
+    print(f'{c}: {top3}')
 "
-
-# MP scripts now accept --wave:
-python scripts/debug/mp_belief_propagation.py --wave 5 --country MEX
 ```
