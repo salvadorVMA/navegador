@@ -61,7 +61,13 @@ class OntologyQuery:
         fp_path: Path = _FP_PATH,
         kg_path: Path = _KG_PATH,
         dataset: str = "los_mex",
+        wave: Optional[int] = None,
     ) -> None:
+        # If wave is specified for WVS, auto-resolve to per-wave files
+        if wave is not None and dataset == "wvs":
+            _results = ROOT / "data" / "results"
+            fp_path = _results / f"wvs_ses_fingerprints_v2_w{wave}.json"
+            kg_path = _results / f"wvs_kg_ontology_w{wave}.json"
         fp_path = Path(fp_path) if not isinstance(fp_path, Path) else fp_path
         kg_path = Path(kg_path) if not isinstance(kg_path, Path) else kg_path
         self._dataset = dataset
