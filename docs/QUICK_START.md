@@ -1,146 +1,133 @@
-# Claude1 - Quick Start Card
+# Navegador - Quick Start
 
-## 🚀 Get Started in 3 Commands
+## Prerequisites
 
-```bash
-# 1. Build the sandbox (first time only, ~2 min)
-./run_sandbox.sh build
+- **Python 3.13** via conda (env name: `nvg_py13_env`)
+- **Julia 1.12.5** via juliaup (for numeric sweeps)
+- API keys: OpenAI and/or Anthropic (set in `.env`)
 
-# 2. Run all tests (~2 min)
-./run_sandbox.sh test
-
-# 3. Open interactive shell
-./run_sandbox.sh shell
-```
-
----
-
-## 📊 What Did Claude1 Build?
-
-| Component | Status | Benefit |
-|-----------|--------|---------|
-| **Configuration System** | ✅ Complete | Portable paths, error handling |
-| **Cost Optimization** | ✅ Complete | 70% reduction via caching |
-| **Reliability Fixes** | ✅ Complete | Race condition prevention |
-| **Meta-Prompting** | ✅ Complete | 25% token reduction + quality scoring |
-| **Docker Sandbox** | ✅ Complete | Safe isolated testing |
-
----
-
-## 📁 Key Files
-
-### Start Here
-- **[CLAUDE1_COMPLETE_SUMMARY.md](CLAUDE1_COMPLETE_SUMMARY.md)** - Full overview
-- **[SANDBOX_README.md](SANDBOX_README.md)** - Sandbox guide
-
-### Detailed Docs
-- **[META_PROMPTING_GUIDE.md](META_PROMPTING_GUIDE.md)** - Prompt optimization
-- **[QUICK_FIXES_INTEGRATION_GUIDE.md](QUICK_FIXES_INTEGRATION_GUIDE.md)** - Dashboard integration
-- **[DOCKER_SANDBOX_STRATEGY.md](DOCKER_SANDBOX_STRATEGY.md)** - Sandbox architecture
-
-### Code
-- **[meta_prompting.py](meta_prompting.py)** - Prompt management (672 lines)
-- **[prompt_integration.py](prompt_integration.py)** - Quality scoring (471 lines)
-- **[quick_fixes.py](quick_fixes.py)** - Reliability improvements (418 lines)
-- **[config.py](config.py)** - Configuration system (144 lines)
-
----
-
-## 🎯 Quick Commands
+## Setup
 
 ```bash
-# Testing
-./run_sandbox.sh test        # Run all tests
-./run_sandbox.sh shell       # Interactive development
+# 1. Create conda environment (first time only)
+conda env create -f config/environment.yml
+conda activate nvg_py13_env
 
-# Monitoring
-./run_sandbox.sh logs        # View container logs
-./run_sandbox.sh status      # Check container status
+# 2. Install Julia (first time only)
+curl -fsSL https://install.julialang.org | sh -s -- --yes
+export PATH="$HOME/.juliaup/bin:$PATH"
 
-# Dashboard
-./run_sandbox.sh dashboard   # Start on port 8050
+# 3. Set up environment variables
+cp .env.example .env
+# Edit .env with your API keys (OPENAI_API_KEY, ANTHROPIC_API_KEY)
 
-# Cleanup
-./run_sandbox.sh stop        # Stop container
-./run_sandbox.sh clean       # Remove everything
+# 4. Install TDA dependencies (optional, for topological analysis)
+pip install ripser persim pot
 ```
 
----
+## Key Entry Points
 
-## 📈 Expected Results
-
-### Tests Should Show
-- ✅ All imports successful
-- ✅ Config paths resolve
-- ✅ Race conditions prevented (1/5 threads succeed)
-- ✅ Quality scoring: 0-100
-- ✅ Prompt generation working
-
-### Performance Targets
-- 🎯 70% cache hit rate
-- 🎯 25% token reduction
-- 🎯 Quality scores >80
-- 🎯 <3s response times
-
----
-
-## ⚡ Branch Info
+### CLI Agent
 
 ```bash
-Branch: Claude1
-Commits: 3
-Files changed: 23
-Lines added: 6,000+
-Container: navegador-claude1:latest (4.22GB)
-Status: ✅ Ready for testing
+conda activate nvg_py13_env
+python main.py
 ```
 
----
+Interactive conversational interface for querying survey insights.
 
-## 🔐 Safety
-
-✅ **Complete isolation** - No impact on production  
-✅ **Separate data** - Own ChromaDB, cache, logs  
-✅ **Read-only code** - Can't modify by accident  
-✅ **Rollback ready** - Git branch unchanged  
-✅ **Destroy/rebuild** - Anytime, no consequences
-
----
-
-## 🐛 Troubleshooting
+### Web Dashboard
 
 ```bash
-# Container won't start?
-docker ps -a    # Check status
-./run_sandbox.sh clean && ./run_sandbox.sh build
-
-# Tests fail?
-./run_sandbox.sh logs    # Check logs
-./run_sandbox.sh shell   # Debug interactively
-
-# Out of space?
-docker system df         # Check usage
-./run_sandbox.sh clean   # Remove volumes
+conda activate nvg_py13_env
+python dashboard.py
+# Opens on http://localhost:8050
 ```
 
----
+### Graph Traversal Engine
 
-## 📞 Need Help?
+```python
+from graph_traversal_engine import GraphTraversalEngine
 
-1. Check [SANDBOX_README.md](SANDBOX_README.md)
-2. Review [CLAUDE1_COMPLETE_SUMMARY.md](CLAUDE1_COMPLETE_SUMMARY.md)
-3. Look at test output: `./run_sandbox.sh test`
-4. View logs: `./run_sandbox.sh logs`
+engine = GraphTraversalEngine(countries=["MEX", "USA", "JPN"])
+result = engine.query(
+    "gender_role_traditionalism|WVS_D",
+    "MEX", wave=7, direction=-1,
+)
+print(result.narrative)
+```
 
----
+### OntologyQuery (los_mex)
 
-## ✅ Next Steps
+```python
+from opinion_ontology import OntologyQuery
 
-1. **Build**: `./run_sandbox.sh build`
-2. **Test**: `./run_sandbox.sh test`
-3. **Review**: Check [CLAUDE1_COMPLETE_SUMMARY.md](CLAUDE1_COMPLETE_SUMMARY.md)
-4. **Decide**: Integrate or iterate?
+oq = OntologyQuery()
+neighborhood = oq.get_neighborhood("agg_personal_religiosity")
+path = oq.find_path("agg_personal_religiosity", "agg_structural_housing_quality")
+```
 
----
+## Running Tests
 
-**All work is safe, isolated, and ready to test!** 🚀
+```bash
+conda activate nvg_py13_env
+
+# All unit tests
+python -m pytest tests/unit/ -v
+
+# Specific test suites
+python -m pytest tests/unit/test_graph_traversal_engine.py -v    # GTE (49 tests, ~2s)
+python -m pytest tests/unit/test_ses_regression.py -v             # Bridge estimators (76 tests)
+python -m pytest tests/unit/test_wvs_integration.py -v            # WVS integration (135 tests)
+python -m pytest tests/unit/test_bridge_estimators_v2.py -v       # DR/Bayesian/MRP (36 tests)
+
+# Integration tests (require API keys)
+python -m pytest tests/integration/ -v
+```
+
+## Running Julia Sweeps
+
+```bash
+export PATH="$HOME/.juliaup/bin:$PATH"
+cd ../navegador_julia_bridge/julia
+julia -t 8 --project=. scripts/run_v5_sweep.jl
+# ~40-45 min on 8 cores, outputs to navegador/data/results/
+```
+
+## Running Pipelines (Prefect)
+
+```bash
+conda activate nvg_py13_env
+
+# SES realignment sweep (los_mex + WVS)
+python scripts/pipeline/ses_realignment_pipeline.py --all --dry-run   # preview
+python scripts/pipeline/ses_realignment_pipeline.py --los-mex         # los_mex only (~40 min)
+
+# TDA pipeline (all waves)
+python scripts/pipeline/allwave_tda_pipeline.py --all --skip-gw       # ~6 min
+
+# GTE all-waves (camps + fingerprints + MP)
+python scripts/debug/run_gte_allwaves.py --waves 3 4 5 6 7
+```
+
+## Project Structure
+
+See `FOLDER_STRUCTURE.md` in the project root for the full directory layout.
+
+## Key Documentation
+
+| Document | Purpose |
+|----------|---------|
+| `CLAUDE.md` | Project state, handoff protocol, all module documentation |
+| `FOLDER_STRUCTURE.md` | Directory layout guide |
+| `docs/PROPAGATOR_PROJECTOR_METHODS.md` | GTE mathematical methods |
+| `docs/MESSAGE_PASSING_SPEC.md` | Message passing mathematics |
+| `docs/BRIDGE_ESTIMATORS_GUIDE.md` | All 6 bridge estimator methods |
+| `docs/WVS_INTEGRATION_PLAN.md` | WVS integration plan |
+| `docs/SECURITY_TOOLS.md` | Security scanning procedures |
+
+## Data
+
+- **Los_mex survey data**: `data/encuestas/los_mex_dict.json` (~191MB, Git LFS)
+- **WVS data**: Download from https://www.worldvaluessurvey.org/ into `data/wvs/`
+- **Large result files**: Separate repo at https://github.com/salvadorVMA/navegador_data

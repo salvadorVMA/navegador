@@ -105,8 +105,8 @@ def phase2_fingerprints(waves: list[int]) -> None:
         import math
         from scipy.stats import spearmanr
         import warnings
-        warnings.filterwarnings("ignore", category=spearmanr.__module__
-                                if hasattr(spearmanr, '__module__') else "scipy")
+        from scipy.stats import ConstantInputWarning
+        warnings.filterwarnings("ignore", category=ConstantInputWarning)
 
         svs, overrides = _get_svs_and_overrides()
         SES_DIMS = ["escol", "Tam_loc", "sexo", "edad"]

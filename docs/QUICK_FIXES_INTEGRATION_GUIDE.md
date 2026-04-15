@@ -1,3 +1,9 @@
+# ARCHIVED -- Quick Fixes Integration Guide
+
+> **This document is archived.** It describes dashboard integration fixes from January 2026. These fixes have been applied. The project focus has since shifted to SES bridge estimation, WVS integration, and the Graph Traversal Engine. Retained for historical reference.
+
+---
+
 # Quick Fixes Integration Guide
 
 **Purpose**: Step-by-step guide to integrate reliability fixes into dashboard.py

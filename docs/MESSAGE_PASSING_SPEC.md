@@ -1,5 +1,7 @@
 # Message Passing on WVS Belief Networks
-## Technical Specification — Mathematics, Design, Pitfalls, Interpretation
+## Technical Specification -- Mathematics, Design, Pitfalls, Interpretation
+
+> **Scope note:** This document is the **mathematical reference** for the message passing framework: formal notation, algorithm specifications, convergence conditions, and design rationale. For the **implementation guide** with code fragments, worked examples, and CLI usage, see [wvs_message_passing.md](wvs_message_passing.md).
 
 ---
 

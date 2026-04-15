@@ -36,6 +36,30 @@ from scripts.debug.mp_utils import (
 )
 
 
+def _find_largest_component(adj: np.ndarray) -> list[int]:
+    """Return node indices of the largest connected component via BFS."""
+    n = adj.shape[0]
+    visited = [False] * n
+    best = []
+    for start in range(n):
+        if visited[start]:
+            continue
+        comp = []
+        queue = [start]
+        while queue:
+            node = queue.pop(0)
+            if visited[node]:
+                continue
+            visited[node] = True
+            comp.append(node)
+            for j in range(n):
+                if adj[node, j] and not visited[j]:
+                    queue.append(j)
+        if len(comp) > len(best):
+            best = comp
+    return sorted(best)
+
+
 def compute_camps(country: str, wave: int) -> dict:
     """Compute Fiedler bipartition and structural balance for one country."""
     W, labels = load_weight_matrix(country, wave=wave)
@@ -43,13 +67,21 @@ def compute_camps(country: str, wave: int) -> dict:
 
     # Build unsigned Laplacian from |W| (NaN → 0)
     W_abs = np.abs(fill_nan_zero(W))
-    D = np.diag(W_abs.sum(axis=1))
-    L = D - W_abs
 
-    # Eigendecomposition — Fiedler vector is eigenvector of 2nd smallest eigenvalue
-    eigenvalues, eigenvectors = np.linalg.eigh(L)
+    # Extract largest connected component (LCC) — isolated nodes (degree=0)
+    # create spurious zero eigenvalues that mask the true Fiedler value.
+    adj = W_abs > 0
+    lcc_idx = _find_largest_component(adj)
+    isolated_idx = [i for i in range(k) if i not in lcc_idx]
+
+    # Compute Fiedler on LCC only
+    W_lcc = W_abs[np.ix_(lcc_idx, lcc_idx)]
+    D_lcc = np.diag(W_lcc.sum(axis=1))
+    L_lcc = D_lcc - W_lcc
+
+    eigenvalues, eigenvectors = np.linalg.eigh(L_lcc)
     fiedler_value = float(eigenvalues[1])
-    fiedler_vector = eigenvectors[:, 1]
+    fiedler_vector_lcc = eigenvectors[:, 1]
 
     # Sign alignment: ensure the group containing the construct with highest
     # absolute education-related fingerprint loading gets "cosmopolitan" (+1).
@@ -57,14 +89,19 @@ def compute_camps(country: str, wave: int) -> dict:
     # has a negative Fiedler loading, flip all signs.
     edu_keywords = {"education", "science", "university", "knowledge"}
     flip = False
-    for i, label in enumerate(labels):
-        name = label.split("|")[0].lower()
+    for li, gi in enumerate(lcc_idx):
+        name = labels[gi].split("|")[0].lower()
         if any(kw in name for kw in edu_keywords):
-            if fiedler_vector[i] < 0:
+            if fiedler_vector_lcc[li] < 0:
                 flip = True
             break  # use first match
     if flip:
-        fiedler_vector = -fiedler_vector
+        fiedler_vector_lcc = -fiedler_vector_lcc
+
+    # Expand Fiedler vector to full graph (isolated nodes get 0 → cosmopolitan)
+    fiedler_vector = np.zeros(k)
+    for li, gi in enumerate(lcc_idx):
+        fiedler_vector[gi] = fiedler_vector_lcc[li]
 
     # Partition
     camp_ids = np.where(fiedler_vector >= 0, 1, -1)
@@ -121,6 +158,9 @@ def compute_camps(country: str, wave: int) -> dict:
         "country": country,
         "wave": wave,
         "fiedler_value": round(fiedler_value, 6),
+        "n_constructs": k,
+        "n_lcc": len(lcc_idx),
+        "n_isolated": len(isolated_idx),
         "n_cosmopolitan": n_cosmopolitan,
         "n_tradition": n_tradition,
         "n_triangles": n_triangles,

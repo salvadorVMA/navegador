@@ -1,3 +1,9 @@
+# ARCHIVED -- Docker Sandbox Strategy
+
+> **This document is archived.** It describes the Claude1 Docker sandbox workflow from January 2026. The project now uses a local Mac + conda environment (`nvg_py13_env`) as the primary development setup. Retained for historical reference. See `QUICK_START.md` for current setup instructions.
+
+---
+
 # Docker Sandbox Strategy - Claude1 Testing Environment
 
 **Purpose**: Safe, isolated environment for testing all Claude1 optimization work

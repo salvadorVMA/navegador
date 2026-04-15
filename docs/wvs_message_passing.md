@@ -1,5 +1,7 @@
 # Message Passing on WVS Belief Networks
-## Mathematical Foundations · Algorithms · Interpretations · Pitfalls
+## Implementation Guide -- Code Fragments, Worked Examples, Interpretations
+
+> **Scope note:** This document is the **implementation guide** for the message passing framework: working Python code, CLI usage, worked examples, and substantive interpretation of results. For the **mathematical reference** with formal notation, convergence proofs, and algorithm specifications, see [MESSAGE_PASSING_SPEC.md](MESSAGE_PASSING_SPEC.md).
 
 ---
 

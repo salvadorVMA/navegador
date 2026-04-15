@@ -1,3 +1,9 @@
+# ARCHIVED -- Phase 3 Critical Reliability Fixes
+
+> **This document is archived.** It describes dashboard reliability fixes from January 2026. These fixes have been applied and the project has moved well beyond this phase into SES bridge estimation, WVS integration, knowledge graphs, TDA, and the Graph Traversal Engine. Retained for historical reference.
+
+---
+
 # Phase 3: Critical Reliability Fixes - Priority Plan
 
 **Date**: 2026-01-17

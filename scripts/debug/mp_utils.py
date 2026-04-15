@@ -26,7 +26,15 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
-NAVEGADOR_DATA = Path("/workspaces/navegador_data")
+# Detect navegador_data location (Codespace vs local Mac)
+_NAVEGADOR_DATA_CANDIDATES = [
+    Path("/workspaces/navegador_data"),
+    ROOT.parent / "navegador_data",
+]
+NAVEGADOR_DATA = next(
+    (p for p in _NAVEGADOR_DATA_CANDIDATES if p.exists()),
+    Path("/workspaces/navegador_data"),  # fallback (non-existent is fine)
+)
 
 # Prefer navegador_data for TDA outputs (large files live there)
 if (NAVEGADOR_DATA / "data" / "tda").exists():
@@ -34,7 +42,11 @@ if (NAVEGADOR_DATA / "data" / "tda").exists():
 else:
     TDA_DIR = ROOT / "data" / "tda"
 
-GTE_DIR = NAVEGADOR_DATA / "data" / "gte"
+# Prefer navegador_data for GTE outputs, fall back to local
+if (NAVEGADOR_DATA / "data" / "gte").exists():
+    GTE_DIR = NAVEGADOR_DATA / "data" / "gte"
+else:
+    GTE_DIR = ROOT / "data" / "gte"
 
 ALLWAVE_MATRIX_DIR = TDA_DIR / "allwave" / "matrices"
 VALID_WAVES = [3, 4, 5, 6, 7]

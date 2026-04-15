@@ -1,3 +1,9 @@
+# ARCHIVED -- Claude1 Sandbox Quick Start Guide
+
+> **This document is archived.** It describes the Claude1 Docker sandbox from January 2026. The project now uses a local Mac + conda environment (`nvg_py13_env`) as the primary development setup. Retained for historical reference. See `QUICK_START.md` for current setup instructions.
+
+---
+
 # Claude1 Sandbox - Quick Start Guide
 
 **Purpose**: Safe, isolated testing environment for all Claude1 optimizations
